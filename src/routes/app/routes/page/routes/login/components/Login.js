@@ -34,10 +34,14 @@ const Services = () => (
 
                 <div className="text-center">
                 <GoogleLogin
+          clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"
                   buttonText="CONTINUE WITH GOOGLE"
                 /><div className="divider" />
 
-                <FacebookLogin/><div className="divider" />
+                <FacebookLogin
+        appId="1614436405260654"
+                autoLoad={false}
+        /><div className="divider" />
 
                 <p>---------------- OR ----------------</p>
 
