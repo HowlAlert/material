@@ -10,7 +10,7 @@ const FullWidth = () => (
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1">
         <article className="article">
-          <h2 className="article-title">Blank</h2>
+          <h2 className="article-title">SETTINGS PAGE</h2>
         </article>
       </div>
     </QueueAnim>
