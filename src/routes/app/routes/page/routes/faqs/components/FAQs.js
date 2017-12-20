@@ -4,9 +4,9 @@ import QueueAnim from 'rc-queue-anim';
 const Hero = () => (
   <section className="hero">
     <div className="hero-content">
-      <h1 className="hero-title">FAQs</h1>
+      <h1 className="hero-title">Privacy Policy</h1>
     </div>
-    <p className="hero-tagline">Frequently Asked Questions</p>
+    <p className="hero-tagline">Privacy Policy</p>
   </section>
 );
 

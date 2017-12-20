@@ -80,7 +80,7 @@ class HorizontalLinearStepper extends React.Component {
                       </p>
                   ) : (
                     <div>
-                      <p>{this.getStepContent(stepIndex)}</p>
+
                       <div style={{marginTop: 12}}>
                         <FlatButton
                           label="Back"
@@ -89,7 +89,7 @@ class HorizontalLinearStepper extends React.Component {
                           style={{marginRight: 12}}
                         />
                         <RaisedButton
-                          label={stepIndex === 2 ? 'Finish' : 'Next'}
+                          label="Nex"
                           primary
                           onClick={this.handleNext}
                         />

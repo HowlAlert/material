@@ -34,23 +34,7 @@ class Header extends React.Component {
             'bg-color-warning': ['25', '35'].indexOf(colorOption) >= 0,
             'bg-color-danger': ['26', '36'].indexOf(colorOption) >= 0 })}
                 >
-          <div className="d-lg-none d-xl-none float-left">
-            <a href="javascript:;" className="md-button header-icon toggle-sidebar-btn" ref={(c) => { this.sidebarBtn = c; }}>
-              <i className="material-icons">menu</i>
-            </a>
-          </div>
 
-          <div className="brand d-none d-lg-inline-block d-xl-inline-block">
-            <h2><Link to="/">{APPCONFIG.brand}</Link></h2>
-          </div>
-
-          <div className="top-nav-left d-none d-lg-inline-block d-xl-inline-block">
-            <NavLeftList />
-          </div>
-
-          <div className="top-nav-right">
-            <NavRightList />
-          </div>
         </div>
       </section>
     );
@@ -66,4 +50,3 @@ const mapStateToProps = state => ({
 module.exports = connect(
   mapStateToProps
 )(Header);
-

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import loadable from 'react-loadable';
-import Header from 'components/Header';
+//import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
 import Customizer from 'components/Customizer';
@@ -60,7 +60,7 @@ class MainApp extends React.Component {
         <Sidenav />
 
         <section id="page-container" className="app-page-container">
-          <Header />
+
 
           <div className="app-content-wrapper">
             <div className="app-content">
@@ -76,7 +76,7 @@ class MainApp extends React.Component {
               </div>
             </div>
 
-            <Footer />
+          
           </div>
         </section>
 

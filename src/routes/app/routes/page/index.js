@@ -6,6 +6,7 @@ import Blog from './routes/blog/'
 import Careers from './routes/careers/'
 import Contact from './routes/contact/'
 import Faqs from './routes/faqs/'
+import Login from './routes/login/'
 import Services from './routes/services/'
 import Terms from './routes/terms/'
 
@@ -17,6 +18,7 @@ const Page = ({ match }) => (
     <Route path={`${match.url}/careers`} component={Careers}/>
     <Route path={`${match.url}/contact`} component={Contact}/>
     <Route path={`${match.url}/faqs`} component={Faqs}/>
+    <Route path={`${match.url}/login`} component={Login}/>
     <Route path={`${match.url}/services`} component={Services}/>
     <Route path={`${match.url}/terms`} component={Terms}/>
   </div>

@@ -13,7 +13,12 @@ import PageForgotPassword from 'routes/forgot-password/'
 import PageFullscreen from 'routes/fullscreen/'
 import PageLockScreen from 'routes/lock-screen/'
 import PageLogin from 'routes/login/'
-import PageSignUp from 'routes/sign-up/'
+import PageRegister1 from 'routes/register1/'
+import PageRegister2 from 'routes/register2/'
+import PageRegister3 from 'routes/register3/'
+import PageRegister4 from 'routes/register4/'
+import PageRegister5 from 'routes/register5/'
+import PagePrintcode from 'routes/printcode/'
 
 // = styles =
 // 3rd
@@ -75,7 +80,12 @@ class App extends Component {
             <Route exact path="/fullscreen" component={PageFullscreen} />
             <Route exact path="/lock-screen" component={PageLockScreen} />
             <Route exact path="/login" component={PageLogin} />
-            <Route exact path="/sign-up" component={PageSignUp} />
+            <Route exact path="/register1" component={PageRegister1} />
+            <Route exact path="/register2" component={PageRegister2} />
+            <Route exact path="/register3" component={PageRegister3} />
+            <Route exact path="/register4" component={PageRegister4} />
+            <Route exact path="/register5" component={PageRegister5} />
+            <Route exact path="/printcode" component={PagePrintcode} />
           </div>
         </div>
       </MuiThemeProvider>
