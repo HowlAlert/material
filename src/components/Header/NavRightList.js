@@ -3,6 +3,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton/IconButton';
 import { withRouter } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const ImgIconButtonStyle = {
   width: '60px',
@@ -51,8 +52,13 @@ class NavRightList extends React.Component {
               style={{fontSize: '14px', lineHeight: '48px'}}
               leftIcon={<i className="material-icons">forward</i>}
                         />
+
+
+
           </IconMenu>
+
         </li>
+
       </ul>
     );
   }

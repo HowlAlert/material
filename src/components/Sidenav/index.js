@@ -103,4 +103,3 @@ module.exports = withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(Sidebar));
-

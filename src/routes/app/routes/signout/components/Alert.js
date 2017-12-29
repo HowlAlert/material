@@ -35,9 +35,8 @@ class DialogExampleSimple extends React.Component {
     return (
       <div className="col-lg-6">
         <div className="box box-transparent">
-          <div className="box-body" >
-            <RaisedButton label="logout?" onClick={this.handleOpen} />
-
+          <div className="box-body">
+            <RaisedButton label="Logout" onClick={this.handleOpen} />
             <Dialog
               title="Confirm"
               actions={actions}
@@ -45,7 +44,7 @@ class DialogExampleSimple extends React.Component {
               open={this.state.open}
               onRequestClose={this.handleClose}
             >
-
+              Are you sure you want to logout?
             </Dialog>
           </div>
         </div>
@@ -57,15 +56,11 @@ class DialogExampleSimple extends React.Component {
 
 const Page = () => {
   return (
-    <div className="page-login">
-      <div className="main-body">
     <section className="container-fluid with-maxwidth chapter">
       <QueueAnim type="bottom" className="ui-animate">
-        <div key="1" ><DialogExampleSimple  /></div>
+        <div key="1"><DialogExampleSimple  /></div>
       </QueueAnim>
     </section>
-  </div>
-</div>
   )
 }
 
