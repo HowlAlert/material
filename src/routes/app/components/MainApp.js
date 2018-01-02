@@ -7,33 +7,45 @@ import Footer from 'components/Footer';
 import Customizer from 'components/Customizer';
 
 
-import Dashboard from '../routes/dashboard/'
-// import Chart from '../routes/chart/'
-// import ECommerce from '../routes/ecommerce/'
-// import Form from '../routes/form/'
-// import Page from '../routes/page/'
-// import PageLayout from '../routes/page-layout/'
-// import Table from '../routes/table/'
-// import UI from '../routes/ui/'
-
+import Dashboard from '../routes/home/'
 function LoadingComponent() {
   return <div></div>;
 }
+let AsyncHome = loadable({
+  loader: () => import('../routes/home/'),
+  loading: LoadingComponent
+})
+let AsyncAlert = loadable({
+  loader: () => import('../routes/Alerts/'),
+  loading: LoadingComponent
+})
 
-let AsyncChart = loadable({
-  loader: () => import('../routes/chart/'),
+let Asyncdevices = loadable({
+  loader: () => import('../routes/devices/'),
   loading: LoadingComponent
 })
-let AsyncECommerce = loadable({
-  loader: () => import('../routes/ecommerce/'),
+let Asynccameras = loadable({
+  loader: () => import('../routes/cameras/'),
   loading: LoadingComponent
 })
-let AsyncForm = loadable({
-  loader: () => import('../routes/form/'),
+let AsyncPack = loadable({
+  loader: () => import('../routes/pack/'),
   loading: LoadingComponent
 })
-let AsyncPage = loadable({
-  loader: () => import('../routes/page/'),
+let AsyncHelp = loadable({
+  loader: () => import('../routes/help/'),
+  loading: LoadingComponent
+})
+let AsyncMonitor = loadable({
+  loader: () => import('../routes/monitor/'),
+  loading: LoadingComponent
+})
+let AsyncSettings = loadable({
+  loader: () => import('../routes/appsettings/'),
+  loading: LoadingComponent
+})
+let AsyncLogout = loadable({
+  loader: () => import('../routes/signout/'),
   loading: LoadingComponent
 })
 let AsyncPageLayout = loadable({
@@ -42,10 +54,6 @@ let AsyncPageLayout = loadable({
 })
 let AsyncTable = loadable({
   loader: () => import('../routes/table/'),
-  loading: LoadingComponent
-})
-let AsyncUI = loadable({
-  loader: () => import('../routes/ui/'),
   loading: LoadingComponent
 })
 
@@ -66,13 +74,18 @@ class MainApp extends React.Component {
             <div className="app-content">
               <div className="full-height">
                   <Route path={`${match.url}/dashboard`} component={Dashboard} />
-                  <Route path={`${match.url}/chart`} component={AsyncChart} />
-                  <Route path={`${match.url}/ecommerce`} component={AsyncECommerce} />
-                  <Route path={`${match.url}/form`} component={AsyncForm} />
-                  <Route path={`${match.url}/page`} component={AsyncPage} />
+                  <Route path={`${match.url}/home`} component={AsyncHome} />
+                  <Route path={`${match.url}/Alerts`} component={AsyncAlert} />
+                  <Route path={`${match.url}/Cameras`} component={Asynccameras} />
+                  <Route path={`${match.url}/Devices`} component={Asyncdevices} />
+                  <Route path={`${match.url}/Pack`} component={AsyncPack} />
+                  <Route path={`${match.url}/Monitoring`} component={AsyncMonitor} />
+                  <Route path={`${match.url}/Help & Support`} component={AsyncHelp} />
+                  <Route path={`${match.url}/Settings`} component={AsyncSettings} />
+                  <Route path={`${match.url}/Logout`} component={AsyncLogout} />
                   <Route path={`${match.url}/pglayout`} component={AsyncPageLayout} />
                   <Route path={`${match.url}/table`} component={AsyncTable} />
-                  <Route path={`${match.url}/ui`} component={AsyncUI} />
+
               </div>
             </div>
 

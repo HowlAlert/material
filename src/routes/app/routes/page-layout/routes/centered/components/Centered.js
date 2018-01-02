@@ -7,6 +7,7 @@ const Centered = () => (
       <div key="1">
         <article className="article">
           <h2 className="article-title">Blank</h2>
+          <button> Buy </button>
         </article>
       </div>
     </QueueAnim>

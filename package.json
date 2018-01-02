@@ -28,6 +28,7 @@
     "prop-types": "^15.5.10",
     "rc-queue-anim": "^1.0.4",
     "react": "^15.5.4",
+    "react-confirm-alert": "^1.0.8",
     "react-dom": "^15.5.4",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-loadable": "^4.0.5",
