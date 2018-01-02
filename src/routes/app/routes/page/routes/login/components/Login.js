@@ -8,6 +8,8 @@ import IconButton from 'material-ui/IconButton';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import {Redirect} from 'react-router-dom';
+import {PostData} from '../services/PostData';
+
 
 const Hero = () => (
   <div className="text-center">
@@ -34,14 +36,19 @@ const Services = () => (
 
                 <div className="text-center">
                 <GoogleLogin
-          clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"
-                  buttonText="CONTINUE WITH GOOGLE"
+                clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"
+                buttonText="CONTINUE WITH GOOGLE"
+
+                //onSuccess={responseGoogle}
+                //onFailure={responseGoogle}
                 /><div className="divider" />
 
                 <FacebookLogin
-        appId="1614436405260654"
+                appId="1614436405260654"
                 autoLoad={false}
-        /><div className="divider" />
+                //onClick={componentClicked}
+                //callback={responseFacebook}/>
+                /><div className="divider" />
 
                 <p>---------------- OR ----------------</p>
 

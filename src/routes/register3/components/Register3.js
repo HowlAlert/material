@@ -10,8 +10,7 @@ import VisibilityOff from 'material-ui/svg-icons/action/visibility-off';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-
+//import Password from 'react-password';
 
 const mWidthStyle = {
   minWidth: '130px'
@@ -20,10 +19,14 @@ class Register3 extends React.Component {
   constructor() {
     super();
     this.state = {
-
-    };
+        checkboxState: document.getElementById('password')
+      }
   }
-
+  toggle(event) {
+    this.setState({
+      checkboxState: !this.state.checkboxState
+    });
+  }
   render() {
     return (
       <div className="body-inner">
@@ -48,17 +51,25 @@ class Register3 extends React.Component {
                   <TextField
                     floatingLabelText="PASSWORD"
                     type="password"
+                    id="password"
                     fullWidth
                   />
+
                 </div>
+
+
                 <div className="text-small">
+
                 <Checkbox
                   label="Show Password"
+                  value={false}
+                  onClick={this.toggle.bind(this)}
                   //style={styles.checkbox}
-                />
-                  </div>
-                <div className="divider" />
 
+                />
+
+                  </div>
+                  
               </fieldset>
               <div className="card-action no-border text-left">
 

@@ -8,6 +8,7 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import Visibility from 'material-ui/svg-icons/action/visibility';
 import VisibilityOff from 'material-ui/svg-icons/action/visibility-off';
+import {PostData} from '../../../services/PostData';
 
 
 
@@ -19,14 +20,41 @@ import {
 
 
 class Login extends React.Component {
-  constructor() {
+  constructor(props) {
 
-    super();
+    super(props);
     this.state = {
-      brand: APPCONFIG.brand
+      brand: APPCONFIG.brand,
+      'Email':'',
+      'Password':''
     };
+    this.LoginLogin=this.Login.bind(this);
+    this.onChange=this.onChange.bind(this);
   }
 
+  Login(event){
+    console.log(event);
+    PostData('Login',{'Email':'a@b.com','Password':'abc'}).then((result)=>{
+      let res=result;
+      console.log(res);
+    });
+  }
+
+/*componentDidMount(){
+  fetch('').
+  then((Response)=>Response.json()).
+  then((findresponse)=>{
+    console.log(findresponse.signin)
+    this.setState({
+      data:findresponse.signin,
+    })
+  })
+}*/
+
+  onChange(event){
+    this.setState({value:event.target.value});
+    console.log(this.state);
+  }
 
   render() {
     return (
@@ -45,13 +73,17 @@ class Login extends React.Component {
                   <TextField
                     floatingLabelText="Email"
                     fullWidth
+                    name="Email"
+                    onChange={this.onChange}
                   />
                 </div>
                 <div className="form-group">
                   <TextField
                     floatingLabelText="Password"
                     type="password"
+                    name="Password"
                     fullWidth
+                    onChange={this.onChange}
                     />
                 </div>
 
@@ -70,14 +102,14 @@ class Login extends React.Component {
 
 
           <a href="#/app/page/login" className="color-primary">Back</a>
-        <a href="#/" className="color-primary">Sign In</a>
+        <a href="#/login" className="color-primary" value="Login" onClick={this.Login}>Sign In</a>
           </div>
         </div>
 
         <div className="additional-info">
           <a href="#/forgot-password">Forgot your password?</a>
 
-          <p>Dont have an account? <a href="#/register">Register</a></p>
+          <p>Dont have an account? <a href="#/register1ß">Register</a></p>
         </div>
 
 
