@@ -101,7 +101,7 @@ class Login extends React.Component {
 
               </div>
               <div className="box-body text-center">
-              <RaisedButton style={mWidthStyle} label="SIGN IN -->" primary href={"#/app/page/login"}/><div className="divider" />
+              <RaisedButton style={mWidthStyle} label="SIGN IN -->" primary href={"#/login"} onClick={this.Login}/><div className="divider" />
             </div>
 
             </form>
