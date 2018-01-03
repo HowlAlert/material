@@ -9,6 +9,10 @@ import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import Visibility from 'material-ui/svg-icons/action/visibility';
 import VisibilityOff from 'material-ui/svg-icons/action/visibility-off';
 import {PostData} from '../../../services/PostData';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+
 
 
 
@@ -17,8 +21,9 @@ import {
     Stepper,
     StepLabel,
 } from 'material-ui/Stepper';
-
-
+const mWidthStyle = {
+  minWidth: '130px'
+};
 class Login extends React.Component {
   constructor(props) {
 
@@ -33,6 +38,7 @@ class Login extends React.Component {
   }
 
   Login(event){
+
     console.log(event);
     PostData('Login',{'Email':'a@b.com','Password':'abc'}).then((result)=>{
       let res=result;
@@ -40,21 +46,13 @@ class Login extends React.Component {
     });
   }
 
-/*componentDidMount(){
-  fetch('').
-  then((Response)=>Response.json()).
-  then((findresponse)=>{
-    console.log(findresponse.signin)
-    this.setState({
-      data:findresponse.signin,
-    })
-  })
-}*/
+
 
   onChange(event){
     this.setState({value:event.target.value});
     console.log(this.state);
   }
+
 
   render() {
     return (
@@ -63,11 +61,16 @@ class Login extends React.Component {
         <div className="card bg-white">
           <div className="card-content">
 
-            <section className="logo text-center">
-              <h1><a href="#/">{this.state.brand}</a></h1>
-            </section>
 
-            <form className="form-horizontal">
+
+          <form className="form-horizontal">
+          <ul className="nav" ref={(c) => { this.nav = c; }}>
+            <li className="nav-header"><span></span></li>
+            <li><FlatButton href="#/app/page/login"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
+            </li>
+            </ul>
+            <img src="assets/images/HOWL.png" alt="HOWL" />
+
               <fieldset>
                 <div className="form-group">
                   <TextField
@@ -94,22 +97,22 @@ class Login extends React.Component {
                 />
                   </div>
               </fieldset>
+              <div className="card-action no-border text-left">
+
+              </div>
+              <div className="box-body text-center">
+              <RaisedButton style={mWidthStyle} label="SIGN IN -->" primary href={"#/app/page/login"}/><div className="divider" />
+            </div>
 
             </form>
 
           </div>
-          <div className="card-action no-border text-right">
-
-
-          <a href="#/app/page/login" className="color-primary">Back</a>
-        <a href="#/login" className="color-primary" value="Login" onClick={this.Login}>Sign In</a>
-          </div>
-        </div>
+</div>
 
         <div className="additional-info">
-          <a href="#/forgot-password">Forgot your password?</a>
+          <a href="#/forgot-password">Forgot password?</a>
 
-          <p>Dont have an account? <a href="#/register1ß">Register</a></p>
+          <p>Don't have an account? <a href="#/register1ß">Register</a></p>
         </div>
 
 

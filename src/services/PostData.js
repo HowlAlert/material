@@ -6,7 +6,8 @@ export function PostData(type, userData) {
 
 console.log(JSON.stringify(userData));
         fetch(BaseURL+type, {
-            method: 'POST',
+            method: "POST",
+          
             body: JSON.stringify(userData)
           })
           .then((response) => response.json())
