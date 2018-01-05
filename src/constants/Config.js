@@ -5,7 +5,8 @@ const APPCONFIG = {
   brand: 'HOWL ALERT',
   user: 'Lisa',
   year,
-  productLink: 'https://themeforest.net/item/material-design-reactjs-admin-web-app-with-bootstrap-4/19582625',
+  // productLink: 'https://themeforest.net/item/material-design-reactjs-admin-web-app-with-bootstrap-4/19582625',
+  productLink: 'https://sandbox.howlalarm.com/HOWL_WCF_Sandbox/Service1.svc/Login',
   AutoCloseMobileNav: true,                         // true, false. Automatically close sidenav on route change (Mobile only)
   color: {
     primary: '#00BCD4',

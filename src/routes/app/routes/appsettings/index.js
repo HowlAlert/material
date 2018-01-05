@@ -1,2 +1,2 @@
-import Alert from './components/Alert';
-export default Alert;
+import settings from './components/settings';
+export default settings;
