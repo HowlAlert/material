@@ -13,9 +13,6 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
-
-
-
 import {
     Step,
     Stepper,
@@ -31,11 +28,32 @@ class Login extends React.Component {
     this.state = {
       brand: APPCONFIG.brand,
       'Email':'',
-      'Password':''
+      'Password':'',
+      'ShowPassword':'',
+      showErrors: false,
+      validationErrors: {}
     };
     this.LoginLogin=this.Login.bind(this);
     this.onChange=this.onChange.bind(this);
   }
+  handleFieldChanged(field) {
+      return (e) => {
+        // update() is provided by React Immutability Helpers
+        // https://facebook.github.io/react/docs/update.html
+        let newState = update(this.state, {
+          [field]: {$set: e.target.value}
+        });
+        newState.validationErrors = run(newState, fieldValidations);
+        this.setState(newState);
+      };
+}
+
+      handleSubmitClicked() {
+    this.setState({showErrors: true});
+    if($.isEmptyObject(this.state.validationErrors) == false) return null;
+    // ... continue submitting data to server
+  }
+
 
   Login(event){
 
@@ -49,8 +67,10 @@ class Login extends React.Component {
 
 
   onChange(event){
-    this.setState({value:event.target.value});
+    this.setState({value:event.name});
     console.log(this.state);
+    //if('ShowPassword':)
+
   }
 
 
@@ -78,6 +98,8 @@ class Login extends React.Component {
                     fullWidth
                     name="Email"
                     onChange={this.onChange}
+                    onFieldChanged={this.handleFieldChanged("Email")}
+                  //errorText={this.errorFor("Email")}
                   />
                 </div>
                 <div className="form-group">
@@ -93,7 +115,8 @@ class Login extends React.Component {
                 <div className="col-lg-6">
                 <Checkbox
                   label="Show Password"
-                  //style={styles.checkbox}
+                  name="ShowPassword"
+                  onChange={this.onChange}
                 />
                   </div>
               </fieldset>
