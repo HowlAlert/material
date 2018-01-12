@@ -44,6 +44,10 @@ class Header extends React.Component {
             <h2><Link to="/">{APPCONFIG.brand}</Link></h2>
           </div>
 
+          <div className="top-nav-center d-none d-lg-inline-block d-xl-inline-block">
+            <img src="assets/images/HOWL2.ico" alt="" className="rounded-circle img30_30" />
+          </div>
+
           <div className="top-nav-left d-none d-lg-inline-block d-xl-inline-block">
             <NavLeftList />
           </div>

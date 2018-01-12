@@ -1,50 +1,25 @@
-//
-export function Add_Devices()
+
+export function Add_Devices(type, userData)
 {
 
-   let BaseURL = 'https://sandbox.howlalarm.com/HOWL_WCF_Sandbox/Service1.svc/';
+   let BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/';
 
    return new Promise((resolve, reject) =>{
-        fetch(BaseURL,
+        fetch(BaseURL+type,
            {
             method: "POST",
-            body: JSON.stringify({ "Email":"aruna@gmail.com", "Password":"baseball" }),
-            mode: "no-cors"
+            body: JSON.stringify(userData),
+            headers: new Headers({'content-type': 'application/json'}),
           })
-          .then(response => response.text())
-          .then(contents => console.log(contents))
-          .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
-      });
+          .then((response) => response.json())
+                    .then((res) => {
+                      console.log(res);
+                      resolve(res);
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                      reject(error);
+                    });
+
+                });
 }
-
-
-   // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-   // const url = "https://example.com"; // site that doesn’t send Access-Control-*
-   // fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
-   // .then(response => response.text())
-   // .then(contents => console.log(contents))
-   // .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
-
-
-//
-// }
-// import * as fs from 'fs';
-//   var express = require('express');
-//   var app = express();
-//   var http = require('http');
-//   app.get('/', function (req, res) {
-//     var request = require('request');
-//     request.post(
-//         'http://sandbox.howlalarm.com/HOWL_WCF_Sandbox/Service1.svc/Login',
-//         { json: { "Email": 'derek@howlalert.com', "Password":"howl38" } },
-//         function (error, response, body) {
-//             if (!error && response.statusCode == 200) {
-//                 console.log(body)
-//             }
-//         }
-//     );
-//       res.send('Hello World!');
-//   });
-//   app.listen(3000, function () {
-//       console.log('Example app listening on port 3000!');
-//   });

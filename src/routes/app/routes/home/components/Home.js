@@ -4,7 +4,9 @@ import QueueAnim from 'rc-queue-anim';
 
 const BasicHome = () => (
   <article className="article padding-lg-v article-dark article-bordered">
+
   <div className="container-fluid with-maxwidth">
+
   <div className="row">
 
     <div className="col-xl-4"><a href="cameras#/app/Cameras">
@@ -65,11 +67,12 @@ const BasicHome = () => (
           </div>
         </div>
       </div>
-    </a></div>
+    </a>
+  </div>
 
-      <div className="row">
-        <div className="col-xl-4 col-lg-6">
-          <div className="card bg-color-dark">
+
+        <div className="col-xl-4 col-lg-8 rounded mx-auto d-block">
+          <div className="card bg-color-primary text-center">
             <div className="card-content">
               <span className="card-title">AMBULANCE</span>
             </div>
@@ -79,24 +82,11 @@ const BasicHome = () => (
           </div>
         </div>
 
+
         <div className="col-xl-4 col-lg-6">
-          <div className="card bg-color-primary">
+          <div className="card bg-color-primary text-center">
             <div className="card-content">
               <span className="card-title">POLICE</span>
-              <p>Hey there, I am a very simple card. I am good at containing small bits of information.
-                I am quite convenient because I require little markup to use effectively.</p>
-            </div>
-            <div className="card-action">
-              <a href="javascript:;">SUBSCRIBE</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-xl-4 col-lg-6">
-          <div className="card bg-color-success">
-            <div className="card-content">
-              <span className="card-title">FIRE</span>
             </div>
             <div className="card-action">
               <a href="javascript:;">SUBSCRIBE</a>
@@ -105,18 +95,28 @@ const BasicHome = () => (
         </div>
 
         <div className="col-xl-4 col-lg-6">
-          <div className="card bg-color-primary">
-            <div className="card-content">
-              <span className="card-title">PACK</span>
-              <p>Hey there, I am a very simple card. I am good at containing small bits of information.
-                I am quite convenient because I require little markup to use effectively.</p>
+          <div className="card bg-color-primary text-center">
+            <div className="card-content ">
+              <span className="card-title">FIRE</span>
             </div>
             <div className="card-action">
-              <a href="javascript:;" className="color-primary">TAP & HOLD FOR 3 SECONDS</a>
+              <a href="javascript:;">SUBSCRIBE</a>
             </div>
           </div>
         </div>
+
+      <div className="col-xl-4 col-lg-8 rounded mx-auto d-block">
+        <div className="card bg-danger text-center ">
+          <div className="card-content">
+            <span className="card-title">ALERT PACK</span>
+          </div>
+          <div className="card-action">
+              <a href="javascript:;">   <h5>CLICK & HOLD FOR 3 SECONDS TO SOUND ALARM</h5></a>
+          </div>
+        </div>
       </div>
+      >
+
 
       </div>
     </div>

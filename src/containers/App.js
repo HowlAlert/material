@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
+
 import MainApp from 'routes/app/'
 import Page404 from 'routes/404/'
 import Page500 from 'routes/500/'
@@ -14,6 +15,9 @@ import PageFullscreen from 'routes/fullscreen/'
 import PageLockScreen from 'routes/lock-screen/'
 import PageLogin from 'routes/login/'
 // import PageSignUp from 'routes/sign-up/'
+
+
+// import  Camera from 'routes/cameras'
 
 // = styles =
 // 3rd
@@ -76,6 +80,8 @@ class App extends Component {
             <Route exact path="/lock-screen" component={PageLockScreen} />
             <Route exact path="/login" component={PageLogin} />
             {/* <Route exact path="/sign-up" component={PageSignUp} /> */}
+            {/* <Route exact path="/camera" component={Camera} />
+            <camera username={"Email":"derek@howlalert.com", "Password":"howl38"}></camera> */}
           </div>
         </div>
       </MuiThemeProvider>
