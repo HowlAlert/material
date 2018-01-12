@@ -27,50 +27,65 @@ class Login extends React.Component {
     super(props);
     this.state = {
       brand: APPCONFIG.brand,
-      'Email':'',
-      'Password':'',
-      'ShowPassword':'',
-      showErrors: false,
-      validationErrors: {}
+      //Email:props.Email,
+      //Password:props.Password
+      Email:'',
+      Password:''
     };
-    this.LoginLogin=this.Login.bind(this);
-    this.onChange=this.onChange.bind(this);
-  }
-  handleFieldChanged(field) {
-      return (e) => {
-        // update() is provided by React Immutability Helpers
-        // https://facebook.github.io/react/docs/update.html
-        let newState = update(this.state, {
-          [field]: {$set: e.target.value}
-        });
-        newState.validationErrors = run(newState, fieldValidations);
-        this.setState(newState);
-      };
-}
-
-      handleSubmitClicked() {
-    this.setState({showErrors: true});
-    if($.isEmptyObject(this.state.validationErrors) == false) return null;
-    // ... continue submitting data to server
+  //this.handleLogin=this.handleLogin.bind(this);
+    //this.handleEmail = this.handleEmail.bind(this);
+    //this.handlePassword = this.handlePassword.bind(this);
+  //this.onChange=this.onChange.bind(this);
   }
 
 
-  Login(event){
-
-    console.log(event);
-    PostData('Login',{'Email':'a@b.com','Password':'abc'}).then((result)=>{
+  /*handleChange(event){
+    const Email=event.target.Email;
+    this.props.changeEmail(Email);
+  }
+  changeEmail(Email){
+    this.setState({Email});
+  console.log(Email);
+}*/
+  handleLogin(event){
+    event.preventDefault();
+    console.log("handleLogin1") ;
+    /*console.log("output - 0");
+    console.log(this.refs.Email.value);*/
+    PostData('Login',{'Email':this.handleEmail(),'Password':this.handleEmail()}).then((result)=>{
+      console.log("handleLogin2") ;
       let res=result;
       console.log(res);
+      console.log("output");
+      console.log(event);
     });
   }
 
 
+  handleEmail(event) {
+    event.preventDefault();
+    const target = event.target;
+  const value = target.type === target.value;
+  const name = target.name;
 
-  onChange(event){
-    this.setState({value:event.name});
-    console.log(this.state);
-    //if('ShowPassword':)
+  this.setState({
+        [name]: value
+      });
+      console.log(target.value) ;
+      return target.value;
+    }
 
+handlePassword(event) {
+  event.preventDefault();
+  const target = event.target;
+const value = target.type === target.value;
+const name = target.name;
+
+this.setState({
+      [name]: value
+    });
+    console.log(target.value)
+     return target.value;
   }
 
 
@@ -95,10 +110,15 @@ class Login extends React.Component {
                 <div className="form-group">
                   <TextField
                     floatingLabelText="Email"
+                    type="text"
                     fullWidth
                     name="Email"
-                    onChange={this.onChange}
-                    onFieldChanged={this.handleFieldChanged("Email")}
+                    //ref="Email"
+                    //value={this.state.Email}
+                    //onClick={this.Login.bind(this)}
+                     value={this.state.value}
+                     onChange={(e)=>this.handleEmail(e)}
+                    //changeEmail={this.changeEmail.bind(this)}
                   //errorText={this.errorFor("Email")}
                   />
                 </div>
@@ -108,7 +128,9 @@ class Login extends React.Component {
                     type="password"
                     name="Password"
                     fullWidth
-                    onChange={this.onChange}
+                    value={this.state.value}
+                    onChange={(e)=>this.handlePassword(e)}
+                    //onChange={this.handleChange.bind(this)}
                     />
                 </div>
 
@@ -124,7 +146,7 @@ class Login extends React.Component {
 
               </div>
               <div className="box-body text-center">
-              <RaisedButton style={mWidthStyle} label="SIGN IN -->" primary href={"#/login"} onClick={this.Login}/><div className="divider" />
+              <RaisedButton style={mWidthStyle} label="SIGN IN -->" primary href={"#/login"} onClick={(e)=>this.handleLogin(e)}/><div className="divider" />
             </div>
 
             </form>
