@@ -27,37 +27,17 @@ class Login extends React.Component {
     super(props);
     this.state = {
       brand: APPCONFIG.brand,
-      //Email:props.Email,
-      //Password:props.Password
       Email:'',
       Password:''
     };
-  //this.handleLogin=this.handleLogin.bind(this);
-    //this.handleEmail = this.handleEmail.bind(this);
-    //this.handlePassword = this.handlePassword.bind(this);
-  //this.onChange=this.onChange.bind(this);
   }
 
-
-  /*handleChange(event){
-    const Email=event.target.Email;
-    this.props.changeEmail(Email);
-  }
-  changeEmail(Email){
-    this.setState({Email});
-  console.log(Email);
-}*/
   handleLogin(event){
-    event.preventDefault();
-    console.log("handleLogin1") ;
-    /*console.log("output - 0");
-    console.log(this.refs.Email.value);*/
-    PostData('Login',{'Email':this.handleEmail(),'Password':this.handleEmail()}).then((result)=>{
-      console.log("handleLogin2") ;
+  event.preventDefault();
+
+    PostData('Login',{'Email':this.state.Email,'Password':this.state.Password}).then((result)=>{
       let res=result;
-      console.log(res);
-      console.log("output");
-      console.log(event);
+    console.log(res);
     });
   }
 
@@ -69,7 +49,7 @@ class Login extends React.Component {
   const name = target.name;
 
   this.setState({
-        [name]: value
+        Email: target.value
       });
       console.log(target.value) ;
       return target.value;
@@ -82,7 +62,7 @@ const value = target.type === target.value;
 const name = target.name;
 
 this.setState({
-      [name]: value
+      Password: target.value
     });
     console.log(target.value)
      return target.value;
@@ -113,13 +93,8 @@ this.setState({
                     type="text"
                     fullWidth
                     name="Email"
-                    //ref="Email"
-                    //value={this.state.Email}
-                    //onClick={this.Login.bind(this)}
                      value={this.state.value}
                      onChange={(e)=>this.handleEmail(e)}
-                    //changeEmail={this.changeEmail.bind(this)}
-                  //errorText={this.errorFor("Email")}
                   />
                 </div>
                 <div className="form-group">
@@ -130,7 +105,6 @@ this.setState({
                     fullWidth
                     value={this.state.value}
                     onChange={(e)=>this.handlePassword(e)}
-                    //onChange={this.handleChange.bind(this)}
                     />
                 </div>
 
