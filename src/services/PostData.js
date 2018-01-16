@@ -15,6 +15,8 @@ console.log(JSON.stringify(userData));
           .then((res) => {
             console.log(res);
             resolve(res);
+            console.log("user");
+            console.log(res.GetUser);
           })
           .catch((error) => {
             console.log(error);

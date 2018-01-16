@@ -29,12 +29,22 @@ class Login extends React.Component {
       brand: APPCONFIG.brand,
       Email:'',
       Password:''
+
     };
   }
 
   handleLogin(event){
   event.preventDefault();
-
+  if(this.state.Email==''){
+    alert("Please enter your email address");
+  }
+  let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if(re.test(this.state.Email)=='' && this.state.Email!=''){
+    alert("Please enter a valid email");
+  }
+  if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!=''){
+    alert("Please enter a password");
+  }
     PostData('Login',{'Email':this.state.Email,'Password':this.state.Password}).then((result)=>{
       let res=result;
     console.log(res);
@@ -51,6 +61,7 @@ class Login extends React.Component {
   this.setState({
         Email: target.value
       });
+
       console.log(target.value) ;
       return target.value;
     }
@@ -61,12 +72,52 @@ handlePassword(event) {
 const value = target.type === target.value;
 const name = target.name;
 
+console.log(this.state.ShowPassword)
+
 this.setState({
+
       Password: target.value
     });
-    console.log(target.value)
+console.log("here");
      return target.value;
   }
+
+
+handlePasswordEvent(event) {
+  if(event==true){
+    console.log("here3")
+    //{this.state.Password}
+    var text=this.state.Password
+    if(!text)
+    alert("Please enter a password")
+  }
+else
+this.state.Password.target=this.state.Password
+console.log(this.state.Password)
+}
+
+handleShowPassword(event) {
+  event.preventDefault();
+  const target = event.target;
+const value = target.type === target.checked;
+const name = target.name;
+console.log(target.checked)
+//this.handlePassword(event)
+console.log("handleShowPassword")
+
+this.setState({
+
+      ShowPassword: target.checked
+
+    });
+  //  return target.checked
+    console.log("here2");
+    if(target.checked==true){
+      //return target.checked
+      this.handlePasswordEvent(target.checked)
+    }
+
+}
 
 
   render() {
@@ -111,8 +162,11 @@ this.setState({
                 <div className="col-lg-6">
                 <Checkbox
                   label="Show Password"
+                  type="checkbox"
                   name="ShowPassword"
-                  onChange={this.onChange}
+                  checked={this.state.checked}
+                    value={this.state.value}
+                  onClick={(e)=>this.handleShowPassword(e)}
                 />
                   </div>
               </fieldset>
