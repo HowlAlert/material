@@ -105,7 +105,20 @@ class SidebarContent extends React.Component {
           <FlatButton href="#/app/Devices"><i className="nav-icon material-icons">perm_scan_wifi</i><span className="nav-text">Devices</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/Pack"><i className="nav-icon material-icons">web</i><span className="nav-text">Pack</span><span className="badge badge-pill badge-info">Howls at pack:12</span></FlatButton>
+          <FlatButton href="#/app/pack"><i className="nav-icon material-icons">web</i><span className="nav-text">Pack</span></FlatButton>
+          {/* <ul>
+            <li><FlatButton className="prepend-icon" href="#/app/pack/components"><span>Pack</span></FlatButton></li>
+            <li><FlatButton className="prepend-icon" href="#/app/pack/howls_pack"><span>Howls at Pack</span></FlatButton></li>
+            <li><FlatButton className="prepend-icon" href="#/app/pack/howls_me"><span>Howls at Me</span></FlatButton></li>
+          </ul> */}
+        </li>
+        <li>
+          <FlatButton href="#/app/PackMenu"><i className="nav-icon material-icons">web</i><span className="nav-text">Pack-Menu</span></FlatButton>
+          <ul>
+            <li><FlatButton className="prepend-icon" href="pack#/app/Pack"><span>ManagePack</span></FlatButton></li>
+            <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_pack"><span>Howls at Pack</span></FlatButton></li>
+            <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_me"><span>Howls at Me</span></FlatButton></li>
+          </ul>
         </li>
         <li>
           <FlatButton href="#/app/Monitoring"><i className="nav-icon material-icons">person_outline</i><span className="nav-text">Monitoring</span></FlatButton>
@@ -115,17 +128,7 @@ class SidebarContent extends React.Component {
         </li>
         <li>
           <FlatButton href="#/app/Settings"><i className="nav-icon material-icons">settings</i><span className="nav-text">Settings</span></FlatButton>
-          {/* <ul>
-            <li><FlatButton className="prepend-icon" href="#/app/form/components"><span>Edit Profile</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/form/steppers"><span>Notifications</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/form/layouts"><span>Change Home Address</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/form/components"><span>Change Cancel Code</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/form/steppers"><span>Change Silent Code</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/form/layouts"><span>Print Code</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/form/steppers"><span>Feedback</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/form/layouts"><span>Contact Support</span></FlatButton></li>
 
-          </ul> */}
         </li>
         <li>
           <FlatButton href="#/app/Logout"><i className="nav-icon material-icons">forward</i><span className="nav-text">Logout</span></FlatButton>

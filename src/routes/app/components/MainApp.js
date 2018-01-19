@@ -40,6 +40,10 @@ let AsyncPack = loadable({
   loader: () => import('../routes/pack/'),
   loading: LoadingComponent
 })
+let AsyncPackMenu = loadable({
+  loader: () => import('../routes/pack-menu/'),
+  loading: LoadingComponent
+})
 let AsyncHelp = loadable({
   loader: () => import('../routes/help/'),
   loading: LoadingComponent
@@ -95,6 +99,7 @@ class MainApp extends React.Component {
                   <Route path={`${match.url}/cameraDevices`} component={AsyncCameraAddDevices} />
                   <Route path={`${match.url}/Devices`} component={Asyncdevices} />
                   <Route path={`${match.url}/Pack`} component={AsyncPack} />
+                  <Route path={`${match.url}/PackMenu`} component={AsyncPackMenu} />
                   <Route path={`${match.url}/Monitoring`} component={AsyncMonitor} />
                   <Route path={`${match.url}/Help & Support`} component={AsyncHelp} />
                   <Route path={`${match.url}/Settings`} component={AsyncSettings} />

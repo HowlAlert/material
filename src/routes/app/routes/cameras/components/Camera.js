@@ -3,69 +3,132 @@ import QueueAnim from 'rc-queue-anim';
 import {Add_Devices} from '../../services/index';
 import APPCONFIG from 'constants/Config';
 import Image from './Image';
+import Toggle from 'material-ui/Toggle';
 
-const BaseURL = username => 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/';
+const styles = {
+  toggle: {
+    maxWidth: 250,
+    marginBottom: 16
+  },
+};
 
 class Camera extends React.Component {
- constructor(props) {
-   super(props);
-   this.state = {
-     brand: APPCONFIG.brand,
-     Email: ' ',
-     Password:' '
-    // requestFailed: false
-   }
-   this.Login = this.Login.bind(this);
-   // this.onChange=this.onChange.bind(this);
+ constructor() {
+   super();
+     this.state = {
+       data: [],
+     };
  }
- // componentDidMount(){
- //   fetch(BaseURL(this.props.username))
- //   .then(d => d.json())
- //   .then(d => {
- //      this.setState({
- //         Login : d
- //      })
- //   })
- // }
 
- Login(){
+ componentDidMount(){
 
-   Add_Devices('Login',{ "Email":"derek@howlalert.com", "Password":"howl38" }).then((result)=>{
-     let res = result;
-     console.log(this);
-   });
+   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
+
+       fetch(BaseURL,
+       {
+        method: "POST",
+        body: JSON.stringify({
+          "UserID":"118",
+          "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu"
+        }),
+         headers: new Headers({'content-type': 'application/json'}),
+       })
+   .then((Response)=> Response.json())
+   .then((findresponse)=>{
+       console.log(findresponse)
+       this.setState({
+          data:findresponse.GetUserCameraResult.RoomCameraList,
+       })
+     })
 
  }
 
 render() {
-  
+
   return (
 
   <article className="article">
 
+  <center>
+<Toggle label="Activate Motion Sensor" defaultToggled style={styles.toggle}/>
+    <div>
+      {
+        this.state.data.map((dyanamicData,key) =>
+        <div>
+            <div >{dyanamicData.SortRoomName} </div>
+
+
+            {
+              (typeof(dyanamicData.Camera)=='object')?
+              <div>
+                {
+                  dyanamicData.Camera.map((dyanamicData1,key1) =>
+                       <div>
+                           {"Motion Detection Status: "+dyanamicData1.MotionDetectionStatus}
+                       </div>
+                 )
+               }
+              </div>
+              :
+                null
+            }
+
+        </div>
+
+       )
+      }
+    </div>
+  </center>
 
     <section>
       <div className="box-body padding-xl bg-color-dark">
 
         <div className="row">
             <div className="col-md-4">
+              {
+                this.state.data.map((dyanamicData,key) =>
+                <div>
+                    {
+                      (typeof(dyanamicData.Camera)=='object')?
+                      <div>
+                        {
+                          dyanamicData.Camera.map((dyanamicData1,key1) =>
+                               <div>
+                                   {dyanamicData1.Name}
+                               </div>
+                         )
+                       }
+                      </div>
+                      :
+                        null
+
+                    }
+
+                </div>
+
+               )
+              }
               <a href="cam-settings-menu#/app/camerasettings/settings-menu"><i className="nav-icon material-icons">settings</i> Camera settings</a>
-            </div>
+
+             </div>
+
             <div className="col-md-4 float-right"><i className="material-icons">mic</i></div>
             <div className="col-md-4 "><i className="material-icons">record_voice_over</i></div>
         </div>
 
       </div>
+
+
     </section>
 
 
 
     <div className="page-footer">
+
       <center>
         <p>Don't have a camera?</p>
         <button className="card bg-color-primary"><a href="cam-add-devices#/app/cameraDevices/buy-camera">Buy Camera </a></button>
-        <button className="card bg-color-primary" onClick={this.Login}>sample</button>
-        {/* <h1>{this.state.Login.CancellationCode}</h1> */}
+
       </center>
 
     </div>
@@ -74,8 +137,10 @@ render() {
    );
  }
 }
+
 const Page = () => {
   return (
+
     <section className="container-fluid with-maxwidth chapter">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><Image /></div>
