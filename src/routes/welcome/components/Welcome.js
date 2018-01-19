@@ -27,7 +27,7 @@ import {
 const mWidthStyle = {
   minWidth: '130px'
 };
-class Login extends React.Component {
+class Welcome extends React.Component {
   constructor(props) {
 
     super(props);
@@ -192,46 +192,36 @@ this.setState({
             </li>
             </ul>
             <img src="assets/images/HOWL.png" alt="HOWL" />
-
+            <p className="hero-title text-center">Welcome</p>
               <fieldset>
                 <div className="form-group">
                   <TextField
-                    floatingLabelText="Email"
+                    floatingLabelText="First Name"
                     type="text"
                     fullWidth
-                    name="Email"
+                    name="Fname"
                      value={this.state.value}
-                     onChange={(e)=>this.handleEmail(e)}
+                     onChange={(e)=>this.handleFname(e)}
                   />
                 </div>
                 <div className="form-group">
                   <TextField
-                    floatingLabelText="Password"
-                    type="password"
-                    name="Password"
+                    floatingLabelText="Last Name"
+                    type="text"
+                    name="Lname"
                     fullWidth
                     value={this.state.value}
-                    onChange={(e)=>this.handlePassword(e)}
+                    onChange={(e)=>this.handleLname(e)}
                     />
                 </div>
 
-                <div className="col-lg-6">
-                <Checkbox
-                  label="Show Password"
-                  type="checkbox"
-                  name="ShowPassword"
-                  checked={this.state.checked}
-                    value={this.state.value}
-                  onClick={(e)=>this.handleShowPassword(e)}
-                />
-                  </div>
               </fieldset>
               <div className="card-action no-border text-left">
 
               </div>
 
               <div className="box-body text-center">
-              <RaisedButton style={mWidthStyle} label="SIGN IN -->" primary onClick={(e)=>this.handleLogin(e)}/>
+              <RaisedButton style={mWidthStyle} label="Logout -->" primary onClick={(e)=>this.handleLogin(e)}/>
 
 
 
@@ -245,16 +235,7 @@ this.setState({
 
           </div>
 </div>
-
-
-
-        <div className="additional-info">
-          <a href="#/forgot-password">Forgot password?</a>
-
-          <p>Don't have an account? <a href="#/register1ß">Register</a></p>
-        </div>
-
-      </div>
+  </div>
 
 
 
@@ -268,7 +249,7 @@ const Page = () => (
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">
-          <Login />
+          <Welcome />
         </div>
       </QueueAnim>
     </div>
