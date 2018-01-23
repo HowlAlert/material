@@ -13,12 +13,13 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import cookie from 'react-cookies';
-import PageRegister1 from 'routes/register1';
+import PageWelcome from 'routes/welcome/';
 import createHistory from 'history/createHashHistory';
 import App from '.../../containers/App';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-
+import { sessionReducer, sessionService } from 'redux-react-session';
+import { createStore, combineReducers } from 'redux';
 import {
     Step,
     Stepper,
@@ -27,6 +28,10 @@ import {
 const mWidthStyle = {
   minWidth: '130px'
 };
+
+
+
+
 class Login extends React.Component {
   constructor(props) {
 
@@ -71,10 +76,6 @@ class Login extends React.Component {
       this.setState({
         GetUser:findresponse.LoginResult.GetUser,
         ResultStatus:findresponse.LoginResult.ResultStatus,
-
-        Id: cookie.load(this.state.GetUser.ID),
-        Status: cookie.load(this.state.ResultStatus.Status),
-        UserToken:cookie.load(this.state.GetUser.UserToken)
       })
       if(this.state.ResultStatus.Status==="1"){
       //  const expires = new Date()
@@ -171,14 +172,35 @@ this.setState({
 
 
   render() {
-    const { redirectToReferrer } = this.state
+
+    const reducers = {
+      // ... your other reducers here ...
+      session: sessionReducer
+    };
+    const reducer = combineReducers(reducers);
+    const store = createStore(reducer);
+
+    sessionService.initSessionService(store);
+
+
+
+
+    const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {
+      const options = { redirectToReferrer: true, redirectPath: '#/login', driver: 'COOKIES' };
+      sessionService.initSessionService(store, options)
+        .then(() => console.log('Redux React Session is ready and a session was refreshed from your storage'))
+        .catch(() => console.log('Redux React Session is ready and there is no session in your storage'));
+
       console.log(redirectToReferrer)
           return (
-            <Route component={PageRegister1} />
+            <Route onEnter={sessionService.checkAuth} component={PageWelcome} />
           )
         }
+
+
+
     return (
 
   <div className="body-inner">
@@ -253,17 +275,11 @@ this.setState({
 
           <p>Don't have an account? <a href="#/register1ß">Register</a></p>
         </div>
-
       </div>
-
-
-
     );
   }
 }
-
 const Page = () => (
-
   <div className="page-login">
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
@@ -273,9 +289,5 @@ const Page = () => (
       </QueueAnim>
     </div>
   </div>
-
 );
-
-
-
 module.exports = Page;

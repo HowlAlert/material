@@ -13,12 +13,13 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import cookie from 'react-cookies';
-import PageRegister1 from 'routes/register1';
 import createHistory from 'history/createHashHistory';
 import App from '.../../containers/App';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
-import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-
+import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from 'react-router-dom';
+import { session,sessionReducer, sessionService } from 'redux-react-session';
+import { createStore, combineReducers } from 'redux';
+import Login from '../../app/routes/page/routes/login/'
 import {
     Step,
     Stepper,
@@ -28,158 +29,84 @@ const mWidthStyle = {
   minWidth: '130px'
 };
 class Welcome extends React.Component {
+  state = {
+  open: true,
+};
+
+handleOpen = () => {
+  this.setState({open: true});
+};
+
+handleClose = () => {
+  this.setState({open: false});
+};
   constructor(props) {
 
     super(props);
     this.state = {
       brand: APPCONFIG.brand,
-      Email:'',
-
-      Password:'',
-      GetUser:'',
-      ResultStatus:''
-    };
+      ResultStatus:'',
+};
   }
+handleLogout(event){
+this.setState({open: false});
+//alert("Are you sure you want to logout?");
+sessionService.deleteSession(event);
+  console.log(sessionService.deleteSession(event));
+  console.log(cookie.load('Id'));
+  console.log(cookie.load('UserToken'));
+  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LogoutUser';
 
-  handleLogin(event){
-  event.preventDefault();
-  if(this.state.Email==''){
-    alert("Please enter your email address");
-  }
-  let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if(re.test(this.state.Email)=='' && this.state.Email!=''){
-    alert("Please enter a valid email");
-  }
-  if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!=''){
-    alert("Please enter a password");
-  }
+     fetch(BaseURL,{
+      method: "POST",
+      body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken')}),
+    headers: new Headers({'content-type': 'application/json'})
+    }).
+  then((Response)=>Response.json()).
+  then((findresponse)=>{
+    this.setState({
+      ResultStatus:findresponse.LogoutUserResult.ResultStatus,
+      Status: this.state.ResultStatus.Status
+    }),console.log(this.state.ResultStatus.Status)
+    if(this.state.ResultStatus.Status==="1"){
+      console.log("success"),
+      cookie.remove('Id'),
+      cookie.remove('UserToken')
+      console.log("removed"),
 
-    PostData('Login',{'Email':this.state.Email,'Password':this.state.Password}).then((result)=>{
-      let res=result;
-    console.log(res);
-    });
-
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
-
-       fetch(BaseURL,{
-        method: "POST",
-        body: JSON.stringify({'Email':this.state.Email,'Password':this.state.Password}),
-      headers: new Headers({'content-type': 'application/json'})
-      }).
-    then((Response)=>Response.json()).
-    then((findresponse)=>{
-      this.setState({
-        GetUser:findresponse.LoginResult.GetUser,
-        ResultStatus:findresponse.LoginResult.ResultStatus,
-
-        Id: cookie.load(this.state.GetUser.ID),
-        Status: cookie.load(this.state.ResultStatus.Status),
-        UserToken:cookie.load(this.state.GetUser.UserToken)
-      })
-      if(this.state.ResultStatus.Status==="1"){
-      //  const expires = new Date()
-        //expires.setDate(now.getDate() + 14)
-
-        console.log("status"),
-        cookie.save('Id', this.state.GetUser.ID, '/')
-        cookie.save('FirstName', this.state.GetUser.FirstName, '/')
-        cookie.save('LastName', this.state.GetUser.LastName, '/')
-        cookie.save('UserToken', this.state.GetUser.UserToken, '/')
-        //cookie.save('Status', this.state.ResultStatus.Status, '/')
-        //return ( <Redirect to="#/Register1"/> );
-        //console.log(PageRegister1)
-    //  console.log(App)
-     this.setState({ redirectToReferrer: true })
-      }
-      else{
-         this.setState({ redirectToReferrer: false })
-      }
-    })
-
-
-
-  }
-
-
-  handleEmail(event) {
-    event.preventDefault();
-    const target = event.target;
-  const value = target.type === target.value;
-  const name = target.name;
-
-  this.setState({
-        Email: target.value
-      });
-
-      console.log(target.value) ;
-      return target.value;
+   this.setState({ redirectToReferrer: true })
     }
-
-handlePassword(event) {
-  event.preventDefault();
-  const target = event.target;
-const value = target.type === target.value;
-const name = target.name;
-
-console.log(this.state.ShowPassword)
-
-this.setState({
-
-      Password: target.value
-    });
-console.log("here");
-     return target.value;
-  }
-
-
-handlePasswordEvent(event) {
-  if(event==true){
-    console.log("here3")
-    //{this.state.Password}
-    var text=this.state.Password
-    if(!text)
-    alert("Please enter a password")
-  }
-else
-this.state.Password.target=this.state.Password
-console.log(this.state.Password)
-}
-
-handleShowPassword(event) {
-  event.preventDefault();
-  const target = event.target;
-const value = target.type === target.checked;
-const name = target.name;
-console.log(target.checked)
-//this.handlePassword(event)
-
-console.log("handleShowPassword")
-
-this.setState({
-
-      ShowPassword: target.checked
-
-    });
-  //  return target.checked
-    console.log("here2");
-    if(target.checked==true){
-      //return target.checked
-      this.handlePasswordEvent(target.checked)
+    else{
+       this.setState({ redirectToReferrer: false })
     }
-
+  })
 }
-
 
   render() {
-    const { redirectToReferrer } = this.state
+    const { match, location } = this.props;
+    const actions = [
+         <FlatButton
+           label="Yes"
+           primary
+           onClick={(e)=>this.handleLogout(e)}
+         />,
+         <FlatButton
+           label="No"
+           primary
+           keyboardFocused
+           onClick={this.handleClose}
+         />,
+       ];
 
-    if (redirectToReferrer) {
-      console.log(redirectToReferrer)
-          return (
-            <Route component={PageRegister1} />
-          )
-        }
+const { redirectToReferrer} = this.state
+       if (redirectToReferrer) {
+         console.log(redirectToReferrer)
+             return (
+               <Route component={Login}/>
+             )
+           }
     return (
+
 
   <div className="body-inner">
         <div className="card bg-white">
@@ -188,30 +115,19 @@ this.setState({
           <form className="form-horizontal">
           <ul className="nav" ref={(c) => { this.nav = c; }}>
             <li className="nav-header"><span></span></li>
-            <li><FlatButton href="#/app/page/login"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
-            </li>
+
             </ul>
             <img src="assets/images/HOWL.png" alt="HOWL" />
             <p className="hero-title text-center">Welcome</p>
               <fieldset>
                 <div className="form-group">
                   <TextField
-                    floatingLabelText="First Name"
-                    type="text"
-                    fullWidth
-                    name="Fname"
-                     value={this.state.value}
-                     onChange={(e)=>this.handleFname(e)}
+                    floatingLabelText={cookie.load('FirstName')}
                   />
                 </div>
                 <div className="form-group">
                   <TextField
-                    floatingLabelText="Last Name"
-                    type="text"
-                    name="Lname"
-                    fullWidth
-                    value={this.state.value}
-                    onChange={(e)=>this.handleLname(e)}
+                    floatingLabelText={cookie.load('LastName')}
                     />
                 </div>
 
@@ -221,8 +137,16 @@ this.setState({
               </div>
 
               <div className="box-body text-center">
-              <RaisedButton style={mWidthStyle} label="Logout -->" primary onClick={(e)=>this.handleLogin(e)}/>
-
+              <RaisedButton style={mWidthStyle} label="Logout -->"   onClick={this.handleOpen}/>
+              <Dialog
+                          title="Confirm"
+                          actions={actions}
+                          modal={false}
+                          open={this.state.open}
+                          onRequestClose={this.handleClose}
+                        >
+                          Are you sure you want to logout?
+                        </Dialog>
 
 
               <div className="divider" />
@@ -245,7 +169,7 @@ this.setState({
 
 const Page = () => (
 
-  <div className="page-login">
+  <div className="page-welcome">
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">

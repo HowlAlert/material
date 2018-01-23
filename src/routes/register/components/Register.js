@@ -12,6 +12,9 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import cookie from 'react-cookies';
+import PageRegister4 from 'routes/register4/';
+import PageLogin from 'routes/login/';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 
 const mWidthStyle = {
   minWidth: '130px'
@@ -41,10 +44,10 @@ class Register extends React.Component {
       alert("Please enter your email address");
     }
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(re.test(this.state.Email)=='' && this.state.Email!=''){
+    if(re.test(this.state.Email)=='' && this.state.Email!='' && this.state.Fname!='' && this.state.Lname!=''){
       alert("Please enter a valid email");
     }
-    if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!=''){
+    if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!='' && this.state.Fname!='' && this.state.Lname!=''){
       alert("Please enter a password");
     }
 
@@ -61,6 +64,7 @@ class Register extends React.Component {
         this.setState({
         GetUser:findresponse.RegisterUserResult.GetUser,
         })
+        if(this.state.GetUser.ID!==null){
           console.log("status"),
           cookie.save('Id', this.state.GetUser.ID, '/')
           cookie.save('UserToken', this.state.GetUser.UserToken, '/')
@@ -68,6 +72,11 @@ class Register extends React.Component {
           console.log(this.state.GetUser.UserToken)
           console.log(findresponse)
           console.log("status")
+          this.setState({ redirectToReferrer: true })
+           }
+           else{
+              this.setState({ redirectToReferrer: false })
+           }
       })
 }
 
@@ -128,6 +137,19 @@ this.setState({
         }
 
   render() {
+    const { redirectToReferrer} = this.state
+    if (redirectToReferrer==true) {
+
+      console.log(redirectToReferrer)
+          return (
+            <Route component={PageRegister4} />
+          )
+        }else if (redirectToReferrer==false){
+          return (
+            alert("user already registered")
+          )
+        }
+
     return (
       <div className="body-inner">
 

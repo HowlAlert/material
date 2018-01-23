@@ -52,7 +52,7 @@ const Services = () => (
 
                 <p>---------------- OR ----------------</p>
 
-                <RaisedButton style={mWidthStyle} label="Create Account" primary href={"#/register"}/><div className="divider" />
+                <RaisedButton style={mWidthStyle} label="Create Account" primary href={"#/Register"}/><div className="divider" />
               </div>
         );
 
