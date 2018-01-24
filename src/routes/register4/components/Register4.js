@@ -18,6 +18,9 @@ import {FormControl} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-select/dist/react-select.min.css';
 import cookie from 'react-cookies';
+import PageRegister5 from 'routes/register5/';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+import './phone-number.css';
 const mWidthStyle = {
   minWidth: '130px'
 };
@@ -27,12 +30,13 @@ class Register4 extends React.Component {
     this.state = {
       country:'',
       number:'',
-      message:''
-    };
-
+      message:'',
+      ResultStatus:''
+    }
+this.handleCountry = this.handleCountry.bind(this);
   }
 
-  handlePhoneNo(event){
+  handlePhoneNo(phoneNumber){
 
     let valid = false;
     try {
@@ -43,73 +47,73 @@ class Register4 extends React.Component {
     }
     if(valid) {
       this.setState({
-        message:'Phone number '+this.getValidNumber(phoneNumber)+' is valid',
+        message:'Phone number '+this.getValidNumber(phoneNumber)+' is valid Number',
         color:'green'
       });
     } else {
-      this.setState({
-        message:'Phone number '+phoneNumber+' is not valid',
-        color:'red'
-      });
-    }
-      console.log(this.state.Country);
-      console.log(this.state.Number);
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
+        this.setState({
+        //  message:'Phone number '+phoneNumber+' is not valid Number',
+          color:'red'
+        });
+      }
+
+
+      console.log(this.state.country);
+      console.log(this.state.number);
+    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
 
        fetch(BaseURL,{
         method: "POST",
-        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':this.state.Country,'MobilePhoneNumber':this.state.Number}),
+        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':this.state.country,'MobilePhoneNumber':this.state.number}),
       headers: new Headers({'content-type': 'application/json'})
       }).
     then((Response)=>Response.json()).
     then((findresponse)=>{
       this.setState({
-      GetUser:findresponse.RegisterUserResult.GetUser,
+        ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
       })
-      if(this.state.GetUser.ID!==null){
-        console.log("status"),
+
+        console.log("status");
+        //Status:this.state.ResultStatus.Status;
+        console.log(this.state.ResultStatus.Status);
+        console.log(this.state.number.length);
+        if(this.state.ResultStatus.Status==2 && this.state.number!='' && this.state.country!='' && this.state.number.length==10 && this.handlePhoneNo){
+           alert("This phone number is already taken by another account.");
+         }
+        if(this.state.ResultStatus.Status==0 && this.state.number!='' && this.state.country!='' && this.handlePhoneNo){
+          alert("Sorry we cannot send verification code to this number. Please make sure you input the correct Mobile Number.");
+        }
+        if(this.state.ResultStatus.Status==1 && this.state.number!='' && this.state.country!='' && this.state.number.length==10 && this.handlePhoneNo){
+          this.setState({ redirectToReferrer: true })
+           }
+           else{
+              this.setState({ redirectToReferrer: false })
+           }
+
         //cookie.save('Id', cookie.load('Id'), '/')
         //cookie.save('UserToken', this.state.GetUser.UserToken, '/')
-        console.log(this.state.GetUser.ID)
-        console.log(this.state.GetUser.UserToken)
-        console.log(findresponse)
-        console.log("status")
-        this.setState({ redirectToReferrer: true })
-         }
-         else{
-            this.setState({ redirectToReferrer: false })
-         }
+      //  console.log(this.state.GetUser.ID)
+      //  console.log(this.state.GetUser.UserToken)
+      //  console.log(findresponse)
+
     })
   }
 
   handleNumber(event) {
-    event.preventDefault();
-    const target = event.target;
-  const value = target.type === target.value;
-  const name = target.name;
+    this.setState({
+      number:event.target.value
+    });
+    //this.handlePhoneNo('+'+this.state.country+' '+event.target.value);
 
-  this.setState({
-        Number: target.value
-      });
-
-      console.log(target.value)
-
-      return target.value;
+      return event.target.value;
     }
 
     handleCountry(event) {
-      event.preventDefault();
-      const target = event.target;
-    const value = target.type === target.value;
-    const name = target.name;
-
-    this.setState({
-          Country: target.value
-        });
-
-        console.log(target.value) ;
-
-        return target.value;
+      this.setState({
+      country:event.value
+    });
+  // this.handlePhoneNo('+'+event.value+' '+this.state.Number);
+  return event.value;
     }
 
 
@@ -121,6 +125,13 @@ class Register4 extends React.Component {
 
 
   render() {
+
+    const { redirectToReferrer} = this.state
+    if (redirectToReferrer) {
+          return (
+            <Route component={PageRegister5} />
+          )
+        }
 
     return (
 
@@ -142,9 +153,9 @@ class Register4 extends React.Component {
               <p className="hero-title text-center">verify your phone number</p>
         <div className="phone-number" style={{display:'flex'}}>
           <div className="phone-number--country">
-            <Select value={this.state.value} onChange={(e)=>this.handleCountry(e)} placeholder="country code"
-               options={CallingCodes} labelKey="country" valueKey="value" valueRenderer={(country) => country.value}>
-            </Select>
+          <Select value={this.state.country} onChange={this.handleCountry} placeholder="country code"
+             options={CallingCodes} labelKey="country" valueKey="value" valueRenderer={(country) => country.value}>
+          </Select>
           </div>
           <div className="phone-number--number">
             <FormControl value={this.state.value} onChange={(e)=>this.handleNumber(e)} placeholder="phone number">

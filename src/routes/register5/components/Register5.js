@@ -11,6 +11,9 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import cookie from 'react-cookies';
+import PageLogin from '../../app/routes/dashboard/';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 
 
 const mWidthStyle = {
@@ -20,11 +23,87 @@ class Register5 extends React.Component {
   constructor() {
     super();
     this.state = {
-
+      Code:'',
+      ResultStatus:''
     };
   }
 
+  handleCode(event) {
+    event.preventDefault();
+    const target = event.target;
+  const value = target.type === target.value;
+  const name = target.name;
+
+  this.setState({
+        Code: target.value
+      });
+
+      console.log(target.value) ;
+      return target.value;
+    }
+
+    handleVerifyCode(event){
+      console.log("hi") ;
+      console.log(this.state.Code);
+      let re = /^[0-9]{4}$/;
+    if(re.test(this.state.Code)=='' || this.state.Code.length!=4 || this.state.Code.length>4){
+      alert("The verification code you entered is invalid. Please try again.");
+      console.log("hi alert")
+    }
+
+
+console.log(cookie.load('Id')),
+console.log(cookie.load('UserToken'));
+      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
+
+         fetch(BaseURL,{
+          method: "POST",
+          body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'), 'MobilePhoneConfirmationCode':this.state.Code}),
+        headers: new Headers({'content-type': 'application/json'})
+        }).
+      then((Response)=>Response.json()).
+      then((findresponse)=>{
+        this.setState({
+          ResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus,
+        });console.log(this.state.ResultStatus.Status)
+        if(this.state.ResultStatus.Status==="1"){
+        //  const expires = new Date()
+          //expires.setDate(now.getDate() + 14)
+
+          console.log("status"),
+          cookie.remove('Id'),
+          cookie.remove('UserToken')
+          //cookie.save('Id', this.state.GetUser.ID, '/')
+        //  cookie.save('FirstName', this.state.GetUser.FirstName, '/')
+        //  cookie.save('LastName', this.state.GetUser.LastName, '/')
+        //  cookie.save('UserToken', this.state.GetUser.UserToken, '/')
+          //cookie.save('Status', this.state.ResultStatus.Status, '/')
+          //return ( <Redirect to="#/Register1"/> );
+          //console.log(PageRegister1)
+      //  console.log(App)
+       this.setState({ redirectToReferrer: true })
+        }
+        else{
+           this.setState({ redirectToReferrer: false })
+        }
+      })
+
+
+
+    }
+
+
+
   render() {
+
+    const { redirectToReferrer} = this.state
+    if (redirectToReferrer) {
+          return (
+            <Route component={PageLogin} />
+          )
+        }
+
+
     return (
       <div className="body-inner">
 
@@ -41,12 +120,15 @@ class Register5 extends React.Component {
               </li>
               </ul>
               <img src="assets/images/HOWL2.png" alt="HOWL" />
-              <p className="hero-title text-center">4-DIGIT CODE</p>
+              <p className="hero-title text-center">4 - DIGIT CODE</p>
               <fieldset>
                 <div className="form-group">
                   <TextField
-                    //loatingLabelText="FIRST NAME"
-                    fullWidth
+                  type="text"
+                  fullWidth
+                  name="Code"
+                   value={this.state.value}
+                   onChange={(e)=>this.handleCode(e)}
                   />
                 </div>
 
@@ -59,7 +141,7 @@ class Register5 extends React.Component {
 
               </div>
               <div className="box-body text-center">
-              <RaisedButton style={mWidthStyle} label="NEXT -->" primary href={"#"}/><div className="divider" />
+              <RaisedButton style={mWidthStyle} label="NEXT -->" onClick={(e)=>this.handleVerifyCode(e)}/><div className="divider" />
             </div>
 
             </form>
