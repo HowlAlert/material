@@ -2,42 +2,100 @@ import React from 'react';
 import APPCONFIG from 'constants/Config';
 import TextField from 'material-ui/TextField';
 import QueueAnim from 'rc-queue-anim';
+import RaisedButton from 'material-ui/RaisedButton';
+import Login from 'routes/login/';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+
+const mWidthStyle = {
+  minWidth: '130px'
+};
 
 class ForgotPassowrd extends React.Component {
   constructor() {
     super();
     this.state = {
-      brand: APPCONFIG.brand
+      brand: APPCONFIG.brand,
+      ResultStatus:''
     };
   }
 
+  handleSendPwd(event){
+    console.log(this.state.Email);
+    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ForgotPassword';
+
+       fetch(BaseURL,{
+        method: "POST",
+        body: JSON.stringify({'Email':this.state.Email}),
+      headers: new Headers({'content-type': 'application/json'})
+      }).
+    then((Response)=>Response.json()).
+    then((findresponse)=>{
+      this.setState({
+        ResultStatus:findresponse.ForgotPasswordResult.ResultStatus,
+      })
+      if(this.state.ResultStatus.Status==="1"){
+        alert("Password reset instructions have been emailed to "+this.state.Email)
+        console.log("status"),
+     this.setState({ redirectToReferrer: true })
+      }
+      else{
+        alert("That e-mail addreds isn't associated with an ccount. Please re-enter or Sign Up below.")
+         this.setState({ redirectToReferrer: false })
+      }
+    })
+  }
+
+  handleEmail(event) {
+    event.preventDefault();
+    const target = event.target;
+  const value = target.type === target.value;
+  const name = target.name;
+
+  this.setState({
+        Email: target.value
+      });
+}
   render() {
+    const { redirectToReferrer} = this.state
+    if (redirectToReferrer==true) {
+          return (
+            <Route component={Login} />
+          )
+        }
+
     return (
       <div className="body-inner">
         <div className="card bg-white">
           <div className="card-content">
             <section className="logo text-center">
-              <h1><a href="#/">{this.state.brand}</a></h1>
+            <img src="assets/images/HOWL2.png" alt="HOWL" />
+            <p className="hero-title text-center">Forgot Password?</p>
             </section>
             <form>
               <fieldset>
+              <div className="additional-info text-center text-small">
+                Enter your email below to receive your password reset instructions
+             </div>
                 <div className="form-group">
                   <TextField
-                    floatingLabelText="Email"
+                    floatingLabelText="EMAIL ADDRESS"
                     type="email"
+                    type="text"
                     fullWidth
+                    name="Email"
+                     value={this.state.value}
+                     onChange={(e)=>this.handleEmail(e)}
                   />
-                  <div className="additional-info text-center text-small">
-                    Enter your email address that you used to register. We'll send you an email with your username and a link to reset your password.
-                 </div>
                 </div>
               </fieldset>
-            </form>
+              <div className="box-body text-center">
+              <RaisedButton style={mWidthStyle} label="SEND PASSWORD" primary onClick={(e)=>this.handleSendPwd(e)}/>
+            </div>
+            <div className="divider" />
+              </form>
           </div>
-          <div className="card-action no-border text-right">
-            <a href="#/" className="color-primary">Reset</a>
-          </div>
-        </div>
+      </div>
+
       </div>
     );
   }
@@ -56,4 +114,3 @@ const Page = () => (
 );
 
 module.exports = Page;
-

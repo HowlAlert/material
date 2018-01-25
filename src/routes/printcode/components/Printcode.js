@@ -10,7 +10,9 @@ import VisibilityOff from 'material-ui/svg-icons/action/visibility-off';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import PageRegister from 'routes/register/';
+import cookie from 'react-cookies';
+import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from 'react-router-dom';
 
 
 
@@ -18,11 +20,60 @@ class Printcode extends React.Component {
   constructor() {
     super();
     this.state = {
+      Code:'',
+      ResultStatus:''
       //brand: APPCONFIG.brand
     };
   }
 
+handlePrintCode(event){
+
+  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/VerifyInviteCode';
+
+     fetch(BaseURL,{
+      method: "POST",
+      body: JSON.stringify({'InviteCode':this.state.Code}),
+    headers: new Headers({'content-type': 'application/json'})
+    }).
+  then((Response)=>Response.json()).
+  then((findresponse)=>{
+    this.setState({
+      ResultStatus:findresponse.VerifyInviteCodeResult.ResultStatus,
+    })
+    if(this.state.ResultStatus.Status==="1"){
+      console.log("status"),
+      cookie.save('InviteCode', this.state.Code);
+   this.setState({ redirectToReferrer: true })
+    }
+    else{
+       this.setState({ redirectToReferrer: false })
+    }
+  })
+  }
+
+
+  handleCode(event) {
+    event.preventDefault();
+    const target = event.target;
+  const value = target.type === target.value;
+  const name = target.name;
+
+  this.setState({
+        Code: target.value
+      });
+
+      console.log(target.value) ;
+      return target.value;
+    }
+
   render() {
+    const { redirectToReferrer} = this.state
+
+    if (redirectToReferrer) {
+          return (
+            <Route component={PageRegister} />
+          )
+        }
     return (
 
       <div className="body-inner">
@@ -46,14 +97,18 @@ class Printcode extends React.Component {
                 <div className="form-group">
                   <TextField
                     floatingLabelText="ENTER CODE"
+                    type="text"
                     fullWidth
+                    name="Email"
+                     value={this.state.value}
+                     onChange={(e)=>this.handleCode(e)}
                   />
                 </div>
 
               </fieldset>
               <div className="card-action no-border text-right">
 
-                <a href="#/register1" className="color-primary"  >Submit</a>
+                <a  className="color-primary" onClick={(e)=>this.handlePrintCode(e)} >Submit</a>
 
 
 

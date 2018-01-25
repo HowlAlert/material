@@ -29,9 +29,6 @@ const mWidthStyle = {
   minWidth: '130px'
 };
 
-
-
-
 class Login extends React.Component {
   constructor(props) {
 
@@ -82,10 +79,10 @@ class Login extends React.Component {
         //expires.setDate(now.getDate() + 14)
 
         console.log("status"),
-        cookie.save('Id', this.state.GetUser.ID, '/')
-        cookie.save('FirstName', this.state.GetUser.FirstName, '/')
-        cookie.save('LastName', this.state.GetUser.LastName, '/')
-        cookie.save('UserToken', this.state.GetUser.UserToken, '/')
+        cookie.save('Id', this.state.GetUser.ID);
+        cookie.save('FirstName', this.state.GetUser.FirstName);
+        cookie.save('LastName', this.state.GetUser.LastName);
+        cookie.save('UserToken', this.state.GetUser.UserToken);
         //cookie.save('Status', this.state.ResultStatus.Status, '/')
         //return ( <Redirect to="#/Register1"/> );
         //console.log(PageRegister1)
@@ -96,9 +93,6 @@ class Login extends React.Component {
          this.setState({ redirectToReferrer: false })
       }
     })
-
-
-
   }
 
 
@@ -181,9 +175,6 @@ this.setState({
     const store = createStore(reducer);
 
     sessionService.initSessionService(store);
-
-
-
 
     const { redirectToReferrer} = this.state
 

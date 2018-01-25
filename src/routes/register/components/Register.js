@@ -56,7 +56,7 @@ class Register extends React.Component {
 
          fetch(BaseURL,{
           method: "POST",
-          body: JSON.stringify({'FirstName':this.state.Fname,'LastName':this.state.Lname,'Email':this.state.Email,'Password':this.state.Password}),
+          body: JSON.stringify({'FirstName':this.state.Fname,'LastName':this.state.Lname,'Email':this.state.Email,'Password':this.state.Password,'InviteCode':cookie.load('InviteCode')}),
         headers: new Headers({'content-type': 'application/json'})
         }).
       then((Response)=>Response.json()).

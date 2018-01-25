@@ -19,7 +19,7 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from 'react-router-dom';
 import { session,sessionReducer, sessionService } from 'redux-react-session';
 import { createStore, combineReducers } from 'redux';
-import Login from '../../app/routes/page/routes/login/'
+import Login from '../../app/routes/page/routes/login';
 import {
     Step,
     Stepper,
