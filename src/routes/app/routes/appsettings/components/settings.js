@@ -17,7 +17,7 @@ const BasicBoxes = () => (
     <center><h2 className="article-title">SETTINGS</h2></center>
     <div className="row">
 
-    <div className="col-xl-6"><a href="settings-menu#/app/settingsmenu/EditProfile">
+    <div className="col-xl-12"><a href="settings-menu#/app/settingsmenu/EditProfile">
     <div className="box box-default">
       {/* <div className="box-body" > */}
       <div className="icon-box ibox-plain ">

@@ -25,6 +25,34 @@ class Alerts extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
+
+      var ImageURL = findresponse.GetUserFeedResult.getUserFeeds.map((dyanamicData,key)=>
+
+               fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                    {
+
+                         method: "POST",
+                         body: JSON.stringify({
+                           "url":dyanamicData.ImageURL
+                         }),
+
+                        headers: new Headers({'content-type':'application/json'}),
+
+                  })
+
+
+               .then((Response)=> Response.json())
+
+               .then((findresponse1)=>{
+                   console.log(findresponse1)
+                   console.log(findresponse1.GetImageDataResult.length)
+                   this.setState({
+                      data1:findresponse1
+                   })
+
+               })
+
+             )
         console.log(findresponse)
         this.setState({
            data:findresponse.GetUserFeedResult.getUserFeeds,
@@ -33,7 +61,8 @@ class Alerts extends React.Component {
 
   }
   render() {
-
+    const numbers = this.state.data1;
+    console.log(numbers)
     return (
 
     <div className="row">
@@ -46,18 +75,23 @@ class Alerts extends React.Component {
               <div>
                  <div className="box box-default">
                      <div className="box-body ">
-                           {dyanamicData.Text}
+                            {dyanamicData.Text}
                            <div>  {dyanamicData.DateCreated}</div>
-                           <div> {dyanamicData.ImageURL}</div>
-                           {/* <div className="col-md-4 float-right"> {dyanamicData.ImageURL}</div> */}
-                          {/* <img src="assets/images/HOWL2.ico" alt="" className="rounded-circle img30_30" /> */}
-                          <img alt="" src="52.54.55.76:21/ipc//HDXQ038386TMHKD/20180118/IMG001/IMG_chn0_md_20180118090501_016.jpg"/>
+
+                      <span className="float-right">
+
+                          <img src={`data:image/jpg;base64,${this.state.data1.GetImageDataResult}`} alt="Image" height="150" width="150"/>
+
+                      </span>
+
+
                      </div>
                 </div>
               </div>
 
              )
             }
+
           </div>
         </div>
       </div>

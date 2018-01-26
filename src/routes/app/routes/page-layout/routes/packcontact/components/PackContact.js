@@ -5,53 +5,74 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-
 class Contact extends React.Component {
-
-  addTodo(event){
-    event.preventDefault();
-    let fname = this.refs.fname.value;
-    let lname = this.refs.lname.value;
-    let contact = this.refs.contact.value;
-    let email = this.refs.mail.value;
-    let counter = this.state.counter;
-    counter++;
-
-    let todo = {
-      fname,
-      lname,
-      contact,
-      email,
-      counter
-    };
-
-    let todos = this.state.todos;
-    todos.push(todo);
-
-    this.setState({
-    todos: todos,
-    counter: counter
-
-  });
-  this.refs.todoForm.reset();
-
-  }
-
 
   constructor() {
     super();
-    this.addTodo = this.addTodo.bind(this);
-      this.state = {
-        todos:[],
-       counter: 0
-      };
+    this.state = {
+      fname:'',
+      lname:'',
+      phonenumber:'',
+      email:''
+    };
   }
+
+  handleFirstname(event) {
+     this.setState({
+         fname: event.target.value.substr(0,30)
+       });
+       console.log(event.target.value) ;
+
+     }
+  handleLastname(event) {
+       this.setState({
+         lname: event.target.value.substr(0,30)
+       });
+       console.log(event.target.value);
+     }
+
+  handleEmail(event) {
+              this.setState({
+                    email: event.target.value
+                  });
+                  console.log(event.target.value) ;
+
+          }
+
+         handlePhoneNumber(event) {
+            console.log(event.target.value);
+            this.setState({
+            phonenumber: event.target.value.substr(0,10)
+                    });
+           }
+
+  handleValidations(event) {
+
+                 event.preventDefault();
+
+                   if( (this.state.fname=='')  && (this.state.phonenumber =='') ){
+                     alert("Please enter first name and contact number");
+                   }
+
+                   let re = /^[0-9]$/;
+                   if(re.test(this.state.phonenumber)!=''){
+                     alert("Please enter a valid phone number");
+                   }
+
+                   // if(re.test(this.state.re_code)=='' && this.state.re_code!=''){
+                   //   alert("Please enter a valid code");
+                   // }
+
+                   // if(this.state.code!=this.state.re_code){
+                   //   alert("Silent code did not match.Try Again");
+                   //   this.setState({save: false })
+                   // }
+           }
+
 
 
 
   render() {
-
-      let todos = this.state.todos;
 
     return (
   <section className="container-fluid with-maxwidth-md chapter">
@@ -59,39 +80,16 @@ class Contact extends React.Component {
       <div key="1">
         <article className="article">
         <center><h2 className="article-title">ADD NEW PACK MEMBER</h2></center>
-         <form ref="todoForm">
-                  <div className="form-group">
-                     {/* <TextField hintText="FIRST NAME" fullWidth ref="fname" /> */}
-                     <input type="text" ref="fname"  placeholder="FIRST NAME" />
-                 </div>
-                   <div className="form-group">
-                       {/* <TextField hintText="LAST NAME" fullWidth ref="lname" /> */}
-                        <input type="text" ref="lname"  placeholder="LAST NAME" />
-                  </div>
-                  <div className="form-group">
-                    {/* <h4>+1  <TextField type="text" hintText="MOBILE PHONE" ref="contact"/></h4> */}
-                    <input type="text" ref="contact"  placeholder="MOBILE PHONE" />
-
-                 </div>
-                   <div>
-                          {/* <TextField hintText="EMAIL ADDRESS"  ref="mail" fullWidth /> */}
-
-                          <input type="text" ref="mail"  placeholder="EMAIL ADDRESS"  />
-
-                  </div>
+         <form >
+                  <div>
+                     <TextField  ref="fname" onChange={this.handleFirstname.bind(this)} value={this.state.fname} hintText="FIRST NAME" fullWidth  /><br/>
+                      <TextField ref="lname" onChange={this.handleLastname.bind(this)} value={this.state.lname} hintText="LAST NAME" fullWidth  /><br />
+                     <h4>+1  <TextField ref="phonenumber" onChange={this.handlePhoneNumber.bind(this)} value={this.state.phonenumber} hintText="MOBILE PHONE" /></h4>
+                     <TextField ref="email"  onChange={this.handleEmail.bind(this)} value={this.state.email} hintText="EMAIL ADDRESS"   fullWidth />
+               </div>
                   <div className="divider" />
-                  <RaisedButton primary label="SAVE"  onClick={this.addTodo}/>
+                  <RaisedButton  onClick={(e)=>this.handleValidations(e)} primary label="SAVE" />
        </form>
-           <pre>
-             {JSON.stringify(todos)}
-           </pre>
-           {/* <ul>
-             {todos.map((todo =>
-               <li key={todo.counter}> {todo.fname}</li>
-
-             ))}
-           </ul> */}
-
         </article>
       </div>
     </QueueAnim>

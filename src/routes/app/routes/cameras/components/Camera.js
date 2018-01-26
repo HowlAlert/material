@@ -4,7 +4,7 @@ import {Add_Devices} from '../../services/index';
 import APPCONFIG from 'constants/Config';
 import Image from './Image';
 import Toggle from 'material-ui/Toggle';
-
+import cookie from 'react-cookies';
 const styles = {
   toggle: {
     maxWidth: 250,
@@ -28,14 +28,16 @@ class Camera extends React.Component {
        {
         method: "POST",
         body: JSON.stringify({
-          "UserID":"118",
-          "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu"
+          "UserID":cookie.save('Id',"118"),
+          "UserToken":cookie.save('UserToken',"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu")
         }),
          headers: new Headers({'content-type': 'application/json'}),
        })
    .then((Response)=> Response.json())
    .then((findresponse)=>{
-       console.log(findresponse)
+       console.log(findresponse),
+       console.log(cookie.load('Id')),
+       console.log(cookie.load('UserToken')),
        this.setState({
           data:findresponse.GetUserCameraResult.RoomCameraList,
        })
@@ -112,8 +114,7 @@ render() {
 
              </div>
 
-            <div className="col-md-4 float-right"><i className="material-icons">mic</i></div>
-            <div className="col-md-4 "><i className="material-icons">record_voice_over</i></div>
+
         </div>
 
       </div>

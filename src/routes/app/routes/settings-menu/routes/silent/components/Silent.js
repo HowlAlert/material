@@ -59,10 +59,10 @@ class CancelCode extends React.Component {
          alert("Please enter a valid code");
        }
 
-       if(this.state.code!=this.state.re_code){
-         alert("Silent code did not match.Try Again");
-         this.setState({save: false })
-       }
+       // if(this.state.code!=this.state.re_code){
+       //   alert("Silent code did not match.Try Again");
+       //   this.setState({save: false })
+       // }
    }
 
   handleSave(event) {

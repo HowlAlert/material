@@ -2,43 +2,19 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import QueueAnim from 'rc-queue-anim';
-
-// const users = [
-//   { id:1,
-//     name: "Leonard Rogers",
-//     phone: "+91 9640369353"
-//   },
-//   { id:2,
-//     name: "Walker Pace",
-//     phone: "+91 9640369353"
-//   },
-//   { id:3,
-//     name: "Lance Mcintyre",
-//     phone: "+91 9640369353"
-//   },
-//   { id:4,
-//     name: "Rudyard Conway",
-//     phone: "+91 9640369353"
-//   },
-//   { id:5,
-//     name: "Chadwick Oneal",
-//     phone: "+91 9640369353"
-//   },
-//
-// ];
-
+import moment from 'moment';
 
 class Pack extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      searchString: "",
-      // users: []
-      data: [],
+        search: '',
+
+        data: [],
         data1: [],
     };
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -59,60 +35,59 @@ class Pack extends React.Component {
         console.log(findresponse)
         this.setState({
            data:findresponse.GetUserPackResult.UserPackList,
-        })
-        this.setState({
            data1:findresponse.GetUserPackResult,
-        })
+           data2:findresponse.GetUserPackResult.AvgResTimeOfPoundBack
+
+         })
       })
-    this.setState({
-      data: data
-    });
-    this.refs.search.focus();
   }
 
-  handleChange() {
-
+  updateSearch(event) {
+      console.log(event.target.value);
     this.setState({
-      searchString: this.refs.search.value
+      search: event.target.value.substr(0,35)
     });
   }
 
   render() {
+    const ms = this.state.data2
+    var v = moment.utc(moment.duration({'s':ms}).asMilliseconds()).format("HH:mm:ss")
 
-    let data = this.state.data;
-    let search = this.state.searchString.trim().toLowerCase();
-
-    if (search.length > 0) {
-      data = data.filter(function(data) {
-        return data.FirstName.toLowerCase().match(search);
-      });
-    }
+    // let filteredNames = this.state.data.filter(
+    //   (dynamicdata)=>{
+    //     return dynamicdata.FirstName.toLowerCase().indexof(this.state.search.toLowerCase()) !== -1;
+    //   }
+    //
+    // );
 
     return (
 
-  <div className="box box-transparent">
-  <h2 className="article-title text-center">
-    <input type="text" value={this.state.searchString}
-      ref="search"
-      onChange={this.handleChange}
-      placeholder="Search Pack"
-    />
-  </h2>
+       <div className="box box-transparent">
+       <h2 className="article-title text-center">
+       <input type="text" value={this.state.search}
+           ref="search"
+           onChange={this.updateSearch.bind(this)}
+           placeholder="Search Pack"
+           />
+       </h2>
 
       <div className="box-body padding-xl">
         <div className="row">
             <div className="col-md-4 text-center">Howls At Pack <div> {this.state.data1.TotalMyPound}</div></div>
             <div className="col-md-4 float-right text-center">Howls At Me <div > {this.state.data1.TotalPackPound}</div> </div>
-            <div className="col-md-4 text-center">My Average Response Time <div> {this.state.data1.AvgResTimeOfPoundBack} </div></div>
+            <div className="col-md-4">My Average Response Time <div> {v} </div></div>
+
         </div>
 
               <div>
                 {
                      this.state.data.map((dyanamicData,key)=>
-                     <div>
+                      <div>
                         {dyanamicData.FirstName} {" "}
-                       <div>{dyanamicData.PhoneNumber}</div>
-                     </div>
+                      <div>{dyanamicData.PhoneNumber}</div>
+
+                      </div>
+
                    )
                 }
               </div>

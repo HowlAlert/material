@@ -15,12 +15,13 @@ class Schedule extends React.Component {
 
     this.state = {
         color_white: true
+        // startTime:' '
     };
 
   }
 
-  changeColor1(){     this.setState({color_d1: !this.state.color_d1})     }
-  changeColor2(){     this.setState({color_d2: !this.state.color_d2})     }
+  changeColor1(){     this.setState({color_d1:  !this.state.color_d1})     }
+  changeColor2(){     this.setState({color_d2:  !this.state.color_d2})     }
   changeColor3(){     this.setState({color_d3: !this.state.color_d3})     }
   changeColor4(){     this.setState({color_d4: !this.state.color_d4})     }
   changeColor5(){     this.setState({color_d5: !this.state.color_d5})     }
@@ -29,12 +30,14 @@ class Schedule extends React.Component {
 
   render() {
       let bgColor1 = this.state.color_d1 ? "DodgerBlue" : "white"
+      console.log(bgColor1)
       let bgColor2 = this.state.color_d2 ? "DodgerBlue" : "white"
       let bgColor3 = this.state.color_d3 ? "DodgerBlue" : "white"
       let bgColor4 = this.state.color_d4 ? "DodgerBlue" : "white"
       let bgColor5 = this.state.color_d5 ? "DodgerBlue" : "white"
       let bgColor6 = this.state.color_d6 ? "DodgerBlue" : "white"
       let bgColor7 = this.state.color_d7 ? "DodgerBlue" : "white"
+
     return (
 
           <article className="article">
@@ -68,7 +71,7 @@ class Schedule extends React.Component {
                              <span><h5> Start Time</h5> </span>
                       </span>
                       <span className="float-right">
-                          <TimePicker hintText="Select Time"/>
+                          <TimePicker  hintText="Select Time"/>
                       </span>
                     </div>
                   </div>

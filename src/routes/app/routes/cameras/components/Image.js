@@ -1,6 +1,7 @@
 import React from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import cookie from 'react-cookies';
 
 class ImageBox extends React.Component {
 
@@ -8,57 +9,87 @@ class ImageBox extends React.Component {
     super();
     this.state = {
       data: [],
+      // data1: []
     };
 
 
   }
 
 
+
 componentDidMount(){
 
   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
-
+console.log("ImageURL");
       fetch(BaseURL,
       {
        method: "POST",
-       body: JSON.stringify({ "UserID":"132",
-       "UserToken":"Dbr\/k5trWmO3XRTk3AWfX90E9jwpoh59w\/EaiU9df\/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk\/n3QJcNSOAwiCifNh8i3O2qSoOYc0xwL7EFvQ9x4t0I0zfWrSegeLHB3EjO\/\/ziEk9gyXySjSVK\/GPmT7Qvu",
-       "CameraID" :"HDXQ-038400-YFCHE",
-       "StartTime" :"12/05/2017 05:42:00",
-       "EndTime" : "01/05/2018 05:42:00",
-       "PageNumber" : "1" }),
+       body: JSON.stringify({
+         "UserID":cookie.load('Id'),
+         "UserToken":cookie.load('UserToken'),
+         "CameraID" :"HDXQ-038386-TMHKD",
+         "StartTime" :"12/05/2017 00:00:00",
+         "EndTime" : "01/18/2018 23:59:59",
+         "PageNumber" : "1" }),
         headers: new Headers({'content-type': 'application/json'}),
       })
   .then((Response)=> Response.json())
   .then((findresponse)=>{
-      console.log(findresponse)
-      this.setState({
-         data:findresponse.GetUserCameraImagesResult.CameraImages,
-      })
-    })
+      // console.log(findresponse)
+      // console.log(findresponse.GetUserCameraImagesResult.CameraImages)
 
-}
+      var ImageURL = findresponse.GetUserCameraImagesResult.CameraImages.map((dyanamicData,key)=>
+
+               fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                    {
+
+                         method: "POST",
+                         body: JSON.stringify({
+                           "url":dyanamicData.ImageURL
+                         }),
+                        headers: new Headers({'content-type':'application/json'}),
+                  })
+
+
+               .then((Response)=> Response.json())
+
+               .then((findresponse1)=>{
+                   console.log(findresponse1)
+                   this.setState({
+                      data:findresponse1
+                   })
+
+               })
+             )
+           }
+          );
+   }
+
 
   render() {
+    var mes = this.state.data.length
+    if(mes === 0)
+    {
+      var message= "Click  ADD DEVICE INSTRUCTIONS Button to follow Instructions to add devices "
+    }
 
     return (
       <div className="box box-transparent">
-        {
-          this.state.data.map((dyanamicData,key)=>
-          <div>
-              {dyanamicData.ImageURL}
-          </div>
 
-         )
-        }
+        <div className="row">
+            <div className="col-md-4 text-center">
+              <h5>{message}</h5>
+              <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="150" width="150"/>
+            </div>
+        </div>
 
-          <center>
-            <a href="cam-add-devices#/app/cameraDevices/add-devices">
-                   <i className="material-icons">add</i><br />
+
+          {/* <center>
+                     <a href="cam-add-devices#/app/cameraDevices/add-devices">
+                         <i className="material-icons">add</i><br />
                         Touch here to follow the instructions to add a camera
-            </a>
-
-          </center>
+                       </a>
+          </center> */}
 
 
 

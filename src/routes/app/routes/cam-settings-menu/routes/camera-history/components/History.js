@@ -30,29 +30,53 @@ componentDidMount(){
       })
   .then((Response)=> Response.json())
   .then((findresponse)=>{
-      console.log(findresponse)
-      this.setState({
-         data:findresponse.GetUserCameraImagesResult.CameraImages,
-      })
-    })
+            console.log(findresponse)
+      var ImageURL = findresponse.GetUserCameraImagesResult.CameraImages.map((dyanamicData,key)=>
 
-}
+               fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                    {
+
+                         method: "POST",
+                         body: JSON.stringify({
+                           "url":dyanamicData.ImageURL
+                         }),
+                        headers: new Headers({'content-type':'application/json'}),
+                  })
+
+
+               .then((Response)=> Response.json())
+
+               .then((findresponse1)=>{
+
+                   console.log(findresponse1)
+                   this.setState({
+                      data:findresponse1
+                   })
+
+               })
+             )
+             })
+
+      }
 
   render() {
-
+      
     return (
       <div className="box box-transparent">
-        {
-          this.state.data.map((dyanamicData,key)=>
-              <div className="box box-transparent">
-                  <div>
-                       {dyanamicData.ImageURL}
-                  </div>
-              </div>
-             )
-        }
+        <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="150" width="150"/>
+     </div>
 
-      </div>
+        //
+        // {
+        //   this.state.data.map((dyanamicData,key)=>
+        //       <div className="box box-transparent">
+        //           <div>
+        //                {/* {dyanamicData.ImageURL} */}
+        //                <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="150" width="150"/>
+        //           </div>
+        //       </div>
+        //      )
+        // }
     );
   }
 }

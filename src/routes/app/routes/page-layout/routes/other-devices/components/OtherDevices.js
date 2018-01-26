@@ -1,28 +1,53 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 
-const OtherDevices = () => (
-  <article className="article">
-    <div>
-      <center><h2 className="article-title">SELECT DEVICES</h2></center>
+
+
+
+class OtherDevices extends React.Component {
+
+render() {
+
+return (
+
+    <article className="article">
+
+        <div className="box box-default col-xl-12">
+              <div className="icon-box ibox-plain ">
+
+              <span className="float-left">
+                <span> Amazon Echo  </span>
+              </span>
+              <span className="float-right" >
+                <button name="code" className="card bg-color-primary float-right"><a href="page-layout#/app/pglayout/amazon-device">ACTIVATE</a></button>
+              </span>
+          </div>
+      </div><br/>
+
+      <div className="box box-default col-xl-12">
+            <div className="icon-box ibox-plain ">
+              <span className="float-left">
+                <span> Google Home </span>
+              </span>
+              <span className="float-right" >
+                 <button name="re-code" className="card bg-color-primary float-right"><a href="page-layout#/app/pglayout/google-device">ACTIVATE</a></button>
+              </span>
+        </div>
     </div>
-  <section className="container-fluid">
-    <QueueAnim type="bottom" className="ui-animate">
-      <div key="1">
-        <article className="article">
-          <div>
-            Amazon Echo
-          </div>
-          <div className="divider divider-solid" />
-          <div>
-             Google Home
-          </div>
-          <div className="divider divider-solid" />
-        </article>
-      </div>
-    </QueueAnim>
-  </section>
-</article>
+
+   </article>
+
+);
+}
+}
+
+const DeviceSection = () => (
+  <article className="article">
+  <h2 className="article-title text-center ">SELECT DEVICES</h2>
+    <section >
+        <OtherDevices />
+    </section>
+  </article>
 );
 
-module.exports = OtherDevices;
+module.exports = DeviceSection;
