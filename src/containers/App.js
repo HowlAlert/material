@@ -21,7 +21,8 @@ import PageRegister3 from 'routes/register3/'
 import PageRegister4 from 'routes/register4/'
 import PageRegister5 from 'routes/register5/'
 import PagePrintcode from 'routes/printcode/'
-
+import PageSchedule from 'routes/schedule/'
+import PageScheduling from 'routes/scheduling/'
 // = styles =
 // 3rd
 import 'styles/bootstrap.scss';
@@ -90,6 +91,8 @@ class App extends Component {
             <Route exact path="/register4" component={PageRegister4} />
             <Route exact path="/register5" component={PageRegister5} />
             <Route exact path="/printcode" component={PagePrintcode} />
+            <Route exact path="/scheduling" component={PageScheduling} />
+            <Route exact path="/schedule" component={PageSchedule} />
           </div>
         </div>
       </MuiThemeProvider>

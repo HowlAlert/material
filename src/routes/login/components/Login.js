@@ -36,7 +36,6 @@ class Login extends React.Component {
     this.state = {
       brand: APPCONFIG.brand,
       Email:'',
-
       Password:'',
       GetUser:'',
       ResultStatus:''
@@ -179,7 +178,7 @@ this.setState({
     const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {
-      const options = { redirectToReferrer: true, redirectPath: '#/login', driver: 'COOKIES' };
+      const options = { refreshOnCheckAuth: true, redirectPath: '#/Welcome', driver: 'COOKIES' };
       sessionService.initSessionService(store, options)
         .then(() => console.log('Redux React Session is ready and a session was refreshed from your storage'))
         .catch(() => console.log('Redux React Session is ready and there is no session in your storage'));

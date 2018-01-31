@@ -52,11 +52,7 @@ class HowlLogin extends React.Component {
 
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithGoogle';
 
-         fetch(BaseURL,{
-          method: "POST",
-          body: JSON.stringify({'FirstName':response.w3.ofa,'LastName':response.w3.wea,'Email':response.profileObj.email,'GoogleID':response.googleId,'DeviceToken':'','InviteCode':'','TimeZone':''}),
-        headers: new Headers({'content-type': 'application/json'})
-        }).
+
       then((Response)=>Response.json()).
       then((findresponse)=>{
         this.setState({
@@ -129,7 +125,7 @@ class HowlLogin extends React.Component {
     const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {
-      const options = { redirectToReferrer: true, redirectPath: '#/login', driver: 'COOKIES' };
+      const options = { redirectToReferrer: true, redirectPath: '#/Welcome', driver: 'COOKIES' };
       sessionService.initSessionService(store, options)
         .then(() => console.log('Redux React Session is ready and a session was refreshed from your storage'))
         .catch(() => console.log('Redux React Session is ready and there is no session in your storage'));
