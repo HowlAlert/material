@@ -3,7 +3,7 @@ import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import cookie from 'react-cookies';
 
 class Contact extends React.Component {
 
@@ -46,30 +46,66 @@ class Contact extends React.Component {
                     });
            }
 
-  handleValidations(event) {
+  // handleValidations(event) {
+  //
+  //                event.preventDefault();
+  //
+  //                  if( (this.state.fname=='')  && (this.state.phonenumber =='') ){
+  //                    alert("Please enter first name and contact number");
+  //                  }
+  //
+  //                  let re = /^[0-9]$/;
+  //                  if(re.test(this.state.phonenumber)!=''){
+  //                    alert("Please enter a valid phone number");
+  //                  }
+  //
+  //                  // if(re.test(this.state.re_code)=='' && this.state.re_code!=''){
+  //                  //   alert("Please enter a valid code");
+  //                  // }
+  //
+  //                  // if(this.state.code!=this.state.re_code){
+  //                  //   alert("Silent code did not match.Try Again");
+  //                  //   this.setState({save: false })
+  //                  // }
+  //          }
 
-                 event.preventDefault();
+   handleNext(event) {
 
-                   if( (this.state.fname=='')  && (this.state.phonenumber =='') ){
-                     alert("Please enter first name and contact number");
-                   }
+           const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddUpdateUserPack';
 
-                   let re = /^[0-9]$/;
-                   if(re.test(this.state.phonenumber)!=''){
-                     alert("Please enter a valid phone number");
-                   }
+               fetch(BaseURL,
+               {
+                    method: "POST",
+                    body: JSON.stringify(
+                    {
+                    "UserID":cookie.load('Id'),
+                    "UserToken":cookie.load('UserToken'),
+                    "PackMemberList": {
+			                       "Email": this.state.email,
+			                       "FirstName": this.state.fname,
+			                       "LastName": this.state.lname,
+			                       "PhoneNumber":this.state.phonenumber,
+			                       "ProfileImageURL": " ",
+			                       "PhoneNumberCountryCode": "1"
 
-                   // if(re.test(this.state.re_code)=='' && this.state.re_code!=''){
-                   //   alert("Please enter a valid code");
-                   // }
+                            }
 
-                   // if(this.state.code!=this.state.re_code){
-                   //   alert("Silent code did not match.Try Again");
-                   //   this.setState({save: false })
-                   // }
+                }
+              ),
+                 // headers: {
+                 //               'Content-Type': 'application/json',
+                 //               'Accept': 'application/json'
+                 //        }
+               })
+               .then(response => {
+                          if (response.ok) {
+                            response.json().then(json => {
+                                              console.log(json);
+                                             }  );
+                        }
+                        });
+
            }
-
-
 
 
   render() {
@@ -88,7 +124,7 @@ class Contact extends React.Component {
                      <TextField ref="email"  onChange={this.handleEmail.bind(this)} value={this.state.email} hintText="EMAIL ADDRESS"   fullWidth />
                </div>
                   <div className="divider" />
-                  <RaisedButton  onClick={(e)=>this.handleValidations(e)} primary label="SAVE" />
+                  <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="SAVE" />
        </form>
         </article>
       </div>

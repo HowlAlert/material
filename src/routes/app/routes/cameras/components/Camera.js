@@ -58,8 +58,6 @@ render() {
         this.state.data.map((dyanamicData,key) =>
         <div>
             <div >{dyanamicData.SortRoomName} </div>
-
-
             {
               (typeof(dyanamicData.Camera)=='object')?
               <div>

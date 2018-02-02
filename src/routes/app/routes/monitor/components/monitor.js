@@ -6,13 +6,13 @@ import QueueAnim from 'rc-queue-anim';
 const Monitor = () => (
   <article className="article ">
     <h2 className="article-title text-center no-margin-top">UNLOCK EVERYTHING</h2>
-     Subscribe to HOWL monitoring for only $5.99/month ($71.88 annually) for our authenticated third-party. 24-hour monitoring service who will contact the corresponding authorities on your behalf when you send alerts (POLICE, AMBULANCE, FIRE).
+     Subscribe to HOWL monitoring for only $7.99/month ($95.88 annually) for our authenticated third-party. 24-hour monitoring service who will contact the corresponding authorities on your behalf when you send alerts (POLICE, AMBULANCE, FIRE).
     <center><div>*All alerts will notify Pack by default.</div></center>
     <center>
-      <button className="card bg-color-primary">MONTHLY PLAN-$5.99/MO </button>
+      <button className="card bg-color-primary">MONTHLY PLAN - $7.99/MO </button>
     </center>
     <center>
-      <button className="card bg-color-primary">YEARLY PLAN-$50.00/YR </button>
+      <button className="card bg-color-primary">YEARLY PLAN - $95.88/YR </button>
       <div>
         <h5>  <a href="page-layout#/app/pglayout/other-devices"> Restore purchase</a></h5>
       </div>

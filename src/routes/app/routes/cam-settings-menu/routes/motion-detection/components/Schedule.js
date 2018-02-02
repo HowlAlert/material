@@ -32,7 +32,7 @@ class Schedule extends React.Component {
                      .then((findresponse)=>{
                          console.log(findresponse)
                          this.setState({
-                            data:findresponse.GetRoomCameraScheduleResult.GetRoomCameraSchedule
+                            data:findresponse.GetRoomCameraScheduleResult.getGroupCameraSetting
                                              })
                                           })
 
@@ -40,6 +40,8 @@ class Schedule extends React.Component {
 
   renderUserMessage(){
     var message= "Set times during which motion sensor will be active in order to limit unnecessary alerts and image capture."
+    var len = this.state.data.length;
+    console.log(len);
      if (this.state.data.length === 0) {
        return (
          <span>
@@ -51,11 +53,16 @@ class Schedule extends React.Component {
          <div>
          {
               this.state.data.map((dyanamicData,key)=>
-                 <div className="float-right">
+              <div>
+                 <div className="float-left">
+                 {dyanamicData.Days} {" "}
+                 {dyanamicData.cameraSettingSchedule.StartTime+"AM"}{" - "}
+                 {dyanamicData.cameraSettingSchedule.EndTime+"PM"}
 
-                   {dyanamicData.StartTime}{"-"}{dyanamicData.EndTime}
-              </div>
-            )
+                </div>
+
+             </div>
+          )
          }
        </div>
        );
@@ -77,10 +84,12 @@ class Schedule extends React.Component {
              </span>
              <span className="float-right">
                  <h5><a href="cam-settings-menu#/app/camerasettings/schedule">ADD</a></h5><br/>
-                 { this.renderUserMessage() }
+                  { this.renderUserMessage() }
             </span>
           </div>
+
           </div>
+
        </div>
 
     </div>

@@ -2,6 +2,9 @@ import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import cookie from 'react-cookies';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+import VerifyCode from '../../verifysilent/';
 
 class CancelCode extends React.Component {
 
@@ -24,81 +27,39 @@ class CancelCode extends React.Component {
    this.setState({
          code: target.value
        });
-
-
        console.log(target.value) ;
        return target.value;
      }
 
-     handleReCode(event) {
-        event.preventDefault();
-         const target = event.target;
-         const value = target.type === target.value;
-         const name = target.name;
-
-
-      this.setState({
-              re_code: target.value
-              });
-          console.log(target.value) ;
-          return target.value;
-        }
-
   handleNext(event) {
 
-     event.preventDefault();
-       if( (this.state.code=='')  && (this.state.re_code=='')){
-         alert("Please enter your silent code");
+       var entered = this.state.code;
+       console.log(entered);
+
+       var saved = cookie.load('oldsilentcode');
+       console.log(saved);
+
+       if(entered === saved){
+          alert("valid");
+          this.setState({ redirectToReferrer: true })
        }
-       let re = /^[0-9]{4}$/;
-       if(re.test(this.state.code)=='' && this.state.code!=''){
-         alert("Please enter a valid code");
-       }
+     else
+      {
+        alert("The Silent code you entered does not match your current cancel code. Please try again ");
+         this.setState({ redirectToReferrer: false })
+      }
 
-       if(re.test(this.state.re_code)=='' && this.state.re_code!=''){
-         alert("Please enter a valid code");
-       }
-
-       // if(this.state.code!=this.state.re_code){
-       //   alert("Silent code did not match.Try Again");
-       //   this.setState({save: false })
-       // }
-   }
-
-  handleSave(event) {
-
-    if(this.setState({save: true })){
-
-     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetSilenceCode';
-
-         fetch(BaseURL,
-         {
-          method: "POST",
-          body: JSON.stringify({
-            "UserID":"118",
-            "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu",
-            "SilenceCode":this.state.code
-          }),
-           headers: new Headers({'content-type': 'application/json'}),
-         })
-     .then((Response)=> Response.json())
-     .then((findresponse)=>{
-         console.log(findresponse)
-        alert("Silent Code has been changed");
-       })
-
-   }
-
-}
+     }
 
 
 render() {
-
-var {save} = this.state
-       if({save: true })
-         {
-           (e)=>this.handleNext(e)
-         }
+  const { redirectToReferrer} = this.state
+    if(redirectToReferrer === true)
+    {
+      return (
+         <Route component={VerifyCode} />
+       )
+    }
   return (
       <article className="article">
          <h2 className="article-title text-center">CHANGE SILENT CODE</h2>
@@ -107,16 +68,14 @@ var {save} = this.state
 
            <div className="box box-transparent">
              <div className="box-body padding-lg-h">
-                   <p>Speak your Silent Alert "Fake Cancellation" Code to your smart hub (or type it into your app) if a perpetrator/threat causes you to cancel your HOWL alert. The alarm will silent,however your alert will proceed. </p><h5 className="text-center">* Be sure to make this a code you will remember.</h5>
-
-                     <TextField  onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your New silent code " fullWidth />
-                     <div>
-                     <TextField  onChange={(e)=>this.handleReCode(e)} name="re-code" floatingLabelText="Verify your New silent code " fullWidth />
-                     </div>
-
+                   <h4>Speak your Silent Alert "Fake Cancellation" Code to your smart hub (or type it into your app) if a perpetrator/threat causes you to cancel your HOWL alert. The alarm will silent,however your alert will proceed. </h4>
+                   <h5 className="text-center">* Be sure to make this a code you will remember.</h5>
+                     <TextField  onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your old silent code " fullWidth />
+                   </div>
+                   <div className="card-action no-border text-right">
+                     <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="NEXT ->" />
                    </div>
 
-                  <button onClick={(e)=>this.handleNext(e)} onClick={(e)=>this.handleSave(e)}>SAVE </button>
 
                  </div>
 

@@ -18,15 +18,15 @@ class Alerts extends React.Component {
         {
          method: "POST",
          body: JSON.stringify({
-           "UserID":"118",
-           "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu"
+           "UserID":"49",
+   "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ=="
          }),
           headers: new Headers({'content-type': 'application/json'}),
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
 
-      var ImageURL = findresponse.GetUserFeedResult.getUserFeeds.map((dyanamicData,key)=>
+      findresponse.GetUserFeedResult.getUserFeeds.map((dyanamicData,key)=>
 
                fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                     {
@@ -45,9 +45,13 @@ class Alerts extends React.Component {
 
                .then((findresponse1)=>{
                    console.log(findresponse1)
-                   console.log(findresponse1.GetImageDataResult.length)
+                   // console.log(findresponse1.GetImageDataResult.length)
                    this.setState({
-                      data1:findresponse1
+                      data1:findresponse1,
+                      // for(i=0;i<20;i++){
+                      //   data2:[findresponse1.GetImageDataResult]
+                      // }
+
                    })
 
                })
@@ -56,27 +60,35 @@ class Alerts extends React.Component {
         console.log(findresponse)
         this.setState({
            data:findresponse.GetUserFeedResult.getUserFeeds,
+           data4:findresponse.GetUserFeedResult
         })
+
       })
 
   }
   render() {
-    const numbers = this.state.data1;
-    console.log(numbers)
+
+    // console.log(this.state.data)
+    // console.log(this.state.data.map(d => <li key={d.ImageURL}>{d.ImageURL}</li>))
+
+    console.log(this.state.data.length)
+    console.log(this.state.data2)
     return (
 
     <div className="row">
       <div className="col-xl-12">
         <div className="box box-default">
           <div className="box-body">
-
             {
               this.state.data.map((dyanamicData,key)=>
               <div>
                  <div className="box box-default">
                      <div className="box-body ">
                             {dyanamicData.Text}
-                           <div>  {dyanamicData.DateCreated}</div>
+                           <div>  {dyanamicData.DateCreated}
+
+
+                           </div>
 
                       <span className="float-right">
 
@@ -86,6 +98,7 @@ class Alerts extends React.Component {
 
 
                      </div>
+
                 </div>
               </div>
 

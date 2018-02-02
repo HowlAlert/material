@@ -1,106 +1,138 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-// import Fetch from 'react-fetch';
-// import Async from 'react-promise';
-// var Hello = React.createClass({
-//     myClick: function (text) {
-//         alert(text);
-//     },
-//     render: function() {
-//         return <button onClick={this.myClick("Hello world")}>
-//                    Click Me
-//                 </button>;
-//     }
-// });
-class App extends React.Component {
-   constructor(props) {
-      super(props);
+import cookie from 'react-cookies';
+import VerifyCancelCode from '../../verifycancel/';
 
-      this.state = {
-         data: 'Initial data...'
-      }
-      this.updateState = this.updateState.bind(this);
-   };
-   updateState() {
-      this.setState({data: 'Data updated...'})
-   }
-   render() {
-      return (
-         <div>
-            <button onClick = {this.updateState}>CLICK</button>
-            <h4>{this.state.data}</h4>
-         </div>
-      );
-   }
- }
-
-
- class ChangeInput extends React.Component {
+ class Cancel extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      name: ''
+      data:[],
+      code:'',
+
     };
   }
 
-  changeText(event) {
-    this.setState({
-        name: event.target.value
-    });
+  handleCode(event) {
+     event.preventDefault();
+      const target = event.target;
+      const value = target.type === target.value;
+      const name = target.name;
+
+   this.setState({
+         code: target.value
+       });
+       console.log(target.value) ;
+       return target.value;
+   }
+
+  componentDidMount(){
+
+        const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
+         fetch(URL,
+                  {
+                          method: "POST",
+                          body: JSON.stringify({
+                            "Email":"varuna808@gmail.com",
+                            "Password":"1234Howl"
+
+                   }),
+                           headers: new Headers({'content-type': 'application/json'}),
+                         })
+                     .then((Response)=> Response.json())
+                     .then((findresponse)=>{
+
+                       this.setState({
+                               GetUser:findresponse.LoginResult.GetUser,
+                               ResultStatus:findresponse.LoginResult.ResultStatus,
+                             })
+                             if(this.state.ResultStatus.Status==="1")
+                             {
+                              console.log("status");
+                              cookie.save('oldcancelcode', this.state.GetUser.CancellationCode);
+                              cookie.save('oldsilentcode', this.state.GetUser.SilenceCode);
+                            }
+                             console.log(cookie.load('oldcancelcode'));
+                             console.log(cookie.load('oldsilentcode'));
+                    })
+
   }
 
+  handleNext(event) {
+
+    var entered = this.state.code;
+    console.log(entered);
+
+    var saved = cookie.load('oldcancelcode');
+    console.log(saved);
+
+
+
+    if(entered === saved){
+      this.setState({ redirectToReferrer: true })
+
+    }
+ else
+   {
+     alert("The cancel code you entered does not match your current cancel code. Please try again ");
+      this.setState({ redirectToReferrer: false })
+   }
+
+}
+
   render() {
+     const { redirectToReferrer} = this.state
+       if(redirectToReferrer === true)
+       {
+         return (
+            <Route component={VerifyCancelCode} />
+          )
+       }
+
     return (
-      <div>
-        <label htmlFor="name">What's your name: </label>
-        <input type="text" id="name" onChange={this.changeText.bind(this)} />
-        <h3>{ this.state.name }</h3>
-      </div>
+        <div className="container-fluid with-maxwidth">
+          <div className="row">
+            <div className="col-xl-12">
+              <div className="box box-transparent">
+                <div className="box-body padding-lg-h">
+                  <form name="CancelformForm">
+                    <div className="form-group">
+                      <p className="no-margin">Speak your Cancellation Code to your smart hub (or type it into your app) to cancel your HOWL alert. *Be sure to make this a code you will remember.</p>
+                      <div className="form-group">
+                        <TextField onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your old cancel code" fullWidth />
+                      </div>
+                      <div className="card-action no-border text-right">
+                        <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="NEXT ->" />
+                      </div>
+
+                    </div>
+                   </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
     );
   }
 }
 
 
-const Cancel = () => (
-   <article className="article">
-     <h2 className="article-title text-center">CHANGE CANCEL CODE</h2>
-     <div className="container-fluid with-maxwidth">
-       <div className="row">
-         <div className="col-xl-6">
-           <div className="box box-transparent">
-             <div className="box-body padding-lg-h">
-               <form name="CancelformForm">
-                 <div className="form-group">
-                   <p className="small no-margin">Speak your Cancellation Code to your smart hub (or type it into your app) to cancel your HOWL alert. *Be sure to make this a code you will remember.</p>
-                   <div className="form-group">
-                     <TextField floatingLabelText="Enter your old cancel code " fullWidth />
-                   </div>
-                   <div className="card-action no-border text-right">
-                     {/* <a href="signout#/app/Logout" className="color-primary">NEXT</a> */}
-                     <button onClick={()=>{ alert('Verify Code'); }}>NEXT -> </button>
-                   </div>
-                 </div>
-                </form>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-  </article>
-);
+
 
 const Page = () => (
+  <article className="article">
+    <h2 className="article-title text-center">CHANGE CANCEL CODE</h2>
   <section className="chapter">
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1"><Cancel /></div>
-      <div key="2"><App /></div>
-        {/* <div key="3"><Axios /></div> */}
-      <div key="3"><ChangeInput /></div>
     </QueueAnim>
   </section>
+</article>
 );
 module.exports = Page;

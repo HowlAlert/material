@@ -27,7 +27,7 @@ const BasicBoxes = () => (
   </div>
 </a></div>
 
-<div className="col-xl-6"><a href="settings-menu#/app/settingsmenu/Notify">
+<div className="col-xl-12"><a href="settings-menu#/app/settingsmenu/Notify">
 <div className="box box-default">
   {/* <div className="box-body" > */}
   <div className="icon-box ibox-plain ">
@@ -37,7 +37,7 @@ const BasicBoxes = () => (
 </div>
 </a></div>
 
-<div className="col-xl-6"><a href="settings-menu#/app/settingsmenu/address">
+<div className="col-xl-12"><a href="settings-menu#/app/settingsmenu/address">
 <div className="box box-default">
   {/* <div className="box-body" > */}
   <div className="icon-box ibox-plain ">
@@ -47,7 +47,7 @@ const BasicBoxes = () => (
 </div>
 </a></div>
 
-<div className="col-xl-6"><a href="settings-menu#/app/settingsmenu/cancel">
+<div className="col-xl-12"><a href="settings-menu#/app/settingsmenu/cancel">
 <div className="box box-default">
   {/* <div className="box-body" > */}
   <div className="icon-box ibox-plain ">
@@ -57,7 +57,7 @@ const BasicBoxes = () => (
 </div>
 </a></div>
 
-<div className="col-xl-6"><a href="settings-menu#/app/settingsmenu/silent">
+<div className="col-xl-12"><a href="settings-menu#/app/settingsmenu/silent">
 <div className="box box-default">
   {/* <div className="box-body" > */}
   <div className="icon-box ibox-plain ">
@@ -67,7 +67,7 @@ const BasicBoxes = () => (
 </div>
 </a></div>
 
-<div className="col-xl-6"><a href="settings-menu#/app/settingsmenu/print">
+<div className="col-xl-12"><a href="settings-menu#/app/settingsmenu/print">
 <div className="box box-default">
   {/* <div className="box-body" > */}
   <div className="icon-box ibox-plain ">
@@ -77,7 +77,7 @@ const BasicBoxes = () => (
 </div>
 </a></div>
 
-<div className="col-xl-6"><a href="settings-menu#/app/settingsmenu/feedback">
+<div className="col-xl-12"><a href="settings-menu#/app/settingsmenu/feedback">
 <div className="box box-default">
   {/* <div className="box-body" > */}
   <div className="icon-box ibox-plain ">
@@ -87,7 +87,7 @@ const BasicBoxes = () => (
 </div>
 </a></div>
 
-<div className="col-xl-6"><a href="help#/app/Help & Support/help">
+<div className="col-xl-12"><a href="settings-menu#/app/settingsmenu/contact">
 <div className="box box-default">
   {/* <div className="box-body" > */}
   <div className="icon-box ibox-plain ">
@@ -97,6 +97,26 @@ const BasicBoxes = () => (
 </div>
 </a></div>
 
+<div className="col-xl-12"><a href="settings-menu#/app/settingsmenu/Terms">
+<div className="box box-default">
+  {/* <div className="box-body" > */}
+  <div className="icon-box ibox-plain ">
+    <span className="float-left">  <i className="material-icons">message</i></span>
+     <span> <h5> Terms and  Conditions </h5> </span>
+</div>
+</div>
+</a></div>
+
+
+<div className="col-xl-12"><a href="page-layout#/app/pglayout/privacy-police">
+<div className="box box-default">
+  {/* <div className="box-body" > */}
+  <div className="icon-box ibox-plain ">
+    <span className="float-left">  <i className="material-icons">person_outline</i></span>
+     <span> <h5> Privacy Policy </h5> </span>
+</div>
+</div>
+</a></div>
 
 
   </div>

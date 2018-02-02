@@ -35,10 +35,20 @@ console.log("ImageURL");
       })
   .then((Response)=> Response.json())
   .then((findresponse)=>{
-      // console.log(findresponse)
-      // console.log(findresponse.GetUserCameraImagesResult.CameraImages)
+      console.log(findresponse)
+      console.log(findresponse.GetUserCameraImagesResult.CameraImages)
+     //  this.setState({
+     //     data1:findresponse.GetUserCameraImagesResult
+     //  })
+     // console.log(this.state.data1)
+     // let recipesCopy = JSON.parse(JSON.stringify(this.state.CameraImages))
+     //  let url =  recipesCopy[0].ImageURL
+     //    console.lof(url);
 
-      var ImageURL = findresponse.GetUserCameraImagesResult.CameraImages.map((dyanamicData,key)=>
+      findresponse.GetUserCameraImagesResult.CameraImages.map((dyanamicData,key)=>
+
+
+
 
                fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                     {
@@ -60,7 +70,7 @@ console.log("ImageURL");
                    })
 
                })
-             )
+)
            }
           );
    }
