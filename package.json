@@ -41,6 +41,7 @@
     "react-hot-loader": "^3.0.0-beta.6",
     "react-json-fetch": "^1.0.0",
     "react-loadable": "^4.0.5",
+    "react-mailto": "^0.4.0",
     "react-native-country-code-telephone-input": "0.0.9",
     "react-password": "^0.1.0",
     "react-password-mask": "^3.3.0",
@@ -50,6 +51,7 @@
     "react-router-redux": "5.0.0-alpha.6",
     "react-select": "^1.2.1",
     "react-telephone-input": "^4.3.4",
+    "react-time-format": "0.0.5",
     "react-weekday-picker": "^1.0.8",
     "redux": "^3.7.2",
     "redux-react-session": "^2.2.1"

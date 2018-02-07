@@ -11,12 +11,8 @@ import PropTypes from 'prop-types';
 import { render } from 'react-dom';
 import Demo from './demo';
 import TextField from 'material-ui/TextField';
-
-<body>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <div id="root"></div>
-</body>
+import Time from 'react-time-format';
+import moment from 'moment';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -25,39 +21,154 @@ class Schedule extends React.Component {
       this.state = {
           color_white: true,
           WEEKDAYS : ['M', 'T', 'W', 'TH', 'F', 'SAT', 'SUN'],
-          MondayMap :[]
+          GetRoomCameraSchedule:[],
+          Day:[],
+          StartTime:[],
+          EndTime:[]
       };
       this.handleEndTime = this.handleEndTime.bind(this);
-          this.handleStartTime = this.handleStartTime.bind(this);
+      this.handleStartTime = this.handleStartTime.bind(this);
     }
 
     handleSchedule(event){
+      var validation=true;
+      var dayValidation=true;
+      var timeValidation=true;
+      var startTimeValidation=true;
+      var endTimeValidation=true;
 
+          if((this.state.Monday || this.state.Tuesday || this.state.Wednesday || this.state.Thursday || this.state.Friday || this.state.Saturday || this.state.Sunday)==undefined){
+            alert("Please select week day.");
+            dayValidation=false;
+          }
+          if(dayValidation){
+            if(this.state.StartTime==undefined){
+            alert("Choose Start Time first")
+            startTimeValidation=false;
+            console.log(validation)
+            }
+            if(startTimeValidation){
+              if(this.state.EndTime==undefined){
+                alert("Please select End Time")
+                endTimeValidation=false;
+                console.log(validation)
+              }
+            }
+            if(endTimeValidation){
+              if(this.state.StartTime>=this.state.EndTime){
+                alert("Choose Start Time before End Time")
+                validation=false;
+                console.log(validation)
+              }
+            }
+          }
+
+      if(dayValidation && validation){
+        console.log(validation)
         if(this.state.WEEKDAYS[0]==this.state.Monday){
-          console.log(this.state.Monday)
+          for(var i=0; i<this.state.Day.length; i++){
+            if(this.state.Day[i]==1 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
+              alert("This time is already added in your schedule")
+            }
+          }
+          console.log(this.state.StartTime),
+          console.log(this.state.EndTime)
         }
         if(this.state.WEEKDAYS[1]==this.state.Tuesday){
-          console.log(this.state.Tuesday)
+          for(var i=0; i<this.state.Day.length; i++){
+            if(this.state.Day[i]==2 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
+              alert("This time is already added in your schedule")
+            }
+          }
+          console.log(this.state.Tuesday),
+          console.log(this.state.StartTime),
+          console.log(this.state.EndTime)
         }
-        if(this.state.WEEKDAYS[2]==this.state.Wenesday){
-          console.log(this.state.Wenesday)
+        if(this.state.WEEKDAYS[2]==this.state.Wednesday){
+          for(var i=0; i<this.state.Day.length; i++){
+            if(this.state.Day[i]==3 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
+              alert("This time is already added in your schedule")
+            }
+          }
+          console.log(this.state.Wednesday),
+          console.log(this.state.StartTime),
+          console.log(this.state.EndTime)
         }
         if(this.state.WEEKDAYS[3]==this.state.Thursday){
-          console.log(this.state.Thursday)
+          for(var i=4; i<this.state.Day.length; i++){
+            if(this.state.Day[i]==1 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
+              alert("This time is already added in your schedule")
+            }
+          }
+          console.log(this.state.Thursday),
+          console.log(this.state.StartTime),
+          console.log(this.state.EndTime)
         }
         if(this.state.WEEKDAYS[4]==this.state.Friday){
-          console.log(this.state.Friday)
+          for(var i=0; i<this.state.Day.length; i++){
+            if(this.state.Day[i]==5 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
+              alert("This time is already added in your schedule")
+            }
+          }
+          console.log(this.state.Friday),
+          console.log(this.state.StartTime),
+          console.log(this.state.EndTime)
         }
         if(this.state.WEEKDAYS[5]==this.state.Saturday){
-          console.log(this.state.Saturday)
+          for(var i=0; i<this.state.Day.length; i++){
+            if(this.state.Day[i]==6 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
+              alert("This time is already added in your schedule")
+            }
+          }
+          console.log(this.state.Saturday),
+          console.log(this.state.StartTime),
+          console.log(this.state.EndTime)
         }
         if(this.state.WEEKDAYS[6]==this.state.Sunday){
-          console.log(this.state.Sunday)
+          for(var i=0; i<this.state.Day.length; i++){
+            if(this.state.Day[i]==7 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
+              alert("This time is already added in your schedule")
+            }
+          }
+          console.log(this.state.Sunday),
+          console.log(this.state.StartTime),
+          console.log(this.state.EndTime)
         }
+      }
 
-     this.state.MondayMap.map((dyanamicData,key)=>{dyanamicData.Text})
 
-    }
+console.log("handled");
+const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetRoomCameraSchedule';
+
+fetch(BaseURL,{
+ method: "POST",
+ body: JSON.stringify({
+    'UserID':'49',
+    'UserToken':'Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==',
+    'RoomCameraID' :'104'
+}),
+headers: new Headers({'content-type': 'application/json'})
+}).
+then((Response)=>Response.json()).
+then((findresponse)=>{
+this.setState({
+ GetRoomCameraSchedule:findresponse.GetRoomCameraScheduleResult.GetRoomCameraSchedule,
+})
+console.log(this.state.GetRoomCameraSchedule)
+ this.setState({
+   Day:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.Day),
+   StartTime:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.StartTime),
+   EndTime:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.EndTime),
+})
+ console.log(this.state.Day);
+ console.log(this.state.StartTime);
+ console.log(this.state.EndTime);
+
+ // console.log(GetRoomCameraSchedule.Day),
+ // console.log(GetRoomCameraSchedule.StartTime),
+ // console.log(GetRoomCameraSchedule.EndTime)
+})
+}
 
 
 
@@ -75,17 +186,17 @@ class Schedule extends React.Component {
     this.setState({color_d2:  !this.state.color_d2})
     event.preventDefault();
     this.setState({
-        Monday: this.state.WEEKDAYS[1]
+        Tuesday: this.state.WEEKDAYS[1]
       });
 
       console.log(this.state.WEEKDAYS[1]) ;
       return this.state.WEEKDAYS[1];
   }
-  changeWenesday(){
+  changeWednesday(){
     this.setState({color_d3: !this.state.color_d3})
     event.preventDefault();
     this.setState({
-        Monday: this.state.WEEKDAYS[2]
+        Wednesday: this.state.WEEKDAYS[2]
       });
 
       console.log(this.state.WEEKDAYS[2]) ;
@@ -95,7 +206,7 @@ class Schedule extends React.Component {
     this.setState({color_d4: !this.state.color_d4})
     event.preventDefault();
     this.setState({
-        Monday: this.state.WEEKDAYS[3]
+        Thursday: this.state.WEEKDAYS[3]
       });
 
       console.log(this.state.WEEKDAYS[3]) ;
@@ -105,7 +216,7 @@ class Schedule extends React.Component {
     this.setState({color_d5: !this.state.color_d5})
     event.preventDefault();
     this.setState({
-        Monday: this.state.WEEKDAYS[4]
+        Friday: this.state.WEEKDAYS[4]
       });
 
       console.log(this.state.WEEKDAYS[4]) ;
@@ -115,7 +226,7 @@ class Schedule extends React.Component {
     this.setState({color_d6: !this.state.color_d6})
     event.preventDefault();
     this.setState({
-        Monday: this.state.WEEKDAYS[5]
+        Saturday: this.state.WEEKDAYS[5]
       });
 
       console.log(this.state.WEEKDAYS[5]) ;
@@ -125,7 +236,7 @@ class Schedule extends React.Component {
     this.setState({color_d7: !this.state.color_d7})
     event.preventDefault();
     this.setState({
-        Monday: this.state.WEEKDAYS[6]
+        Sunday: this.state.WEEKDAYS[6]
       });
 
       console.log(this.state.WEEKDAYS[6]) ;
@@ -135,19 +246,19 @@ class Schedule extends React.Component {
   handleStartTime(event, time) {
 
   this.setState({
-        StartTime: time
+        StartTime: moment(time).format("HH:mm")
       });
 
-      console.log(time) ;
+      console.log(moment(time).format("HH:mm")) ;
     }
 
     handleEndTime(event, time) {
 
     this.setState({
-          EndTime: time
+          EndTime: moment(time).format("HH:mm")
         });
 
-        console.log(time) ;
+        console.log(moment(time).format("HH:mm")) ;
       //  return target.value;
       }
 
@@ -160,7 +271,6 @@ class Schedule extends React.Component {
       render(<Demo />, rootElement);
     }
       let bgColor1 = this.state.color_d1 ? "DodgerBlue" : "white"
-      console.log(bgColor1)
       let bgColor2 = this.state.color_d2 ? "DodgerBlue" : "white"
       let bgColor3 = this.state.color_d3 ? "DodgerBlue" : "white"
       let bgColor4 = this.state.color_d4 ? "DodgerBlue" : "white"
@@ -191,7 +301,7 @@ class Schedule extends React.Component {
                       <span className="space" />
 
                         <button style={{backgroundColor: bgColor3}}
-                        onClick={this.changeWenesday.bind(this)}
+                        onClick={this.changeWednesday.bind(this)}
                         >
                         {this.state.WEEKDAYS[2]}
                         </button>
@@ -237,7 +347,7 @@ class Schedule extends React.Component {
                           <span><h5> Start Time</h5> </span>
                    </span>
                    <span className="float-right">
-                   <TimePicker onChange={this.handleStartTime} value={this.state.time} hintText="Select Time" />
+                   <TimePicker onChange={this.handleStartTime} value={this.state.time} ref="StartTime" hintText="Start Time" />
                    </span>
                  </div>
 
@@ -247,7 +357,7 @@ class Schedule extends React.Component {
                            <span><h5> End Time</h5> </span>
                     </span>
                     <span className="float-right">
-                    <TimePicker onChange={this.handleEndTime} value={this.state.time} hintText="Select Time" />
+                    <TimePicker onChange={this.handleEndTime} value={this.state.time} ref="EndTime" hintText="End Time" />
                     </span>
                   </div>
 
