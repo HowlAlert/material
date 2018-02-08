@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import settings from '../../../../appsettings';
+
 
 class SearchAddress extends React.Component {
 
@@ -188,7 +188,7 @@ class UpdateAddress extends React.Component {
       if(redirectToReferrer === true)
       {
         return (
-           <settings />
+           <Redirect to="../Settings"/>
          )
       }
 
@@ -221,12 +221,13 @@ class UpdateAddress extends React.Component {
 }
 
 
-  class Address extends React.Component {
+class Address extends React.Component {
 
     constructor() {
       super();
         this.state = {
           data: [],
+          details:[]
 
         }
 
@@ -250,7 +251,9 @@ class UpdateAddress extends React.Component {
                        .then((findresponse)=>{
                            console.log(findresponse)
                            this.setState({
-                              data:findresponse.LoginResult.GetUserHomeAddress
+                              data:findresponse.LoginResult.GetUserHomeAddress,
+                              details:findresponse.LoginResult.GetUser
+
                                                })
                                             })
 
@@ -274,6 +277,17 @@ class UpdateAddress extends React.Component {
      var zip =this.state.data.Zip;
      var oldaddress=(address1 +","+ city +" "+ state+" " + zip);
      console.log(oldaddress);
+
+
+       cookie.save('Firstname',this.state.details.FirstName)//Saving user details in cookies for Edit profile
+       // console.log(cookie.load('Firstname'));
+       cookie.save('LastName',this.state.details.LastName)
+       // console.log(cookie.load('LastName'));
+       cookie.save('Email',this.state.details.Email)
+       // console.log(cookie.load('Email'));
+       cookie.save('MobilePhoneNumber',this.state.details.MobilePhoneNumber)
+       // console.log(cookie.load('MobilePhoneNumber'));
+
 
     const { redirectToReferrer} = this.state
       if(redirectToReferrer === true)

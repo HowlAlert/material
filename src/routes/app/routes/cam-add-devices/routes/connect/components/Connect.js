@@ -3,13 +3,13 @@ import QueueAnim from 'rc-queue-anim';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 // import stripePackage from 'stripe';
-
-const stripe = stripePackage(
-
-  stripe_secret_key:'sk_test_YfFRiwwNYa1RZkUOCl7pG0SE',
-  stripe_public_key:'pk_test_zn4lG02O0aB65P7ku4FeCnZ7'
-
-);
+//
+// const stripe = stripePackage(
+//
+//   stripe_secret_key:'sk_test_YfFRiwwNYa1RZkUOCl7pG0SE',
+//   stripe_public_key:'pk_test_zn4lG02O0aB65P7ku4FeCnZ7'
+//
+// );
 
 
 class CardDetails extends React.Component {

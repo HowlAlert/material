@@ -52,7 +52,7 @@ class Pack extends React.Component {
   render() {
     const ms = this.state.data2
     var v = moment.utc(moment.duration({'s':ms}).asMilliseconds()).format("HH :mm :ss");
-  
+
     let filteredNames = this.state.data.filter(
       (dynamicdata)=>{
         return dynamicdata.FirstName.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
@@ -87,7 +87,13 @@ class Pack extends React.Component {
                      <div className="box box-default">
                          <div className="box-body ">
                         {dyanamicData.FirstName} {" "}
-                        {dyanamicData.PhoneNumber}</div>
+                        {dyanamicData.PhoneNumber}
+                        
+                        <span className="float-right">
+                          <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e,dynamicData.ID)}/>
+                        </span>
+
+                      </div>
 
                       </div>
 

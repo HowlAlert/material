@@ -3,10 +3,84 @@ import QueueAnim from 'rc-queue-anim';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import cookie from 'react-cookies';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+// import settings from '../../../../appsettings/components/settings';
 
 
 
-class EditProfile extends React.Component {
+class EditProfile extends React.Component {                  //On Page Open
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      Fname:'',
+      Lname:'',
+      Email:''
+    };
+  }
+
+handleSave(event){
+
+    alert("No updates done!")
+}
+
+
+  handleEditprofile(event) {
+       this.setState({ redirectToReferrer: true })
+  }
+
+
+render() {
+var fname=cookie.load('Firstname');            //Loading Initial values before editting
+console.log(fname);
+var lname = cookie.load('LastName')
+console.log(lname);
+var email = cookie.load('Email')
+console.log(email);
+var phonenumber = cookie.load('MobilePhoneNumber')
+ console.log(phonenumber);
+
+
+ const { redirectToReferrer} = this.state
+   if(redirectToReferrer === true)
+   {
+     return (
+        <Profile />
+      )
+   }
+    return (
+        <article className="article">
+          <h2 className="article-title text-center">Edit Profile</h2>
+          <div className="container-fluid with-maxwidth">
+            <div className="row">
+              <div className="col-xl-6">
+                <div className="box box-transparent">
+                  <div className="box-body padding-lg-h">
+                    <form name="EditProfileForm">
+                      <div className="form-group">
+                        <div className="form-group">
+                          <TextField onClick={(e)=>this.handleEditprofile(e)}  value={fname} floatingLabelText="FIRST NAME" fullWidth />
+                          <TextField onClick={(e)=>this.handleEditprofile(e)}  name="Lname" value={lname} floatingLabelText="LAST NAME" fullWidth />
+                          <TextField onClick={(e)=>this.handleEditprofile(e)} name="Email" value={email} floatingLabelText="EMAIL ADDRESS"  name="Email"/>
+                          <TextField floatingLabelText="PHONE NUMBER" value={phonenumber} fullWidth />
+                        </div>
+                          <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e)}/>
+                      </div>
+                     </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      );
+     }
+   }
+
+
+
+
+class Profile extends React.Component {
 
 
   constructor(props) {
@@ -115,7 +189,8 @@ class EditProfile extends React.Component {
       if(redirectToReferrer === true)
       {
         return (
-           <EditProfile />
+          <Redirect to="../Settings"/>
+          //  <settings />
          )
       }
 
