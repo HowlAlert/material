@@ -4,6 +4,8 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import cookie from 'react-cookies';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+import settings from '../../../../appsettings';
 
 class SearchAddress extends React.Component {
 
@@ -21,29 +23,68 @@ class SearchAddress extends React.Component {
      event.preventDefault()
 
      geocodeByAddress(this.state.address)
-       .then(results => getLatLng(results[0]))
-       .then(latLng => {console.log('Success', latLng),cookie.save('latLng',latLng)})
-       .catch(error => console.error('Error', error))
-       var myString = this.state.address;
-       console.log(myString);
+       .then(results =>{
+         this.setState({
+               address_com:results[0],
 
-       var array = myString.split(',');
-       var address1 = JSON.stringify(array[0]);
-       console.log(address1);
-       var city = JSON.stringify(array[1]);
-       console.log(city);
-       var state = JSON.stringify(array[2]);
-       console.log(state);
+
+               street_no:results[0].address_components[0].long_name,
+               street_name:results[0].address_components[1].long_name,
+               city:results[0].address_components[3].long_name,
+               state:results[0].address_components[5].long_name,
+               // country:results[0].address_components[6].long_name,
+               zipcode:results[0].address_components[7].long_name
+
+
+            })
+
+         console.log(results[0]);
+
+        cookie.save('street',this.state.street_no+" "+this.state.street_name)
+        console.log(cookie.load('street'));
+
+        cookie.save('city',this.state.city)
+        console.log(cookie.load('city'));
+
+        cookie.save('state',this.state.state)
+        console.log(cookie.load('state'));
+
+        // cookie.save('country',this.state.country)
+        // console.log(cookie.load('country'));
+
+        cookie.save('zipcode',this.state.zipcode)
+        console.log(cookie.load('zipcode'));
+
+       })
+       .then(results => getLatLng(this.state.address_com))
+       .then(latLng => {
+
+          this.setState({
+              Latitude:latLng.lat,
+              Longitude:latLng.lng
+          })
+        console.log(latLng)
+        cookie.save('Latitude',this.state.Latitude)
+        console.log(cookie.load('Latitude'))
+
+         cookie.save('Longitude',this.state.Longitude)
+         console.log(cookie.load('Longitude'))
+        })
+       .catch(error => {
+         console.error('Error', error)
+          alert("Enter Complete Address with Street Number!");
+           this.setState({ redirectToReferrer: false })
+       })
+
 
        cookie.save('new_address',this.state.address),
        console.log(cookie.load('new_address'));
 
-console.log(this.state.formattedAddress);
+
 
        this.setState({ redirectToReferrer: true })
 
    }
-
 
   render() {
     const inputProps = {
@@ -58,6 +99,8 @@ console.log(this.state.formattedAddress);
             <UpdateAddress />
           )
        }
+       // this.state.address_com.map((dyanamicData,key)=>
+       console.log(this.state.address_com)
 
   return (
    <div className="container-fluid with-maxwidth">
@@ -68,7 +111,9 @@ console.log(this.state.formattedAddress);
              <form onSubmit={this.handleFormSubmit}>
                <div className="form-group">
                       <PlacesAutocomplete inputProps={inputProps} />
+
                </div>
+
                  <span className="float-right">  <RaisedButton  primary type="submit">Submit</RaisedButton></span>
               </form>
 
@@ -105,13 +150,13 @@ class UpdateAddress extends React.Component {
        body: JSON.stringify({
           "UserID":cookie.load('Id'),
           "UserToken":cookie.load('UserToken'),
-          "HomeAddress1": "225 Atlantic",
-          "HomeAddress2": "",
-          "HomeCity": "Bridgeport",
-          "HomeState":"connecticut",
-          "HomeZip":"06604",
-          "Latitude": "41.1798",
-          "Longitude": "-73.1914"
+          "HomeAddress1":cookie.load('street'),
+          "HomeAddress2":this.state.Apt_no,
+          "HomeCity": cookie.load('city'),
+          "HomeState":cookie.load('state'),
+          "HomeZip":cookie.load('zipcode'),
+          "Latitude": cookie.load('Latitude'),
+          "Longitude": cookie.load('Longitude')
        }),
         headers: new Headers({'content-type': 'application/json'}),
       })
@@ -120,13 +165,32 @@ class UpdateAddress extends React.Component {
            console.log(findresponse)
 
           })
-
+       alert("Address Got updated");
+       this.setState({ redirectToReferrer: true })
       }
 
+      handleValue(event) {
+         event.preventDefault();
+          const target = event.target;
+          const value = target.type === target.value;
+          const name = target.name;
+
+       this.setState({
+             Apt_no: target.value
+           });
+           console.log(target.value) ;
+           return target.value;
+       }
 
   render() {
 
-
+    const { redirectToReferrer} = this.state
+      if(redirectToReferrer === true)
+      {
+        return (
+           <settings />
+         )
+      }
 
   return (
    <div className="container-fluid with-maxwidth">
@@ -136,12 +200,12 @@ class UpdateAddress extends React.Component {
            <div className="box-body padding-lg-h">
 
                <div className="form-group">
-                 <TextField floatingLabelText="ENTER ADDRESS " value={cookie.load('new_address')}  fullWidth />
-                 <TextField floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
+                 <TextField floatingLabelText="ENTER COMPLETE ADDRESS " value={cookie.load('new_address')}  fullWidth />
+                 <TextField onChange={(e)=>this.handleValue(e)} name="Apt_no" floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
 
                  <span className="float-right">  <i className="material-icons">location_on</i></span>
                </div>
-                 <RaisedButton  primary type="submit">SAVE</RaisedButton>
+                 <RaisedButton onClick={(e)=>this.handleNext(e)} primary type="submit">SAVE</RaisedButton>
 
 
            </div>
@@ -197,6 +261,10 @@ class UpdateAddress extends React.Component {
       handleNext(event) {
            this.setState({ redirectToReferrer: true })
       }
+
+      handleClick(event) {
+           alert("Enter New Address to Update!")
+      }
     render() {
 
      var address1 = this.state.data.Address1;
@@ -204,7 +272,7 @@ class UpdateAddress extends React.Component {
      var city = this.state.data.City;
      var state = this.state.data.State;
      var zip =this.state.data.Zip;
-     var oldaddress=(address1 +","+ address2 +" "+ city +" "+ state+" " + zip);
+     var oldaddress=(address1 +","+ city +" "+ state+" " + zip);
      console.log(oldaddress);
 
     const { redirectToReferrer} = this.state
@@ -233,11 +301,11 @@ class UpdateAddress extends React.Component {
                    />
 
                    <div className="form-group">
-                     <TextField floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
+                     <TextField  value={address2} floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
 
                      <span className="float-right">  <i className="material-icons">location_on</i></span>
                    </div>
-                      <RaisedButton  primary type="submit">Submit</RaisedButton>
+                      <RaisedButton  onClick={(e)=>this.handleClick(e)} primary type="submit">Submit</RaisedButton>
                  </div>
 
 

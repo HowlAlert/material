@@ -14,7 +14,7 @@ class EditProfile extends React.Component {
     this.state = {
       Fname:'',
       Lname:'',
-
+      Email:''
     };
   }
 
@@ -42,18 +42,18 @@ class EditProfile extends React.Component {
           console.log(target.value) ;
           return target.value;
         }
-  // handleEmail(event) {
-  //    event.preventDefault();
-  //    const target = event.target;
-  //  const value = target.type === target.value;
-  //  const name = target.name;
-  //
-  //  this.setState({
-  //        Email: target.value
-  //      });
-  //      console.log(target.value) ;
-  //      return target.value;
-  //    }
+  handleEmail(event) {
+     event.preventDefault();
+     const target = event.target;
+   const value = target.type === target.value;
+   const name = target.name;
+
+   this.setState({
+         Email: target.value
+       });
+       console.log(target.value) ;
+       return target.value;
+     }
 
   // handleSave(event) {
   //    event.preventDefault();
@@ -79,7 +79,7 @@ class EditProfile extends React.Component {
                                "UserToken":cookie.load('UserToken'),
                                "FirstName": this.state.Fname,
                                "LastName": this.state.Lname,
-                               "Email":"varuna808@gmail.com"
+                               "Email":this.state.Email
 
                            }),
                             headers: new Headers({'content-type': 'application/json'}),
@@ -88,13 +88,37 @@ class EditProfile extends React.Component {
                       .then((findresponse)=>{
                           console.log(findresponse)
                           this.setState({
-                             data:findresponse.UpdateUserProfileResult.GetUser
+                             status:findresponse.UpdateUserProfileResult.ResultStatus.Status,
+                             message:findresponse.UpdateUserProfileResult.ResultStatus.StatusMessage
                                             })
+                                            console.log(this.state.status);
+                                            console.log(this.state.message);
+                                            if(this.state.status === "0")
+                                            {
+                                              alert(this.state.message);
+                                              this.setState({ redirectToReferrer: true })
+                                            }
+
+                                            else {
+
+                                                alert("Updated Profile!")
+                                              this.setState({ redirectToReferrer: true })
+                                            }
+
                                        })
 
    }
 
   render() {
+
+    const { redirectToReferrer} = this.state
+      if(redirectToReferrer === true)
+      {
+        return (
+           <EditProfile />
+         )
+      }
+
 
     return (
         <article className="article">
@@ -109,7 +133,7 @@ class EditProfile extends React.Component {
                         <div className="form-group">
                           <TextField onChange={(e)=>this.handleFname(e)} name="Fname" value={this.state.value} floatingLabelText="FIRST NAME" fullWidth />
                           <TextField onChange={(e)=>this.handleLname(e)} name="Lname" value={this.state.value} floatingLabelText="LAST NAME" fullWidth />
-                          <TextField floatingLabelText="EMAIL ADDRESS"  name="Email"/>
+                          <TextField onChange={(e)=>this.handleEmail(e)} name="Email" value={this.state.value} floatingLabelText="EMAIL ADDRESS"  name="Email"/>
                           <TextField floatingLabelText="PHONE NUMBER" fullWidth />
                         </div>
                           <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e)}/>

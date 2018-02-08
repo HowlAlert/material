@@ -9,7 +9,7 @@ const Monitor = () => (
      Subscribe to HOWL monitoring for only $7.99/month ($95.88 annually) for our authenticated third-party. 24-hour monitoring service who will contact the corresponding authorities on your behalf when you send alerts (POLICE, AMBULANCE, FIRE).
     <center><div>*All alerts will notify Pack by default.</div></center>
     <center>
-      <button className="card bg-color-primary">MONTHLY PLAN - $7.99/MO </button>
+      <button className="card bg-color-primary"><a href="cam-add-devices#/app/cameraDevices/connect">MONTHLY PLAN - $7.99/MO </a></button>
     </center>
     <center>
       <button className="card bg-color-primary">YEARLY PLAN - $95.88/YR </button>

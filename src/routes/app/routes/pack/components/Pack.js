@@ -43,7 +43,7 @@ class Pack extends React.Component {
   }
 
   updateSearch(event) {
-    
+
     this.setState({
       search: event.target.value.substr(0,35)
     });
@@ -51,8 +51,8 @@ class Pack extends React.Component {
 
   render() {
     const ms = this.state.data2
-    var v = moment.utc(moment.duration({'s':ms}).asMilliseconds()).format("HH:mm:ss");
-
+    var v = moment.utc(moment.duration({'s':ms}).asMilliseconds()).format("HH :mm :ss");
+  
     let filteredNames = this.state.data.filter(
       (dynamicdata)=>{
         return dynamicdata.FirstName.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
@@ -81,10 +81,13 @@ class Pack extends React.Component {
 
               <div>
                 {
+
                      filteredNames.map((dyanamicData,key)=>
-                      <div id = "FirstName">
+
+                     <div className="box box-default">
+                         <div className="box-body ">
                         {dyanamicData.FirstName} {" "}
-                      <div>{dyanamicData.PhoneNumber}</div>
+                        {dyanamicData.PhoneNumber}</div>
 
                       </div>
 

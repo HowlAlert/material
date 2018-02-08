@@ -16,7 +16,6 @@ class History extends React.Component {
 componentDidMount(){
 
   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
-
       fetch(BaseURL,
       {
        method: "POST",
@@ -60,7 +59,7 @@ componentDidMount(){
       }
 
   render() {
-      
+
     return (
       <div className="box box-transparent">
         <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="150" width="150"/>

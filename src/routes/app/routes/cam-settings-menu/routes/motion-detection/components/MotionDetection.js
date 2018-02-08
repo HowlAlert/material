@@ -2,8 +2,8 @@ import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import Toggle from 'material-ui/Toggle';
 import Schedule from './Schedule';
-import MotionSensitivity from './MotionSensitivity';
 import Detection from './Detection';
+import MotionSensitivity from './MotionSensitivity';
 
 const styles = {
   toggle: {

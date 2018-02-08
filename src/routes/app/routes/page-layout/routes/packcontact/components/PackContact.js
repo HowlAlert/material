@@ -71,44 +71,67 @@ class Contact extends React.Component {
 
    handleNext(event) {
 
+
+     var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":this.state.phonenumber,"UserPackID":"0", "PhoneNumberCountryCode": "1"}]);
+     console.log(object);
+
+
            const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddUpdateUserPack';
+
 
                fetch(BaseURL,
                {
-                    method: "POST",
-                    body: JSON.stringify(
-                    {
-                    "UserID":cookie.load('Id'),
-                    "UserToken":cookie.load('UserToken'),
-                    "PackMemberList": {
-			                       "Email": this.state.email,
-			                       "FirstName": this.state.fname,
-			                       "LastName": this.state.lname,
-			                       "PhoneNumber":this.state.phonenumber,
-			                       "ProfileImageURL": " ",
-			                       "PhoneNumberCountryCode": "1"
+                method: "POST",
+                body: JSON.stringify({
+                  "UserID":cookie.load('Id'),
+                  "UserToken":cookie.load('UserToken'),
+                  "PackMemberList":object
 
-                            }
-
-                }
-              ),
-                 // headers: {
-                 //               'Content-Type': 'application/json',
-                 //               'Accept': 'application/json'
-                 //        }
+                }),
+                 headers: new Headers({'content-type': 'application/json'}),
                })
-               .then(response => {
-                          if (response.ok) {
-                            response.json().then(json => {
-                                              console.log(json);
-                                             }  );
+           .then((Response)=> Response.json())
+           .then((findresponse)=>{
+             console.log(findresponse);
+
+             this.setState({
+                      status:findresponse.AddUpdateUserPackResult.ResultStatus.Status,
+                      message:findresponse.AddUpdateUserPackResult.ResultStatus.StatusMessage
+                        })
+
+                        console.log(this.state.status);
+                        console.log(this.state.message);
+                        if(this.state.status === "0")
+                        {
+                          alert(this.state.message);
+                          this.setState({ redirectToReferrer: true })
                         }
-                        });
+
+                        else {
+
+                            alert("New Pack Member added!")
+                          this.setState({ redirectToReferrer: true })
+                        }
+
+           })
+
+
+
+
 
            }
 
 
   render() {
+
+    const { redirectToReferrer} = this.state
+      if(redirectToReferrer === true)
+      {
+        return (
+           <Contact />
+         )
+      }
+
 
     return (
   <section className="container-fluid with-maxwidth-md chapter">
