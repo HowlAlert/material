@@ -26,7 +26,7 @@ const mWidthStyle = {
   minWidth: '130px'
 };
 
-class HowlLogin extends React.Component {
+class MainLogin extends React.Component {
   constructor(props) {
 
     super(props);
@@ -51,14 +51,18 @@ class HowlLogin extends React.Component {
       console.log(response.profileObj.email);
 
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithGoogle';
-
+      fetch(BaseURL,{
+       method: "POST",
+       body: JSON.stringify({'FirstName':response.w3.ofa,'LastName':response.w3.wea,'Email':response.profileObj.email,'GoogleID':response.googleId,'DeviceToken':'','InviteCode':'','TimeZone':''}),
+      headers: new Headers({'content-type': 'application/json'})
+      }).
 
       then((Response)=>Response.json()).
       then((findresponse)=>{
         this.setState({
           GetUser:findresponse.LoginWithGoogleResult.GetUser,
           ResultStatus:findresponse.LoginWithGoogleResult.ResultStatus,
-        })
+        });console.log(this.state.GetUser);
         if(this.state.ResultStatus.Status==="1"){
           console.log("status"),
           cookie.save('Id', this.state.GetUser.ID);
@@ -125,14 +129,14 @@ class HowlLogin extends React.Component {
     const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {
-      const options = { redirectToReferrer: true, redirectPath: '#/Welcome', driver: 'COOKIES' };
+      const options = { redirectToReferrer: true, redirectPath: '/Welcome', driver: 'COOKIES' };
       sessionService.initSessionService(store, options)
         .then(() => console.log('Redux React Session is ready and a session was refreshed from your storage'))
         .catch(() => console.log('Redux React Session is ready and there is no session in your storage'));
 
       console.log(redirectToReferrer)
           return (
-            <Route onEnter={sessionService.checkAuth} component={PageWelcome} />
+            <Redirect to="Welcome" />
           )
         }
 
@@ -142,7 +146,6 @@ class HowlLogin extends React.Component {
               <div className="card-content">
               <ul className="nav" ref={(c) => { this.nav = c; }}>
                 <li className="nav-header"><span></span></li>
-
                 </ul>
                 <img src="assets/images/HOWL.png" alt="HOWL" />
                 <div className="text-center">
@@ -185,7 +188,7 @@ const Page = () => (
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">
-          <HowlLogin />
+          <MainLogin />
         </div>
       </QueueAnim>
     </div>

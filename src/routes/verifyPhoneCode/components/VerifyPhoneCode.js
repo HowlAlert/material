@@ -19,7 +19,7 @@ import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom
 const mWidthStyle = {
   minWidth: '130px'
 };
-class Register5 extends React.Component {
+class VerifyPhoneCode extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -91,7 +91,7 @@ console.log(cookie.load('UserToken'));
     const { redirectToReferrer} = this.state
     if (redirectToReferrer) {
           return (
-            <Redirect to="Login" />
+            <Route component={PageLogin} />
           )
         }
 
@@ -157,7 +157,7 @@ const Page = () => (
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">
-          <Register5 />
+          <VerifyPhoneCode />
         </div>
 
 

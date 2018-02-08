@@ -185,7 +185,7 @@ this.setState({
 
       console.log(redirectToReferrer)
           return (
-            <Route onEnter={sessionService.checkAuth} component={PageWelcome} />
+            <Redirect to="../../Welcome" />
           )
         }
 

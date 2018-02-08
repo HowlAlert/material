@@ -25,6 +25,11 @@ import PageSchedule from 'routes/schedule/'
 import PageScheduling from 'routes/scheduling/'
 import PagePack from 'routes/pack/'
 import PageFeedback from 'routes/feedback/'
+import PageEditprofile from 'routes/editprofile/'
+import PageEditPhoneNumber from 'routes/editPhoneNumber/'
+import PageVerifyPhoneCode from 'routes/verifyPhoneCode/'
+import PageMainLogin from 'routes/mainLogin/'
+
 // = styles =
 // 3rd
 import 'styles/bootstrap.scss';
@@ -97,6 +102,10 @@ class App extends Component {
             <Route exact path="/schedule" component={PageSchedule} />
             <Route exact path="/pack" component={PagePack} />
             <Route exact path="/feedback" component={PageFeedback} />
+            <Route exact path="/editprofile" component={PageEditprofile} />
+            <Route exact path="/editPhoneNumber" component={PageEditPhoneNumber} />
+            <Route exact path="/verifyPhoneCode" component={PageVerifyPhoneCode} />
+            <Route exact path="/mainLogin" component={PageMainLogin} />
           </div>
         </div>
       </MuiThemeProvider>

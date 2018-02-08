@@ -74,7 +74,7 @@ class Register extends React.Component {
           console.log("status")
           this.setState({ redirectToReferrer: true })
            }
-           else{
+           else if(this.state.GetUser.ID===null){
               this.setState({ redirectToReferrer: false })
            }
       })
@@ -142,7 +142,7 @@ this.setState({
 
       console.log(redirectToReferrer)
           return (
-            <Route component={PageRegister4} />
+            <Redirect to="Register4" />
           )
         }else if (redirectToReferrer==false){
           return (

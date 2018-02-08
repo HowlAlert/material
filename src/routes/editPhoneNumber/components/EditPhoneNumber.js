@@ -24,7 +24,7 @@ import './phone-number.css';
 const mWidthStyle = {
   minWidth: '130px'
 };
-class Register4 extends React.Component {
+class EditPhoneNumber extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -122,7 +122,7 @@ this.handleCountry = this.handleCountry.bind(this);
     const { redirectToReferrer} = this.state
     if (redirectToReferrer) {
           return (
-            <Redirect to="Register5" />
+            <Redirect to="VerifyPhoneCode" />
           )
         }
 
@@ -143,7 +143,7 @@ this.handleCountry = this.handleCountry.bind(this);
               </li>
               </ul>
               <img src="assets/images/HOWL2.png" alt="HOWL" />
-              <p className="hero-title text-center">verify your phone number</p>
+              <p className="hero-title text-center">Change your phone number</p>
         <div className="phone-number" style={{display:'flex'}}>
           <div className="phone-number--country">
           <Select value={this.state.country} onChange={this.handleCountry} placeholder="country code"
@@ -175,16 +175,12 @@ this.handleCountry = this.handleCountry.bind(this);
   }
 }
 
-
-
-
-
 const Page = () => (
   <div className="page-login">
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">
-          <Register4 />
+          <EditPhoneNumber />
         </div>
   </QueueAnim>
     </div>

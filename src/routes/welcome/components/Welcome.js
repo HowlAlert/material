@@ -102,7 +102,7 @@ const { redirectToReferrer} = this.state
        if (redirectToReferrer) {
          console.log(redirectToReferrer)
              return (
-               <Route component={Login}/>
+               <Redirect to="mainLogin"/>
              )
            }
     return (
