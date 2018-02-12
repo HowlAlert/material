@@ -13,10 +13,14 @@ import Print from './routes/print/'
 import Feedback from './routes/feedback/'
 import Contact from './routes/contact/'
 import Conditions from './routes/Terms/'
+import EditPhoneNumber from './routes/editPhonenumber/'
+import PhoneVerifyCode from './routes/phonecode/'
 
 const PageLayout = ({ match }) => (
   <div>
     <Route path={`${match.url}/editprofile`} component={EditProfile}/>
+    <Route path={`${match.url}/editPhonenumber`} component={EditPhoneNumber}/>
+        <Route path={`${match.url}/phonecode`} component={PhoneVerifyCode}/>
     <Route path={`${match.url}/notify`} component={Notify}/>
     <Route path={`${match.url}/address`} component={Home}/>
       <Route path={`${match.url}/searchaddress`} component={Address}/>
@@ -28,6 +32,7 @@ const PageLayout = ({ match }) => (
     <Route path={`${match.url}/feedback`} component={Feedback}/>
     <Route path={`${match.url}/contact`} component={Contact}/>
     <Route path={`${match.url}/Terms`} component={Conditions}/>
+
 
 
 

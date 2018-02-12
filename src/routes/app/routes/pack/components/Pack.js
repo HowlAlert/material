@@ -3,7 +3,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import QueueAnim from 'rc-queue-anim';
 import moment from 'moment';
-
+import cookie from 'react-cookies';
 class Pack extends React.Component {
 
   constructor() {
@@ -40,6 +40,7 @@ class Pack extends React.Component {
 
          })
       })
+      
   }
 
   updateSearch(event) {
@@ -48,6 +49,55 @@ class Pack extends React.Component {
       search: event.target.value.substr(0,35)
     });
   }
+
+
+  handleDelete(value) {
+
+    alert("Are you sure you want to delete?")
+
+      var packid = `${value}`;
+      console.log(packid)
+    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/DeleteFromUserPack';
+
+        fetch(BaseURL,
+        {
+         method: "POST",
+         body: JSON.stringify({
+           "UserID":cookie.load('Id'),
+           "UserToken":cookie.load('UserToken'),
+           "UserPackID" :packid
+         }),
+          headers: new Headers({'content-type': 'application/json'}),
+        })
+    .then((Response)=> Response.json())
+    .then((findresponse)=>{
+        console.log(findresponse)
+
+        this.setState({
+                 status:findresponse.DeleteFromUserPackResult.ResultStatus.Status,
+                 message:findresponse.DeleteFromUserPackResult.ResultStatus.StatusMessage
+                   })
+
+                   // console.log(this.state.status);
+                   // console.log(this.state.message);
+                   if(this.state.status === "0")
+                   {
+                     alert(this.state.message);
+
+                   }
+
+                   else {
+
+                       alert("Deleted Pack Member!")
+
+                   }
+
+      })
+
+
+  }
+
+
 
   render() {
     const ms = this.state.data2
@@ -88,9 +138,14 @@ class Pack extends React.Component {
                          <div className="box-body ">
                         {dyanamicData.FirstName} {" "}
                         {dyanamicData.PhoneNumber}
-                        
+                        {/* <div>                    //Get individual pack id
+                          {dyanamicData.ID}
+                        </div> */}
+
                         <span className="float-right">
-                          <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e,dynamicData.ID)}/>
+                          {/* <RaisedButton primary label="Delete" onClick={(e)=>this.handleDelete(e,dyanamicData.ID)}/> */}
+                          <RaisedButton primary label="Delete" onClick={()=>this.handleDelete(dyanamicData.ID)}/>
+
                         </span>
 
                       </div>

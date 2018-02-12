@@ -40,24 +40,28 @@ class Detection extends React.Component {
 
 
  UpdateToggleStatus(event) {
- // event.preventDefault();
-      var state = cookie.load('togglestate');
-      console.log(state);
-       if(state === "true")
-       {
 
-           this.setState({ status:1,
-                          sensitivity:4})
-           console.log(this.state.status)
-           // console.log(2);
+ event.preventDefault();
+ // var state = cookie.load('togglestate');
+ // console.log(state);
 
-       }
-       else {
-         this.setState({status:2,
-                           sensitivity:7 })
-         console.log(this.state.status)
-         // console.log(1);
-       }
+ var s =this.state.ts
+ console.log(s);
+  if(s === "true")
+  {
+
+      this.setState({ status:1,
+                     sensitivity:4})
+      console.log(this.state.status)
+      // console.log(2);
+
+  }
+  else {
+    this.setState({status:2,
+                      sensitivity:7 })
+    console.log(this.state.status)
+    // console.log(1);
+  }
 if(this.state.status==="" && this.state.sensitivity==="")
 {
   alert("Not Updated");
@@ -140,7 +144,8 @@ else{
            if(mds === "1")
            {
              Toggled: true
-             this.setState({Toggled: true,value:4
+             this.setState({
+               Toggled: true,value:4
 
              });
              console.log(true)
@@ -163,9 +168,11 @@ else{
   render() {
 
     var togglestate=this.state.Toggled;
-    console.log(togglestate)
+    console.log(togglestate);
+    // this.setState({ ts:togglestate})
+    // cookie.save('togglestate',togglestate);
 
-    cookie.save('togglestate',togglestate);
+
 
     // var selected_value=this.state.value;
     // console.log(selected_value)

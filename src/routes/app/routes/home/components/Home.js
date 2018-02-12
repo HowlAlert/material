@@ -177,30 +177,16 @@ const { redirectToReferrer} = this.state
   </div>
 
 
-        <div className="col-xl-4 col-lg-8 rounded mx-auto d-block">
-          <div className="card bg-color-primary text-center">
-            <div className="card-content">
-              <span className="card-title">AMBULANCE</span>
-            </div>
-            <div className="card-action">
-              <a href="javascript:;">SUBSCRIBE</a>
-            </div>
-          </div>
+        <div className="col-xl-4 col-lg-8 rounded mx-auto d-block ">
+            <img src="assets/images/ambulance-button-unsubscribed.png"/>
         </div>
 
 
         <div className="col-xl-4 col-lg-6">
-          <div className="card bg-color-primary text-center">
-            <div className="card-content">
-              <span className="card-title">POLICE</span>
-            </div>
-            <div className="card-action">
-              <a href="javascript:;">SUBSCRIBE</a>
-            </div>
-          </div>
+          <img src="assets/images/police-button-unsubscribed.png"/>
         </div>
 
-        <div className="col-xl-4 col-lg-6">
+        {/* <div className="col-xl-4 col-lg-6">
           <div className="card bg-color-primary text-center">
             <div className="card-content ">
               <span className="card-title">FIRE</span>
@@ -209,13 +195,14 @@ const { redirectToReferrer} = this.state
               <a href="javascript:;">SUBSCRIBE</a>
             </div>
           </div>
+        </div> */}
+        <div className="col-xl-4 col-lg-6">
+          <img src="assets/images/fire-button-unsubscribed.png"/>
         </div>
 
-      <div className="col-xl-4 col-lg-8 rounded mx-auto d-block">
+      {/* <div className="col-xl-4 col-lg-8 rounded mx-auto d-block">
         <div className="card bg-danger text-center ">
-          <div className="card-content">
-            <span className="card-title">ALERT PACK</span>
-          </div>
+            <img src="assets/images/alert-pack-button.png"/>
           <div className="card-action">
               <a href="javascript:;">
               <h5 onClick={this.handleOpen}>CLICK & HOLD FOR 3 SECONDS TO SOUND ALARM</h5></a>
@@ -230,9 +217,26 @@ const { redirectToReferrer} = this.state
               </Dialog>
           </div>
         </div>
-      </div>
-      >
+      </div> */}
 
+      <div className="col-xl-4 col-lg-8 rounded mx-auto d-block">
+
+            <img src="assets/images/alert-pack-button.png"/>
+
+              <a href="javascript:;">
+              <h5 onClick={this.handleOpen}>CLICK HERE TO ALARM</h5></a>
+              <Dialog
+                title="Confirm"
+                actions={actions}
+                modal={false}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+              >
+              <h5>You want to Alert your Pack Members?</h5>
+              </Dialog>
+
+
+      </div>
 
       </div>
     </div>

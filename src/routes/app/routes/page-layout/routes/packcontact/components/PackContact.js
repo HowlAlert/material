@@ -4,6 +4,7 @@ import QueueAnim from 'rc-queue-anim';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import cookie from 'react-cookies';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 
 class Contact extends React.Component {
 
@@ -99,8 +100,8 @@ class Contact extends React.Component {
                       message:findresponse.AddUpdateUserPackResult.ResultStatus.StatusMessage
                         })
 
-                        console.log(this.state.status);
-                        console.log(this.state.message);
+                        // console.log(this.state.status);
+                        // console.log(this.state.message);
                         if(this.state.status === "0")
                         {
                           alert(this.state.message);
@@ -109,8 +110,8 @@ class Contact extends React.Component {
 
                         else {
 
-                            alert("New Pack Member added!")
-                          this.setState({ redirectToReferrer: true })
+                            alert("Would you like to add another pack member?");
+                            this.setState({ redirectToReferrer: true })
                         }
 
            })
@@ -131,6 +132,7 @@ class Contact extends React.Component {
            <Contact />
          )
       }
+
 
 
     return (

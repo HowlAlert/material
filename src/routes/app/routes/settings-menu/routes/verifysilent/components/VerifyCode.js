@@ -3,6 +3,8 @@ import QueueAnim from 'rc-queue-anim';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import cookie from 'react-cookies';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+
 
 class VerifyCancelCode extends React.Component {
 
@@ -69,7 +71,9 @@ class VerifyCancelCode extends React.Component {
      .then((Response)=> Response.json())
      .then((findresponse)=>{
          console.log(findresponse)
-        alert("Silent Code has been changed");
+          alert("Silent Code has been changed");
+
+           this.setState({ redirectToReferrer: true })   //redirect to settings menu
        })
    }
    else {
@@ -81,6 +85,15 @@ class VerifyCancelCode extends React.Component {
 
 
 render() {
+
+  const { redirectToReferrer} = this.state
+    if(redirectToReferrer === true)
+    {
+      return (
+        <Redirect to="../Settings"/>
+
+       )
+    }
 
 
   return (

@@ -33,12 +33,61 @@ class Alerts extends React.Component {
       console.log(findresponse)
       this.setState({
          data:findresponse.GetUserFeedResult.getUserFeeds,
-         length:findresponse.GetUserFeedResult.getUserFeeds.length
+         length:findresponse.GetUserFeedResult.getUserFeeds.length,
+         // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+         a:findresponse.GetUserFeedResult.getUserFeeds.map((number,key) =>
+                    fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                            {
+
+                                 method: "POST",
+                                 body: JSON.stringify({
+                                   "url":number.ImageURL
+                                    // "url":this.state.url1
+                                 }),
+
+                                headers: new Headers({'content-type':'application/json'}),
+
+                          })
+                          .then((Response)=> Response.json())
+
+                       .then((findresponse1)=>{
+
+                         var obj = {
+                             length: 0,
+
+                             addElem: function addElem(elem) {
+                                 // obj.length is automatically incremented
+                                 // every time an element is added.
+                                 [].push.call(this, elem);
+                             }
+                         };
+                         console.log(obj.length);
+                         // this.setState({
+                         //            data1:findresponse1.GetImageDataResult
+                       //   //          })
+                                  this.setState({
+                         data1:<img src={`data:image/jpg;base64,${findresponse1.GetImageDataResult}`} alt="Image" height="150" width="150"/>
+
+                              })
+                       //   var pairs = [];
+                       // //
+                       // pairs.push(findresponse1);
+                       //
+                       //   // JSON.stringify(findresponse1);
+                       //   console.log({pairs})
+                         // console.log({key})
+
+                       })
+
+
+         )
       })
 
       console.log(this.state.length)
       console.log(this.state.data)
-
+      console.log(this.state.a)
+      console.log(this.state.a1)
+      console.log(this.state.a.length)
 
       // const a = this.state.data.map((number) => number.ImageURL);
       // console.log(a);
@@ -54,24 +103,27 @@ class Alerts extends React.Component {
        //
        //  }
 
-
-      this.setState({
-         // url1:findresponse.GetUserFeedResult.getUserFeeds["0"].ImageURL
-            a:this.state.data.map((number) => number.ImageURL)
-      })
-      //
-      console.log(this.state.a)
-      console.log(this.state.a.length)
-
-
-// for(var i=0; i < this.state.a.length; i++) {
+//
+//       this.setState({
+//          // url1:findresponse.GetUserFeedResult.getUserFeeds["0"].ImageURL
+//             a:this.state.data.map((number) => number.ImageURL)
+//       })
+//       //
+//       console.log(this.state.a)
+//       console.log(this.state.a.length)
+//
+//
+// for(var i=0; i < this.state.a.length; i++){
 //                fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
 //                     {
 //
 //                          method: "POST",
+//
 //                          body: JSON.stringify({
 //                            // "url":dyanamicData.ImageURL
-//                             "url":this.state.a[i]
+//
+//                                "url":this.state.a[i]
+//
 //                         }),
 //                         headers: new Headers({'content-type':'application/json'}),
 //
@@ -81,14 +133,19 @@ class Alerts extends React.Component {
 //                .then((Response)=> Response.json())
 //
 //                .then((findresponse1)=>{
-//                    this.setState({
-//                       data1:findresponse1
 //
-//
-//                    })
-//                    for(var i=0; i < this.state.length; i++){
-//                      data2:findresponse1.GetImageDataResult
-//                    }
+//               for(var i=0; i < this.state.a.length; i++){
+//            this.setState({
+//                 data1:findresponse1.GetImageDataResult
+//                    // this.setState({
+//                    //    // data:<img src={`data:image/jpg;base64,${findresponse1.GetImageDataResult}`} alt="Image" height="150" width="150"/>
+//                    //
+//                   })
+//                 }
+//                    console.log(this.state.data1)
+//                    // for(var i=0; i < this.state.length; i++){
+//                    //   data2:findresponse1.GetImageDataResult
+//                    // }
 //                    // console.log(JSON.stringify(this.state.data1))
 //
 //                          // this.setState({
@@ -100,48 +157,60 @@ class Alerts extends React.Component {
 //                })
 // }
 
-      findresponse.GetUserFeedResult.getUserFeeds.map((dyanamicData,key)=>
-
-               fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
-                    {
-
-                         method: "POST",
-                         body: JSON.stringify({
-                           "url":dyanamicData.ImageURL
-                            // "url":this.state.url1
-                         }),
-
-                        headers: new Headers({'content-type':'application/json'}),
-
-                  })
-
-
-               .then((Response)=> Response.json())
-
-               .then((findresponse1)=>{
-                   // this.setState({
-                   //    // data1:findresponse1
-                   //   a:findresponse1.map((number) => number.GetImageDataResult)
-                   //    // for(i=0;i<20;i++){
-                   //    //   data2:[findresponse1.GetImageDataResult]
-                   //    // }
-                   //
-                   // })
-                   this.setState({
-                                         data1:findresponse1
-                                         // for(i=0;i<20;i++){
-                                         //   data2:[findresponse1.GetImageDataResult]
-                                         // }
-
-                                      })
-                            console.log(this.state.data1)
-
-//                             this.setState({
-//                                data2: this.state.data1.map((Data,key)=>Data.GetImageDataResult)
-// console.log(this.state.data2)console.log(this.state.data2)
-               })
-
-            )
+//       findresponse.GetUserFeedResult.getUserFeeds.map((dyanamicData,key)=>
+//
+//                fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+//                     {
+//
+//                          method: "POST",
+//                          body: JSON.stringify({
+//                            "url":dyanamicData.ImageURL
+//                             // "url":this.state.url1
+//                          }),
+//
+//                         headers: new Headers({'content-type':'application/json'}),
+//
+//                   })
+//
+//
+//                .then((Response)=> Response.json())
+//
+//                .then((findresponse1)=>{
+//
+//                  console.log(findresponse1)
+//                        this.setState({
+//
+//                              data2:findresponse1
+//
+//
+//                        })
+//
+//                        a['GetImageDataResult'].push(this.state.data2);
+//                        // //
+//                        console.log(a)
+//                    // this.setState({
+//                    //    // data1:findresponse1
+//                    //   a:findresponse1.map((number) => number.GetImageDataResult)
+//                    //    // for(i=0;i<20;i++){
+//                    //    //   data2:[findresponse1.GetImageDataResult]
+//                    //    // }
+//                    //
+//                    // })
+//                    // this.setState({
+//                    //                       data1:findresponse1
+//                    //                       // for(i=0;i<20;i++){
+//                    //                       //   data2:[findresponse1.GetImageDataResult]
+//                    //                       // }
+//                    //
+//                    //                    })
+//                             // console.log(this.state.data1)
+//
+// //                             this.setState({
+// //                                data2: this.state.data1.map((Data,key)=>Data.GetImageDataResult)
+// // console.log(this.state.data2)console.log(this.state.data2)
+//                })
+//
+//             )
 
 
 
@@ -179,13 +248,14 @@ class Alerts extends React.Component {
                             {dyanamicData.Text}
                            <div>  {dyanamicData.DateCreated}{" "}
 
-                                  {dyanamicData.ImageURL}
+                                  {/* {dyanamicData.ImageURL} */}
 
                            </div>
 
                       <span className="float-right">
 
-                          <img src={`data:image/jpg;base64,${this.state.data1.GetImageDataResult}`} alt="Image" height="150" width="150"/>
+                          {/* <img src={`data:image/jpg;base64,${this.state.data1.GetImageDataResult}`} alt="Image" height="150" width="150"/> */}
+                        {key}  {this.state.data1}
 
                       </span>
 

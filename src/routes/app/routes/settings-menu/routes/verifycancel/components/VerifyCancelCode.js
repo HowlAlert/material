@@ -72,6 +72,7 @@ import Cancel from '../../cancel/';
         .then((findresponse)=>{
            console.log(findresponse)
            alert("Code has been changed");
+           this.setState({ redirectToReferrer: true })        //redirect to settings menu
           })
 
       }
@@ -86,6 +87,16 @@ import Cancel from '../../cancel/';
 }
   render() {
 
+
+
+    const { redirectToReferrer} = this.state
+      if(redirectToReferrer === true)
+      {
+        return (
+          <Redirect to="../Settings"/>
+
+         )
+      }
 
     return (
         <div className="container-fluid with-maxwidth">
