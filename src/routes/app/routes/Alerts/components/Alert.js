@@ -1,6 +1,6 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
-
+// import update from 'immutability-helper';
 
 class Alerts extends React.Component {
 
@@ -14,8 +14,15 @@ class Alerts extends React.Component {
 
       };
   }
+
+
+
+
   componentDidMount(){
 
+   var that = this;
+    var urls = [];
+    var a1 =[];
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
 
         fetch(BaseURL,
@@ -29,65 +36,196 @@ class Alerts extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-
-      console.log(findresponse)
       this.setState({
          data:findresponse.GetUserFeedResult.getUserFeeds,
          length:findresponse.GetUserFeedResult.getUserFeeds.length,
          // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
-         a:findresponse.GetUserFeedResult.getUserFeeds.map((number,key) =>
-                    fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
-                            {
+       })
+       Promise.all(
+               findresponse.GetUserFeedResult.getUserFeeds.map(
+                 element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                                       {
 
-                                 method: "POST",
-                                 body: JSON.stringify({
-                                   "url":number.ImageURL
-                                    // "url":this.state.url1
-                                 }),
+                                            method: "POST",
+                                            body: JSON.stringify({
+                                              "url":element.ImageURL
+                                            }),
 
-                                headers: new Headers({'content-type':'application/json'}),
+                                           headers: new Headers({'content-type':'application/json'}),
 
-                          })
-                          .then((Response)=> Response.json())
+                                     })
+                   .then(res => res.json())
+               )
+             ).then(datas => {
 
-                       .then((findresponse1)=>{
+               this.state.data.forEach((element, i) => {
+                 // urls[element.ImageURL] = element
+                 // urls[element.ImageURL].GetImageDataResult = datas[i]
+                 urls[i] = element
 
-                         var obj = {
-                             length: 0,
+               })
 
-                             addElem: function addElem(elem) {
-                                 // obj.length is automatically incremented
-                                 // every time an element is added.
-                                 [].push.call(this, elem);
-                             }
-                         };
-                         console.log(obj.length);
-                         // this.setState({
-                         //            data1:findresponse1.GetImageDataResult
-                       //   //          })
-                                  this.setState({
-                         data1:<img src={`data:image/jpg;base64,${findresponse1.GetImageDataResult}`} alt="Image" height="150" width="150"/>
+               console.log(datas);
+           console.log(urls);
 
-                              })
-                       //   var pairs = [];
-                       // //
-                       // pairs.push(findresponse1);
-                       //
-                       //   // JSON.stringify(findresponse1);
-                       //   console.log({pairs})
-                         // console.log({key})
-
-                       })
+           this.setState({
+              data1:datas,
+              // a:urls.map((number) => number.Text),
 
 
-         )
-      })
+            })
 
-      console.log(this.state.length)
-      console.log(this.state.data)
-      console.log(this.state.a)
-      console.log(this.state.a1)
-      console.log(this.state.a.length)
+          // console.log(this.state.a)
+
+          
+         })
+              })
+
+        }
+
+               // findresponse.GetUserFeedResult.getUserFeeds.map((url1) =>
+               //   fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+               //                         {
+               //
+               //                              method: "POST",
+               //                              body: JSON.stringify({
+               //                                "url":url1.ImageURL
+               //
+               //                              }),
+               //
+               //                             headers: new Headers({'content-type':'application/json'}),
+               //
+               //                       })
+               //                       .then((Response)=> Response.json())
+               //
+               //                    .then((findresponse1)=>{
+               //
+               //                      // this.setState({
+               //
+               //                          // data1: <ul>
+               //                          //             <li>{findresponse1.GetImageDataResult}</li>
+               //                          //        </ul>
+               //                          //
+               //                          //          })
+               //
+               //
+               //
+               //                      })
+               //
+               //                )
+
+
+
+        //
+        //     })
+        //
+        // }
+  // componentDidMount(){
+  //
+  //   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
+  //
+  //       fetch(BaseURL,
+  //       {
+  //        method: "POST",
+  //        body: JSON.stringify({
+  //          "UserID":"49",
+  //          "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ=="
+  //        }),
+  //         headers: new Headers({'content-type': 'application/json'}),
+  //       })
+  //   .then((Response)=> Response.json())
+  //   .then((findresponse)=>{
+  //     this.setState({
+  //        data:findresponse.GetUserFeedResult.getUserFeeds,
+  //        length:findresponse.GetUserFeedResult.getUserFeeds.length,
+  //        // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+  //      })
+  //              findresponse.GetUserFeedResult.getUserFeeds.map((url1) =>
+  //                fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+  //                                      {
+  //
+  //                                           method: "POST",
+  //                                           body: JSON.stringify({
+  //                                             "url":url1.ImageURL
+  //
+  //                                           }),
+  //
+  //                                          headers: new Headers({'content-type':'application/json'}),
+  //
+  //                                    })
+  //                                    .then((Response)=> Response.json())
+  //
+  //                                 .then((findresponse1)=>{
+  //
+  //                                   // this.setState({
+  //
+  //                                       // data1: <ul>
+  //                                       //             <li>{findresponse1.GetImageDataResult}</li>
+  //                                       //        </ul>
+  //                                       //
+  //                                       //          })
+  //
+  //
+  //
+  //                                   })
+  //
+  //                             )
+  //
+  //
+  //
+  //
+  //           })
+  //
+  //       }
+      // console.log(findresponse)
+      // this.setState({
+      //    data:findresponse.GetUserFeedResult.getUserFeeds,
+      //    length:findresponse.GetUserFeedResult.getUserFeeds.length,
+      //    a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+      //     for(var i=0; i < this.state.a.length; i++){
+      //              a.map((number,key) =>
+      //               fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+      //                       {
+      //
+      //                            method: "POST",
+      //                            body: JSON.stringify({
+      //                              "url":this.state.a[i]
+      //                               // "url":this.state.url1
+      //                            }),
+      //
+      //                           headers: new Headers({'content-type':'application/json'}),
+      //
+      //                     })
+      //                     .then((Response)=> Response.json())
+      //
+      //                  .then((findresponse1)=>{
+      //
+      //                    // var obj = {
+      //                    //     length: 0,
+      //                    //
+      //                    //     addElem: function addElem(elem) {
+      //                    //         // obj.length is automatically incremented
+      //                    //         // every time an element is added.
+      //                    //         [].push.call(this, elem);
+      //                    //         this.setState({
+      //                    //          data1:<img src={`data:image/jpg;base64,${elem}`} alt="Image" height="150" width="150"/>
+      //                    //
+      //                    //               })
+      //                    //     }
+      //                    // };
+      //
+      //
+      //                  })
+      //
+      //
+      //    )
+      // })
+      //
+      // console.log(this.state.length)
+      // console.log(this.state.data)
+      // console.log(this.state.a)
+      // console.log(this.state.a1)
+      // console.log(this.state.a.length)
 
       // const a = this.state.data.map((number) => number.ImageURL);
       // console.log(a);
@@ -214,9 +352,6 @@ class Alerts extends React.Component {
 
 
 
-      })
-
-  }
   render() {
 
 
@@ -232,34 +367,31 @@ class Alerts extends React.Component {
 
     <div className="row">
       <div className="col-xl-12">
+
+
+
         <div className="box box-default">
           <div className="box-body">
-
-
-
-            {/* <img src={`data:image/jpg;base64,${this.state.data1.GetImageDataResult}`} alt="Image" height="150" width="150"/>  */}
-
-
             {
-              this.state.data.map((dyanamicData,key)=>
-              <div>
+                this.state.data.map((dyanamicData,key)=>
+
+        <div>
+
+          {
+              this.state.data1.map((dyanamicData1,key)=>
+
+
                  <div className="box box-default">
                      <div className="box-body ">
+                          {/* <img src={`data:image/jpg;base64,${dyanamicData.GetImageDataResult}`} alt="Image" height="150" width="150"/> */}
+
                             {dyanamicData.Text}
-                           <div>  {dyanamicData.DateCreated}{" "}
+                         <div>  {dyanamicData.DateCreated}{" "}
 
-                                  {/* {dyanamicData.ImageURL} */}
+                             <span className="float-right">
 
-                           </div>
-
-                      <span className="float-right">
-
-                          {/* <img src={`data:image/jpg;base64,${this.state.data1.GetImageDataResult}`} alt="Image" height="150" width="150"/> */}
-                        {key}  {this.state.data1}
-
-                      </span>
-
-
+                                 <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="150" width="150"/>
+                             </span>
                      </div>
 
                 </div>
@@ -267,9 +399,13 @@ class Alerts extends React.Component {
 
              )
             }
-
+        </div>
+)
+}
           </div>
         </div>
+
+
       </div>
     </div>
 

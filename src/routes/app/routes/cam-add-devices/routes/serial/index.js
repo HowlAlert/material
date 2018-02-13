@@ -1,3 +1,3 @@
-import Serial_No from './components/Serial_No';
+import Payment from './components/Payment';
 
-export default Serial_No;
+export default Payment;

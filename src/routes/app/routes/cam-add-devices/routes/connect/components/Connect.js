@@ -3,8 +3,8 @@ import QueueAnim from 'rc-queue-anim';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-
 import {StripeProvider} from 'react-stripe-elements';
+// import {StripeProvider} from 'react-stripe-elements                                                                                                                     ';
 import MyStoreCheckout from './MyStoreCheckout';
 
 

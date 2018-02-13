@@ -1,11 +1,62 @@
 import React from 'react';
 import {injectStripe} from 'react-stripe-elements';
 
-// import AddressSection from './AddressSection';
+// import PaymentRequestForm from './PaymentRequestForm';
 import CardSection from './CardSection';
 
+
+// class PaymentRequestForm extends React.Component {
+//   constructor(props) {
+//     super(props);
+//
+//     // For full documentation of the available paymentRequest options, see:
+//     // https://stripe.com/docs/stripe.js#the-payment-request-object
+//     const paymentRequest = props.stripe.paymentRequest({
+//       country: 'US',
+//       currency: 'usd',
+//       total: {
+//         label: 'Demo total',
+//         amount: 1000,
+//       },
+//     });
+//
+//     paymentRequest.on('token', ({complete, token, ...data}) => {
+//       console.log('Received Stripe token: ', token);
+//       console.log('Received customer information: ', data);
+//       complete('success');
+//     });
+//
+//     paymentRequest.canMakePayment().then(result => {
+//       this.setState({canMakePayment: !!result});
+//     });
+//
+//     this.state = {
+//       canMakePayment: false,
+//       paymentRequest,
+//     };
+//   }
+//
+//   render() {
+//     return this.state.canMakePayment ? (
+//       <PaymentRequestButtonElement
+//         paymentRequest={this.state.paymentRequest}
+//         className="PaymentRequestButton"
+//         style={{
+//           // For more details on how to style the Payment Request Button, see:
+//           // https://stripe.com/docs/elements/payment-request-button#styling-the-element
+//           paymentRequestButton: {
+//             theme: 'light',
+//             height: '64px',
+//           },
+//         }}
+//       />
+//     ) : null;
+//   }
+// }
+// export default injectStripe(PaymentRequestForm);
+
 class CheckoutForm extends React.Component {
-  
+
   handleSubmit = (ev) => {
     // We don't want to let default form submission happen here, which would refresh the page.
     ev.preventDefault();
@@ -19,8 +70,7 @@ class CheckoutForm extends React.Component {
       console.log('Received Stripe token:', token);
     });
 
-    // However, this line of code will do the same thing:
-    // this.props.stripe.createToken({type: 'card', name: 'Jenny Rosen'});
+
   }
 
   render() {
@@ -28,7 +78,9 @@ class CheckoutForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         {/* <AddressSection /> */}
         <CardSection />
-        <button>Confirm order</button>
+        {/* <button><a href="cam-add-devices#/app/cameraDevices/serial/Payment">Confirm order</a></button> */}
+        {/* <PaymentRequestForm /> */}
+          <button>Confirm order</button>
       </form>
     );
   }
