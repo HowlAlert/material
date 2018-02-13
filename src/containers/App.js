@@ -13,8 +13,28 @@ import Page500 from 'routes/500/'
 import PageFullscreen from 'routes/fullscreen/'
 import PageLockScreen from 'routes/lock-screen/'
 import PageLogin from 'routes/login/'
+<<<<<<< HEAD
 // import PageSignUp from 'routes/sign-up/'
 
+=======
+import PageWelcome from 'routes/welcome/'
+import PageRegister from 'routes/register/'
+import PageRegister1 from 'routes/register1/'
+import PageRegister2 from 'routes/register2/'
+import PageRegister3 from 'routes/register3/'
+import PageRegister4 from 'routes/register4/'
+import PageRegister5 from 'routes/register5/'
+import PagePrintcode from 'routes/printcode/'
+import PageSchedule from 'routes/schedule/'
+import PageScheduling from 'routes/scheduling/'
+import PagePack from 'routes/pack/'
+import PageFeedback from 'routes/feedback/'
+import PageEditprofile from 'routes/editprofile/'
+import PageEditPhoneNumber from 'routes/editPhoneNumber/'
+import PageVerifyPhoneCode from 'routes/verifyPhoneCode/'
+import PageMainLogin from 'routes/mainLogin/'
+import PageMotionDetection from 'routes/motion-Detection/'
+>>>>>>> pbharde
 // = styles =
 // 3rd
 import 'styles/bootstrap.scss';
@@ -75,7 +95,27 @@ class App extends Component {
             <Route exact path="/fullscreen" component={PageFullscreen} />
             <Route exact path="/lock-screen" component={PageLockScreen} />
             <Route exact path="/login" component={PageLogin} />
+<<<<<<< HEAD
             {/* <Route exact path="/sign-up" component={PageSignUp} /> */}
+=======
+            <Route exact path="/welcome" component={PageWelcome} />
+            <Route exact path="/register" component={PageRegister} />
+            <Route exact path="/register1" component={PageRegister1} />
+            <Route exact path="/register2" component={PageRegister2} />
+            <Route exact path="/register3" component={PageRegister3} />
+            <Route exact path="/register4" component={PageRegister4} />
+            <Route exact path="/register5" component={PageRegister5} />
+            <Route exact path="/printcode" component={PagePrintcode} />
+            <Route exact path="/scheduling" component={PageScheduling} />
+            <Route exact path="/schedule" component={PageSchedule} />
+            <Route exact path="/pack" component={PagePack} />
+            <Route exact path="/feedback" component={PageFeedback} />
+            <Route exact path="/editprofile" component={PageEditprofile} />
+            <Route exact path="/editPhoneNumber" component={PageEditPhoneNumber} />
+            <Route exact path="/verifyPhoneCode" component={PageVerifyPhoneCode} />
+            <Route exact path="/mainLogin" component={PageMainLogin} />
+            <Route exact path="/motionDetection" component={PageMotionDetection} />
+>>>>>>> pbharde
           </div>
         </div>
       </MuiThemeProvider>

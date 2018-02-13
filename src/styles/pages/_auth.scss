@@ -4,15 +4,20 @@ $screen-sm: 768px;
 
 .body-auth {
   background-color: $body-bg;
-  // background: url('#{$image_path}/background/1.png') no-repeat center center fixed; 
+  // background: url('#{$image_path}/background/1.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
-  background-size: cover; 
+  background-size: cover;
 }
 
 .page-auth,
 .page-login,
-.page-signup,
+.page-register1,
+.page-register2,
+.page-register3,
+.page-register4,
+.page-register5,
+.page-printcode,
 .page-forgot {
   padding: 0 10px;
 
