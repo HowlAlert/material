@@ -2,11 +2,7 @@ const date = new Date();
 const year = date.getFullYear();
 
 const APPCONFIG = {
-<<<<<<< HEAD
-  brand: 'HOWL ALERT',
-=======
   brand: 'HOWL',
->>>>>>> pbharde
   user: 'Lisa',
   year,
   productLink: 'https://themeforest.net/item/material-design-reactjs-admin-web-app-with-bootstrap-4/19582625',
@@ -20,7 +16,6 @@ const APPCONFIG = {
     danger: '#F44336',
     text: '#3D4051',
     gray: '#EDF0F1'
-
   },
   settings: {
     layoutBoxed: false,                             // true, false
