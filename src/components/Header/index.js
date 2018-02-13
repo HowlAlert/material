@@ -35,6 +35,24 @@ class Header extends React.Component {
             'bg-color-danger': ['26', '36'].indexOf(colorOption) >= 0 })}
                 >
 
+<<<<<<< HEAD
+=======
+          <div className="brand d-none d-lg-inline-block d-xl-inline-block">
+            <h2><Link to="/">{APPCONFIG.brand}</Link></h2>
+          </div>
+
+          <div className="top-nav-center d-none d-lg-inline-block d-xl-inline-block">
+            <img src="assets/images/HOWL2.ico" alt="" className="rounded-circle img30_30" />
+          </div>
+
+          <div className="top-nav-left d-none d-lg-inline-block d-xl-inline-block">
+            <NavLeftList />
+          </div>
+
+          <div className="top-nav-right">
+            <NavRightList />
+          </div>
+>>>>>>> 3ba846e4114e6f02c82173e4db45ded1bdf0ff42
         </div>
       </section>
     );

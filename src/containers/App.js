@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
+
 import MainApp from 'routes/app/'
 import Page404 from 'routes/404/'
 import Page500 from 'routes/500/'
@@ -13,6 +14,7 @@ import PageForgotPassword from 'routes/forgot-password/'
 import PageFullscreen from 'routes/fullscreen/'
 import PageLockScreen from 'routes/lock-screen/'
 import PageLogin from 'routes/login/'
+<<<<<<< HEAD
 import PageWelcome from 'routes/welcome/'
 import PageRegister from 'routes/register/'
 import PageRegister1 from 'routes/register1/'
@@ -30,6 +32,13 @@ import PageEditPhoneNumber from 'routes/editPhoneNumber/'
 import PageVerifyPhoneCode from 'routes/verifyPhoneCode/'
 import PageMainLogin from 'routes/mainLogin/'
 import PageMotionDetection from 'routes/motion-Detection/'
+=======
+// import PageSignUp from 'routes/sign-up/'
+
+
+// import  Camera from 'routes/cameras'
+
+>>>>>>> 3ba846e4114e6f02c82173e4db45ded1bdf0ff42
 // = styles =
 // 3rd
 import 'styles/bootstrap.scss';

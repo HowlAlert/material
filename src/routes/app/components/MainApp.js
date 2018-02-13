@@ -28,8 +28,20 @@ let Asynccameras = loadable({
   loader: () => import('../routes/cameras/'),
   loading: LoadingComponent
 })
+let AsyncCameraSetting = loadable({
+  loader: () => import('../routes/cam-settings-menu/'),
+  loading: LoadingComponent
+})
+let AsyncCameraAddDevices = loadable({
+  loader: () => import('../routes/cam-add-devices/'),
+  loading: LoadingComponent
+})
 let AsyncPack = loadable({
   loader: () => import('../routes/pack/'),
+  loading: LoadingComponent
+})
+let AsyncPackMenu = loadable({
+  loader: () => import('../routes/pack-menu/'),
   loading: LoadingComponent
 })
 let AsyncHelp = loadable({
@@ -52,6 +64,12 @@ let AsyncPageLayout = loadable({
   loader: () => import('../routes/page-layout/'),
   loading: LoadingComponent
 })
+let AsyncSettingsMenu = loadable({
+  loader: () => import('../routes/settings-menu/'),
+  loading: LoadingComponent
+})
+
+
 let AsyncTable = loadable({
   loader: () => import('../routes/table/'),
   loading: LoadingComponent
@@ -77,11 +95,15 @@ class MainApp extends React.Component {
                   <Route path={`${match.url}/home`} component={AsyncHome} />
                   <Route path={`${match.url}/Alerts`} component={AsyncAlert} />
                   <Route path={`${match.url}/Cameras`} component={Asynccameras} />
+                  <Route path={`${match.url}/camerasettings`} component={AsyncCameraSetting} />
+                  <Route path={`${match.url}/cameraDevices`} component={AsyncCameraAddDevices} />
                   <Route path={`${match.url}/Devices`} component={Asyncdevices} />
                   <Route path={`${match.url}/Pack`} component={AsyncPack} />
+                  <Route path={`${match.url}/PackMenu`} component={AsyncPackMenu} />
                   <Route path={`${match.url}/Monitoring`} component={AsyncMonitor} />
                   <Route path={`${match.url}/Help & Support`} component={AsyncHelp} />
                   <Route path={`${match.url}/Settings`} component={AsyncSettings} />
+                  <Route path={`${match.url}/settingsmenu`} component={AsyncSettingsMenu} />
                   <Route path={`${match.url}/Logout`} component={AsyncLogout} />
                   <Route path={`${match.url}/pglayout`} component={AsyncPageLayout} />
                   <Route path={`${match.url}/table`} component={AsyncTable} />

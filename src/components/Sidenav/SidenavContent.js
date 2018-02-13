@@ -148,6 +148,7 @@ class SidebarContent extends React.Component {
           </ul>
         </li>
         <li>
+<<<<<<< HEAD
           <FlatButton href="#/app/page"><i className="nav-icon material-icons">content_copy</i><span className="nav-text">Pages</span></FlatButton>
           <ul>
             <li><FlatButton className="prepend-icon" href="#/app/page/about"><span>About</span></FlatButton></li>
@@ -157,6 +158,21 @@ class SidebarContent extends React.Component {
             <li><FlatButton className="prepend-icon" href="#/app/page/faqs"><span>FAQs</span></FlatButton></li>
             <li><FlatButton className="prepend-icon" href="#/app/page/blog"><span>Blog</span></FlatButton></li>
             <li><FlatButton className="prepend-icon" href="#/app/page/terms"><span>Terms of Services</span></FlatButton></li>
+=======
+          <FlatButton href="#/app/pack"><i className="nav-icon material-icons">web</i><span className="nav-text">Pack</span></FlatButton>
+          {/* <ul>
+            <li><FlatButton className="prepend-icon" href="#/app/pack/components"><span>Pack</span></FlatButton></li>
+            <li><FlatButton className="prepend-icon" href="#/app/pack/howls_pack"><span>Howls at Pack</span></FlatButton></li>
+            <li><FlatButton className="prepend-icon" href="#/app/pack/howls_me"><span>Howls at Me</span></FlatButton></li>
+          </ul> */}
+        </li>
+        <li>
+          <FlatButton href="#/app/PackMenu"><i className="nav-icon material-icons">web</i><span className="nav-text">Pack-Menu</span></FlatButton>
+          <ul>
+            <li><FlatButton className="prepend-icon" href="pack#/app/Pack"><span>ManagePack</span></FlatButton></li>
+            <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_pack"><span>Howls at Pack</span></FlatButton></li>
+            <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_me"><span>Howls at Me</span></FlatButton></li>
+>>>>>>> 3ba846e4114e6f02c82173e4db45ded1bdf0ff42
           </ul>
         </li>
         <li>
@@ -180,12 +196,17 @@ class SidebarContent extends React.Component {
           </ul>
         </li>
         <li>
+<<<<<<< HEAD
           <FlatButton href="#/app/pglayout"><i className="nav-icon material-icons">desktop_windows</i><span className="nav-text">Page Layouts</span></FlatButton>
           <ul>
             <li><FlatButton className="prepend-icon" href="#/app/pglayout/full-width"><span>Full Width</span></FlatButton></li>
             <li><FlatButton className="prepend-icon" href="#/app/pglayout/centered"><span>Centered</span></FlatButton></li>
             <li><FlatButton className="prepend-icon" href="#/fullscreen"><span>Fullscreen</span></FlatButton></li>
           </ul>
+=======
+          <FlatButton href="#/app/Settings"><i className="nav-icon material-icons">settings</i><span className="nav-text">Settings</span></FlatButton>
+
+>>>>>>> 3ba846e4114e6f02c82173e4db45ded1bdf0ff42
         </li>
         <li>
           <FlatButton href="#/app/menu"><i className="nav-icon material-icons">sort</i><span className="nav-text">Menu Levels</span></FlatButton>
