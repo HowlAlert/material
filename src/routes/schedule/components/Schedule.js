@@ -23,8 +23,8 @@ class Schedule extends React.Component {
           WEEKDAYS : ['M', 'T', 'W', 'TH', 'F', 'SAT', 'SUN'],
           GetRoomCameraSchedule:[],
           Day:[],
-          StartTime:[],
-          EndTime:[]
+          addedStartTime:[],
+          addedEndTime:[]
       };
       this.handleEndTime = this.handleEndTime.bind(this);
       this.handleStartTime = this.handleStartTime.bind(this);
@@ -36,6 +36,7 @@ class Schedule extends React.Component {
       var timeValidation=true;
       var startTimeValidation=true;
       var endTimeValidation=true;
+      var allValidation=true;
 
           if((this.state.Monday || this.state.Tuesday || this.state.Wednesday || this.state.Thursday || this.state.Friday || this.state.Saturday || this.state.Sunday)==undefined){
             alert("Please select week day.");
@@ -54,7 +55,7 @@ class Schedule extends React.Component {
                 console.log(validation)
               }
             }
-            if(endTimeValidation){
+            if(startTimeValidation && endTimeValidation){
               if(this.state.StartTime>=this.state.EndTime){
                 alert("Choose Start Time before End Time")
                 validation=false;
@@ -63,80 +64,8 @@ class Schedule extends React.Component {
             }
           }
 
-      if(dayValidation && validation){
-        console.log(validation)
-        if(this.state.WEEKDAYS[0]==this.state.Monday){
-          for(var i=0; i<this.state.Day.length; i++){
-            if(this.state.Day[i]==1 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
-              alert("This time is already added in your schedule")
-            }
-          }
-          console.log(this.state.StartTime),
-          console.log(this.state.EndTime)
-        }
-        if(this.state.WEEKDAYS[1]==this.state.Tuesday){
-          for(var i=0; i<this.state.Day.length; i++){
-            if(this.state.Day[i]==2 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
-              alert("This time is already added in your schedule")
-            }
-          }
-          console.log(this.state.Tuesday),
-          console.log(this.state.StartTime),
-          console.log(this.state.EndTime)
-        }
-        if(this.state.WEEKDAYS[2]==this.state.Wednesday){
-          for(var i=0; i<this.state.Day.length; i++){
-            if(this.state.Day[i]==3 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
-              alert("This time is already added in your schedule")
-            }
-          }
-          console.log(this.state.Wednesday),
-          console.log(this.state.StartTime),
-          console.log(this.state.EndTime)
-        }
-        if(this.state.WEEKDAYS[3]==this.state.Thursday){
-          for(var i=4; i<this.state.Day.length; i++){
-            if(this.state.Day[i]==1 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
-              alert("This time is already added in your schedule")
-            }
-          }
-          console.log(this.state.Thursday),
-          console.log(this.state.StartTime),
-          console.log(this.state.EndTime)
-        }
-        if(this.state.WEEKDAYS[4]==this.state.Friday){
-          for(var i=0; i<this.state.Day.length; i++){
-            if(this.state.Day[i]==5 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
-              alert("This time is already added in your schedule")
-            }
-          }
-          console.log(this.state.Friday),
-          console.log(this.state.StartTime),
-          console.log(this.state.EndTime)
-        }
-        if(this.state.WEEKDAYS[5]==this.state.Saturday){
-          for(var i=0; i<this.state.Day.length; i++){
-            if(this.state.Day[i]==6 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
-              alert("This time is already added in your schedule")
-            }
-          }
-          console.log(this.state.Saturday),
-          console.log(this.state.StartTime),
-          console.log(this.state.EndTime)
-        }
-        if(this.state.WEEKDAYS[6]==this.state.Sunday){
-          for(var i=0; i<this.state.Day.length; i++){
-            if(this.state.Day[i]==7 && this.state.StartTime[i]==this.state.StartTime && this.state.EndTime[i]==this.state.EndTime){
-              alert("This time is already added in your schedule")
-            }
-          }
-          console.log(this.state.Sunday),
-          console.log(this.state.StartTime),
-          console.log(this.state.EndTime)
-        }
-      }
 
-
+  if(dayValidation && validation && startTimeValidation && endTimeValidation){
 console.log("handled");
 const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetRoomCameraSchedule';
 
@@ -157,20 +86,135 @@ this.setState({
 console.log(this.state.GetRoomCameraSchedule)
  this.setState({
    Day:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.Day),
-   StartTime:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.StartTime),
-   EndTime:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.EndTime),
+   addedStartTime:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.StartTime),
+   addedEndTime:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.EndTime),
 })
  console.log(this.state.Day);
- console.log(this.state.StartTime);
- console.log(this.state.EndTime);
+ console.log(this.state.addedStartTime);
+ console.log(this.state.addedEndTime);
 
- // console.log(GetRoomCameraSchedule.Day),
- // console.log(GetRoomCameraSchedule.StartTime),
- // console.log(GetRoomCameraSchedule.EndTime)
-})
+
+if(allValidation){
+  if(this.state.WEEKDAYS[0]==this.state.Monday){
+console.log(this.state.color_d1);
+    if(this.state.Day.includes("1") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d1==true){
+        alert("This time is already added in your schedule");
+        allValidation=false;
+
+      }
+  }
 }
 
+  if(allValidation){
+    if(this.state.WEEKDAYS[1]==this.state.Tuesday){
+      console.log(this.state.color_d2);
+    if(this.state.Day.includes("2") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d2==true){
+          alert("This time is already added in your schedule");
+          allValidation=false;
 
+        }
+    }
+  }
+
+  if(allValidation){
+    if(this.state.WEEKDAYS[2]==this.state.Wednesday){
+      console.log(this.state.color_d3);
+      if(this.state.Day.includes("3") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d3==true){
+          alert("This time is already added in your schedule");
+          allValidation=false;
+
+        }
+    }
+  }
+
+  if(allValidation){
+    if(this.state.WEEKDAYS[3]==this.state.Thursday){
+      console.log(this.state.color_d4);
+       console.log(this.state.Day.includes("4"));
+      if(this.state.Day.includes("4") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d4==true){
+          alert("This time is already added in your schedule");
+          allValidation=false;
+
+        }
+    }
+  }
+
+   if(allValidation){
+     if(this.state.WEEKDAYS[4]==this.state.Friday){
+       console.log(this.state.color_d5);
+       console.log(this.state.Day.includes("5"));
+       if(this.state.Day.includes("5") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d5==true){
+           alert("This time is already added in your schedule");
+           allValidation=false;
+
+         }
+     }
+   }
+
+  if(allValidation){
+    if(this.state.WEEKDAYS[5]==this.state.Saturday){
+      console.log(this.state.Day.includes("6"));
+        console.log(this.state.color_d6);
+      if(this.state.Day.includes("6") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d6==true){
+          alert("This time is already added in your schedule");
+          allValidation=false;
+
+        }
+    }
+  }
+
+ if(allValidation){
+   if(this.state.WEEKDAYS[6]==this.state.Sunday){
+     console.log(this.state.color_d7);
+     if(this.state.Day.includes("7") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d7==true){
+         alert("This time is already added in your schedule");
+         allValidation=false;
+       }
+   }
+ }
+
+})}
+
+const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditCameraSetting';
+var object = JSON.stringify([{"StartTime":"06:00",
+            "EndTime":"07:00",
+            "SpansMultipleDays":"False"}]);
+            console.log(object);
+
+var object1 = JSON.stringify([{"Span":"06:00 - 07:00",
+    "cameraSettingSchedule":object,
+    "IDs":"",
+    "Days":"5,6"}]);
+          console.log(JSON.stringify(object1) );
+
+var object2 = JSON.stringify([{"UserID":"49",
+"UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==",
+"RoomCameraID" :"104",
+"SchedulingArray":object1
+}]);
+          console.log(object2);
+
+
+
+fetch(BaseURL,{
+ method: "POST",
+ body: JSON.stringify({
+   "UserID":"49",
+   "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==",
+   "RoomCameraID" :"104",
+   "SchedulingArray":object1
+}),
+headers: new Headers({'content-type': 'application/json'})
+}).
+then((Response)=>Response.json()).
+then((findresponse)=>{
+this.setState({
+data:findresponse
+})
+console.log(this.state.data);
+})
+
+}
 
   changeMonday(){
     this.setState({color_d1:  !this.state.color_d1})

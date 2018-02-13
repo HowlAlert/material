@@ -29,7 +29,7 @@ import PageEditprofile from 'routes/editprofile/'
 import PageEditPhoneNumber from 'routes/editPhoneNumber/'
 import PageVerifyPhoneCode from 'routes/verifyPhoneCode/'
 import PageMainLogin from 'routes/mainLogin/'
-
+import PageMotionDetection from 'routes/motion-Detection/'
 // = styles =
 // 3rd
 import 'styles/bootstrap.scss';
@@ -106,6 +106,7 @@ class App extends Component {
             <Route exact path="/editPhoneNumber" component={PageEditPhoneNumber} />
             <Route exact path="/verifyPhoneCode" component={PageVerifyPhoneCode} />
             <Route exact path="/mainLogin" component={PageMainLogin} />
+            <Route exact path="/motionDetection" component={PageMotionDetection} />
           </div>
         </div>
       </MuiThemeProvider>

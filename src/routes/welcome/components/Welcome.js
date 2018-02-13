@@ -19,7 +19,7 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from 'react-router-dom';
 import { session,sessionReducer, sessionService } from 'redux-react-session';
 import { createStore, combineReducers } from 'redux';
-import Login from '../../app/routes/page/routes/login';
+
 import {
     Step,
     Stepper,
@@ -51,6 +51,7 @@ handleClose = () => {
 handleLogout(event){
 this.setState({open: false});
 //alert("Are you sure you want to logout?");
+
 sessionService.deleteSession(event);
   console.log(sessionService.deleteSession(event));
   console.log(cookie.load('Id'));
@@ -83,6 +84,7 @@ sessionService.deleteSession(event);
 }
 
   render() {
+
     const { match, location } = this.props;
     const actions = [
          <FlatButton
@@ -106,7 +108,6 @@ const { redirectToReferrer} = this.state
              )
            }
     return (
-
 
   <div className="body-inner">
         <div className="card bg-white">
@@ -147,22 +148,13 @@ const { redirectToReferrer} = this.state
                         >
                           Are you sure you want to logout?
                         </Dialog>
-
-
               <div className="divider" />
-
-
             </div>
-
-
             </form>
 
           </div>
 </div>
   </div>
-
-
-
     );
   }
 }
