@@ -176,33 +176,36 @@ console.log(this.state.color_d1);
 })}
 
 const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditCameraSetting';
-var object = JSON.stringify([{"StartTime":"06:00",
+var object = [{"StartTime":"06:00",
             "EndTime":"07:00",
-            "SpansMultipleDays":"False"}]);
-            console.log(object);
+            "SpansMultipleDays":"False"}];
+            console.log(JSON.stringify([object]));
 
-var object1 = JSON.stringify([{"Span":"06:00 - 07:00",
-    "cameraSettingSchedule":object,
+
+var object1 = [{"Span":"06:00 - 07:00",
+    "cameraSettingSchedule":JSON.stringify(object).replace("\"", ""),
     "IDs":"",
-    "Days":"5,6"}]);
-          console.log(JSON.stringify(object1) );
+    "Days":"5,6"}];
+          console.log(JSON.stringify([object1]));
+  console.log(JSON.stringify(object1));
+var jsonString = {"UserID":"118","UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu","RoomCameraID":"115","SchedulingArray":"[{\"Span\":\"06:00 - 07:00\",\"cameraSettingSchedule\":\"[{\\\"StartTime\\\":\\\"06:00\\\",\\\"EndTime\\\":\\\"07:00\\\",\\\"SpansMultipleDays\\\":\\\"False\\\"}]\",\"IDs\":\"\",\"Days\":\"5,6\"}]"};
 
-var object2 = JSON.stringify([{"UserID":"49",
-"UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==",
-"RoomCameraID" :"104",
-"SchedulingArray":object1
-}]);
-          console.log(object2);
+var object2 = [{"UserID":"118",
+"UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu",
+"RoomCameraID":"115",
+"SchedulingArray":JSON.stringify(object1)
+}];
+          console.log(JSON.stringify(object2));
 
 
 
 fetch(BaseURL,{
  method: "POST",
  body: JSON.stringify({
-   "UserID":"49",
-   "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==",
-   "RoomCameraID" :"104",
-   "SchedulingArray":object1
+   "UserID":"118",
+   "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu",
+   "RoomCameraID":"115",
+   "SchedulingArray":JSON.stringify(object1)
 }),
 headers: new Headers({'content-type': 'application/json'})
 }).
