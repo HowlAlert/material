@@ -34,9 +34,12 @@ class Header extends React.Component {
             'bg-color-warning': ['25', '35'].indexOf(colorOption) >= 0,
             'bg-color-danger': ['26', '36'].indexOf(colorOption) >= 0 })}
                 >
+          <div className="d-lg-none d-xl-none float-left">
+            <a href="javascript:;" className="md-button header-icon toggle-sidebar-btn" ref={(c) => { this.sidebarBtn = c; }}>
+              <i className="material-icons">menu</i>
+            </a>
+          </div>
 
-<<<<<<< HEAD
-=======
           <div className="brand d-none d-lg-inline-block d-xl-inline-block">
             <h2><Link to="/">{APPCONFIG.brand}</Link></h2>
           </div>
@@ -52,7 +55,6 @@ class Header extends React.Component {
           <div className="top-nav-right">
             <NavRightList />
           </div>
->>>>>>> 3ba846e4114e6f02c82173e4db45ded1bdf0ff42
         </div>
       </section>
     );
