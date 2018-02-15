@@ -1,7 +1,7 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 // import update from 'immutability-helper';
-
+import cookie from 'react-cookies';
 class Alerts extends React.Component {
 
   constructor() {
@@ -29,8 +29,8 @@ class Alerts extends React.Component {
         {
          method: "POST",
          body: JSON.stringify({
-           "UserID":"49",
-           "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ=="
+           "UserID":cookie.load('Id'),
+           "UserToken":cookie.load('UserToken')
          }),
           headers: new Headers({'content-type': 'application/json'}),
         })
@@ -77,7 +77,7 @@ class Alerts extends React.Component {
 
           // console.log(this.state.a)
 
-          
+
          })
               })
 

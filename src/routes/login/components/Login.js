@@ -38,7 +38,8 @@ class Login extends React.Component {
       Email:'',
       Password:'',
       GetUser:'',
-      ResultStatus:''
+      ResultStatus:'',
+      GetUserHomeAddress:''
     };
   }
 
@@ -72,18 +73,32 @@ class Login extends React.Component {
       this.setState({
         GetUser:findresponse.LoginResult.GetUser,
         ResultStatus:findresponse.LoginResult.ResultStatus,
+        GetUserHomeAddress:findresponse.LoginResult.GetUserHomeAddress,
       })
       if(this.state.ResultStatus.Status==="1"){
       //  const expires = new Date()
         //expires.setDate(now.getDate() + 14)
-
+        console.log(this.state.GetUser);
         console.log("status"),
+        cookie.save('Email', this.state.GetUser.Email);
+        cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
         cookie.save('Id', this.state.GetUser.ID);
         cookie.save('FirstName', this.state.GetUser.FirstName);
         cookie.save('LastName', this.state.GetUser.LastName);
         cookie.save('UserToken', this.state.GetUser.UserToken);
         //cookie.save('Status', this.state.ResultStatus.Status, '/')
+        cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
+        cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+        cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+        cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
         //return ( <Redirect to="#/Register1"/> );
+        cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+        cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+        cookie.save('City', this.state.GetUserHomeAddress.City);
+        cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+        cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+        cookie.save('State', this.state.GetUserHomeAddress.State);
+        cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
         //console.log(PageRegister1)
     //  console.log(App)
      this.setState({ redirectToReferrer: true })
@@ -185,7 +200,7 @@ this.setState({
 
       console.log(redirectToReferrer)
           return (
-            <Redirect to="../../Welcome" />
+            <Redirect to="../../app/dashboard" />
           )
         }
 

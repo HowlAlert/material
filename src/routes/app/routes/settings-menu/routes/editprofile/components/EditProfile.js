@@ -170,7 +170,7 @@ class EditProfile extends React.Component {
         }
 
 
-      var fname=cookie.load('Firstname');            //Loading Initial values before editting
+      var fname=cookie.load('FirstName');            //Loading Initial values before editting
       // console.log(fname);
       var lname = cookie.load('LastName')
       // console.log(lname);

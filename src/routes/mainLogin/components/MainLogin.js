@@ -134,7 +134,7 @@ class MainLogin extends React.Component {
 
       console.log(redirectToReferrer)
           return (
-            <Redirect to="Welcome" />
+            <Redirect to="app/dashboard" />
           )
         }
 

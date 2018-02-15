@@ -33,26 +33,28 @@ class SearchAddress extends React.Component {
                city:results[0].address_components[3].long_name,
                state:results[0].address_components[5].long_name,
                // country:results[0].address_components[6].long_name,
-               zipcode:results[0].address_components[7].long_name
+               zipcode:results[0].address_components[7].long_name,
 
 
             })
 
          console.log(results[0]);
 
-        cookie.save('street',this.state.street_no+" "+this.state.street_name)
+        cookie.save('Address1',this.state.street_no+" "+this.state.street_name)
         console.log(cookie.load('street'));
 
-        cookie.save('city',this.state.city)
+
+
+        cookie.save('City',this.state.city)
         console.log(cookie.load('city'));
 
-        cookie.save('state',this.state.state)
+        cookie.save('State',this.state.state)
         console.log(cookie.load('state'));
 
         // cookie.save('country',this.state.country)
         // console.log(cookie.load('country'));
 
-        cookie.save('zipcode',this.state.zipcode)
+        cookie.save('Zipcode',this.state.zipcode)
         console.log(cookie.load('zipcode'));
 
        })
@@ -79,6 +81,9 @@ class SearchAddress extends React.Component {
 
        cookie.save('new_address',this.state.address),
        console.log(cookie.load('new_address'));
+
+
+
 
 
 
@@ -141,6 +146,8 @@ class UpdateAddress extends React.Component {
 
   }
   handleNext(event) {
+    cookie.save('Address2',this.state.Address2)
+    console.log(cookie.load('Address2'));
 
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditUserHomeAddress';
 
@@ -150,11 +157,11 @@ class UpdateAddress extends React.Component {
        body: JSON.stringify({
           "UserID":cookie.load('Id'),
           "UserToken":cookie.load('UserToken'),
-          "HomeAddress1":cookie.load('street'),
-          "HomeAddress2":this.state.Apt_no,
-          "HomeCity": cookie.load('city'),
-          "HomeState":cookie.load('state'),
-          "HomeZip":cookie.load('zipcode'),
+          "HomeAddress1":cookie.load('Address1'),
+          "HomeAddress2":cookie.load('Address2'),
+          "HomeCity": cookie.load('City'),
+          "HomeState":cookie.load('State'),
+          "HomeZip":cookie.load('Zipcode'),
           "Latitude": cookie.load('Latitude'),
           "Longitude": cookie.load('Longitude')
        }),
@@ -176,7 +183,7 @@ class UpdateAddress extends React.Component {
           const name = target.name;
 
        this.setState({
-             Apt_no: target.value
+             Address2: target.value
            });
            console.log(target.value) ;
            return target.value;
@@ -201,7 +208,7 @@ class UpdateAddress extends React.Component {
 
                <div className="form-group">
                  <TextField floatingLabelText="ENTER COMPLETE ADDRESS " value={cookie.load('new_address')}  fullWidth />
-                 <TextField onChange={(e)=>this.handleValue(e)} name="Apt_no" floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
+                 <TextField  onChange={(e)=>this.handleValue(e)} name="Address2" floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
 
                  <span className="float-right">  <i className="material-icons">location_on</i></span>
                </div>
@@ -235,27 +242,14 @@ class Address extends React.Component {
 
 
     componentDidMount(){
+this.setState({
+   address1:cookie.load('Address1'),
+   address2:cookie.load('Address2'),
+   city:cookie.load('City'),
+   state:cookie.load('State'),
+   zip:cookie.load('Zip'),
+});
 
-          const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
-           fetch(URL,
-                           {
-                            method: "POST",
-                            body: JSON.stringify({
-                              "Email":"varuna808@gmail.com",
-                              "Password":"1234Howl"
-
-                            }),
-                             headers: new Headers({'content-type': 'application/json'}),
-                           })
-                       .then((Response)=> Response.json())
-                       .then((findresponse)=>{
-                           console.log(findresponse)
-                           this.setState({
-                              data:findresponse.LoginResult.GetUserHomeAddress,
-                              details:findresponse.LoginResult.GetUser
-
-                                               })
-                                            })
 
     }
 
@@ -269,24 +263,6 @@ class Address extends React.Component {
            alert("Enter New Address to Update!")
       }
     render() {
-
-     var address1 = this.state.data.Address1;
-     var address2 = this.state.data.Address2;
-     var city = this.state.data.City;
-     var state = this.state.data.State;
-     var zip =this.state.data.Zip;
-     var oldaddress=(address1 +","+ city +" "+ state+" " + zip);
-     console.log(oldaddress);
-
-
-       cookie.save('Firstname',this.state.details.FirstName)//Saving user details in cookies for Edit profile
-       // console.log(cookie.load('Firstname'));
-       cookie.save('LastName',this.state.details.LastName)
-       // console.log(cookie.load('LastName'));
-       cookie.save('Email',this.state.details.Email)
-       // console.log(cookie.load('Email'));
-       cookie.save('MobilePhoneNumber',this.state.details.MobilePhoneNumber)
-       // console.log(cookie.load('MobilePhoneNumber'));
 
 
     const { redirectToReferrer} = this.state
@@ -309,13 +285,13 @@ class Address extends React.Component {
 
                    <TextField
                      floatingLabelText="ENTER ADDRESS"
-                     value={oldaddress}
+                     value={this.state.address1+" , "+this.state.city+" "+this.state.state+" "+this.state.zip}
                      onClick={(e)=>this.handleNext(e)}
                      fullWidth
                    />
 
                    <div className="form-group">
-                     <TextField  value={address2} floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
+                     <TextField  value={this.state.address2} floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
 
                      <span className="float-right">  <i className="material-icons">location_on</i></span>
                    </div>

@@ -31,44 +31,13 @@ import VerifyCancelCode from '../../verifycancel/';
        return target.value;
    }
 
-  componentDidMount(){
-
-        const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
-         fetch(URL,
-                  {
-                          method: "POST",
-                          body: JSON.stringify({
-                            "Email":"varuna808@gmail.com",
-                            "Password":"1234Howl"
-
-                   }),
-                           headers: new Headers({'content-type': 'application/json'}),
-                         })
-                     .then((Response)=> Response.json())
-                     .then((findresponse)=>{
-
-                       this.setState({
-                               GetUser:findresponse.LoginResult.GetUser,
-                               ResultStatus:findresponse.LoginResult.ResultStatus,
-                             })
-                             if(this.state.ResultStatus.Status==="1")
-                             {
-                              console.log("status");
-                              cookie.save('oldcancelcode', this.state.GetUser.CancellationCode);
-                              cookie.save('oldsilentcode', this.state.GetUser.SilenceCode);
-                            }
-                             console.log(cookie.load('oldcancelcode'));
-                             console.log(cookie.load('oldsilentcode'));
-                    })
-
-  }
 
   handleNext(event) {
 
     var entered = this.state.code;
     console.log(entered);
 
-    var saved = cookie.load('oldcancelcode');
+    var saved = cookie.load('CancellationCode');
     console.log(saved);
 
 

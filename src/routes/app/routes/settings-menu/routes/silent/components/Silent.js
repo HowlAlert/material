@@ -36,7 +36,7 @@ class CancelCode extends React.Component {
        var entered = this.state.code;
        console.log(entered);
 
-       var saved = cookie.load('oldsilentcode');
+       var saved = cookie.load('SilenceCode');
        console.log(saved);
 
        if(entered === saved){

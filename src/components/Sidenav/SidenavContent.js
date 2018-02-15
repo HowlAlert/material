@@ -2,10 +2,21 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
 import 'jquery-slimscroll/jquery.slimscroll.min';
+import Dialog from 'material-ui/Dialog';
+import { session,sessionReducer, sessionService } from 'redux-react-session';
+import cookie from 'react-cookies';
+import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from 'react-router-dom';
 
 
 class SidebarContent extends React.Component {
+  constructor(props) {
 
+    super(props);
+    this.state = {
+
+      ResultStatus:'',
+  };
+  }
   componentDidMount() {
     const { history } = this.props;
     const nav = this.nav;
@@ -25,7 +36,7 @@ class SidebarContent extends React.Component {
     // AccordionNav
     const slideTime = 250;
     const $lists = $nav.find('ul').parent('li');
-    $lists.append('<i class="material-icons icon-has-ul">arrow_drop_down</i>');
+//    $lists.append('<i class="material-icons icon-has-ul">arrow_drop_down</i>');
     const $As = $lists.children('a');
 
     // Disable A link that has ul
@@ -86,10 +97,78 @@ class SidebarContent extends React.Component {
       highlightActive(location.pathname);
     });
   }
+  state = {
+  open: true,
+  };
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
+
+
+  handleLogout(event){
+  this.setState({open: false});
+  //alert("Are you sure you want to logout?");
+
+  sessionService.deleteSession(event);
+    console.log(sessionService.deleteSession(event));
+    console.log(cookie.load('Id'));
+    console.log(cookie.load('UserToken'));
+    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LogoutUser';
+
+       fetch(BaseURL,{
+        method: "POST",
+        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken')}),
+      headers: new Headers({'content-type': 'application/json'})
+      }).
+    then((Response)=>Response.json()).
+    then((findresponse)=>{
+      this.setState({
+        ResultStatus:findresponse.LogoutUserResult.ResultStatus,
+        Status: this.state.ResultStatus.Status
+      }),console.log(this.state.ResultStatus.Status)
+      if(this.state.ResultStatus.Status==="1"){
+        console.log("success"),
+        cookie.remove('Id'),
+        cookie.remove('UserToken')
+        console.log("removed"),
+
+     this.setState({ redirectToReferrer: true })
+      }
+      else{
+         this.setState({ redirectToReferrer: false })
+      }
+    })
+  }
+
 
 
   render() {
+    const { match, location } = this.props;
+    const actions = [
+         <FlatButton
+           label="Yes"
+           primary
+           onClick={(e)=>this.handleLogout(e)}
+         />,
+         <FlatButton
+           label="No"
+           primary
+           keyboardFocused
+           onClick={this.handleClose}
+         />,
+       ];
 
+    const { redirectToReferrer} = this.state
+       if (redirectToReferrer) {
+         console.log(redirectToReferrer)
+             return (
+               <Redirect to="mainLogin"/>
+             )
+           }
     return (
       <ul className="nav" ref={(c) => { this.nav = c; }}>
         <li>
@@ -131,7 +210,16 @@ class SidebarContent extends React.Component {
 
         </li>
         <li>
-          <FlatButton href="#/app/Logout"><i className="nav-icon material-icons">forward</i><span className="nav-text">Logout</span></FlatButton>
+          <FlatButton onClick={this.handleOpen}><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></FlatButton>
+          <Dialog
+                      title="Confirm"
+                      actions={actions}
+                      modal={false}
+                      open={this.state.open}
+                      onRequestClose={this.handleClose}
+                    >
+                      Are you sure you want to logout?
+                    </Dialog>
         </li>
 
       </ul>
