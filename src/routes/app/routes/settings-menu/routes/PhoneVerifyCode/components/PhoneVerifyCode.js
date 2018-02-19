@@ -19,7 +19,7 @@ import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom
 const mWidthStyle = {
   minWidth: '130px'
 };
-class VerifyPhoneCode extends React.Component {
+class PhoneVerifyCode extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -46,7 +46,8 @@ class VerifyPhoneCode extends React.Component {
       console.log("hi") ;
       console.log(this.state.Code);
       let re = /^[0-9]{4}$/;
-    if(re.test(this.state.Code)=='' || this.state.Code.length!=4 || this.state.Code.length>4){
+    if(re.test(this.state.Code)=='' || this.state.Code.length!=4 || this.state.Code.length>4)
+    {
       alert("The verification code you entered is invalid. Please try again.");
       console.log("hi alert")
     }
@@ -59,24 +60,25 @@ console.log(cookie.load('UserToken'));
          fetch(BaseURL,{
           method: "POST",
           body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'), 'MobilePhoneConfirmationCode':this.state.Code}),
-        headers: new Headers({'content-type': 'application/json'})
+         headers: new Headers({'content-type': 'application/json'})
         }).
       then((Response)=>Response.json()).
       then((findresponse)=>{
+        console.log(findresponse)
         this.setState({
           ResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus,
-        });console.log(this.state.ResultStatus.Status)
+          message:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.StatusMessage
+        });
         if(this.state.ResultStatus.Status==="1"){
 
+           this.setState({ redirectToReferrer: true })
 
-          console.log("status"),
-          cookie.remove('Id'),
-          cookie.remove('UserToken')
+            alert("Updated Mobile Number!");
 
-       this.setState({ redirectToReferrer: true })
         }
         else{
            this.setState({ redirectToReferrer: false })
+           alert(this.state.message);
         }
       })
 
@@ -88,12 +90,13 @@ console.log(cookie.load('UserToken'));
 
   render() {
 
-    // const { redirectToReferrer} = this.state
-    // if (redirectToReferrer) {
-    //       return (
-    //         <Route component={PageLogin} />
-    //       )
-    //     }
+    const { redirectToReferrer} = this.state
+    if (redirectToReferrer === true) {
+      return (
+        <Redirect to="../Settings"/>
+        //  <settings />
+       )
+        }
 
 
     return (
@@ -157,7 +160,7 @@ const Page = () => (
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">
-          <VerifyPhoneCode />
+          <PhoneVerifyCode />
         </div>
       </QueueAnim>
     </div>

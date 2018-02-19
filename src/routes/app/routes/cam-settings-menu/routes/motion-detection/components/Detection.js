@@ -21,8 +21,8 @@ class Detection extends React.Component {
       this.state = {
         data: [],
         Toggled: '',
-        status:'',
-        sensitivity:'',
+        // status:'',
+        // sensitivity:'',
         // value:''
       };
 
@@ -33,81 +33,73 @@ class Detection extends React.Component {
 
         this.setState({Toggled: !this.state.Toggled});
 
+        var s = !this.state.Toggled
+        console.log(s);
+         if(s === true)
+         {
+               var status = 1;
+               var sensitivity = 4;
+
+         }
+        if(s === false){
+           var status = 2;
+           var sensitivity = 7;
+         }
+
+              var object = JSON.stringify([{"CameraID":cookie.load('camearaid'), "MotionDetectionStatus":status, "MotionDetectionSensitivity":sensitivity}]);
+              console.log(object);
+
+              const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateCameraMotionDetectionSetting';
+
+                  fetch(BaseURL,
+                  {
+                   method: "POST",
+                   body: JSON.stringify({
+                     "UserID":cookie.load('Id'),
+                     "UserToken":cookie.load('UserToken'),
+                     "CameraList":object
+                   }),
+                    headers: new Headers({'content-type': 'application/json'}),
+                  })
+              .then((Response)=> Response.json())
+              .then((findresponse)=>{
+                  console.log(findresponse)
+
+                  this.setState({
+                     status:findresponse.UpdateCameraMotionDetectionSettingResult.ResultStatus.Status,
+                     message:findresponse.UpdateCameraMotionDetectionSettingResult.ResultStatus.StatusMessage
+                   })
+                     console.log(this.state.status);
+                     console.log(this.state.message);
+                     if(this.state.status === "1")
+                     {
+                       alert("Done Updation!");
+
+
+                     }
+
+                     else {
+                       alert(this.state.message);
+
+                     }
+
+
+             })
+
 
        }
 
 // handleChange = (event, index, value) => this.setState({value});
 
 
- UpdateToggleStatus(event) {
-
- event.preventDefault();
- // var state = cookie.load('togglestate');
- // console.log(state);
-
- var s =this.state.ts
- console.log(s);
-  if(s === "true")
-  {
-
-      this.setState({ status:1,
-                     sensitivity:4})
-      console.log(this.state.status)
-      // console.log(2);
-
-  }
-  else {
-    this.setState({status:2,
-                      sensitivity:7 })
-    console.log(this.state.status)
-    // console.log(1);
-  }
-if(this.state.status==="" && this.state.sensitivity==="")
-{
-  alert("Not Updated");
-}
-else{
-       var object = JSON.stringify([{"CameraID":cookie.load('camearaid'), "MotionDetectionStatus":this.state.status, "MotionDetectionSensitivity":this.state.sensitivity}]);
-       console.log(object);
-
-       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateCameraMotionDetectionSetting';
-
-           fetch(BaseURL,
-           {
-            method: "POST",
-            body: JSON.stringify({
-              "UserID":cookie.load('Id'),
-              "UserToken":cookie.load('UserToken'),
-              "CameraList":object
-            }),
-             headers: new Headers({'content-type': 'application/json'}),
-           })
-       .then((Response)=> Response.json())
-       .then((findresponse)=>{
-           console.log(findresponse)
-
-           // this.setState({
-           //    status:findresponse.UpdateCameraMotionDetectionSettingResult.ResultStatus.Status,
-           //    message:findresponse.UpdateCameraMotionDetectionSettingResult.ResultStatus.StatusMessage
-           //  })
-           //    console.log(this.state.status);
-           //    console.log(this.state.message);
-           //    if(this.state.status === "0")
-           //    {
-           //      alert(this.state.message);
-           //
-           //    }
-           //
-           //    else {
-           //
-           //        alert("Done Updation!")
-           //
-           //    }
-
-
-                      })
-      }
-}
+//  UpdateToggleStatus(event) {
+//
+//  event.preventDefault();
+//  // var state = cookie.load('togglestate');
+//  // console.log(state);
+//
+//
+// }
 
   componentDidMount(){
 
@@ -196,7 +188,7 @@ else{
               onToggle={this.handleToggle.bind(this)}
               toggle={this.state.Toggled}
               style={styles.toggle}
-              onClick={(e)=>this.UpdateToggleStatus(e)}
+              // onClick={(e)=>this.UpdateToggleStatus(e)}
 
               />
 

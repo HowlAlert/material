@@ -58,12 +58,14 @@ class BasicHome extends React.Component{
                    .then((findresponse)=>{
                        console.log(findresponse)
                        this.setState({
-                          data:findresponse.TriggerEmergencyAlertResult.getUserAlert
+                          data:findresponse.TriggerEmergencyAlertResult.getUserAlert,
+                          geonumber:findresponse.TriggerEmergencyAlertResult.getUserAlert.geo911
                           // data:findresponse.TriggerEmergencyAlertResult.resultStatus  //for result
 
-                                           })
+                        });
                                         })
-                                     this.setState({ redirectToReferrer: true })
+                     this.setState({ redirectToReferrer: true })
+
 
 
 
@@ -89,7 +91,7 @@ render() {
 // console.log(status);           //to print result of the Service1
 
 
-var geo911 = this.state.data.geo911;
+var geo911 = this.state.geonumber;
 console.log(geo911)
 
 const { redirectToReferrer} = this.state
@@ -100,8 +102,12 @@ const { redirectToReferrer} = this.state
         <div className="icon-box bg-danger ibox-plain ibox-center">
          <div>
            <h5> Alerting Pack Members!</h5>
+           <div>
+             <h5>Contact No: {geo911}</h5>
+           </div>
+          <button><a href="home#/app/Alerts">ok</a></button>
          </div>
-          <h5>Contact No: {geo911}</h5>
+
        </div>
 
      )
@@ -115,7 +121,7 @@ const { redirectToReferrer} = this.state
 
   <div className="row">
 
-    <div className="col-xl-12"><a href="cameras#/app/Cameras">
+    <div className="col-xl-4"><a href="cameras#/app/Cameras">
         <div className="box box-default">
           <div className="box-body" >
           <div className="icon-box ibox-plain ibox-center">
@@ -130,7 +136,12 @@ const { redirectToReferrer} = this.state
     </div>
     </a></div>
 
-        <div className="col-xl-12"><a href="devices#/app/Devices">
+    <div className="col-xl-6 col-xl-4 rounded mx-auto d-block ">
+      <a href="home#/app/Monitoring">  <img src="assets/images/ambulance-button-unsubscribed.png"/></a>
+    </div>
+
+
+        <div className="col-xl-4"><a href="devices#/app/Devices">
             <div className="box box-default">
               <div className="box-body">
               <div className="icon-box ibox-plain ibox-center">
@@ -144,8 +155,14 @@ const { redirectToReferrer} = this.state
             </div>
         </div>
       </a></div>
+      <div className="col-xl-4 col-lg-6">
+      <a href="home#/app/Monitoring">  <img src="assets/images/police-button-unsubscribed.png"/></a>
+      </div>
+      <div className="col-xl-4 col-lg-6">
+      <a href="home#/app/Monitoring">  <img src="assets/images/fire-button-unsubscribed.png"/></a>
+      </div>
 
-      <div className="col-xl-12"><a href="pack#/app/Pack">
+      <div className="col-xl-4"><a href="pack#/app/Pack">
        <div className="box box-default">
          <div className="box-body">
            <div className="icon-box ibox-plain ibox-center">
@@ -159,8 +176,24 @@ const { redirectToReferrer} = this.state
          </div>
        </div>
      </a></div>
+     <div className="col-xl-6 col-lg-8 rounded mx-auto d-block">
 
-     <div className="col-xl-12"><a href="monitor#/app/Monitoring">
+           <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen}/>
+           {/* <h5 onClick={this.handleOpen}>CLICK HERE TO ALARM</h5> */}
+             <Dialog
+               title="Confirm"
+               actions={actions}
+               modal={false}
+               open={this.state.open}
+               onRequestClose={this.handleClose}
+             >
+             <h5>You want to Alert your Pack Members?</h5>
+             </Dialog>
+
+
+     </div>
+
+     <div className="col-xl-4"><a href="monitor#/app/Monitoring">
       <div className="box box-default">
         <div className="box-body">
           <div className="icon-box ibox-plain ibox-center">
@@ -177,14 +210,14 @@ const { redirectToReferrer} = this.state
   </div>
 
 
-        <div className="col-xl-4 col-lg-8 rounded mx-auto d-block ">
+        {/* <div className="col-xl-4 col-lg-8 rounded mx-auto d-block ">
             <img src="assets/images/ambulance-button-unsubscribed.png"/>
-        </div>
+        </div> */}
 
 
-        <div className="col-xl-4 col-lg-6">
+        {/* <div className="col-xl-4 col-lg-6">
           <img src="assets/images/police-button-unsubscribed.png"/>
-        </div>
+        </div> */}
 
         {/* <div className="col-xl-4 col-lg-6">
           <div className="card bg-color-primary text-center">
@@ -196,9 +229,9 @@ const { redirectToReferrer} = this.state
             </div>
           </div>
         </div> */}
-        <div className="col-xl-4 col-lg-6">
+        {/* <div className="col-xl-4 col-lg-6">
           <img src="assets/images/fire-button-unsubscribed.png"/>
-        </div>
+        </div> */}
 
       {/* <div className="col-xl-4 col-lg-8 rounded mx-auto d-block">
         <div className="card bg-danger text-center ">
@@ -219,24 +252,7 @@ const { redirectToReferrer} = this.state
         </div>
       </div> */}
 
-      <div className="col-xl-4 col-lg-8 rounded mx-auto d-block">
 
-            <img src="assets/images/alert-pack-button.png"/>
-
-              <a href="javascript:;">
-              <h5 onClick={this.handleOpen}>CLICK HERE TO ALARM</h5></a>
-              <Dialog
-                title="Confirm"
-                actions={actions}
-                modal={false}
-                open={this.state.open}
-                onRequestClose={this.handleClose}
-              >
-              <h5>You want to Alert your Pack Members?</h5>
-              </Dialog>
-
-
-      </div>
 
       </div>
     </div>

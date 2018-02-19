@@ -131,15 +131,7 @@ const { redirectToReferrer} = this.state
               style={{fontSize: '14px', lineHeight: '48px'}}
               leftIcon={<i className="material-icons">forward</i>}
               onClick={this.handleOpen}
-              <Dialog
-                          title="Confirm"
-                          actions={actions}
-                          modal={false}
-                          open={this.state.open}
-                          onRequestClose={this.handleClose}
-                        >
-                          Are you sure you want to logout?
-                        </Dialog>
+            
                         />
 
 

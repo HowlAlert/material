@@ -125,7 +125,8 @@ this.handleCountry = this.handleCountry.bind(this);
     if (redirectToReferrer) {
 
           return (
-               <Redirect to="PhoneVerifyCode"/>
+              // <Redirect to="PhoneVerifyCode"/>
+                <Redirect to="PhoneVerifyCode"/>
           )
         }
 

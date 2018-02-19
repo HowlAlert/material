@@ -14,10 +14,9 @@ class Pack extends React.Component {
       };
 
   }
-
   componentDidMount(){
 
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetPackPoundList';
+    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetMyPoundList';
 
         fetch(BaseURL,
         {
@@ -32,40 +31,40 @@ class Pack extends React.Component {
     .then((findresponse)=>{
         console.log(findresponse)
         this.setState({
-           data:findresponse.GetPackPoundListResult.GetPackPounds,
+           data:findresponse.GetMyPoundListResult.GetMyPounds,
 
         })
 
-          var mes = (this.state.data[0].HowlType === '2' ? true : false)
-          console.log(mes)
 
 
       })
 
   }
   render() {
-
-    var mes = this.state.data[0]
-    console.log(mes)
-
-    if(mes === 1)
-    {
-      var message="You Howled back at"
-    }
-    else if(mes === 2){
-      var message="Howled back on"
-    }
+    // var mes = this.state.data[0].HowlType;
+    // console.log(mes)
+    //
+    //
+    // if(mes === 1)
+    // {
+    //   var message="You Howled at"
+    //   console.log(message)
+    // }
+    // if(mes === 2){
+    //   var message="Howled back"
+    //   console.log(message)
+    // }
 
 
     return (
+      <div className="row">
+        <div className="col-xl-12">
+          <div className="box box-default">
+            <div className="box-body">
 
-  <div className="box box-transparent">
-  <h2 className=" text-center">
+  {/* <h2 className=" text-center">
     <div>NO NEW HOWL</div>
-  </h2>
-
-      <div className="box-body padding-xl">
-        <div className="row">
+  </h2> */}
 
 
           {
@@ -76,12 +75,14 @@ class Pack extends React.Component {
                       <div className="box box-default">
                           <div className="box-body ">
 
-                                 <div className="col-md-12 text-center">
+                                 <div className="col-xl-12 ">
 
-                                   {dyanamicData.HowlType}{" "}
-                                   {dyanamicData.ReceiverPack.FirstName}{" "}
-                                       {dyanamicData.ReceiverPack.LastName + "Howled back on"} {" "}
-                                       {dyanamicData.ReceiverPack.DateCreated}</div>
+                                   {/* {dyanamicData.HowlType}{" "} */}
+                                   {/* {dyanamicData.HowlType === "1"  ?  'You HOWLED at'
+                                   : 'Received HOWL from'}{" "} */}
+                                   {dyanamicData.HowlType === "1"  ?  `You HOWLED at ${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName}`
+                                                 :  `${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName} HOWLED back `}{" "}
+                                       {"on " + dyanamicData.DateCreated}</div>
 
                           </div>
                      </div>
@@ -90,26 +91,23 @@ class Pack extends React.Component {
           }
         </div>
       </div>
-
+</div>
    </div>
 
     );
 }
 }
-
-const Page = () => (
-  <article>
-    <div>
-      <h2 className="article-title text-center">Howls At Pack </h2>
-
-    </div>
-
-   <section className="chapter">
-     <QueueAnim type="bottom" className="ui-animate">
-       <div key="1"><Pack /></div>
-     </QueueAnim>
-   </section>
+const Page = () => {
+  return (
+  <article className="article">
+    <center><h2 className="article-title">Howls At Pack</h2></center>
+    <section className="container-fluid with-maxwidth chapter">
+      <QueueAnim type="bottom" className="ui-animate">
+        <div key="1"><Pack /></div>
+      </QueueAnim>
+    </section>
   </article>
-);
+  )
+}
 
 module.exports = Page;
