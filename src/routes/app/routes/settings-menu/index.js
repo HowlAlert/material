@@ -32,10 +32,6 @@ const PageLayout = ({ match }) => (
     <Route path={`${match.url}/feedback`} component={Feedback}/>
     <Route path={`${match.url}/contact`} component={Contact}/>
     <Route path={`${match.url}/Terms`} component={Conditions}/>
-
-
-
-
   </div>
 )
 

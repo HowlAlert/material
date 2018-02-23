@@ -7,7 +7,9 @@ import { session,sessionReducer, sessionService } from 'redux-react-session';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from 'react-router-dom';
 
-
+const  href= {
+    href: 'href'
+};
 class SidebarContent extends React.Component {
   constructor(props) {
 
@@ -110,6 +112,7 @@ class SidebarContent extends React.Component {
 
 
   handleLogout(event){
+    console.log("logout")
   this.setState({open: false});
   //alert("Are you sure you want to logout?");
 
@@ -210,7 +213,7 @@ class SidebarContent extends React.Component {
 
         </li>
         <li>
-          <FlatButton onClick={this.handleOpen}><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></FlatButton>
+          <FlatButton onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></FlatButton>
           <Dialog
                       title="Confirm"
                       actions={actions}

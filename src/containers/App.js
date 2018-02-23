@@ -4,8 +4,6 @@ import classnames from 'classnames';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { Route, Switch, Redirect } from 'react-router-dom';
-
-
 import MainApp from 'routes/app/'
 import Page404 from 'routes/404/'
 import Page500 from 'routes/500/'
@@ -14,7 +12,6 @@ import PageForgotPassword from 'routes/forgot-password/'
 import PageFullscreen from 'routes/fullscreen/'
 import PageLockScreen from 'routes/lock-screen/'
 import PageLogin from 'routes/login/'
-
 import PageWelcome from 'routes/welcome/'
 import PageRegister from 'routes/register/'
 import PageRegister1 from 'routes/register1/'
@@ -32,22 +29,11 @@ import PageEditPhoneNumber from 'routes/editPhoneNumber/'
 import PageVerifyPhoneCode from 'routes/verifyPhoneCode/'
 import PageMainLogin from 'routes/mainLogin/'
 import PageMotionDetection from 'routes/motion-Detection/'
-
-// import PageSignUp from 'routes/sign-up/'
-
-
-// import  Camera from 'routes/cameras'
-
-
-// = styles =
-// 3rd
 import 'styles/bootstrap.scss';
-// custom
 import 'styles/layout.scss';
 import 'styles/theme.scss';
 import 'styles/ui.scss';
 import 'styles/app.scss';
-
 import lightTheme from './themes/lightTheme';
 import darkTheme from './themes/darkTheme';
 import grayTheme from './themes/grayTheme';
@@ -73,7 +59,7 @@ class App extends Component {
 
     const isRoot = location.pathname === '/' ? true : false;
     if (isRoot) {
-      return ( <Redirect to={'/app/dashboard'}/> );
+      return ( <Redirect to={'/app/mainLogin'}/> );
     }
 
     return (
@@ -92,30 +78,6 @@ class App extends Component {
               'sidebar-lg': sidebarWidth === 'large'})
           }>
             <Route path={`${match.url}app`} component={MainApp} />
-            <Route exact path="/404" component={Page404} />
-            <Route exact path="/500" component={Page500} />
-            <Route exact path="/confirm-email" component={PageConfirmEmail} />
-            <Route exact path="/forgot-password" component={PageForgotPassword} />
-            <Route exact path="/fullscreen" component={PageFullscreen} />
-            <Route exact path="/lock-screen" component={PageLockScreen} />
-            <Route exact path="/login" component={PageLogin} />
-            <Route exact path="/welcome" component={PageWelcome} />
-            <Route exact path="/register" component={PageRegister} />
-            <Route exact path="/register1" component={PageRegister1} />
-            <Route exact path="/register2" component={PageRegister2} />
-            <Route exact path="/register3" component={PageRegister3} />
-            <Route exact path="/register4" component={PageRegister4} />
-            <Route exact path="/register5" component={PageRegister5} />
-            <Route exact path="/printcode" component={PagePrintcode} />
-            <Route exact path="/scheduling" component={PageScheduling} />
-            <Route exact path="/schedule" component={PageSchedule} />
-            <Route exact path="/pack" component={PagePack} />
-            <Route exact path="/feedback" component={PageFeedback} />
-            <Route exact path="/editprofile" component={PageEditprofile} />
-            <Route exact path="/editPhoneNumber" component={PageEditPhoneNumber} />
-            <Route exact path="/verifyPhoneCode" component={PageVerifyPhoneCode} />
-            <Route exact path="/mainLogin" component={PageMainLogin} />
-            <Route exact path="/motionDetection" component={PageMotionDetection} />
           </div>
         </div>
       </MuiThemeProvider>
