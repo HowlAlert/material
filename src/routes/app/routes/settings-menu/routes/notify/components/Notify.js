@@ -12,6 +12,7 @@ const styles = {
   },
 };
 
+
 class Notify extends React.Component {
 
   constructor(props) {

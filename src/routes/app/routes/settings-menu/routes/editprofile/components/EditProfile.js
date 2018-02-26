@@ -101,16 +101,37 @@ class EditProfile extends React.Component {
      handleSave(event){
         var firstname = this.state.Fname;
         console.log(firstname);
-        // var lastname = this.state.Lname;
-        // console.log(lastname);
+        var lastname = this.state.Lname;
+        console.log(lastname);
         var email = this.state.Email;
         console.log(email);
 
-        if(email === "" )
+        if(firstname==="")
         {
-          email = cookie.load('Email')
+
+          firstname = cookie.load('FirstName');
+
+          console.log("No change in firstname");
         }
 
+        if( lastname==="" )
+        {
+
+          lastname = cookie.load('LastName');
+          console.log("No change in lastname");
+
+
+        }
+        if(email==="")
+        {
+          email = cookie.load('Email');
+
+        }
+        if(firstname==="" && lastname===""  && email==="")
+        {
+
+          alert("No updates done!")
+        }
          const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserProfile';
           fetch(URL,
                           {
@@ -118,8 +139,8 @@ class EditProfile extends React.Component {
                            body: JSON.stringify({
                                "UserID":cookie.load('Id'),
                                "UserToken":cookie.load('UserToken'),
-                               "FirstName": this.state.Fname,
-                               "LastName": this.state.Lname,
+                               "FirstName": firstname,
+                               "LastName": lastname,
                                "Email": email
 
                            }),

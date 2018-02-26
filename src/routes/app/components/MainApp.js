@@ -4,7 +4,7 @@ import loadable from 'react-loadable';
 import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
-import Customizer from 'components/Customizer';
+// import Customizer from 'components/Customizer';
 
 
 import Dashboard from '../routes/home/'
@@ -52,6 +52,12 @@ let AsyncMonitor = loadable({
   loader: () => import('../routes/monitor/'),
   loading: LoadingComponent
 })
+
+let AsyncMap = loadable({
+  loader: () => import('../routes/map/'),
+  loading: LoadingComponent
+})
+
 let AsyncSettings = loadable({
   loader: () => import('../routes/appsettings/'),
   loading: LoadingComponent
@@ -70,10 +76,10 @@ let AsyncSettingsMenu = loadable({
 })
 
 
-let AsyncTable = loadable({
-  loader: () => import('../routes/table/'),
-  loading: LoadingComponent
-})
+// let AsyncTable = loadable({
+//   loader: () => import('../routes/table/'),
+//   loading: LoadingComponent
+// })
 
 
 class MainApp extends React.Component {
@@ -85,9 +91,9 @@ class MainApp extends React.Component {
       <div className="main-app-container">
         <Sidenav />
 
-        <section id="page-container" className="app-page-container">
-          <Header />
+        <section id="page-container" className="app-page-container" >
 
+          <Header />
           <div className="app-content-wrapper">
             <div className="app-content">
               <div className="full-height">
@@ -106,7 +112,7 @@ class MainApp extends React.Component {
                   <Route path={`${match.url}/settingsmenu`} component={AsyncSettingsMenu} />
                   <Route path={`${match.url}/Logout`} component={AsyncLogout} />
                   <Route path={`${match.url}/pglayout`} component={AsyncPageLayout} />
-                  <Route path={`${match.url}/table`} component={AsyncTable} />
+                  <Route path={`${match.url}/Map`} component={AsyncMap} />
 
               </div>
             </div>
@@ -115,7 +121,7 @@ class MainApp extends React.Component {
           </div>
         </section>
 
-        <Customizer />
+        {/* <Customizer /> */}
       </div>
     );
   }

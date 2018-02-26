@@ -12,16 +12,16 @@ const FullWidth = () => (
         <article className="article">
           <div>
           <a href="cam-settings-menu#/app/camerasettings/motion-detection">Motion Detection </a>
-          </div>  
+          </div>
           <div className="divider divider-solid" />
           <div>
              <a href="cam-settings-menu#/app/camerasettings/camera-history">Camera History </a>
           </div>
           <div className="divider divider-solid" />
-          <div>
+          {/* <div>
             <a href="cam-settings-menu#/app/camerasettings/camera-recordings"> Camera Recordings </a>
           </div>
-          <div className="divider divider-solid" />
+          <div className="divider divider-solid" /> */}
           <div>
             <a href="page-layout#/app/pglayout/add-devices"> Time Setting </a>
           </div>

@@ -7,7 +7,7 @@ import Toggle from 'material-ui/Toggle';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import Detection from '../../cam-settings-menu/routes/motion-detection/components/Detection';
-
+import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
   toggle: {
@@ -18,7 +18,7 @@ const styles = {
 
 class Camera extends React.Component {
  constructor() {
-   
+
    super();
      this.state = {
        data: [],
@@ -69,6 +69,18 @@ render() {
   return (
 
   <article className="article">
+  <div className="row">
+  {
+    this.state.data.map((dyanamicData,key) =>
+
+     <div className="box box-default col-xl-6">
+      <div className="box-body ">
+      <center>   {dyanamicData.SortRoomName}</center>
+     </div>
+   </div>
+
+   )}
+</div>
 
   <center>
 
@@ -105,40 +117,23 @@ render() {
 
 
     <section>
-      <div className="box-body padding-xl bg-color-dark">
 
-        <div className="row">
-            <div className="col-md-4">
-              {
-                this.state.data.map((dyanamicData,key) =>
-                <div>
-                    {
-                      (typeof(dyanamicData.Camera)=='object')?
-                      <div>
-                        {
-                          dyanamicData.Camera.map((dyanamicData1,key1) =>
-                               <div>
-                                   {dyanamicData1.Name}
-                               </div>
-                         )
-                       }
-                      </div>
-                      :
-                        null
+        <div className="box bg-color-dark">
+       <div className="row">
+          <div className="box-body col-xl-4">
+              <a href="cam-settings-menu#/app/camerasettings/motion-detection">
+              <center>Camera Motion Detection</center> </a>
+          </div>
+          <div className="box-body col-xl-4">
+               <a href="cam-settings-menu#/app/camerasettings/camera-history">
+              <center>Camera Histroy</center></a>
+          </div>
+          <div className="box-body col-xl-4">
 
-                    }
-
-                </div>
-
-               )
-              }
-              <a href="cam-settings-menu#/app/camerasettings/settings-menu"><i className="nav-icon material-icons">settings</i> Camera settings</a>
-
-             </div>
-
-
+              <a href="cam-settings-menu#/app/camerasettings/time-change">
+              <center>Time Change</center></a>
+          </div>
         </div>
-
       </div>
 
 
@@ -150,7 +145,8 @@ render() {
 
       <center>
         <p>{message}</p>
-        <button className="card bg-color-primary"><a href="cam-add-devices#/app/cameraDevices/buy-camera">Buy Camera </a></button>
+          <RaisedButton primary label="Buy Camera" >
+          <a href="cam-add-devices#/app/cameraDevices/buy-camera"> </a></RaisedButton>
 
       </center>
 

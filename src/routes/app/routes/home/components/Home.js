@@ -121,7 +121,7 @@ const { redirectToReferrer} = this.state
 
   <div className="row">
 
-    <div className="col-xl-4"><a href="cameras#/app/Cameras">
+    <div className="col-xl-4 text-left"><a href="cameras#/app/Cameras">
         <div className="box box-default">
           <div className="box-body" >
           <div className="icon-box ibox-plain ibox-center">
@@ -129,19 +129,19 @@ const { redirectToReferrer} = this.state
             <span><h5> CAMERA </h5> </span>
           </span>
           <span className="float-right ibox-icon">
-            <span><i className="material-icons ibox-left">perm_camera_mic</i></span>
+            <img className="nav-icon material-icons" src="assets/images/camera.png" />
           </span>
         </div>
     </div>
     </div>
     </a></div>
 
-    <div className="col-xl-6 col-xl-4 rounded mx-auto d-block ">
+    <div className="col-xl-5 text-right rounded mx-auto d-block ">
       <a href="home#/app/Monitoring">  <img src="assets/images/ambulance-button-unsubscribed.png"/></a>
     </div>
 
 
-        <div className="col-xl-4"><a href="devices#/app/Devices">
+        <div className="col-xl-4 text-left"><a href="devices#/app/Devices">
             <div className="box box-default">
               <div className="box-body">
               <div className="icon-box ibox-plain ibox-center">
@@ -149,7 +149,7 @@ const { redirectToReferrer} = this.state
                 <span><h5> DEVICES </h5> </span>
               </span>
               <span className="float-right ibox-icon">
-                <span><i className="material-icons ibox-left">perm_scan_wifi</i></span>
+                  <img className="nav-icon material-icons" src="assets/images/device.png" />
               </span>
             </div>
             </div>
@@ -170,7 +170,7 @@ const { redirectToReferrer} = this.state
                  <span><h5> MY PACK </h5> </span>
                </span>
                <span className="float-right ibox-icon">
-                 <span><i className="material-icons ibox-left">web</i></span>
+                   <img className="nav-icon material-icons" src="assets/images/pack.png" />
                </span>
            </div>
          </div>
@@ -201,7 +201,7 @@ const { redirectToReferrer} = this.state
                 <span><h5>MONITORING </h5> </span>
               </span>
               <span className="float-right ibox-icon">
-                <span><i className="material-icons ibox-left">person_outline</i></span>
+                  <img className="nav-icon material-icons" src="assets/images/monitor.png" />
               </span>
           </div>
         </div>

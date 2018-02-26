@@ -2,6 +2,7 @@ import React from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import cookie from 'react-cookies';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class ImageBox extends React.Component {
 
@@ -14,8 +15,6 @@ class ImageBox extends React.Component {
 
 
   }
-
-
 
 componentDidMount(){
 
@@ -71,8 +70,7 @@ console.log("ImageURL");
 
                })
 )
-           }
-          );
+           });
    }
 
 
@@ -91,6 +89,8 @@ console.log("ImageURL");
               <h5>{message}</h5>
               <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="150" width="150"/>
             </div>
+
+
         </div>
 
 
@@ -111,7 +111,10 @@ console.log("ImageURL");
 
 const ImageSection = () => (
   <article className="article">
-    <h2 className="article-title text-center no-margin-top">CAMERA<button className="float-right"><a href="cam-settings-menu#/app/camerasettings/add-devices">Add Device Instructions</a></button></h2>
+    <h2 className="article-title text-center no-margin-top">CAMERA
+      <RaisedButton className="float-right" primary label="Add Device Instructions" >
+      <a href="cam-settings-menu#/app/camerasettings/add-devices"> </a></RaisedButton>
+    </h2>
     <section className="box box-default">
       <div className="box-body padding-xl">
         <div className="col-xl-12">

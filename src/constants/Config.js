@@ -2,8 +2,8 @@ const date = new Date();
 const year = date.getFullYear();
 
 const APPCONFIG = {
-  brand: 'HOWL',
-  user: 'Lisa',
+  // brand: 'HOWL ALERT',
+  // user: 'Lisa',
   year,
   // productLink: 'https://themeforest.net/item/material-design-reactjs-admin-web-app-with-bootstrap-4/19582625',
   productLink: 'https://sandbox.howlalarm.com/HOWL_WCF_Sandbox/Service1.svc/Login',

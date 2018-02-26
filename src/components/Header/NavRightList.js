@@ -102,14 +102,18 @@ const { redirectToReferrer} = this.state
 
     return (
       <ul className="list-unstyled float-right">
+        <li>
+          <IconButton style={ImgIconButtonStyle}><i className="material-icons">notifications_none</i></IconButton>
+        </li>
         <li style={{marginRight: '10px'}}>
           <IconMenu
-            iconButtonElement={<IconButton style={ImgIconButtonStyle}><img src="assets/images/HOWL2.ico" alt="" className="rounded-circle img30_30" /></IconButton>}
+            iconButtonElement={<IconButton style={ImgIconButtonStyle}><img src="assets/images/image.png" alt="" className="rounded-circle img30_30" /></IconButton>}
             onChange={this.handleChange}
             anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
             menuStyle={{minWidth: '150px'}}
                     >
+
             <MenuItem
               value="/app/dashboard"
               primaryText="Home"
@@ -123,6 +127,7 @@ const { redirectToReferrer} = this.state
               innerDivStyle={listItemStyle}
               style={{fontSize: '14px', lineHeight: '48px'}}
               leftIcon={<i className="material-icons">person_outline</i>}
+              onChange={this.handleChange}
                         />
             <MenuItem
               value="/login"
@@ -131,14 +136,16 @@ const { redirectToReferrer} = this.state
               style={{fontSize: '14px', lineHeight: '48px'}}
               leftIcon={<i className="material-icons">forward</i>}
               onClick={this.handleOpen}
-            
+
                         />
 
 
 
           </IconMenu>
 
+
         </li>
+
 
       </ul>
     );

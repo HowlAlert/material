@@ -9,12 +9,12 @@ import Toggle from 'material-ui/Toggle';
 const Recording = () => (
   <article className="article">
     <div className="container-fluid with-maxwidth">
-    <h2 className="article-title text-center no-margin-top">Recordings</h2>
+    <h2 className="article-title text-center no-margin-top">Time Change</h2>
 
 
 
 
-  
+
 
 
 

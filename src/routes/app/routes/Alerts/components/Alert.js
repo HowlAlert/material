@@ -10,6 +10,9 @@ class Alerts extends React.Component {
       this.state = {
         data: [],
         data1: [],
+        counter: 2,
+        disabled1: false,
+        disabled2: true
       };
   }
 
@@ -57,11 +60,202 @@ class Alerts extends React.Component {
   }
 
 
+  handleNext(value) {
+                              //Redirecting to next page of alerts
+    var count = `${value}`;
+    console.log(count);
+
+    this.setState({
+        counter: this.state.counter + 1,
+        disabled2: false,
+    });
+
+
+      var that = this;
+       var urls = [];
+       var a1 =[];
+       // console.log(this.state.counter);
+
+
+       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
+
+           fetch(BaseURL,
+           {
+            method: "POST",
+            body: JSON.stringify({
+              "UserID":cookie.load('Id'),
+              "UserToken":cookie.load('UserToken'),
+              "PageNumber":this.state.counter
+            }),
+             headers: new Headers({'content-type': 'application/json'}),
+           })
+       .then((Response)=> Response.json())
+       .then((findresponse)=>{
+         console.log(findresponse);
+         this.setState({
+            data:findresponse.GetUserFeedResult.getUserFeeds,
+            length:findresponse.GetUserFeedResult.getUserFeeds.length,
+            // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+          })
+          Promise.all(
+                  findresponse.GetUserFeedResult.getUserFeeds.map(
+                    element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                                          {
+
+                                               method: "POST",
+                                               body: JSON.stringify({
+                                                 "url":element.ImageURL
+                                               }),
+
+                                              headers: new Headers({'content-type':'application/json'}),
+
+                                        })
+                      .then(res => res.json())
+                  )
+                ).then(datas => {
+
+                  this.state.data.forEach((element, i) => {
+                    urls[i] = element
+
+                  })
+                //console.log(urls);
+                //console.log(datas);
+             let arr3 = [];                                  // to combine the results of the two arrays
+                     urls.forEach((itm, i) => {
+                              arr3.push(Object.assign({}, itm, datas[i]));
+                          });
+
+                          console.log(arr3.length);
+                          this.setState({  data1:arr3 , array_count:arr3.length })
+
+
+                          var total = this.state.array_count;
+                          console.log(total);
+
+                          if(total < 20)
+                           {  alert("No more Alerts!");
+
+                                 this.setState({
+                                        counter: this.state.counter - 2,
+                                        disabled1: true,
+                                        disabled2:false
+                                   });
+                           }
+
+
+
+            })
+                 })
+
+
+
+ }
+ handleBack(value) {                 //Redirecting to previous page of alerts
+
+   var count = `${value}`;
+   console.log(count);
+
+
+    this.setState({
+        counter: this.state.counter - 1,
+        disabled1: false
+    });
+
+
+    // var total = this.state.array_count;
+    // console.log(total);
+    // if(total == 20)
+    //  {
+    //        this.setState({
+    //               disabled: false
+    //          });
+    //  }
+
+
+    if(this.state.counter <= 1)
+     {  alert("No more Alerts!");
+
+          this.setState({
+
+                disabled2: true,
+                disabled1: false,
+                counter: this.state.counter + 1,
+             });
+     }
+
+     var that = this;
+      var urls = [];
+      var a1 =[];
+      console.log(this.state.counter);
+
+
+      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
+
+          fetch(BaseURL,
+          {
+           method: "POST",
+           body: JSON.stringify({
+             "UserID":cookie.load('Id'),
+             "UserToken":cookie.load('UserToken'),
+             "PageNumber":this.state.counter
+           }),
+            headers: new Headers({'content-type': 'application/json'}),
+          })
+      .then((Response)=> Response.json())
+      .then((findresponse)=>{
+        console.log(findresponse);
+        this.setState({
+           data:findresponse.GetUserFeedResult.getUserFeeds,
+           length:findresponse.GetUserFeedResult.getUserFeeds.length,
+           // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+         })
+         Promise.all(
+                 findresponse.GetUserFeedResult.getUserFeeds.map(
+                   element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                                         {
+
+                                              method: "POST",
+                                              body: JSON.stringify({
+                                                "url":element.ImageURL
+                                              }),
+
+                                             headers: new Headers({'content-type':'application/json'}),
+
+                                       })
+                     .then(res => res.json())
+                 )
+               ).then(datas => {
+
+                 this.state.data.forEach((element, i) => {
+                   urls[i] = element
+
+                 })
+               //console.log(urls);
+               //console.log(datas);
+            let arr3 = [];                                  // to combine the results of the two arrays
+                    urls.forEach((itm, i) => {
+                             arr3.push(Object.assign({}, itm, datas[i]));
+                         });
+
+                         console.log(arr3.length);
+                         this.setState({  data1:arr3 , array_count:arr3.length })
+
+
+           })
+                })
+
+
+
+ }
+
   componentDidMount(){
 
    var that = this;
     var urls = [];
     var a1 =[];
+    // console.log(this.state.counter);
+
+
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
 
         fetch(BaseURL,
@@ -69,7 +263,8 @@ class Alerts extends React.Component {
          method: "POST",
          body: JSON.stringify({
            "UserID":cookie.load('Id'),
-           "UserToken":cookie.load('UserToken')
+           "UserToken":cookie.load('UserToken'),
+           "PageNumber":"1"
          }),
           headers: new Headers({'content-type': 'application/json'}),
         })
@@ -109,8 +304,8 @@ class Alerts extends React.Component {
                            arr3.push(Object.assign({}, itm, datas[i]));
                        });
 
-             console.log(arr3);
-             this.setState({  data1:arr3  })
+             console.log(arr3.length);
+             this.setState({  data1:arr3 , array_count:arr3.length })
 
 
          })
@@ -129,6 +324,16 @@ class Alerts extends React.Component {
       <div className="col-xl-12">
         <div className="box box-default">
           <div className="box-body">
+
+               <div>
+                    <RaisedButton primary label="Next ->" onClick={()=>this.handleNext(this.state.counter)}
+
+                      disabled={this.state.disabled1}/>
+                      <span className="float-right">
+                              <RaisedButton primary label="<- back" onClick={()=>this.handleBack(this.state.counter)}   disabled={this.state.disabled2}/>
+                     </span>
+                </div>
+
 
         <div>
 
