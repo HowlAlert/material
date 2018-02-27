@@ -25,7 +25,7 @@ const mWidthStyle = {
   minWidth: '130px'
   };
 const  login= {
-    color: '#FF0000'
+    color: '#D14836'
 };
 const  printcode= {
     color: '#3287c5'
@@ -33,15 +33,13 @@ const  printcode= {
 const  policy= {
     color: '#6A6A6A'
 };
-const  center= {
-    align:'center'
-};
-const boxsize= {
-    // //box-sizing: border-box;
-    // width: '250px',
-    // height: '50px',
-    // text:'middle'
-};
+
+
+
+
+
+
+
 
 
 class MainLogin extends React.Component {
@@ -371,16 +369,17 @@ class MainLogin extends React.Component {
               <ul className="nav" ref={(c) => { this.nav = c; }}>
                 <li className="nav-header" ><span></span></li>
                 </ul>
-                <img style={center} src="assets/images/HOWL.png" alt="HOWL" />
+                <img src="assets/images/HOWL.png" alt="HOWL" />
                 <h4 className="text-medium" className="text-center">Welcome</h4>
                 <div className="text-center">
                 <FacebookLogin
-                style={{height: '20px', width: '200px'}}
+
                 appId="1614436405260654"
                 autoLoad={false}
                 fields="first_name,last_name,email,id"
                 onClick={(e)=>this.handleFacebookLogin(e)}
                 callback={(e)=>this.handleFacebookLogin(e)}
+
 
                 /><div className="divider" />
                 <GoogleLogin
@@ -392,12 +391,12 @@ class MainLogin extends React.Component {
                 /><div className="divider" />
 
 
-                <p>---------------- OR ----------------</p>
+                <p style={policy}>----------------  OR  ----------------</p>
 
-                <RaisedButton label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}/><div className="divider" />
+                <RaisedButton style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}/><div className="divider" />
               </div>
               <div className="text-center">
-              <p>Have an account?<span><a onClick={(e)=>this.handleLogin(e)} style={login}> Login</a></span></p>
+              <p style={policy}>Have an account?<span><a onClick={(e)=>this.handleLogin(e)} style={login}> Login</a></span></p>
               </div>
 
               <div className="text-center">

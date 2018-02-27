@@ -13,21 +13,23 @@ import spacing from 'material-ui/styles/spacing';
  *  in a custom theme will default to these values.
  */
 export default {
-  spacing,
   fontFamily: 'inherit',
   borderRadius: 30,
+  padding: 10,
+  
+
   palette: {
     primary1Color: Howlblue,
     primary2Color: Howlblue,
-    primary3Color: grey400,
-    accent1Color: green400,
-    accent2Color: grey100,
-    accent3Color: grey500,
+    primary3Color: Howlblue,
+    accent1Color: Howlblue,
+    accent2Color: Howlblue,
+    accent3Color: Howlblue,
     textColor: darkBlack,
     secondaryTextColor: fade(darkBlack, 0.54),
     alternateTextColor: white,
     canvasColor: white,
-    borderColor: grey300,
+    borderColor: Howlblue ,
     disabledColor: fade(darkBlack, 0.3),
     pickerHeaderColor: cyan500,
     clockCircleColor: fade(darkBlack, 0.07),

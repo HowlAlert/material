@@ -10,7 +10,7 @@ import {
 
 
 const sideWidthSelectStyle = {
-  fontSize: '14px',
+  fontSize: '13px',
   width: '100%',
   marginTop: '-15px'
 };

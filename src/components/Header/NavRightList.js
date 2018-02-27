@@ -106,7 +106,7 @@ const { redirectToReferrer} = this.state
           <IconMenu
             iconButtonElement={
               <IconButton>
-              <MenuItem style={{fontSize: '14px', lineHeight: '48px'}} innerDivStyle={listItemStyle}
+              <MenuItem style={{fontSize: '13px', lineHeight: '21px'}} innerDivStyle={listItemStyle}
               primaryText={cookie.load('FirstName') +" "+ cookie.load('LastName')}
               onClick={this.handleChange}
               leftIcon={<img src="assets/images/image.png" alt="" className="rounded-circle img30_30" />}
@@ -120,7 +120,7 @@ const { redirectToReferrer} = this.state
             <MenuItem
               value="/app/dashboard"
               primaryText="Home"
-              style={{fontSize: '14px', lineHeight: '48px'}}
+              style={{fontSize: '13px', lineHeight: '21px'}}
               innerDivStyle={listItemStyle}
               leftIcon={<i className="material-icons">home</i>}
                         />
@@ -129,7 +129,7 @@ const { redirectToReferrer} = this.state
             //value="/login"
               primaryText="Logout"
               innerDivStyle={listItemStyle}
-              style={{fontSize: '14px', lineHeight: '48px'}}
+              style={{fontSize: '13px', lineHeight: '48px'}}
               leftIcon={<i className="material-icons">forward</i>}
               onClick={this.handleOpen}
 
