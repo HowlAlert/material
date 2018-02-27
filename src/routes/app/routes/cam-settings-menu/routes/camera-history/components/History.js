@@ -512,7 +512,7 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
 
               {
                 this.state.data1.map((dyanamicData1,key)=>
-                <div className="box box-default col-xl-3">
+                <div className="box box-default col-xl-2">
                  <div className="box-body ">
                    <center>
                              <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="180" width="180"

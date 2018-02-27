@@ -18,17 +18,21 @@ class Pack extends React.Component {
         data: [],
         data1: [],
         UserPoundID: [],
-        imgsrc:'',
+        imgurl:[],
+        result:[],
         source1:'assets/images/Howl-Final-Light-Blue-small.png',
-        source2:'assets/images/Howl-Final-Red-small.png'
+        source2:'assets/images/Howl-Final-Red-small.png',
+        redirectToHowl: false,
+        redirectToUnHowl:false
     };
-    // this.handleChange = this.handleChange.bind(this);
+
 
   }
 
-  // toggleIcon(){
-  //
-  //  }
+
+  // forceUpdateHandler(){
+  //     this.forceUpdate();
+  //   };
   componentDidMount() {
 
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserPack';
@@ -45,13 +49,28 @@ class Pack extends React.Component {
     .then((Response)=> Response.json())
     .then((findresponse)=>{
         console.log(findresponse)
+
         this.setState({
            data:findresponse.GetUserPackResult.UserPackList,
            data1:findresponse.GetUserPackResult,
            data2:findresponse.GetUserPackResult.AvgResTimeOfPoundBack,
-           UserPoundID:findresponse.GetUserPackResult.UserPackList.map((dyanamicData1,key)=>dyanamicData1.UserPoundID)
+           UserPoundID:findresponse.GetUserPackResult.UserPackList.map((dyanamicData1,key)=>dyanamicData1.UserPoundID=== "" ? this.state.source1 : this.state.source2),
 
          })
+         var arrOfObj = this.state.data;
+
+         var result = arrOfObj.map(function(el) {
+           var o = Object.assign({}, el);
+           o.UserPoundID=== "" ? o.url = 'assets/images/Howl-Final-Light-Blue-small.png'
+                            : o.url = 'assets/images/Howl-Final-Red-small.png';
+           return o;
+         })
+       this.setState({
+         result:result
+       })
+
+         // console.log(arrOfObj);
+         console.log(this.state.result);
          // console.log(this.state.UserPoundID);
       })
 
@@ -112,21 +131,22 @@ class Pack extends React.Component {
   }
 
 
+
 handleAlert(value1,value2,value3) {
 
+
     // alert("Are you sure you want to Alert?");
+    // var poundid = `${value4}`;
+    // console.log(poundid);
+    var packid = `${value1}`;
+    console.log(packid);
+    var name = `${value2}`;
+    console.log(name)
+    var poundid = `${value3}`;
+    console.log(poundid)
 
-
-
-
-      var packid = `${value1}`;
-      console.log(packid);
-      var name = `${value2}`;
-      console.log(name)
-      var img = `${value3}`;
-      console.log(img)
-
-
+    // if(poundid === "")
+    //     {
                const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/PoundMyPackMember';
 
                 fetch(BaseURL,
@@ -142,19 +162,27 @@ handleAlert(value1,value2,value3) {
                          this.setState({
                                      status:findresponse.PoundMyPackMemberResult.ResultStatus.Status,
                                      message:findresponse.PoundMyPackMemberResult.ResultStatus.StatusMessage,
-                                     // pound:findresponse.PoundMyPackMemberResult.UserPackList
+                                     pid:findresponse.PoundMyPackMemberResult.UserPackList.map((poundid,key)=>poundid.ID)
                                       })
 
                    if(this.state.status === "1")
                    {
                        alert("You Howled at "+name);
-                       if(img=== 'assets/images/Howl-Final-Light-Blue-small.png')
-                           this.setState({imgsrc:'assets/images/Howl-Final-Red-small.png'})
-                       else
-                           this.setState({imgsrc:'assets/images/Howl-Final-Light-Blue-small.png'})
+                       {this.forceUpdateHandler}
+                       console.log(packid);
+                       var pidarray = this.state.pid
+                      console.log(pidarray) ;
 
+                         for (let j = 0; j < pidarray.length; j++) {
+                            if ((pidarray[j]) === packid)
+                            {
+                              this.setState({ source1:'assets/images/Howl-Final-Red-small.png'});
 
-                    }
+                            }
+
+                         }
+                  
+                  }
                    else {
                       alert(this.state.message);
                       // console.log(this.state.pound.UserPoundID)
@@ -162,16 +190,16 @@ handleAlert(value1,value2,value3) {
                    }
            console.log(this.state.imgsrc);
       })
-  }
 
-  handleundoAlert(value1,value2,value3) {
+}
+handleundoAlert(value1,value2) {
 
     var poundid = `${value1}`;
     console.log(poundid);
     var name = `${value2}`;
     console.log(name)
-    var img = `${value3}`;
-    console.log(img)
+    // var img = `${value3}`;
+    // console.log(img)
 
       fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UndoMyPound',
       {
@@ -191,7 +219,12 @@ handleAlert(value1,value2,value3) {
     if(this.state.status === "1")
     {
         alert("You UNHOWLED at "+name);
-
+        // this.setState({
+        //     // redirectToUnHowl:true ,
+        //     source2:'assets/images/Howl-Final-Light-Blue-small.png',
+        //     // poundid: `${value1}`
+        //
+        // });
 
      }
     else {
@@ -201,29 +234,27 @@ handleAlert(value1,value2,value3) {
     }
 
       })
-   }
+
+
+ }
 
 
 
 
   render() {
     // let bgColor1 = this.state.color_d1 ? "DodgerBlue" : "white";
-
     const ms = this.state.data2
-    var v = moment.utc(moment.duration({'s':ms}).asMilliseconds()).format("HH :mm :ss");
+        var v = moment.utc(moment.duration({'s':ms}).asMilliseconds()).format("HH :mm :ss");
 
-    let filteredNames = this.state.data.filter(
-      (dynamicdata)=>{
-        return dynamicdata.FirstName.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
-      }
+        let filteredNames = this.state.result.filter(
+          (dynamicdata)=>{
+            return dynamicdata.FirstName.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+          }
 
-  );
- var imgSrc;
-  {
-  this.state.UserPoundID === ""  ?
-       imgSrc= 'assets/images/Howl-Final-Light-Blue-small.png'
-    :  imgSrc= 'assets/images/Howl-Final-Red-small.png'
-  }
+      );
+
+
+
 
   return (
 
@@ -261,15 +292,19 @@ handleAlert(value1,value2,value3) {
                             {dyanamicData.FirstName} {" "} {dyanamicData.LastName}<br/>
                             {"+"+dyanamicData.PhoneNumberCountryCode}{" "}  {dyanamicData.PhoneNumber}<br/>
                             {dyanamicData.Email}
+
                     </span>
 
                         <span className="float-right">
 
                           {
                             dyanamicData.UserPoundID === ""  ?
-                                    <img src={this.state.source1} alt="Image" height="60" width="60" onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,this.state.source1)}/>
-                                :   <img src={this.state.source2} alt="Image" height="60" width="60" onClick={()=>this.handleundoAlert(dyanamicData.UserPoundID,dyanamicData.FirstName,this.state.source1)}/>
+                                    <img src={this.state.source1} alt="Image" height="60" width="60" onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID)}  />
+                                :   <img src={this.state.source2} alt="Image" height="60" width="60" onClick={()=>this.handleundoAlert(dyanamicData.UserPoundID,dyanamicData.FirstName)} />
                           }
+
+                       {/* <img src={dyanamicData.url} alt="Image" height="60" width="60"
+                          onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.url,dyanamicData.UserPoundID)}/> */}
 
 
                           {/* {
@@ -278,10 +313,6 @@ handleAlert(value1,value2,value3) {
                             :  this.setState({imgSrc:`${this.state.source2}`})
                           }
 
-                          <img src={this.state.imgSrc} alt="Image" height="60" width="60"
-
-                             onClick={()=>this.handleundoAlert(dyanamicData.UserPoundID,dyanamicData.FirstName)}
-                             onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName)}/> */}
 
 
 

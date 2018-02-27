@@ -118,8 +118,8 @@ class Alerts extends React.Component {
                     urls[i] = element
 
                   })
-                //console.log(urls);
-                //console.log(datas);
+                console.log(urls);
+                console.log(datas);
              let arr3 = [];                                  // to combine the results of the two arrays
                      urls.forEach((itm, i) => {
                               arr3.push(Object.assign({}, itm, datas[i]));
