@@ -262,7 +262,7 @@ select.form-control-lg {
 .invalid-feedback {
   display: none;
   margin-top: .25rem;
-  font-size: .875rem;
+  font-size: 13px;
   color: $form-feedback-invalid-color;
 }
 
@@ -274,7 +274,7 @@ select.form-control-lg {
   width: 250px;
   padding: .5rem;
   margin-top: .1rem;
-  font-size: .875rem;
+  font-size: 13px;
   line-height: 1;
   color: #fff;
   background-color: rgba($form-feedback-invalid-color,.8);

@@ -1,7 +1,7 @@
 import {
   cyan700,
   grey600,
-  green600, green400, green200,
+  green600, green400, green200,Howlblue,
   fullWhite,
 } from 'material-ui/styles/colors';
 import {fade} from 'material-ui/utils/colorManipulator';
@@ -15,8 +15,8 @@ export default {
   fontFamily: 'Roboto, sans-serif',
   borderRadius: 30,
   palette: {
-    primary1Color: cyan700,
-    primary2Color: cyan700,
+    primary1Color: Howlblue,
+    primary2Color: Howlblue,
     primary3Color: grey600,
     accent1Color: green600,
     accent2Color: green400,

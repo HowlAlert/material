@@ -14,8 +14,9 @@ import spacing from 'material-ui/styles/spacing';
  */
 export default {
   spacing,
-  fontFamily: 'Roboto, sans-serif',
+  fontFamily: 'inherit',
   borderRadius: 30,
+  padding: 10,
   palette: {
     primary1Color: Howlblue,
     primary2Color: Howlblue,
@@ -27,7 +28,7 @@ export default {
     secondaryTextColor: fade(darkBlack, 0.54),
     alternateTextColor: white,
     canvasColor: white,
-    borderColor: grey300,
+    borderColor: Howlblue ,
     disabledColor: fade(darkBlack, 0.3),
     pickerHeaderColor: cyan500,
     clockCircleColor: fade(darkBlack, 0.07),

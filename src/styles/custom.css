@@ -20,15 +20,15 @@ input{
     border-radius:5px !important;
 }
 button{
-  border-radius:5px !important;
+  border-radius:30px !important;
   padding: 10px !important;
   text-transform: capitalize !important;
-  font-family: Arial, Helvetica, sans-serif !important;
+  font-family: inherit !important;
 
 }
 .off-canvas{z-index: 1 !important}
 h1,h2,h3, h4{
-  font-weight: bold !important;
+  font-weight: 400 !important;
 }
 
 .list{
@@ -40,7 +40,7 @@ h1,h2,h3, h4{
 }
 .columns ul{
     list-style: none;
-    
+
 }
 .right{float:right}
 .columns ul li{
@@ -48,23 +48,23 @@ h1,h2,h3, h4{
 }
 .columns ul li a{
     margin-left:10px;
-    font-weight: bold;
+    font-weight: 400;
 }
 
 h1{
-    font-size: 32px !important;
+    font-size: 13px !important;
 }
 
 h2{
-    font-size: 28px !important;
+    font-size: 13px !important;
 }
 
 .btn {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
-    font-size: 14px;
-    font-weight: normal;
+    font-size: 13px;
+    font-weight: 400;
     line-height: 1.42857143;
     text-align: center;
     white-space: nowrap;
@@ -121,7 +121,7 @@ h2{
     bottom: 0;
     width: 32px;
     line-height: 34px;
-    font-size: 1.6em;
+    font-size: 13px;
     text-align: center;
     border-right: 1px solid rgba(0,0,0,0.2);
 }

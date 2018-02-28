@@ -22,7 +22,7 @@ const listItemStyle = {
 
 class NavRightList extends React.Component {
   state = {
-  open: true,
+  open: false,
   };
   handleChange = (event, value) => {
     this.props.history.push(value);
@@ -102,12 +102,20 @@ const { redirectToReferrer} = this.state
 
     return (
       <ul className="list-unstyled float-right">
-        <li>
-          <IconButton style={ImgIconButtonStyle}><i className="material-icons">notifications_none</i></IconButton>
-        </li>
-        <li style={{marginRight: '10px'}}>
+
+<li>
+  <IconButton style={ImgIconButtonStyle}><i className="material-icons">notifications_none</i></IconButton>
+</li>
+        <li style={{marginRight: '150px', position : 'relative'}}>
           <IconMenu
-            iconButtonElement={<IconButton style={ImgIconButtonStyle}><img src="assets/images/image.png" alt="" className="rounded-circle img30_30" /></IconButton>}
+            iconButtonElement={
+              <IconButton>
+              <MenuItem style={{fontSize: '13px', lineHeight: '21px'}} innerDivStyle={listItemStyle}
+              primaryText={cookie.load('FirstName') +" "+ cookie.load('LastName')}
+              onClick={this.handleChange}
+              leftIcon={<img src="assets/images/image.png" alt="" className="rounded-circle img30_30" />}
+              />
+              </IconButton>}
             onChange={this.handleChange}
             anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
@@ -117,23 +125,16 @@ const { redirectToReferrer} = this.state
             <MenuItem
               value="/app/dashboard"
               primaryText="Home"
-              style={{fontSize: '14px', lineHeight: '48px'}}
+              style={{fontSize: '13px', lineHeight: '21px'}}
               innerDivStyle={listItemStyle}
               leftIcon={<i className="material-icons">home</i>}
                         />
+
             <MenuItem
-            //  value={cookie.load('FirstName')+ cookie.load('LastName')}
-              primaryText={cookie.load('FirstName') +" "+ cookie.load('LastName')}
-              innerDivStyle={listItemStyle}
-              style={{fontSize: '14px', lineHeight: '48px'}}
-              leftIcon={<i className="material-icons">person_outline</i>}
-              onChange={this.handleChange}
-                        />
-            <MenuItem
-              value="/login"
+            //value="/login"
               primaryText="Logout"
               innerDivStyle={listItemStyle}
-              style={{fontSize: '14px', lineHeight: '48px'}}
+              style={{fontSize: '13px', lineHeight: '48px'}}
               leftIcon={<i className="material-icons">forward</i>}
               onClick={this.handleOpen}
 
@@ -142,6 +143,15 @@ const { redirectToReferrer} = this.state
 
 
           </IconMenu>
+          <Dialog
+                      title="Confirm"
+                      actions={actions}
+                      modal={false}
+                      open={this.state.open}
+                      onRequestClose={this.handleClose}
+                    >
+                      Are you sure you want to logout?
+                    </Dialog>
 
 
         </li>

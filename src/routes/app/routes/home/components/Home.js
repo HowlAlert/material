@@ -3,6 +3,10 @@ import QueueAnim from 'rc-queue-anim';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import cookie from 'react-cookies';
+import Header from 'components/Header';
+import Sidenav from 'components/Sidenav';
+import Footer from 'components/Footer';
+import Customizer from 'components/Customizer';
 
 class BasicHome extends React.Component{
   constructor() {
@@ -52,9 +56,6 @@ class BasicHome extends React.Component{
                      this.setState({ redirectToReferrer: true })
 
 
-
-
-
 }
 render() {
 
@@ -100,6 +101,15 @@ const { redirectToReferrer} = this.state
 
 
   return (
+    <div className="main-app-container">
+        <Sidenav />
+
+        <section id="page-container" className="app-page-container">
+          <Header />
+
+          <div className="app-content-wrapper">
+           <div className="app-content">
+             <div className="full-height">
   <article className="article padding-lg-v article-dark article-bordered">
 
   <div className="container-fluid with-maxwidth">
@@ -282,8 +292,11 @@ const { redirectToReferrer} = this.state
     </span>
 </div>
 </article>
-
-
+</div>
+           </div>
+</div>
+</section>
+</div>
 
   );
  }
