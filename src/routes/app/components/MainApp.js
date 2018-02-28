@@ -76,10 +76,10 @@ let AsyncSettingsMenu = loadable({
   loader: () => import('../routes/settings-menu/'),
   loading: LoadingComponent
 })
-let AsyncTable = loadable({
-  loader: () => import('../routes/table/'),
-  loading: LoadingComponent
-})
+// let AsyncTable = loadable({
+//   loader: () => import('../routes/table/'),
+//   loading: LoadingComponent
+// })
 let AsyncLogin = loadable({
   loader: () => import('../routes/login/'),
   loading: LoadingComponent
@@ -165,7 +165,7 @@ class MainApp extends React.Component {
                   <Route path={`${match.url}/pglayout`} component={AsyncPageLayout} />
                   <Route path={`${match.url}/Map`} component={AsyncMap} />
 
-                  <Route path={`${match.url}/table`} component={AsyncTable} />
+                  {/* <Route path={`${match.url}/table`} component={AsyncTable} /> */}
                  <Route path={`${match.url}/register`} component={AsyncRegister} />
                   <Route path={`${match.url}/register4`} component={AsyncRegister4} />
                    <Route path={`${match.url}/register5`} component={AsyncRegister5} />
