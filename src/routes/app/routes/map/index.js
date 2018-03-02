@@ -1,3 +1,3 @@
-import Map from './components/Map';
+import MapClass from './components/MapClass';
 
-export default Map;
+export default MapClass;
