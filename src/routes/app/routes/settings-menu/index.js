@@ -13,13 +13,13 @@ import Print from './routes/print/'
 import Feedback from './routes/feedback/'
 import Contact from './routes/contact/'
 import Conditions from './routes/Terms/'
-import EditPhoneNumber from './routes/editPhonenumber/'
+import EditPhoneNumber from './routes/editPhoneNumber/'
 import PhoneVerifyCode from './routes/PhoneVerifyCode/'
 
 const PageLayout = ({ match }) => (
   <div>
     <Route path={`${match.url}/editprofile`} component={EditProfile}/>
-    <Route path={`${match.url}/editPhonenumber`} component={EditPhoneNumber}/>
+    <Route path={`${match.url}/editPhoneNumber`} component={EditPhoneNumber}/>
         <Route path={`${match.url}/PhoneVerifyCode`} component={PhoneVerifyCode}/>
     <Route path={`${match.url}/notify`} component={Notify}/>
     <Route path={`${match.url}/address`} component={Home}/>
