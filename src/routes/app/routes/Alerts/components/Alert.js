@@ -1,7 +1,9 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import Header from 'components/Header';
+import Sidenav from 'components/Sidenav';
+import Footer from 'components/Footer';
 import cookie from 'react-cookies';
 class Alerts extends React.Component {
 
@@ -320,6 +322,12 @@ class Alerts extends React.Component {
 
   return (
 
+
+
+          <div className="app-content-wrapper">
+           <div className="app-content">
+             <div className="full-height">
+
     <div className="row">
       <div className="col-xl-12">
         <div className="box box-default">
@@ -367,6 +375,10 @@ class Alerts extends React.Component {
         </div>
       </div>
     </div>
+
+</div>
+</div>
+</div>
 
     );
   }

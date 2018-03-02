@@ -6,7 +6,8 @@ import cookie from 'react-cookies';
 import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
-import Customizer from 'components/Customizer';
+// import Customizer from 'components/Customizer';
+import Map from './Map';
 
 class BasicHome extends React.Component{
   constructor() {
@@ -112,190 +113,100 @@ const { redirectToReferrer} = this.state
              <div className="full-height">
   <article className="article padding-lg-v article-dark article-bordered">
 
-  <div className="container-fluid with-maxwidth">
 
-<div className=" text-left">
-<div className="row col-xl-12">
-  <span className=" text-left ">
-    <div className="col-xl-12"><a href="cameras#/app/Cameras">
-        <div className="box box-default">
-          <div className="box-body" >
-          <div className="icon-box ibox-plain ibox-center">
-          <span className="float-left ">
-            <span><h5> CAMERA </h5> </span>
-          </span>
-          <span className="float-right ibox-icon">
-            <img className="nav-icon material-icons" src="assets/images/camera.png"/>
-          </span>
-        </div>
-    </div>
-    </div>
-  </a></div>
-</span>
-<span className="text-right">
-  <div >
-    <a href="home#/app/Monitoring">  <img src="assets/images/ambulance-button-unsubscribed.png"  width="40%"/></a>
-  </div>
-</span>
-</div>
-<span className=" text-left ">
-    <div className="col-xl-4"><a href="devices#/app/Devices">
-        <div className="box box-default">
-          <div className="box-body">
-          <div className="icon-box ibox-plain ibox-center">
-          <span className="float-left">
-            <span><h5> DEVICES </h5> </span>
-          </span>
-          <span className="float-right ibox-icon">
-              <img className="nav-icon material-icons" src="assets/images/device.png" />
-          </span>
-        </div>
-        </div>
-    </div>
-  </a></div>
-</span>
-
-<span className=" text-left ">
-  <div className="col-xl-4"><a href="pack#/app/Pack">
-   <div className="box box-default">
-     <div className="box-body">
-       <div className="icon-box ibox-plain ibox-center">
-           <span className="float-left">
-             <span><h5> MY PACK </h5> </span>
-           </span>
-           <span className="float-right ibox-icon">
-               <img className="nav-icon material-icons" src="assets/images/pack.png" />
-           </span>
+  <div className="float-left">
+    <div className="box box-default col-xl-12"><a href="cameras#/app/Cameras">
+     <div className="box-body ">
+          CAMERA
+     <span className="float-right">
+         <img  className="nav-icon material-icons" src="assets/images/camera.png" width="50%" />
+     </span>
        </div>
-     </div>
-   </div>
-  </a></div>
-</span>
+    </a></div>
 
-<span className=" text-left ">
-  <div className="col-xl-4"><a href="monitor#/app/Monitoring">
-   <div className="box box-default">
-     <div className="box-body">
-       <div className="icon-box ibox-plain ibox-center">
-           <span className="float-left">
-             <span><h5>MONITORING </h5> </span>
-           </span>
-           <span className="float-right ibox-icon">
-               <img className="nav-icon material-icons" src="assets/images/monitor.png" />
-           </span>
+    <div className="box box-default col-xl-12"><a href="devices#/app/Devices">
+     <div className="box-body ">
+          DEVICES
+     <span className="float-right">
+         <img  className="nav-icon material-icons" src="assets/images/device.png" width="50%" />
+     </span>
        </div>
-     </div>
-   </div>
-  </a>
-  </div>
+    </a></div>
 
-</span>
-
-
-<div className="row">
-{/* <span className=" text-left">
-    <div><a href="devices#/app/Devices">
-        <div className="box box-default">
-          <div className="box-body">
-          <div className="icon-box ibox-plain ibox-center">
-          <span className="float-left">
-            <span><h5> DEVICES </h5> </span>
-          </span>
-          <span className="float-right ibox-icon">
-              <img className="nav-icon material-icons" src="assets/images/device.png" />
-          </span>
-        </div>
-        </div>
-    </div>
-  </a></div>
-</span> */}
-
-
-
-    <span className="text-right">
-
-      <div >
-      <a href="home#/app/Monitoring">  <img src="assets/images/fire-button-unsubscribed.png" width="40%"/></a>
-      </div>
-    </span>
-</div>
-<div className="row">
-  <span className=" text-left">
-      <div ><a href="pack#/app/Pack">
-       <div className="box box-default">
-         <div className="box-body">
-           <div className="icon-box ibox-plain ibox-center">
-               <span className="float-left">
-                 <span><h5> MY PACK </h5> </span>
-               </span>
-               <span className="float-right ibox-icon">
-                   <img className="nav-icon material-icons" src="assets/images/pack.png" />
-               </span>
-           </div>
-         </div>
+    <div className="box box-default col-xl-12"><a href="pack#/app/Pack">
+     <div className="box-body ">
+          MY PACK
+     <span className="float-right">
+         <img  className="nav-icon material-icons" src="assets/images/pack.png" width="50%" />
+     </span>
        </div>
-     </a></div>
-   </span>
-   <span className=" text-right">
-     <div className="rounded mx-auto d-block">
-
-           <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="40%"/>
-           {/* <h5 onClick={this.handleOpen}>CLICK HERE TO ALARM</h5> */}
-             <Dialog
-               title="Confirm"
-               actions={actions}
-               modal={false}
-               open={this.state.open}
-               onRequestClose={this.handleClose}
-             >
-             <h5>You want to Alert your Pack Members?</h5>
-             </Dialog>
+</a></div>
 
 
-     </div>
+
+<div className="box box-default col-xl-12"><a href="monitor#/app/Monitoring">
+ <div className="box-body ">
+  <span className="float-left">  MONITORING  </span>
+ <span className="float-right">
+     <img  className="nav-icon material-icons" src="assets/images/monitor.png" width="50%" />
  </span>
-</div>
-<div className="row">
-  <span className=" text-left">
-     <div className="col-xl-4"><a href="monitor#/app/Monitoring">
-      <div className="box box-default">
-        <div className="box-body">
-          <div className="icon-box ibox-plain ibox-center">
-              <span className="float-left">
-                <span><h5>MONITORING </h5> </span>
-              </span>
-              <span className="float-right ibox-icon">
-                  <img className="nav-icon material-icons" src="assets/images/monitor.png" />
-              </span>
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-</span>
-</div>
+   </div>
+</a></div>
+</div> <br />
 
-  </div>
 
-</div>
 
-  <div className=" text-right">
-      <span className="text-right">
-        <div className="rounded mx-auto d-block ">
-          <a href="home#/app/Monitoring">  <img src="assets/images/ambulance-button-unsubscribed.png"  width="40%"/></a>
-        </div>
-      </span>
-    <span className="text-right">
-      <div >
-      <a href="home#/app/Monitoring">  <img src="assets/images/police-button-unsubscribed.png" width="40%"/></a>
-      </div>
-    </span>
-</div>
+
+<table class="col-xl-4">
+<tr >
+
+  <td>
+    <a href="home#/app/Monitoring">  <img src="assets/images/fire-button-unsubscribed.png" width="40%"/></a>
+  </td >
+
+</tr>
+<tr>
+  <td>
+  <a href="home#/app/Monitoring">  <img src="assets/images/ambulance-button-unsubscribed.png"  width="40%"/></a>
+  </td >
+  <td>
+    <a href="home#/app/Monitoring">  <img src="assets/images/police-button-unsubscribed.png"  width="40%"/></a>
+  </td >
+
+
+</tr>
+<tr >
+
+</tr>
+
+<tr >
+  <td>
+    <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="30%"/>
+    {/* <h5 onClick={this.handleOpen}>CLICK HERE TO ALARM</h5> */}
+      <Dialog
+        title="Confirm"
+        actions={actions}
+        modal={false}
+        open={this.state.open}
+        onRequestClose={this.handleClose}
+      >
+      <h5>You want to Alert your Pack Members?</h5>
+      </Dialog>
+  </td >
+
+</tr>
+</table>
+
+
+
+<div ><Map /></div>
 </article>
 </div>
-           </div>
+      </div>
 </div>
+<Footer />
 </section>
+
 </div>
 
   );
@@ -308,6 +219,9 @@ const Page = () => {
     <section className="container-fluid with-maxwidth chapter">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><BasicHome /></div>
+        {/* <div key="2"><Map/></div> */}
+
+
       </QueueAnim>
     </section>
   )

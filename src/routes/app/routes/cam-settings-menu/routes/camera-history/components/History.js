@@ -21,8 +21,8 @@ class History extends React.Component {
       imgid:'',
       DateCreated:'',
       redirectToReferrer: false,
-      disabledBack: true,
-      disabledMore: false
+      // disabledBack: true,
+      // disabledMore: false
     };
       this.interval = null;
       this.handleChange = this.handleChange.bind(this);
@@ -529,8 +529,8 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
                   Page:{this.state.counter-1}
             </span>
             <span className="float-right">
-               <RaisedButton primary label="<- Back" onClick={()=>this.handleBack(this.state.startDate,this.state.counter)}  disabled={this.state.disabledBack}/>
-               <RaisedButton primary label=" More Images!" onClick={()=>this.handleNext(this.state.startDate,this.state.counter)}  disabled={this.state.disabledMore}/>
+               <RaisedButton primary label="<- Back" onClick={()=>this.handleBack(this.state.startDate,this.state.counter)}  />
+               <RaisedButton primary label=" More Images!" onClick={()=>this.handleNext(this.state.startDate,this.state.counter)}  />
 
 
             </span>
