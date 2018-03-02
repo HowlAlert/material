@@ -28,7 +28,7 @@ import PageEditprofile from 'routes/editprofile/'
 import PageEditPhoneNumber from 'routes/editPhoneNumber/'
 import PageVerifyPhoneCode from 'routes/verifyPhoneCode/'
 import PageMainLogin from 'routes/mainLogin/'
-import PageMotionDetection from 'routes/motion-Detection/'
+import PageMotionDetection from 'routes/motion-detection/'
 import 'styles/bootstrap.scss';
 import 'styles/layout.scss';
 import 'styles/theme.scss';
