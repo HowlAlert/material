@@ -12,10 +12,12 @@ const Monitor = () => (
     <center><div>*All alerts will notify Pack by default.</div></center><br/>
     <center>
 
-         <RaisedButton primary label="MONTHLY PLAN - $7.99/MO" ><a href="cam-add-devices#/app/cameraDevices/connect"> </a></RaisedButton>
+         <button><a href="#/app/camerasettings/purchase">MONTHLY PLAN - $7.99/MO </a></button>
     </center><br/>
     <center>
-         <RaisedButton primary label="YEARLY PLAN - $95.88/YR" ><a href="cam-add-devices#/app/cameraDevices/connect"> </a></RaisedButton>
+
+      <button><a href="#/app/camerasettings/purchase">YEARLY PLAN - $95.88/YR </a></button>
+         {/* <RaisedButton primary label="YEARLY PLAN - $95.88/YR" ><a href="#/app/camerasettings/purchase"> </a></RaisedButton> */}
 
       <div>
         <h5>  <a href="page-layout#/app/pglayout/other-devices"> Restore purchase</a></h5>
@@ -41,7 +43,7 @@ const Monitor = () => (
        </ul>
      </div>
      <div className="text-center no-margin-bottom">
-       <h5><a href="page-layout#/app/pglayout/terms-service">Terms of Service</a> and <a href="page-layout#/app/pglayout/privacy-police">Privacy Policy</a></h5>
+       <h5><a href="#/app/pglayout/terms-service">Terms of Service</a> and <a href="#/app/pglayout/privacy-police">Privacy Policy</a></h5>
      </div>
 
   </article>

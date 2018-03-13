@@ -90,7 +90,7 @@ render() {
     if(redirectToReferrer === true)
     {
       return (
-        <Redirect to="../Settings"/>
+        <Silent />
 
        )
     }

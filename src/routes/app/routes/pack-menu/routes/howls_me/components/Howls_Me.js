@@ -3,13 +3,14 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import QueueAnim from 'rc-queue-anim';
 import cookie from 'react-cookies';
-
+import Howls_Pack from '../../howls_pack/components/Howls_Pack'
 
 class Incoming extends React.Component {
   constructor() {
     super();
       this.state = {
         data: [],
+
       };
 
   }
@@ -46,10 +47,11 @@ render() {
   return (
 
     <div className="row">
-      <div className="col-xl-12">
+      <div className="col-xl-6">
+
         <div className="box box-default">
           <div className="box-body">
-
+    <h2 className="article-title">Howls at Me</h2>
 
         {
           this.state.data.map((dyanamicData,key) =>
@@ -72,9 +74,19 @@ render() {
 
          )
         }
+
       </div>
     </div>
-</div>
+  </div>
+      <div className="col-xl-6">
+        <div className="box box-default">
+          <div className="box-body">
+          <h2 className="article-title">Howls At Pack</h2>
+
+          <Howls_Pack />
+      </div>
+    </div>
+  </div>
  </div>
 
   );
@@ -83,14 +95,13 @@ render() {
 
 const Page = () => {
   return (
-  <article className="article">
-    <center><h2 className="article-title">Howls at Me</h2></center>
-    <section className="container-fluid with-maxwidth chapter">
+
+
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><Incoming /></div>
       </QueueAnim>
-    </section>
-  </article>
+
+
   )
 }
 

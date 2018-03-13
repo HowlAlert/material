@@ -323,11 +323,6 @@ class Alerts extends React.Component {
   return (
 
 
-
-          <div className="app-content-wrapper">
-           <div className="app-content">
-             <div className="full-height">
-
     <div className="row">
       <div className="col-xl-12">
         <div className="box box-default">
@@ -376,9 +371,6 @@ class Alerts extends React.Component {
       </div>
     </div>
 
-</div>
-</div>
-</div>
 
     );
   }
@@ -387,6 +379,7 @@ class Alerts extends React.Component {
 
 const Page = () => {
   return (
+
   <article className="article">
     <center><h2 className="article-title">ALERTS</h2></center>
     <section className="container-fluid with-maxwidth chapter">

@@ -81,12 +81,12 @@ $card-background-image-url: '' !default;
 
 
 // BADGE //
-$badge-font-size: 13px !default;
+$badge-font-size: 10px !default;
 $badge-color: #333 !default;
 $badge-color-inverse: theme-color("info") !default;
-$badge-background: theme-color("info") !default;
+$badge-background: #ff0000;
 $badge-background-inverse: #999 !default;
-$badge-size : 22px !default;
+$badge-size : 15px !default;
 $badge-padding: 2px !default;
 $badge-overlap: 12px !default;
 

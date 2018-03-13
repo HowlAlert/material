@@ -181,7 +181,7 @@ handleAlert(value1,value2,value3) {
                             }
 
                          }
-                  
+
                   }
                    else {
                       alert(this.state.message);
@@ -344,10 +344,8 @@ const Page = () => (
   <article>
 
 
-      {/* <h2 className="article-title text-center">MANAGE PACK </h2>
-      <button className="float-right"><a href="page-layout#/app/pglayout/packcontact">ADD NEW PACK MEMBER </a></button>
-    </div> */}
-      <h2 className="article-title text-center">MANAGE PACK<button className="float-right"><a href="page-layout#/app/pglayout/packcontact">ADD NEW PACK MEMBER</a></button></h2>
+      <h2 className="article-title text-center">MANAGE PACK<button className="float-right">
+        <a href="#/app/pglayout/packcontact">ADD NEW PACK MEMBER</a></button></h2>
 
    <section className="chapter">
      <QueueAnim type="bottom" className="ui-animate">

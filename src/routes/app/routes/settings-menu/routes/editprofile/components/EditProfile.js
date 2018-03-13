@@ -22,42 +22,7 @@ class EditProfile extends React.Component {
     };
   }
 
-  // handleFname(event) {
-  //    event.preventDefault();
-  //    const target = event.target;
-  //  const value = target.type === target.value;
-  //  const name = target.name;
-  //
-  //  this.setState({
-  //        Fname: target.value
-  //      });
-  //      console.log(target.value) ;
-  //      return target.value;
-  //    }
-  // handleLname(event) {
-  //       event.preventDefault();
-  //       const target = event.target;
-  //     const value = target.type === target.value;
-  //     const name = target.name;
-  //
-  //     this.setState({
-  //           Lname: target.value
-  //         });
-  //         console.log(target.value) ;
-  //         return target.value;
-  //       }
-  // handleEmail(event) {
-  //    event.preventDefault();
-  //    const target = event.target;
-  //  const value = target.type === target.value;
-  //  const name = target.name;
-  //
-  //  this.setState({
-  //        Email: target.value
-  //      });
-  //      console.log(target.value) ;
-  //      return target.value;
-  //    }
+
   handleFname(value) {
      this.setState({
            Fname: value
@@ -177,8 +142,8 @@ class EditProfile extends React.Component {
       if(redirectToReferrer === true)
       {
         return (
-          <Redirect to="../Settings"/>
-          //  <settings />
+
+              <EditProfile />
          )
       }
 
@@ -201,16 +166,9 @@ class EditProfile extends React.Component {
        // console.log(phonenumber);
 
     return (
-        <article className="article">
-          <h2 className="article-title text-center">Edit Profile</h2>
-          <div className="container-fluid with-maxwidth">
-            <div className="row">
-              <div className="col-xl-6">
-                <div className="box box-transparent">
-                  <div className="box-body padding-lg-h">
+
                     <form name="EditProfileForm">
-                      <div className="form-group">
-                        <div className="form-group">
+
                           {/* <Editable onChange={(e)=>this.handleFname(e)} name="Fname" value={fname} floatingLabelText="FIRST NAME" fullWidth />
                           <Editable onChange={(e)=>this.handleLname(e)} name="Lname" value={lname} floatingLabelText="LAST NAME" fullWidth />
                           <Editable onChange={(e)=>this.handleEmail(e)} name="Email" value={email} floatingLabelText="EMAIL ADDRESS"  name="Email"/>
@@ -247,26 +205,20 @@ class EditProfile extends React.Component {
                          <p>PHONE NUMBER
                        <TextField onClick={(e)=>this.handlePhoneNumber(e)} name="PhoneNumber" value={phonenumber} fullWidth /></p>
 
-
-                        </div>
-
-                      </div>
                       <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e)}/>
                      </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+
       );
      }
    }
 const Page = () => (
+  <article className="article ">
+    <h2 className="article-title text-center">Edit Profile</h2>
   <section className="chapter">
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1"><EditProfile /></div>
     </QueueAnim>
   </section>
+</article>
 );
 module.exports = Page;

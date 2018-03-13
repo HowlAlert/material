@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import Cancel from '../../cancel/';
+import Cancel from '../../cancel';
 
 
  class VerifyCancelCode extends React.Component {
@@ -93,8 +93,7 @@ import Cancel from '../../cancel/';
       if(redirectToReferrer === true)
       {
         return (
-          <Redirect to="../Settings"/>
-
+          <Cancel />
          )
       }
 

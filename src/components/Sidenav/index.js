@@ -78,10 +78,10 @@ class Sidebar extends React.Component {
         <section className="sidebar-footer">
           <ul className="nav">
             <li>
-              <a target="_blank" href={APPCONFIG.productLink}>
+              {/* <a target="_blank" href={APPCONFIG.productLink}>
                 <i className="nav-icon material-icons">help</i>
                 <span className="nav-text"><span>Help</span> & <span>Support</span></span>
-              </a>
+              </a> */}
             </li>
           </ul>
         </section>

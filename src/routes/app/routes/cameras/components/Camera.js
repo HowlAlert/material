@@ -120,19 +120,19 @@ render() {
 
         <div className="box bg-color-dark">
        <div className="row">
-          <div className="box-body col-xl-4">
-              <a href="cam-settings-menu#/app/camerasettings/motion-detection">
+          <div className="box-body col-xl-6">
+              <a href="#/app/camerasettings/motion-detection">
               <center>Camera Motion Detection</center> </a>
           </div>
-          <div className="box-body col-xl-4">
-               <a href="cam-settings-menu#/app/camerasettings/camera-history">
+          <div className="box-body col-xl-6">
+               <a href="#/app/camerasettings/camera-history">
               <center>Camera Histroy</center></a>
           </div>
-          <div className="box-body col-xl-4">
+          {/* <div className="box-body col-xl-4">
 
               <a href="cam-settings-menu#/app/camerasettings/time-change">
               <center>Time Change</center></a>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -146,7 +146,7 @@ render() {
       <center>
         <p>{message}</p>
           <RaisedButton primary label="Buy Camera" >
-          <a href="cam-add-devices#/app/cameraDevices/buy-camera"> </a></RaisedButton>
+          <a href="#/app/cameraDevices/buy-camera"> </a></RaisedButton>
 
       </center>
 

@@ -111,10 +111,15 @@ console.log("ImageURL");
 
 const ImageSection = () => (
   <article className="article">
-    <h2 className="article-title text-center no-margin-top">CAMERA
-      <RaisedButton className="float-right" primary label="Add Device Instructions" >
-      <a href="cam-settings-menu#/app/camerasettings/add-devices"> </a></RaisedButton>
-    </h2>
+
+    <h2 className="article-title text-center">CAMERA<button className="float-right">
+      <a href="#/app/camerasettings/add-devices">Add Device Instructions</a></button></h2>
+
+    {/* <h2 className="article-title text-center no-margin-top">CAMERA
+      <RaisedButton className="float-right">
+      <a href="#/app/camerasettings/add-devices"> Add Device Instructions
+      </a></RaisedButton>
+    </h2> */}
     <section className="box box-default">
       <div className="box-body padding-xl">
         <div className="col-xl-12">

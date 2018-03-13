@@ -167,7 +167,7 @@ class MainLogin extends React.Component {
                 <RaisedButton style={mWidthStyle} label="Create Account" primary href={"#/Register"}/><div className="divider" />
               </div>
               <div className="text-center">
-              <p>Have an account?<span><a href="#/login" className="text-small"> Login</a></span></p>
+              <p>Have an account?<a href="#/login" className="text-small"> Login</a></p>
 
               </div>
 

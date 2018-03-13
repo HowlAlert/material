@@ -9,7 +9,7 @@ import { session,sessionReducer, sessionService } from 'redux-react-session';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
-
+import Badge from 'material-ui/Badge';
 
 const ImgIconButtonStyle = {
   width: '60px',
@@ -21,6 +21,7 @@ const listItemStyle = {
 };
 
 class NavRightList extends React.Component {
+
   state = {
   open: false,
   };
@@ -38,12 +39,44 @@ class NavRightList extends React.Component {
 
       super(props);
       this.state = {
-
         ResultStatus:'',
+        data: [],
   };
-    }
-  handleLogout(event){
-  this.setState({open: false});
+}
+componentDidMount(){
+
+  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetTotalUnreadUserFeedCount';
+
+      fetch(BaseURL,
+      {
+       method: "POST",
+       body: JSON.stringify({
+         "UserID":cookie.load('Id'),
+         "UserToken":cookie.load('UserToken')
+       }),
+        headers: new Headers({'content-type': 'application/json'}),
+      })
+  .then((Response)=> Response.json())
+  .then((findresponse)=>{
+  console.log(findresponse);
+      this.setState({
+         data:findresponse.GetTotalUnreadUserFeedCountResult.TotalUnreadUserFeedCount,
+         ResultStatus:findresponse.GetTotalUnreadUserFeedCountResult.resultStatus,
+
+      })
+      if(this.state.ResultStatus.Status !== "1"){
+        alert(this.state.ResultStatus.StatusMessage);
+      }
+
+
+
+    })
+
+}
+
+
+handleLogout(event){
+      this.setState({open: false});
   //alert("Are you sure you want to logout?");
 
   sessionService.deleteSession(event);
@@ -76,6 +109,8 @@ class NavRightList extends React.Component {
       }
     })
   }
+
+
   render() {
     const { match, location } = this.props;
     const actions = [
@@ -99,14 +134,39 @@ const { redirectToReferrer} = this.state
                <Redirect to="mainLogin"/>
              )
            }
+var count = this.state.data;
 
     return (
-      <ul className="list-unstyled float-right">
 
-<li>
-  <IconButton style={ImgIconButtonStyle}><i className="material-icons">notifications_none</i></IconButton>
-</li>
-        <li style={{marginRight: '150px', position : 'relative'}}>
+      <div className="list-unstyled float-right">
+
+
+
+
+        {/* <div style={{position : 'relative'}}> */}
+
+
+
+        {/* </div> */}
+
+
+        <div style={{marginRight: '150px', position : 'relative'}}>
+          {/* <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="1">account_box</div>
+         <div className="space space-md" />
+         <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="♥">account_box</div> */}
+          <IconButton>
+          <MenuItem style={{fontSize: '13px', lineHeight: '21px'}} innerDivStyle={listItemStyle}
+          leftIcon={
+             count !== "0" ?
+
+              <i className="material-icons mdl-badge mdl-badge--overlap" data-badge={this.state.data}>notifications_none</i>
+            :<i className="material-icons">notifications_none</i>
+
+          }
+
+          />
+          </IconButton>}
+
           <IconMenu
             iconButtonElement={
               <IconButton>
@@ -122,8 +182,9 @@ const { redirectToReferrer} = this.state
             menuStyle={{minWidth: '150px'}}
                     >
 
+
             <MenuItem
-              value="/app/dashboard"
+              value="/app/home"
               primaryText="Home"
               style={{fontSize: '13px', lineHeight: '21px'}}
               innerDivStyle={listItemStyle}
@@ -154,10 +215,10 @@ const { redirectToReferrer} = this.state
                     </Dialog>
 
 
-        </li>
+        </div>
 
 
-      </ul>
+      </div>
     );
   }
 }

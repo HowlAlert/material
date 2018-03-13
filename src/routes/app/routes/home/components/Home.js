@@ -9,6 +9,56 @@ import Footer from 'components/Footer';
 // import Customizer from 'components/Customizer';
 import Map from './Map';
 
+
+
+const Main = () => (
+
+        <div className="box-body">
+
+
+            <div className="box box-default"><a href="#/app/Cameras">
+             <div className="box-body ">
+               <span className="float-left">CAMERA  </span>
+             <span className="float-right">
+                 <img  className="nav-icon material-icons" src="assets/images/camera.jpg" width="50%" />
+             </span>
+               </div>
+            </a></div>
+
+            <div className="box box-default"><a href="#/app/Devices">
+             <div className="box-body ">
+              <span className="float-left">    DEVICES </span>
+             <span className="float-right">
+                 <img  className="nav-icon material-icons" src="assets/images/device.jpg" width="50%" />
+             </span>
+               </div>
+            </a></div>
+
+            <div className="box box-default "><a href="#/app/Pack">
+             <div className="box-body ">
+              <span className="float-left">    MY PACK </span>
+             <span className="float-right">
+                 <img  className="nav-icon material-icons" src="assets/images/pack.jpg" width="50%" />
+             </span>
+               </div>
+        </a></div>
+
+
+
+        <div className="box box-default"><a href="#/app/Monitoring">
+         <div className="box-body ">
+          <span className="float-left">  MONITORING  </span>
+         <span className="float-right">
+             <img  className="nav-icon material-icons" src="assets/images/monitor.jpg" width="50%" />
+         </span>
+           </div>
+        </a></div>
+
+      </div>
+
+);
+
+
 class BasicHome extends React.Component{
   constructor() {
     super();
@@ -92,7 +142,7 @@ const { redirectToReferrer} = this.state
            <div>
              <h5>Contact No: {geo911}</h5>
            </div>
-          <button><a href="home#/app/Alerts">ok</a></button>
+          <button><a href="#/app/Alerts">ok</a></button>
          </div>
 
        </div>
@@ -102,128 +152,99 @@ const { redirectToReferrer} = this.state
 
 
   return (
-    <div className="main-app-container">
-        <Sidenav />
 
-        <section id="page-container" className="app-page-container">
-          <Header />
+  // <div className="box box-default">
+    <div className="box-body">
 
-          <div className="app-content-wrapper">
-           <div className="app-content">
-             <div className="full-height">
-  <article className="article padding-lg-v article-dark article-bordered">
+             <center>
+                 <a href="#/app/Monitoring">
+                    <img src="assets/images/fire-button-unsubscribed.png" width="100 "/>
+                 </a>
+           </center>
 
+        <span className="float-left">
 
-  <div className="float-left">
-    <div className="box box-default col-xl-12"><a href="cameras#/app/Cameras">
-     <div className="box-body ">
-          CAMERA
-     <span className="float-right">
-         <img  className="nav-icon material-icons" src="assets/images/camera.png" width="50%" />
-     </span>
-       </div>
-    </a></div>
+          <a href="#/app/Monitoring">
+              <img src="assets/images/ambulance-button-unsubscribed.png"  width="100"/>
+         </a>
 
-    <div className="box box-default col-xl-12"><a href="devices#/app/Devices">
-     <div className="box-body ">
-          DEVICES
-     <span className="float-right">
-         <img  className="nav-icon material-icons" src="assets/images/device.png" width="50%" />
-     </span>
-       </div>
-    </a></div>
-
-    <div className="box box-default col-xl-12"><a href="pack#/app/Pack">
-     <div className="box-body ">
-          MY PACK
-     <span className="float-right">
-         <img  className="nav-icon material-icons" src="assets/images/pack.png" width="50%" />
-     </span>
-       </div>
-</a></div>
+        </span>
+       <span className="float-right">
+         <a href="#/app/Monitoring">
+             <img src="assets/images/police-button-unsubscribed.png"  width="100"/>
+        </a>
+      </span>
 
 
+       <div>
+         <center>
 
-<div className="box box-default col-xl-12"><a href="monitor#/app/Monitoring">
- <div className="box-body ">
-  <span className="float-left">  MONITORING  </span>
- <span className="float-right">
-     <img  className="nav-icon material-icons" src="assets/images/monitor.png" width="50%" />
- </span>
-   </div>
-</a></div>
-</div> <br />
+                <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="100"/>
+                <Dialog
+                  title="Confirm"
+                  actions={actions}
+                  modal={false}
+                  open={this.state.open}
+                  onRequestClose={this.handleClose}
+                >
+                <h5>You want to Alert your Pack Members?</h5>
+                </Dialog>
 
+         </center>
+       </div><br />
 
-
-
-<table class="col-xl-4">
-<tr >
-
-  <td>
-    <a href="home#/app/Monitoring">  <img src="assets/images/fire-button-unsubscribed.png" width="40%"/></a>
-  </td >
-
-</tr>
-<tr>
-  <td>
-  <a href="home#/app/Monitoring">  <img src="assets/images/ambulance-button-unsubscribed.png"  width="40%"/></a>
-  </td >
-  <td>
-    <a href="home#/app/Monitoring">  <img src="assets/images/police-button-unsubscribed.png"  width="40%"/></a>
-  </td >
+ </div>
 
 
-</tr>
-<tr >
-
-</tr>
-
-<tr >
-  <td>
-    <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="30%"/>
-    {/* <h5 onClick={this.handleOpen}>CLICK HERE TO ALARM</h5> */}
-      <Dialog
-        title="Confirm"
-        actions={actions}
-        modal={false}
-        open={this.state.open}
-        onRequestClose={this.handleClose}
-      >
-      <h5>You want to Alert your Pack Members?</h5>
-      </Dialog>
-  </td >
-
-</tr>
-</table>
-
-
-
-<div ><Map /></div>
-</article>
-</div>
-      </div>
-</div>
-<Footer />
-</section>
-
-</div>
 
   );
  }
 }
 
+const Dashboard = () => (
+  <div className="row">
+    <div className="col-xl-4">
 
+          <Main />
+
+    </div><br />
+    <div className="col-xl-2">
+
+             <BasicHome />
+
+    </div>
+
+  </div>
+);
 const Page = () => {
   return (
-    <section className="container-fluid with-maxwidth chapter">
-      <QueueAnim type="bottom" className="ui-animate">
-        <div key="1"><BasicHome /></div>
-        {/* <div key="2"><Map/></div> */}
+
+    // <div className="container-fluid no-breadcrumbs page-dashboard">
+    //   <div className="main-app-container">
+    //       <Sidenav />
+    //
+    //       <section id="page-container" className="app-page-container">
+    //         <Header />
+
+            // <div className="app-content-wrapper">
+            //  <div className="app-content">
+            //    <div className="full-height">
+                 <article className="article">
 
 
-      </QueueAnim>
-    </section>
+                        <QueueAnim type="bottom" className="ui-animate">
+
+
+                              <div key="1"><Dashboard /></div>
+                              <Map />
+
+                        </QueueAnim>
+
+                  </article>
+
+    //       </section>
+    //   </div>
+    // </div>
   )
 }
 

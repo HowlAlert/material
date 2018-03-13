@@ -195,7 +195,7 @@ class UpdateAddress extends React.Component {
       if(redirectToReferrer === true)
       {
         return (
-           <Redirect to="../Settings"/>
+           <Address />
          )
       }
 
@@ -275,11 +275,11 @@ this.setState({
 
 
     return (
-     <div className="container-fluid with-maxwidth">
-       <div className="row">
-         <div className="col-xl-12">
-           <div className="box box-transparent">
-             <div className="box-body padding-lg-h">
+     // <div className="container-fluid with-maxwidth">
+     //   <div className="row">
+     //     <div className="col-xl-12">
+     //       <div className="box box-transparent">
+     //         <div className="box-body padding-lg-h">
 
                  <div className="form-group">
 
@@ -291,7 +291,12 @@ this.setState({
                    />
 
                    <div className="form-group">
-                     <TextField  value={this.state.address2} floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
+                     {
+                       this.state.address2 === "undefined" ?
+                                <TextField  floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
+                           :    <TextField  value={this.state.address2} floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
+                     }
+
 
                      <span className="float-right">  <i className="material-icons">location_on</i></span>
                    </div>
@@ -299,14 +304,7 @@ this.setState({
                  </div>
 
 
-             </div>
-           </div>
-           <div >
-
-       </div>
-         </div>
-       </div>
-     </div>
+            
     );
   }
 }

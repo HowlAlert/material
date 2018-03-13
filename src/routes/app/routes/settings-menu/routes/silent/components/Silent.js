@@ -61,6 +61,7 @@ render() {
        )
     }
   return (
+
       <article className="article">
          <h2 className="article-title text-center">CHANGE SILENT CODE</h2>
          <div className="container-fluid with-maxwidth">

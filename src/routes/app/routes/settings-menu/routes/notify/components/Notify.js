@@ -4,6 +4,8 @@ import Toggle from 'material-ui/Toggle';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
+// import Notify from '../../settings-menu/routes/notify/components';
+
 
 const styles = {
   toggle: {
@@ -190,8 +192,8 @@ const { redirectToReferrer} = this.state        //once update is done back to se
   if(redirectToReferrer === true)
   {
     return (
-      <Redirect to="../Settings"/>
-      //  <settings />
+
+        <Notify />
      )
   }
 

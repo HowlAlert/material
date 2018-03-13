@@ -200,7 +200,7 @@ this.setState({
 
       console.log(redirectToReferrer)
           return (
-            <Redirect to="../../app/dashboard" />
+            <Redirect to="../../app/home" />
           )
         }
 

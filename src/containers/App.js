@@ -78,6 +78,27 @@ class App extends Component {
               'sidebar-lg': sidebarWidth === 'large'})
           }>
             <Route path={`${match.url}app`} component={MainApp} />
+            <Route exact path="/404" component={Page404} />
+           <Route exact path="/500" component={Page500} />
+           <Route exact path="/login" component={PageLogin} />
+           <Route exact path="/welcome" component={PageWelcome} />
+            <Route exact path="/register" component={PageRegister} />
+            <Route exact path="/register1" component={PageRegister1} />
+            <Route exact path="/register2" component={PageRegister2} />
+            <Route exact path="/register3" component={PageRegister3} />
+            <Route exact path="/register4" component={PageRegister4} />
+            <Route exact path="/register5" component={PageRegister5} />
+            <Route exact path="/printcode" component={PagePrintcode} />
+            <Route exact path="/scheduling" component={PageScheduling} />
+            <Route exact path="/schedule" component={PageSchedule} />
+            <Route exact path="/pack" component={PagePack} />
+            <Route exact path="/feedback" component={PageFeedback} />
+            <Route exact path="/editprofile" component={PageEditprofile} />
+            <Route exact path="/editPhoneNumber" component={PageEditPhoneNumber} />
+            <Route exact path="/verifyPhoneCode" component={PageVerifyPhoneCode} />
+            <Route exact path="/mainLogin" component={PageMainLogin} />
+            <Route exact path="/motionDetection" component={PageMotionDetection} />
+
           </div>
         </div>
       </MuiThemeProvider>

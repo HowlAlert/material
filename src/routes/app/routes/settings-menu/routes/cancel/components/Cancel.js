@@ -64,14 +64,15 @@ import VerifyCancelCode from '../../verifycancel/';
        }
 
     return (
-        <div className="container-fluid with-maxwidth">
-          <div className="row">
-            <div className="col-xl-12">
-              <div className="box box-transparent">
-                <div className="box-body padding-lg-h">
-                  <form name="CancelformForm">
-                    <div className="form-group">
-                      <p className="no-margin">Speak your Cancellation Code to your smart hub (or type it into your app) to cancel your HOWL alert. *Be sure to make this a code you will remember.</p>
+      <article className="article">
+         <h2 className="article-title text-center">CHANGE CANCEL CODE</h2>
+         <div className="container-fluid with-maxwidth">
+           <div className="row">
+
+           <div className="box box-transparent">
+             <div className="box-body padding-lg-h">
+                      <p className="no-margin">Speak your Cancellation Code to your smart hub (or type it into your app) to cancel your HOWL alert.</p>
+                      <h5 className="text-center">* Be sure to make this a code you will remember.</h5>
                       <div className="form-group">
                         <TextField onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your old cancel code" fullWidth />
                       </div>
@@ -80,13 +81,11 @@ import VerifyCancelCode from '../../verifycancel/';
                       </div>
 
                     </div>
-                   </form>
+
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
+      </article>
     );
   }
 }
@@ -95,13 +94,11 @@ import VerifyCancelCode from '../../verifycancel/';
 
 
 const Page = () => (
-  <article className="article">
-    <h2 className="article-title text-center">CHANGE CANCEL CODE</h2>
+
   <section className="chapter">
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1"><Cancel /></div>
     </QueueAnim>
   </section>
-</article>
 );
 module.exports = Page;

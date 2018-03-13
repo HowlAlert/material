@@ -21,8 +21,9 @@ class History extends React.Component {
       imgid:'',
       DateCreated:'',
       redirectToReferrer: false,
-      // disabledBack: true,
-      // disabledMore: false
+      redirectToAlert: false,
+      disabledBack: true,
+      disabledMore: false
     };
       this.interval = null;
       this.handleChange = this.handleChange.bind(this);
@@ -127,7 +128,14 @@ class History extends React.Component {
 
                          if(total === 0)
                           {  alert("No Images Recorded!");
+                             this.setState({
+                                 disabledMore: true,
+                                 redirectToAlert:true
+                             })
 
+                          }
+                          else {
+                            this.setState({ disabledMore: false })
 
                           }
 
@@ -244,10 +252,11 @@ class History extends React.Component {
                          if(total === 0)
                           {  alert("No Images Recorded!");
 
-                                this.setState({
-                                     disabledMore: true,
-                                     disableBack:true
-                                });
+                                // this.setState({
+                                //      disabledMore: true,
+                                //      disableBack:true
+                                //
+                              //});
                           }
 
                     } )
@@ -260,11 +269,8 @@ handleBack(date,value)
 {
   var today = moment(date).format('MM/DD/YYYY');
   console.log(today);
-
-  this.setState({
-      counter: this.state.counter - 1 ,
-
-  });
+console.log(this.state.counter);
+  this.setState({ counter: this.state.counter - 1 });
 
 var starthours = "00";
 var startminutes = "00";
@@ -445,10 +451,15 @@ console.log(EndTime);
 
                      if(total === 0)
                       {  alert("No Images Recorded!");
-                            this.setState({
-                                     disabledMore: true,
-                                     disableBack:true
-                            });
+                        this.setState({
+                          disabledMore: true ,
+                          redirectToAlert:true
+
+                        })
+                      }
+                      else {
+                        this.setState({ disabledMore: false })
+
                       }
 
                 } )
@@ -494,6 +505,7 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
 
   }
 
+
       return (
 
         <div className="row">
@@ -529,8 +541,8 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
                   Page:{this.state.counter-1}
             </span>
             <span className="float-right">
-               <RaisedButton primary label="<- Back" onClick={()=>this.handleBack(this.state.startDate,this.state.counter)}  />
-               <RaisedButton primary label=" More Images!" onClick={()=>this.handleNext(this.state.startDate,this.state.counter)}  />
+               <RaisedButton primary label="<- Back" onClick={()=>this.handleBack(this.state.startDate,this.state.counter)} disabled={this.state.disabledBack} />
+               <RaisedButton primary label=" More Images!" onClick={()=>this.handleNext(this.state.startDate,this.state.counter)}  disabled={this.state.disabledMore}/>
 
 
             </span>
