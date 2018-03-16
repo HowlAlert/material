@@ -63,7 +63,7 @@ class Sidebar extends React.Component {
               <ellipse cx="-815" cy="-2505" rx="715" ry="1875" transform="rotate(-210)" />
             </g>
           </svg> */}
-          <img src="assets/images/howlMain.png" alt="Image" height="50" width="50" />
+          <img  src="assets/images/new-howl-logo-small.jpg" alt="Image" height="60" width="150" />
 
         <Link to="/" className="brand">{APPCONFIG.brand}</Link>
             {/* <a href="javascript:;" className="collapsednav-toggler" onClick={this.onToggleCollapsedNav}>

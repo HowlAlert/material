@@ -54,7 +54,20 @@ import Cancel from '../../cancel';
     var verify = this.state.verifycode;
     console.log(verify);
 
-    if(entered === verify){
+    var savedcancelcode = cookie.load('CancellationCode');
+    var silentcode =   cookie.load('SilenceCode');
+    console.log(silentcode);
+
+    if(entered === silentcode){
+       alert("Your Silent Code and Cancel Code can not be same ! ");
+
+    }
+    else if(entered === savedcancelcode)
+    {
+      alert("Your new cancel code should be different than current cancel code")
+    }
+    else if(entered === verify)
+    {
 
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetCancellationCode';
 
@@ -72,10 +85,12 @@ import Cancel from '../../cancel';
         .then((findresponse)=>{
            console.log(findresponse)
            alert("Code has been changed");
-           this.setState({ redirectToReferrer: true })        //redirect to settings menu
+           cookie.save('CancellationCode',this.state.code)
+            this.setState({ redirectToReferrer: true })        //redirect to settings menu
           })
 
       }
+
     else
      {
         alert("Cancel code did not match.Try Again ");
@@ -85,6 +100,11 @@ import Cancel from '../../cancel';
 
 
 }
+
+handleBack(event) {
+  window.location.reload();
+}
+
   render() {
 
 
@@ -93,7 +113,11 @@ import Cancel from '../../cancel';
       if(redirectToReferrer === true)
       {
         return (
-          <Cancel />
+          <div>
+             <h5 className="text-center">* Be sure to make this a code you will remember.</h5>
+              <TextField  value ={this.state.code} floatingLabelText="Your New cancel code" fullWidth />
+              <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="<- Back" />
+          </div>
          )
       }
 

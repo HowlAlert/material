@@ -73,7 +73,6 @@ class Login extends React.Component {
         GetUserPack:findresponse.LoginResult.GetUserPack,
       });
 
-
       if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
         alert(this.state.ResultStatus.StatusMessage)
       }

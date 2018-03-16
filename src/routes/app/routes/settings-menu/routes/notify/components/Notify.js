@@ -4,7 +4,7 @@ import Toggle from 'material-ui/Toggle';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
-// import Notify from '../../settings-menu/routes/notify/components';
+
 
 
 const styles = {
@@ -15,44 +15,27 @@ const styles = {
 };
 
 
+
 class Notify extends React.Component {
 
   constructor(props) {
        super(props);
        this.state = {
-         Toggled1: '',
-         Toggled2: '',
-         handlepush:0,
-         handlesms:0
+         Push:'',
+         Sms:''
+
        };
 
      }
 
-     handleToggle1() {
+handlePushToggle()
 
-            this.setState({  Toggled1: !this.state.Toggled1 , handlepush:1 });
-            cookie.save('handlepush',this.state.handlepush)
+{
+     this.setState({  Push: !this.state.Push  });
 
+            var togglestate2=cookie.load('ShouldReceiveCameraAlertSMS');
+            console.log(togglestate2);
 
-            var pushupdate = !this.state.Toggled1;
-            cookie.save('pushupdate',pushupdate)
-            console.log( cookie.load('pushupdate'));
-
-
-            console.log( cookie.load('handlesms'));
-
-            var handlesmsvalue = cookie.load('handlesms');
-            console.log(handlesmsvalue);
-
-            if(handlesmsvalue  === "1" )
-            {
-                var  sms = cookie.load('smsupdate');
-                console.log(sms);
-            }
-            else{
-              var  sms = cookie.load('AlertPush');
-              console.log(sms);
-            }
 
 
             const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserSettings';
@@ -63,8 +46,8 @@ class Notify extends React.Component {
                  body: JSON.stringify({
                    "UserID":cookie.load('Id'),
                    "UserToken":cookie.load('UserToken'),
-                   "ShouldReceiveCameraAlertPush": cookie.load('pushupdate'),
-	                 "ShouldReceiveCameraAlertSMS":  sms
+                   "ShouldReceiveCameraAlertPush":this.state.Push ,
+	                 "ShouldReceiveCameraAlertSMS":  cookie.load('ShouldReceiveCameraAlertSMS')
                  }),
                   headers: new Headers({'content-type': 'application/json'}),
                 })
@@ -72,196 +55,173 @@ class Notify extends React.Component {
             .then((findresponse)=>{
                        this.setState({ result:findresponse.UpdateUserSettingsResult.ResultStatus.Status  });
                        console.log(this.state.result);
-                       // if(this.state.result === "1")
-                       //     {
-                       //          alert("Successfully Updated !");
-                       //
-                       //      }
-                       // else
-                       //      {
-                       //         alert("Try Again !")
-                       //     }
+                       if(this.state.result === "1")
+                           {
+
+                                cookie.save('ShouldReceiveCameraAlertPush',this.state.Push)
+                            }
+                       else
+                            {
+                               alert("Try Again !")
+                           }
 
                })
 
 
-        }
-    handleToggle2() {
+}
 
-                 this.setState({Toggled2: !this.state.Toggled2,handlesms:1 });
-                 console.log(!this.state.Toggled2)
-                 cookie.save('handlesms',this.state.handlesms);
+handleSmsToggle()
 
-                 var smsupdate = !this.state.Toggled2;
-                 cookie.save('smsupdate',smsupdate)
-                 console.log( cookie.load('smsupdate'));
+{
+     this.setState({  Sms: !this.state.Sms  });
 
-                 console.log(cookie.load('handlepush'));
-
-                 var handlepushvalue = cookie.load('handlepush');
-                 console.log(handlepushvalue);
-
-                 if(handlepushvalue  === "1" )
-                 {
-                     var  push = cookie.load('pushupdate');
-                     console.log(push);
-                 }
-                 else{
-                     var  push = cookie.load('AlertPush');
-                     console.log(push);
-                 }
+            var togglestate1=cookie.load('ShouldReceiveCameraAlertPush');
+            console.log(togglestate1);
 
 
 
-                 const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserSettings';
+            const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserSettings';
 
-                     fetch(BaseURL,
-                     {
-                      method: "POST",
-                      body: JSON.stringify({
-                        "UserID":cookie.load('Id'),
-                        "UserToken":cookie.load('UserToken'),
-                        "ShouldReceiveCameraAlertPush": push,
-     	                  "ShouldReceiveCameraAlertSMS":  !this.state.Toggled2
-                      }),
-                       headers: new Headers({'content-type': 'application/json'}),
-                     })
-                 .then((Response)=> Response.json())
-                 .then((findresponse)=>{
-                     this.setState({ result:findresponse.UpdateUserSettingsResult.ResultStatus.Status  });
-                     console.log(this.state.result);
-                     // if(this.state.result === "1")
-                     // {
-                    //    alert("Successfully Updated !");
-                    //
-                    //  }
-                    //  else
-                    //    {
-                    //      alert("Try Again !")
-                    //    }
-                    //
-                    })
+                fetch(BaseURL,
+                {
+                 method: "POST",
+                 body: JSON.stringify({
+                   "UserID":cookie.load('Id'),
+                   "UserToken":cookie.load('UserToken'),
+                   "ShouldReceiveCameraAlertPush":cookie.load('ShouldReceiveCameraAlertPush') ,
+	                 "ShouldReceiveCameraAlertSMS": this.state.Sms
+                 }),
+                  headers: new Headers({'content-type': 'application/json'}),
+                })
+            .then((Response)=> Response.json())
+            .then((findresponse)=>{
+                       this.setState({ result:findresponse.UpdateUserSettingsResult.ResultStatus.Status  });
+                       console.log(this.state.result);
+                       if(this.state.result === "1")
+                           {
+                                cookie.save('ShouldReceiveCameraAlertSMS',this.state.Sms)
+                            }
+                       else
+                            {
+                               alert("Try Again !")
+                           }
 
-               }
- handleSave(event){
-         this.setState({ redirectToReferrer: true });
-         alert("Successfully Updated !");
- }
-  componentDidMount(){
-
-            var pushstatus = cookie.load('AlertPush');
-              console.log(pushstatus);
-
-              if(pushstatus === "True" )
-              {
-                this.setState({ Toggled1: true });
-              }
-              if(pushstatus === "False")
-              {
-
-                this.setState({ Toggled1:false  });
-              }
-
-            var smsstatus = cookie.load('AlertSMS');
-            console.log(smsstatus);
-            if(smsstatus === "True" )
-            {
-              this.setState({  Toggled2: true });
-
-           }
-            if(smsstatus === "False")
-            {
-
-              this.setState({ Toggled2:false });
-
-            }
-
-      }
-
-  render() {
-    var togglestate1=this.state.Toggled1;
-    console.log(togglestate1)
-    var togglestate2=this.state.Toggled2;
-    console.log(togglestate2)
-
-console.log(this.state.handlepush);
-console.log(this.state.handlesms);
+               })
 
 
-const { redirectToReferrer} = this.state        //once update is done back to settings page
-  if(redirectToReferrer === true)
-  {
-    return (
+}
 
-        <Notify />
-     )
-  }
+ componentDidMount()
 
-  return (
+     {
+       var togglestate2=cookie.load('ShouldReceiveCameraAlertSMS');
+       var togglestate1=cookie.load('ShouldReceiveCameraAlertPush')
 
-    <div className="row">
-      <div className="col-xl-12">
-        <h4>Push Notifications</h4>
-        <div className="box box-default">
-          <div className="box-body">
-             <h4>Camera Alerts</h4>
-             <p>Would you like to receive camera alerts via push notifications?</p>
-             <span className="float-right ibox-icon">
+       console.log(togglestate1)
+       console.log(togglestate2);
 
-                <Toggle
+       if(togglestate1 === "True" || togglestate1 === "true" )
+       {
 
-                                defaultToggled={this.state.Toggled1}
-                                onToggle={this.handleToggle1.bind(this)}
-                                style={styles.toggle}
-                              />
+         this.setState({
+           Push: true
+         });
 
-             </span>
+       }
+       if(togglestate1 === "False" || togglestate1 === "false")
+       {
+         this.setState({
+           Push: false
+         });
+       }
 
-          </div>
-        </div>
-        <h4>Text Message Notifications</h4>
-        <div className="box box-default">
-          <div className="box-body">
-             <h4>Camera Alerts</h4>
-             <p>Would you like to receive camera alerts via text message?</p>
+       if(togglestate2 === "True" || togglestate2 === "true")
+       {
 
+         this.setState({
+           Sms: true
+         });
 
+       }
+       if(togglestate2 === "False" || togglestate2 === "false"){
+         this.setState({
+           Sms: false
+         });
+       }
 
-             <span className="float-right ibox-icon">
-
-
-               <Toggle
-                               defaultToggled={this.state.Toggled2}
-                               onToggle={this.handleToggle2.bind(this)}
-                               style={styles.toggle}
-                             />
-             </span>
-          </div>
-        </div>
-
-      </div>
-        <RaisedButton primary label="Save" onClick={(e)=>this.handleSave(e)}/>
-    </div>
-
-
-
-
-     );
    }
-}
+     render() {
+
+       console.log(this.state.Push);
+       console.log(this.state.Sms);
 
 
-const Page = () => {
-  return (
-    <article className="article">
-      <center><h2 className="article-title">NOTIFICATIONS</h2></center>
-    <section className="container-fluid with-maxwidth chapter">
-      <QueueAnim type="bottom" className="ui-animate">
-        <Notify />
-      </QueueAnim>
-    </section>
-  </article>
-  )
-}
+     return (
 
-module.exports = Page;
+       <div className="row">
+         <div className="col-xl-12">
+           <h4>Push Notifications</h4>
+           <div className="box box-default">
+             <div className="box-body">
+                <h4>Camera Alerts</h4>
+                <p>Would you like to receive camera alerts via push notifications?</p>
+                <span className="float-right ibox-icon">
+
+                   <Toggle
+
+                                   defaultToggled={this.state.Push}
+                                   onToggle={this.handlePushToggle.bind(this)}
+                                  toggle= {this.state.Push}
+                                   style={styles.toggle}
+                                 />
+
+                </span>
+
+             </div>
+           </div>
+
+
+
+           <h4>Text Message Notifications</h4>
+                  <div className="box box-default">
+                     <div className="box-body">
+                       <h4>Camera Alerts</h4>
+                       <p>Would you like to receive camera alerts via text message?</p>
+
+                         <span className="float-right ibox-icon">
+
+
+                           <Toggle
+
+                                        defaultToggled={this.state.Sms}
+                                         onToggle={this.handleSmsToggle.bind(this)}
+                                          toggle= {this.state.Sms}
+                                          style={styles.toggle}
+                                        />
+                        </span>
+                     </div>
+                   </div>
+
+         </div>
+
+       </div>
+
+        );
+      }
+     }
+
+
+     const Page = () => {
+     return (
+       <article className="article">
+         <center><h2 className="article-title">NOTIFICATIONS</h2></center>
+       <section className="container-fluid with-maxwidth chapter">
+         <QueueAnim type="bottom" className="ui-animate">
+           <Notify />
+         </QueueAnim>
+       </section>
+     </article>
+     )
+     }
+
+     module.exports = Page;

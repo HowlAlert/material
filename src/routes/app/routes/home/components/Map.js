@@ -92,7 +92,7 @@ render() {
              {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
-           // style={{ width:"85%"}}
+           style={{ width:"96.1%" , height:"96.7%"}}
           >
               <Marker
                    title={'Home Address Location '}

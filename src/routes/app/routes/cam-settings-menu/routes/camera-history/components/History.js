@@ -6,7 +6,7 @@ import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-
+import cookie from 'react-cookies';
 
 
 class History extends React.Component {
@@ -65,16 +65,15 @@ class History extends React.Component {
                var a1 =[];
                // console.log(this.state.counter);
 
-
                const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
 
                    fetch(BaseURL,
                    {
                     method: "POST",
                     body: JSON.stringify({
-                      "UserID": "49",
-                      "UserToken": "Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==",
-                      "CameraID": "HDXQ-036404-EBFGG",
+                      "UserID":cookie.load('Id'),
+                      "UserToken":cookie.load('UserToken'),
+                      "CameraID": cookie.load('camearaid'),
                       "StartTime": StartTime,
       	              "EndTime": EndTime,
                       "PageNumber": 1

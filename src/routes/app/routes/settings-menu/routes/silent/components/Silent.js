@@ -6,7 +6,7 @@ import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import VerifyCode from '../../verifysilent/';
 
-class CancelCode extends React.Component {
+class SilentCode extends React.Component {
 
 
   constructor(props) {
@@ -40,7 +40,6 @@ class CancelCode extends React.Component {
        console.log(saved);
 
        if(entered === saved){
-          alert("valid");
           this.setState({ redirectToReferrer: true })
        }
      else
@@ -92,7 +91,7 @@ render() {
 const Page = () => (
   <section className="chapter">
     <QueueAnim type="bottom" className="ui-animate">
-      <div key="1"><CancelCode /></div>
+      <div key="1"><SilentCode /></div>
     </QueueAnim>
   </section>
 );

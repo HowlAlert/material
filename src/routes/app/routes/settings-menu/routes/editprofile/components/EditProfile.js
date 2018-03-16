@@ -6,7 +6,7 @@ import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import Editable from 'react-x-editable';
 import './editable.css';
-
+import EditPhoneNumber from '../../editPhoneNumber/components/EditPhoneNumber'
 
 
 
@@ -18,14 +18,16 @@ class EditProfile extends React.Component {
     this.state = {
       Fname:'',
       Lname:'',
-      Email:''
+      Email:'',
+      disabled: true
     };
   }
 
 
   handleFname(value) {
      this.setState({
-           Fname: value
+           Fname: value,
+           disabled: false
          });
          console.log(value) ;
          return value;
@@ -33,7 +35,9 @@ class EditProfile extends React.Component {
 
     handleLname(value) {
       this.setState({
-              Lname: value
+              Lname: value,
+              disabled: false
+
             });
             console.log(value) ;
             return value;
@@ -41,7 +45,8 @@ class EditProfile extends React.Component {
 
     handleEmail(value) {
       this.setState({
-           Email: value
+           Email: value,
+           disabled: false
          });
          console.log(value) ;
          return value;
@@ -129,6 +134,9 @@ class EditProfile extends React.Component {
                                             else {
 
                                                 alert("Successfully Updated Profile!")
+                                                cookie.save('FirstName', firstname);
+                                                cookie.save('LastName', lastname);
+                                                cookie.save('Email', email);
                                               this.setState({ redirectToReferrer: true })
                                             }
 
@@ -151,7 +159,7 @@ class EditProfile extends React.Component {
     if (redirectToChangePhone) {
       console.log("redirectToChangePhone")
           return (
-            <Redirect to="EditPhoneNumber"/>
+            <EditPhoneNumber />
           )
         }
 
@@ -205,7 +213,7 @@ class EditProfile extends React.Component {
                          <p>PHONE NUMBER
                        <TextField onClick={(e)=>this.handlePhoneNumber(e)} name="PhoneNumber" value={phonenumber} fullWidth /></p>
 
-                      <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e)}/>
+                      <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e)} disabled={this.state.disabled}/>
                      </form>
 
       );

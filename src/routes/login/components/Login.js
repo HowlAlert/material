@@ -62,7 +62,6 @@ class Login extends React.Component {
     });
 
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
-
        fetch(BaseURL,{
         method: "POST",
         body: JSON.stringify({'Email':this.state.Email,'Password':this.state.Password}),

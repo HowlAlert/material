@@ -51,6 +51,7 @@ console.log(EndTime);
   .then((findresponse)=>{
     this.setState({
          length:findresponse.GetUserCameraResult.RoomCameraList.length
+
     })
 
 
@@ -70,14 +71,14 @@ CameraId.map((dyanamicData1,key1) =>
 
         )
   console.log(this.state.camid)
-       console.log(CameraId["0"]["0"])
+       console.log(CameraId["1"]["0"])
 
     console.log(CameraId);
 
 
 
 
-var camid =CameraId["0"]["0"];
+var camid =CameraId["1"]["0"];
 console.log(camid);
       fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages',
       {
@@ -144,10 +145,10 @@ console.log(camid);
 
            <div>
               {/* <h5>{message}</h5> */}
-          <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="90%" width="90%"/>
+
+            <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="90%" width="90%"/>
 
           </div>
-
 
     );
   }
@@ -158,7 +159,7 @@ const ImageSection = () => (
 
     <section className="box box-default">
       <div className="box-body">
-        <a href="#/app/Cameras">Live Video   ->   </a>
+          <a href="#/app/Cameras">Live Video   ->   </a>
               <ImageBox />
             </div>
     </section>

@@ -18,7 +18,7 @@ const Print = () => (
                      <TextField floatingLabelText="Enter your old cancel code " fullWidth />
                    </div>
                    <div className="card-action no-border text-right">
-                     <a href="signout#/app/Logout" className="color-primary">NEXT</a>
+                     <a href="#/app/Logout" className="color-primary">NEXT</a>
                    </div>
                  </div>
                 </form>

@@ -40,6 +40,8 @@ import VerifyCancelCode from '../../verifycancel/';
     var saved = cookie.load('CancellationCode');
     console.log(saved);
 
+    var silentcode =   cookie.load('SilenceCode');
+    console.log(silentcode);
 
 
     if(entered === saved){

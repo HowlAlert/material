@@ -55,7 +55,21 @@ class VerifyCancelCode extends React.Component {
     var verify = this.state.re_code;
     console.log(verify);
 
-  if(entered === verify){
+    var savedcancelcode = cookie.load('CancellationCode');
+
+    var silentcode =   cookie.load('SilenceCode');
+    console.log(silentcode);
+
+    if(entered === savedcancelcode){
+       alert("Your Silent Code and Cancel Code can not be same ! ");
+
+    }
+    else if(entered === silentcode)
+    {
+      alert("Your new cancel code should be different than current cancel code")
+    }
+    else if(entered === verify)
+    {
      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetSilenceCode';
 
          fetch(BaseURL,
@@ -72,7 +86,7 @@ class VerifyCancelCode extends React.Component {
      .then((findresponse)=>{
          console.log(findresponse)
           alert("Silent Code has been changed");
-
+             cookie.save('SilenceCode',this.state.code)
            this.setState({ redirectToReferrer: true })   //redirect to settings menu
        })
    }
@@ -83,6 +97,9 @@ class VerifyCancelCode extends React.Component {
 
 }
 
+handleBack(event) {
+  window.location.reload();
+}
 
 render() {
 
@@ -90,7 +107,11 @@ render() {
     if(redirectToReferrer === true)
     {
       return (
-        <Silent />
+        <div>
+           <h5 className="text-center">* Be sure to make this a code you will remember.</h5>
+            <TextField  value ={this.state.code} floatingLabelText="Your New Silent code" fullWidth />
+            <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="<- Back" />
+        </div>
 
        )
     }

@@ -73,7 +73,7 @@ console.log(cookie.load('UserToken'));
 
            this.setState({ redirectToReferrer: true })
 
-            alert("Updated Mobile Number!");
+            // alert("Updated Mobile Number!");
 
         }
         else{
@@ -86,6 +86,9 @@ console.log(cookie.load('UserToken'));
 
     }
 
+    handleBack(event) {
+      window.location.reload();
+    }
 
 
   render() {
@@ -93,10 +96,14 @@ console.log(cookie.load('UserToken'));
     const { redirectToReferrer} = this.state
     if (redirectToReferrer === true) {
       return (
-        <Redirect to="../Settings"/>
-        //  <settings />
+      <div>
+        <h4>Updated Mobile Number!</h4>
+        <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="<-- Back" />
+
+      </div>
+
        )
-        }
+    }
 
 
     return (

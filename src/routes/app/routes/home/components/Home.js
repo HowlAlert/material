@@ -6,57 +6,58 @@ import cookie from 'react-cookies';
 import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
-// import Customizer from 'components/Customizer';
 import Map from './Map';
+import Alert from './Alert';
+import Image2 from './Image2';
+import Image from '../../cameras/components/Image';
+// import Alert from '../../Alerts/components/Alert'
 
-
-
-const Main = () => (
-
-        <div className="box-body">
-
-
-            <div className="box box-default"><a href="#/app/Cameras">
-             <div className="box-body ">
-               <span className="float-left">CAMERA  </span>
-             <span className="float-right">
-                 <img  className="nav-icon material-icons" src="assets/images/camera.jpg" width="50%" />
-             </span>
-               </div>
-            </a></div>
-
-            <div className="box box-default"><a href="#/app/Devices">
-             <div className="box-body ">
-              <span className="float-left">    DEVICES </span>
-             <span className="float-right">
-                 <img  className="nav-icon material-icons" src="assets/images/device.jpg" width="50%" />
-             </span>
-               </div>
-            </a></div>
-
-            <div className="box box-default "><a href="#/app/Pack">
-             <div className="box-body ">
-              <span className="float-left">    MY PACK </span>
-             <span className="float-right">
-                 <img  className="nav-icon material-icons" src="assets/images/pack.jpg" width="50%" />
-             </span>
-               </div>
-        </a></div>
-
-
-
-        <div className="box box-default"><a href="#/app/Monitoring">
-         <div className="box-body ">
-          <span className="float-left">  MONITORING  </span>
-         <span className="float-right">
-             <img  className="nav-icon material-icons" src="assets/images/monitor.jpg" width="50%" />
-         </span>
-           </div>
-        </a></div>
-
-      </div>
-
-);
+// const Main = () => (
+//
+//         <div className="box-body">
+//
+//
+//             <div className="box box-default"><a href="#/app/Cameras">
+//              <div className="box-body ">
+//                <span className="float-left">CAMERA  </span>
+//              <span className="float-right">
+//                  <img  className="nav-icon material-icons" src="assets/images/camera.jpg" width="50%" />
+//              </span>
+//                </div>
+//             </a></div>
+//
+//             <div className="box box-default"><a href="#/app/Devices">
+//              <div className="box-body ">
+//               <span className="float-left">    DEVICES </span>
+//              <span className="float-right">
+//                  <img  className="nav-icon material-icons" src="assets/images/device.jpg" width="50%" />
+//              </span>
+//                </div>
+//             </a></div>
+//
+//             <div className="box box-default "><a href="#/app/Pack">
+//              <div className="box-body ">
+//               <span className="float-left">    MY PACK </span>
+//              <span className="float-right">
+//                  <img  className="nav-icon material-icons" src="assets/images/pack.jpg" width="50%" />
+//              </span>
+//                </div>
+//         </a></div>
+//
+//
+//
+//         <div className="box box-default"><a href="#/app/Monitoring">
+//          <div className="box-body ">
+//           <span className="float-left">  MONITORING  </span>
+//          <span className="float-right">
+//              <img  className="nav-icon material-icons" src="assets/images/monitor.jpg" width="50%" />
+//          </span>
+//            </div>
+//         </a></div>
+//
+//       </div>
+//
+// );
 
 
 class BasicHome extends React.Component{
@@ -87,8 +88,8 @@ class BasicHome extends React.Component{
                         body: JSON.stringify({
                           "UserID":cookie.load('Id'),
                           "UserToken":cookie.load('UserToken'),
-                          "Latitude": "41.1798",
-                          "Longitude": "-73.1914",
+                          "Latitude": cookie.load('Latitude'),
+                          "Longitude": cookie.load('Longitude'),
                           "EmergancyType":"1"
 
                         }),
@@ -154,44 +155,44 @@ const { redirectToReferrer} = this.state
   return (
 
   // <div className="box box-default">
-    <div className="box-body">
+    <div className="row box-body app-content">
 
-             <center>
+      <div className="  ">
+
+
+               <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="120"/>
+               <Dialog
+                 title="Confirm"
+                 actions={actions}
+                 modal={false}
+                 open={this.state.open}
+                 onRequestClose={this.handleClose}
+               >
+               <h5>You want to Alert your Pack Members?</h5>
+               </Dialog>
+
+
+      </div>
+
                  <a href="#/app/Monitoring">
-                    <img src="assets/images/fire-button-unsubscribed.png" width="100 "/>
+                    <img src="assets/images/fire-button-unsubscribed.png" width="120 "/>
                  </a>
-           </center>
 
-        <span className="float-left">
+
+
 
           <a href="#/app/Monitoring">
-              <img src="assets/images/ambulance-button-unsubscribed.png"  width="100"/>
+              <img src="assets/images/ambulance-button-unsubscribed.png"  width="120"/>
          </a>
 
-        </span>
-       <span className="float-right">
+
          <a href="#/app/Monitoring">
-             <img src="assets/images/police-button-unsubscribed.png"  width="100"/>
+             <img src="assets/images/police-button-unsubscribed.png"  width="120"/>
         </a>
-      </span>
 
 
-       <div>
-         <center>
 
-                <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="100"/>
-                <Dialog
-                  title="Confirm"
-                  actions={actions}
-                  modal={false}
-                  open={this.state.open}
-                  onRequestClose={this.handleClose}
-                >
-                <h5>You want to Alert your Pack Members?</h5>
-                </Dialog>
 
-         </center>
-       </div><br />
 
  </div>
 
@@ -203,17 +204,67 @@ const { redirectToReferrer} = this.state
 
 const Dashboard = () => (
   <div className="row">
-    <div className="col-xl-4">
+    {/* <div className="col-xl-4">
 
-          <Main />
+          <Alert />
 
-    </div><br />
-    <div className="col-xl-2">
+    </div><br /> */}
 
+
+    <div className="col-xl-12">
              <BasicHome />
+    </div>
+
+    <div className="col-xl-1">
+
+      <div className="box box-default ">
+
+    </div>
+    </div>
+  <div className="col-xl-5">
+
+    <div className="box box-default ">
+      <div className="box-body">
+      <h2 className="article-title">News & Alerts</h2>
+
+    <Alert />
+
+    <a href="#/app/Alerts">See All Alerts </a>
+  </div>
+  </div>
+</div>
+
+    <div className="col-xl-5">
+
+             <Map />
+
 
     </div>
 
+    <div className="col-xl-1">
+
+      <div className="box box-default ">
+
+    </div>
+  </div>
+
+  <div className="col-xl-1">
+
+    <div className="box box-default ">
+
+  </div>
+</div>
+
+    <div className="col-xl-5">
+
+             <Image />
+
+    </div>
+    <div className="col-xl-5">
+
+             <Image2 />
+
+    </div>
   </div>
 );
 const Page = () => {
@@ -236,7 +287,8 @@ const Page = () => {
 
 
                               <div key="1"><Dashboard /></div>
-                              <Map />
+                              {/* <Map /> */}
+
 
                         </QueueAnim>
 
