@@ -61,10 +61,7 @@ render() {
     }
   return (
 
-      <article className="article">
-         <h2 className="article-title text-center">CHANGE SILENT CODE</h2>
-         <div className="container-fluid with-maxwidth">
-           <div className="row">
+
 
            <div className="box box-transparent">
              <div className="box-body padding-lg-h">
@@ -79,20 +76,22 @@ render() {
 
                  </div>
 
-             </div>
-
-       </div>
-
-       </article>
+            
    );
   }
 }
 
 const Page = () => (
-  <section className="chapter">
+  <section className="container-fluid chapter">
+
+    <h2 className="article-title-header">CHANGE SILENT CODE</h2>
+
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1"><SilentCode /></div>
     </QueueAnim>
+
+
   </section>
+
 );
 module.exports = Page;

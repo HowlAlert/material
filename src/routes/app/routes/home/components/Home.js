@@ -155,7 +155,7 @@ const { redirectToReferrer} = this.state
   return (
 
   // <div className="box box-default">
-    <div className="row box-body app-content">
+    <div className="row box-body ">
 
       <div className="  ">
 
@@ -194,7 +194,8 @@ const { redirectToReferrer} = this.state
 
 
 
- </div>
+         </div>
+
 
 
 
@@ -210,27 +211,26 @@ const Dashboard = () => (
 
     </div><br /> */}
 
-
-    <div className="col-xl-12">
-             <BasicHome />
-    </div>
-
-    <div className="col-xl-1">
+    {/* <div className="col-xl-1">
 
       <div className="box box-default ">
 
     </div>
+    </div> */}
+    <div className="col-xl-11">
+             <BasicHome />
     </div>
-  <div className="col-xl-5">
 
-    <div className="box box-default ">
-      <div className="box-body">
-      <h2 className="article-title">News & Alerts</h2>
+
+  <div className=" box box-default col-xl-5">
 
     <Alert />
 
-    <a href="#/app/Alerts">See All Alerts </a>
   </div>
+  <div className="col-xl-1">
+
+    <div className="box box-default ">
+
   </div>
 </div>
 
@@ -241,26 +241,20 @@ const Dashboard = () => (
 
     </div>
 
+    
+
+    <div className=" box box-default col-xl-5">
+
+          <Image />
+
+    </div>
     <div className="col-xl-1">
 
       <div className="box box-default ">
 
     </div>
   </div>
-
-  <div className="col-xl-1">
-
-    <div className="box box-default ">
-
-  </div>
-</div>
-
-    <div className="col-xl-5">
-
-             <Image />
-
-    </div>
-    <div className="col-xl-5">
+    <div className="  box box-default col-xl-5">
 
              <Image2 />
 
@@ -280,8 +274,10 @@ const Page = () => {
             // <div className="app-content-wrapper">
             //  <div className="app-content">
             //    <div className="full-height">
-                 <article className="article">
 
+
+                   <section className="container-fluid with-maxwidth chapter">
+                   <article className="article">
 
                         <QueueAnim type="bottom" className="ui-animate">
 
@@ -294,7 +290,7 @@ const Page = () => {
 
                   </article>
 
-    //       </section>
+          </section>
     //   </div>
     // </div>
   )

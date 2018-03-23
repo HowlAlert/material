@@ -7,80 +7,19 @@ import cookie from 'react-cookies';
 
 
 
-
 class Pack extends React.Component {
 
   constructor() {
     super();
     this.state = {
         search: '',
-        // color_white: true,
         data: [],
         data1: [],
-        UserPoundID: [],
-        imgurl:[],
         result:[],
-        source1:'assets/images/Howl-Final-Light-Blue-small.png',
-        source2:'assets/images/Howl-Final-Red-small.png',
-        redirectToHowl: false,
-        redirectToUnHowl:false
+
     };
 
 
-  }
-
-
-  // forceUpdateHandler(){
-  //     this.forceUpdate();
-  //   };
-  componentDidMount() {
-
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserPack';
-
-        fetch(BaseURL,
-        {
-         method: "POST",
-         body: JSON.stringify({
-           "UserID":cookie.load('Id'),
-           "UserToken":cookie.load('UserToken')
-         }),
-          headers: new Headers({'content-type': 'application/json'}),
-        })
-    .then((Response)=> Response.json())
-    .then((findresponse)=>{
-        console.log(findresponse)
-
-        this.setState({
-           data:findresponse.GetUserPackResult.UserPackList,
-           data1:findresponse.GetUserPackResult,
-           data2:findresponse.GetUserPackResult.AvgResTimeOfPoundBack,
-           UserPoundID:findresponse.GetUserPackResult.UserPackList.map((dyanamicData1,key)=>dyanamicData1.UserPoundID=== "" ? this.state.source1 : this.state.source2),
-
-         })
-         var arrOfObj = this.state.data;
-
-         var result = arrOfObj.map(function(el) {
-           var o = Object.assign({}, el);
-           o.UserPoundID=== "" ? o.url = 'assets/images/Howl-Final-Light-Blue-small.png'
-                            : o.url = 'assets/images/Howl-Final-Red-small.png';
-           return o;
-         })
-       this.setState({
-         result:result
-       })
-
-         // console.log(arrOfObj);
-         console.log(this.state.result);
-         // console.log(this.state.UserPoundID);
-      })
-
-  }
-
-  updateSearch(event) {
-
-    this.setState({
-      search: event.target.value.substr(0,35)
-    });
   }
 
 
@@ -122,6 +61,7 @@ class Pack extends React.Component {
                    else {
 
                        alert("Deleted Pack Member!")
+                       window.location.reload();
 
                    }
 
@@ -132,21 +72,19 @@ class Pack extends React.Component {
 
 
 
-handleAlert(value1,value2,value3) {
-
-
-    // alert("Are you sure you want to Alert?");
-    // var poundid = `${value4}`;
-    // console.log(poundid);
+handleAlert(value1,value2,value3,value4) {
     var packid = `${value1}`;
     console.log(packid);
     var name = `${value2}`;
     console.log(name)
     var poundid = `${value3}`;
     console.log(poundid)
+    var ImageUrl = `${value4}`;
+    console.log(ImageUrl);
+      // window.location.reload();
+    if(poundid === "")
+        {
 
-    // if(poundid === "")
-    //     {
                const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/PoundMyPackMember';
 
                 fetch(BaseURL,
@@ -168,19 +106,9 @@ handleAlert(value1,value2,value3) {
                    if(this.state.status === "1")
                    {
                        alert("You Howled at "+name);
-                       {this.forceUpdateHandler}
                        console.log(packid);
-                       var pidarray = this.state.pid
-                      console.log(pidarray) ;
+                       window.location.reload();
 
-                         for (let j = 0; j < pidarray.length; j++) {
-                            if ((pidarray[j]) === packid)
-                            {
-                              this.setState({ source1:'assets/images/Howl-Final-Red-small.png'});
-
-                            }
-
-                         }
 
                   }
                    else {
@@ -188,54 +116,94 @@ handleAlert(value1,value2,value3) {
                       // console.log(this.state.pound.UserPoundID)
 
                    }
-           console.log(this.state.imgsrc);
+
       })
 
 }
-handleundoAlert(value1,value2) {
+else {
 
-    var poundid = `${value1}`;
-    console.log(poundid);
-    var name = `${value2}`;
-    console.log(name)
-    // var img = `${value3}`;
-    // console.log(img)
 
-      fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UndoMyPound',
-      {
-       method: "POST",
-       body: JSON.stringify({ "UserID":cookie.load('Id'),"UserToken":cookie.load('UserToken'),"UserPoundID" : poundid  }),
-        headers: new Headers({'content-type': 'application/json'}),
+  fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UndoMyPound',
+  {
+   method: "POST",
+   body: JSON.stringify({ "UserID":cookie.load('Id'),"UserToken":cookie.load('UserToken'),"UserPoundID" : poundid  }),
+    headers: new Headers({'content-type': 'application/json'}),
+  })
+ .then((Response)=> Response.json())
+ .then((findresponse)=>{
+      console.log(findresponse)
+      this.setState({
+                  status:findresponse.UndoMyPoundResult.ResultStatus.Status,
+                  message:findresponse.UndoMyPoundResult.ResultStatus.StatusMessage,
+                  // pound:findresponse.PoundMyPackMemberResult.UserPackList
+                   })
+
+if(this.state.status === "1")
+{
+    alert("You UNHOWLED at "+name);
+
+    window.location.reload();
+ }
+else {
+   alert(this.state.message);
+
+
+}
+
+  })
+
+ }
+}
+
+
+ componentDidMount() {
+
+   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserPack';
+
+       fetch(BaseURL,
+       {
+        method: "POST",
+        body: JSON.stringify({
+          "UserID":cookie.load('Id'),
+          "UserToken":cookie.load('UserToken')
+        }),
+         headers: new Headers({'content-type': 'application/json'}),
+       })
+   .then((Response)=> Response.json())
+   .then((findresponse)=>{
+       console.log(findresponse)
+
+       this.setState({
+          data:findresponse.GetUserPackResult.UserPackList,
+          data1:findresponse.GetUserPackResult,
+          data2:findresponse.GetUserPackResult.AvgResTimeOfPoundBack,
+          UserPoundID:findresponse.GetUserPackResult.UserPackList.map((dyanamicData1,key)=>dyanamicData1.UserPoundID=== "" ? this.state.source1 : this.state.source2),
+
+        })
+        var arrOfObj = this.state.data;
+
+        var result = arrOfObj.map(function(el) {
+          var o = Object.assign({}, el);
+          o.UserPoundID=== "" ? o.url = 'assets/images/Howl-Final-Light-Blue-small.png'
+                           : o.url = 'assets/images/Howl-Final-Red-small.png';
+          return o;
+        })
+      this.setState({
+        result:result
       })
-     .then((Response)=> Response.json())
-     .then((findresponse)=>{
-          console.log(findresponse)
-          this.setState({
-                      status:findresponse.UndoMyPoundResult.ResultStatus.Status,
-                      message:findresponse.UndoMyPoundResult.ResultStatus.StatusMessage,
-                      // pound:findresponse.PoundMyPackMemberResult.UserPackList
-                       })
 
-    if(this.state.status === "1")
-    {
-        alert("You UNHOWLED at "+name);
-        // this.setState({
-        //     // redirectToUnHowl:true ,
-        //     source2:'assets/images/Howl-Final-Light-Blue-small.png',
-        //     // poundid: `${value1}`
-        //
-        // });
+        // console.log(arrOfObj);
+        console.log(this.state.result);
 
-     }
-    else {
-       alert(this.state.message);
-       // console.log(this.state.pound.UserPoundID)
+     })
 
-    }
+ }
 
-      })
+ updateSearch(event) {
 
-
+   this.setState({
+     search: event.target.value.substr(0,35)
+   });
  }
 
 
@@ -297,14 +265,14 @@ handleundoAlert(value1,value2) {
 
                         <span className="float-right">
 
-                          {
+                          {/* {
                             dyanamicData.UserPoundID === ""  ?
                                     <img src={this.state.source1} alt="Image" height="60" width="60" onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID)}  />
                                 :   <img src={this.state.source2} alt="Image" height="60" width="60" onClick={()=>this.handleundoAlert(dyanamicData.UserPoundID,dyanamicData.FirstName)} />
-                          }
+                          } */}
 
-                       {/* <img src={dyanamicData.url} alt="Image" height="60" width="60"
-                          onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.url,dyanamicData.UserPoundID)}/> */}
+                       <img src={dyanamicData.url} alt="Image" height="60" width="60"
+                          onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)}/>
 
 
                           {/* {
@@ -341,18 +309,19 @@ handleundoAlert(value1,value2) {
 }
 
 const Page = () => (
-  <article>
+  <section className="container-fluid with-maxwidth chapter">
+    <article className="article">
 
-
-      <h2 className="article-title text-center">MANAGE PACK<button className="float-right">
+     <h2 className="article-title">MANAGE PACK<button className="float-right">
         <a href="#/app/pglayout/packcontact">ADD NEW PACK MEMBER</a></button></h2>
 
-   <section className="chapter">
+
      <QueueAnim type="bottom" className="ui-animate">
        <div key="1"><Pack /></div>
      </QueueAnim>
-   </section>
+
   </article>
+</section>
 );
 
 module.exports = Page;

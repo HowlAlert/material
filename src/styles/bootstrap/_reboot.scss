@@ -256,11 +256,18 @@ figure {
 // Images and content
 //
 
+// img {
+//   vertical-align: middle;
+//   border-style: none;
+//   display: block;
+//     margin-left: 0px;
+//     margin-right: auto  // Remove the border on images inside links in IE 10-.
+// }
 img {
   vertical-align: middle;
   border-style: none;
   display: block;
-    margin-left: auto;
+    margin-left: 0px;
     margin-right: auto  // Remove the border on images inside links in IE 10-.
 }
 

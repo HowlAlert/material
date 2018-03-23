@@ -21,10 +21,11 @@ class Help extends React.Component{
 
 
     return (
-  <article className="article article-dark">
-    <div className="hero-content">
-      <h1 className="hero-title text-center">Frequently Asked Questions</h1>
-    </div>
+
+      <article className="article ">
+        <h2 className="article-title  no-margin-top">Frequently Asked Questions</h2>
+
+
     <div className="container-fluid with-maxwidth">
       <div className="row">
 
@@ -46,6 +47,7 @@ class Help extends React.Component{
                 </CardText>
 
               </Card>
+            <br />
               <Card>
                 <CardHeader title="What type of emergencies can HOWL address?"
                   actAsExpander
@@ -57,7 +59,7 @@ class Help extends React.Component{
                    </p>
                 </CardText>
               </Card>
-
+      <br />
               <Card>
                 <CardHeader title="What do I say to my Voice Activated hub in order to activate an alert?"
                   actAsExpander
@@ -70,7 +72,7 @@ class Help extends React.Component{
                    <h5>*All alerts will also go to your Pack by default.</h5>
                 </CardText>
               </Card>
-
+      <br />
               <Card>
                 <CardHeader title="What information will be shared with my Pack and Professional Emergency Services in the case of an emergency?"
                   actAsExpander
@@ -83,7 +85,7 @@ class Help extends React.Component{
 
                 </CardText>
               </Card>
-
+      <br />
               <Card>
                 <CardHeader title="How big can I make my Pack?"
                   actAsExpander
@@ -96,7 +98,7 @@ class Help extends React.Component{
 
                 </CardText>
               </Card>
-
+      <br />
               <Card>
                 <CardHeader title="Can I personally monitor my home while I'm away?"
                   actAsExpander
@@ -110,7 +112,7 @@ class Help extends React.Component{
                 </CardText>
               </Card>
 
-
+      <br />
               <Card>
                 <CardHeader title="How many cameras can I link with my account?"
                   actAsExpander
@@ -123,7 +125,7 @@ class Help extends React.Component{
 
                 </CardText>
               </Card>
-
+      <br />
               <Card>
                 <CardHeader title="Can I cancel false alarms?"
                   actAsExpander
@@ -136,7 +138,7 @@ class Help extends React.Component{
 
                 </CardText>
               </Card>
-
+      <br />
               <Card>
                 <CardHeader title="Can a stranger/intruder cancel my alert?"
                   actAsExpander
@@ -149,7 +151,7 @@ class Help extends React.Component{
 
                 </CardText>
               </Card>
-
+      <br />
               <Card>
                 <CardHeader title="Can I trigger a voice-activated alert directly through my Smart Phone?"
                   actAsExpander
@@ -164,7 +166,7 @@ class Help extends React.Component{
 
                 </CardText>
               </Card>
-
+      <br />
               <Card>
                 <CardHeader title="Can HOWL determine/communicate my location?"
                   actAsExpander
@@ -179,7 +181,7 @@ class Help extends React.Component{
 
                 </CardText>
               </Card>
-
+      <br />
               <Card>
                 <CardHeader title="Who is the ideal HOWL user?"
                   actAsExpander
@@ -196,8 +198,8 @@ class Help extends React.Component{
 
                 </CardText>
               </Card>
-
-              <h4>Do you have any question?</h4>
+      <br />
+              <h4 >Do you have any question?</h4>
               <form name="contactForm">
                 <div className="form-group">
                   <TextField hintText="Name" fullWidth />
@@ -242,11 +244,20 @@ class Help extends React.Component{
 }
 }
 const Page = () => (
-  <section className="chapter">
+  <section className="container-fluid with-maxwidth chapter">
+ <article className="article">
+
+
+
     <QueueAnim type="bottom" className="ui-animate">
-      <div key="1"><Help /></div>
+
+        <div><Help /></div>
+
     </QueueAnim>
-  </section>
+
+</article>
+</section>
+
 );
 
 module.exports = Page;

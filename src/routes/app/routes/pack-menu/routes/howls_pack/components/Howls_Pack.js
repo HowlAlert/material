@@ -87,14 +87,11 @@ class Pack extends React.Component {
 }
 const Page = () => {
   return (
-  <article className="article">
 
-    <section className="container-fluid with-maxwidth chapter">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><Pack /></div>
       </QueueAnim>
-    </section>
-  </article>
+  
   )
 }
 

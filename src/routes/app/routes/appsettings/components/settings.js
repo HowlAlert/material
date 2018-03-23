@@ -67,7 +67,7 @@ const BasicBoxes = () => (
 
 <div className="box box-default col-xl-6">
   <div className="box-body ">
-  <center><h2 className="article-title">HOWL SUPPORT FORMS </h2></center>
+<h2 className="article-title-header">HOWL SUPPORT FORMS </h2>
 
     <div className="box box-default"><a href="#/app/settingsmenu/feedback">
       <div className="box-body" >
@@ -75,7 +75,9 @@ const BasicBoxes = () => (
         {/* <span className="float-left">  <i className="material-icons">help</i></span> */}
       <center>
         <i className="material-icons">help</i>
-          <h5> FEEDBACK FORM </h5> </center>
+          <h5> FEEDBACK FORM </h5>
+
+         </center>
 
     </div>
     </a></div>
@@ -129,11 +131,13 @@ const BasicBoxes = () => (
 
 const Page = () => {
   return (
-    <section >
+    <section className="container-fluid chapter">
+
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><BasicBoxes /></div>
       </QueueAnim>
     </section>
+
   )
 }
 

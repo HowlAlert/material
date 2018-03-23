@@ -220,13 +220,16 @@ class EditProfile extends React.Component {
      }
    }
 const Page = () => (
-  <article className="article ">
-    <h2 className="article-title text-center">Edit Profile</h2>
-  <section className="chapter">
+
+  <section className="container-fluid chapter">
+
+    <h2 className="article-title-header">Edit Profile</h2>
+
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1"><EditProfile /></div>
     </QueueAnim>
+
+
   </section>
-</article>
 );
 module.exports = Page;

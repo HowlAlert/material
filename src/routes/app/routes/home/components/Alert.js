@@ -76,7 +76,7 @@ class Alerts extends React.Component {
              // console.log(arr3.length);
              // this.setState({  data1:arr3 , array_count:arr3.length })
             let arr4=[];
-            arr4=  arr3.slice(0, 3);
+            arr4=  arr3.slice(0, 2);
             // console.log(arr4);
               this.setState({  data2:arr4 , array_count:arr4.length })
               console.log(arr4.length);
@@ -90,27 +90,30 @@ class Alerts extends React.Component {
 
   return (
 
-  <div className="box box-default">
+
+    <div >
+
+      <h2 className="article-title-header">News & Alerts </h2>
+
+     <div className="box box-default">
+
 
      {
             this.state.data2.map((dyanamicData1,key)=>
                  <div className="box box-default">
                      <div className="box-body ">
                             {dyanamicData1.Text}
+                            <span className="float-right">
+
+                              {
+                                dyanamicData1.GetImageDataResult === "" ?
+                                        <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="50" width="50"/>
+                                    :   <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="50" width="50"/>
+                              }{" "}
+
+                            </span>
                          <div>
                              {dyanamicData1.DateCreated}{" "}
-                             <span className="float-right">
-
-                               {
-                                 dyanamicData1.GetImageDataResult === "" ?
-                                         <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="75" width="75"/>
-                                     :   <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="75" width="75"/>
-                               }{" "}
-
-
-
-                             </span>
-
                        </div>
                 </div>
               </div>
@@ -118,8 +121,8 @@ class Alerts extends React.Component {
              )}
 
    </div>
-
-
+    <a href="#/app/Alerts">See All Alerts </a>
+</div>
 
     );
   }
@@ -129,13 +132,13 @@ class Alerts extends React.Component {
 const Page = () => {
   return (
 
-  <article className="article">
-    <section className="container-fluid with-maxwidth chapter">
+
+    <section className="container-fluid">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><Alerts /></div>
       </QueueAnim>
     </section>
-  </article>
+
   )
 }
 

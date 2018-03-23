@@ -51,7 +51,7 @@ render() {
 
         <div className="box box-default">
           <div className="box-body">
-    <h2 className="article-title">Howls at Me</h2>
+    <h2 className="article-title-header">Howls at Me</h2>
 
         {
           this.state.data.map((dyanamicData,key) =>
@@ -81,7 +81,7 @@ render() {
       <div className="col-xl-6">
         <div className="box box-default">
           <div className="box-body">
-          <h2 className="article-title">Howls At Pack</h2>
+          <h2 className="article-title-header">Howls At Pack</h2>
 
           <Howls_Pack />
       </div>

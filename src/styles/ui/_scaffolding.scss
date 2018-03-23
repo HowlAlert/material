@@ -47,7 +47,14 @@
     line-height: 32px;
     margin: 48px 0 30px;
     border-top: 1px solid rgba(0, 0, 0, 0.117647);
-    color: theme-color("primary");
+    color: #3287c5;
+  }
+
+  .article-title-header {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 32px;
+    color: #3287c5;
   }
 }
 

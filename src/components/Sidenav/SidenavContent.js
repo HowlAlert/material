@@ -201,11 +201,11 @@ class SidebarContent extends React.Component {
         </li> */}
         <li>
           <FlatButton href="#/app/Pack"><img className="nav-icon material-icons" src="assets/images/bluePack.png" alt="Image" height="20" width="20"/><span className="nav-text">Pack</span></FlatButton>
-          <ul>
+          {/* <ul>
             <li><FlatButton className="prepend-icon" href="#/app/Pack"><span>Pack</span></FlatButton></li>
             {/* <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_pack"><span>Howls at Pack</span></FlatButton></li> */}
-            <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_me"><span>Howl Updates</span></FlatButton></li>
-          </ul>
+             {/* <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_me"><span>Howl Updates</span></FlatButton></li>
+          </ul> */}
         </li>
         <li>
           <FlatButton href="#/app/Monitoring"><img className="nav-icon material-icons" src="assets/images/blueMonitor.png" alt="Image" height="20" width="20"/><span className="nav-text">Monitoring</span></FlatButton>
@@ -221,7 +221,7 @@ class SidebarContent extends React.Component {
 
         </li>
         <li>
-          <FlatButton onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></FlatButton>
+          <FlatButton href={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></FlatButton>
           <Dialog
                       title="Confirm"
                       actions={actions}

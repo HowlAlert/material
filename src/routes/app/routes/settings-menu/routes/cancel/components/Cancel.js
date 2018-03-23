@@ -66,10 +66,7 @@ import VerifyCancelCode from '../../verifycancel/';
        }
 
     return (
-      <article className="article">
-         <h2 className="article-title text-center">CHANGE CANCEL CODE</h2>
-         <div className="container-fluid with-maxwidth">
-           <div className="row">
+
 
            <div className="box box-transparent">
              <div className="box-body padding-lg-h">
@@ -85,9 +82,7 @@ import VerifyCancelCode from '../../verifycancel/';
                     </div>
 
                 </div>
-              </div>
-            </div>
-      </article>
+              
     );
   }
 }
@@ -97,10 +92,17 @@ import VerifyCancelCode from '../../verifycancel/';
 
 const Page = () => (
 
-  <section className="chapter">
+  <section className="container-fluid chapter">
+
+    <h2 className="article-title-header">CHANGE CANCEL CODE</h2>
+
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1"><Cancel /></div>
     </QueueAnim>
+
+
   </section>
+
+
 );
 module.exports = Page;

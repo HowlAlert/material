@@ -7,7 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import cookie from 'react-cookies';
-import PreviousDayImages from '../../../../cameras/components/PreviousDayImages';
+
 
 class History extends React.Component {
 
@@ -127,6 +127,7 @@ class History extends React.Component {
 
                          if(total === 0)
                           {
+                            // alert("No Images Recorded!");
                              this.setState({
                                  disabledMore: true,
                                  redirectToAlert:true
@@ -251,15 +252,15 @@ class History extends React.Component {
                          var total = this.state.array_count;
                          console.log(total);
 
-                         if(total === 0)
-                          {  alert("No Images Recorded!");
-
-                                // this.setState({
-                                //      disabledMore: true,
-                                //      disableBack:true
-                                //
-                              //});
-                          }
+                         // if(total === 0)
+                         //  {  alert("No Images Recorded!");
+                         //
+                         //        // this.setState({
+                         //        //      disabledMore: true,
+                         //        //      disableBack:true
+                         //        //
+                         //      //});
+                         //  }
 
                     } )
                 })
@@ -359,11 +360,11 @@ console.log(EndTime);
                      var total = this.state.array_count;
                      console.log(total);
 
-                     if(total === 0)
-                      {  alert("No Images Recorded!");
-
-
-                      }
+                     // if(total === 0)
+                     //  {  alert("No Images Recorded!");
+                     //
+                     //
+                     //  }
 
                 } )
             })
@@ -389,100 +390,6 @@ console.log(StartTime);
 var EndTime = today + " " + et
 console.log(EndTime);
 
-
-           //
-           // var that = this;
-           //  var urls = [];
-           //  var a1 =[];
-           //  // console.log(this.state.counter);
-           //
-           //
-           //  const BaseURL1 = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
-           //
-           //      fetch(BaseURL1,
-           //      {
-           //       method: "POST",
-           //       body: JSON.stringify({
-           //         "UserID":cookie.load('Id'),
-           //         "UserToken":cookie.load('UserToken'),
-           //         "CameraID": cookie.load('cameraid'),
-           //         "StartTime":"12/11/2017 00:00:00",
-   	       //        "EndTime": EndTime,
-           //         "PageNumber": 1
-           //       }),
-           //        headers: new Headers({'content-type': 'application/json'}),
-           //      })
-           //  .then((Response)=> Response.json())
-           //  .then((findresponse)=>{
-           //    console.log(findresponse);
-           //    this.setState({
-           //       data:findresponse.GetUserCameraImagesResult.CameraImages,
-           //       length:findresponse.GetUserCameraImagesResult.CameraImages.length,
-           //       // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
-           //     })
-           //     Promise.all(
-           //          findresponse.GetUserCameraImagesResult.CameraImages.map(
-           //               element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
-           //                                     {
-           //
-           //                                          method: "POST",
-           //                                          body: JSON.stringify({
-           //                                            "url":element.ImageURL
-           //                                          }),
-           //
-           //                                         headers: new Headers({'content-type':'application/json'}),
-           //
-           //                                   })
-           //                 .then(res => res.json())
-           //             )
-           //           ).then(datas => {
-           //
-           //             this.state.data.forEach((element, i) => {
-           //               urls[i] = element
-           //
-           //             })
-           //           console.log(urls);
-           //           let arr3 = [];                                  // to combine the results of the two arrays
-           //                   urls.forEach((itm, i) => {
-           //                            arr3.push(Object.assign({}, itm, datas[i]));
-           //                        });
-           //
-           //                        console.log(arr3.length);
-           //                        this.setState({  data1:arr3 ,
-           //                          array_count:arr3.length ,
-           //
-           //                        })
-           //
-           //            console.log(this.state.data1);
-           //            var total = this.state.array_count;
-           //            console.log(total);
-           //
-           //            if(total === 0)
-           //             {
-           //
-           //               this.setState({
-           //                 disabledMore: true ,
-           //                 redirectToAlert:true
-           //
-           //               })
-           //             }
-           //             else {
-           //               this.setState({ disabledMore: false })
-           //
-           //             }
-           //
-           //       } )
-           //   })
-           //
-           //
-           //
-
-
-
-
-
-
-
           var that = this;
            var urls = [];
            var a1 =[];
@@ -498,7 +405,7 @@ console.log(EndTime);
                   "UserID":cookie.load('Id'),
                   "UserToken":cookie.load('UserToken'),
                   "CameraID": cookie.load('cameraid'),
-                  "StartTime": StartTime,
+                  "StartTime":"12/11/2017 00:00:00",
   	              "EndTime": EndTime,
                   "PageNumber": 1
                 }),
@@ -551,6 +458,8 @@ console.log(EndTime);
 
                      if(total === 0)
                       {
+
+                        // alert("No Images Recorded!");
                         this.setState({
                           disabledMore: true ,
                           redirectToAlert:true
@@ -577,8 +486,12 @@ handleExit()
 
 render() {
 
-  var today = moment(this.state.startDate).format('LL');
+
+  var today = moment(this.state.startDate).format('MM/DD/YYYY');
   console.log(today);
+
+  var total = this.state.array_count;
+  console.log(total);
 
 const { redirectToReferrer} = this.state                    //To Zoom the Image
   if(this.state.redirectToReferrer === true)
@@ -610,19 +523,18 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
 
       return (
 
-
-        <div className="row">
-
-          <div className="col-xl-12">
-            <div className="box box-default">
-              <div className="box-body">
+        <div >
 
 
-                {/* <h2 className="article-title"> Most Recent Images </h2> */}
+
+
 
                 {/* <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="180" width="180"/> */}
 
-                {/* <div className="row">
+
+
+                   <h2> Most Recent Images.......... </h2>
+                <div className="row">
 
                 {
                   this.state.data1.map((dyanamicData1,key)=>
@@ -631,7 +543,7 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
 
                      <center>
 
-                               <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="180" width="180"
+                               <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="200" width="300"
                                             onClick={()=>this.handleEnlarge(dyanamicData1.GetImageDataResult,dyanamicData1.DateCreated)}
 
                               />
@@ -641,43 +553,28 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
                  )
                }
 
-             </div> */}
+              </div>
 
+                    {/* <div className="row">
+                        Select Date: <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
 
-
-                 <div>
-
-                        Select Date:
-                        <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
                         <span className="float-right">
-                           NOTE: Click on image to Zoom
+                              NOTE: Click on image to Zoom
+
                         </span>
-
-
-                 </div>
-
-             { (this.state.array_count === 0) ?
-
-
-                      <div>
-                        <h2>No Images Recorded on "{today}" </h2>
-                        <PreviousDayImages />
                       </div>
 
+                      { (total === 0) ?
+                              <h2>"No Images Recorded !" </h2>
 
-              :
-              <div>
+                :<div className="row">
 
-
-              <h2>Recorded Images on "{today}" ...... </h2>
-              <div className="row">
-
-              {
+               {
                 this.state.data1.map((dyanamicData1,key)=>
                 <div className="box box-default">
                  <div className="box-body ">
                    <center>
-                             <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="200" width="300"
+                             <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="180" width="180"
                                           onClick={()=>this.handleEnlarge(dyanamicData1.GetImageDataResult,dyanamicData1.DateCreated)}
 
                             />
@@ -685,8 +582,8 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
                   </div>
                 </div>
                )}
-             </div>
 
+            </div>}
             <span className="float-left">
                   Page:{this.state.counter-1}
             </span>
@@ -695,38 +592,22 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
                <RaisedButton primary label=" More Images!" onClick={()=>this.handleNext(this.state.startDate,this.state.counter)}  disabled={this.state.disabledMore}/>
 
 
-            </span>
-             </div>}
-              </div>
+            </span> */}
 
-            </div>
+
           </div>
-        </div>
+
 
         );
       }
      }
 
 const ImageSection = () => (
-  <section className="container-fluid ">
-  <article className="article">
-       <h2 className="article-title">Camera History
-         <span className="float-right">
 
-         <a href="#/app/camerasettings/motion-detection">
-          <img className="nav-icon material-icons" src="assets/images/blueCog.png" alt="Image" height="40" width="40"/>
-           settings
-         </a>
-         </span>
-
-     </h2>
-   <QueueAnim type="bottom" className="ui-animate">
-     <div key="1"><History /></div>
-   </QueueAnim>
-
-</article>
-</section>
-
+      <QueueAnim type="bottom" className="ui-animate">
+        <div key="1"><History /></div>
+      </QueueAnim>
+  
 );
 
 module.exports = ImageSection;

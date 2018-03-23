@@ -4,6 +4,10 @@ import MenuItem from 'material-ui/MenuItem';
 import cookie from 'react-cookies';
 import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
+import QueueAnim from 'rc-queue-anim';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+
+
 
 class ImageBox extends React.Component {
 
@@ -16,6 +20,21 @@ class ImageBox extends React.Component {
 
 
   }
+
+  handleImage(value1) {
+
+
+
+      var cameraid = `${value1}`;
+      console.log(cameraid);
+      // this.setState({ redirectToReferrer: true })
+      // <History />
+      cookie.save('cameraid',cameraid);
+
+       console.log(cookie.load('cameraid'));
+       this.setState({ redirectToReferrer: true })
+  }
+
 
 componentDidMount(){
 
@@ -50,42 +69,20 @@ console.log(EndTime);
   .then((Response)=> Response.json())
   .then((findresponse)=>{
     this.setState({
-         length:findresponse.GetUserCameraResult.RoomCameraList.length
+         length:findresponse.GetUserCameraResult.RoomCameraList.length,
+         CameraName:findresponse.GetUserCameraResult.RoomCameraList["0"].SortRoomName,
+         CameraId:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].CameraID
     })
+console.log(this.state.CameraName)
+console.log(this.state.CameraId)
 
-
-        if(length >= 0)
-        {
-
-            var  CameraId = findresponse.GetUserCameraResult.RoomCameraList.map((dyanamicData,key) =>
-
-                    dyanamicData.Camera.map((dyanamicData1,key1) => dyanamicData1.CameraID))
-
-        }
-CameraId.map((dyanamicData1,key1) =>
-          this.setState({
-               camid:CameraId[key1]["0"]
-          })
-
-
-        )
-  console.log(this.state.camid)
-       console.log(CameraId["0"]["0"])
-
-    console.log(CameraId);
-
-
-
-
-var camid =CameraId["0"]["0"];
-console.log(camid);
       fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages',
       {
        method: "POST",
        body: JSON.stringify({
          "UserID":cookie.load('Id'),
          "UserToken":cookie.load('UserToken'),
-         "CameraID": camid,
+         "CameraID": this.state.CameraId,
 	       "StartTime" :"12/11/2017 00:00:00",
          "EndTime" : EndTime,
          "PageNumber" : "1" }),
@@ -133,36 +130,57 @@ console.log(camid);
 
 
   render() {
-    // var mes = this.state.data.length
-    // if(mes === 0)
-    // {
-    //   var message= "Click  ADD DEVICE INSTRUCTIONS Button to follow Instructions to add devices "
-    // }
+
+
+    const { redirectToReferrer} = this.state
+      if(redirectToReferrer === true)
+      {
+        return (
+           <Redirect to="camerasettings/camera-history" />
+         )
+      }
+
 
     return (
 
 
-           <div>
-              {/* <h5>{message}</h5> */}
-          <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="90%" width="90%"/>
+    <div >
 
-          </div>
+      <h2 className="article-title-header">{this.state.CameraName}
 
+        <div className="float-right">
+           <RaisedButton primary label=" Live Video ->" onClick={()=>this.handleImage(this.state.CameraId)} />
+       </div>
+
+      </h2>
+
+     <div className="box box-default">
+
+            <a href="#/app/camerasettings/camera-history" >
+                <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
+             </a>
+
+       </div>
+
+    
+     </div>
 
     );
   }
 }
 
 const ImageSection = () => (
-  <article className="article">
 
-    <section className="box box-default">
-      <div className="box-body">
-        <a href="#/app/Cameras">Live Video   ->   </a>
-              <ImageBox />
-            </div>
-    </section>
-  </article>
+
+<section className="container-fluid">
+      <QueueAnim type="bottom" className="ui-animate">
+        <div key="1"><ImageBox /></div>
+      </QueueAnim>
+
+</section>
+
+
+
 );
 
 module.exports = ImageSection;

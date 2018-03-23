@@ -160,10 +160,10 @@ handleSmsToggle()
 
        <div className="row">
          <div className="col-xl-12">
-           <h4>Push Notifications</h4>
+
            <div className="box box-default">
              <div className="box-body">
-                <h4>Camera Alerts</h4>
+                <h4 className="article-title-header" >Push Notifications</h4>
                 <p>Would you like to receive camera alerts via push notifications?</p>
                 <span className="float-right ibox-icon">
 
@@ -182,10 +182,11 @@ handleSmsToggle()
 
 
 
-           <h4>Text Message Notifications</h4>
+
                   <div className="box box-default">
                      <div className="box-body">
-                       <h4>Camera Alerts</h4>
+                    
+                         <h4 className="article-title-header" >Text Message Notifications</h4>
                        <p>Would you like to receive camera alerts via text message?</p>
 
                          <span className="float-right ibox-icon">
@@ -213,14 +214,17 @@ handleSmsToggle()
 
      const Page = () => {
      return (
-       <article className="article">
-         <center><h2 className="article-title">NOTIFICATIONS</h2></center>
-       <section className="container-fluid with-maxwidth chapter">
+
+
+
+
+       <section className="container-fluid chapter">
+         <h2 className="article-title-header">NOTIFICATIONS</h2>
          <QueueAnim type="bottom" className="ui-animate">
            <Notify />
          </QueueAnim>
        </section>
-     </article>
+
      )
      }
 

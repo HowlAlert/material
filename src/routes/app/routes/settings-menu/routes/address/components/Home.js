@@ -272,13 +272,18 @@ this.setState({
 }
 
 const Page = () => (
-  <article className="article">
-    <h2 className="article-title text-center">CHANGE HOME ADDRESS</h2>
-  <section className="chapter">
-    <QueueAnim type="bottom" className="ui-animate">
-      <div key="1"><Address /></div>
-    </QueueAnim>
-  </section>
-  </article>
+
+
+    <section className="container-fluid chapter">
+
+      <h2 className="article-title-header">CHANGE HOME ADDRESS</h2>
+
+      <QueueAnim type="bottom" className="ui-animate">
+          <div key="1"><Address /></div>
+      </QueueAnim>
+
+
+    </section>
+  
 );
 module.exports = Page;

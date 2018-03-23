@@ -5,6 +5,9 @@ import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
 import cookie from 'react-cookies';
+import Howls_Me from '../../pack-menu/routes/howls_me/components/Howls_Me';
+import Howls_Pack from '../../pack-menu/routes/howls_pack/components/Howls_Pack'
+
 class Alerts extends React.Component {
 
   constructor() {
@@ -33,7 +36,7 @@ class Alerts extends React.Component {
          body: JSON.stringify({
            "UserID":cookie.load('Id'),
            "UserToken":cookie.load('UserToken'),
-           "UserPackID" :alertid
+           "UserFeedID" :alertid
          }),
           headers: new Headers({'content-type': 'application/json'}),
         })
@@ -54,7 +57,9 @@ class Alerts extends React.Component {
 
                    }
 
-                   else {  alert("Deleted Alert!")    }
+                   else {  alert("Deleted Alert!") ;
+                           window.location.reload();
+                    }
 
        })
 
@@ -323,8 +328,8 @@ class Alerts extends React.Component {
   return (
 
 
-    <div className="row">
-      <div className="col-xl-12">
+    <div >
+
         <div className="box box-default">
           <div className="box-body">
 
@@ -338,29 +343,32 @@ class Alerts extends React.Component {
                 </div>
 
 
-        <div>
+        <div className="row">
 
           {
             this.state.data1.map((dyanamicData1,key)=>
-                 <div className="box box-default">
+                 <div className="box box-default col-xl-6 ">
                      <div className="box-body ">
                             {dyanamicData1.Text}
+                            <span className="float-right">
+
+                              {
+                                dyanamicData1.GetImageDataResult === "" ?
+                                        <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="75" width="75"/>
+                                    :   <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="150" width="150"/>
+                              }{" "}
+                                {/* <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="150" width="150"/> {" "} */}
+
+
+                            </span>
                          <div>
                              {dyanamicData1.DateCreated}{" "}
-                             <span className="float-right">
-
-                               {
-                                 dyanamicData1.GetImageDataResult === "" ?
-                                         <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="75" width="75"/>
-                                     :   <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="150" width="150"/>
-                               }{" "}
-                                 {/* <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="150" width="150"/> {" "} */}
-
-                                <div className="text-center"> <RaisedButton primary label="Delete" onClick={()=>this.handleDelete(dyanamicData.ID)}/></div>
-                             </span>
-
                        </div>
+
                 </div>
+                <span className="float-left">
+                   <div className="text-center"> <RaisedButton primary label="Delete" onClick={()=>this.handleDelete(dyanamicData1.ID)}/></div>
+                </span>
               </div>
 
              )}
@@ -369,25 +377,51 @@ class Alerts extends React.Component {
           </div>
         </div>
       </div>
-    </div>
+
+
+
 
 
     );
   }
  }
 
+ const AlertDashboard = () => (
+   <div className="row">
 
+     <div className="col-xl-12">
+        <Alerts />
+     </div>
+
+
+   {/* <div className=" col-xl-4">
+
+     <Howls_Me />
+
+   </div>
+   <div className=" col-xl-4">
+      <Howls_Pack />
+
+   </div> */}
+   </div>
+ );
 const Page = () => {
   return (
 
-  <article className="article">
-    <center><h2 className="article-title">ALERTS</h2></center>
+
     <section className="container-fluid with-maxwidth chapter">
+      <article className="article">
+
+      <h2 className="article-title">ALERTS</h2>
       <QueueAnim type="bottom" className="ui-animate">
-        <div key="1"><Alerts /></div>
+        <Howls_Me />
+        {/* <Howls_Pack /> */}
+        <div key="1"><AlertDashboard /></div>
+
       </QueueAnim>
+        </article>
     </section>
-  </article>
+
   )
 }
 
