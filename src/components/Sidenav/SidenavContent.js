@@ -169,7 +169,7 @@ class SidebarContent extends React.Component {
        if (redirectToReferrer) {
          console.log(redirectToReferrer)
              return (
-               <Redirect to="mainLogin"/>
+               <Redirect to="/mainLogin"/>
              )
            }
     return (

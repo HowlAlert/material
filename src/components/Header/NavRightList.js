@@ -96,7 +96,7 @@ const { redirectToReferrer} = this.state
        if (redirectToReferrer) {
          console.log(redirectToReferrer)
              return (
-               <Redirect to="mainLogin"/>
+               <Redirect to="/mainLogin"/>
              )
            }
 
@@ -123,7 +123,7 @@ const { redirectToReferrer} = this.state
                     >
 
             <MenuItem
-              value="/app/dashboard"
+              value="/app/home"
               primaryText="Home"
               style={{fontSize: '13px', lineHeight: '21px'}}
               innerDivStyle={listItemStyle}
