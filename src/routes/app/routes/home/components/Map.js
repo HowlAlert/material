@@ -63,7 +63,8 @@ render() {
     return (
 
 
-        <Map className='google-map'
+
+        <Map
             google={google}
             onClick={this.onMapClicked}
             initialCenter={{
@@ -92,7 +93,7 @@ render() {
              {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
-           style={{ width:"96.1%" , height:"96.7%"}}
+           style={{ width:"670" , height:"330"}}
           >
               <Marker
                    title={'Home Address Location '}
@@ -116,6 +117,8 @@ render() {
                         </div>
                   </InfoWindow>
         </Map>
+
+
 
         );
     }

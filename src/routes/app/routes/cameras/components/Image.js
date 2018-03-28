@@ -144,26 +144,34 @@ console.log(this.state.CameraId)
     return (
 
 
-    <div >
 
-      <h2 className="article-title-header">{this.state.CameraName}
+      <div className="box box-default">
+          <div className="box-body ">
 
-        <div className="float-right">
-           <RaisedButton primary label=" Live Video ->" onClick={()=>this.handleImage(this.state.CameraId)} />
-       </div>
+           <div className="article-title-header ">{this.state.CameraName} </div>
+       <div className="ih-item ih-material">
 
-      </h2>
-
-     <div className="box box-default">
-
-            <a href="#/app/camerasettings/camera-history" >
+        <a href="#/app/camerasettings/camera-history" >
+                   <div className="img">
+                     <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
+                   </div>
+                   <div className="info">
+                     <div className="info-mask bg-color-primary" />
+                     <div className="info-content">
+                       <div className="info-inner">
+                         <h3>Click Here for Live Video...</h3>
+                       </div>
+                     </div>
+                   </div>
+                 </a>
+            {/* <a href="#/app/camerasettings/camera-history" >
                 <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
-             </a>
-
+             </a> */}
        </div>
+       </div>
+</div>
 
-    
-     </div>
+
 
     );
   }
@@ -172,7 +180,8 @@ console.log(this.state.CameraId)
 const ImageSection = () => (
 
 
-<section className="container-fluid">
+<section className="chapter">
+
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><ImageBox /></div>
       </QueueAnim>

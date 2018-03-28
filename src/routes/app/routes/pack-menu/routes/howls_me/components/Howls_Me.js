@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import QueueAnim from 'rc-queue-anim';
 import cookie from 'react-cookies';
 import Howls_Pack from '../../howls_pack/components/Howls_Pack'
+import moment from 'moment';
 
 class Incoming extends React.Component {
   constructor() {
@@ -33,15 +34,28 @@ class Incoming extends React.Component {
         console.log(findresponse)
         this.setState({
            data:findresponse.GetPackPoundListResult.GetPackPounds,
-
+           time:findresponse.GetPackPoundListResult.GetPackPounds["0"].DateCreated
         })
 
+         // console.log(this.state.time);
+         // var ms = this.state.time;
+         // console.log(ms)
+         //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
+         //
+         //     var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
+         //         console.log(gmtDateTime);
+         //     var local = gmtDateTime.local().format('YYYY-MMM-DD h:mm A');
+         //     console.log(local)
 
 
       })
 
   }
 render() {
+
+//   var gmtDateTime = moment.utc("2015-10-24 20:00", "YYYY-MM-DD HH")
+// var local = gmtDateTime.local().format('YYYY-MMM-DD h:mm A');
+// console.log(local)
 
 
   return (
@@ -65,7 +79,11 @@ render() {
                                        `${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName} HOWLED at you `
                                       : `You HOWLED back at ${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName}`
                                        }{" "}
-                              {"on " + dyanamicData.DateCreated}
+                              {"on " +
+
+                                   moment.utc(moment(dyanamicData.DateCreated).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')
+                              }
+
 
                           </div>
 

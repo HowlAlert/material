@@ -76,7 +76,7 @@ class Alerts extends React.Component {
              // console.log(arr3.length);
              // this.setState({  data1:arr3 , array_count:arr3.length })
             let arr4=[];
-            arr4=  arr3.slice(0, 2);
+            arr4=  arr3.slice(0, 3);
             // console.log(arr4);
               this.setState({  data2:arr4 , array_count:arr4.length })
               console.log(arr4.length);
@@ -93,8 +93,8 @@ class Alerts extends React.Component {
 
     <div >
 
-      <h2 className="article-title-header">News & Alerts </h2>
 
+      <div className="article-title-header ">News & Alerts </div>
      <div className="box box-default">
 
 
@@ -133,7 +133,7 @@ const Page = () => {
   return (
 
 
-    <section className="container-fluid">
+    <section className=" chapter">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><Alerts /></div>
       </QueueAnim>

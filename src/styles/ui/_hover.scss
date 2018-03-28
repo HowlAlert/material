@@ -32,13 +32,13 @@
   }
 }
 
-// Material 
+// Material
 // -------------------------------
 .ih-item.ih-material {
   overflow: hidden;
   position: relative;
-  width: 100%; 
-  height: 100%; 
+  width: 100%;
+  height: 100%;
 
   .info-mask {
     content: '';
@@ -68,7 +68,7 @@
       display: inline-block;
       vertical-align: middle;
       height: 100%;
-      margin-left: -0.5em;      
+      margin-left: -0.5em;
     }
 
     .info-inner {
@@ -150,6 +150,7 @@
 
     &.bg-color-primary { background-color: rgba(theme-color("primary"), .8)}
     &.bg-color-info { background-color: rgba(theme-color("info"), .8)}
+    // &.bg-color-howl { background-color: rgba(theme-color("howl"), .8)}
   }
 
   a:hover {

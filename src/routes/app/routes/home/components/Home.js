@@ -174,6 +174,7 @@ const { redirectToReferrer} = this.state
 
       </div>
 
+
                  <a href="#/app/Monitoring">
                     <img src="assets/images/fire-button-unsubscribed.png" width="120 "/>
                  </a>
@@ -221,40 +222,38 @@ const Dashboard = () => (
              <BasicHome />
     </div>
 
-
-  <div className=" box box-default col-xl-5">
+<div className="col-xl-6">
+  <div className="box box-default box-body ">
 
     <Alert />
 
   </div>
-  <div className="col-xl-1">
-
-    <div className="box box-default ">
-
-  </div>
 </div>
 
-    <div className="col-xl-5">
 
-             <Map />
+    <div className="box box-default box-body col-xl-6">
+     <div className="article-title-header">Your Neighborhood </div>
+
+         <Map />
 
 
-    </div>
 
-    
+</div>
 
-    <div className=" box box-default col-xl-5">
+
+
+    <div className="col-xl-6">
 
           <Image />
 
     </div>
-    <div className="col-xl-1">
+    {/* <div className="col-xl-1">
 
       <div className="box box-default ">
 
     </div>
-  </div>
-    <div className="  box box-default col-xl-5">
+  </div> */}
+    <div className="col-xl-6">
 
              <Image2 />
 
@@ -275,22 +274,21 @@ const Page = () => {
             //  <div className="app-content">
             //    <div className="full-height">
 
+            <div className="container-fluid no-breadcrumbs page-dashboard chapter">
 
-                   <section className="container-fluid with-maxwidth chapter">
-                   <article className="article">
-
-                        <QueueAnim type="bottom" className="ui-animate">
+              <QueueAnim type="bottom" className="ui-animate">
 
 
-                              <div key="1"><Dashboard /></div>
-                              {/* <Map /> */}
+                    <div key="1"><Dashboard /></div>
+                    {/* <Map /> */}
 
 
-                        </QueueAnim>
+              </QueueAnim>
 
-                  </article>
 
-          </section>
+
+              </div>
+
     //   </div>
     // </div>
   )

@@ -244,8 +244,7 @@ class Help extends React.Component{
 }
 }
 const Page = () => (
-  <section className="container-fluid with-maxwidth chapter">
- <article className="article">
+  <section className="container-fluid chapter">
 
 
 
@@ -255,7 +254,7 @@ const Page = () => (
 
     </QueueAnim>
 
-</article>
+
 </section>
 
 );

@@ -152,33 +152,42 @@ console.log(EndTime);
 
     return (
 
-      <div >
+      <div className="box box-default">
+          <div className="box-body ">
 
-        <h2 className="article-title-header">{this.state.CameraName}
+           <div className="article-title-header ">{this.state.CameraName} </div>
+       <div className="ih-item ih-material">
 
-          <div className="float-right">
-             <RaisedButton primary label=" Live Video ->" onClick={()=>this.handleImage(this.state.CameraId)} />
+
+           <a href="#/app/camerasettings/camera-history" >
+                      <div className="img">
+                        <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
+                      </div>
+                      <div className="info">
+                        <div className="info-mask bg-color-primary" />
+                        <div className="info-content">
+                          <div className="info-inner">
+                            <h3>Click Here for Live Video...</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+               {/* <a href="#/app/camerasettings/camera-history" >
+                   <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
+                </a> */}
+          </div>
+          </div>
+
+
+
          </div>
 
-        </h2>
-
-       <div className="box box-default">
-      {/* <b ></b> */}
-                {/* <h5>{message}</h5> */}
-                {/* <h1>{this.state.CameraName}</h1> */}
-          <a href="#/app/camerasettings/camera-history" >
-              <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="100%" width="100%"/>
-         </a>
-         </div>
-
-         </div>
-      
     );
   }
 }
 
 const ImageSection = () => (
-    <section className="container-fluid">
+    <section className="chapter">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><ImageBox /></div>
       </QueueAnim>

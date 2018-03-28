@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import QueueAnim from 'rc-queue-anim';
 import moment from 'moment';
 import cookie from 'react-cookies';
-
+// import Howls_Pack from '../../pack-menu/routes/howls_pack/components/Howls_Pack'
 
 
 class Pack extends React.Component {
@@ -226,24 +226,27 @@ else {
 
   return (
 
-       <div className="box box-transparent">
-       <h2 className="article-title text-center">
+       <div >
+
+
        <input type="text" value={this.state.search}
            name="search"
            onChange={this.updateSearch.bind(this)}
            placeholder="Search Pack"
            />
-       </h2>
+           <button className="float-right">
+             <a href="#/app/pglayout/packcontact">ADD NEW PACK MEMBER</a></button>
+
 
       <div className="box-body padding-xl">
-        <div className="row">
-            <div className="col-md-2 text-center">Howls At Pack <div> {this.state.data1.TotalMyPound}</div></div>
+        {/* <div className="row">
+            <div width="3">Howls At Pack <div> {this.state.data1.TotalMyPound}</div></div>
             <div className="col-md-2 float-right text-center">Howls At Me <div > {this.state.data1.TotalPackPound}</div> </div>
             <div className="col-md-4">My Average Response Time <div> {v} </div></div>
 
-        </div>
-
-              <div>
+        </div> */}
+ <div className="row">
+              <div className="col-xl-12">
                 { filteredNames.map((dyanamicData,key)=>
 
                      <div className="box box-default">
@@ -256,10 +259,11 @@ else {
                         }
                     </span>
 
-                    <span className="float-left col-xl-4">
+                    <span className="float-left" width="3">
                             {dyanamicData.FirstName} {" "} {dyanamicData.LastName}<br/>
                             {"+"+dyanamicData.PhoneNumberCountryCode}{" "}  {dyanamicData.PhoneNumber}<br/>
-                            {dyanamicData.Email}
+                            {dyanamicData.Email} <br />
+                              <RaisedButton primary label="Delete"  onClick={()=>this.handleDelete(dyanamicData.ID)}/>
 
                     </span>
 
@@ -288,7 +292,7 @@ else {
                           {/* <button style={{backgroundColor: bgColor1}} onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.UserPoundID)}>HOWL</button>{" "} */}
                           {/* <RaisedButton primary label="HOWL" onClick={()=>this.handleAlert(dyanamicData.ID)}/>{" "} */}
 
-                          <RaisedButton primary label="Delete"  onClick={()=>this.handleDelete(dyanamicData.ID)}/>
+
 
 
                         </span>
@@ -300,6 +304,19 @@ else {
                    )
                 }
               </div>
+              {/* <div className="col-xl-12">
+                <div className="box box-default">
+                  <div className="box-body">
+                  <h2 className="article-title-header">Howls At Pack</h2>
+
+                  <Howls_Pack />
+              </div>
+            </div>
+          </div> */}
+         </div>
+
+
+
       </div>
 
    </div>
@@ -308,20 +325,351 @@ else {
 }
 }
 
+// const Page = () => (
+//   <section className="container-fluid with-maxwidth chapter">
+//     <article className="article">
+//
+//      <h2 className="article-title">MANAGE PACK<button className="float-right">
+//         <a href="#/app/pglayout/packcontact">ADD NEW PACK MEMBER</a></button></h2>
+//
+//
+//      <QueueAnim type="bottom" className="ui-animate">
+//        <div key="1"><Pack /></div>
+//
+//      </QueueAnim>
+//
+//   </article>
+// </section>
+// );
+//
+// module.exports = Page;
+// import React from 'react';
+// import QueueAnim from 'rc-queue-anim';
+class Howls_Me extends React.Component {
+
+  constructor() {
+    super();
+      this.state = {
+        data: [],
+      };
+
+  }
+  componentDidMount(){
+
+    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetPackPoundList';
+
+        fetch(BaseURL,
+        {
+         method: "POST",
+         body: JSON.stringify({
+           "UserID":cookie.load('Id'),
+           "UserToken":cookie.load('UserToken')
+         }),
+          headers: new Headers({'content-type': 'application/json'}),
+        })
+    .then((Response)=> Response.json())
+    .then((findresponse)=>{
+        console.log(findresponse)
+        this.setState({
+           data:findresponse.GetPackPoundListResult.GetPackPounds,
+           time:findresponse.GetPackPoundListResult.GetPackPounds["0"].DateCreated
+        })
+        console.log(this.state.time);
+        // var ms = this.state.time;
+        // console.log(ms)
+        //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
+
+            // var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
+            //     console.log(gmtDateTime);
+            var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
+            console.log(local)
+
+
+
+      })
+
+  }
+  render() {
+    return (
+
+
+
+
+  <div >
+
+    <h2 className="article-title-header">Howls At Me</h2>
+  <div className="ui-timline-container ">
+    <section className="ui-timeline">
+      <article className="tl-item">
+        <div className="tl-body">
+          <div className="tl-entry">
+            <div className="tl-caption">
+              <a href="javascript:;" className="btn btn-primary btn-block">Today</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+      {/* <div className="ui-timline-container">
+    <section className="ui-timeline"> */}
+          {
+            this.state.data.map((dyanamicData,key) =>
+             dyanamicData.HowlType === "1"
+
+        ?
+        <article className="tl-item alt">
+          <div className="tl-body">
+            <div className="tl-entry">
+
+            <div className="tl-time">  {moment.utc(moment(dyanamicData.DateCreated).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')}</div>{" "}
+
+            <div className="tl-icon btn-icon-round btn-icon btn-icon-thin ">
+                <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="40" width="40"/></div>
+            <div className="tl-content">
+              <h4 className="tl-tile text-primary">
+
+                 {`${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName} HOWLED at you `}
+              </h4>
+
+            </div>
+
+
+        </div>
+      </div>
+    </article>
+
+           :
+           <article className="tl-item">
+             <div className="tl-body">
+               <div className="tl-entry">
+
+           <div className="tl-time">  {moment.utc(moment(`${dyanamicData.DateCreated}`).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')}</div>{" "}
+            <div className="tl-icon btn-icon-round btn-icon btn-icon-thin">
+                <img src="assets/images/Howl-Final-Red-small.png" alt="Image" height="40" width="40"/></div>
+            <div className="tl-content ">
+              <h4 className="tl-tile text-danger">
+
+                {`You HOWLED back at ${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName}`}
+
+                {/* `You HOWLED at ${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName}`
+                              :  `${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName} HOWLED back `} */}
+              </h4>
+
+        </div>
+      </div>
+      </div>
+      </article>
+
+
+
+
+
+           )
+          }
+
+
+
+
+
+    </section>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+   );
+  }
+
+}
+
+class Howls_Pack extends React.Component {
+
+  constructor() {
+    super();
+      this.state = {
+        data: [],
+      };
+
+  }
+  componentDidMount(){
+
+    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetMyPoundList';
+
+        fetch(BaseURL,
+        {
+         method: "POST",
+         body: JSON.stringify({
+           "UserID":cookie.load('Id'),
+           "UserToken":cookie.load('UserToken')
+         }),
+          headers: new Headers({'content-type': 'application/json'}),
+        })
+    .then((Response)=> Response.json())
+    .then((findresponse)=>{
+        console.log(findresponse)
+        this.setState({
+           data:findresponse.GetMyPoundListResult.GetMyPounds,
+           time:findresponse.GetMyPoundListResult.GetMyPounds["0"].DateCreated
+
+        })
+        console.log(this.state.time);
+        // var ms = this.state.time;
+        // console.log(ms)
+        //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
+
+            // var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
+            //     console.log(gmtDateTime);
+            var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
+            console.log(local)
+
+
+
+      })
+
+  }
+  render() {
+    return (
+
+  <div className="row">
+
+<div className="col-xl-4">
+
+  <div className="box box-default">
+    <div className="box-body">
+    <h2 className="article-title-header">Howls At Pack</h2>
+  <div className="ui-timline-container ">
+    <section className="ui-timeline">
+      <article className="tl-item">
+        <div className="tl-body">
+          <div className="tl-entry">
+            <div className="tl-caption">
+              <a href="javascript:;" className="btn btn-primary btn-block">Today</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+      {/* <div className="ui-timline-container">
+    <section className="ui-timeline"> */}
+          {
+            this.state.data.map((dyanamicData,key) =>
+             dyanamicData.HowlType === "1"
+
+        ?
+        <article className="tl-item alt">
+          <div className="tl-body">
+            <div className="tl-entry">
+
+            <div className="tl-time">  {moment.utc(moment(dyanamicData.DateCreated).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')}</div>{" "}
+
+            <div className="tl-icon btn-icon-round btn-icon btn-icon-thin ">
+                <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="40" width="40"/></div>
+            <div className="tl-content">
+              <h4 className="tl-tile text-primary">
+
+                 {`You HOWLED at ${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName}`}
+              </h4>
+
+            </div>
+
+
+        </div>
+      </div>
+    </article>
+
+           :
+           <article className="tl-item">
+             <div className="tl-body">
+               <div className="tl-entry">
+
+           <div className="tl-time">  {moment.utc(moment(`${dyanamicData.DateCreated}`).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')}</div>{" "}
+            <div className="tl-icon btn-icon-round btn-icon btn-icon-thin btn-warning">
+                <img src="assets/images/Howl-Final-Red-small.png" alt="Image" height="30" width="30"/></div>
+            <div className="tl-content ">
+              <h4 className="tl-tile text-danger">
+
+                {`${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName} HOWLED back `}
+
+                {/* `You HOWLED at ${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName}`
+                              :  `${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName} HOWLED back `} */}
+              </h4>
+
+        </div>
+      </div>
+      </div>
+      </article>
+
+
+
+
+
+           )
+          }
+
+
+
+
+
+    </section>
+
+  </div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<div className="col-xl-4">
+  <div className="box box-default">
+    <div className="box-body">
+  <Howls_Me />
+</div>
+</div>
+</div>
+
+
+
+
+
+  <div className="col-xl-4">
+    <div className="box box-default">
+      <div className="box-body">
+    <Pack />
+  </div>
+</div>
+</div>
+
+
+
+</div>
+
+
+   );
+  }
+
+}
 const Page = () => (
-  <section className="container-fluid with-maxwidth chapter">
-    <article className="article">
+  <div className="container-fluid  chapter">
+    <h2 className="article-title">MANAGE PACK</h2>
+    <QueueAnim type="bottom" className="ui-animate">
 
-     <h2 className="article-title">MANAGE PACK<button className="float-right">
-        <a href="#/app/pglayout/packcontact">ADD NEW PACK MEMBER</a></button></h2>
+       <div key="1"><Howls_Pack /></div>
+       {/* <div key="2"></div> */}
 
-
-     <QueueAnim type="bottom" className="ui-animate">
-       <div key="1"><Pack /></div>
-     </QueueAnim>
-
-  </article>
-</section>
+    </QueueAnim>
+  </div>
 );
 
 module.exports = Page;

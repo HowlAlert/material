@@ -86,6 +86,7 @@ $green:   #66BB6A !default; // Green 400
 $teal:    #20c997 !default;
 $cyan:    #ffffff !default; // Cyan 500
 $howl:    #3287c5 !default;
+$howldark:   #01275C !default;
 
 
 $colors: (
@@ -113,6 +114,7 @@ $theme-colors: (
   danger: $red,
   light: $gray-100,
   howl: $howl,
+  howldark: $howldark,
   dark: $gray-800
 ) !default;
 

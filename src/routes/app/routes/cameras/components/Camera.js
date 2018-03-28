@@ -74,8 +74,8 @@ render() {
 
   return (
 <div>
-    <div className="article-title">CAMERA
-
+    <div >
+   <div className="article-title">CAMERA</div>
              <RaisedButton  className="float-right" primary label="Buy Camera" />
             <RaisedButton  className="float-right" primary label="Add Camera"  onClick={()=>this.handleAddDevice()}/>
             {/* <a href="#/app/camerasettings/add-devices"></a> */}
@@ -88,21 +88,18 @@ render() {
 
           <div className="row">
              <div className="col-xl-6">
-               <div className="box box-default">
-                   <div className="box-body ">
+
                {/* <a href="#/app/camerasettings/motion-detection">Camera Settings</a> */}
                     <Image />
-                  </div>
-                </div>
-             </div>
-             <div className="col-xl-6">
-               <div className="box box-default">
-                   <div className="box-body ">
 
+             </div>
+
+
+
+             <div className="col-xl-6">
+          
                    <Image2 />
 
-                 </div>
-               </div>
              </div>
           </div>
 
@@ -114,18 +111,17 @@ render() {
 
 const Page = () => {
   return (
-    <section className="container-fluid with-maxwidth chapter">
-   <article className="article">
+    <section className="container-fluid ">
 
 
 
       <QueueAnim type="bottom" className="ui-animate">
-        {/* <div key="1"><Image /></div> */}
+
         <div key="1"><Camera /></div>
 
       </QueueAnim>
 
-  </article>
+
   </section>
   )
 }

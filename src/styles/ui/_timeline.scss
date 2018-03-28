@@ -90,7 +90,7 @@ $Theme_dark_TL_content_bg: rgba(255,255,255,.05);
         &:after {
           content: "";
           display: block;
-          width: 50%;        
+          width: 50%;
         }
 
         .tl-body {
@@ -141,7 +141,7 @@ $Theme_dark_TL_content_bg: rgba(255,255,255,.05);
         @media (min-width: map-get($grid-breakpoints, md)) {
           left: -220px;
           right: auto;
-          color: $body-color;
+          color: $black;
         }
       }
       .tl-icon {
@@ -210,4 +210,3 @@ $Theme_dark_TL_content_bg: rgba(255,255,255,.05);
     }
   }
 }
-

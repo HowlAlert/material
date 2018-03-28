@@ -34,7 +34,7 @@ class Device extends React.Component {
              // "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ=="
              "UserID":cookie.load('Id'),
              "UserToken":cookie.load('UserToken')
-             
+
 
            }),
             headers: new Headers({'content-type': 'application/json'}),
@@ -162,8 +162,8 @@ var lname = cookie.load('LastName');
 }
 const Page = () => (
 
-  <section className="container-fluid with-maxwidth chapter">
- <article className="article">
+  <section className="container-fluid chapter">
+
 <h2 className="article-title">
   Devices </h2>
 
@@ -171,7 +171,7 @@ const Page = () => (
       <Device />
     </QueueAnim>
 
-</article>
+
 </section>
 
 

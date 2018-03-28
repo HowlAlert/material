@@ -126,14 +126,14 @@
 
   &.pricing-table-danger {
     header {
-      background-color: darken(theme-color("danger"), 5%);
+      background-color: darken(theme-color("howldark"), 5%);
     }
     .pricing-price {
-      background-color: theme-color("danger");
+      background-color: theme-color("howldark");
     }
     &:after {
-      border-top: 6px solid theme-color("danger");
-      border-left: 6px solid theme-color("danger");
+      border-top: 6px solid theme-color("howldark");
+      border-left: 6px solid theme-color("howldark");
     }
   }
 

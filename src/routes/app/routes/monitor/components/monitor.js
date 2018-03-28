@@ -71,11 +71,15 @@ import QueueAnim from 'rc-queue-anim';
 const Monitor = () => (
   <article className="article ">
     <h2 className="article-title  no-margin-top">UNLOCK EVERYTHING</h2>
+    <div className="col-md-3 col-xsm-6">
      Subscribe to HOWL monitoring for only $7.99/month ($95.88 annually) for our authenticated third-party. 24-hour monitoring service who will contact the corresponding authorities on your behalf when you send alerts (POLICE, AMBULANCE, FIRE).
+   </div>
     <br/>
 
     <center><div>*All alerts will notify Pack by default.</div></center><br/>
+
   <div className="row">
+
 
 
          {/* <button><a href="#/app/camerasettings/purchase">MONTHLY PLAN - $7.99/MO </a></button> */}
@@ -94,11 +98,11 @@ const Monitor = () => (
                </ul>
              </div>
              <footer>
-               {/* <RaisedButton primary label="Delete" onClick={()=>this.handleDelete(dyanamicData1.ID)}/> */}
-               <a href="#/app/camerasettings/purchase" className="btn btn-howl">Get it now</a></footer>
+               <RaisedButton primary label="Get it now" />
+               {/* <a href="#/app/camerasettings/purchase" className="btn btn-howl">Get it now</a> */}
+             </footer>
            </section>
          </div>
-
 
 
 
@@ -118,7 +122,7 @@ const Monitor = () => (
               <li>100 Email Address</li>
             </ul>
           </div>
-          <footer><a href="#/app/camerasettings/purchase" className="btn btn-howl">Get it now</a></footer>
+          <footer><RaisedButton primary label="Get it now" /></footer>
         </section>
       </div>
   </div>
@@ -157,8 +161,8 @@ const Monitor = () => (
 );
 
 const Page = () => (
-  <section className="container-fluid with-maxwidth chapter">
- <article className="article">
+  <section className="container-fluid chapter">
+
 
 
 
@@ -168,7 +172,7 @@ const Page = () => (
 
     </QueueAnim>
 
-</article>
+
 </section>
 
 );

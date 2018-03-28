@@ -63,6 +63,7 @@
     "react-weekday-picker": "^1.0.8",
     "react-x-editable": "0.0.9-beta",
     "redux": "^3.7.2",
+    "redux-persist": "^5.9.1",
     "redux-react-session": "^2.2.1"
   },
   "devDependencies": {

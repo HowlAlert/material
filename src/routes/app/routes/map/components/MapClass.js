@@ -11,7 +11,7 @@ class GoogleMap extends React.Component {
   constructor() {
     super();
     this.state = {
-        zoom: 5,
+        zoom: 11,
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
@@ -64,15 +64,15 @@ render() {
 
     return (
 
-
         <Map className='google-map'
             google={google}
             onClick={this.onMapClicked}
-            // initialCenter={{
-            //   lat: 41.1798,
-            //   lng: -73.1914
-            //
-            // }}
+            initialCenter={{
+
+              lat: cookie.load('Latitude'),
+              lng: cookie.load('Longitude')
+
+            }}
             zoom={this.state.zoom}
             onReady={this.handleMapMount}
 
@@ -95,7 +95,7 @@ render() {
              {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
-        style={{ width:"85%"}}
+        style={{ width:"100%"}}
           >
 
 
@@ -103,7 +103,7 @@ render() {
                    title={'Home Address Location '}
                    name={fname+" "+lastname}
                    onClick={this.onMarkerClicked}
-                   position={{lat: 41.1798,  lng: -73.1914}}
+                   position={{lat: cookie.load('Latitude'),  lng: cookie.load('Longitude')}}
                   icon={{
                            url: "assets/images//howl-map-marker-small.png",
                            anchor: new google.maps.Point(32,32),

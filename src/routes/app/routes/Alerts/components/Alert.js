@@ -409,8 +409,8 @@ const Page = () => {
   return (
 
 
-    <section className="container-fluid with-maxwidth chapter">
-      <article className="article">
+    <section className="container-fluid chapter">
+
 
       <h2 className="article-title">ALERTS</h2>
       <QueueAnim type="bottom" className="ui-animate">
@@ -419,7 +419,7 @@ const Page = () => {
         <div key="1"><AlertDashboard /></div>
 
       </QueueAnim>
-        </article>
+
     </section>
 
   )
