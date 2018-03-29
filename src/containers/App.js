@@ -59,7 +59,7 @@ materialUITheme = lightTheme;
 
 const isRoot = location.pathname === '/' ? true : false;
 if (isRoot) {
-return ( <Redirect to={'/app/mainLogin'}/> );
+return ( <Redirect to={'/mainLogin'}/> );
 }
 
 return (

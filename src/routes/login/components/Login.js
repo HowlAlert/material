@@ -8,7 +8,6 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import Visibility from 'material-ui/svg-icons/action/visibility';
 import VisibilityOff from 'material-ui/svg-icons/action/visibility-off';
-import {PostData} from '../../../services/PostData';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
@@ -56,10 +55,7 @@ class Login extends React.Component {
     alert("Please enter a password");
   }
 
-    PostData('Login',{'Email':this.state.Email,'Password':this.state.Password}).then((result)=>{
-      let res=result;
-    console.log(res);
-    });
+
 
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
 
@@ -74,8 +70,44 @@ class Login extends React.Component {
         GetUser:findresponse.LoginResult.GetUser,
         ResultStatus:findresponse.LoginResult.ResultStatus,
         GetUserHomeAddress:findresponse.LoginResult.GetUserHomeAddress,
-      })
-      if(this.state.ResultStatus.Status==="1"){
+        GetUserPack:findresponse.LoginResult.GetUserPack,
+      });
+
+
+      if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
+        alert(this.state.ResultStatus.StatusMessage)
+      }
+
+      if(this.state.ResultStatus.StatusMessage==="Please enter correct password."){
+        alert(this.state.ResultStatus.StatusMessage)
+      }
+
+      if(this.state.ResultStatus.StatusMessage==="Your account has been suspended, please contact to authorized person"){
+        alert(this.state.ResultStatus.StatusMessage)
+      }
+
+      if(this.state.ResultStatus.StatusMessage==="Success"){
+
+        console.log(this.state.GetUserPack.length);
+        if(this.state.GetUserPack.length==0){
+          alert("Please enter atleast one Pack member"),
+         this.setState({ redirectToGetUserPack: true })
+        }
+
+        else if(this.state.GetUserHomeAddress.Address1==null){
+          alert("Please enter your Home Address"),
+         this.setState({ redirectToAddress: true })
+        }
+
+        else if(this.state.GetUser.CancellationCode==null){
+          alert("Please enter your Cancel Code"),
+          this.setState({ redirectToCancellationCode: true })
+        }
+        else if(this.state.GetUser.SilenceCode==null){
+          alert("Please enter your Silent Code"),
+          this.setState({ redirectToSilenceCode: true })
+        }
+
       //  const expires = new Date()
         //expires.setDate(now.getDate() + 14)
         console.log(this.state.GetUser);
@@ -193,17 +225,44 @@ this.setState({
     const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {
-      const options = { refreshOnCheckAuth: true, redirectPath: '#/Welcome', driver: 'COOKIES' };
+      const options = { refreshOnCheckAuth: true, redirectPath: '../../app/home', driver: 'COOKIES' };
       sessionService.initSessionService(store, options)
         .then(() => console.log('Redux React Session is ready and a session was refreshed from your storage'))
         .catch(() => console.log('Redux React Session is ready and there is no session in your storage'));
 
       console.log(redirectToReferrer)
           return (
-            <Redirect to="../../app/dashboard" />
+            <Redirect to="../../app/home" />
           )
         }
 
+        const { redirectToGetUserPack   } = this.state
+        if(redirectToGetUserPack){
+          return (
+            <Redirect to="packcontact" />
+          )
+        }
+
+        const { redirectToAddress   } = this.state
+        if(redirectToAddress){
+          return (
+            <Redirect to="HomeAddress" />
+          )
+        }
+
+        const { redirectToCancellationCode  } = this.state
+        if(redirectToCancellationCode){
+          return (
+            <Redirect to="cancel" />
+          )
+        }
+
+        const { redirectToSilenceCode } = this.state
+        if(redirectToSilenceCode){
+          return (
+            <Redirect to="silent" />
+          )
+        }
 
 
     return (
