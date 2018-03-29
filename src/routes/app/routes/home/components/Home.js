@@ -7,6 +7,7 @@ import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
 import Customizer from 'components/Customizer';
+import {Redirect} from 'react-router-dom';
 
 
 class BasicHome extends React.Component{
@@ -17,6 +18,7 @@ class BasicHome extends React.Component{
         open: false
       }
   }
+
 
   handleOpen = () => {
     this.setState({open: true});
@@ -243,7 +245,7 @@ const { redirectToReferrer} = this.state
          </div>
 </section>
 
-        
+
       </div>
   );
  }

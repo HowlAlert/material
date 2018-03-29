@@ -59,6 +59,16 @@ class MainLogin extends React.Component {
     };
   }
 
+  componentWillMount(){
+    if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+      console.log(cookie.load('Id')),
+      console.log(cookie.load('UserToken')),
+      this.setState({ redirectToHome: true })
+    }
+  }
+
+
+
   handleGoogleLogin(response) {
     console.log(response);
     //first name
@@ -277,6 +287,26 @@ class MainLogin extends React.Component {
 
 
   render (){
+
+
+
+    // const{redirectToMainLogin}=this.state
+    // if(redirectToMainLogin){
+    //   return (
+    //     <Redirect to={'/mainLogin'}/>
+    //   )
+    // }
+
+
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
+
+
+
     const reducers = {
       // ... your other reducers here ...
       session: sessionReducer

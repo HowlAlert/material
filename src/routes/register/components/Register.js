@@ -31,6 +31,13 @@ class Register extends React.Component {
     };
   }
 
+  componentWillMount(){
+  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+    console.log(cookie.load('Id')),
+    console.log(cookie.load('UserToken')),
+    this.setState({ redirectToHome: true })
+  }
+}
 
     handleNext(event){
     event.preventDefault();
@@ -137,6 +144,14 @@ this.setState({
         }
 
   render() {
+
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
+
     const { redirectToReferrer} = this.state
     if (redirectToReferrer==true) {
 

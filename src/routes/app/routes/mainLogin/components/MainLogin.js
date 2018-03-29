@@ -14,7 +14,7 @@ import { sessionReducer, sessionService } from 'redux-react-session';
 import PageWelcome from 'routes/welcome/';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { Route, Switch, Router, BrowserRouter } from 'react-router-dom';
-import { createStore, combineReducers } from 'redux';
+
 const Hero = () => (
   <div className="text-center">
   <img src="assets/images/HOWL.png" alt="HOWL" />
@@ -33,13 +33,6 @@ const  printcode= {
 const  policy= {
     color: '#6A6A6A'
 };
-
-
-
-
-
-
-
 
 
 class MainLogin extends React.Component {
@@ -82,11 +75,6 @@ class MainLogin extends React.Component {
           GetUserPack:findresponse.LoginWithGoogleResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithGoogleResult.GetUserHomeAddress,
         });console.log(this.state.GetUser);
-        // if(this.state.ResultStatus.Status==="1"){
-
-          // cookie.save('Id', this.state.GetUser.ID);
-          //
-          // cookie.save('UserToken', this.state.GetUser.UserToken);
 
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
@@ -123,8 +111,7 @@ class MainLogin extends React.Component {
               this.setState({ redirectToSilenceCode: true })
             }
 
-          //  const expires = new Date()
-            //expires.setDate(now.getDate() + 14)
+
             console.log(this.state.GetUser);
             console.log("status"),
             cookie.save('Email', this.state.GetUser.Email);
@@ -178,13 +165,6 @@ class MainLogin extends React.Component {
           GetUserPack:findresponse.LoginWithFacebookResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithFacebookResult.GetUserHomeAddress,
         })
-        // if(this.state.ResultStatus.Status==="1"){
-        //   console.log("status"),
-        //   cookie.save('Id', this.state.GetUser.ID);
-        //
-        //   cookie.save('UserToken', this.state.GetUser.UserToken);
-
-
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
             alert(this.state.ResultStatus.StatusMessage)
@@ -282,14 +262,14 @@ class MainLogin extends React.Component {
       session: sessionReducer
     };
     const reducer = combineReducers(reducers);
-    const store = createStore(reducer);
+    //const store = createStore(reducer);
 
-    sessionService.initSessionService(store);
+    //sessionService.initSessionService(store);
     const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {
       const options = { redirectToReferrer: true, redirectPath: '/', driver: 'COOKIES' };
-      sessionService.initSessionService(store, options)
+      sessionService.initSessionService(options)
         .then(() => console.log('Redux React Session is ready and a session was refreshed from your storage'))
         .catch(() => console.log('Redux React Session is ready and there is no session in your storage'));
 

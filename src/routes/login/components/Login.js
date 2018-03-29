@@ -42,6 +42,14 @@ class Login extends React.Component {
     };
   }
 
+  componentWillMount(){
+  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+    console.log(cookie.load('Id')),
+    console.log(cookie.load('UserToken')),
+    this.setState({ redirectToHome: true })
+  }
+  }
+
   handleLogin(event){
   event.preventDefault();
   if(this.state.Email==''){
@@ -213,6 +221,13 @@ this.setState({
 
   render() {
 
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
+
     const reducers = {
       // ... your other reducers here ...
       session: sessionReducer
@@ -220,13 +235,13 @@ this.setState({
     const reducer = combineReducers(reducers);
     const store = createStore(reducer);
 
-    sessionService.initSessionService(store);
+  //  sessionService.initSessionService(store);
 
     const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {
       const options = { refreshOnCheckAuth: true, redirectPath: '../../app/home', driver: 'COOKIES' };
-      sessionService.initSessionService(store, options)
+      sessionService.initSessionService(options)
         .then(() => console.log('Redux React Session is ready and a session was refreshed from your storage'))
         .catch(() => console.log('Redux React Session is ready and there is no session in your storage'));
 
@@ -274,7 +289,7 @@ this.setState({
           <form className="form-horizontal">
           <ul className="nav" ref={(c) => { this.nav = c; }}>
             <li className="nav-header"><span></span></li>
-            <li><FlatButton href="#/app/page/login"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
+            <li><FlatButton href="/mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
             </li>
             </ul>
             <img src="assets/images/HOWL.png" alt="HOWL" />

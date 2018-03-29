@@ -25,6 +25,14 @@ class Printcode extends React.Component {
       //brand: APPCONFIG.brand
     };
   }
+  componentWillMount(){
+  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+    console.log(cookie.load('Id')),
+    console.log(cookie.load('UserToken')),
+    this.setState({ redirectToHome: true })
+  }
+  }
+
 
 handlePrintCode(event){
 
@@ -67,6 +75,15 @@ handlePrintCode(event){
     }
 
   render() {
+
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
+
+    
     const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {
