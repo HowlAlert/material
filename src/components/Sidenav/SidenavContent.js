@@ -17,6 +17,7 @@ class SidebarContent extends React.Component {
     this.state = {
 
       ResultStatus:'',
+      redirectToReferrer:false,
   };
   }
   componentDidMount() {
@@ -166,10 +167,11 @@ class SidebarContent extends React.Component {
        ];
 
     const { redirectToReferrer} = this.state
-       if (redirectToReferrer) {
-         console.log(redirectToReferrer)
+       if (redirectToReferrer==true) {
+         console.log(redirectToReferrer),
+         console.log("redirectToReferrer")
              return (
-               <Redirect to="mainLogin"/>
+               <Redirect to="../mainLogin"/>
              )
            }
     return (
