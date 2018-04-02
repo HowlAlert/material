@@ -170,56 +170,42 @@ handlePassword(event) {
 const value = target.type === target.value;
 const name = target.name;
 
-console.log(this.state.ShowPassword)
-
 this.setState({
 
-      Password: target.value
+      Password: target.value,
+      PasswordType: target.type
     });
+
 console.log("here");
      return target.value;
   }
 
 
-handlePasswordEvent(event) {
-  if(event==true){
-    console.log("here3")
-    //{this.state.Password}
-    var text=this.state.Password
-    if(!text)
-    alert("Please enter a password")
-  }
-else
-this.state.Password.target=this.state.Password
-console.log(this.state.Password)
-}
+
 
 handleShowPassword(event) {
-  event.preventDefault();
-  const target = event.target;
-const value = target.type === target.checked;
-const name = target.name;
-console.log(target.checked)
-//this.handlePassword(event)
-
-console.log("handleShowPassword")
-
-this.setState({
-
-      ShowPassword: target.checked
-
-    });
-  //  return target.checked
-    console.log("here2");
-    if(target.checked==true){
-      //return target.checked
-      this.handlePasswordEvent(target.checked)
+  console.log(event)
+  console.log(this.state.PasswordType);
+  var x=this.state.PasswordType
+  if (x === "password") {
+        this.setState({ showPassword: true })
+    } else {
+        this.setState({ showPassword: false })
     }
 
 }
 
 
   render() {
+
+    const{showPassword}=this.state
+    if(showPassword){
+      console.log(this.state.Password);
+      return (
+        handlePassword=this.state.Password
+      )
+    }
+
 
     const{redirectToHome}=this.state
     if(redirectToHome){
@@ -233,7 +219,7 @@ this.setState({
       session: sessionReducer
     };
     const reducer = combineReducers(reducers);
-    const store = createStore(reducer);
+    //const store = createStore(reducer);
 
   //  sessionService.initSessionService(store);
 

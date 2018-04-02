@@ -215,19 +215,20 @@ class SidebarContent extends React.Component {
 
         </li>
         <li>
-          <FlatButton onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></FlatButton>
-          <Dialog
-                      title="Confirm"
-                      actions={actions}
-                      modal={false}
-                      open={this.state.open}
-                      onRequestClose={this.handleClose}
-                    >
-                      Are you sure you want to logout?
-                    </Dialog>
+          <a  onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></a>
         </li>
-
+        <Dialog
+                    id="Dialog"
+                    title="Confirm"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                  >
+                    Are you sure you want to logout?
+                  </Dialog>
       </ul>
+
     );
   }
 }
