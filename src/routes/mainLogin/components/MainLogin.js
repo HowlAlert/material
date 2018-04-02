@@ -12,14 +12,9 @@ import APPCONFIG from 'constants/Config';
 import cookie from 'react-cookies';
 import { sessionReducer, sessionService } from 'redux-react-session';
 import PageWelcome from 'routes/welcome/';
-import { ConnectedRouter, syncHistoryWithStore } from 'react-router-redux';
-import { Route, Switch, Router, BrowserRouter, browserHistory } from 'react-router-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import rootReducer from 'reducers';
-import { PersistGate } from 'redux-persist/integration/react'
-
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+import { Route, Switch, Router, BrowserRouter } from 'react-router-dom';
+import { createStore, combineReducers } from 'redux';
 const Hero = () => (
   <div className="text-center">
   <img src="assets/images/HOWL.png" alt="HOWL" />
@@ -39,13 +34,13 @@ const  policy= {
     color: '#6A6A6A'
 };
 
-export const store = createStore(
-  rootReducer,
-  console.log("store"),
-  console.log(store),
-);
 
-//export const history = syncHistoryWithStore(browserHistory, store);
+
+
+
+
+
+
 
 class MainLogin extends React.Component {
   constructor(props) {
@@ -64,6 +59,16 @@ class MainLogin extends React.Component {
     };
   }
 
+  componentWillMount(){
+    if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+      console.log(cookie.load('Id')),
+      console.log(cookie.load('UserToken')),
+      this.setState({ redirectToHome: true })
+    }
+  }
+
+
+
   handleGoogleLogin(response) {
     console.log(response);
     //first name
@@ -72,11 +77,6 @@ class MainLogin extends React.Component {
       console.log(response.w3.wea);
       console.log(response.googleId);
       console.log(response.profileObj.email);
-      const cachedHits = localStorage.getItem(value);
-    if (cachedHits) {
-      this.setState({ hits: JSON.parse(cachedHits) });
-      return;
-    }
 
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithGoogle';
       fetch(BaseURL,{
@@ -261,18 +261,8 @@ class MainLogin extends React.Component {
            this.setState({ redirectToReferrer: false })
         }
 
-      })
-
-      .then(result => this.onSetResult(result));
+      });
     }
-
-
-    onSetResult = (result) => {
-      console.log("onSetResult");
-      console.log(result);
-   this.setState({ hits: result.hits });
- }
-
 
     handleCreateAccount(event){
       this.setState({ redirectToCreateAccount: true })
@@ -297,6 +287,26 @@ class MainLogin extends React.Component {
 
 
   render (){
+
+
+
+    // const{redirectToMainLogin}=this.state
+    // if(redirectToMainLogin){
+    //   return (
+    //     <Redirect to={'/mainLogin'}/>
+    //   )
+    // }
+
+
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
+
+
+
     const reducers = {
       // ... your other reducers here ...
       session: sessionReducer
@@ -315,7 +325,7 @@ class MainLogin extends React.Component {
 
       console.log(redirectToReferrer)
           return (
-            <Redirect to="home" />
+            <Redirect to="app/home" />
           )
         }
 

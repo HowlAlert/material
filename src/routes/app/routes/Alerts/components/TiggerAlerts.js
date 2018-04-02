@@ -5,19 +5,9 @@ import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
 import cookie from 'react-cookies';
-import Howls_Me from '../../pack-menu/routes/howls_me/components/Howls_Me';
-import Howls_Pack from '../../pack-menu/routes/howls_pack/components/Howls_Pack';
-import TiggerAlerts from './TiggerAlerts';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import Map from './Map';
-import Divider from 'material-ui/Divider';
-
-const style = {
-  display: 'inline-block',
-  margin: '16px 32px 16px 0',
-};
 
 class Alerts extends React.Component {
 
@@ -167,6 +157,8 @@ class Alerts extends React.Component {
 
 
  }
+
+
  handleBack(value) {                 //Redirecting to previous page of alerts
 
    var count = `${value}`;
@@ -265,34 +257,6 @@ class Alerts extends React.Component {
 
  }
 
- handleMap(value1,value2,value3) {                 //Redirecting to previous page of alerts
-
-   var latitude = `${value1}`;
-   console.log(latitude);
-
-   var longitude = `${value2}`;
-   console.log(longitude);
-
-   var date = `${value3}`;
-   console.log(date);
-
-
-
-   cookie.save('AlertLatitude',latitude)
-   console.log(cookie.load('AlertLatitude'))
-
-    cookie.save('AlertLongitude',longitude)
-    console.log(cookie.load('AlertLongitude'))
-
-    cookie.save('AlertDate',date)
-    console.log(cookie.load('AlertDate'))
-
-    this.setState({ redirectToReferrer: true })
-
-
-
- }
-
   componentDidMount(){
 
    var that = this;
@@ -350,38 +314,75 @@ class Alerts extends React.Component {
                        });
 
              console.log(arr3.length);
+
              this.setState({  data1:arr3 , array_count:arr3.length })
-             console.log(this.state.data1)
+
 
          })
               })
 
         }
 
+        handleEnlarge(value1,value2,value3,value4) {
 
 
+              // console.log(imgid);
+              this.setState({
+                redirectToReferrer: true ,
+                imgid: `${value1}`,
+                cameraid: `${value2}`,
+                Name:`${value3}`,
+                date:`${value4}`
+
+
+              })
+
+        }
+        handleExit()
+        {
+          this.setState({
+              redirectToReferrer:false ,
+
+          });
+        }
 
   render() {
-    const { redirectToReferrer} = this.state
-      if(redirectToReferrer === true)
+
+    const { redirectToReferrer} = this.state                    //To Zoom the Image
+      if(this.state.redirectToReferrer === true)
       {
         return (
-          <Map />
+      <div className="box box-default">
+          <div className="box-body">
 
+            {
+              this.state.redirectToReferrer === true  ?
+                      <img src={`data:image/jpg;base64,${this.state.imgid}`} alt="Image"  width="80%" />
+                    : null
+
+            }
+
+            <span className="float-right">
+                    <RaisedButton primary label="Exit" onClick={(e)=>this.handleExit(e)}/>
+
+            </span>
+          <div>
+            <center>Activity is detected in {this.state.Name} on {this.state.date} </center>
+          </div>
+          </div>
+        </div>
 
          )
-      }
 
+      }
 
   return (
 
 
     <div >
 
-        <div className="box box-default">
-          <div className="box-body">
-             <h2 className="article-title-header">Tiggered Alerts</h2>
-  <Menu  >
+
+
           {
             this.state.data1.map((dyanamicData1,key)=>
 
@@ -390,54 +391,59 @@ class Alerts extends React.Component {
 
             ?
 
+         //    <div className="box box-default col-xl-6 ">
+         //        <div className="box-body ">
+         //
+         //          {` ${dyanamicData1.Text} on ${dyanamicData1.DateCreated}`}
+         //
+         //
+         //
+         //   </div>
+         //   <span className="float-left">
+         //      <div className="text-center"> <RaisedButton primary label="Delete" onClick={()=>this.handleDelete(dyanamicData1.ID)}/></div>
+         //   </span>
+         // </div>
+           null
+
+         :
+           <Menu>
+                 {/* <div className="box box-default  ">
+                     <div className="box-body "> */}
+                        <MenuItem onClick={()=>this.handleEnlarge(dyanamicData1.GetImageDataResult,dyanamicData1.getRoomCamera.CameraID,dyanamicData1.getRoomCamera.Name,dyanamicData1.DateCreated)}>
+                           {dyanamicData1.Text}
+                            {dyanamicData1.DateCreated}
+
+                         </MenuItem>
+                            {/* <span className="float-right">
+
+                                        {/* <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="75" width="75"/> */}
+{/*
+                              <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="75" width="75"/>
 
 
-    // <div className="box box-default  ">
-    //     <div className="box-body ">
-           <MenuItem onClick={()=>this.handleMap(dyanamicData1.getUserAlert.Latitude,dyanamicData1.getUserAlert.Longitude,dyanamicData1.DateCreated)} >
+
+                         <div>
+                             {dyanamicData1.DateCreated}{" "}
+                       </div> */} 
 
 
-                  {` ${dyanamicData1.Text}`  }
-                    {/* {`${dyanamicData1.DateCreated}`} */}
+                {/* <span className="float-left">
+                   <div className="text-center"> <RaisedButton primary label="Delete" onClick={()=>this.handleDelete(dyanamicData1.ID)}/></div>
+                </span> */}
 
-            </MenuItem>
-
-   : null
-
-
-
-
-              //    <div className="box box-default col-xl-6 ">
-              //        <div className="box-body ">
-              //               {dyanamicData1.Text}
-              //
-              //   </div>
-              //   <span className="float-left">
-              //      <div className="text-center"> <RaisedButton primary label="Delete" onClick={()=>this.handleDelete(dyanamicData1.ID)}/></div>
-              //   </span>
-              // </div>
-
+</Menu>
              )}
 
-        {/* <div>
+        <div>
              <RaisedButton primary label="Next ->" onClick={()=>this.handleNext(this.state.counter)}
 
                disabled={this.state.disabled1}/>
                <span className="float-right">
                        <RaisedButton primary label="<- back" onClick={()=>this.handleBack(this.state.counter)}   disabled={this.state.disabled2}/>
               </span>
-         </div> */}
-
- </Menu>
-
-          </div>
-        </div>
-       {/* <TiggerAlerts /> */}
-
+         </div>
 
       </div>
-
-
 
 
 
@@ -445,48 +451,15 @@ class Alerts extends React.Component {
   }
  }
 
- const AlertDashboard = () => (
-   <div className="row">
-
-     <div className="col-xl-6">
-       <div className="box box-default">
-         <div className="box-body">
-         <h2 className="article-title-header">Camera Alerts</h2>
-
-         <TiggerAlerts />
-     </div>
-     </div>
-     </div>
-     <div className="col-xl-6">
-        <Alerts />
-
-     </div>
-
-
-     <div className="col-xl-12">
-      <Howls_Me />
-     </div>
-
-
-
-   </div>
-
- );
 const Page = () => {
   return (
 
 
-    <section className="container-fluid chapter">
-
-
-
       <QueueAnim type="bottom" className="ui-animate">
 
-        <div key="1"><AlertDashboard /></div>
+        <div key="1"><Alerts /></div>
 
       </QueueAnim>
-
-    </section>
 
   )
 }

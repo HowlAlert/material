@@ -43,6 +43,14 @@ class Login extends React.Component {
     };
   }
 
+  componentWillMount(){
+ if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+   console.log(cookie.load('Id')),
+   console.log(cookie.load('UserToken')),
+   this.setState({ redirectToHome: true })
+ }
+ }
+
   handleLogin(event){
   event.preventDefault();
   if(this.state.Email==''){
@@ -180,6 +188,13 @@ this.setState({
 
   render() {
 
+    const{redirectToHome}=this.state
+       if(redirectToHome){
+         return (
+           <Redirect to="app/home" />
+         )
+       }
+       
     const reducers = {
       // ... your other reducers here ...
       session: sessionReducer

@@ -73,10 +73,11 @@ const Monitor = () => (
     <h2 className="article-title  no-margin-top">UNLOCK EVERYTHING</h2>
     <div className="col-md-3 col-xsm-6">
      Subscribe to HOWL monitoring for only $7.99/month ($95.88 annually) for our authenticated third-party. 24-hour monitoring service who will contact the corresponding authorities on your behalf when you send alerts (POLICE, AMBULANCE, FIRE).
+       <center><div>*All alerts will notify Pack by default.</div></center><br/>
    </div>
     <br/>
 
-    <center><div>*All alerts will notify Pack by default.</div></center><br/>
+
 
   <div className="row">
 
@@ -98,8 +99,8 @@ const Monitor = () => (
                </ul>
              </div>
              <footer>
-               <RaisedButton primary label="Get it now" />
-               {/* <a href="#/app/camerasettings/purchase" className="btn btn-howl">Get it now</a> */}
+               {/* <RaisedButton primary label="Get it now" /> */}
+               <a href="#/app/camerasettings/purchase" className="btn btn-howl">Get it now</a>
              </footer>
            </section>
          </div>

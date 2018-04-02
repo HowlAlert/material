@@ -60,8 +60,8 @@ render() {
     var lastname=lname.substr(0, 1);
      console.log(lastname);
 
-
-
+    var AlertDate=cookie.load('AlertDate');
+      console.log(AlertDate)
     return (
 
         <Map className='google-map'
@@ -116,11 +116,11 @@ render() {
 
                  <Marker
                       title={'Pack Member'}
-                      name={fname+" "+lastname}
+                      name={"Alerted pack on "+ AlertDate}
                       onClick={this.onMarkerClicked}
-                     position={{lat: 40.742054,  lng: -73.769417}}
+                     position={{lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')}}
                      icon={{
-                              url: "assets/images//howl-map-marker-small.png",
+                              url: "assets/images//Howl-Final-Red-small.png",
                               anchor: new google.maps.Point(32,32),
                               scaledSize: new google.maps.Size(64,64)
                          }}

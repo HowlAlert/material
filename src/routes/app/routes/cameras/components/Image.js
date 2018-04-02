@@ -148,7 +148,7 @@ console.log(this.state.CameraId)
       <div className="box box-default">
           <div className="box-body ">
 
-           <div className="article-title-header ">{this.state.CameraName} </div>
+           <h2 className="article-title-header ">{this.state.CameraName} </h2>
        <div className="ih-item ih-material">
 
         <a href="#/app/camerasettings/camera-history" >

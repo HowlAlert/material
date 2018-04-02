@@ -22,7 +22,6 @@ class Pack extends React.Component {
 
   }
 
-
   handleDelete(value) {
 
     alert("Are you sure you want to delete?")
@@ -537,7 +536,18 @@ class Howls_Pack extends React.Component {
   render() {
     return (
 
+
   <div className="row">
+
+
+    <div className="col-xl-4">
+      <div className="box box-default">
+        <div className="box-body">
+      <Pack />
+    </div>
+  </div>
+  </div>
+
 
 <div className="col-xl-4">
 
@@ -643,13 +653,6 @@ class Howls_Pack extends React.Component {
 
 
 
-  <div className="col-xl-4">
-    <div className="box box-default">
-      <div className="box-body">
-    <Pack />
-  </div>
-</div>
-</div>
 
 
 
@@ -662,7 +665,7 @@ class Howls_Pack extends React.Component {
 }
 const Page = () => (
   <div className="container-fluid  chapter">
-    <h2 className="article-title">MANAGE PACK</h2>
+    <h2 className="article-title-header">MANAGE PACK</h2>
     <QueueAnim type="bottom" className="ui-animate">
 
        <div key="1"><Howls_Pack /></div>

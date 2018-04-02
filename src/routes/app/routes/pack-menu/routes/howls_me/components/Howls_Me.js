@@ -96,6 +96,8 @@ render() {
       </div>
     </div>
   </div>
+
+
       <div className="col-xl-6">
         <div className="box box-default">
           <div className="box-body">

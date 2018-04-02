@@ -222,7 +222,7 @@ const Dashboard = () => (
              <BasicHome />
     </div>
 
-<div className="col-xl-6">
+<div className="col-xl-5">
   <div className="box box-default box-body ">
 
     <Alert />
@@ -231,8 +231,8 @@ const Dashboard = () => (
 </div>
 
 
-    <div className="box box-default box-body col-xl-6">
-     <div className="article-title-header">Your Neighborhood </div>
+    <div className="box box-default box-body col-xl-5">
+     <h2 className="article-title-header">Your Neighborhood </h2>
 
          <Map />
 
@@ -242,7 +242,7 @@ const Dashboard = () => (
 
 
 
-    <div className="col-xl-6">
+    <div className="col-xl-5">
 
           <Image />
 
@@ -253,7 +253,7 @@ const Dashboard = () => (
 
     </div>
   </div> */}
-    <div className="col-xl-6">
+    <div className="col-xl-5">
 
              <Image2 />
 

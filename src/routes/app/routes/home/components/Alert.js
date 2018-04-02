@@ -94,7 +94,7 @@ class Alerts extends React.Component {
     <div >
 
 
-      <div className="article-title-header ">News & Alerts </div>
+      <h2 className="article-title-header ">News & Alerts </h2>
      <div className="box box-default">
 
 

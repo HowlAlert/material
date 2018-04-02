@@ -54,11 +54,11 @@ render() {
     if (!this.props.loaded) {
         return <div>Loading...</div>
     }
-    var fname=cookie.load('FirstName');
-     console.log(fname);
-    var lname = cookie.load('LastName');
-    var lastname=lname.substr(0, 1);
-     console.log(lastname);
+    // var fname=cookie.load('FirstName');
+    //  console.log(fname);
+    // var lname = cookie.load('LastName');
+    // var lastname=lname.substr(0, 1);
+    //  console.log(lastname);
 
     return (
 
@@ -68,7 +68,7 @@ render() {
             google={google}
             onClick={this.onMapClicked}
             initialCenter={{
-              lat: cookie.load('Latitude'),  lng: cookie.load('Longitude')
+              lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')
 
             }}
             zoom={this.state.zoom}
@@ -95,19 +95,20 @@ render() {
            ]}
            style={{ width:"630" , height:"330"}}
           >
-              <Marker
-                   title={'Home Address Location '}
-                   name={fname+" "+lastname}
-                   onClick={this.onMarkerClicked}
-                  position={{lat: cookie.load('Latitude'),  lng: cookie.load('Longitude')}}
-                  icon={{
-                           url: "assets/images//howl-map-marker-small.png",
-                           anchor: new google.maps.Point(32,32),
-                           scaledSize: new google.maps.Size(64,64)
-                      }}
+            <Marker
+                 title={'Pack Member'}
+                 // name={"Alerted pack on "+ AlertDate}
+                 onClick={this.onMarkerClicked}
+                position={{lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')}}
+                icon={{
+                         url: "assets/images//Howl-Final-Red-small.png",
+                         anchor: new google.maps.Point(32,32),
+                         scaledSize: new google.maps.Size(64,64)
+                    }}
 
 
-                 />
+               />
+
 
                   <InfoWindow
                          marker={this.state.activeMarker}
