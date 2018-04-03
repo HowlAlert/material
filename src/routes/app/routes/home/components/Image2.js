@@ -22,22 +22,20 @@ class ImageBox extends React.Component {
 
 
   }
-
-
-  handleImage(value1) {
+  handleImage(value1,value2) {
 
 
 
-      var cameraid = `${value1}`;
-      console.log(cameraid);
-
-      cookie.save('cameraid',cameraid);
-      console.log(cookie.load('cameraid'));
-      this.setState({ redirectToReferrer: true })
-
-  }
+        var cameraid = `${value1}`;
+        cookie.save('cameraid',cameraid);
+         console.log(cookie.load('cameraid'));
+           var CameraName = `${value2}`;
+        cookie.save('cameraName',CameraName);
+         console.log(cookie.load('cameraName'));
 
 
+         // this.setState({ redirectToReferrer: true })
+    }
 
 componentDidMount(){
 
@@ -79,8 +77,8 @@ console.log(EndTime);
          CameraId:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].CameraID
 
     })
-    console.log(this.state.CameraName)
-    console.log(this.state.CameraId)
+
+
 
       fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages',
       {
@@ -136,18 +134,14 @@ console.log(EndTime);
 
 
   render() {
-    // var mes = this.state.data.length
-    // if(mes === 0)
-    // {
-    //   var message= "Click  ADD DEVICE INSTRUCTIONS Button to follow Instructions to add devices "
-    // }
-    const { redirectToReferrer} = this.state
-      if(redirectToReferrer === true)
-      {
-        return (
-           <Redirect to="camerasettings/camera-history" />
-         )
-      }
+
+    // const { redirectToReferrer} = this.state
+    //       if(redirectToReferrer === true)
+    //       {
+    //         return (
+    //            <Redirect to="camerasettings/camera-history" />
+    //          )
+    //       }
 
 
     return (
@@ -159,7 +153,7 @@ console.log(EndTime);
        <div className="ih-item ih-material">
 
 
-           <a href="#/app/camerasettings/camera-history" >
+           <a href="#/app/camerasettings/camera-history" onClick={()=>this.handleImage(this.state.CameraId,this.state.CameraName)}>
                       <div className="img">
                         <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
                       </div>

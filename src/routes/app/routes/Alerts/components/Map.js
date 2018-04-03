@@ -1,9 +1,10 @@
 import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import cookie from 'react-cookies';
-
+import RaisedButton from 'material-ui/RaisedButton';
 
 const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
+
 
 
 class GoogleMap extends React.Component {
@@ -22,6 +23,13 @@ class GoogleMap extends React.Component {
     this.onMarkerClicked = this.onMarkerClicked.bind(this);
     this.handleMapMount = this.handleMapMount.bind(this);
 }
+
+handleBack(event) {
+  window.location.reload();
+}
+
+
+
 
 onMapClicked (props) {
     if (this.state.showingInfoWindow) {
@@ -59,6 +67,10 @@ render() {
     // var lname = cookie.load('LastName');
     // var lastname=lname.substr(0, 1);
     //  console.log(lastname);
+    var AlertDate=cookie.load('AlertDate');
+      console.log(AlertDate)
+      var AlertAddress=cookie.load('AlertAddress');
+        console.log(AlertAddress)
 
     return (
 
@@ -95,9 +107,10 @@ render() {
            ]}
            style={{ width:"630" , height:"330"}}
           >
+
             <Marker
-                 title={'Pack Member'}
-                 // name={"Alerted pack on "+ AlertDate}
+                 title={'Alert Details'}
+                 name={"Alert Details:"+ AlertAddress +" " +"on " + AlertDate }
                  onClick={this.onMarkerClicked}
                 position={{lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')}}
                 icon={{
@@ -117,6 +130,14 @@ render() {
                               <h1>{this.state.selectedPlace.name}</h1>
                         </div>
                   </InfoWindow>
+
+                  <RaisedButton  onClick={(e)=>this.handleLocation(cookie.load('AlertLatitude'), cookie.load('AlertLongitude'))} primary label="Alert Location" />
+                  <span className="float-right">
+
+                    <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="<- Back" />
+
+                   </span>
+
         </Map>
 
 

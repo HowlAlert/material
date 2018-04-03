@@ -221,7 +221,7 @@ class SidebarContent extends React.Component {
 
         </li>
         <li>
-          <FlatButton href={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></FlatButton>
+          <a onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></a>
           <Dialog
                       title="Confirm"
                       actions={actions}

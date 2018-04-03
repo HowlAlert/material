@@ -607,7 +607,7 @@ const ImageSection = () => (
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><History /></div>
       </QueueAnim>
-  
+
 );
 
 module.exports = ImageSection;

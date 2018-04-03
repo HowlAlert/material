@@ -1,5 +1,6 @@
 import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+
 import cookie from 'react-cookies';
 
 

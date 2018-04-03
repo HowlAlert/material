@@ -32,238 +32,238 @@ class Alerts extends React.Component {
       };
   }
 
-  handleDelete(value) {
-
-    alert("Are you sure you want to delete?")
-
-      var alertid = `${value}`;
-      console.log(alertid)
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/DeleteUserFeed';
-
-        fetch(BaseURL,
-        {
-         method: "POST",
-         body: JSON.stringify({
-           "UserID":cookie.load('Id'),
-           "UserToken":cookie.load('UserToken'),
-           "UserFeedID" :alertid
-         }),
-          headers: new Headers({'content-type': 'application/json'}),
-        })
-    .then((Response)=> Response.json())
-    .then((findresponse)=>{
-        console.log(findresponse)
-
-        this.setState({
-                 status:findresponse.DeleteUserFeedResult.resultStatus.Status,
-                 message:findresponse.DeleteUserFeedResult.resultStatus.StatusMessage
-                   })
-
-                   // console.log(this.state.status);
-                   // console.log(this.state.message);
-                   if(this.state.status === "0")
-                   {
-                     alert(this.state.message);
-
-                   }
-
-                   else {  alert("Deleted Alert!") ;
-                           window.location.reload();
-                    }
-
-       })
-
-
-  }
-
-
-  handleNext(value) {
-                              //Redirecting to next page of alerts
-    var count = `${value}`;
-    console.log(count);
-
-    this.setState({
-        counter: this.state.counter + 1,
-        disabled2: false,
-    });
-
-
-      var that = this;
-       var urls = [];
-       var a1 =[];
-       // console.log(this.state.counter);
-
-
-       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
-
-           fetch(BaseURL,
-           {
-            method: "POST",
-            body: JSON.stringify({
-              "UserID":cookie.load('Id'),
-              "UserToken":cookie.load('UserToken'),
-              "PageNumber":this.state.counter
-            }),
-             headers: new Headers({'content-type': 'application/json'}),
-           })
-       .then((Response)=> Response.json())
-       .then((findresponse)=>{
-         console.log(findresponse);
-         this.setState({
-            data:findresponse.GetUserFeedResult.getUserFeeds,
-            length:findresponse.GetUserFeedResult.getUserFeeds.length,
-            // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
-          })
-          Promise.all(
-                  findresponse.GetUserFeedResult.getUserFeeds.map(
-                    element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
-                                          {
-
-                                               method: "POST",
-                                               body: JSON.stringify({
-                                                 "url":element.ImageURL
-                                               }),
-
-                                              headers: new Headers({'content-type':'application/json'}),
-
-                                        })
-                      .then(res => res.json())
-                  )
-                ).then(datas => {
-
-                  this.state.data.forEach((element, i) => {
-                    urls[i] = element
-
-                  })
-                console.log(urls);
-                console.log(datas);
-             let arr3 = [];                                  // to combine the results of the two arrays
-                     urls.forEach((itm, i) => {
-                              arr3.push(Object.assign({}, itm, datas[i]));
-                          });
-
-                          console.log(arr3.length);
-                          this.setState({  data1:arr3 , array_count:arr3.length })
-
-
-                          var total = this.state.array_count;
-                          console.log(total);
-
-                          if(total < 20)
-                           {  alert("No more Alerts!");
-
-                                 this.setState({
-                                        counter: this.state.counter - 2,
-                                        disabled1: true,
-                                        disabled2:false
-                                   });
-                           }
-
-
-
-            })
-                 })
-
-
-
- }
- handleBack(value) {                 //Redirecting to previous page of alerts
-
-   var count = `${value}`;
-   console.log(count);
-
-
-    this.setState({
-        counter: this.state.counter - 1,
-        disabled1: false
-    });
-
-
-    // var total = this.state.array_count;
-    // console.log(total);
-    // if(total == 20)
-    //  {
-    //        this.setState({
-    //               disabled: false
-    //          });
-    //  }
-
-
-    if(this.state.counter <= 1)
-     {  alert("No more Alerts!");
-
-          this.setState({
-
-                disabled2: true,
-                disabled1: false,
-                counter: this.state.counter + 1,
-             });
-     }
-
-     var that = this;
-      var urls = [];
-      var a1 =[];
-      console.log(this.state.counter);
-
-
-      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
-
-          fetch(BaseURL,
-          {
-           method: "POST",
-           body: JSON.stringify({
-             "UserID":cookie.load('Id'),
-             "UserToken":cookie.load('UserToken'),
-             "PageNumber":this.state.counter
-           }),
-            headers: new Headers({'content-type': 'application/json'}),
-          })
-      .then((Response)=> Response.json())
-      .then((findresponse)=>{
-        console.log(findresponse);
-        this.setState({
-           data:findresponse.GetUserFeedResult.getUserFeeds,
-           length:findresponse.GetUserFeedResult.getUserFeeds.length,
-           // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
-         })
-         Promise.all(
-                 findresponse.GetUserFeedResult.getUserFeeds.map(
-                   element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
-                                         {
-
-                                              method: "POST",
-                                              body: JSON.stringify({
-                                                "url":element.ImageURL
-                                              }),
-
-                                             headers: new Headers({'content-type':'application/json'}),
-
-                                       })
-                     .then(res => res.json())
-                 )
-               ).then(datas => {
-
-                 this.state.data.forEach((element, i) => {
-                   urls[i] = element
-
-                 })
-               //console.log(urls);
-               //console.log(datas);
-            let arr3 = [];                                  // to combine the results of the two arrays
-                    urls.forEach((itm, i) => {
-                             arr3.push(Object.assign({}, itm, datas[i]));
-                         });
-
-                         console.log(arr3.length);
-                         this.setState({  data1:arr3 , array_count:arr3.length })
-
-
-           })
-                })
-
-
-
- }
+ //  handleDelete(value) {
+ //
+ //    alert("Are you sure you want to delete?")
+ //
+ //      var alertid = `${value}`;
+ //      console.log(alertid)
+ //    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/DeleteUserFeed';
+ //
+ //        fetch(BaseURL,
+ //        {
+ //         method: "POST",
+ //         body: JSON.stringify({
+ //           "UserID":cookie.load('Id'),
+ //           "UserToken":cookie.load('UserToken'),
+ //           "UserFeedID" :alertid
+ //         }),
+ //          headers: new Headers({'content-type': 'application/json'}),
+ //        })
+ //    .then((Response)=> Response.json())
+ //    .then((findresponse)=>{
+ //        console.log(findresponse)
+ //
+ //        this.setState({
+ //                 status:findresponse.DeleteUserFeedResult.resultStatus.Status,
+ //                 message:findresponse.DeleteUserFeedResult.resultStatus.StatusMessage
+ //                   })
+ //
+ //                   // console.log(this.state.status);
+ //                   // console.log(this.state.message);
+ //                   if(this.state.status === "0")
+ //                   {
+ //                     alert(this.state.message);
+ //
+ //                   }
+ //
+ //                   else {  alert("Deleted Alert!") ;
+ //                           window.location.reload();
+ //                    }
+ //
+ //       })
+ //
+ //
+ //  }
+ //
+ //
+ //  handleNext(value) {
+ //                              //Redirecting to next page of alerts
+ //    var count = `${value}`;
+ //    console.log(count);
+ //
+ //    this.setState({
+ //        counter: this.state.counter + 1,
+ //        disabled2: false,
+ //    });
+ //
+ //
+ //      var that = this;
+ //       var urls = [];
+ //       var a1 =[];
+ //       // console.log(this.state.counter);
+ //
+ //
+ //       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
+ //
+ //           fetch(BaseURL,
+ //           {
+ //            method: "POST",
+ //            body: JSON.stringify({
+ //              "UserID":cookie.load('Id'),
+ //              "UserToken":cookie.load('UserToken'),
+ //              "PageNumber":this.state.counter
+ //            }),
+ //             headers: new Headers({'content-type': 'application/json'}),
+ //           })
+ //       .then((Response)=> Response.json())
+ //       .then((findresponse)=>{
+ //         console.log(findresponse);
+ //         this.setState({
+ //            data:findresponse.GetUserFeedResult.getUserFeeds,
+ //            length:findresponse.GetUserFeedResult.getUserFeeds.length,
+ //            // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+ //          })
+ //          Promise.all(
+ //                  findresponse.GetUserFeedResult.getUserFeeds.map(
+ //                    element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+ //                                          {
+ //
+ //                                               method: "POST",
+ //                                               body: JSON.stringify({
+ //                                                 "url":element.ImageURL
+ //                                               }),
+ //
+ //                                              headers: new Headers({'content-type':'application/json'}),
+ //
+ //                                        })
+ //                      .then(res => res.json())
+ //                  )
+ //                ).then(datas => {
+ //
+ //                  this.state.data.forEach((element, i) => {
+ //                    urls[i] = element
+ //
+ //                  })
+ //                console.log(urls);
+ //                console.log(datas);
+ //             let arr3 = [];                                  // to combine the results of the two arrays
+ //                     urls.forEach((itm, i) => {
+ //                              arr3.push(Object.assign({}, itm, datas[i]));
+ //                          });
+ //
+ //                          console.log(arr3.length);
+ //                          this.setState({  data1:arr3 , array_count:arr3.length })
+ //
+ //
+ //                          var total = this.state.array_count;
+ //                          console.log(total);
+ //
+ //                          if(total < 20)
+ //                           {  alert("No more Alerts!");
+ //
+ //                                 this.setState({
+ //                                        counter: this.state.counter - 2,
+ //                                        disabled1: true,
+ //                                        disabled2:false
+ //                                   });
+ //                           }
+ //
+ //
+ //
+ //            })
+ //                 })
+ //
+ //
+ //
+ // }
+ // handleBack(value) {                 //Redirecting to previous page of alerts
+ //
+ //   var count = `${value}`;
+ //   console.log(count);
+ //
+ //
+ //    this.setState({
+ //        counter: this.state.counter - 1,
+ //        disabled1: false
+ //    });
+ //
+ //
+ //    // var total = this.state.array_count;
+ //    // console.log(total);
+ //    // if(total == 20)
+ //    //  {
+ //    //        this.setState({
+ //    //               disabled: false
+ //    //          });
+ //    //  }
+ //
+ //
+ //    if(this.state.counter <= 1)
+ //     {  alert("No more Alerts!");
+ //
+ //          this.setState({
+ //
+ //                disabled2: true,
+ //                disabled1: false,
+ //                counter: this.state.counter + 1,
+ //             });
+ //     }
+ //
+ //     var that = this;
+ //      var urls = [];
+ //      var a1 =[];
+ //      console.log(this.state.counter);
+ //
+ //
+ //      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
+ //
+ //          fetch(BaseURL,
+ //          {
+ //           method: "POST",
+ //           body: JSON.stringify({
+ //             "UserID":cookie.load('Id'),
+ //             "UserToken":cookie.load('UserToken'),
+ //             "PageNumber":this.state.counter
+ //           }),
+ //            headers: new Headers({'content-type': 'application/json'}),
+ //          })
+ //      .then((Response)=> Response.json())
+ //      .then((findresponse)=>{
+ //        console.log(findresponse);
+ //        this.setState({
+ //           data:findresponse.GetUserFeedResult.getUserFeeds,
+ //           length:findresponse.GetUserFeedResult.getUserFeeds.length,
+ //           // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+ //         })
+ //         Promise.all(
+ //                 findresponse.GetUserFeedResult.getUserFeeds.map(
+ //                   element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+ //                                         {
+ //
+ //                                              method: "POST",
+ //                                              body: JSON.stringify({
+ //                                                "url":element.ImageURL
+ //                                              }),
+ //
+ //                                             headers: new Headers({'content-type':'application/json'}),
+ //
+ //                                       })
+ //                     .then(res => res.json())
+ //                 )
+ //               ).then(datas => {
+ //
+ //                 this.state.data.forEach((element, i) => {
+ //                   urls[i] = element
+ //
+ //                 })
+ //               //console.log(urls);
+ //               //console.log(datas);
+ //            let arr3 = [];                                  // to combine the results of the two arrays
+ //                    urls.forEach((itm, i) => {
+ //                             arr3.push(Object.assign({}, itm, datas[i]));
+ //                         });
+ //
+ //                         console.log(arr3.length);
+ //                         this.setState({  data1:arr3 , array_count:arr3.length })
+ //
+ //
+ //           })
+ //                })
+ //
+ //
+ //
+ // }
 
  handleMap(value1,value2,value3) {                 //Redirecting to previous page of alerts
 
@@ -286,6 +286,42 @@ class Alerts extends React.Component {
 
     cookie.save('AlertDate',date)
     console.log(cookie.load('AlertDate'))
+
+
+
+    var geocoder;
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(latitude, longitude);
+
+        geocoder.geocode(
+            {'latLng': latlng},
+            function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        var add= results[0].formatted_address ;
+                        var  value=add.split(",");
+
+                         var count=value.length;
+
+                         var country=value[count-1];
+                         var state=value[count-2];
+                         var city=value[count-3];
+                         var address = city + state +country ;
+                         console.log(address)
+                         
+                         cookie.save('AlertAddress',address)
+                         console.log(cookie.load('AlertAddress'))
+
+                    }
+                    else  {
+                      console.log( "address not found");
+                    }
+                }
+                else {
+                  console.log("Geocoder failed due to: " + status);
+                }
+            }
+        );
 
     this.setState({ redirectToReferrer: true })
 
@@ -366,6 +402,7 @@ class Alerts extends React.Component {
       if(redirectToReferrer === true)
       {
         return (
+
           <Map />
 
 
@@ -381,7 +418,7 @@ class Alerts extends React.Component {
         <div className="box box-default">
           <div className="box-body">
              <h2 className="article-title-header">Tiggered Alerts</h2>
-  <Menu  >
+       <Menu>
           {
             this.state.data1.map((dyanamicData1,key)=>
 

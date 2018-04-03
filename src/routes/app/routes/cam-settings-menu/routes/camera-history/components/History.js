@@ -606,8 +606,9 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
      )
 
   }
+var cameraName = cookie.load('cameraName');
 
-
+console.log(cameraName);
       return (
 
 
@@ -646,7 +647,7 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
 
 
                  <div>
-
+                       <h2 className="article-title">Images Recorded in {cameraName} </h2>
                         Select Date:
                         <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
                         <span className="float-right">
