@@ -1,6 +1,7 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import RaisedButton from 'material-ui/RaisedButton';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 
 // const imgRight = {
 //   backgroundImage: 'url(assets/images/home.png)',
@@ -46,9 +47,33 @@ import RaisedButton from 'material-ui/RaisedButton';
 // }
 // }
 class GoogleDevices extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+      // data1: []
+    };
+
+
+  }
+
+  handlePurchase() {
+
+         this.setState({ redirectToReferrer: true })
+    }
 
 
 render() {
+
+  const { redirectToReferrer} = this.state
+        if(redirectToReferrer === true)
+        {
+          return (
+             <Redirect to="camerasettings/purchase" />
+           )
+        }
+
+
 return (
 
 
@@ -75,7 +100,7 @@ return (
                        </div>
                        <div className="divider divider-solid divider-lg" />
 
-                        <RaisedButton  className="float-right" primary label="Buy Device" />
+                        <RaisedButton  className="float-right" primary label="Buy Device" onClick={()=>this.handlePurchase()}/>
 
                      </div>
 

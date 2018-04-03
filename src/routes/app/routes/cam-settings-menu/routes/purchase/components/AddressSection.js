@@ -1,4 +1,5 @@
 import React from 'react';
+// import {AddressElement} from 'react-stripe-elements';
 import {CardElement} from 'react-stripe-elements';
 
 // const styles = {
@@ -14,24 +15,17 @@ import {CardElement} from 'react-stripe-elements';
 // };
 
 
-class CardSection extends React.Component {
+class AddressSection extends React.Component {
   render() {
     return (
       <section className="container-fluid with-maxwidth-md chapter">
 
 
-{/*
-        <label>
-   Card details
-   <CardElement  />
- </label> */}
-
-
-      <CardElement style={{base: {fontSize: '18px'}}} />
+      <CardElement />
 
   </section>
     );
   }
 };
 
-export default CardSection;
+export default AddressSection;

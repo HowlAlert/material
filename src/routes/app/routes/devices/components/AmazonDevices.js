@@ -2,6 +2,8 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import QueueAnim from 'rc-queue-anim';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+
 
 const imgLeft = {
   backgroundImage: 'url(assets/images/echo.png)',
@@ -16,9 +18,31 @@ const imgLeft = {
 
 
 class AmazonDevices extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+      // data1: []
+    };
 
+
+  }
+
+  handlePurchase() {
+
+         this.setState({ redirectToReferrer: true })
+    }
 
 render() {
+
+  const { redirectToReferrer} = this.state
+        if(redirectToReferrer === true)
+        {
+          return (
+             <Redirect to="camerasettings/purchase" />
+           )
+        }
+
 return (
   <div className="row">
     <div className="col-xl-6">
@@ -42,7 +66,7 @@ return (
                        </div>
                        <div className="divider divider-solid divider-lg" />
 
-                        <RaisedButton  className="float-right" primary label="Buy Device" />
+                        <RaisedButton   className="float-right" primary label="Buy Device" onClick={()=>this.handlePurchase()}/>
 
                      </div>
 

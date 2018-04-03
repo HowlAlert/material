@@ -131,7 +131,7 @@ render() {
                         </div>
                   </InfoWindow>
 
-                  <RaisedButton  onClick={(e)=>this.handleLocation(cookie.load('AlertLatitude'), cookie.load('AlertLongitude'))} primary label="Alert Location" />
+                  <RaisedButton  primary label="Alert Location" />
                   <span className="float-right">
 
                     <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="<- Back" />

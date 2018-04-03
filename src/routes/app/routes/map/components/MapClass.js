@@ -1,5 +1,6 @@
+
 import React from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, InfoWindow, Marker, GoogleApiWrapper, Polygon} from 'google-maps-react';
 
 import cookie from 'react-cookies';
 
@@ -63,6 +64,9 @@ render() {
 
     var AlertDate=cookie.load('AlertDate');
       console.log(AlertDate)
+
+  
+
     return (
 
         <Map className='google-map'
@@ -97,6 +101,8 @@ render() {
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
         style={{ width:"100%"}}
+
+
           >
 
 
@@ -121,7 +127,7 @@ render() {
                       onClick={this.onMarkerClicked}
                      position={{lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')}}
                      icon={{
-                              url: "assets/images//Howl-Final-Red-small.png",
+                              url: "assets/images//howl-map-marker-small.png",
                               anchor: new google.maps.Point(32,32),
                               scaledSize: new google.maps.Size(64,64)
                          }}
@@ -136,6 +142,10 @@ render() {
                               <h1>{this.state.selectedPlace.name}</h1>
                         </div>
                   </InfoWindow>
+
+
+
+
         </Map>
 
         );

@@ -33,7 +33,7 @@ class ImageBox extends React.Component {
          console.log(cookie.load('cameraName'));
 
 
-         // this.setState({ redirectToReferrer: true })
+         this.setState({ redirectToReferrer: true })
     }
 
 componentDidMount(){

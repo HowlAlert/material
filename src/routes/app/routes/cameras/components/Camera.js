@@ -31,6 +31,10 @@ class Camera extends React.Component {
      };
  }
 
+
+ handlePurchase() {
+      this.setState({ redirectToReferrer: true })
+ }
  handleAddDevice() {
       this.setState({ redirectToAddDevice: true })
  }
@@ -45,6 +49,14 @@ class Camera extends React.Component {
 
 render() {
 
+
+  const { redirectToReferrer} = this.state
+        if(redirectToReferrer === true)
+        {
+          return (
+             <Redirect to="camerasettings/purchase" />
+           )
+        }
 
   const { redirectToAddDevice} = this.state
     if(redirectToAddDevice === true)
@@ -76,7 +88,7 @@ render() {
 <div>
     <div >
    <div className="article-title">CAMERA</div>
-             <RaisedButton  className="float-right" primary label="Buy Camera" />
+             <RaisedButton  className="float-right" primary label="Buy Camera"  onClick={()=>this.handlePurchase()}/>
             <RaisedButton  className="float-right" primary label="Add Camera"  onClick={()=>this.handleAddDevice()}/>
             {/* <a href="#/app/camerasettings/add-devices"></a> */}
            {/* <a href="#/app/cameraDevices/buy-camera"> </a></RaisedButton> */}
@@ -97,7 +109,7 @@ render() {
 
 
              <div className="col-xl-6">
-          
+
                    <Image2 />
 
              </div>
