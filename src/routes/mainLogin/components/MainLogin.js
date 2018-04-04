@@ -60,9 +60,7 @@ class MainLogin extends React.Component {
   }
 
   componentWillMount(){
-    if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
-      console.log(cookie.load('Id')),
-      console.log(cookie.load('UserToken')),
+    if(cookie.load('FirstName')!=undefined){
       this.setState({ redirectToHome: true })
     }
   }
@@ -290,12 +288,12 @@ class MainLogin extends React.Component {
 
 
 
-    // const{redirectToMainLogin}=this.state
-    // if(redirectToMainLogin){
-    //   return (
-    //     <Redirect to={'/mainLogin'}/>
-    //   )
-    // }
+    const{redirectToMainLogin}=this.state
+    if(redirectToMainLogin){
+      return (
+        <Redirect to={'/mainLogin'}/>
+      )
+    }
 
 
     const{redirectToHome}=this.state

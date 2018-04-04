@@ -19,6 +19,7 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import { sessionReducer, sessionService } from 'redux-react-session';
 import { createStore, combineReducers } from 'redux';
+import PasswordMask from 'react-password-mask';
 import PasswordField from 'material-ui-password-field'
 import {
     Step,
@@ -31,12 +32,6 @@ const mWidthStyle = {
 const checkbox= {
     marginBottom: '16',
   };
-  const  register= {
-      color: '#D14836'
-  };
-  const  forgotPwd= {
-      color: '#6A6A6A'
-  };
 
 class Login extends React.Component {
   constructor(props) {
@@ -48,24 +43,18 @@ class Login extends React.Component {
       Password:'',
       GetUser:'',
       ResultStatus:'',
-      noOfSuperValidation:0,
-
+      GetUserHomeAddress:''
     };
   }
 
   componentWillMount(){
-  if(cookie.load('FirstName')!=undefined){
+  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+    console.log(cookie.load('Id')),
+    console.log(cookie.load('UserToken')),
     this.setState({ redirectToHome: true })
   }
   }
 
-  handleCreateAccount(event){
-    this.setState({ redirectToCreateAccount: true })
-  }
-
-  handleForgotPassword(event){
-    this.setState({ redirectToForgotPassword: true })
-  }
 
   handleLogin(event){
   event.preventDefault();
@@ -112,79 +101,58 @@ class Login extends React.Component {
       }
 
       if(this.state.ResultStatus.StatusMessage==="Success"){
-        cookie.save('UserToken', this.state.GetUser.UserToken);
-        cookie.save('Id', this.state.GetUser.ID);
 
-
-        if(this.state.GetUser.MobilePhoneNumber==null){
-          alert("Please verify your Phone Number"),
-          this.setState({ redirectToMobilePhoneNumber: true }),
-          this.setState.noOfSuperValidation=1
-        }
-
-        else if(this.state.GetUser.HasConfirmedMobilePhone=="False"){
-          alert("Please confirm your Phone Number"),
-          this.setState({ redirectToMobilePhoneConfirmationCode: true }),
-          this.setState.noOfSuperValidation="False"
-        }
-
-        else if(this.state.GetUserPack.length==0){
+        console.log(this.state.GetUserPack.length);
+        if(this.state.GetUserPack.length==0){
           alert("Please enter atleast one Pack member"),
-            this.setState({ redirectToGetUserPack: true }),
-         this.setState.noOfSuperValidation="False"
+         this.setState({ redirectToGetUserPack: true })
         }
 
         else if(this.state.GetUserHomeAddress.Address1==null){
           alert("Please enter your Home Address"),
-         this.setState({ redirectToAddress: true }),
-         this.setState.noOfSuperValidation="False"
+         this.setState({ redirectToAddress: true })
         }
 
         else if(this.state.GetUser.CancellationCode==null){
           alert("Please enter your Cancel Code"),
-          this.setState({ redirectToCancellationCode: true }),
-          this.setState.noOfSuperValidation="False"
+          this.setState({ redirectToCancellationCode: true })
         }
         else if(this.state.GetUser.SilenceCode==null){
           alert("Please enter your Silent Code"),
-          this.setState({ redirectToSilenceCode: true }),
-          this.setState.noOfSuperValidation="False"
+          this.setState({ redirectToSilenceCode: true })
         }
 
       //  const expires = new Date()
         //expires.setDate(now.getDate() + 14)
-        if(this.setState.noOfSuperValidation!="False"){
-          console.log(this.state.GetUser);
-          console.log("status"),
-          cookie.save('Email', this.state.GetUser.Email);
-          cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
-          //cookie.save('Id', this.state.GetUser.ID);
-          cookie.save('FirstName', this.state.GetUser.FirstName);
-          cookie.save('LastName', this.state.GetUser.LastName);
-          //cookie.save('UserToken', this.state.GetUser.UserToken);
-          //cookie.save('Status', this.state.ResultStatus.Status, '/')
-          cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
-          cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
-          cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
-          cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
-          //return ( <Redirect to="#/Register1"/> );
-          cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
-          cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
-          cookie.save('City', this.state.GetUserHomeAddress.City);
-          cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
-          cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
-          cookie.save('State', this.state.GetUserHomeAddress.State);
-          cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
-          //console.log(PageRegister1)
-      //  console.log(App)
-       this.setState({ redirectToReferrer: true })
-        }
-        else{
-           this.setState({ redirectToReferrer: false })
-        }
-}
-
-  })
+        console.log(this.state.GetUser);
+        console.log("status"),
+        cookie.save('Email', this.state.GetUser.Email);
+        cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+        cookie.save('Id', this.state.GetUser.ID);
+        cookie.save('FirstName', this.state.GetUser.FirstName);
+        cookie.save('LastName', this.state.GetUser.LastName);
+        cookie.save('UserToken', this.state.GetUser.UserToken);
+        //cookie.save('Status', this.state.ResultStatus.Status, '/')
+        cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
+        cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+        cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+        cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+        //return ( <Redirect to="#/Register1"/> );
+        cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+        cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+        cookie.save('City', this.state.GetUserHomeAddress.City);
+        cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+        cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+        cookie.save('State', this.state.GetUserHomeAddress.State);
+        cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
+        //console.log(PageRegister1)
+    //  console.log(App)
+     this.setState({ redirectToReferrer: true })
+      }
+      else{
+         this.setState({ redirectToReferrer: false })
+      }
+    })
   }
 
 
@@ -219,35 +187,69 @@ console.log("here");
   }
 
 
+
+
+// handleShowPassword(event) {
+//   console.log(event);
+//   console.log(checked);
+//   console.log(this.state.PasswordType);
+//   var x=this.state.PasswordType
+//   if (x === "password") {
+//         this.setState({ showPassword: true })
+//     } else {
+//         this.setState({ showPassword: false })
+//     }
+//   console.log(this.state.Password.name);
+//     console.log(this.state.Password.value);
+//     this.setState({
+//       [this.state.Password.name]: this.state.Password.value
+//     });
+// }
+
+handleChange(e) {
+
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  updateCheck() {
+
+      this.setState((oldState) => {
+        console.log(!oldState.checked);
+        if(!oldState.checked==true){
+          this.setState({ showPassword: true })
+          console.log(this.state.PasswordType);
+          this.setState({
+          Password:'',
+        });
+        }
+        else {
+                this.setState({ showPassword: false })
+             }
+        return {
+          checked: !oldState.checked,
+        };
+      });
+    }
+
+
   render() {
+    const password = this.state.checked
+      ? password
+      : null;
 
-    const{redirectToCreateAccount}=this.state
-    if(redirectToCreateAccount){
-      return (
-        <Redirect to="register" />
-      )
+    const{showPassword}=this.state
+    console.log(this.state.oldState);
+    console.log(this.state.showPassword);
+    if(showPassword){
+      console.log(this.state.Password);
+      this.setState({
+
+      });
     }
 
-    const{redirectToMobilePhoneNumber}=this.state
-    if(redirectToMobilePhoneNumber){
-      return (
-        <Redirect to="register4" />
-      )
-    }
 
-    const{redirectToMobilePhoneConfirmationCode}=this.state
-    if(redirectToMobilePhoneConfirmationCode){
-      return (
-        <Redirect to="register5" />
-      )
-    }
-
-    const{redirectToForgotPassword}=this.state
-    if(redirectToForgotPassword){
-      return (
-        <Redirect to="forgot-password" />
-      )
-    }
 
     const{redirectToHome}=this.state
     if(redirectToHome){
@@ -333,37 +335,81 @@ console.log("here");
                      onChange={(e)=>this.handleEmail(e)}
                   />
                 </div>
+                <div className="form-group">
+                  <TextField
+                    floatingLabelText="Password"
 
+                    onChangeText={(password) => this.setState({ password })}
+                    fullWidth
+                    value={password}
+
+                    ID="password"
+                    />
+                      </div>
+
+
+                <div className="col-lg-6">
+                <Checkbox
+                  label="Show Password"
+                  type="checkbox"
+                  name="ShowPassword"
+                  checked={this.state.checked}
+                    value={this.state.value}
+                  onClick={(e)=>this.handleChange(e)}
+                  onCheck={(e)=>this.updateCheck(e)}
+                  onchange="document.getElementById('password').type = this.checked ? 'text' : 'password'"
+
+          style={checkbox}
+                />
+                  </div>
+                <div className="form-group">
+                  <PasswordMask
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    value={this.state.password}
+                    onChange={(e)=>this.handleChange(e)}
+                    fullWidth
+                  />
+                  </div>
                   <PasswordField
                   fullWidth
                   type="password"
                   name="Password"
                   //hintText="At least 8 characters"
-                  floatingLabelText="Password"
+                  floatingLabelText="Enter your password"
                   onChange={(e)=>this.handlePassword(e)}
                   //errorText="Your password is too short"
                   />
               </fieldset>
 
+              <div className="card-action no-border text-left">
+
+              </div>
 
               <div className="box-body text-center">
               <RaisedButton style={mWidthStyle} label="SIGN IN -->" primary onClick={(e)=>this.handleLogin(e)}/>
+
+
+
+              <div className="divider" />
+
 
             </div>
 
 
             </form>
 
-
-
-
-
-<div className="text-center">
-          <a onClick={(e)=>this.handleForgotPassword(e)} style={forgotPwd}><u>Forgot password?</u></a>
-
-          <p>Don't have an account? <a onClick={(e)=>this.handleCreateAccount(e)} style={register} >Register</a></p>
-          </div></div>
+          </div>
 </div>
+
+
+
+        <div className="additional-info">
+          <a href="#/forgot-password">Forgot password?</a>
+
+          <p>Don't have an account? <a href="#/register1ß">Register</a></p>
+        </div>
       </div>
     );
   }

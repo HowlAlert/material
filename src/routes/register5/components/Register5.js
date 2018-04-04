@@ -28,13 +28,7 @@ class Register5 extends React.Component {
     };
   }
 
-  componentWillMount(){
-  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
-    console.log(cookie.load('Id')),
-    console.log(cookie.load('UserToken')),
-    this.setState({ redirectToHome: true })
-  }
-  }
+
 
 
   handleCode(event) {

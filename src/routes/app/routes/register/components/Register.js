@@ -31,24 +31,13 @@ checkboxState: true
     };
   }
 
-
   componentWillMount(){
-    // console.log("componentWillMount")
-    // console.log(cookie.load('Id')),
-    // console.log(cookie.load('UserToken'))
-    // if(cookie.load('Id')=="undefined" && cookie.load('UserToken')=="undefined"){
-    //   console.log(cookie.load('Id')),
-    //   console.log(cookie.load('UserToken')),
-    //   this.setState({ redirectToRegister: true })
-    //
-    // }
-    // else
-    if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
-      console.log(cookie.load('Id')),
-      console.log(cookie.load('UserToken')),
-      this.setState({ redirectToHome: true })
-    }
+  if(cookie.load('FirstName')!=undefined){
+    this.setState({ redirectToHome: true })
   }
+  }
+
+  
 
     handleNext(event){
     event.preventDefault();
@@ -180,15 +169,6 @@ this.setState({
           }
 
   render() {
-
-
-    // const{redirectToRegister}=this.state
-    // if(redirectToRegister){
-    //   return (
-    //     <Redirect to={'/register'}/>
-    //   )
-    // }
-
 
     const{redirectToHome}=this.state
     if(redirectToHome){

@@ -5,6 +5,7 @@ import QueueAnim from 'rc-queue-anim';
 import RaisedButton from 'material-ui/RaisedButton';
 import Login from 'routes/login/';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+import FlatButton from 'material-ui/FlatButton';
 
 const mWidthStyle = {
   minWidth: '130px'
@@ -67,15 +68,19 @@ class ForgotPassowrd extends React.Component {
       <div className="body-inner">
         <div className="card bg-white">
           <div className="card-content">
-            <section className="logo text-center">
-            <img src="assets/images/HOWL2.png" alt="HOWL" />
-            <p className="hero-title text-center">Forgot Password?</p>
-            </section>
+
             <form>
+            <ul className="nav" ref={(c) => { this.nav = c; }}>
+              <li className="nav-header"><span></span></li>
+              <li><FlatButton href="/mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
+              </li>
+              </ul>
+              <img src="assets/images/HOWL2.png" alt="HOWL" />
+            <p className="hero-title text-center">FORGOT PASSWORD?</p>
+            <div className="form-group text-center">
+              <p className="text-small">Enter your email below to receive your password reset instructions</p>
+            </div>
               <fieldset>
-              <div className="additional-info text-center text-small">
-                Enter your email below to receive your password reset instructions
-             </div>
                 <div className="form-group">
                   <TextField
                     floatingLabelText="EMAIL ADDRESS"

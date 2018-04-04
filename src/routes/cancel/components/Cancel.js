@@ -21,11 +21,6 @@ const mWidthStyle = {
 
     };
   }
-  componentWillMount(){
-  if(cookie.load('FirstName')!=undefined){
-    this.setState({ redirectToHome: true })
-  }
-  }
 
   handleCode(event) {
      event.preventDefault();
@@ -74,13 +69,6 @@ const mWidthStyle = {
 
 
   render() {
-    const{redirectToHome}=this.state
-    if(redirectToHome){
-      return (
-        <Redirect to="app/home" />
-      )
-    }
-    
      const { redirectToReferrer} = this.state
        if(redirectToReferrer === true)
        {

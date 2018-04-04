@@ -15,7 +15,7 @@ import cookie from 'react-cookies';
 import PageRegister4 from 'routes/register4/';
 import PageLogin from 'routes/login/';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-
+import PasswordField from 'material-ui-password-field'
 const mWidthStyle = {
   minWidth: '130px'
 };
@@ -32,12 +32,11 @@ class Register extends React.Component {
   }
 
   componentWillMount(){
-  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
-    console.log(cookie.load('Id')),
-    console.log(cookie.load('UserToken')),
+  if(cookie.load('FirstName')!=undefined){
     this.setState({ redirectToHome: true })
   }
-}
+  }
+
 
     handleNext(event){
     event.preventDefault();
@@ -152,6 +151,8 @@ this.setState({
       )
     }
 
+  
+
     const { redirectToReferrer} = this.state
     if (redirectToReferrer==true) {
 
@@ -177,7 +178,7 @@ this.setState({
             <form className="form-horizontal">
             <ul className="nav" ref={(c) => { this.nav = c; }}>
               <li className="nav-header"><span></span></li>
-              <li><FlatButton href="#/app/page/login"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
+              <li><FlatButton href="/mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
               </li>
               </ul>
               <img src="assets/images/HOWL2.png" alt="HOWL" />
@@ -215,30 +216,16 @@ this.setState({
                   />
                 </div>
 
-                <div className="form-group">
-                  <TextField
-                    floatingLabelText="Password"
-                    type="password"
-                    name="Password"
-                    fullWidth
-                    value={this.state.value}
-                    onChange={(e)=>this.handlePassword(e)}
-                    />
-                </div>
-
-
-
-                <div className="col-lg-6">
-                <Checkbox
-                  label="Show Password"
-                  type="checkbox"
-                  name="ShowPassword"
-                  checked={this.state.checked}
-                    value={this.state.value}
-                  onClick={(e)=>this.handleShowPassword(e)}
-                />
-                  </div>
-
+                  <PasswordField
+                  fullWidth
+                  type="password"
+                  name="Password"
+                  value={this.state.value}
+                  //hintText="At least 8 characters"
+                  floatingLabelText="Password"
+                  onChange={(e)=>this.handlePassword(e)}
+                  //errorText="Your password is too short"
+                  />
               </fieldset>
               <div className="card-action no-border text-left">
 
