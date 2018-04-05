@@ -33,20 +33,35 @@ class SilentCode extends React.Component {
 
   handleNext(event) {
 
+
+
+
        var entered = this.state.code;
        console.log(entered);
 
        var saved = cookie.load('SilenceCode');
        console.log(saved);
 
-       if(entered === saved){
-          this.setState({ redirectToReferrer: true })
+       if(entered ==''){
+         alert("Please enter your old Silent code!");
        }
-     else
-      {
-        alert("The Silent code you entered does not match your current cancel code. Please try again ");
-         this.setState({ redirectToReferrer: false })
-      }
+       const re = /^[0-9\b]+$/;
+
+       if(re.test(entered)=='' && entered!=''){
+         alert("Cancel Code is a 4 digits number!");
+         window.location.reload();
+       }
+       else if(re.test(entered)!='' && entered!='' && entered != saved){
+
+         alert("The Silent code you entered does not match your current cancel code. Please try again");
+         window.location.reload();
+          this.setState({ redirectToReferrer: false })
+
+       }
+      else if(entered === saved)
+       {
+          this.setState({ redirectToReferrer: true })
+        }
 
      }
 
@@ -76,7 +91,7 @@ render() {
 
                  </div>
 
-            
+
    );
   }
 }

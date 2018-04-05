@@ -65,7 +65,7 @@ render() {
     var AlertDate=cookie.load('AlertDate');
       console.log(AlertDate)
 
-  
+
 
     return (
 
@@ -122,8 +122,8 @@ render() {
 
 
                  <Marker
-                      title={'Pack Member'}
-                      name={"Alerted pack on "+ AlertDate}
+                      ttitle={'Home Address Location '}
+                      name={fname+" "+lastname}
                       onClick={this.onMarkerClicked}
                      position={{lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')}}
                      icon={{

@@ -80,8 +80,8 @@ render() {
                                       : `You HOWLED back at ${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName}`
                                        }{" "}
                               {"on " +
+                                   moment(new Date(dyanamicData.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')
 
-                                   moment.utc(moment(dyanamicData.DateCreated).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')
                               }
 
 

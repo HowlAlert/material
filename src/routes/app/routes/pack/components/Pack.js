@@ -383,9 +383,9 @@ class Howls_Me extends React.Component {
 
             // var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
             //     console.log(gmtDateTime);
-            var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
-            console.log(local)
-
+            // var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
+            // console.log(local)
+            //
 
 
       })
@@ -424,7 +424,10 @@ class Howls_Me extends React.Component {
           <div className="tl-body">
             <div className="tl-entry">
 
-            <div className="tl-time">  {moment.utc(moment(dyanamicData.DateCreated).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')}</div>{" "}
+            <div className="tl-time">
+
+               {  moment(new Date(dyanamicData.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
+             </div>{" "}
 
             <div className="tl-icon btn-icon-round btn-icon btn-icon-thin ">
                 <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="40" width="40"/></div>
@@ -528,8 +531,8 @@ class Howls_Pack extends React.Component {
 
             // var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
             //     console.log(gmtDateTime);
-            var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
-            console.log(local)
+            // var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
+            // console.log(local)
 
 
 
@@ -581,7 +584,8 @@ class Howls_Pack extends React.Component {
           <div className="tl-body">
             <div className="tl-entry">
 
-            <div className="tl-time">  {moment.utc(moment(dyanamicData.DateCreated).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')}</div>{" "}
+            <div className="tl-time">
+               {  moment(new Date(dyanamicData.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}</div>{" "}
 
             <div className="tl-icon btn-icon-round btn-icon btn-icon-thin ">
                 <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="40" width="40"/></div>

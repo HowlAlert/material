@@ -36,14 +36,7 @@ class Pack extends React.Component {
 
         })
         console.log(this.state.time);
-        // var ms = this.state.time;
-        // console.log(ms)
-        //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
 
-            // var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
-            //     console.log(gmtDateTime);
-            var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
-            console.log(local)
 
 
 
@@ -83,7 +76,7 @@ class Pack extends React.Component {
                                    {dyanamicData.HowlType === "1"  ?  `You HOWLED at ${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName}`
                                                  :  `${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName} HOWLED back `}{" "}
                                        {"on " +
-                                           moment.utc(moment(dyanamicData.DateCreated).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')
+                                           moment(new Date(dyanamicData.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')
 
                                         }</div>
 

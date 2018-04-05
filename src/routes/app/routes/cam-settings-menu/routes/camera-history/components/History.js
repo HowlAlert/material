@@ -21,7 +21,6 @@ class History extends React.Component {
       imgid:'',
       DateCreated:'',
       redirectToReferrer: false,
-      redirectToAlert: false,
       disabledBack: true,
       disabledMore: false
     };
@@ -129,12 +128,15 @@ class History extends React.Component {
                           {
                              this.setState({
                                  disabledMore: true,
-                                 redirectToAlert:true
+
                              })
 
                           }
                           else {
-                            this.setState({ disabledMore: false })
+                            this.setState({
+                              disabledMore: false
+
+                            })
 
                           }
 
@@ -142,25 +144,12 @@ class History extends React.Component {
                 })
     }
 
-    handleEnlarge(value1,value2) {
-
-
-          // console.log(imgid);
-          this.setState({
-            redirectToReferrer: true ,
-            imgid: `${value1}`,
-            DateCreated: `${value2}`
-
-
-          })
-
-    }
 
     handleNext(date,value){
 
       var today = moment(date).format('MM/DD/YYYY');
       console.log(today);
-
+      console.log(this.state.counter)
       this.setState({
           counter: this.state.counter + 1,
           disabledBack: false,
@@ -251,14 +240,17 @@ class History extends React.Component {
                          var total = this.state.array_count;
                          console.log(total);
 
-                         if(total === 0)
-                          {  alert("No Images Recorded!");
+                         if(total === 0 || total < 20)
+                          {
+                             alert("No Images Recorded!");
 
-                                // this.setState({
-                                //      disabledMore: true,
-                                //      disableBack:true
-                                //
-                              //});
+                                this.setState({
+                                     disabledMore: true,
+                                     disableBack:false
+
+                              });
+
+                                console.log(this.state.counter)
                           }
 
                     } )
@@ -267,12 +259,14 @@ class History extends React.Component {
 
 
 
-handleBack(date,value)
-{
+handleBack(date,value){
+
   var today = moment(date).format('MM/DD/YYYY');
   console.log(today);
 console.log(this.state.counter);
-  this.setState({ counter: this.state.counter - 1 });
+  this.setState({
+    counter: this.state.counter - 1
+  });
 
 var starthours = "00";
 var startminutes = "00";
@@ -310,7 +304,7 @@ console.log(EndTime);
                   "CameraID": cookie.load('cameraid'),
                   "StartTime": StartTime,
                   "EndTime": EndTime,
-                  "PageNumber": this.state.counter
+                  "PageNumber": this.state.counter-2
                 }),
                  headers: new Headers({'content-type': 'application/json'}),
                })
@@ -350,20 +344,36 @@ console.log(EndTime);
                                  });
 
                                  console.log(arr3.length);
-                                 this.setState({  data1:arr3 ,
-                                   array_count:arr3.length ,
+                                 this.setState({
+                                    data1:arr3 ,
+                                    array_count:arr3.length ,
+                                    counter: this.state.counter
 
                                  })
 
                      console.log(this.state.data1);
-                     var total = this.state.array_count;
-                     console.log(total);
+                     // var total = this.state.array_count;
+                     // console.log(total);
 
-                     if(total === 0)
-                      {  alert("No Images Recorded!");
+                     var count = this.state.counter-1;
+                     console.log(count);
+
+                     if(count === 1)
+                      {
+                         // alert("No Images Recorded!");
+                            console.log(this.state.disabledMore);
+                              console.log(this.state.disableBack);
+
+                            this.setState({
+                                  disabledMore: false,
+                                disabledBack: true
 
 
+                             });
+
+                            // console.log(this.state.counter);
                       }
+
 
                 } )
             })
@@ -553,7 +563,7 @@ console.log(EndTime);
                       {
                         this.setState({
                           disabledMore: true ,
-                          redirectToAlert:true
+
 
                         })
                       }
@@ -563,6 +573,21 @@ console.log(EndTime);
                       }
 
                 } )
+            })
+
+      }
+
+
+      handleEnlarge(value1,value2) {
+
+
+            // console.log(imgid);
+            this.setState({
+              redirectToReferrer: true ,
+              imgid: `${value1}`,
+              DateCreated: `${value2}`
+
+
             })
 
       }
@@ -579,6 +604,11 @@ render() {
 
   var today = moment(this.state.startDate).format('LL');
   console.log(today);
+
+  var img_Date = this.state.DateCreated +" "+ 'UTC' ;      //Convert UTC to Local Time
+  var date = new Date(img_Date);
+  var current = date.toString();
+
 
 const { redirectToReferrer} = this.state                    //To Zoom the Image
   if(this.state.redirectToReferrer === true)
@@ -598,7 +628,11 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
                 <RaisedButton primary label="Exit" onClick={(e)=>this.handleExit(e)}/>
         </span>
       <div>
-        <center>Details:{this.state.DateCreated}</center>
+        <center>Details :{" "}
+
+          {moment(current).format('DD-MMM-YYYY hh:mm:ss A')}
+           {/* {moment.utc(moment(this.state.DateCreated).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").utcOffset(offset).format('DD-MMM-YYYY h:mm A')} */}
+        </center>
       </div>
       </div>
     </div>
@@ -609,6 +643,10 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
 var cameraName = cookie.load('cameraName');
 
 console.log(cameraName);
+var fname=cookie.load('FirstName');
+ console.log(fname);
+var lname = cookie.load('LastName');
+
       return (
 
 
@@ -667,10 +705,13 @@ console.log(cameraName);
 
 
               :
+
+
+              <div>
+                <h2>"Hello! { " "+fname+" "+lname} ...... "</h2>
               <div>
 
-
-              <h2>Recorded Images on "{today}" ...... </h2>
+              <h2>Recorded Images on "{today}"  </h2>
               <div className="row">
 
               {
@@ -697,7 +738,11 @@ console.log(cameraName);
 
 
             </span>
-             </div>}
+             </div>
+           </div>
+
+
+           }
               </div>
 
             </div>

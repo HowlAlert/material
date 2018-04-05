@@ -17,358 +17,369 @@ class History extends React.Component {
       data: [],
       data1:[],
       startDate: moment(),
-      counter: 2,
+      // counter: 2,
       imgid:'',
       DateCreated:'',
-      redirectToReferrer: false,
-      redirectToAlert: false,
-      disabledBack: true,
-      disabledMore: false
+      // redirectToReferrer: false,
+      // redirectToAlert: false,
+      // disabledBack: true,
+      // disabledMore: false
     };
-      this.interval = null;
-      this.handleChange = this.handleChange.bind(this);
+      // this.interval = null;
+      // this.handleChange = this.handleChange.bind(this);
 
 
   }
 
 
-  handleChange(date) {
+  // handleChange(date) {
+  //
+  //     this.setState({
+  //       startDate: date,
+  //       counter:2,
+  //
+  //     });
+  //
+  //     var today = moment(date).format('MM/DD/YYYY');
+  //     console.log(today);
+  //
+  //
+  //   var starthours = "00";
+  //   var startminutes = "00";
+  //   var startsecond = "00";
+  //   var endhours = "23";
+  //   var endminutes = "59";
+  //   var endsecond = "00";
+  //
+  //   var st= starthours + ':' + startminutes + ':' + startsecond;
+  //   var et= endhours + ':' + endminutes + ':' + endsecond;
+  //   var StartTime = today + " " + st
+  //   console.log(StartTime);
+  //   var EndTime = today + " " + et
+  //   console.log(EndTime);
+  //
+  //
+  //
+  //             var that = this;
+  //              var urls = [];
+  //              var a1 =[];
+  //              // console.log(this.state.counter);
+  //
+  //              const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+  //
+  //                  fetch(BaseURL,
+  //                  {
+  //                   method: "POST",
+  //                   body: JSON.stringify({
+  //                     "UserID":cookie.load('Id'),
+  //                     "UserToken":cookie.load('UserToken'),
+  //                     "CameraID": cookie.load('cameraid'),
+  //                     "StartTime": StartTime,
+  //     	              "EndTime": EndTime,
+  //                     "PageNumber": 1
+  //                   }),
+  //                    headers: new Headers({'content-type': 'application/json'}),
+  //                  })
+  //              .then((Response)=> Response.json())
+  //              .then((findresponse)=>{
+  //                console.log(findresponse);
+  //                this.setState({
+  //                   data:findresponse.GetUserCameraImagesResult.CameraImages,
+  //                   length:findresponse.GetUserCameraImagesResult.CameraImages.length,
+  //                   // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+  //                 })
+  //                 Promise.all(
+  //                      findresponse.GetUserCameraImagesResult.CameraImages.map(
+  //                           element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+  //                                                 {
+  //
+  //                                                      method: "POST",
+  //                                                      body: JSON.stringify({
+  //                                                        "url":element.ImageURL
+  //                                                      }),
+  //
+  //                                                     headers: new Headers({'content-type':'application/json'}),
+  //
+  //                                               })
+  //                             .then(res => res.json())
+  //                         )
+  //                       ).then(datas => {
+  //
+  //                         this.state.data.forEach((element, i) => {
+  //                           urls[i] = element
+  //
+  //                         })
+  //                       console.log(urls);
+  //                       let arr3 = [];                                  // to combine the results of the two arrays
+  //                               urls.forEach((itm, i) => {
+  //                                        arr3.push(Object.assign({}, itm, datas[i]));
+  //                                    });
+  //
+  //                                    console.log(arr3.length);
+  //                                    this.setState({  data1:arr3 ,
+  //                                      array_count:arr3.length ,
+  //
+  //                                    })
+  //
+  //                        console.log(this.state.data1);
+  //                        var total = this.state.array_count;
+  //                        console.log(total);
+  //
+  //                        if(total === 0)
+  //                         {
+  //                           // alert("No Images Recorded!");
+  //                            this.setState({
+  //                                disabledMore: true,
+  //                                redirectToAlert:true
+  //                            })
+  //
+  //                         }
+  //                         else {
+  //                           this.setState({ disabledMore: false })
+  //
+  //                         }
+  //
+  //                   } )
+  //               })
+  //   }
 
+
+//
+//     handleNext(date,value){
+//
+//       var today = moment(date).format('MM/DD/YYYY');
+//       console.log(today);
+//
+//       this.setState({
+//           counter: this.state.counter + 1,
+//           disabledBack: false,
+//       });
+//
+//     var starthours = "00";
+//     var startminutes = "00";
+//     var startsecond = "00";
+//     var endhours = "23";
+//     var endminutes = "59";
+//     var endsecond = "00";
+//
+//     var st= starthours + ':' + startminutes + ':' + startsecond;
+//     var et= endhours + ':' + endminutes + ':' + endsecond;
+//     var StartTime = today + " " + st
+//     console.log(StartTime);
+//     var EndTime = today + " " + et
+//     console.log(EndTime);
+//
+//
+//
+//               var that = this;
+//                var urls = [];
+//                var a1 =[];
+//                // console.log(this.state.counter);
+//
+//
+//                const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+//
+//                    fetch(BaseURL,
+//                    {
+//                     method: "POST",
+//                     body: JSON.stringify({
+//                       // "UserID": "49",
+//                       // "UserToken": "Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==",
+//                       // "CameraID": "HDXQ-036404-EBFGG",
+//                       "UserID":cookie.load('Id'),
+//                       "UserToken":cookie.load('UserToken'),
+//                       "CameraID": cookie.load('cameraid'),
+//                       "StartTime": StartTime,
+//       	              "EndTime": EndTime,
+//                       "PageNumber": this.state.counter
+//                     }),
+//                      headers: new Headers({'content-type': 'application/json'}),
+//                    })
+//                .then((Response)=> Response.json())
+//                .then((findresponse)=>{
+//                  console.log(findresponse);
+//                  this.setState({
+//                     data:findresponse.GetUserCameraImagesResult.CameraImages,
+//                     length:findresponse.GetUserCameraImagesResult.CameraImages.length,
+//                     // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+//                   })
+//                   Promise.all(
+//                        findresponse.GetUserCameraImagesResult.CameraImages.map(
+//                             element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+//                                                   {
+//
+//                                                        method: "POST",
+//                                                        body: JSON.stringify({
+//                                                          "url":element.ImageURL
+//                                                        }),
+//
+//                                                       headers: new Headers({'content-type':'application/json'}),
+//
+//                                                 })
+//                               .then(res => res.json())
+//                           )
+//                         ).then(datas => {
+//
+//                           this.state.data.forEach((element, i) => {
+//                             urls[i] = element
+//
+//                           })
+//                         console.log(urls);
+//                         let arr3 = [];                                  // to combine the results of the two arrays
+//                                 urls.forEach((itm, i) => {
+//                                          arr3.push(Object.assign({}, itm, datas[i]));
+//                                      });
+//
+//                                      console.log(arr3.length);
+//                                      this.setState({  data1:arr3 ,
+//                                        array_count:arr3.length ,
+//
+//                                      })
+//
+//                          console.log(this.state.data1);
+//                          var total = this.state.array_count;
+//                          console.log(total);
+//
+//                          // if(total === 0)
+//                          //  {  alert("No Images Recorded!");
+//                          //
+//                          //        // this.setState({
+//                          //        //      disabledMore: true,
+//                          //        //      disableBack:true
+//                          //        //
+//                          //      //});
+//                          //  }
+//
+//                     } )
+//                 })
+//     }
+//
+//
+//
+// handleBack(date,value)
+// {
+//   var today = moment(date).format('MM/DD/YYYY');
+//   console.log(today);
+// console.log(this.state.counter);
+//   this.setState({ counter: this.state.counter - 1 });
+//
+// var starthours = "00";
+// var startminutes = "00";
+// var startsecond = "00";
+// var endhours = "23";
+// var endminutes = "59";
+// var endsecond = "00";
+//
+// var st= starthours + ':' + startminutes + ':' + startsecond;
+// var et= endhours + ':' + endminutes + ':' + endsecond;
+// var StartTime = today + " " + st
+// console.log(StartTime);
+// var EndTime = today + " " + et
+// console.log(EndTime);
+//
+//
+//
+//           var that = this;
+//            var urls = [];
+//            var a1 =[];
+//            // console.log(this.state.counter);
+//
+//
+//            const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+//
+//                fetch(BaseURL,
+//                {
+//                 method: "POST",
+//                 body: JSON.stringify({
+//                   // "UserID": "49",
+//                   // "UserToken": "Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==",
+//                   // "CameraID": "HDXQ-036404-EBFGG",
+//                   "UserID":cookie.load('Id'),
+//                   "UserToken":cookie.load('UserToken'),
+//                   "CameraID": cookie.load('cameraid'),
+//                   "StartTime": StartTime,
+//                   "EndTime": EndTime,
+//                   "PageNumber": this.state.counter
+//                 }),
+//                  headers: new Headers({'content-type': 'application/json'}),
+//                })
+//            .then((Response)=> Response.json())
+//            .then((findresponse)=>{
+//              console.log(findresponse);
+//              this.setState({
+//                 data:findresponse.GetUserCameraImagesResult.CameraImages,
+//                 length:findresponse.GetUserCameraImagesResult.CameraImages.length,
+//                 // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+//               })
+//               Promise.all(
+//                    findresponse.GetUserCameraImagesResult.CameraImages.map(
+//                         element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+//                                               {
+//
+//                                                    method: "POST",
+//                                                    body: JSON.stringify({
+//                                                      "url":element.ImageURL
+//                                                    }),
+//
+//                                                   headers: new Headers({'content-type':'application/json'}),
+//
+//                                             })
+//                           .then(res => res.json())
+//                       )
+//                     ).then(datas => {
+//
+//                       this.state.data.forEach((element, i) => {
+//                         urls[i] = element
+//
+//                       })
+//                     console.log(urls);
+//                     let arr3 = [];                                  // to combine the results of the two arrays
+//                             urls.forEach((itm, i) => {
+//                                      arr3.push(Object.assign({}, itm, datas[i]));
+//                                  });
+//
+//                                  console.log(arr3.length);
+//                                  this.setState({  data1:arr3 ,
+//                                    array_count:arr3.length ,
+//
+//                                  })
+//
+//                      console.log(this.state.data1);
+//                      var total = this.state.array_count;
+//                      console.log(total);
+//
+//                      // if(total === 0)
+//                      //  {  alert("No Images Recorded!");
+//                      //
+//                      //
+//                      //  }
+//
+//                 } )
+//             })
+//
+// }
+
+
+handleEnlarge(value1,value2) {
+
+
+      // console.log(imgid);
       this.setState({
-        startDate: date,
-        counter:2,
-
-      });
-
-      var today = moment(date).format('MM/DD/YYYY');
-      console.log(today);
+        redirectToReferrer: true ,
+        imgid: `${value1}`,
+        DateCreated: `${value2}`
 
 
-    var starthours = "00";
-    var startminutes = "00";
-    var startsecond = "00";
-    var endhours = "23";
-    var endminutes = "59";
-    var endsecond = "00";
+      })
 
-    var st= starthours + ':' + startminutes + ':' + startsecond;
-    var et= endhours + ':' + endminutes + ':' + endsecond;
-    var StartTime = today + " " + st
-    console.log(StartTime);
-    var EndTime = today + " " + et
-    console.log(EndTime);
+}
 
-
-
-              var that = this;
-               var urls = [];
-               var a1 =[];
-               // console.log(this.state.counter);
-
-               const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
-
-                   fetch(BaseURL,
-                   {
-                    method: "POST",
-                    body: JSON.stringify({
-                      "UserID":cookie.load('Id'),
-                      "UserToken":cookie.load('UserToken'),
-                      "CameraID": cookie.load('cameraid'),
-                      "StartTime": StartTime,
-      	              "EndTime": EndTime,
-                      "PageNumber": 1
-                    }),
-                     headers: new Headers({'content-type': 'application/json'}),
-                   })
-               .then((Response)=> Response.json())
-               .then((findresponse)=>{
-                 console.log(findresponse);
-                 this.setState({
-                    data:findresponse.GetUserCameraImagesResult.CameraImages,
-                    length:findresponse.GetUserCameraImagesResult.CameraImages.length,
-                    // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
-                  })
-                  Promise.all(
-                       findresponse.GetUserCameraImagesResult.CameraImages.map(
-                            element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
-                                                  {
-
-                                                       method: "POST",
-                                                       body: JSON.stringify({
-                                                         "url":element.ImageURL
-                                                       }),
-
-                                                      headers: new Headers({'content-type':'application/json'}),
-
-                                                })
-                              .then(res => res.json())
-                          )
-                        ).then(datas => {
-
-                          this.state.data.forEach((element, i) => {
-                            urls[i] = element
-
-                          })
-                        console.log(urls);
-                        let arr3 = [];                                  // to combine the results of the two arrays
-                                urls.forEach((itm, i) => {
-                                         arr3.push(Object.assign({}, itm, datas[i]));
-                                     });
-
-                                     console.log(arr3.length);
-                                     this.setState({  data1:arr3 ,
-                                       array_count:arr3.length ,
-
-                                     })
-
-                         console.log(this.state.data1);
-                         var total = this.state.array_count;
-                         console.log(total);
-
-                         if(total === 0)
-                          {
-                            // alert("No Images Recorded!");
-                             this.setState({
-                                 disabledMore: true,
-                                 redirectToAlert:true
-                             })
-
-                          }
-                          else {
-                            this.setState({ disabledMore: false })
-
-                          }
-
-                    } )
-                })
-    }
-
-    handleEnlarge(value1,value2) {
-
-
-          // console.log(imgid);
-          this.setState({
-            redirectToReferrer: true ,
-            imgid: `${value1}`,
-            DateCreated: `${value2}`
-
-
-          })
-
-    }
-
-    handleNext(date,value){
-
-      var today = moment(date).format('MM/DD/YYYY');
-      console.log(today);
-
-      this.setState({
-          counter: this.state.counter + 1,
-          disabledBack: false,
-      });
-
-    var starthours = "00";
-    var startminutes = "00";
-    var startsecond = "00";
-    var endhours = "23";
-    var endminutes = "59";
-    var endsecond = "00";
-
-    var st= starthours + ':' + startminutes + ':' + startsecond;
-    var et= endhours + ':' + endminutes + ':' + endsecond;
-    var StartTime = today + " " + st
-    console.log(StartTime);
-    var EndTime = today + " " + et
-    console.log(EndTime);
-
-
-
-              var that = this;
-               var urls = [];
-               var a1 =[];
-               // console.log(this.state.counter);
-
-
-               const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
-
-                   fetch(BaseURL,
-                   {
-                    method: "POST",
-                    body: JSON.stringify({
-                      // "UserID": "49",
-                      // "UserToken": "Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==",
-                      // "CameraID": "HDXQ-036404-EBFGG",
-                      "UserID":cookie.load('Id'),
-                      "UserToken":cookie.load('UserToken'),
-                      "CameraID": cookie.load('cameraid'),
-                      "StartTime": StartTime,
-      	              "EndTime": EndTime,
-                      "PageNumber": this.state.counter
-                    }),
-                     headers: new Headers({'content-type': 'application/json'}),
-                   })
-               .then((Response)=> Response.json())
-               .then((findresponse)=>{
-                 console.log(findresponse);
-                 this.setState({
-                    data:findresponse.GetUserCameraImagesResult.CameraImages,
-                    length:findresponse.GetUserCameraImagesResult.CameraImages.length,
-                    // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
-                  })
-                  Promise.all(
-                       findresponse.GetUserCameraImagesResult.CameraImages.map(
-                            element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
-                                                  {
-
-                                                       method: "POST",
-                                                       body: JSON.stringify({
-                                                         "url":element.ImageURL
-                                                       }),
-
-                                                      headers: new Headers({'content-type':'application/json'}),
-
-                                                })
-                              .then(res => res.json())
-                          )
-                        ).then(datas => {
-
-                          this.state.data.forEach((element, i) => {
-                            urls[i] = element
-
-                          })
-                        console.log(urls);
-                        let arr3 = [];                                  // to combine the results of the two arrays
-                                urls.forEach((itm, i) => {
-                                         arr3.push(Object.assign({}, itm, datas[i]));
-                                     });
-
-                                     console.log(arr3.length);
-                                     this.setState({  data1:arr3 ,
-                                       array_count:arr3.length ,
-
-                                     })
-
-                         console.log(this.state.data1);
-                         var total = this.state.array_count;
-                         console.log(total);
-
-                         // if(total === 0)
-                         //  {  alert("No Images Recorded!");
-                         //
-                         //        // this.setState({
-                         //        //      disabledMore: true,
-                         //        //      disableBack:true
-                         //        //
-                         //      //});
-                         //  }
-
-                    } )
-                })
-    }
-
-
-
-handleBack(date,value)
+handleExit()
 {
-  var today = moment(date).format('MM/DD/YYYY');
-  console.log(today);
-console.log(this.state.counter);
-  this.setState({ counter: this.state.counter - 1 });
+  this.setState({
+      redirectToReferrer:false ,
 
-var starthours = "00";
-var startminutes = "00";
-var startsecond = "00";
-var endhours = "23";
-var endminutes = "59";
-var endsecond = "00";
-
-var st= starthours + ':' + startminutes + ':' + startsecond;
-var et= endhours + ':' + endminutes + ':' + endsecond;
-var StartTime = today + " " + st
-console.log(StartTime);
-var EndTime = today + " " + et
-console.log(EndTime);
-
-
-
-          var that = this;
-           var urls = [];
-           var a1 =[];
-           // console.log(this.state.counter);
-
-
-           const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
-
-               fetch(BaseURL,
-               {
-                method: "POST",
-                body: JSON.stringify({
-                  // "UserID": "49",
-                  // "UserToken": "Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==",
-                  // "CameraID": "HDXQ-036404-EBFGG",
-                  "UserID":cookie.load('Id'),
-                  "UserToken":cookie.load('UserToken'),
-                  "CameraID": cookie.load('cameraid'),
-                  "StartTime": StartTime,
-                  "EndTime": EndTime,
-                  "PageNumber": this.state.counter
-                }),
-                 headers: new Headers({'content-type': 'application/json'}),
-               })
-           .then((Response)=> Response.json())
-           .then((findresponse)=>{
-             console.log(findresponse);
-             this.setState({
-                data:findresponse.GetUserCameraImagesResult.CameraImages,
-                length:findresponse.GetUserCameraImagesResult.CameraImages.length,
-                // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
-              })
-              Promise.all(
-                   findresponse.GetUserCameraImagesResult.CameraImages.map(
-                        element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
-                                              {
-
-                                                   method: "POST",
-                                                   body: JSON.stringify({
-                                                     "url":element.ImageURL
-                                                   }),
-
-                                                  headers: new Headers({'content-type':'application/json'}),
-
-                                            })
-                          .then(res => res.json())
-                      )
-                    ).then(datas => {
-
-                      this.state.data.forEach((element, i) => {
-                        urls[i] = element
-
-                      })
-                    console.log(urls);
-                    let arr3 = [];                                  // to combine the results of the two arrays
-                            urls.forEach((itm, i) => {
-                                     arr3.push(Object.assign({}, itm, datas[i]));
-                                 });
-
-                                 console.log(arr3.length);
-                                 this.setState({  data1:arr3 ,
-                                   array_count:arr3.length ,
-
-                                 })
-
-                     console.log(this.state.data1);
-                     var total = this.state.array_count;
-                     console.log(total);
-
-                     // if(total === 0)
-                     //  {  alert("No Images Recorded!");
-                     //
-                     //
-                     //  }
-
-                } )
-            })
-
+  });
 }
 componentDidMount(){
 
@@ -476,13 +487,6 @@ console.log(EndTime);
 
       }
 
-handleExit()
-{
-  this.setState({
-      redirectToReferrer:false ,
-
-  });
-}
 
 render() {
 
@@ -492,6 +496,14 @@ render() {
 
   var total = this.state.array_count;
   console.log(total);
+
+  var img_Date = this.state.DateCreated +" "+ 'UTC' ;      //Convert UTC to Local Time
+  console.log(img_Date)
+  var date = new Date(img_Date);
+  var current = date.toString();
+
+  console.log(current);
+
 
 const { redirectToReferrer} = this.state                    //To Zoom the Image
   if(this.state.redirectToReferrer === true)
@@ -511,7 +523,9 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
                 <RaisedButton primary label="Exit" onClick={(e)=>this.handleExit(e)}/>
         </span>
       <div>
-        <center>Details:{this.state.DateCreated}</center>
+        <center>Details :{" "}
+            {moment(current).format('DD-MMM-YYYY hh:mm:ss A')}
+        </center>
       </div>
       </div>
     </div>

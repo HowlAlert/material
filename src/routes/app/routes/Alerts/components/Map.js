@@ -2,6 +2,7 @@ import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import cookie from 'react-cookies';
 import RaisedButton from 'material-ui/RaisedButton';
+import moment from 'moment';
 
 const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
 
@@ -110,7 +111,9 @@ render() {
 
             <Marker
                  title={'Alert Details'}
-                 name={"Alert Details:"+ AlertAddress +" " +"on " + AlertDate }
+                 name={"Alert Details:"+ AlertAddress +" " +"on " +
+                  moment(new Date(AlertDate +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')
+                  }
                  onClick={this.onMarkerClicked}
                 position={{lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')}}
                 icon={{
@@ -131,10 +134,10 @@ render() {
                         </div>
                   </InfoWindow>
 
-                  <RaisedButton  primary label="Alert Location" />
+                  {/* <RaisedButton  primary label="Alert Location" /> */}
                   <span className="float-right">
 
-                    <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="<- Back" />
+                    <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="Exit" />
 
                    </span>
 

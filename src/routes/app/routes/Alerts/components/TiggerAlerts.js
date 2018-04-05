@@ -8,6 +8,9 @@ import cookie from 'react-cookies';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+import moment from 'moment';
+
+
 
 class Alerts extends React.Component {
 
@@ -325,13 +328,15 @@ class Alerts extends React.Component {
 
         handleEnlarge(value1,value2,value3,value4) {
 
+          // var imgid = `${value3}`;
+          // console.log(imgid);
 
               // console.log(imgid);
               this.setState({
                 redirectToReferrer: true ,
                 imgid: `${value1}`,
                 cameraid: `${value2}`,
-                Name:`${value3}`,
+                name:`${value3}`,
                 date:`${value4}`
 
 
@@ -347,6 +352,12 @@ class Alerts extends React.Component {
         }
 
   render() {
+
+
+    //
+    // var img_Date = this.state.DateCreated +" "+ 'UTC' ;      //Convert UTC to Local Time
+    // var date = new Date(img_Date);
+    // var current = date.toString();
 
     const { redirectToReferrer} = this.state                    //To Zoom the Image
       if(this.state.redirectToReferrer === true)
@@ -367,7 +378,10 @@ class Alerts extends React.Component {
 
             </span>
           <div>
-            <center>Activity is detected in {this.state.Name} on {this.state.date} </center>
+            <center>Activity is detected in {this.state.name} on {" "}
+              {moment(new Date(this.state.date +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
+
+            </center>
           </div>
           </div>
         </div>
@@ -411,7 +425,8 @@ class Alerts extends React.Component {
                      <div className="box-body "> */}
                         <MenuItem onClick={()=>this.handleEnlarge(dyanamicData1.GetImageDataResult,dyanamicData1.getRoomCamera.CameraID,dyanamicData1.getRoomCamera.Name,dyanamicData1.DateCreated)}>
                            {dyanamicData1.Text}
-                            {dyanamicData1.DateCreated}
+                            {/* {dyanamicData1.DateCreated} */}
+                            {moment(new Date(dyanamicData1.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
 
                          </MenuItem>
                             {/* <span className="float-right">
@@ -424,7 +439,7 @@ class Alerts extends React.Component {
 
                          <div>
                              {dyanamicData1.DateCreated}{" "}
-                       </div> */} 
+                       </div> */}
 
 
                 {/* <span className="float-left">

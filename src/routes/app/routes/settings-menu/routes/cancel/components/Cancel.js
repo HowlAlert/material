@@ -15,10 +15,16 @@ import VerifyCancelCode from '../../verifycancel/';
       data:[],
       code:'',
 
+
     };
+
   }
 
+
+
   handleCode(event) {
+
+
      event.preventDefault();
       const target = event.target;
       const value = target.type === target.value;
@@ -27,6 +33,7 @@ import VerifyCancelCode from '../../verifycancel/';
    this.setState({
          code: target.value
        });
+
        console.log(target.value) ;
        return target.value;
    }
@@ -35,8 +42,7 @@ import VerifyCancelCode from '../../verifycancel/';
   handleNext(event) {
 
     var entered = this.state.code;
-    console.log(entered);
-
+    console.log(entered );
     var saved = cookie.load('CancellationCode');
     console.log(saved);
 
@@ -44,15 +50,30 @@ import VerifyCancelCode from '../../verifycancel/';
     console.log(silentcode);
 
 
-    if(entered === saved){
-      this.setState({ redirectToReferrer: true })
+    if(entered ==''){
+      alert("Please enter old cancel code!");
+    }
+    const re = /^[0-9\b]+$/;
+
+    if(re.test(entered)=='' && entered!=''){
+      alert("Cancel Code is a 4 digits number!");
+      window.location.reload();
+    }
+    else if(re.test(entered)!='' && entered!='' && entered != saved){
+
+      alert("The cancel code you entered does not match your current cancel code. Please try again ");
+      window.location.reload();
+       this.setState({ redirectToReferrer: false })
 
     }
- else
-   {
-     alert("The cancel code you entered does not match your current cancel code. Please try again ");
-      this.setState({ redirectToReferrer: false })
-   }
+   else if(entered === saved)
+    {
+       this.setState({ redirectToReferrer: true })
+     }
+
+
+
+
 
 }
 
@@ -82,7 +103,7 @@ import VerifyCancelCode from '../../verifycancel/';
                     </div>
 
                 </div>
-              
+
     );
   }
 }
