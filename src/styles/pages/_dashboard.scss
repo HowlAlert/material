@@ -24,6 +24,7 @@
     position: relative;
     border-radius: $border-radius-lg;
 
+
     .box-top,
     .box-bottom {
       height: 100px;
@@ -115,3 +116,71 @@
     }
   }
 }
+
+.homeAlert{
+
+}
+.homeMap > div > div > div {
+  width:91%!important;
+  height:85%!important;
+}
+.homeMap{height:95%}
+
+.article-title-header{
+
+}
+.headerLogo{margin-left:2px!important;}
+
+.detectClass{
+  color: #888;
+font-size: 16px;
+line-height: 9px;
+margin-top: 5px;
+display: block;
+float: left;
+}
+.timeClass{
+  font-size: 20px;
+      line-height: 41px;
+      display: block
+}
+.alertImage{
+  width: 92px;
+    height: 86px;
+    border-radius: 6px;
+}
+
+.blueButton{
+  background-color: #3287c5;
+    padding: 11px 22px;
+    color: #fff;
+    border-radius: 49px;
+    font-size: 16px;
+    /* text-transform: uppercase; */
+    font-weight: 100;
+    letter-spacing: 0.5px;
+}
+
+.welcomeText{padding-left:0px!important;}
+.welcomeText h1{
+  font-size: 20px;
+    line-height: 25px;
+    padding-top: 0px;
+    margin-top: 0px
+}
+.home-box{
+  padding-top:0px!important;
+}
+.topRightNav{
+  margin-right: 150px;
+    position: absolute;
+    right: 0px;
+    top: -5px;
+}
+.badgeCustom{
+  top:-3px!important;
+}
+.flLeft{float:left;}
+
+.slimScrollDiv .nav{padding-top:10px;}
+.sidebar-header img{margin-left:3px!important;}
