@@ -254,7 +254,7 @@ console.log("here");
       )
     }
 
-    
+
 
     const{redirectToHome}=this.state
        if(redirectToHome){
@@ -318,16 +318,16 @@ console.log("here");
     return (
 
   <div className="body-inner">
-        <div className="card bg-white">
-          <div className="card-content">
+  <div className="card bg-white registerCard">
+    <div className="card-content regContent">
 
           <form className="form-horizontal">
-          <ul className="nav" ref={(c) => { this.nav = c; }}>
-            <li className="nav-header"><span></span></li>
-            <li><FlatButton href="/mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
-            </li>
-            </ul>
-            <img src="assets/images/HOWL.png" alt="HOWL" />
+
+            <img className="littleWolf2" src="assets/images/HOWL.png" alt="HOWL" />
+
+
+
+
 
               <fieldset>
                 <div className="form-group">
@@ -353,10 +353,10 @@ console.log("here");
               </fieldset>
 
 
-              <div className="box-body text-center">
-              <RaisedButton style={mWidthStyle} label="SIGN IN -->" primary onClick={(e)=>this.handleLogin(e)}/>
-
-            </div>
+              <div className="regButtons">
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/#/app/mainLogin">CANCEL</a>
+                <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleLogin(e)}>LOGIN</div>
+              </div>
 
 
             </form>
