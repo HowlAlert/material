@@ -159,6 +159,7 @@ class SidebarContent extends React.Component {
      this.setState({ redirectToReferrer: true })
       }
       else{
+        console.log('fail');
          this.setState({ redirectToReferrer: false })
       }
     })

@@ -37,7 +37,7 @@ checkboxState: true
   }
   }
 
-  
+
 
     handleNext(event){
     event.preventDefault();
@@ -205,20 +205,28 @@ this.setState({
     return (
       <div className="body-inner">
 
-        <div className="card bg-white">
-          <div className="card-content">
+      <div className="card bg-white registerCard">
+        <div className="card-content regContent">
+
+        {/*
             <section className="logo text-center">
               <h1><a href="#/">{this.state.brand}</a></h1>
-            </section>
+            </section>*/}
 
             <form className="form-horizontal">
+
+            {/*
             <ul className="nav" ref={(c) => { this.nav = c; }}>
               <li className="nav-header"><span></span></li>
               <li><FlatButton href="mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
               </li>
-              </ul>
-              <center><img src="assets/images/HOWL2.png" alt="HOWL" /></center>
-              <p className="hero-title text-center">Create Account</p>
+              </ul>*/}
+
+
+              <div className="regLeft">
+               <p className="hero-title text-center registerHeader">Create Account</p>
+              </div>
+
               <fieldset>
                 <div className="form-group">
                   <TextField
@@ -282,9 +290,11 @@ this.setState({
               <div className="card-action no-border text-left">
 
               </div>
-              <div className="box-body text-center">
-              <RaisedButton style={mWidthStyle} label="NEXT -->" onClick={(e)=>this.handleNext(e)}/><div className="divider" />
-            </div>
+
+              <div className="regButtons">
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/#/app/mainLogin">BACK</a>
+                <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleNext(e)}>NEXT</div>
+              </div>
 
             </form>
           </div>

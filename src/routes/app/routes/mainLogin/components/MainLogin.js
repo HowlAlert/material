@@ -1,3 +1,4 @@
+
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import FlatButton from 'material-ui/FlatButton';
@@ -14,7 +15,7 @@ import { sessionReducer, sessionService } from 'redux-react-session';
 import PageWelcome from 'routes/welcome/';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { Route, Switch, Router, BrowserRouter } from 'react-router-dom';
-
+import { createStore, combineReducers } from 'redux';
 const Hero = () => (
   <div className="text-center">
   <img src="assets/images/HOWL.png" alt="HOWL" />
@@ -33,6 +34,13 @@ const  printcode= {
 const  policy= {
     color: '#6A6A6A'
 };
+
+
+
+
+
+
+
 
 
 class MainLogin extends React.Component {
@@ -75,6 +83,11 @@ class MainLogin extends React.Component {
           GetUserPack:findresponse.LoginWithGoogleResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithGoogleResult.GetUserHomeAddress,
         });console.log(this.state.GetUser);
+        // if(this.state.ResultStatus.Status==="1"){
+
+          // cookie.save('Id', this.state.GetUser.ID);
+          //
+          // cookie.save('UserToken', this.state.GetUser.UserToken);
 
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
@@ -111,7 +124,8 @@ class MainLogin extends React.Component {
               this.setState({ redirectToSilenceCode: true })
             }
 
-
+          //  const expires = new Date()
+            //expires.setDate(now.getDate() + 14)
             console.log(this.state.GetUser);
             console.log("status"),
             cookie.save('Email', this.state.GetUser.Email);
@@ -165,6 +179,13 @@ class MainLogin extends React.Component {
           GetUserPack:findresponse.LoginWithFacebookResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithFacebookResult.GetUserHomeAddress,
         })
+        // if(this.state.ResultStatus.Status==="1"){
+        //   console.log("status"),
+        //   cookie.save('Id', this.state.GetUser.ID);
+        //
+        //   cookie.save('UserToken', this.state.GetUser.UserToken);
+
+
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
             alert(this.state.ResultStatus.StatusMessage)
@@ -262,14 +283,14 @@ class MainLogin extends React.Component {
       session: sessionReducer
     };
     const reducer = combineReducers(reducers);
-    //const store = createStore(reducer);
+    const store = createStore(reducer);
 
-    //sessionService.initSessionService(store);
+    sessionService.initSessionService(store);
     const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {
       const options = { redirectToReferrer: true, redirectPath: '/', driver: 'COOKIES' };
-      sessionService.initSessionService(options)
+      sessionService.initSessionService(store, options)
         .then(() => console.log('Redux React Session is ready and a session was refreshed from your storage'))
         .catch(() => console.log('Redux React Session is ready and there is no session in your storage'));
 
@@ -343,14 +364,14 @@ class MainLogin extends React.Component {
         }
 
     return(
-      <div classNa  me="body-inner">
-            <div className="card bg-white">
-              <div className="card-content">
+      <div className="">
+            <div className=" bg-white">
+              <div className="">
               <ul className="nav" ref={(c) => { this.nav = c; }}>
                 <li className="nav-header" ><span></span></li>
                 </ul>
-                <img src="assets/images/HOWL.png" alt="HOWL" />
-                <h4 className="text-medium" className="text-center">Welcome</h4>
+                <img  className="howlImage" src="assets/images/HOWL.png" alt="HOWL" />
+
                 <div className="text-center">
                 <FacebookLogin
 
@@ -362,18 +383,21 @@ class MainLogin extends React.Component {
 
 
                 /><div className="divider" />
+                <div className="googleButton">
                 <GoogleLogin
                 clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"
-                buttonText="CONTINUE WITH GOOGLE"
+                buttonText="LOGIN WITH GOOGLE"
                 onSuccess={(e)=>this.handleGoogleLogin(e)}
                 onFailure={(e)=>this.handleGoogleLogin(e)}
 
-                /><div className="divider" />
+                />
+                </div>
+                <div className="divider" />
 
 
-                <p style={policy}>----------------  OR  ----------------</p>
+                <p style={policy}>------------------------------  OR  ------------------------------</p>
 
-                <RaisedButton style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}/><div className="divider" />
+                <div className="howlBlue" style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}>CREATE AN ACCOUNT</div><div className="divider" />
               </div>
               <div className="text-center">
               <p style={policy}>Have an account?<span><a onClick={(e)=>this.handleLogin(e)} style={login}> Login</a></span></p>

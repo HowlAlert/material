@@ -10,6 +10,154 @@ $screen-sm: 768px;
   background-size: cover;
 }
 
+.kep-login-facebook{
+  border-radius:37px!important;
+  font-weight: 300!important;
+letter-spacing: 2px!important;
+padding: 26px 30px 26px 30px!important;
+min-width:450px;
+}
+.googleButton button{
+  border-radius:37px!important;
+  font-weight: 300!important;
+letter-spacing: 2px!important;
+padding: 26px 30px 26px 30px!important;
+min-width:450px;
+}
+.howlBlue{
+  border-radius: 37px !important;
+    font-weight: 300 !important;
+    letter-spacing: 2px !important;
+    padding: 26px 30px 26px 30px !important;
+    max-width: 450px;
+    background-color: #0091cd;
+    margin: 0 auto;
+    height: 72px;
+    margin-top:20px;
+    color:#fff;
+    font-size:16px;
+}
+.howlBlue2{
+  border-radius: 37px !important;
+    font-weight: 300 !important;
+    letter-spacing: 2px !important;
+    padding: 26px 30px 26px 30px !important;
+    max-width: 300px;
+    background-color: #0091cd;
+    margin: 0 auto;
+    height: 72px;
+    margin-top:20px;
+    color:#fff;
+    font-size:16px;
+}
+.howlRegNext{
+  border-radius: 37px !important;
+    font-weight: 300 !important;
+    letter-spacing: 2px !important;
+    padding: 26px 30px 26px 30px !important;
+    width: 47%;
+    background-color: #0091cd;
+    margin: 0 auto;
+    height: 72px;
+    text-align:center;
+    color:#fff;
+    font-size:16px;
+    float:left;
+    -webkit-transition: opacity 0.5s ease-in-out;
+   -moz-transition: opacity 0.5s ease-in-out;
+   transition: opacity 0.5s ease-in-out;
+    transition: background-color 0.5s ease;
+}
+.howlRegNext:hover{
+    color:#fff;
+    background-color:#063e5b;
+}
+.howlRegBack:hover{
+    opacity:0.8;
+    text-decoration:none;
+    color:#fff;
+}
+.smallHowl{
+  width:90px;
+  text-align:center;
+  margin:0 auto;
+}
+.smallHowl img{
+  width:90px;
+  text-align:center;
+}
+.howlRegBack{
+   transition: background-color 0.5s ease;
+  text-align:center;
+  border-radius: 37px !important;
+    font-weight: 300 !important;
+    letter-spacing: 2px !important;
+    padding: 26px 30px 26px 30px !important;
+    width: 47%;
+    background-color: #222;
+    margin: 0 auto;
+    height: 72px;
+    color:#fff;
+    font-size:16px;
+    float:left;
+    -webkit-transition: opacity 0.5s ease-in-out;
+   -moz-transition: opacity 0.5s ease-in-out;
+   transition: opacity 0.5s ease-in-out;
+   margin-right:20px;
+}
+.howlImage{
+  width:220px;
+  margin-bottom:20px;
+}
+
+.registerCard{
+  width:50%;
+  margin:0 auto;
+}
+.regText{
+  width: 62%;
+    text-align: center!important;
+    margin: 0 auto!important;
+    margin-top: 12px!important;
+    line-height: 17px!important;
+    color: #444!important;
+}
+.regContent{padding:45px 55px !important;}
+.phone-number{
+  margin:30px 0px 30px 0px;
+}
+.phone-number--country{margin-right:5px;}
+.regButtons{margin-top:25px;}
+.littleWolf{
+  width:30px;
+}
+.littleWolf2{
+  width:100px;
+}
+.forgotPass{color:#999!important;display:block;}
+.forgotPassword{width:100%;clear:both;margin-top:0px; padding-top:30px;}
+.registerHeader{
+  font-size:22px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  line-height:25px;
+  font-weight: 500;
+    color: #063e5b;
+}
+.registerBack{
+
+}
+.regTop{flex:1}
+.regLeft{flex:2}
+.largeIcon{
+  font-size:24px!important;
+}
+
+.container-fluid2{
+  padding-left:0px!important;
+  padding-right:0px!important;
+}
+
 .page-auth,
 .page-login,
 .page-register1,
@@ -22,17 +170,27 @@ $screen-sm: 768px;
   padding: 0 10px;
 
   .main-body {
-    max-width: 480px;
+    /*max-width: 480px;*/
     margin: 0 auto;
     padding-top: 50px;
     @media (min-width: map-get($grid-breakpoints, md)) {
-      padding-top: 150px;
+      padding-top: 0px;
     }
   }
   .body-inner {
     position: relative;
     padding: 20px;
-    
+    &:before {
+      z-index: 0;
+      content: ' ';
+      line-height: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color:theme-color("primary");
+      height: 220px;
+    }
   }
   .additional-info {
     position: relative;
@@ -109,4 +267,10 @@ $screen-sm: 768px;
       font-size: 100px;
     }
   }
+}
+
+
+
+.page-auth .body-inner:before, .page-login .body-inner:before, .page-register1 .body-inner:before, .page-register2 .body-inner:before, .page-register3 .body-inner:before, .page-register4 .body-inner:before, .page-register5 .body-inner:before, .page-printcode .body-inner:before, .page-forgot .body-inner:before{
+  background-color:rgba(0,0,0,0)!important;
 }

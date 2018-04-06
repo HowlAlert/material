@@ -11,184 +11,297 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import {PhoneNumberFormat, PhoneNumberUtil} from 'google-libphonenumber'
-import Select from 'react-select';
-import CallingCodes from './CallingCodes';
-import {FormControl} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-select/dist/react-select.min.css';
 import cookie from 'react-cookies';
-import PageRegister5 from 'routes/register5/';
+
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import './phone-number.css';
+
 const mWidthStyle = {
   minWidth: '130px'
 };
-class Register4 extends React.Component {
-  constructor(props) {
-    super(props);
+class Register extends React.Component {
+  constructor() {
+    super();
     this.state = {
-      country:'',
-      number:'',
-      message:'',
-      ResultStatus:''
+      Fname:'',
+      Lname:'',
+      Email:'',
+      Password:'',
+      GetUser:'',
+checkboxState: true
+    };
+  }
+
+
+    handleNext(event){
+    event.preventDefault();
+    if(this.state.Fname==''){
+      alert("Please enter your first name");
     }
-this.handleCountry = this.handleCountry.bind(this);
-  }
-
-  componentWillMount(){
-  if(cookie.load('FirstName')!=undefined){
-    this.setState({ redirectToHome: true })
-  }
-  }
-
-  handlePhoneNo(phoneNumber){
-
-    let valid = false;
-    try {
-      const phoneUtil = PhoneNumberUtil.getInstance();
-      valid =  phoneUtil.isValidNumber(phoneUtil.parse(phoneNumber));
-    } catch(e) {
-      valid = false;
+    if(this.state.Lname==''  && this.state.Fname!=''){
+      alert("Please enter your last name");
     }
-    if(valid) {
-      this.setState({
-        message:'Phone number '+this.getValidNumber(phoneNumber)+' is valid Number',
-        color:'green'
-      });
-    } else {
+    if(this.state.Email=='' && this.state.Fname!='' && this.state.Lname!=''){
+      alert("Please enter your email address");
+    }
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(re.test(this.state.Email)=='' && this.state.Email!='' && this.state.Fname!='' && this.state.Lname!=''){
+      alert("Please enter a valid email");
+    }
+    if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!='' && this.state.Fname!='' && this.state.Lname!=''){
+      alert("Please enter a password");
+    }
+
+
+      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/RegisterUser';
+
+         fetch(BaseURL,{
+          method: "POST",
+          body: JSON.stringify({'FirstName':this.state.Fname,'LastName':this.state.Lname,'Email':this.state.Email,'Password':this.state.Password,'InviteCode':cookie.load('InviteCode')}),
+        headers: new Headers({'content-type': 'application/json'})
+        }).
+      then((Response)=>Response.json()).
+      then((findresponse)=>{
         this.setState({
-        //  message:'Phone number '+phoneNumber+' is not valid Number',
-          color:'red'
-        });
-      }
-
-
-      console.log(this.state.country);
-      console.log(this.state.number);
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
-
-       fetch(BaseURL,{
-        method: "POST",
-        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':this.state.country,'MobilePhoneNumber':this.state.number}),
-      headers: new Headers({'content-type': 'application/json'})
-      }).
-    then((Response)=>Response.json()).
-    then((findresponse)=>{
-      this.setState({
-        ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
-      })
-
-        console.log("status");
-        //Status:this.state.ResultStatus.Status;
-        console.log(this.state.ResultStatus.Status);
-        console.log(this.state.number.length);
-        if(this.state.ResultStatus.Status==2 && this.state.number!='' && this.state.country!='' && this.state.number.length==10 && this.handlePhoneNo){
-           alert("This phone number is already taken by another account.");
-         }
-        if(this.state.ResultStatus.Status==0 && this.state.number!='' && this.state.country!='' && this.handlePhoneNo){
-          alert("Sorry we cannot send verification code to this number. Please make sure you input the correct Mobile Number.");
-        }
-        if(this.state.ResultStatus.Status==1 && this.state.number!='' && this.state.country!='' && this.state.number.length==10 && this.handlePhoneNo){
+        GetUser:findresponse.RegisterUserResult.GetUser,
+        })
+        if(this.state.GetUser.ID!==null){
+          console.log("status"),
+          cookie.save('Id', this.state.GetUser.ID, '/')
+          cookie.save('UserToken', this.state.GetUser.UserToken, '/')
+          console.log(this.state.GetUser.ID)
+          console.log(this.state.GetUser.UserToken)
+          console.log(findresponse)
+          console.log("status")
           this.setState({ redirectToReferrer: true })
            }
-           else{
+           else if(this.state.GetUser.ID===null){
               this.setState({ redirectToReferrer: false })
            }
-    })
+      })
+}
+
+handleEmail(event) {
+  event.preventDefault();
+  const target = event.target;
+const value = target.type === target.value;
+const name = target.name;
+
+this.setState({
+      Email: target.value
+    });
+
+    console.log(target.value) ;
+    return target.value;
   }
 
-  handleNumber(event) {
+  handlePassword(event) {
+    event.preventDefault();
+    const target = event.target;
+  const value = target.type === target.value;
+  const name = target.name;
+
+  console.log(this.state.ShowPassword)
+
+  this.setState({
+
+        Password: target.value
+      });
+  console.log("here");
+       return target.value;
+    }
+
+    handleFname(event) {
+      event.preventDefault();
+      const target = event.target;
+    const value = target.type === target.value;
+    const name = target.name;
+
     this.setState({
-      number:event.target.value
-    });
-    //this.handlePhoneNo('+'+this.state.country+' '+event.target.value);
+          Fname: target.value
+        });
+    console.log("here");
+         return target.value;
+      }
 
-      return event.target.value;
-    }
+      handleLname(event) {
+        event.preventDefault();
+        const target = event.target;
+      const value = target.type === target.value;
+      const name = target.name;
 
-    handleCountry(event) {
       this.setState({
-      country:event.value
+            Lname: target.value
+          });
+      console.log("here");
+           return target.value;
+        }
+
+
+        handleShowPassword(event) {
+          this.setState((oldState) => {
+            ShowPassword:!oldState.checked
+              console.log("checked or not")
+              console.log(!oldState.checked)
+              console.log(!oldState.checked? 'checked' : 'UnChecked')
+              if(!oldState.checked===true){
+                console.log("redirectToCheck")
+              console.log(this.state.Password)
+              this.setState({ pwd:this.state.Password })
+
+              console.log(this.state.pwd)
+              }else if(!oldState.checked===false){
+                console.log("redirectToCheck == no")
+                this.setState({ redirectToCheck: false })
+              }
+
+      return {
+        checked: !oldState.checked,
+      };
+
     });
-  // this.handlePhoneNo('+'+event.value+' '+this.state.Number);
-  return event.value;
-    }
-
-
-    getValidNumber(phoneNumber) {
-      const phoneUtil = PhoneNumberUtil.getInstance();
-      const parsedNumber = phoneUtil.parse(phoneNumber);
-      return phoneUtil.format(parsedNumber, PhoneNumberFormat.INTERNATIONAL)
-    }
-
+          }
 
   render() {
-    const{redirectToHome}=this.state
-    if(redirectToHome){
-      return (
-        <Redirect to="app/home" />
-      )
-    }
-    
-
     const { redirectToReferrer} = this.state
-    if (redirectToReferrer) {
+    if (redirectToReferrer==true) {
+
+      console.log(redirectToReferrer)
           return (
-            <Redirect to="register5" />
+            <Redirect to="register4" />
+          )
+        }else if (redirectToReferrer==false){
+          return (
+            alert("user already registered")
           )
         }
 
-    return (
 
+  //       const { redirectToCheck} = this.state
+  //       if (redirectToCheck==true) {
+  //
+  //         console.log(redirectToCheck)
+  //         var pwd;
+  //         pwd=this.state.Password,
+  // console.log("pwd")
+  // console.log(pwd)
+
+            //}
+
+    return (
       <div className="body-inner">
 
-        <div className="card bg-white">
-          <div className="card-content">
-            <section className="logo text-center">
+        <div className="card bg-white registerCard">
+          <div className="card-content regContent">
+          { /*<section className="logo text-center">
               <h1><a href="#/">{this.state.brand}</a></h1>
-            </section>
+            </section>*/}
+
+            <form className="form-horizontal">
+
+            {/*
+              <div className="regLeft">
+                <ul className="nav registerBack" ref={(c) => { this.nav = c; }}>
+                  <li>
+                    <a href="mainLogin"><i className="nav-icon material-icons largeIcon">keyboard_backspace</i>
+                    </a>
+                  </li>
+                </ul>
+              </div>*/}
 
 
-            <ul className="nav" ref={(c) => { this.nav = c; }}>
-              <li className="nav-header"><span></span></li>
-              <li><FlatButton href="#/app/register"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
-              </li>
-              </ul>
-              <img src="assets/images/HOWL2.png" alt="HOWL" />
-              <p className="hero-title text-center">verify your phone number</p>
-        <div className="phone-number" style={{display:'flex'}}>
-          <div className="phone-number--country">
-          <Select value={this.state.country} onChange={this.handleCountry} placeholder="country code"
-             options={CallingCodes} labelKey="country" valueKey="value" valueRenderer={(country) => country.value}>
-          </Select>
+              <div className="regLeft">
+               <p className="hero-title text-center registerHeader">Create Account</p>
+              </div>
+
+
+              <fieldset>
+                <div className="form-group">
+                  <TextField
+                    floatingLabelText="FIRST NAME"
+                    multiline='true'
+
+                    floatingLabelShrinkStyle={'opacity','0'}
+                    value={this.state.text}
+                    type="text"
+                    fullWidth
+                    name="Fname"
+                    value={this.state.value}
+                    onChange={(e)=>this.handleFname(e)}
+                  />
+
+                </div>
+                <div className="form-group">
+                  <TextField
+                    floatingLabelText="LAST NAME"
+                    type="text"
+                    fullWidth
+                    name="Lname"
+                     value={this.state.value}
+                     onChange={(e)=>this.handleLname(e)}
+                  />
+                </div>
+                <div className="form-group">
+                  <TextField
+                    floatingLabelText="EMAIL ADDRESS"
+                    type="text"
+                    fullWidth
+                    name="Email"
+
+                     value={this.state.value}
+                     onChange={(e)=>this.handleEmail(e)}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <TextField
+                    floatingLabelText="Password"
+                    type="password"
+                    name="Password"
+                    fullWidth
+                    value={this.state.value}
+                    onChange={(e)=>this.handlePassword(e)}
+                    />
+                </div>
+
+
+
+                <div className="col-lg-6">
+                <Checkbox
+                  label="Show Password"
+                  type="checkbox"
+                  name="ShowPassword"
+                  checked={this.state.checked}
+                  //disabled={this.state.disabled}
+
+                  value={this.state.ShowPassword}
+                  onCheck={this.handleShowPassword.bind(this)}
+                />
+                  </div>
+
+              </fieldset>
+              <div className="card-action no-border text-left">
+
+              </div>
+
+              <div className="regButtons">
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/#/app/mainLogin">BACK</a>
+                <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleNext(e)}>NEXT</div>
+              </div>
+
+                <div className="divider" />
+
+
+            </form>
           </div>
-          <div className="phone-number--number">
-            <FormControl value={this.state.value} onChange={(e)=>this.handleNumber(e)} placeholder="phone number">
-            </FormControl>
-          </div>
-        </div>
-        <div className="message" style={{color:this.state.color}}>
-          {this.state.message}
+
+
+
         </div>
 
-
-
-
-<div className="box-body text-center">
-<RaisedButton style={mWidthStyle} label="NEXT -->" primary onClick={(e)=>this.handlePhoneNo(e)}/><div className="divider" />
-</div>
-
-</div>
-</div>
-
-</div>
-
+      </div>
     );
   }
 }
-
-
 
 
 
@@ -197,9 +310,11 @@ const Page = () => (
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">
-          <Register4 />
+          <Register />
         </div>
-  </QueueAnim>
+
+
+      </QueueAnim>
     </div>
   </div>
 );
