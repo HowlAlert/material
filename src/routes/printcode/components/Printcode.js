@@ -85,23 +85,15 @@ handlePrintCode(event){
   render() {
 
     const{redirectToHome}=this.state
-<<<<<<< HEAD
-   if(redirectToHome){
-     return (
-       <Redirect to="app/home" />
-     )
-   }
 
-
-=======
     if(redirectToHome){
       return (
         <Redirect to="app/home" />
       )
     }
 
-    
->>>>>>> pbharde_integrated
+
+
     const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {

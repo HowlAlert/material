@@ -54,14 +54,7 @@ class Login extends React.Component {
   }
 
   componentWillMount(){
-<<<<<<< HEAD
- if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
-   console.log(cookie.load('Id')),
-   console.log(cookie.load('UserToken')),
-   this.setState({ redirectToHome: true })
- }
- }
-=======
+
   if(cookie.load('FirstName')!=undefined){
     this.setState({ redirectToHome: true })
   }
@@ -74,7 +67,7 @@ class Login extends React.Component {
   handleForgotPassword(event){
     this.setState({ redirectToForgotPassword: true })
   }
->>>>>>> pbharde_integrated
+
 
   handleLogin(event){
     console.log(this.state.Password.lenght);
@@ -261,12 +254,7 @@ console.log("here");
       )
     }
 
-    const{redirectToHome}=this.state
-    if(redirectToHome){
-      return (
-        <Redirect to="app/home" />
-      )
-    }
+    
 
     const{redirectToHome}=this.state
        if(redirectToHome){
@@ -274,7 +262,7 @@ console.log("here");
            <Redirect to="app/home" />
          )
        }
-       
+
     const reducers = {
       // ... your other reducers here ...
       session: sessionReducer

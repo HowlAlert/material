@@ -35,15 +35,7 @@ const  policy= {
 };
 
 
-<<<<<<< HEAD
-=======
 
-
-
-
-
-
->>>>>>> pbharde_integrated
 
 class MainLogin extends React.Component {
   constructor(props) {
@@ -63,13 +55,9 @@ class MainLogin extends React.Component {
   }
 
   componentWillMount(){
-<<<<<<< HEAD
-    if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
-      console.log(cookie.load('Id')),
-      console.log(cookie.load('UserToken')),
-=======
+
     if(cookie.load('FirstName')!=undefined){
->>>>>>> pbharde_integrated
+
       this.setState({ redirectToHome: true })
     }
   }
@@ -297,21 +285,14 @@ class MainLogin extends React.Component {
 
 
 
-<<<<<<< HEAD
-    // const{redirectToMainLogin}=this.state
-    // if(redirectToMainLogin){
-    //   return (
-    //     <Redirect to={'/mainLogin'}/>
-    //   )
-    // }
-=======
+
     const{redirectToMainLogin}=this.state
     if(redirectToMainLogin){
       return (
         <Redirect to={'/mainLogin'}/>
       )
     }
->>>>>>> pbharde_integrated
+
 
 
     const{redirectToHome}=this.state
@@ -427,27 +408,7 @@ class MainLogin extends React.Component {
                 callback={(e)=>this.handleFacebookLogin(e)}
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-                /><div className="divider" />
-                <GoogleLogin
-                clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"
-                buttonText="CONTINUE WITH GOOGLE"
-                onSuccess={(e)=>this.handleGoogleLogin(e)}
-                onFailure={(e)=>this.handleGoogleLogin(e)}
 
->>>>>>> pbharde_integrated
-                /><div className="divider" />
-                <GoogleLogin
-                clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"
-                buttonText="CONTINUE WITH GOOGLE"
-                onSuccess={(e)=>this.handleGoogleLogin(e)}
-                onFailure={(e)=>this.handleGoogleLogin(e)}
-
-<<<<<<< HEAD
->>>>>>> 3dc525a97e3309acfc6b4fb6a72a5b565b0c4c43
                 /><div className="divider" />
                 <GoogleLogin
                 clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"
@@ -456,11 +417,6 @@ class MainLogin extends React.Component {
                 onFailure={(e)=>this.handleGoogleLogin(e)}
 
                 /><div className="divider" />
-
-
-=======
-
->>>>>>> pbharde_integrated
                 <p style={policy}>----------------  OR  ----------------</p>
 
                 <RaisedButton style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}/><div className="divider" />

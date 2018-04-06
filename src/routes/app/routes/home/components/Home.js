@@ -6,7 +6,7 @@ import cookie from 'react-cookies';
 import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
-<<<<<<< HEAD
+
 import Map from './Map';
 import Alert from './Alert';
 import Image2 from './Image2';
@@ -59,10 +59,10 @@ import Image from '../../cameras/components/Image';
 //       </div>
 //
 // );
-=======
+
 import Customizer from 'components/Customizer';
 import {Redirect} from 'react-router-dom';
->>>>>>> pbharde_integrated
+
 
 
 class BasicHome extends React.Component{
@@ -299,12 +299,6 @@ const { redirectToReferrer} = this.state
          </div>
 
 
-<<<<<<< HEAD
-
-
-=======
-      </div>
->>>>>>> pbharde_integrated
   );
  }
 }

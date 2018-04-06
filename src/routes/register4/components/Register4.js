@@ -36,19 +36,15 @@ class Register4 extends React.Component {
 this.handleCountry = this.handleCountry.bind(this);
   }
 
-<<<<<<< HEAD
   componentWillMount(){
- if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
-   console.log(cookie.load('Id')),
-   console.log(cookie.load('UserToken')),
-   this.setState({ redirectToHome: true })
- }
- }
-=======
+
+  if(cookie.load('FirstName')!=undefined){
+    this.setState({ redirectToHome: true })
+  }
+  }
 
 
 
->>>>>>> pbharde_integrated
 
   handlePhoneNo(phoneNumber){
 
@@ -134,19 +130,13 @@ this.handleCountry = this.handleCountry.bind(this);
   render() {
 
     const{redirectToHome}=this.state
-<<<<<<< HEAD
-   if(redirectToHome){
-     return (
-       <Redirect to="app/home" />
-     )
-   }
-=======
+
     if(redirectToHome){
       return (
         <Redirect to="app/home" />
       )
     }
->>>>>>> pbharde_integrated
+
 
     const { redirectToReferrer} = this.state
     if (redirectToReferrer) {

@@ -32,20 +32,12 @@ class Register extends React.Component {
   }
 
   componentWillMount(){
-<<<<<<< HEAD
-  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
-   console.log(cookie.load('Id')),
-   console.log(cookie.load('UserToken')),
-   this.setState({ redirectToHome: true })
-  }
-  }
-=======
+
   if(cookie.load('FirstName')!=undefined){
     this.setState({ redirectToHome: true })
   }
   }
 
->>>>>>> pbharde_integrated
 
     handleNext(event){
     event.preventDefault();
@@ -154,22 +146,15 @@ this.setState({
   render() {
 
     const{redirectToHome}=this.state
-<<<<<<< HEAD
-   if(redirectToHome){
-     return (
-       <Redirect to="app/home" />
-     )
-   }
 
-=======
     if(redirectToHome){
       return (
         <Redirect to="app/home" />
       )
     }
 
-  
->>>>>>> pbharde_integrated
+
+
 
     const { redirectToReferrer} = this.state
     if (redirectToReferrer==true) {
