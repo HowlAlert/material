@@ -68,6 +68,7 @@ class Login extends React.Component {
   }
 
   handleLogin(event){
+    console.log(this.state.Password.lenght);
   event.preventDefault();
   if(this.state.Email==''){
     alert("Please enter your email address");
@@ -78,6 +79,9 @@ class Login extends React.Component {
   }
   if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!=''){
     alert("Please enter a password");
+  }
+  if(this.state.Password.lenght<6 && this.state.Password!='' && this.state.Email!='' && re.test(this.state.Email)!=''){
+    alert("Password must be at least 6 characters");
   }
 
 
@@ -338,7 +342,7 @@ console.log("here");
                   fullWidth
                   type="password"
                   name="Password"
-                  //hintText="At least 8 characters"
+                  hintText="Password must be at least 6 characters"
                   floatingLabelText="Password"
                   onChange={(e)=>this.handlePassword(e)}
                   //errorText="Your password is too short"
