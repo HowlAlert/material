@@ -31,6 +31,13 @@ checkboxState: true
     };
   }
 
+  componentWillMount(){
+  if(cookie.load('FirstName')!=undefined){
+    this.setState({ redirectToHome: true })
+  }
+  }
+
+  
 
     handleNext(event){
     event.preventDefault();
@@ -162,6 +169,14 @@ this.setState({
           }
 
   render() {
+
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
+
     const { redirectToReferrer} = this.state
     if (redirectToReferrer==true) {
 

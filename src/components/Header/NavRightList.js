@@ -99,7 +99,22 @@ handleLogout(event){
       if(this.state.ResultStatus.Status==="1"){
         console.log("success"),
         cookie.remove('Id'),
-        cookie.remove('UserToken')
+        cookie.remove('UserToken'),
+        cookie.remove('FirstName'),
+        cookie.remove('LastName'),
+        cookie.remove('Email'),
+        cookie.remove('MobilePhoneNumber'),
+        cookie.remove('SilenceCode'),
+        cookie.remove('CancellationCode'),
+        cookie.remove('ShouldReceiveCameraAlertPush'),
+        cookie.remove('ShouldReceiveCameraAlertSMS'),
+        cookie.remove('Address1'),
+        cookie.remove('Address2'),
+        cookie.remove('City'),
+        cookie.remove('Latitude'),
+        cookie.remove('Longitude'),
+        cookie.remove('State'),
+        cookie.remove('Zip'),
         console.log("removed"),
 
      this.setState({ redirectToReferrer: true })
@@ -131,7 +146,7 @@ const { redirectToReferrer} = this.state
        if (redirectToReferrer) {
          console.log(redirectToReferrer)
              return (
-               <Redirect to="/mainLogin"/>
+               <Redirect to="../mainLogin"/>
              )
            }
 var count = this.state.data;

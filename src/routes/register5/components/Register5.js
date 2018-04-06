@@ -28,6 +28,7 @@ class Register5 extends React.Component {
     };
   }
 
+<<<<<<< HEAD
   componentWillMount(){
  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
    console.log(cookie.load('Id')),
@@ -35,6 +36,9 @@ class Register5 extends React.Component {
    this.setState({ redirectToHome: true })
  }
  }
+=======
+
+>>>>>>> pbharde_integrated
 
 
   handleCode(event) {
@@ -96,6 +100,14 @@ console.log(cookie.load('UserToken'));
 
 
   render() {
+
+
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
 
     const { redirectToReferrer} = this.state
     if (redirectToReferrer) {

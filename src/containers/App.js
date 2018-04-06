@@ -29,6 +29,10 @@ import PageEditPhoneNumber from 'routes/editPhoneNumber/'
 import PageVerifyPhoneCode from 'routes/verifyPhoneCode/'
 import PageMainLogin from 'routes/mainLogin/'
 import PageMotionDetection from 'routes/motion-detection/'
+import PagePackcontact from 'routes/packcontact/'
+import PageHomeAddress from 'routes/HomeAddress/'
+import PageCancel from 'routes/cancel/'
+import PageSilent from 'routes/silent/'
 import 'styles/bootstrap.scss';
 import 'styles/layout.scss';
 import 'styles/theme.scss';
@@ -59,7 +63,7 @@ materialUITheme = lightTheme;
 
 const isRoot = location.pathname === '/' ? true : false;
 if (isRoot) {
-return ( <Redirect to={'/app/mainLogin'}/> );
+return ( <Redirect to={'/mainLogin'}/> );
 }
 
 return (
@@ -98,7 +102,11 @@ className={classnames('app-main full-height', {
 <Route exact path="/verifyPhoneCode" component={PageVerifyPhoneCode} />
 <Route exact path="/mainLogin" component={PageMainLogin} />
 <Route exact path="/motionDetection" component={PageMotionDetection} />
-
+<Route exact path="/forgot-password" component={PageForgotPassword} />
+<Route exact path="/packcontact" component={PagePackcontact} />
+<Route exact path="/HomeAddress" component={PageHomeAddress} />
+<Route exact path="/cancel" component={PageCancel} />
+<Route exact path="/silent" component={PageSilent} />
 </div>
 </div>
 </MuiThemeProvider>

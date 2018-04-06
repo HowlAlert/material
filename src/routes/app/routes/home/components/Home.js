@@ -6,6 +6,7 @@ import cookie from 'react-cookies';
 import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
+<<<<<<< HEAD
 import Map from './Map';
 import Alert from './Alert';
 import Image2 from './Image2';
@@ -58,6 +59,10 @@ import Image from '../../cameras/components/Image';
 //       </div>
 //
 // );
+=======
+import Customizer from 'components/Customizer';
+import {Redirect} from 'react-router-dom';
+>>>>>>> pbharde_integrated
 
 
 class BasicHome extends React.Component{
@@ -68,6 +73,24 @@ class BasicHome extends React.Component{
         open: false
       }
   }
+
+  // componentWillMount(){
+  // if(cookie.load('FirstName')==undefined && cookie.load('LastName')==undefined){
+  //   console.log(cookie.load('FirstName')),
+  //   console.log(cookie.load('LastName')),
+  //   this.setState({ redirectToMainLogin: true }),
+  //   this.setState({ redirectToLogin: true }),
+  //   this.setState({ redirectToRegister: true }),
+  //   this.setState({ redirectToRegister4: true }),
+  //   this.setState({ redirectToRegister5: true }),
+  //   this.setState({ redirectToForgotPwd: true }),
+  //   this.setState({ redirectToHomeAddress: true }),
+  //   this.setState({ redirectToPackContact: true }),
+  //   this.setState({ redirectToSilent: true }),
+  //   this.setState({ redirectToCancel: true }),
+  //   this.setState({ redirectToPrintCode: true })
+  // }
+  // }
 
   handleOpen = () => {
     this.setState({open: true});
@@ -110,6 +133,84 @@ class BasicHome extends React.Component{
 
 }
 render() {
+  const{redirectToHome}=this.state
+  if(redirectToHome){
+    console.log(redirectToLogin);
+    return (
+      <Redirect to="../mainLogin"/>
+    )
+  }
+  const{redirectToLogin}=this.state
+  console.log(redirectToLogin);
+  if(redirectToLogin){
+    return (
+      <Redirect to="../login"/>
+    )
+  }
+
+  const{redirectToRegister}=this.state
+  if(redirectToRegister){
+    return (
+      <Redirect to="../register"/>
+    )
+  }
+
+  const{redirectToRegister4}=this.state
+  if(redirectToRegister4){
+    return (
+      <Redirect to="../register4"/>
+    )
+  }
+
+  const{redirectToRegister5}=this.state
+  if(redirectToRegister5){
+    return (
+      <Redirect to="../register5"/>
+    )
+  }
+
+  const{redirectToForgotPwd}=this.state
+  if(redirectToForgotPwd){
+    return (
+      <Redirect to="../forgot-password"/>
+    )
+  }
+
+
+  const{redirectToHomeAddress}=this.state
+  if(redirectToHomeAddress){
+    return (
+      <Redirect to="../HomeAddress"/>
+    )
+  }
+
+  const{redirectToPackContact}=this.state
+  if(redirectToPackContact){
+    return (
+      <Redirect to="../packcontact"/>
+    )
+  }
+
+  const{redirectToSilent}=this.state
+  if(redirectToSilent){
+    return (
+      <Redirect to="../silent"/>
+    )
+  }
+
+  const{redirectToCancel}=this.state
+  if(redirectToCancel){
+    return (
+      <Redirect to="../cancel"/>
+    )
+  }
+
+  const{redirectToPrintCode}=this.state
+  if(redirectToPrintCode){
+    return (
+      <Redirect to="../printcode"/>
+    )
+  }
 
   const actions = [
     <FlatButton
@@ -198,8 +299,12 @@ const { redirectToReferrer} = this.state
          </div>
 
 
+<<<<<<< HEAD
 
 
+=======
+      </div>
+>>>>>>> pbharde_integrated
   );
  }
 }

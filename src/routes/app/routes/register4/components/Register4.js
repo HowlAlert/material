@@ -36,6 +36,12 @@ class Register4 extends React.Component {
 this.handleCountry = this.handleCountry.bind(this);
   }
 
+  componentWillMount(){
+  if(cookie.load('FirstName')!=undefined){
+    this.setState({ redirectToHome: true })
+  }
+  }
+
   handlePhoneNo(phoneNumber){
 
     let valid = false;
@@ -118,6 +124,13 @@ this.handleCountry = this.handleCountry.bind(this);
 
 
   render() {
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
+    
 
     const { redirectToReferrer} = this.state
     if (redirectToReferrer) {

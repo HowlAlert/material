@@ -19,6 +19,12 @@ class ForgotPassowrd extends React.Component {
     };
   }
 
+  componentWillMount(){
+  if(cookie.load('FirstName')!=undefined){
+    this.setState({ redirectToHome: true })
+  }
+  }
+
   handleSendPwd(event){
     console.log(this.state.Email);
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ForgotPassword';
@@ -56,6 +62,13 @@ class ForgotPassowrd extends React.Component {
       });
 }
   render() {
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
+    
     const { redirectToReferrer} = this.state
     if (redirectToReferrer==true) {
           return (
@@ -67,11 +80,14 @@ class ForgotPassowrd extends React.Component {
       <div className="body-inner">
         <div className="card bg-white">
           <div className="card-content">
-            <section className="logo text-center">
-            <img src="assets/images/HOWL2.png" alt="HOWL" />
-            <p className="hero-title text-center">Forgot Password?</p>
-            </section>
+
             <form>
+            <ul className="nav" ref={(c) => { this.nav = c; }}>
+              <li className="nav-header"><span></span></li>
+              <li><FlatButton href="/mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
+              </li>
+              </ul>
+              <img src="assets/images/HOWL.png" alt="HOWL" />
               <fieldset>
               <div className="additional-info text-center text-small">
                 Enter your email below to receive your password reset instructions

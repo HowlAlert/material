@@ -28,6 +28,12 @@ class Register5 extends React.Component {
     };
   }
 
+  componentWillMount(){
+  if(cookie.load('FirstName')!=undefined){
+    this.setState({ redirectToHome: true })
+  }
+  }
+
   handleCode(event) {
     event.preventDefault();
     const target = event.target;
@@ -88,6 +94,13 @@ class Register5 extends React.Component {
 
   render() {
 
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
+    
     const { redirectToReferrer} = this.state
     if (redirectToReferrer) {
           return (

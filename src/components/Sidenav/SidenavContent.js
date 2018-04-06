@@ -18,6 +18,7 @@ class SidebarContent extends React.Component {
     this.state = {
 
       ResultStatus:'',
+      redirectToReferrer:false,
   };
   }
   componentDidMount() {
@@ -137,7 +138,22 @@ class SidebarContent extends React.Component {
       if(this.state.ResultStatus.Status==="1"){
         console.log("success"),
         cookie.remove('Id'),
-        cookie.remove('UserToken')
+        cookie.remove('UserToken'),
+        cookie.remove('FirstName'),
+        cookie.remove('LastName'),
+        cookie.remove('Email'),
+        cookie.remove('MobilePhoneNumber'),
+        cookie.remove('SilenceCode'),
+        cookie.remove('CancellationCode'),
+        cookie.remove('ShouldReceiveCameraAlertPush'),
+        cookie.remove('ShouldReceiveCameraAlertSMS'),
+        cookie.remove('Address1'),
+        cookie.remove('Address2'),
+        cookie.remove('City'),
+        cookie.remove('Latitude'),
+        cookie.remove('Longitude'),
+        cookie.remove('State'),
+        cookie.remove('Zip'),
         console.log("removed"),
 
      this.setState({ redirectToReferrer: true })
@@ -167,10 +183,11 @@ class SidebarContent extends React.Component {
        ];
 
     const { redirectToReferrer} = this.state
-       if (redirectToReferrer) {
-         console.log(redirectToReferrer)
+       if (redirectToReferrer==true) {
+         console.log(redirectToReferrer),
+         console.log("redirectToReferrer")
              return (
-               <Redirect to="/mainLogin"/>
+               <Redirect to="../mainLogin"/>
              )
            }
 
@@ -221,19 +238,20 @@ class SidebarContent extends React.Component {
 
         </li>
         <li>
-          <a onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></a>
-          <Dialog
-                      title="Confirm"
-                      actions={actions}
-                      modal={false}
-                      open={this.state.open}
-                      onRequestClose={this.handleClose}
-                    >
-                      Are you sure you want to logout?
-                    </Dialog>
+          <a  onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></a>
         </li>
-
+        <Dialog
+                    id="Dialog"
+                    title="Confirm"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                  >
+                    Are you sure you want to logout?
+                  </Dialog>
       </ul>
+
     );
   }
 }
