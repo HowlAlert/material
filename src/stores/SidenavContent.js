@@ -208,7 +208,7 @@ class SidebarContent extends React.Component {
         </FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/Cameras"><img className="nav-icon material-icons" src="assets/images/sidenavCamera.png" alt="Image" height="20" width="20"/><span className="nav-text">Cameras</span></FlatButton>
+          <FlatButton href="#/app/Cameras"><img className="nav-icon material-icons" src="assets/images/blueCamera.png" alt="Image" height="20" width="20"/><span className="nav-text">Cameras</span></FlatButton>
         </li>
         <li>
           <FlatButton href="#/app/Devices"><img className="nav-icon material-icons" src="assets/images/blueNetwork.png" alt="Image" height="20" width="20"/><span className="nav-text">Devices</span></FlatButton>
