@@ -53,6 +53,16 @@ class MainLogin extends React.Component {
     };
   }
 
+  componentWillMount(){
+    if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+      console.log(cookie.load('Id')),
+      console.log(cookie.load('UserToken')),
+      this.setState({ redirectToHome: true })
+    }
+  }
+
+
+
   handleGoogleLogin(response) {
     console.log(response);
     //first name
@@ -271,6 +281,26 @@ class MainLogin extends React.Component {
 
 
   render (){
+
+
+
+    // const{redirectToMainLogin}=this.state
+    // if(redirectToMainLogin){
+    //   return (
+    //     <Redirect to={'/mainLogin'}/>
+    //   )
+    // }
+
+
+    const{redirectToHome}=this.state
+    if(redirectToHome){
+      return (
+        <Redirect to="app/home" />
+      )
+    }
+
+
+
     const reducers = {
       // ... your other reducers here ...
       session: sessionReducer
@@ -375,6 +405,16 @@ class MainLogin extends React.Component {
                 callback={(e)=>this.handleFacebookLogin(e)}
 
 
+<<<<<<< HEAD
+=======
+                /><div className="divider" />
+                <GoogleLogin
+                clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"
+                buttonText="CONTINUE WITH GOOGLE"
+                onSuccess={(e)=>this.handleGoogleLogin(e)}
+                onFailure={(e)=>this.handleGoogleLogin(e)}
+
+>>>>>>> 3dc525a97e3309acfc6b4fb6a72a5b565b0c4c43
                 /><div className="divider" />
                 <GoogleLogin
                 clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"

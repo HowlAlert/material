@@ -4,8 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import QueueAnim from 'rc-queue-anim';
 import moment from 'moment';
 import cookie from 'react-cookies';
-
-
+// import Howls_Pack from '../../pack-menu/routes/howls_pack/components/Howls_Pack'
 
 
 class Pack extends React.Component {
@@ -14,75 +13,14 @@ class Pack extends React.Component {
     super();
     this.state = {
         search: '',
-        // color_white: true,
         data: [],
         data1: [],
-        UserPoundID: [],
-        imgurl:[],
         result:[],
-        source1:'assets/images/Howl-Final-Light-Blue-small.png',
-        source2:'assets/images/Howl-Final-Red-small.png',
-        redirectToHowl: false,
-        redirectToUnHowl:false
+
     };
 
 
   }
-
-
-  // forceUpdateHandler(){
-  //     this.forceUpdate();
-  //   };
-  componentDidMount() {
-
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserPack';
-
-        fetch(BaseURL,
-        {
-         method: "POST",
-         body: JSON.stringify({
-           "UserID":"118",
-           "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu"
-         }),
-          headers: new Headers({'content-type': 'application/json'}),
-        })
-    .then((Response)=> Response.json())
-    .then((findresponse)=>{
-        console.log(findresponse)
-
-        this.setState({
-           data:findresponse.GetUserPackResult.UserPackList,
-           data1:findresponse.GetUserPackResult,
-           data2:findresponse.GetUserPackResult.AvgResTimeOfPoundBack,
-           UserPoundID:findresponse.GetUserPackResult.UserPackList.map((dyanamicData1,key)=>dyanamicData1.UserPoundID=== "" ? this.state.source1 : this.state.source2),
-
-         })
-         var arrOfObj = this.state.data;
-
-         var result = arrOfObj.map(function(el) {
-           var o = Object.assign({}, el);
-           o.UserPoundID=== "" ? o.url = 'assets/images/Howl-Final-Light-Blue-small.png'
-                            : o.url = 'assets/images/Howl-Final-Red-small.png';
-           return o;
-         })
-       this.setState({
-         result:result
-       })
-
-         // console.log(arrOfObj);
-         console.log(this.state.result);
-         // console.log(this.state.UserPoundID);
-      })
-
-  }
-
-  updateSearch(event) {
-
-    this.setState({
-      search: event.target.value.substr(0,35)
-    });
-  }
-
 
   handleDelete(value) {
 
@@ -122,6 +60,7 @@ class Pack extends React.Component {
                    else {
 
                        alert("Deleted Pack Member!")
+                       window.location.reload();
 
                    }
 
@@ -132,21 +71,19 @@ class Pack extends React.Component {
 
 
 
-handleAlert(value1,value2,value3) {
-
-
-    // alert("Are you sure you want to Alert?");
-    // var poundid = `${value4}`;
-    // console.log(poundid);
+handleAlert(value1,value2,value3,value4) {
     var packid = `${value1}`;
     console.log(packid);
     var name = `${value2}`;
     console.log(name)
     var poundid = `${value3}`;
     console.log(poundid)
+    var ImageUrl = `${value4}`;
+    console.log(ImageUrl);
+      // window.location.reload();
+    if(poundid === "")
+        {
 
-    // if(poundid === "")
-    //     {
                const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/PoundMyPackMember';
 
                 fetch(BaseURL,
@@ -168,74 +105,104 @@ handleAlert(value1,value2,value3) {
                    if(this.state.status === "1")
                    {
                        alert("You Howled at "+name);
-                       {this.forceUpdateHandler}
                        console.log(packid);
-                       var pidarray = this.state.pid
-                      console.log(pidarray) ;
+                       window.location.reload();
 
-                         for (let j = 0; j < pidarray.length; j++) {
-                            if ((pidarray[j]) === packid)
-                            {
-                              this.setState({ source1:'assets/images/Howl-Final-Red-small.png'});
 
-                            }
-
-                         }
-                  
                   }
                    else {
                       alert(this.state.message);
                       // console.log(this.state.pound.UserPoundID)
 
                    }
-           console.log(this.state.imgsrc);
+
       })
 
 }
-handleundoAlert(value1,value2) {
+else {
 
-    var poundid = `${value1}`;
-    console.log(poundid);
-    var name = `${value2}`;
-    console.log(name)
-    // var img = `${value3}`;
-    // console.log(img)
 
-      fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UndoMyPound',
-      {
-       method: "POST",
-       body: JSON.stringify({ "UserID":cookie.load('Id'),"UserToken":cookie.load('UserToken'),"UserPoundID" : poundid  }),
-        headers: new Headers({'content-type': 'application/json'}),
+  fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UndoMyPound',
+  {
+   method: "POST",
+   body: JSON.stringify({ "UserID":cookie.load('Id'),"UserToken":cookie.load('UserToken'),"UserPoundID" : poundid  }),
+    headers: new Headers({'content-type': 'application/json'}),
+  })
+ .then((Response)=> Response.json())
+ .then((findresponse)=>{
+      console.log(findresponse)
+      this.setState({
+                  status:findresponse.UndoMyPoundResult.ResultStatus.Status,
+                  message:findresponse.UndoMyPoundResult.ResultStatus.StatusMessage,
+                  // pound:findresponse.PoundMyPackMemberResult.UserPackList
+                   })
+
+if(this.state.status === "1")
+{
+    alert("You UNHOWLED at "+name);
+
+    window.location.reload();
+ }
+else {
+   alert(this.state.message);
+
+
+}
+
+  })
+
+ }
+}
+
+
+ componentDidMount() {
+
+   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserPack';
+
+       fetch(BaseURL,
+       {
+        method: "POST",
+        body: JSON.stringify({
+          "UserID":cookie.load('Id'),
+          "UserToken":cookie.load('UserToken')
+        }),
+         headers: new Headers({'content-type': 'application/json'}),
+       })
+   .then((Response)=> Response.json())
+   .then((findresponse)=>{
+       console.log(findresponse)
+
+       this.setState({
+          data:findresponse.GetUserPackResult.UserPackList,
+          data1:findresponse.GetUserPackResult,
+          data2:findresponse.GetUserPackResult.AvgResTimeOfPoundBack,
+          UserPoundID:findresponse.GetUserPackResult.UserPackList.map((dyanamicData1,key)=>dyanamicData1.UserPoundID=== "" ? this.state.source1 : this.state.source2),
+
+        })
+        var arrOfObj = this.state.data;
+
+        var result = arrOfObj.map(function(el) {
+          var o = Object.assign({}, el);
+          o.UserPoundID=== "" ? o.url = 'assets/images/Howl-Final-Light-Blue-small.png'
+                           : o.url = 'assets/images/Howl-Final-Red-small.png';
+          return o;
+        })
+      this.setState({
+        result:result
       })
-     .then((Response)=> Response.json())
-     .then((findresponse)=>{
-          console.log(findresponse)
-          this.setState({
-                      status:findresponse.UndoMyPoundResult.ResultStatus.Status,
-                      message:findresponse.UndoMyPoundResult.ResultStatus.StatusMessage,
-                      // pound:findresponse.PoundMyPackMemberResult.UserPackList
-                       })
 
-    if(this.state.status === "1")
-    {
-        alert("You UNHOWLED at "+name);
-        // this.setState({
-        //     // redirectToUnHowl:true ,
-        //     source2:'assets/images/Howl-Final-Light-Blue-small.png',
-        //     // poundid: `${value1}`
-        //
-        // });
+        // console.log(arrOfObj);
+        console.log(this.state.result);
 
-     }
-    else {
-       alert(this.state.message);
-       // console.log(this.state.pound.UserPoundID)
+     })
 
-    }
+ }
 
-      })
+ updateSearch(event) {
 
-
+   this.setState({
+     search: event.target.value.substr(0,35)
+   });
  }
 
 
@@ -258,53 +225,60 @@ handleundoAlert(value1,value2) {
 
   return (
 
-       <div className="box box-transparent">
-       <h2 className="article-title text-center">
+       <div >
+
+
        <input type="text" value={this.state.search}
            name="search"
            onChange={this.updateSearch.bind(this)}
            placeholder="Search Pack"
            />
-       </h2>
+           <button className="float-right">
+             <a href="#/app/pglayout/packcontact">ADD NEW PACK MEMBER</a></button>
+
 
       <div className="box-body padding-xl">
-        <div className="row">
-            <div className="col-md-2 text-center">Howls At Pack <div> {this.state.data1.TotalMyPound}</div></div>
+        {/* <div className="row">
+            <div width="3">Howls At Pack <div> {this.state.data1.TotalMyPound}</div></div>
             <div className="col-md-2 float-right text-center">Howls At Me <div > {this.state.data1.TotalPackPound}</div> </div>
             <div className="col-md-4">My Average Response Time <div> {v} </div></div>
 
-        </div>
-
-              <div>
+        </div> */}
+ <div className="row">
+              <div className="col-xl-12">
                 { filteredNames.map((dyanamicData,key)=>
 
                      <div className="box box-default">
                       <div className="box-body ">
 
-                     <span className="float-left col-xl-1">
+                     <span className="float-left" width="1">
                         {(dyanamicData.ProfileImageURL === "" || dyanamicData.ProfileImageURL === null) ?
                                   <img src="assets/images/contact.png" alt="Image" height="60" width="60"/>
                               :   <img src={`${dyanamicData.ProfileImageURL}`} alt="Image" height="60" width="60" />
                         }
                     </span>
 
-                    <span className="float-left col-xl-4">
+                    <span className="float-left" width="3">
                             {dyanamicData.FirstName} {" "} {dyanamicData.LastName}<br/>
                             {"+"+dyanamicData.PhoneNumberCountryCode}{" "}  {dyanamicData.PhoneNumber}<br/>
-                            {dyanamicData.Email}
+                            {dyanamicData.Email} <br />
+                              <RaisedButton primary label="Delete"  onClick={()=>this.handleDelete(dyanamicData.ID)}/>
 
                     </span>
 
                         <span className="float-right">
 
                           {
-                            dyanamicData.UserPoundID === ""  ?
-                                    <img src={this.state.source1} alt="Image" height="60" width="60" onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID)}  />
-                                :   <img src={this.state.source2} alt="Image" height="60" width="60" onClick={()=>this.handleundoAlert(dyanamicData.UserPoundID,dyanamicData.FirstName)} />
+                            dyanamicData.UserPoundID === ""    ?
+                                    <RaisedButton  primary label="Check-In"
+                                       onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)}/>
+
+                                :   <img src='assets/images/Howl-Final-Red-small.png' alt="Image" height="60" width="60"
+                              onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)} />
                           }
 
                        {/* <img src={dyanamicData.url} alt="Image" height="60" width="60"
-                          onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.url,dyanamicData.UserPoundID)}/> */}
+                          onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)}/> */}
 
 
                           {/* {
@@ -320,7 +294,7 @@ handleundoAlert(value1,value2) {
                           {/* <button style={{backgroundColor: bgColor1}} onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.UserPoundID)}>HOWL</button>{" "} */}
                           {/* <RaisedButton primary label="HOWL" onClick={()=>this.handleAlert(dyanamicData.ID)}/>{" "} */}
 
-                          <RaisedButton primary label="Delete"  onClick={()=>this.handleDelete(dyanamicData.ID)}/>
+
 
 
                         </span>
@@ -332,6 +306,19 @@ handleundoAlert(value1,value2) {
                    )
                 }
               </div>
+              {/* <div className="col-xl-12">
+                <div className="box box-default">
+                  <div className="box-body">
+                  <h2 className="article-title-header">Howls At Pack</h2>
+
+                  <Howls_Pack />
+              </div>
+            </div>
+          </div> */}
+         </div>
+
+
+
       </div>
 
    </div>
@@ -340,21 +327,359 @@ handleundoAlert(value1,value2) {
 }
 }
 
+// const Page = () => (
+//   <section className="container-fluid with-maxwidth chapter">
+//     <article className="article">
+//
+//      <h2 className="article-title">MANAGE PACK<button className="float-right">
+//         <a href="#/app/pglayout/packcontact">ADD NEW PACK MEMBER</a></button></h2>
+//
+//
+//      <QueueAnim type="bottom" className="ui-animate">
+//        <div key="1"><Pack /></div>
+//
+//      </QueueAnim>
+//
+//   </article>
+// </section>
+// );
+//
+// module.exports = Page;
+// import React from 'react';
+// import QueueAnim from 'rc-queue-anim';
+class Howls_Me extends React.Component {
+
+  constructor() {
+    super();
+      this.state = {
+        data: [],
+      };
+
+  }
+  componentDidMount(){
+
+    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetPackPoundList';
+
+        fetch(BaseURL,
+        {
+         method: "POST",
+         body: JSON.stringify({
+           "UserID":cookie.load('Id'),
+           "UserToken":cookie.load('UserToken')
+         }),
+          headers: new Headers({'content-type': 'application/json'}),
+        })
+    .then((Response)=> Response.json())
+    .then((findresponse)=>{
+        console.log(findresponse)
+        this.setState({
+           data:findresponse.GetPackPoundListResult.GetPackPounds,
+           time:findresponse.GetPackPoundListResult.GetPackPounds["0"].DateCreated
+        })
+        console.log(this.state.time);
+        // var ms = this.state.time;
+        // console.log(ms)
+        //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
+
+            // var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
+            //     console.log(gmtDateTime);
+            // var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
+            // console.log(local)
+            //
+
+
+      })
+
+  }
+  render() {
+    return (
+
+
+
+
+  <div >
+
+    <h2 className="article-title-header">Howls At Me</h2>
+  <div className="ui-timline-container ">
+    <section className="ui-timeline">
+      <article className="tl-item">
+        <div className="tl-body">
+          <div className="tl-entry">
+            <div className="tl-caption">
+              <a href="javascript:;" className="btn btn-primary btn-block">Today</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+      {/* <div className="ui-timline-container">
+    <section className="ui-timeline"> */}
+          {
+            this.state.data.map((dyanamicData,key) =>
+             dyanamicData.HowlType === "1"
+
+        ?
+        <article className="tl-item alt">
+          <div className="tl-body">
+            <div className="tl-entry">
+
+            <div className="tl-time">
+
+               {  moment(new Date(dyanamicData.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
+             </div>{" "}
+
+            <div className="tl-icon btn-icon-round btn-icon btn-icon-thin ">
+                <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="40" width="40"/></div>
+            <div className="tl-content">
+              <h4 className="tl-tile text-primary">
+
+                 {`${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName} HOWLED at you `}
+              </h4>
+
+            </div>
+
+
+        </div>
+      </div>
+    </article>
+
+           :
+           <article className="tl-item">
+             <div className="tl-body">
+               <div className="tl-entry">
+
+           <div className="tl-time">  {moment.utc(moment(`${dyanamicData.DateCreated}`).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')}</div>{" "}
+            <div className="tl-icon btn-icon-round btn-icon btn-icon-thin">
+                <img src="assets/images/Howl-Final-Red-small.png" alt="Image" height="40" width="40"/></div>
+            <div className="tl-content ">
+              <h4 className="tl-tile text-danger">
+
+                {`You HOWLED back at ${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName}`}
+
+                {/* `You HOWLED at ${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName}`
+                              :  `${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName} HOWLED back `} */}
+              </h4>
+
+        </div>
+      </div>
+      </div>
+      </article>
+
+
+
+
+
+           )
+          }
+
+
+
+
+
+    </section>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+   );
+  }
+
+}
+
+class Howls_Pack extends React.Component {
+
+  constructor() {
+    super();
+      this.state = {
+        data: [],
+      };
+
+  }
+  componentDidMount(){
+
+    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetMyPoundList';
+
+        fetch(BaseURL,
+        {
+         method: "POST",
+         body: JSON.stringify({
+           "UserID":cookie.load('Id'),
+           "UserToken":cookie.load('UserToken')
+         }),
+          headers: new Headers({'content-type': 'application/json'}),
+        })
+    .then((Response)=> Response.json())
+    .then((findresponse)=>{
+        console.log(findresponse)
+        this.setState({
+           data:findresponse.GetMyPoundListResult.GetMyPounds,
+           time:findresponse.GetMyPoundListResult.GetMyPounds["0"].DateCreated
+
+        })
+        console.log(this.state.time);
+        // var ms = this.state.time;
+        // console.log(ms)
+        //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
+
+            // var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
+            //     console.log(gmtDateTime);
+            // var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
+            // console.log(local)
+
+
+
+      })
+
+  }
+  render() {
+    return (
+
+
+  <div className="row">
+
+
+    <div className="col-xl-4">
+      <div className="box box-default">
+        <div className="box-body">
+      <Pack />
+    </div>
+  </div>
+  </div>
+
+
+<div className="col-xl-4">
+
+  <div className="box box-default">
+    <div className="box-body">
+    <h2 className="article-title-header">Howls At Pack</h2>
+  <div className="ui-timline-container ">
+    <section className="ui-timeline">
+      <article className="tl-item">
+        <div className="tl-body">
+          <div className="tl-entry">
+            <div className="tl-caption">
+              <a href="javascript:;" className="btn btn-primary btn-block">Today</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+      {/* <div className="ui-timline-container">
+    <section className="ui-timeline"> */}
+          {
+            this.state.data.map((dyanamicData,key) =>
+             dyanamicData.HowlType === "1"
+
+        ?
+        <article className="tl-item alt">
+          <div className="tl-body">
+            <div className="tl-entry">
+
+            <div className="tl-time">
+               {  moment(new Date(dyanamicData.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}</div>{" "}
+
+            <div className="tl-icon btn-icon-round btn-icon btn-icon-thin ">
+                <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="40" width="40"/></div>
+            <div className="tl-content">
+              <h4 className="tl-tile text-primary">
+
+                 {`You HOWLED at ${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName}`}
+              </h4>
+
+            </div>
+
+
+        </div>
+      </div>
+    </article>
+
+           :
+           <article className="tl-item">
+             <div className="tl-body">
+               <div className="tl-entry">
+
+           <div className="tl-time">  {moment.utc(moment(`${dyanamicData.DateCreated}`).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')}</div>{" "}
+            <div className="tl-icon btn-icon-round btn-icon btn-icon-thin btn-warning">
+                <img src="assets/images/Howl-Final-Red-small.png" alt="Image" height="30" width="30"/></div>
+            <div className="tl-content ">
+              <h4 className="tl-tile text-danger">
+
+                {`${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName} HOWLED back `}
+
+                {/* `You HOWLED at ${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName}`
+                              :  `${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName} HOWLED back `} */}
+              </h4>
+
+        </div>
+      </div>
+      </div>
+      </article>
+
+
+
+
+
+           )
+          }
+
+
+
+
+
+    </section>
+
+  </div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<div className="col-xl-4">
+  <div className="box box-default">
+    <div className="box-body">
+  <Howls_Me />
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+   );
+  }
+
+}
 const Page = () => (
-  <article>
+  <div className="container-fluid  chapter">
+    <h2 className="article-title-header">MANAGE PACK</h2>
+    <QueueAnim type="bottom" className="ui-animate">
 
+       <div key="1"><Howls_Pack /></div>
+       {/* <div key="2"></div> */}
 
-      {/* <h2 className="article-title text-center">MANAGE PACK </h2>
-      <button className="float-right"><a href="page-layout#/app/pglayout/packcontact">ADD NEW PACK MEMBER </a></button>
-    </div> */}
-      <h2 className="article-title text-center">MANAGE PACK<button className="float-right"><a href="page-layout#/app/pglayout/packcontact">ADD NEW PACK MEMBER</a></button></h2>
-
-   <section className="chapter">
-     <QueueAnim type="bottom" className="ui-animate">
-       <div key="1"><Pack /></div>
-     </QueueAnim>
-   </section>
-  </article>
+    </QueueAnim>
+  </div>
 );
 
 module.exports = Page;

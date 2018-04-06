@@ -3,7 +3,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import cookie from 'react-cookies';
 
 
-const GOOGLE_MAPS_JS_API_KEY='AIzaSyA_fAvgCclwN06F4wPstSINB6DlE2eTyx4';
+const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
 
 
 class GoogleMap extends React.Component {
@@ -63,12 +63,12 @@ render() {
     return (
 
 
-        <Map className='google-map'
+
+        <Map
             google={google}
             onClick={this.onMapClicked}
             initialCenter={{
-              lat: 41.1798,
-              lng: -73.1914
+              lat: cookie.load('Latitude'),  lng: cookie.load('Longitude')
 
             }}
             zoom={this.state.zoom}
@@ -93,14 +93,13 @@ render() {
              {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
-           style={{ width:"76%"
-            }}
+           style={{ width:"630" , height:"330"}}
           >
               <Marker
                    title={'Home Address Location '}
                    name={fname+" "+lastname}
                    onClick={this.onMarkerClicked}
-                  position={{lat: 41.1798,  lng: -73.1914}}
+                  position={{lat: cookie.load('Latitude'),  lng: cookie.load('Longitude')}}
                   icon={{
                            url: "assets/images//howl-map-marker-small.png",
                            anchor: new google.maps.Point(32,32),
@@ -109,19 +108,7 @@ render() {
 
 
                  />
-                 <Marker
-                      title={'Home Address Location '}
-                      name={fname+" "+lastname}
-                      onClick={this.onMarkerClicked}
-                     position={{lat: 41.1798,  lng: -73.1914}}
-                     icon={{
-                              url: "assets/images//howl-map-marker-small.png",
-                              anchor: new google.maps.Point(32,32),
-                              scaledSize: new google.maps.Size(64,64)
-                         }}
 
-
-                    />
                   <InfoWindow
                          marker={this.state.activeMarker}
                          visible={this.state.showingInfoWindow}>
@@ -130,6 +117,8 @@ render() {
                         </div>
                   </InfoWindow>
         </Map>
+
+
 
         );
     }

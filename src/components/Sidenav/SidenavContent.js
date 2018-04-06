@@ -10,6 +10,7 @@ import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from '
 const  href= {
     href: 'href'
 };
+
 class SidebarContent extends React.Component {
   constructor(props) {
 
@@ -172,47 +173,55 @@ class SidebarContent extends React.Component {
                <Redirect to="/mainLogin"/>
              )
            }
+
+
+
     return (
       <ul className="nav" ref={(c) => { this.nav = c; }}>
         <li>
-          <FlatButton href="#/app/home"><img className="nav-icon material-icons" src="assets/images/BlueHome.png" alt="Image" height="20" width="20"/><span className="nav-text">HOME</span></FlatButton>
+          <FlatButton href="#/app/home"><img className="nav-icon material-icons" src="assets/images/rsz_bluehome.png" alt="Image" height="20" width="20"/><span className="nav-text">HOME</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/Alerts"><img className="nav-icon material-icons" src="assets/images/BlueAlert.png" alt="Image" height="20" width="20"/><span className="nav-text">Alerts</span></FlatButton>
+          <FlatButton href="#/app/Alerts">
+          <img className="nav-icon material-icons" src="assets/images/blueAlert.png" alt="Image" height="20" width="20"/>
+          <span className="nav-text">Alerts</span>
+
+
+        </FlatButton>
         </li>
         <li>
           <FlatButton href="#/app/Cameras"><img className="nav-icon material-icons" src="assets/images/BlueCamera.png" alt="Image" height="20" width="20"/><span className="nav-text">Cameras</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/Devices"><img className="nav-icon material-icons" src="assets/images/BlueNetwork.png" alt="Image" height="20" width="20"/><span className="nav-text">Devices</span></FlatButton>
+          <FlatButton href="#/app/Devices"><img className="nav-icon material-icons" src="assets/images/blueNetwork.png" alt="Image" height="20" width="20"/><span className="nav-text">Devices</span></FlatButton>
         </li>
         {/* <li>
           <FlatButton href="#/app/pack"><img className="nav-icon material-icons" src="assets/images/bluePack.png" alt="Image" height="20" width="20"/><span className="nav-text">Pack</span></FlatButton>
 
         </li> */}
         <li>
-          <FlatButton href="#/app/PackMenu"><img className="nav-icon material-icons" src="assets/images/bluepack.png" alt="Image" height="20" width="20"/><span className="nav-text">Pack</span></FlatButton>
-          <ul>
-            <li><FlatButton className="prepend-icon" href="pack#/app/Pack"><span>Pack</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_pack"><span>Howls at Pack</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_me"><span>Howls at Me</span></FlatButton></li>
-          </ul>
+          <FlatButton href="#/app/Pack"><img className="nav-icon material-icons" src="assets/images/bluePack.png" alt="Image" height="20" width="20"/><span className="nav-text">Pack</span></FlatButton>
+          {/* <ul>
+            <li><FlatButton className="prepend-icon" href="#/app/Pack"><span>Pack</span></FlatButton></li>
+            {/* <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_pack"><span>Howls at Pack</span></FlatButton></li> */}
+             {/* <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_me"><span>Howl Updates</span></FlatButton></li>
+          </ul> */}
         </li>
         <li>
-          <FlatButton href="#/app/Monitoring"><img className="nav-icon material-icons" src="assets/images/BlueMonitor.png" alt="Image" height="20" width="20"/><span className="nav-text">Monitoring</span></FlatButton>
+          <FlatButton href="#/app/Monitoring"><img className="nav-icon material-icons" src="assets/images/blueMonitor.png" alt="Image" height="20" width="20"/><span className="nav-text">Monitoring</span></FlatButton>
         </li>
         <li>
           <FlatButton href="#/app/Map"><img className="nav-icon material-icons" src="assets/images/MapGlobe-2.png" alt="Image" height="20" width="20"/><span className="nav-text">Map</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/Help & Support"><img className="nav-icon material-icons" src="assets/images/BlueQuestion.png" alt="Image" height="20" width="20"/><span className="nav-text">Help & Support</span></FlatButton>
+          <FlatButton href="#/app/Help & Support"><img className="nav-icon material-icons" src="assets/images/blueQuestion.png" alt="Image" height="20" width="20"/><span className="nav-text">Help & Support</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/Settings"><img className="nav-icon material-icons" src="assets/images/BlueCog.png" alt="Image" height="20" width="20"/><span className="nav-text">Settings</span></FlatButton>
+          <FlatButton href="#/app/Settings"><img className="nav-icon material-icons" src="assets/images/blueCog.png" alt="Image" height="20" width="20"/><span className="nav-text">Settings</span></FlatButton>
 
         </li>
         <li>
-          <FlatButton onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></FlatButton>
+          <a onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></a>
           <Dialog
                       title="Confirm"
                       actions={actions}

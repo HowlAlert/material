@@ -3,13 +3,15 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import QueueAnim from 'rc-queue-anim';
 import cookie from 'react-cookies';
-
+import Howls_Pack from '../../howls_pack/components/Howls_Pack'
+import moment from 'moment';
 
 class Incoming extends React.Component {
   constructor() {
     super();
       this.state = {
         data: [],
+
       };
 
   }
@@ -32,9 +34,18 @@ class Incoming extends React.Component {
         console.log(findresponse)
         this.setState({
            data:findresponse.GetPackPoundListResult.GetPackPounds,
-
+           time:findresponse.GetPackPoundListResult.GetPackPounds["0"].DateCreated
         })
 
+         // console.log(this.state.time);
+         // var ms = this.state.time;
+         // console.log(ms)
+         //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
+         //
+         //     var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
+         //         console.log(gmtDateTime);
+         //     var local = gmtDateTime.local().format('YYYY-MMM-DD h:mm A');
+         //     console.log(local)
 
 
       })
@@ -42,14 +53,19 @@ class Incoming extends React.Component {
   }
 render() {
 
+//   var gmtDateTime = moment.utc("2015-10-24 20:00", "YYYY-MM-DD HH")
+// var local = gmtDateTime.local().format('YYYY-MMM-DD h:mm A');
+// console.log(local)
+
 
   return (
 
     <div className="row">
-      <div className="col-xl-12">
+      <div className="col-xl-6">
+
         <div className="box box-default">
           <div className="box-body">
-
+    <h2 className="article-title-header">Howls at Me</h2>
 
         {
           this.state.data.map((dyanamicData,key) =>
@@ -63,7 +79,11 @@ render() {
                                        `${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName} HOWLED at you `
                                       : `You HOWLED back at ${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName}`
                                        }{" "}
-                              {"on " + dyanamicData.DateCreated}
+                              {"on " +
+                                   moment(new Date(dyanamicData.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')
+
+                              }
+
 
                           </div>
 
@@ -72,9 +92,21 @@ render() {
 
          )
         }
+
       </div>
     </div>
-</div>
+  </div>
+
+
+      <div className="col-xl-6">
+        <div className="box box-default">
+          <div className="box-body">
+          <h2 className="article-title-header">Howls At Pack</h2>
+
+          <Howls_Pack />
+      </div>
+    </div>
+  </div>
  </div>
 
   );
@@ -83,14 +115,13 @@ render() {
 
 const Page = () => {
   return (
-  <article className="article">
-    <center><h2 className="article-title">Howls at Me</h2></center>
-    <section className="container-fluid with-maxwidth chapter">
+
+
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><Incoming /></div>
       </QueueAnim>
-    </section>
-  </article>
+
+
   )
 }
 

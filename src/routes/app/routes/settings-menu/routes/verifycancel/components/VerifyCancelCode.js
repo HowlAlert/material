@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import Cancel from '../../cancel/';
+import Cancel from '../../cancel';
 
 
  class VerifyCancelCode extends React.Component {
@@ -49,12 +49,41 @@ import Cancel from '../../cancel/';
   handleNext(event) {
 
     var entered = this.state.code;
-    console.log(entered);
+    var code_length = entered.length;
+    console.log(entered.length );
 
     var verify = this.state.verifycode;
     console.log(verify);
 
-    if(entered === verify){
+    var savedcancelcode = cookie.load('CancellationCode');
+    var silentcode =   cookie.load('SilenceCode');
+    console.log(silentcode);
+
+
+    if(entered ==''){
+      alert("Cancel Code Cannot be empty!");
+    }
+
+
+    if(code_length != 4){
+      alert("Cancel Code should be 4 digits number!");
+     }
+    const re = /^[0-9\b]+$/;
+
+   if(re.test(entered)=='' && entered!='' ){
+      alert("Cancel Code is only number!");
+
+    }
+    else if(re.test(entered)!='' && entered!='' && code_length == 4 && entered === silentcode){
+          alert("Your Silent Code and Cancel Code can not be same ! ");
+
+    }
+    else if( re.test(entered)!='' && entered!='' && entered !== silentcode && code_length == 4 && entered === savedcancelcode)
+    {
+      alert("Your new cancel code should be different than current cancel code")
+    }
+    else if(re.test(entered)!='' && entered!='' && entered !== silentcode && code_length == 4 &&  entered !== savedcancelcode && entered === verify)
+    {
 
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetCancellationCode';
 
@@ -72,11 +101,17 @@ import Cancel from '../../cancel/';
         .then((findresponse)=>{
            console.log(findresponse)
            alert("Code has been changed");
-           this.setState({ redirectToReferrer: true })        //redirect to settings menu
+           cookie.save('CancellationCode',this.state.code)
+            this.setState({ redirectToReferrer: true })        //redirect to settings menu
           })
 
       }
-    else
+      else if(re.test(entered)!='' && entered!='' && entered !== silentcode && code_length == 4 &&  entered !== savedcancelcode && verify =='')
+       {
+          alert("Re-Enter cancel code to verify");
+
+       }
+    else if(re.test(entered)!='' && entered!='' && entered !== silentcode && code_length == 4 &&  entered !== savedcancelcode && entered !== verify )
      {
         alert("Cancel code did not match.Try Again ");
 
@@ -85,6 +120,11 @@ import Cancel from '../../cancel/';
 
 
 }
+
+handleCancel(event) {
+  window.location.reload();
+}
+
   render() {
 
 
@@ -93,8 +133,11 @@ import Cancel from '../../cancel/';
       if(redirectToReferrer === true)
       {
         return (
-          <Redirect to="../Settings"/>
-
+          <div>
+             <h5 className="text-center">* Be sure to make this a code you will remember.</h5>
+              <TextField  value ={this.state.code} floatingLabelText="Your New cancel code" fullWidth />
+              <RaisedButton onClick={(e)=>this.handleCancel(e)} primary label="<- Back" />
+          </div>
          )
       }
 
@@ -111,8 +154,9 @@ import Cancel from '../../cancel/';
                         <TextField onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your new cancel code" fullWidth />
                         <TextField onChange={(e)=>this.handleVerifyCode(e)} name="re-code" floatingLabelText="Verify your new cancel code" fullWidth />
                       </div>
-                      <div className="card-action no-border text-right">
-                        <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="Save" />
+                      <div className="card-action no-border ">
+                        <RaisedButton  className="text-left" onClick={(e)=>this.handleNext(e)} primary label="Save" />
+                        <RaisedButton  className="text-rigth" onClick={(e)=>this.handleCancel(e)} primary label="Cancel" />
                       </div>
 
                     </div>

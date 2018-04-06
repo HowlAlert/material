@@ -21,6 +21,7 @@ import cookie from 'react-cookies';
 // import PageRegister5 from 'routes/register5/';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import './phone-number.css';
+import PhoneVerifyCode from '../../PhoneVerifyCode/components/PhoneVerifyCode'
 
 
 const mWidthStyle = {
@@ -118,6 +119,7 @@ this.handleCountry = this.handleCountry.bind(this);
       return phoneUtil.format(parsedNumber, PhoneNumberFormat.INTERNATIONAL)
     }
 
+    
 
   render() {
 
@@ -126,7 +128,7 @@ this.handleCountry = this.handleCountry.bind(this);
 
           return (
               // <Redirect to="PhoneVerifyCode"/>
-                <Redirect to="PhoneVerifyCode"/>
+                <PhoneVerifyCode />
           )
         }
 
@@ -166,8 +168,11 @@ this.handleCountry = this.handleCountry.bind(this);
 
 
 
-<div className="box-body text-center">
-<RaisedButton style={mWidthStyle} label="NEXT -->" primary onClick={(e)=>this.handlePhoneNo(e)}/><div className="divider" />
+<div className="box-body text-right">
+
+     <RaisedButton style={mWidthStyle} label="NEXT -->" primary onClick={(e)=>this.handlePhoneNo(e)}/><div className="divider" />
+
+
 </div>
 
 </div>

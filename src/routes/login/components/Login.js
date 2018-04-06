@@ -43,6 +43,14 @@ class Login extends React.Component {
     };
   }
 
+  componentWillMount(){
+ if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+   console.log(cookie.load('Id')),
+   console.log(cookie.load('UserToken')),
+   this.setState({ redirectToHome: true })
+ }
+ }
+
   handleLogin(event){
   event.preventDefault();
   if(this.state.Email==''){
@@ -62,7 +70,6 @@ class Login extends React.Component {
     });
 
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
-
        fetch(BaseURL,{
         method: "POST",
         body: JSON.stringify({'Email':this.state.Email,'Password':this.state.Password}),
@@ -181,6 +188,13 @@ this.setState({
 
   render() {
 
+    const{redirectToHome}=this.state
+       if(redirectToHome){
+         return (
+           <Redirect to="app/home" />
+         )
+       }
+       
     const reducers = {
       // ... your other reducers here ...
       session: sessionReducer
@@ -200,7 +214,7 @@ this.setState({
 
       console.log(redirectToReferrer)
           return (
-            <Redirect to="../../app/dashboard" />
+            <Redirect to="../../app/home" />
           )
         }
 

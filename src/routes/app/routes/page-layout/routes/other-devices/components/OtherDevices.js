@@ -19,7 +19,7 @@ return (
                 <span> Amazon Echo  </span>
               </span>
               <span className="float-right" >
-                <button name="code" className="card bg-color-primary float-right"><a href="page-layout#/app/pglayout/amazon-device">ACTIVATE</a></button>
+                <button name="code" className="card bg-color-primary float-right"><a href="#/app/pglayout/amazon-device">ACTIVATE</a></button>
               </span>
           </div>
       </div><br/>
@@ -30,7 +30,7 @@ return (
                 <span> Google Home </span>
               </span>
               <span className="float-right" >
-                 <button name="re-code" className="card bg-color-primary float-right"><a href="page-layout#/app/pglayout/google-device">ACTIVATE</a></button>
+                 <button name="re-code" className="card bg-color-primary float-right"><a href="#/app/pglayout/google-device">ACTIVATE</a></button>
               </span>
         </div>
     </div>

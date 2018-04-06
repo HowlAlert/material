@@ -3,7 +3,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import QueueAnim from 'rc-queue-anim';
 import cookie from 'react-cookies';
-
+import moment from 'moment';
 
 class Pack extends React.Component {
 
@@ -32,8 +32,11 @@ class Pack extends React.Component {
         console.log(findresponse)
         this.setState({
            data:findresponse.GetMyPoundListResult.GetMyPounds,
+           time:findresponse.GetMyPoundListResult.GetMyPounds["0"].DateCreated
 
         })
+        console.log(this.state.time);
+
 
 
 
@@ -57,15 +60,7 @@ class Pack extends React.Component {
 
 
     return (
-      <div className="row">
-        <div className="col-xl-12">
-          <div className="box box-default">
-            <div className="box-body">
-
-  {/* <h2 className=" text-center">
-    <div>NO NEW HOWL</div>
-  </h2> */}
-
+      <div >
 
           {
             this.state.data.map((dyanamicData,key) =>
@@ -77,12 +72,13 @@ class Pack extends React.Component {
 
                                  <div className="col-xl-12 ">
 
-                                   {/* {dyanamicData.HowlType}{" "} */}
-                                   {/* {dyanamicData.HowlType === "1"  ?  'You HOWLED at'
-                                   : 'Received HOWL from'}{" "} */}
+
                                    {dyanamicData.HowlType === "1"  ?  `You HOWLED at ${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName}`
                                                  :  `${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName} HOWLED back `}{" "}
-                                       {"on " + dyanamicData.DateCreated}</div>
+                                       {"on " +
+                                           moment(new Date(dyanamicData.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')
+
+                                        }</div>
 
                           </div>
                      </div>
@@ -90,23 +86,18 @@ class Pack extends React.Component {
            )
           }
         </div>
-      </div>
-</div>
-   </div>
+
 
     );
 }
 }
 const Page = () => {
   return (
-  <article className="article">
-    <center><h2 className="article-title">Howls At Pack</h2></center>
-    <section className="container-fluid with-maxwidth chapter">
+
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><Pack /></div>
       </QueueAnim>
-    </section>
-  </article>
+
   )
 }
 

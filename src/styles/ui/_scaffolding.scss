@@ -3,9 +3,10 @@
 .article-title-style {
   font-size: 24px;
   font-weight: normal;
-  line-height: 32px;
-  margin: .6em 0;
-  color: theme-color("primary");
+  line-height: 26px;
+  margin:0 0;
+  color: #3287c5;
+
   &.color-dark {
     color: $body-color;
   }
@@ -42,12 +43,19 @@
 
   .article-title {
     font-size: 24px;
-    padding-top: 80px;
+    // padding-top: 80px;
     font-weight: normal;
-    line-height: 32px;
-    margin: 48px 0 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.117647);
-    color: theme-color("primary");
+    line-height: 25px;
+    // margin: 48px 0 30px;
+    // border-top: 1px solid rgba(0, 0, 0, 0.117647);
+    color: #3287c5;
+  }
+
+  .article-title-header {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 25px;
+    color: #3287c5;
   }
 }
 

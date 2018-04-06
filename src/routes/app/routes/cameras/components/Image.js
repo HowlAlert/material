@@ -3,6 +3,11 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import cookie from 'react-cookies';
 import RaisedButton from 'material-ui/RaisedButton';
+import moment from 'moment';
+import QueueAnim from 'rc-queue-anim';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+
+
 
 class ImageBox extends React.Component {
 
@@ -16,19 +21,70 @@ class ImageBox extends React.Component {
 
   }
 
+  handleImage(value1,value2) {
+
+
+
+        var cameraid = `${value1}`;
+        cookie.save('cameraid',cameraid);
+         console.log(cookie.load('cameraid'));
+           var CameraName = `${value2}`;
+        cookie.save('cameraName',this.state.CameraName);
+         console.log(cookie.load('cameraName'));
+
+
+         this.setState({ redirectToReferrer: true })
+    }
+
 componentDidMount(){
 
-  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
-console.log("ImageURL");
-      fetch(BaseURL,
+  var today = moment(this.state.startDate).format('MM/DD/YYYY');
+  console.log(today);
+
+var starthours = "00";
+var startminutes = "00";
+var startsecond = "00";
+var endhours = "23";
+var endminutes = "59";
+var endsecond = "00";
+
+var st= starthours + ':' + startminutes + ':' + startsecond;
+var et= endhours + ':' + endminutes + ':' + endsecond;
+var StartTime = today + " " + st
+console.log(StartTime);
+var EndTime = today + " " + et
+console.log(EndTime);
+
+  const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
+
+      fetch(URL,
+      {
+       method: "POST",
+       body: JSON.stringify({
+         "UserID":cookie.load('Id'),
+         "UserToken":cookie.load('UserToken')
+       }),
+        headers: new Headers({'content-type': 'application/json'}),
+      })
+  .then((Response)=> Response.json())
+  .then((findresponse)=>{
+    this.setState({
+         length:findresponse.GetUserCameraResult.RoomCameraList.length,
+         CameraName:findresponse.GetUserCameraResult.RoomCameraList["0"].SortRoomName,
+         CameraId:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].CameraID
+    })
+
+
+
+      fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages',
       {
        method: "POST",
        body: JSON.stringify({
          "UserID":cookie.load('Id'),
          "UserToken":cookie.load('UserToken'),
-         "CameraID" :"HDXQ-038386-TMHKD",
-         "StartTime" :"12/05/2017 00:00:00",
-         "EndTime" : "01/18/2018 23:59:59",
+         "CameraID": this.state.CameraId,
+	       "StartTime" :"12/11/2017 00:00:00",
+         "EndTime" : EndTime,
          "PageNumber" : "1" }),
         headers: new Headers({'content-type': 'application/json'}),
       })
@@ -36,20 +92,15 @@ console.log("ImageURL");
   .then((findresponse)=>{
       console.log(findresponse)
       console.log(findresponse.GetUserCameraImagesResult.CameraImages)
-     //  this.setState({
-     //     data1:findresponse.GetUserCameraImagesResult
-     //  })
-     // console.log(this.state.data1)
-     // let recipesCopy = JSON.parse(JSON.stringify(this.state.CameraImages))
-     //  let url =  recipesCopy[0].ImageURL
-     //    console.lof(url);
 
-      findresponse.GetUserCameraImagesResult.CameraImages.map((dyanamicData,key)=>
-
-
-
-
-               fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+     let arr4=[];
+     arr4=  findresponse.GetUserCameraImagesResult.CameraImages.slice(0, 1);          //To get the top most image of the camera recordings
+     // console.log(arr4);
+       this.setState({  data2:arr4 , array_count:arr4.length })
+       // console.log(arr4.length);
+       // console.log(this.state.data2);
+    this.state.data2.map((dyanamicData,key)=>
+       fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                     {
 
                          method: "POST",
@@ -68,66 +119,77 @@ console.log("ImageURL");
                       data:findresponse1
                    })
 
-               })
+  })
+
+
+
 )
+})
            });
    }
 
 
   render() {
-    var mes = this.state.data.length
-    if(mes === 0)
-    {
-      var message= "Click  ADD DEVICE INSTRUCTIONS Button to follow Instructions to add devices "
-    }
+
+    const { redirectToReferrer} = this.state
+          if(redirectToReferrer === true)
+          {
+            return (
+               <Redirect to="camerasettings/camera-history" />
+             )
+          }
+
+
 
     return (
-      <div className="box box-transparent">
-
-        <div className="row">
-            <div className="col-md-4 text-center">
-              <h5>{message}</h5>
-              <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image" height="150" width="150"/>
-            </div>
-
-
-        </div>
-
-
-          {/* <center>
-                     <a href="cam-add-devices#/app/cameraDevices/add-devices">
-                         <i className="material-icons">add</i><br />
-                        Touch here to follow the instructions to add a camera
-                       </a>
-          </center> */}
 
 
 
+      <div className="box box-default">
+          <div className="box-body ">
 
-      </div>
+           <h2 className="article-title-header ">{this.state.CameraName} </h2>
+       <div className="ih-item ih-material">
+
+        <a href="#/app/camerasettings/camera-history" onClick={()=>this.handleImage(this.state.CameraId,this.state.CameraName)}>
+                   <div className="img">
+                     <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
+                   </div>
+                   <div className="info">
+                     <div className="info-mask bg-color-primary" />
+                     <div className="info-content">
+                       <div className="info-inner">
+                         <h3>Click Here for Live Video...</h3>
+                       </div>
+                     </div>
+                   </div>
+                 </a>
+            {/* <a href="#/app/camerasettings/camera-history" >
+                <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
+             </a> */}
+       </div>
+       </div>
+</div>
+
+
+
     );
   }
 }
 
 const ImageSection = () => (
-  <article className="article">
-    <h2 className="article-title text-center no-margin-top">CAMERA
-      <RaisedButton className="float-right" primary label="Add Device Instructions" >
-      <a href="cam-settings-menu#/app/camerasettings/add-devices"> </a></RaisedButton>
-    </h2>
-    <section className="box box-default">
-      <div className="box-body padding-xl">
-        <div className="col-xl-12">
-          <div className="row">
-            <div className="col-lg-12">
-              <ImageBox />
-            </div>
 
-          </div>
-        </div>
-      </div>
-    </section>
-  </article>
+
+<section className="chapter">
+
+      <QueueAnim type="bottom" className="ui-animate">
+        <div key="1"><ImageBox /></div>
+      </QueueAnim>
+
+</section>
+
+
+
 );
 
 module.exports = ImageSection;

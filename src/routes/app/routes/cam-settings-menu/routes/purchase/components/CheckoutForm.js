@@ -3,7 +3,7 @@ import {injectStripe} from 'react-stripe-elements';
 
 // import PaymentRequestForm from './PaymentRequestForm';
 import CardSection from './CardSection';
-
+// import AddressSection from './AddressSection';
 
 // class PaymentRequestForm extends React.Component {
 //   constructor(props) {
@@ -76,11 +76,15 @@ class CheckoutForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <div className="box box-default col-xl-6">
+            <div className="box-body ">
         {/* <AddressSection /> */}
         <CardSection />
         {/* <button><a href="cam-add-devices#/app/cameraDevices/serial/Payment">Confirm order</a></button> */}
         {/* <PaymentRequestForm /> */}
           <button>Confirm order</button>
+        </div>
+      </div>
       </form>
     );
   }

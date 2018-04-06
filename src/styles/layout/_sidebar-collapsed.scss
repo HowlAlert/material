@@ -167,7 +167,7 @@
         display: none;
       }
       .nav ul a > div { // for materail-ui FlatButton
-        > span { 
+        > span {
           display: none;
         }
       }
@@ -187,7 +187,7 @@
           margin-right: 0;
         }
 
-        // because of jQuery 
+        // because of jQuery
         ul {
           li {
             > a {
@@ -242,5 +242,3 @@
     }
   }
 }
-
-

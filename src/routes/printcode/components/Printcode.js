@@ -26,6 +26,14 @@ class Printcode extends React.Component {
     };
   }
 
+  componentWillMount(){
+ if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+   console.log(cookie.load('Id')),
+   console.log(cookie.load('UserToken')),
+   this.setState({ redirectToHome: true })
+ }
+ }
+
 handlePrintCode(event){
 
   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/VerifyInviteCode';
@@ -67,6 +75,15 @@ handlePrintCode(event){
     }
 
   render() {
+
+    const{redirectToHome}=this.state
+   if(redirectToHome){
+     return (
+       <Redirect to="app/home" />
+     )
+   }
+
+
     const { redirectToReferrer} = this.state
 
     if (redirectToReferrer) {

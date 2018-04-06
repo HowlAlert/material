@@ -68,10 +68,7 @@ class Print extends React.Component{
 
 render() {
   return (
-   <article className="article">
-     <h2 className="article-title text-center">PRINT CODE</h2>
-     <div className="container-fluid with-maxwidth">
-       <div className="row">
+
          <div className="col-xl-12">
            <div className="box box-transparent">
              <div className="box-body padding-lg-h">
@@ -88,18 +85,22 @@ render() {
              </div>
            </div>
          </div>
-       </div>
-     </div>
-    </article>
+      
        );
    }
 }
 
 const Page = () => (
-  <section className="chapter">
+  <section className="container-fluid chapter">
+
+    <h2 className="article-title-header">PRINT CODE</h2>
+
     <QueueAnim type="bottom" className="ui-animate">
-      <div key="1"><Print /></div>
+          <div key="1"><Print /></div>
     </QueueAnim>
+
+
   </section>
+
 );
 module.exports = Page;

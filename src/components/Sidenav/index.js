@@ -8,6 +8,7 @@ import {
 } from '../../actions';
 import SidenavContent from './SidenavContent';
 
+
 class Sidebar extends React.Component {
 
   componentDidMount() {
@@ -63,7 +64,8 @@ class Sidebar extends React.Component {
               <ellipse cx="-815" cy="-2505" rx="715" ry="1875" transform="rotate(-210)" />
             </g>
           </svg> */}
-          <img src="assets/images/howlMain.png" alt="Image" height="50" width="50" />
+
+       <img src="assets/images/new-howl-logo-small.jpg" alt="Image" height="60" width="150"/>
 
         <Link to="/" className="brand">{APPCONFIG.brand}</Link>
             {/* <a href="javascript:;" className="collapsednav-toggler" onClick={this.onToggleCollapsedNav}>
@@ -78,10 +80,10 @@ class Sidebar extends React.Component {
         <section className="sidebar-footer">
           <ul className="nav">
             <li>
-              <a target="_blank" href={APPCONFIG.productLink}>
+              {/* <a target="_blank" href={APPCONFIG.productLink}>
                 <i className="nav-icon material-icons">help</i>
                 <span className="nav-text"><span>Help</span> & <span>Support</span></span>
-              </a>
+              </a> */}
             </li>
           </ul>
         </section>

@@ -78,10 +78,10 @@ class Detection extends React.Component {
 
                      }
 
-                     else {
-                       alert(this.state.message);
-
-                     }
+                     // else {
+                     //   alert(this.state.message);
+                     //
+                     // }
 
 
              })

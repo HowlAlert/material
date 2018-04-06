@@ -6,7 +6,7 @@ import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import VerifyCode from '../../verifysilent/';
 
-class CancelCode extends React.Component {
+class SilentCode extends React.Component {
 
 
   constructor(props) {
@@ -33,21 +33,35 @@ class CancelCode extends React.Component {
 
   handleNext(event) {
 
+
+
+
        var entered = this.state.code;
        console.log(entered);
 
        var saved = cookie.load('SilenceCode');
        console.log(saved);
 
-       if(entered === saved){
-          alert("valid");
-          this.setState({ redirectToReferrer: true })
+       if(entered ==''){
+         alert("Please enter your old Silent code!");
        }
-     else
-      {
-        alert("The Silent code you entered does not match your current cancel code. Please try again ");
-         this.setState({ redirectToReferrer: false })
-      }
+       const re = /^[0-9\b]+$/;
+
+       if(re.test(entered)=='' && entered!=''){
+         alert("Cancel Code is a 4 digits number!");
+         window.location.reload();
+       }
+       else if(re.test(entered)!='' && entered!='' && entered != saved){
+
+         alert("The Silent code you entered does not match your current cancel code. Please try again");
+         window.location.reload();
+          this.setState({ redirectToReferrer: false })
+
+       }
+      else if(entered === saved)
+       {
+          this.setState({ redirectToReferrer: true })
+        }
 
      }
 
@@ -61,10 +75,8 @@ render() {
        )
     }
   return (
-      <article className="article">
-         <h2 className="article-title text-center">CHANGE SILENT CODE</h2>
-         <div className="container-fluid with-maxwidth">
-           <div className="row">
+
+
 
            <div className="box box-transparent">
              <div className="box-body padding-lg-h">
@@ -79,20 +91,22 @@ render() {
 
                  </div>
 
-             </div>
 
-       </div>
-
-       </article>
    );
   }
 }
 
 const Page = () => (
-  <section className="chapter">
+  <section className="container-fluid chapter">
+
+    <h2 className="article-title-header">CHANGE SILENT CODE</h2>
+
     <QueueAnim type="bottom" className="ui-animate">
-      <div key="1"><CancelCode /></div>
+      <div key="1"><SilentCode /></div>
     </QueueAnim>
+
+
   </section>
+
 );
 module.exports = Page;
