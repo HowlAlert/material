@@ -72,7 +72,37 @@ class Contact extends React.Component {
 
    handleNext(event) {
 
+     const re = /^[A-z]+$/;
+           const pw_validation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+         if( this.state.phonenumber =='' && this.state.fname=='' )
+         {
+           alert("First Name & Phone Number cannot be empty !");
+
+         }
+
+        else if( this.state.phonenumber =='' && this.state.fname!='' )
+        {
+             alert("Phone Number cannot be empty !");
+        }
+        else if(this.state.fname==''  )
+        {
+             alert("First Name cannot be empty !");
+        }
+        else if(re.test(this.state.fname)=='' && this.state.fname !=''){
+             alert("First Name should not contain numbers !");
+        }
+        else if(re.test(this.state.lname)=='' && this.state.fname !='' && re.test(this.state.fname)!=''){
+             alert("Last Name should not contain numbers !");
+        }
+
+       else if(pw_validation.test(this.state.email)=='' && this.state.email!='' && this.state.fname!='' && this.state.lname!='' && this.state.phonenumber !='')
+       {
+          alert("Please enter a valid email");
+        }
+
+      else
+      {
      var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":this.state.phonenumber,"UserPackID":"0", "PhoneNumberCountryCode": "1"}]);
      console.log(object);
 
@@ -117,7 +147,7 @@ class Contact extends React.Component {
            })
 
 
-
+  }
 
 
            }
