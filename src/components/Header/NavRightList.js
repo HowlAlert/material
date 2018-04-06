@@ -165,7 +165,7 @@ var count = this.state.data;
         {/* </div> */}
 
 
-        <div style={{marginRight: '150px', position : 'relative'}}>
+        <div className="topRightNav">
           {/* <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="1">account_box</div>
          <div className="space space-md" />
          <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="♥">account_box</div> */}

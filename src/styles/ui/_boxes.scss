@@ -3,7 +3,7 @@
   margin-bottom: 1.5rem;
   border: 0;
   border-radius: $border-radius;
-  box-shadow: 0 0 2px rgba(0,0,0,.15);
+  box-shadow: 0 0 2px rgba(0,0,0,.22);
 
   &.box-transparent {
     box-shadow: none;
@@ -12,6 +12,10 @@
   .box-dark {
     background-color: rgba(0,0,0,.03);
   }
+}
+
+.box2{
+  margin-bottom:1rem;
 }
 
 // put color in .box-default, so .bg-xxx can overrides box color easily
@@ -79,5 +83,3 @@
     background-color: $theme_dark_box_bg;
   }
 }
-
-

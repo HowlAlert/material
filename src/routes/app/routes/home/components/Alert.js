@@ -95,25 +95,25 @@ class Alerts extends React.Component {
 
 
       <h2 className="article-title-header ">News & Alerts </h2>
-     <div className="box box-default">
+     <div className=" box-default">
 
 
      {
             this.state.data2.map((dyanamicData1,key)=>
-                 <div className="box box-default">
+                 <div className="box box2 box-default">
                      <div className="box-body ">
-                            {dyanamicData1.Text}
+                            <span className="detectClass">{dyanamicData1.Text}</span>
                             <span className="float-right">
 
                               {
                                 dyanamicData1.GetImageDataResult === "" ?
                                         <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="50" width="50"/>
-                                    :   <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="50" width="50"/>
+                                    :   <img className="alertImage" src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="50" width="50"/>
                               }{" "}
 
                             </span>
                          <div>
-                             {dyanamicData1.DateCreated}{" "}
+                             <span className="timeClass"> {dyanamicData1.DateCreated}{" "}</span>
                        </div>
                 </div>
               </div>
@@ -121,7 +121,7 @@ class Alerts extends React.Component {
              )}
 
    </div>
-    <a href="#/app/Alerts">See All Alerts </a>
+    <a href="#/app/Alerts" className="blueButton">See All Alerts </a>
 </div>
 
     );

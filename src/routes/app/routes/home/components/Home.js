@@ -70,8 +70,14 @@ class BasicHome extends React.Component{
     super();
       this.state = {
         data: '',
-        open: false
+        open: false,
+        firstName:''
       }
+  }
+
+
+  componentWillMount() {
+    this.setState({ firstName: cookie.load('FirstName')})
   }
 
   // componentWillMount(){
@@ -91,6 +97,7 @@ class BasicHome extends React.Component{
   //   this.setState({ redirectToPrintCode: true })
   // }
   // }
+
 
   handleOpen = () => {
     this.setState({open: true});
@@ -255,45 +262,43 @@ const { redirectToReferrer} = this.state
 
   return (
 
-  // <div className="box box-default">
-    <div className="row box-body ">
+    <div className="">
 
-      <div className="  ">
-
-
-               <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="120"/>
-               <Dialog
-                 title="Confirm"
-                 actions={actions}
-                 modal={false}
-                 open={this.state.open}
-                 onRequestClose={this.handleClose}
-               >
-               <h5>You want to Alert your Pack Members?</h5>
-               </Dialog>
-
-
+      <div className="col-lg-12 welcomeText">
+        <h1>Welcome back, {this.state.firstName}</h1>
       </div>
 
+      <div className="">
+        <div className="box box-default box-body ">
 
-                 <a href="#/app/Monitoring">
-                    <img src="assets/images/fire-button-unsubscribed.png" width="120 "/>
-                 </a>
+          <div className="flLeft">
+            <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="120"/>
+              <Dialog
+                title="Confirm"
+                actions={actions}
+                modal={false}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+                >
+                <h5>You want to Alert your Pack Members? </h5>
+                </Dialog>
+          </div>
 
+          <a className="flLeft" href="#/app/Monitoring">
+             <img src="assets/images/fire-button-unsubscribed.png" width="120 "/>
+          </a>
 
-
-
-          <a href="#/app/Monitoring">
+          <a className="flLeft" href="#/app/Monitoring">
               <img src="assets/images/ambulance-button-unsubscribed.png"  width="120"/>
-         </a>
+          </a>
 
 
-         <a href="#/app/Monitoring">
+         <a className="flLeft" href="#/app/Monitoring">
              <img src="assets/images/police-button-unsubscribed.png"  width="120"/>
         </a>
 
-
-
+</div>
+</div>
 
 
          </div>
@@ -304,55 +309,37 @@ const { redirectToReferrer} = this.state
 }
 
 const Dashboard = () => (
+
+
   <div className="row">
-    {/* <div className="col-xl-4">
-
-          <Alert />
-
-    </div><br /> */}
-
-    {/* <div className="col-xl-1">
-
-      <div className="box box-default ">
-
-    </div>
-    </div> */}
-    <div className="col-xl-11">
-             <BasicHome />
+    <div className="col-lg-12">
+      <BasicHome />
     </div>
 
-<div className="col-xl-5">
-  <div className="box box-default box-body ">
-
-    <Alert />
-
-  </div>
-</div>
-
-
-    <div className="box box-default box-body col-xl-5">
-     <h2 className="article-title-header">Your Neighborhood </h2>
-
-         <Map />
-
-
-
-</div>
-
-
-
-    <div className="col-xl-5">
-
-          <Image />
-
+    <div className="col-lg-6">
+      <div className="box box-default box-body homeAlert">
+        <Alert />
+      </div>
     </div>
+
+    <div className="col-lg-6">
+      <div className="box box-default box-body homeMap">
+      <h2 className="article-title-header">Your Neighborhood </h2>
+      <Map />
+      </div>
+    </div>
+
+    <div className="col-lg-6">
+      <Image />
+    </div>
+
     {/* <div className="col-xl-1">
 
       <div className="box box-default ">
 
     </div>
   </div> */}
-    <div className="col-xl-5">
+    <div className="col-lg-6">
 
              <Image2 />
 
@@ -361,35 +348,13 @@ const Dashboard = () => (
 );
 const Page = () => {
   return (
-
-    // <div className="container-fluid no-breadcrumbs page-dashboard">
-    //   <div className="main-app-container">
-    //       <Sidenav />
-    //
-    //       <section id="page-container" className="app-page-container">
-    //         <Header />
-
-            // <div className="app-content-wrapper">
-            //  <div className="app-content">
-            //    <div className="full-height">
-
-            <div className="container-fluid no-breadcrumbs page-dashboard chapter">
-
-              <QueueAnim type="bottom" className="ui-animate">
-
-
-                    <div key="1"><Dashboard /></div>
-                    {/* <Map /> */}
-
-
-              </QueueAnim>
-
-
-
-              </div>
-
-    //   </div>
-    // </div>
+    <div className="container-fluid no-breadcrumbs page-dashboard chapter">
+      <QueueAnim type="bottom" className="ui-animate">
+        <div key="1">
+          <Dashboard />
+        </div>
+      </QueueAnim>
+    </div>
   )
 }
 
