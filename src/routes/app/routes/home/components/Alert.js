@@ -5,6 +5,9 @@ import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
 import cookie from 'react-cookies';
+import moment from 'moment';
+
+
 class Alerts extends React.Component {
 
   constructor() {
@@ -113,7 +116,10 @@ class Alerts extends React.Component {
 
                             </span>
                          <div>
-                             <span className="timeClass"> {dyanamicData1.DateCreated}{" "}</span>
+                             <span className="timeClass">
+                               {/* {dyanamicData1.DateCreated}{" "} */}
+                                  {moment(new Date(dyanamicData1.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
+                             </span>
                        </div>
                 </div>
               </div>

@@ -28,6 +28,8 @@ class NavRightList extends React.Component {
   handleChange = (event, value) => {
     this.props.history.push(value);
   }
+
+
   handleOpen = () => {
     this.setState({open: true});
   };
@@ -43,6 +45,13 @@ class NavRightList extends React.Component {
         data: [],
   };
 }
+
+handleNotify(event) {
+  this.setState({ redirectToAlert: true })
+
+  console.log("Notifications");
+}
+
 componentDidMount(){
 
   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetTotalUnreadUserFeedCount';
@@ -64,14 +73,10 @@ componentDidMount(){
          ResultStatus:findresponse.GetTotalUnreadUserFeedCountResult.resultStatus,
 
       })
-      if(this.state.ResultStatus.Status !== "1"){
-        alert(this.state.ResultStatus.StatusMessage);
-      }
 
+    
 
-
-    })
-
+})
 }
 
 
@@ -149,6 +154,16 @@ const { redirectToReferrer} = this.state
                <Redirect to="../mainLogin"/>
              )
            }
+
+ const { redirectToAlert } = this.state
+                  if (redirectToAlert ) {
+                    console.log(redirectToAlert)
+                        return (
+                          // <Redirect to="../../routes/app/Alerts/components/Alert"/>
+                         <Redirect to="../../app/Alerts"/>
+
+                        )
+                      }
 var count = this.state.data;
 
     return (
@@ -174,7 +189,7 @@ var count = this.state.data;
           leftIcon={
              count !== "0" ?
 
-              <i className="material-icons mdl-badge mdl-badge--overlap" data-badge={this.state.data}>notifications_none</i>
+              <i className="material-icons mdl-badge mdl-badge--overlap" data-badge={this.state.data} onClick={(e)=>this.handleNotify(e)} >notifications_none</i>
             :<i className="material-icons">notifications_none</i>
 
           }

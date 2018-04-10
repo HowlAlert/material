@@ -40,10 +40,10 @@ class Help extends React.Component{
                 <CardText expandable>
                   <p>Yes. The free HOWL App allows you to create a Pack, check-in on those you care about and activate an
                     alarm using voice commands. As a free user, your alarms notify only your Pack (who can notify the authorities). For just $7.99 a month, HOWL will additionally notify the authorities
-                    when you issues an alert.
-
+                    when you issues an alert. <br />
+                  *HOWL Hack: using the free version in order to avoid monitoring costs. Designate a specific Pack member to notify 911 manually when you activate an alert
                  </p>
-                 *HOWL Hack: using the free version in order to avoid monitoring costs. Designate a specific Pack member to notify 911 manually when you activate an alert
+
                 </CardText>
 
               </Card>

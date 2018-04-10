@@ -69,7 +69,7 @@ const BasicBoxes = () => (
   <div className="box-body ">
 <h2 className="article-title-header">HOWL SUPPORT FORMS </h2>
 
-    <div className="box box-default"><a href="#/app/settingsmenu/feedback">
+    <div className="box box-default"><a href="mailto:support@howlalert.com">
       <div className="box-body" >
 
         {/* <span className="float-left">  <i className="material-icons">help</i></span> */}
@@ -83,7 +83,7 @@ const BasicBoxes = () => (
     </a></div>
 
 
-    <div className="box box-default"><a href="#/app/settingsmenu/contact">
+    <div className="box box-default"><a href="mailto:support@howlalert.com">
       <div className="box-body" >
 
         {/* <span className="float-left">  <i className="material-icons">mail_outline</i></span> */}

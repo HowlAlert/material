@@ -308,7 +308,7 @@ class Alerts extends React.Component {
                          var city=value[count-3];
                          var address = city + state +country ;
                          console.log(address)
-                         
+
                          cookie.save('AlertAddress',address)
                          console.log(cookie.load('AlertAddress'))
 

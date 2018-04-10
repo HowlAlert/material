@@ -92,7 +92,7 @@ class Contact extends React.Component {
         else if(re.test(this.state.fname)=='' && this.state.fname !=''){
              alert("First Name should not contain numbers !");
         }
-        else if(re.test(this.state.lname)=='' && this.state.fname !='' && re.test(this.state.fname)!=''){
+        else if(re.test(this.state.lname)=='' && this.state.lname !=''  && this.state.fname !='' && re.test(this.state.fname)!=''){
              alert("Last Name should not contain numbers !");
         }
 
