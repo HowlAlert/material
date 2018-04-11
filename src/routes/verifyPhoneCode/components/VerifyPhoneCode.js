@@ -12,7 +12,7 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import cookie from 'react-cookies';
-import PageLogin from '../../app/routes/dashboard/';
+// import PageLogin from '../../app/routes/dashboard/';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 
 

@@ -1,3 +1,4 @@
-import Pack from './components/Pack';
 
-export default Pack;
+import packdetails from './components/packdetails';
+
+export default packdetails;

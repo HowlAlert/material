@@ -48,6 +48,7 @@
     "react-native-country-code-telephone-input": "0.0.9",
     "react-password": "^0.1.0",
     "react-password-mask": "^3.3.0",
+    "react-phone-input": "^1.2.1",
     "react-places-autocomplete": "^6.1.2",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",

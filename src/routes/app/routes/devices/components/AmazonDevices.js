@@ -39,7 +39,7 @@ render() {
         if(redirectToReferrer === true)
         {
           return (
-             <Redirect to="camerasettings/purchase" />
+             <Redirect to="Card-Details/Connect" />
            )
         }
 

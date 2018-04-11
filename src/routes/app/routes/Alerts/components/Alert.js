@@ -1,18 +1,15 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import RaisedButton from 'material-ui/RaisedButton';
-import Header from 'components/Header';
-import Sidenav from 'components/Sidenav';
-import Footer from 'components/Footer';
 import cookie from 'react-cookies';
-import Howls_Me from '../../pack-menu/routes/howls_me/components/Howls_Me';
-import Howls_Pack from '../../pack-menu/routes/howls_pack/components/Howls_Pack';
-import TiggerAlerts from './TiggerAlerts';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import Map from './Map';
-import Divider from 'material-ui/Divider';
+import TiggerAlerts from './TiggerAlerts';
+// import Howls_Me from '../../pack-menu/routes/howls_me/components/Howls_Me';
+import Howls_Messages from './Howl_Messages';
+import Map from './AlertsMap';
+
 
 const style = {
   display: 'inline-block',
@@ -501,7 +498,7 @@ class Alerts extends React.Component {
 
 
      <div className="col-xl-12">
-      <Howls_Me />
+      <Howls_Messages />
      </div>
 
 

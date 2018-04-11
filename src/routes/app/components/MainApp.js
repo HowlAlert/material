@@ -13,41 +13,37 @@ import home from '../routes/home/';
 function LoadingComponent() {
   return <div></div>;
 }
-let AsyncHome = loadable({
-  loader: () => import('../routes/home/'),
-  loading: LoadingComponent
-})
+
 let AsyncAlert = loadable({
   loader: () => import('../routes/Alerts/'),
   loading: LoadingComponent
 })
-
-let Asyncdevices = loadable({
-  loader: () => import('../routes/devices/'),
-  loading: LoadingComponent
-})
-let Asynccameras = loadable({
-  loader: () => import('../routes/cameras/'),
+let AsyncSettings = loadable({
+  loader: () => import('../routes/appsettings/'),
   loading: LoadingComponent
 })
 let AsyncCameraSetting = loadable({
   loader: () => import('../routes/cam-settings-menu/'),
   loading: LoadingComponent
 })
-let AsyncCameraAddDevices = loadable({
-  loader: () => import('../routes/cam-add-devices/'),
+let Asynccameras = loadable({
+  loader: () => import('../routes/cameras/'),
   loading: LoadingComponent
 })
-let AsyncPack = loadable({
-  loader: () => import('../routes/pack/'),
-  loading: LoadingComponent
-})
-let AsyncPackMenu = loadable({
-  loader: () => import('../routes/pack-menu/'),
+let Asyncdevices = loadable({
+  loader: () => import('../routes/devices/'),
   loading: LoadingComponent
 })
 let AsyncHelp = loadable({
   loader: () => import('../routes/help/'),
+  loading: LoadingComponent
+})
+let AsyncHome = loadable({
+  loader: () => import('../routes/home/'),
+  loading: LoadingComponent
+})
+let AsyncMap = loadable({
+  loader: () => import('../routes/map/'),
   loading: LoadingComponent
 })
 let AsyncMonitor = loadable({
@@ -55,27 +51,36 @@ let AsyncMonitor = loadable({
   loading: LoadingComponent
 })
 
-let AsyncMap = loadable({
-  loader: () => import('../routes/map/'),
+let AsyncPack = loadable({
+  loader: () => import('../routes/pack'),
   loading: LoadingComponent
 })
 
-let AsyncSettings = loadable({
-  loader: () => import('../routes/appsettings/'),
-  loading: LoadingComponent
-})
-let AsyncLogout = loadable({
-  loader: () => import('../routes/signout/'),
-  loading: LoadingComponent
-})
 let AsyncPageLayout = loadable({
   loader: () => import('../routes/page-layout/'),
   loading: LoadingComponent
 })
-let AsyncSettingsMenu = loadable({
-  loader: () => import('../routes/settings-menu/'),
+
+let AsyncRules = loadable({
+  loader: () => import('../routes/company-rules/'),
   loading: LoadingComponent
 })
+
+let AsyncCard = loadable({
+  loader: () => import('../routes/card-details/'),
+  loading: LoadingComponent
+})
+
+// let AsyncCameraAddDevices = loadable({
+//   loader: () => import('../routes/cam-add-devices/'),
+//   loading: LoadingComponent
+// })
+// let AsyncLogout = loadable({
+//   loader: () => import('../routes/signout/'),
+//   loading: LoadingComponent
+// })
+
+
 // let AsyncTable = loadable({
 //   loader: () => import('../routes/table/'),
 //   loading: LoadingComponent
@@ -156,15 +161,14 @@ class MainApp extends React.Component {
                   <Route path={`${match.url}/Alerts`} component={AsyncAlert} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/Cameras`} component={Asynccameras} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/camerasettings`} component={AsyncCameraSetting} onEnter={this.requireAuth}/>
-                  <Route path={`${match.url}/cameraDevices`} component={AsyncCameraAddDevices} onEnter={this.requireAuth}/>
+                  <Route path={`${match.url}/Card-Details`} component={AsyncCard} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/Devices`} component={Asyncdevices} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/Pack`} component={AsyncPack} onEnter={this.requireAuth}/>
-                  <Route path={`${match.url}/PackMenu`} component={AsyncPackMenu} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/Monitoring`} component={AsyncMonitor} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/Help & Support`} component={AsyncHelp} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/Settings`} component={AsyncSettings} onEnter={this.requireAuth}/>
-                  <Route path={`${match.url}/settingsmenu`} component={AsyncSettingsMenu} onEnter={this.requireAuth}/>
-                  <Route path={`${match.url}/Logout`} component={AsyncLogout} onEnter={this.requireAuth}/>
+                  {/* <Route path={`${match.url}/settingsmenu`} component={AsyncSettingsMenu} onEnter={this.requireAuth}/> */}
+                  <Route path={`${match.url}/Company-Rules`} component={AsyncRules} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/pglayout`} component={AsyncPageLayout} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/Map`} component={AsyncMap} onEnter={this.requireAuth}/>
 
