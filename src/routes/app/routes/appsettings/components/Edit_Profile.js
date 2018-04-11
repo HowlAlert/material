@@ -6,14 +6,11 @@ import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import Editable from 'react-x-editable';
 import './editable.css';
-<<<<<<< HEAD:src/routes/app/routes/settings-menu/routes/editprofile/components/EditProfile.js
-import EditPhoneNumber from './EditPhoneNumber';
-=======
+
 import Edit_PhoneNumber from './Edit_PhoneNumber';
 
 
 
->>>>>>> f34e24f9f76f7ecfa26edd4d8916deaa6f968c7d:src/routes/app/routes/appsettings/components/Edit_Profile.js
 class EditProfile extends React.Component {
   constructor(props) {
     super(props);
