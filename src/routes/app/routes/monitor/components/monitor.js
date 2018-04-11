@@ -28,7 +28,7 @@ class Monitor extends React.Component {
           if(redirectToReferrer === true)
           {
             return (
-               <Redirect to="camerasettings/purchase" />
+               <Redirect to="Card-Details/Connect" />
              )
           }
 
@@ -97,9 +97,9 @@ class Monitor extends React.Component {
 
          {/* <RaisedButton primary label="YEARLY PLAN - $95.88/YR" ><a href="#/app/camerasettings/purchase"> </a></RaisedButton> */}
 
-      <div>
+      {/* <div>
         <h5>  <a href="page-layout#/app/pglayout/other-devices"> Restore purchase</a></h5>
-      </div>
+      </div> */}
 
 
 
@@ -121,7 +121,7 @@ class Monitor extends React.Component {
        </ul>
      </div>
      <div className="text-center no-margin-bottom">
-       <h5><a href="#/app/pglayout/terms-service">Terms of Service</a> and <a href="#/app/pglayout/privacy-police">Privacy Policy</a></h5>
+       <h5><a href="#/app/Company-Rules/Terms">Terms of Service</a> and <a href="#/app/Company-Rules/privacy-police">Privacy Policy</a></h5>
      </div>
 
   </article>

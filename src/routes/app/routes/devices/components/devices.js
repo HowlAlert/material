@@ -2,7 +2,6 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import QueueAnim from 'rc-queue-anim';
-import OtherDevices from './OtherDevices';
 import AmazonDevices from './AmazonDevices';
 import GoogleDevices from './GoogleDevices';
 import cookie from 'react-cookies';

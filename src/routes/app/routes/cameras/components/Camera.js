@@ -1,12 +1,12 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
-import {Add_Devices} from '../../services/index';
+// import {Add_Devices} from '../../services/index';
 import APPCONFIG from 'constants/Config';
 import Image from './Image';
 import Toggle from 'material-ui/Toggle';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import Detection from '../../cam-settings-menu/routes/motion-detection/components/Detection';
+// import Detection from '../../cam-settings-menu/routes/motion-detection/components/Detection';
 import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
 import Image2 from '../../home/components/Image2'
@@ -54,7 +54,7 @@ render() {
         if(redirectToReferrer === true)
         {
           return (
-             <Redirect to="camerasettings/purchase" />
+             <Redirect to="Card-Details/Connect" />
            )
         }
 

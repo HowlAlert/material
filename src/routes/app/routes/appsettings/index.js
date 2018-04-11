@@ -1,2 +1,2 @@
-import settings from './components/settings';
-export default settings;
+import settings_mainpage from './components/settings_mainpage';
+export default settings_mainpage;
