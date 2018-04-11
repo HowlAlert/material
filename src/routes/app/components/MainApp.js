@@ -56,10 +56,10 @@ let AsyncPack = loadable({
   loading: LoadingComponent
 })
 
-let AsyncPageLayout = loadable({
-  loader: () => import('../routes/page-layout/'),
-  loading: LoadingComponent
-})
+// let AsyncPageLayout = loadable({
+//   loader: () => import('../routes/page-layout/'),
+//   loading: LoadingComponent
+// })
 
 let AsyncRules = loadable({
   loader: () => import('../routes/company-rules/'),
@@ -169,7 +169,7 @@ class MainApp extends React.Component {
                   <Route path={`${match.url}/Settings`} component={AsyncSettings} onEnter={this.requireAuth}/>
                   {/* <Route path={`${match.url}/settingsmenu`} component={AsyncSettingsMenu} onEnter={this.requireAuth}/> */}
                   <Route path={`${match.url}/Company-Rules`} component={AsyncRules} onEnter={this.requireAuth}/>
-                  <Route path={`${match.url}/pglayout`} component={AsyncPageLayout} onEnter={this.requireAuth}/>
+                  {/* <Route path={`${match.url}/pglayout`} component={AsyncPageLayout} onEnter={this.requireAuth}/> */}
                   <Route path={`${match.url}/Map`} component={AsyncMap} onEnter={this.requireAuth}/>
 
                   {/* <Route path={`${match.url}/table`} component={AsyncTable} /> */}
