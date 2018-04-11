@@ -13,14 +13,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import {PhoneNumberFormat, PhoneNumberUtil} from 'google-libphonenumber'
 import Select from 'react-select';
-import CallingCodes from './CallingCodes';
 import {FormControl} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-select/dist/react-select.min.css';
 import cookie from 'react-cookies';
-import PageRegister5 from 'routes/register5/';
+// import PageRegister5 from 'routes/register5/';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import './phone-number.css';
+import ReactPhoneInput from 'react-phone-input';
 const mWidthStyle = {
   minWidth: '130px'
 };
@@ -33,38 +32,40 @@ class EditPhoneNumber extends React.Component {
       message:'',
       ResultStatus:''
     }
-this.handleCountry = this.handleCountry.bind(this);
+this.handleOnChange = this.handleOnChange.bind(this);
   }
-
-  handlePhoneNo(phoneNumber){
-
-    let valid = false;
-    try {
-      const phoneUtil = PhoneNumberUtil.getInstance();
-      valid =  phoneUtil.isValidNumber(phoneUtil.parse(phoneNumber));
-    } catch(e) {
-      valid = false;
-    }
-    if(valid) {
-      this.setState({
-        message:'Phone number '+this.getValidNumber(phoneNumber)+' is valid Number',
-        color:'green'
-      });
-    } else {
+  handleOnChange(number) {
         this.setState({
-        //  message:'Phone number '+phoneNumber+' is not valid Number',
-          color:'red'
+           phone: number
         });
-      }
-
-
-      console.log(this.state.country);
-      console.log(this.state.number);
+        console.log(this.state.phone)
+     }
+  handlePhoneNo(phoneNumber){
+    var phone = this.state.phone;
+      var phoneNumber=phone.replace(/\D/g,'')
+      var number=phoneNumber.substr(phoneNumber.length-10)
+      var country=phoneNumber.slice(0, -10)
+    //   ereg_replace("[^0-9]", "", phone)
+     console.log(phoneNumber);
+     console.log(number);
+     console.log(country);
+     if(number.length!=10){
+       alert("Please enter only 10 digit phone number")
+     }
+     else if(country!= 1 && country!= 91){
+       alert("HOWL is currently Only Available to users based in the U.S and INDIA")
+     }
+     else if(number.length==0){
+       alert("Please enter 10 digit phone number")
+     }
+     else if(number.length!=10){
+       alert("Please enter only 10 digit phone number")
+     }
+     else{
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
-
        fetch(BaseURL,{
         method: "POST",
-        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':this.state.country,'MobilePhoneNumber':this.state.number}),
+        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':country,'MobilePhoneNumber':number}),
       headers: new Headers({'content-type': 'application/json'})
       }).
     then((Response)=>Response.json()).
@@ -72,18 +73,17 @@ this.handleCountry = this.handleCountry.bind(this);
       this.setState({
         ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
       })
-
         console.log("status");
         //Status:this.state.ResultStatus.Status;
         console.log(this.state.ResultStatus.Status);
-        console.log(this.state.number.length);
-        if(this.state.ResultStatus.Status==2 && this.state.number!='' && this.state.country!='' && this.state.number.length==10 && this.handlePhoneNo){
+        console.log(number.length);
+        if(this.state.ResultStatus.Status==2 && number!=''  && number.length==10){
            alert("This phone number is already taken by another account.");
          }
-        if(this.state.ResultStatus.Status==0 && this.state.number!='' && this.state.country!='' && this.handlePhoneNo){
+        if(this.state.ResultStatus.Status==0 && number!=''){
           alert("Sorry we cannot send verification code to this number. Please make sure you input the correct Mobile Number.");
         }
-        if(this.state.ResultStatus.Status==1 && this.state.number!='' && this.state.country!='' && this.state.number.length==10 && this.handlePhoneNo){
+        if(this.state.ResultStatus.Status==1 && number!='' && number.length==10){
           this.setState({ redirectToReferrer: true })
            }
            else{
@@ -91,16 +91,14 @@ this.handleCountry = this.handleCountry.bind(this);
            }
     })
   }
-
+}
   handleNumber(event) {
     this.setState({
       number:event.target.value
     });
     //this.handlePhoneNo('+'+this.state.country+' '+event.target.value);
-
       return event.target.value;
     }
-
     handleCountry(event) {
       this.setState({
       country:event.value
@@ -108,83 +106,43 @@ this.handleCountry = this.handleCountry.bind(this);
   // this.handlePhoneNo('+'+event.value+' '+this.state.Number);
   return event.value;
     }
-
-
     getValidNumber(phoneNumber) {
       const phoneUtil = PhoneNumberUtil.getInstance();
       const parsedNumber = phoneUtil.parse(phoneNumber);
       return phoneUtil.format(parsedNumber, PhoneNumberFormat.INTERNATIONAL)
     }
-
-
   render() {
-
     const { redirectToReferrer} = this.state
     if (redirectToReferrer) {
+console.log(redirectToReferrer);
           return (
-            <Redirect to="VerifyPhoneCode" />
+              // <Redirect to="PhoneVerifyCode"/>
+                <PhoneVerifyCode />
           )
         }
-
     return (
-
       <div className="body-inner">
-
         <div className="card bg-white">
           <div className="card-content">
             <section className="logo text-center">
               <h1><a href="#/">{this.state.brand}</a></h1>
             </section>
-
-
             <ul className="nav" ref={(c) => { this.nav = c; }}>
               <li className="nav-header"><span></span></li>
-              <li><FlatButton href="#/Register"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
-              </li>
+              {/* <li><FlatButton href="#/Register"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
+              </li> */}
               </ul>
-              <img src="assets/images/HOWL2.png" alt="HOWL" />
+              {/* <img src="assets/images/HOWL2.png" alt="HOWL" /> */}
               <p className="hero-title text-center">Change your phone number</p>
-        <div className="phone-number" style={{display:'flex'}}>
-          <div className="phone-number--country">
-          <Select value={this.state.country} onChange={this.handleCountry} placeholder="country code"
-             options={CallingCodes} labelKey="country" valueKey="value" valueRenderer={(country) => country.value}>
-          </Select>
-          </div>
-          <div className="phone-number--number">
-            <FormControl value={this.state.value} onChange={(e)=>this.handleNumber(e)} placeholder="phone number">
-            </FormControl>
-          </div>
-        </div>
-        <div className="message" style={{color:this.state.color}}>
-          {this.state.message}
-        </div>
-
-
-
-
-<div className="box-body text-center">
-<RaisedButton style={mWidthStyle} label="NEXT -->" primary onClick={(e)=>this.handlePhoneNo(e)}/><div className="divider" />
-</div>
-
+              <div className="phone-number" style={{display:'flex'}}>
+              <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange}/>
+              </div>
+<div className="box-body text-right">
+     <RaisedButton style={mWidthStyle} label="NEXT -->" primary onClick={(e)=>this.handlePhoneNo(e)}/><div className="divider" />
 </div>
 </div>
-
 </div>
-
+</div>
     );
   }
 }
-
-const Page = () => (
-  <div className="page-login">
-    <div className="main-body">
-      <QueueAnim type="bottom" className="ui-animate">
-        <div key="1">
-          <EditPhoneNumber />
-        </div>
-  </QueueAnim>
-    </div>
-  </div>
-);
-
-module.exports = Page;

@@ -6,13 +6,8 @@ import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import Editable from 'react-x-editable';
 import './editable.css';
-import EditPhoneNumber from '../../editPhoneNumber/components/EditPhoneNumber'
-
-
-
+import EditPhoneNumber from './EditPhoneNumber';
 class EditProfile extends React.Component {
-
-
   constructor(props) {
     super(props);
     this.state = {
@@ -22,8 +17,6 @@ class EditProfile extends React.Component {
       disabled: true
     };
   }
-
-
   handleFname(value) {
      this.setState({
            Fname: value,
@@ -32,17 +25,14 @@ class EditProfile extends React.Component {
          console.log(value) ;
          return value;
        }
-
     handleLname(value) {
       this.setState({
               Lname: value,
               disabled: false
-
             });
             console.log(value) ;
             return value;
           }
-
     handleEmail(value) {
       this.setState({
            Email: value,
@@ -51,7 +41,6 @@ class EditProfile extends React.Component {
          console.log(value) ;
          return value;
        }
-
        handlePhoneNumber(event){
               this.setState({ redirectToChangePhone: true });
             }
@@ -75,31 +64,22 @@ class EditProfile extends React.Component {
         console.log(lastname);
         var email = this.state.Email;
         console.log(email);
-
         if(firstname==="")
         {
-
           firstname = cookie.load('FirstName');
-
           console.log("No change in firstname");
         }
-
         if( lastname==="" )
         {
-
           lastname = cookie.load('LastName');
           console.log("No change in lastname");
-
-
         }
         if(email==="")
         {
           email = cookie.load('Email');
-
         }
         if(firstname==="" && lastname===""  && email==="")
         {
-
           alert("No updates done!")
         }
          const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserProfile';
@@ -112,7 +92,6 @@ class EditProfile extends React.Component {
                                "FirstName": firstname,
                                "LastName": lastname,
                                "Email": email
-
                            }),
                             headers: new Headers({'content-type': 'application/json'}),
                           })
@@ -128,33 +107,24 @@ class EditProfile extends React.Component {
                                             if(this.state.status === "0")
                                             {
                                               alert(this.state.message);
-
                                             }
-
                                             else {
-
                                                 alert("Successfully Updated Profile!")
                                                 cookie.save('FirstName', firstname);
                                                 cookie.save('LastName', lastname);
                                                 cookie.save('Email', email);
                                               this.setState({ redirectToReferrer: true })
                                             }
-
                                        })
-
    }
-
   render() {
-
     const { redirectToReferrer} = this.state        //once update is done back to settings page
       if(redirectToReferrer === true)
       {
         return (
-
               <EditProfile />
          )
       }
-
    const { redirectToChangePhone} = this.state        //redirect to Edit phone number page
     if (redirectToChangePhone) {
       console.log("redirectToChangePhone")
@@ -162,8 +132,6 @@ class EditProfile extends React.Component {
             <EditPhoneNumber />
           )
         }
-
-
       var fname=cookie.load('FirstName');            //Loading Initial values before editting
       // console.log(fname);
       var lname = cookie.load('LastName')
@@ -172,17 +140,12 @@ class EditProfile extends React.Component {
       // console.log(email);
       var phonenumber = cookie.load('MobilePhoneNumber')
        // console.log(phonenumber);
-
     return (
-
                     <form name="EditProfileForm">
-
                           {/* <Editable onChange={(e)=>this.handleFname(e)} name="Fname" value={fname} floatingLabelText="FIRST NAME" fullWidth />
                           <Editable onChange={(e)=>this.handleLname(e)} name="Lname" value={lname} floatingLabelText="LAST NAME" fullWidth />
                           <Editable onChange={(e)=>this.handleEmail(e)} name="Email" value={email} floatingLabelText="EMAIL ADDRESS"  name="Email"/>
                           <Editable floatingLabelText="PHONE NUMBER" value={phonenumber} fullWidth /> */}
-
-
                           <p>FIRST NAME
                        <Editable
                          name="Fname"
@@ -191,7 +154,6 @@ class EditProfile extends React.Component {
                          value={fname}
                          validate={(value)=>this.handleFname(value)}
                          /></p>
-
                          <p>LAST NAME
                          <Editable
                            name="Lname"
@@ -200,7 +162,6 @@ class EditProfile extends React.Component {
                            value={lname}
                            validate={(value)=>this.handleLname(value)}
                            /></p>
-
                            <p>EMAIL ADDRESS
                            <Editable
                              name="Email"
@@ -209,27 +170,19 @@ class EditProfile extends React.Component {
                              value={email}
                              validate={(value)=>this.handleEmail(value)}
                              /></p>
-
                          <p>PHONE NUMBER
                        <TextField onClick={(e)=>this.handlePhoneNumber(e)} name="PhoneNumber" value={phonenumber} fullWidth /></p>
-
                       <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e)} disabled={this.state.disabled}/>
                      </form>
-
       );
      }
    }
 const Page = () => (
-
   <section className="container-fluid chapter">
-
     <h2 className="article-title-header">Edit Profile</h2>
-
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1"><EditProfile /></div>
     </QueueAnim>
-
-
   </section>
 );
 module.exports = Page;

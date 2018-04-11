@@ -12,7 +12,6 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import cookie from 'react-cookies';
-import PageWelcome from 'routes/welcome/';
 import createHistory from 'history/createHashHistory';
 import App from '.../../containers/App';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
@@ -354,7 +353,7 @@ console.log("here");
 
 
               <div className="regButtons">
-                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/#/app/mainLogin">CANCEL</a>
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/mainLogin">CANCEL</a>
                 <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleLogin(e)}>LOGIN</div>
               </div>
 

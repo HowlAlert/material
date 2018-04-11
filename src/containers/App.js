@@ -12,20 +12,11 @@ import PageForgotPassword from 'routes/forgot-password/'
 import PageFullscreen from 'routes/fullscreen/'
 import PageLockScreen from 'routes/lock-screen/'
 import PageLogin from 'routes/login/'
-import PageWelcome from 'routes/welcome/'
 import PageRegister from 'routes/register/'
-import PageRegister1 from 'routes/register1/'
-import PageRegister2 from 'routes/register2/'
-import PageRegister3 from 'routes/register3/'
-import PageRegister4 from 'routes/register4/'
 import PageRegister5 from 'routes/register5/'
 import PagePrintcode from 'routes/printcode/'
-import PageSchedule from 'routes/schedule/'
-import PageScheduling from 'routes/scheduling/'
 import PagePack from 'routes/pack/'
 import PageFeedback from 'routes/feedback/'
-import PageEditprofile from 'routes/editprofile/'
-import PageEditPhoneNumber from 'routes/editPhoneNumber/'
 import PageVerifyPhoneCode from 'routes/verifyPhoneCode/'
 import PageMainLogin from 'routes/mainLogin/'
 import PageMotionDetection from 'routes/motion-detection/'
@@ -33,6 +24,8 @@ import PagePackcontact from 'routes/packcontact/'
 import PageHomeAddress from 'routes/HomeAddress/'
 import PageCancel from 'routes/cancel/'
 import PageSilent from 'routes/silent/'
+import PagePrivacy from 'routes/Privacy/'
+import PageTerms from 'routes/Terms/'
 import 'styles/bootstrap.scss';
 import 'styles/layout.scss';
 import 'styles/theme.scss';
@@ -85,20 +78,10 @@ className={classnames('app-main full-height', {
 <Route exact path="/404" component={Page404} />
 <Route exact path="/500" component={Page500} />
 <Route exact path="/login" component={PageLogin} />
-<Route exact path="/welcome" component={PageWelcome} />
-<Route exact path="/register" component={PageRegister} />
-<Route exact path="/register1" component={PageRegister1} />
-<Route exact path="/register2" component={PageRegister2} />
-<Route exact path="/register3" component={PageRegister3} />
-<Route exact path="/register4" component={PageRegister4} />
 <Route exact path="/register5" component={PageRegister5} />
 <Route exact path="/printcode" component={PagePrintcode} />
-<Route exact path="/scheduling" component={PageScheduling} />
-<Route exact path="/schedule" component={PageSchedule} />
 <Route exact path="/pack" component={PagePack} />
 <Route exact path="/feedback" component={PageFeedback} />
-<Route exact path="/editprofile" component={PageEditprofile} />
-<Route exact path="/editPhoneNumber" component={PageEditPhoneNumber} />
 <Route exact path="/verifyPhoneCode" component={PageVerifyPhoneCode} />
 <Route exact path="/mainLogin" component={PageMainLogin} />
 <Route exact path="/motionDetection" component={PageMotionDetection} />
@@ -107,6 +90,8 @@ className={classnames('app-main full-height', {
 <Route exact path="/HomeAddress" component={PageHomeAddress} />
 <Route exact path="/cancel" component={PageCancel} />
 <Route exact path="/silent" component={PageSilent} />
+<Route exact path="/Terms" component={PageTerms} />
+<Route exact path="/Privacy" component={PagePrivacy} />
 </div>
 </div>
 </MuiThemeProvider>

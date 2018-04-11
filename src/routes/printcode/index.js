@@ -1,3 +1,3 @@
-import PagePrintcode from './components/Printcode';
+import Printcode from './components/Printcode';
 
-export default PagePrintcode;
+export default Printcode;

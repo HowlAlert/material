@@ -35,12 +35,11 @@ class Printcode extends React.Component {
 
 
   componentWillMount(){
- if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
-   console.log(cookie.load('Id')),
-   console.log(cookie.load('UserToken')),
-   this.setState({ redirectToHome: true })
- }
- }
+
+  if(cookie.load('FirstName')!=undefined){
+    this.setState({ redirectToHome: true })
+  }
+  }
 
 handlePrintCode(event){
 
@@ -112,7 +111,7 @@ handlePrintCode(event){
             <form className="form-horizontal">
             <ul className="nav" ref={(c) => { this.nav = c; }}>
               <li className="nav-header"><span></span></li>
-              <li><FlatButton href="#/app/page/login"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
+              <li><FlatButton href="/mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
               </li>
               </ul>
               <img src="assets/images/HOWL2.png" alt="HOWL" />

@@ -11,10 +11,10 @@ import {Redirect} from 'react-router-dom';
 import APPCONFIG from 'constants/Config';
 import cookie from 'react-cookies';
 import { sessionReducer, sessionService } from 'redux-react-session';
-import PageWelcome from 'routes/welcome/';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { Route, Switch, Router, BrowserRouter } from 'react-router-dom';
 import { createStore, combineReducers } from 'redux';
+import Register from '../../register/components/Register';
 const Hero = () => (
   <div className="text-center">
   <img src="assets/images/HOWL.png" alt="HOWL" />
@@ -86,7 +86,7 @@ class MainLogin extends React.Component {
           ResultStatus:findresponse.LoginWithGoogleResult.ResultStatus,
           GetUserPack:findresponse.LoginWithGoogleResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithGoogleResult.GetUserHomeAddress,
-        });console.log(this.state.GetUser);
+        });console.log(findresponse);
         // if(this.state.ResultStatus.Status==="1"){
 
           // cookie.save('Id', this.state.GetUser.ID);
@@ -183,13 +183,6 @@ class MainLogin extends React.Component {
           GetUserPack:findresponse.LoginWithFacebookResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithFacebookResult.GetUserHomeAddress,
         })
-        // if(this.state.ResultStatus.Status==="1"){
-        //   console.log("status"),
-        //   cookie.save('Id', this.state.GetUser.ID);
-        //
-        //   cookie.save('UserToken', this.state.GetUser.UserToken);
-
-
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
             alert(this.state.ResultStatus.StatusMessage)
@@ -225,8 +218,6 @@ class MainLogin extends React.Component {
               this.setState({ redirectToSilenceCode: true })
             }
 
-          //  const expires = new Date()
-            //expires.setDate(now.getDate() + 14)
             console.log(response.first_name);
             console.log(response.last_name);
             console.log(this.state.GetUser);
@@ -279,12 +270,7 @@ class MainLogin extends React.Component {
           this.setState({ redirectToPolicy: true })
         }
 
-
-
   render (){
-
-
-
 
     const{redirectToMainLogin}=this.state
     if(redirectToMainLogin){
@@ -293,16 +279,12 @@ class MainLogin extends React.Component {
       )
     }
 
-
-
     const{redirectToHome}=this.state
     if(redirectToHome){
       return (
         <Redirect to="app/home" />
       )
     }
-
-
 
     const reducers = {
       // ... your other reducers here ...
@@ -329,7 +311,7 @@ class MainLogin extends React.Component {
         const{redirectToCreateAccount}=this.state
         if(redirectToCreateAccount){
           return (
-            <Redirect to="register" />
+            <Register />
           )
         }
 

@@ -12,10 +12,12 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import cookie from 'react-cookies';
-import PageRegister4 from 'routes/register4/';
 import PageLogin from 'routes/login/';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import PasswordField from 'material-ui-password-field'
+import PasswordField from 'material-ui-password-field';
+import VerifyPhoneNumber from './VerifyPhoneNumber';
+
+
 const mWidthStyle = {
   minWidth: '130px'
 };
@@ -153,15 +155,12 @@ this.setState({
       )
     }
 
-
-
-
     const { redirectToReferrer} = this.state
     if (redirectToReferrer==true) {
 
       console.log(redirectToReferrer)
           return (
-            <Redirect to="Register4" />
+            <VerifyPhoneNumber />
           )
         }else if (redirectToReferrer==false){
           return (
@@ -248,10 +247,6 @@ this.setState({
     );
   }
 }
-
-
-
-
 
 const Page = () => (
   <div className="page-login">
