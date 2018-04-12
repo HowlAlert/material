@@ -14,10 +14,9 @@ import PageLockScreen from 'routes/lock-screen/'
 import PageLogin from 'routes/login/'
 import PageRegister from 'routes/register/'
 import PagePrintcode from 'routes/printcode/'
-import PagePack from 'routes/pack/'
 import PageFeedback from 'routes/feedback/'
 import PageMainLogin from 'routes/mainLogin/'
-import PageMotionDetection from 'routes/motion-detection/'
+
 import AddOnePackMember from 'routes/AddOnePackMember/'
 import AddHomeAddress from 'routes/AddHomeAddress/'
 import AddCancelCode from 'routes/AddCancelCode/'
@@ -80,10 +79,8 @@ className={classnames('app-main full-height', {
 <Route exact path="/login" component={PageLogin} />
 <Route exact path="/register" component={PageRegister} />
 <Route exact path="/printcode" component={PagePrintcode} />
-<Route exact path="/pack" component={PagePack} />
 <Route exact path="/feedback" component={PageFeedback} />
 <Route exact path="/mainLogin" component={PageMainLogin} />
-<Route exact path="/motionDetection" component={PageMotionDetection} />
 <Route exact path="/forgot-password" component={PageForgotPassword} />
 <Route exact path="/AddOnePackMember" component={AddOnePackMember} />
 <Route exact path="/AddHomeAddress" component={AddHomeAddress} />
