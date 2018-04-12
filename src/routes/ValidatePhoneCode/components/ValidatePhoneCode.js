@@ -83,8 +83,7 @@ console.log(cookie.load('UserToken'));
 
 
           console.log("status"),
-          cookie.remove('Id'),
-          cookie.remove('UserToken')
+          
 
        this.setState({ redirectToReferrer: true })
         }

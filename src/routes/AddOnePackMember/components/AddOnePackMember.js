@@ -84,7 +84,8 @@ class AddOnePackMember extends React.Component {
 console.log(this.state.email);
 console.log(this.state.fname);
 console.log(this.state.lname);
-
+console.log(cookie.load('Id'));
+console.log(cookie.load('UserToken'));
 console.log(country);
            const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddUpdateUserPack';
 
@@ -109,10 +110,9 @@ console.log(country);
                       message:findresponse.AddUpdateUserPackResult.ResultStatus.StatusMessage
                         })
 
-                        // console.log(this.state.status);
-                        // console.log(this.state.message);
                         if(this.state.message == "Invalid Parameters")
                         {
+                          console.log(this.state.status)
                           alert(this.state.message)
                         }
                         if(this.state.status == "1")
