@@ -23,7 +23,8 @@ class ValidatePhoneCode extends React.Component {
     super();
     this.state = {
       Code:'',
-      ResultStatus:''
+      ResultStatus:'',
+      text:''
     };
   }
 
@@ -116,24 +117,31 @@ console.log(cookie.load('UserToken'));
     return (
       <div className="body-inner">
 
-        <div className="card bg-white">
-          <div className="card-content">
+      <div className="card bg-white registerCard">
+        <div className="card-content regContent">
+        {/*
             <section className="logo text-center">
               <h1><a href="#/">{this.state.brand}</a></h1>
-            </section>
+            </section>*/}
+
 
             <form className="form-horizontal">
+            {/*
             <ul className="nav" ref={(c) => { this.nav = c; }}>
               </ul>
-              <img src="assets/images/HOWL2.png" alt="HOWL" />
-              <p className="hero-title text-center">4 - DIGIT CODE</p>
+*/}
+
+<div className="regLeft">
+ <p className="hero-title text-center registerHeader">Enter Your Verification Code</p>
+</div>
               <fieldset>
                 <div className="form-group">
                   <TextField
                   type="text"
                   fullWidth
                   name="Code"
-                   value={this.state.value}
+                  floatingLabelText='XXXX'
+                   //value={this.state.value}
                    onChange={(e)=>this.handleCode(e)}
                   />
                 </div>
@@ -146,9 +154,14 @@ console.log(cookie.load('UserToken'));
               <div className="card-action no-border text-left">
 
               </div>
+              <div className="regButtons">
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="#/Register">BACK</a>
+                <div style={mWidthStyle} className="howlRegNext" label="NEXT -->"  onClick={(e)=>this.handleVerifyCode(e)}>NEXT</div>
+              </div>
+              {/*
               <div className="box-body text-center">
               <RaisedButton style={mWidthStyle} label="NEXT -->" onClick={(e)=>this.handleVerifyCode(e)}/><div className="divider" />
-            </div>
+            </div>*/}
 
             </form>
           </div>

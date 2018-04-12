@@ -48,7 +48,7 @@ class Login extends React.Component {
       GetUser:'',
       ResultStatus:'',
       noOfSuperValidation:0,
-
+      text:''
     };
   }
 
@@ -322,7 +322,9 @@ console.log("here");
 
           <form className="form-horizontal">
 
-            <img className="littleWolf2" src="assets/images/HOWL.png" alt="HOWL" />
+          <div className="mainLogo">
+          <img src="assets/images/new_howl.jpg" alt="HOWL" />
+          </div>
 
 
 
@@ -335,7 +337,7 @@ console.log("here");
                     type="text"
                     fullWidth
                     name="Email"
-                     value={this.state.value}
+                     //value={this.state.value}
                      onChange={(e)=>this.handleEmail(e)}
                   />
                 </div>
@@ -364,7 +366,7 @@ console.log("here");
 
 
 
-<div className="text-center">
+<div className="forgotPassword">
           <a onClick={(e)=>this.handleForgotPassword(e)} style={forgotPwd}><u>Forgot password?</u></a>
 
           <p>Don't have an account? <a onClick={(e)=>this.handleCreateAccount(e)} style={register} >Register</a></p>

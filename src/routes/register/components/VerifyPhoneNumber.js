@@ -139,18 +139,22 @@ console.log(this.state.phone);
 
       <div className="body-inner">
 
-        <div className="card bg-white">
-          <div className="card-content">
+      <div className="card bg-white registerCard">
+        <div className="card-content regContent">
+        {/*
             <section className="logo text-center">
               <h1><a href="#/">{this.state.brand}</a></h1>
             </section>
-
-
+*/}
+{/*
             <ul className="nav" ref={(c) => { this.nav = c; }}>
 
-              </ul>
-              <img src="assets/images/HOWL2.png" alt="HOWL" />
-              <p className="hero-title text-center">VERIFY YOUR PHONE Number</p>
+              </ul>*/}
+
+              <div className="regLeft">
+               <p className="hero-title text-center registerHeader">Enter Your Phone Number</p>
+              </div>
+
         <div className="phone-number" style={{display:'flex'}}>
         <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange}/>
         </div>
@@ -159,11 +163,15 @@ console.log(this.state.phone);
         </div>
 
 
-
+        <div className="regButtons">
+          <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="#/Register">BACK</a>
+          <div style={mWidthStyle} className="howlRegNext" label="NEXT -->"  onClick={(e)=>this.handlePhoneNo(e)}>NEXT</div>
+        </div>
+        {/*
 
 <div className="box-body text-center">
 <RaisedButton style={mWidthStyle} label="NEXT -->" primary onClick={(e)=>this.handlePhoneNo(e)}/><div className="divider" />
-</div>
+</div>*/}
 
 </div>
 </div>
