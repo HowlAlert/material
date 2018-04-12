@@ -85,6 +85,33 @@ line-height:10px!important;
     text-decoration:none;
     color:#fff;
 }
+
+
+.howlRegNext2{
+  border-radius: 37px !important;
+    font-weight: 300 !important;
+    letter-spacing: 2px !important;
+    padding: 26px 30px 26px 30px !important;
+    width: 47%;
+    background-color: #0091cd;
+    margin: 0 auto;
+    height: 66px;
+    text-align:center;
+    color:#fff;
+    font-size:16px;
+
+    -webkit-transition: opacity 0.5s ease-in-out;
+   -moz-transition: opacity 0.5s ease-in-out;
+   transition: opacity 0.5s ease-in-out;
+    transition: background-color 0.5s ease;
+    line-height:17px;
+}
+.howlRegNext2:hover{
+    color:#fff;
+    background-color:#063e5b;
+}
+
+
 .smallHowl{
   width:90px;
   text-align:center;
@@ -277,7 +304,6 @@ line-height: 17px;
     }
   }
 }
-
 
 
 .page-auth .body-inner:before, .page-login .body-inner:before, .page-register1 .body-inner:before, .page-register2 .body-inner:before, .page-register3 .body-inner:before, .page-register4 .body-inner:before, .page-register5 .body-inner:before, .page-printcode .body-inner:before, .page-forgot .body-inner:before{

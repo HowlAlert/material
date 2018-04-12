@@ -16,7 +16,8 @@ class ForgotPassowrd extends React.Component {
     super();
     this.state = {
       brand: APPCONFIG.brand,
-      ResultStatus:''
+      ResultStatus:'',
+      text:''
     };
   }
 
@@ -66,17 +67,20 @@ class ForgotPassowrd extends React.Component {
 
     return (
       <div className="body-inner">
-        <div className="card bg-white">
-          <div className="card-content">
+      <div className="card bg-white registerCard">
+        <div className="card-content regContent">
 
             <form>
+            {/*
             <ul className="nav" ref={(c) => { this.nav = c; }}>
               <li className="nav-header"><span></span></li>
               <li><FlatButton href="/mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
               </li>
-              </ul>
-              <img src="assets/images/HOWL2.png" alt="HOWL" />
-            <p className="hero-title text-center">FORGOT PASSWORD?</p>
+              </ul>*/}
+              <img src="assets/images/new_howl.jpg" alt="HOWL" />
+              <div className="regLeft">
+               <p className="hero-title text-center registerHeader">Forgot Password</p>
+              </div>
             <div className="form-group text-center">
               <p className="text-small">Enter your email below to receive your password reset instructions</p>
             </div>
@@ -88,14 +92,23 @@ class ForgotPassowrd extends React.Component {
                     type="text"
                     fullWidth
                     name="Email"
-                     value={this.state.value}
+                     //value={this.state.value}
                      onChange={(e)=>this.handleEmail(e)}
                   />
                 </div>
               </fieldset>
+
+              {/*
               <div className="box-body text-center">
               <RaisedButton style={mWidthStyle} label="SEND PASSWORD" primary onClick={(e)=>this.handleSendPwd(e)}/>
+            </div>*/}
+
+            <div className="regButtons">
+
+              <div style={mWidthStyle}  label="SEND PASSWORD" className="howlRegNext2"  onClick={(e)=>this.handleSendPwd(e)}>SEND</div>
             </div>
+
+
             <div className="divider" />
               </form>
           </div>
