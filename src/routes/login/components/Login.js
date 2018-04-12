@@ -123,7 +123,7 @@ class Login extends React.Component {
         if(this.state.GetUser.MobilePhoneNumber==null){
           alert("Please verify your Phone Number"),
           this.setState({ redirectToMobilePhoneNumber: true }),
-          this.setState.noOfSuperValidation=1
+          this.setState.noOfSuperValidation="False"
         }
 
         else if(this.state.GetUser.HasConfirmedMobilePhone=="False"){
@@ -182,13 +182,11 @@ class Login extends React.Component {
           //console.log(PageRegister1)
       //  console.log(App)
        this.setState({ redirectToReferrer: true })
-        }
+     }}
         else{
            this.setState({ redirectToReferrer: false })
         }
-}
-
-  })
+      });
   }
 
 
@@ -235,14 +233,14 @@ console.log("here");
     const{redirectToMobilePhoneNumber}=this.state
     if(redirectToMobilePhoneNumber){
       return (
-        <Redirect to="register4" />
+        <Redirect to="VerifyPhoneNumber" />
       )
     }
 
     const{redirectToMobilePhoneConfirmationCode}=this.state
     if(redirectToMobilePhoneConfirmationCode){
       return (
-        <Redirect to="register5" />
+        <Redirect to="ValidatePhoneCode" />
       )
     }
 
@@ -288,28 +286,28 @@ console.log("here");
         const { redirectToGetUserPack   } = this.state
         if(redirectToGetUserPack){
           return (
-            <Redirect to="packcontact" />
+            <Redirect to="AddOnePackMember" />
           )
         }
 
         const { redirectToAddress   } = this.state
         if(redirectToAddress){
           return (
-            <Redirect to="HomeAddress" />
+            <Redirect to="AddHomeAddress" />
           )
         }
 
         const { redirectToCancellationCode  } = this.state
         if(redirectToCancellationCode){
           return (
-            <Redirect to="cancel" />
+            <Redirect to="AddCancelCode" />
           )
         }
 
         const { redirectToSilenceCode } = this.state
         if(redirectToSilenceCode){
           return (
-            <Redirect to="silent" />
+            <Redirect to="AddSilentCode" />
           )
         }
 
@@ -325,12 +323,7 @@ console.log("here");
           <div className="mainLogo">
           <img src="assets/images/new_howl.jpg" alt="HOWL" />
           </div>
-
-
-
-
-
-              <fieldset>
+          <fieldset>
                 <div className="form-group">
                   <TextField
                     floatingLabelText="Email"
@@ -358,13 +351,7 @@ console.log("here");
                 <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/mainLogin">CANCEL</a>
                 <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleLogin(e)}>LOGIN</div>
               </div>
-
-
             </form>
-
-
-
-
 
 <div className="forgotPassword">
           <a onClick={(e)=>this.handleForgotPassword(e)} style={forgotPwd}><u>Forgot password?</u></a>

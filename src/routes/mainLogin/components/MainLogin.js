@@ -108,30 +108,50 @@ class MainLogin extends React.Component {
 
           if(this.state.ResultStatus.StatusMessage==="Success"){
 
-            console.log(this.state.GetUserPack.length);
+            cookie.save('UserToken', this.state.GetUser.UserToken);
+            cookie.save('Id', this.state.GetUser.ID);
+
+
+            if(this.state.GetUser.MobilePhoneNumber==null){
+              alert("Please verify your Phone Number"),
+              this.setState({ redirectToMobilePhoneNumber: true }),
+              this.setState.noOfSuperValidation="False"
+            }
+
+            else if(this.state.GetUser.HasConfirmedMobilePhone=="False"){
+              alert("Please confirm your Phone Number"),
+              this.setState({ redirectToMobilePhoneConfirmationCode: true }),
+              this.setState.noOfSuperValidation="False"
+            }
+
             if(this.state.GetUserPack.length==0){
               alert("Please enter atleast one Pack member"),
-             this.setState({ redirectToGetUserPack: true })
+             this.setState({ redirectToGetUserPack: true }),
+             this.setState.noOfSuperValidation="False"
             }
 
             else if(this.state.GetUserHomeAddress.Address1==null){
               alert("Please enter your Home Address"),
-             this.setState({ redirectToAddress: true })
+             this.setState({ redirectToAddress: true }),
+             this.setState.noOfSuperValidation="False"
             }
 
             else if(this.state.GetUser.CancellationCode==null){
               alert("Please enter your Cancel Code"),
-              this.setState({ redirectToCancellationCode: true })
+              this.setState({ redirectToCancellationCode: true }),
+              this.setState.noOfSuperValidation="False"
             }
             else if(this.state.GetUser.SilenceCode==null){
               alert("Please enter your Silent Code"),
-              this.setState({ redirectToSilenceCode: true })
+              this.setState({ redirectToSilenceCode: true }),
+              this.setState.noOfSuperValidation="False"
             }
 
           //  const expires = new Date()
             //expires.setDate(now.getDate() + 14)
             console.log(this.state.GetUser);
-            console.log("status"),
+            console.log("status");
+            if(this.setState.noOfSuperValidation!="False"){
             cookie.save('Email', this.state.GetUser.Email);
             cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
             cookie.save('Id', this.state.GetUser.ID);
@@ -152,7 +172,7 @@ class MainLogin extends React.Component {
             cookie.save('State', this.state.GetUserHomeAddress.State);
             cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
        this.setState({ redirectToReferrer: true })
-        }
+     }}
         else{
            this.setState({ redirectToReferrer: false })
         }
@@ -198,51 +218,67 @@ class MainLogin extends React.Component {
 
           if(this.state.ResultStatus.StatusMessage==="Success"){
 
-            console.log(this.state.GetUserPack.length);
-            if(this.state.GetUserPack.length==0){
+            cookie.save('UserToken', this.state.GetUser.UserToken);
+            cookie.save('Id', this.state.GetUser.ID);
+
+
+            if(this.state.GetUser.MobilePhoneNumber==null){
+              alert("Please verify your Phone Number"),
+              this.setState({ redirectToMobilePhoneNumber: true }),
+              this.setState.noOfSuperValidation="False"
+            }
+
+            else if(this.state.GetUser.HasConfirmedMobilePhone=="False"){
+              alert("Please confirm your Phone Number"),
+              this.setState({ redirectToMobilePhoneConfirmationCode: true }),
+              this.setState.noOfSuperValidation="False"
+            }
+
+            else if(this.state.GetUserPack.length==0){
               alert("Please enter atleast one Pack member"),
-             this.setState({ redirectToGetUserPack: true })
+             this.setState({ redirectToGetUserPack: true }),
+             this.setState.noOfSuperValidation="False"
             }
 
             else if(this.state.GetUserHomeAddress.Address1==null){
               alert("Please enter your Home Address"),
-             this.setState({ redirectToAddress: true })
+             this.setState({ redirectToAddress: true }),
+             this.setState.noOfSuperValidation="False"
             }
 
             else if(this.state.GetUser.CancellationCode==null){
               alert("Please enter your Cancel Code"),
-              this.setState({ redirectToCancellationCode: true })
+              this.setState({ redirectToCancellationCode: true }),
+              this.setState.noOfSuperValidation="False"
             }
             else if(this.state.GetUser.SilenceCode==null){
               alert("Please enter your Silent Code"),
-              this.setState({ redirectToSilenceCode: true })
+              this.setState({ redirectToSilenceCode: true }),
+              this.setState.noOfSuperValidation="False"
             }
 
-            console.log(response.first_name);
-            console.log(response.last_name);
-            console.log(this.state.GetUser);
-            console.log("status"),
-            cookie.save('Email', this.state.GetUser.Email);
-            cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
-            cookie.save('Id', this.state.GetUser.ID);
-            cookie.save('FirstName', response.first_name);
-            cookie.save('LastName', response.last_name);
-            cookie.save('UserToken', this.state.GetUser.UserToken);
-            //cookie.save('Status', this.state.ResultStatus.Status, '/')
-            cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
-            cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
-            cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
-            cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
-            //return ( <Redirect to="#/Register1"/> );
-            cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
-            cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
-            cookie.save('City', this.state.GetUserHomeAddress.City);
-            cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
-            cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
-            cookie.save('State', this.state.GetUserHomeAddress.State);
-            cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
-       this.setState({ redirectToReferrer: true })
-        }
+            if(this.setState.noOfSuperValidation!="False"){
+                  cookie.save('Email', this.state.GetUser.Email);
+                  cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+                  cookie.save('Id', this.state.GetUser.ID);
+                  cookie.save('FirstName', response.first_name);
+                  cookie.save('LastName', response.last_name);
+                  cookie.save('UserToken', this.state.GetUser.UserToken);
+                  //cookie.save('Status', this.state.ResultStatus.Status, '/')
+                  cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
+                  cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+                  cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+                  cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+                  //return ( <Redirect to="#/Register1"/> );
+                  cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+                  cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+                  cookie.save('City', this.state.GetUserHomeAddress.City);
+                  cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+                  cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+                  cookie.save('State', this.state.GetUserHomeAddress.State);
+                  cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
+             this.setState({ redirectToReferrer: true })
+           }}
         else{
            this.setState({ redirectToReferrer: false })
         }
@@ -311,7 +347,7 @@ class MainLogin extends React.Component {
         const{redirectToCreateAccount}=this.state
         if(redirectToCreateAccount){
           return (
-            <Register />
+            <Redirect to="register" />
           )
         }
 
@@ -343,33 +379,48 @@ class MainLogin extends React.Component {
           )
         }
 
-        const { redirectToGetUserPack   } = this.state
-        if(redirectToGetUserPack){
-          return (
-            <Redirect to="packcontact" />
-          )
-        }
+                const { redirectToGetUserPack   } = this.state
+                if(redirectToGetUserPack){
+                  return (
+                    <Redirect to="AddOnePackMember" />
+                  )
+                }
 
-        const { redirectToAddress   } = this.state
-        if(redirectToAddress){
-          return (
-            <Redirect to="HomeAddress" />
-          )
-        }
+                const { redirectToAddress   } = this.state
+                if(redirectToAddress){
+                  return (
+                    <Redirect to="AddHomeAddress" />
+                  )
+                }
 
-        const { redirectToCancellationCode  } = this.state
-        if(redirectToCancellationCode){
-          return (
-            <Redirect to="cancel" />
-          )
-        }
+                const { redirectToCancellationCode  } = this.state
+                if(redirectToCancellationCode){
+                  return (
+                    <Redirect to="AddCancelCode" />
+                  )
+                }
 
-        const { redirectToSilenceCode } = this.state
-        if(redirectToSilenceCode){
-          return (
-            <Redirect to="silent" />
-          )
-        }
+                const { redirectToSilenceCode } = this.state
+                if(redirectToSilenceCode){
+                  return (
+                    <Redirect to="AddSilentCode" />
+                  )
+                }
+
+                    const{redirectToMobilePhoneNumber}=this.state
+                    if(redirectToMobilePhoneNumber){
+                      return (
+                        <Redirect to="VerifyPhoneNumber" />
+                      )
+                    }
+
+                    const{redirectToMobilePhoneConfirmationCode}=this.state
+                    if(redirectToMobilePhoneConfirmationCode){
+                      return (
+                        <Redirect to="ValidatePhoneCode" />
+                      )
+                    }
+
 
     return(
       <div classNa  me="body-inner">

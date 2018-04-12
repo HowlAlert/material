@@ -15,7 +15,6 @@ import cookie from 'react-cookies';
 import PageLogin from 'routes/login/';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import PasswordField from 'material-ui-password-field';
-import VerifyPhoneNumber from './VerifyPhoneNumber';
 
 
 const mWidthStyle = {
@@ -161,7 +160,7 @@ this.setState({
 
       console.log(redirectToReferrer)
           return (
-            <VerifyPhoneNumber />
+            <Redirect to="VerifyPhoneNumber" />
           )
         }else if (redirectToReferrer==false){
           return (
@@ -236,8 +235,8 @@ this.setState({
               </div>
 
               <div className="regButtons">
-                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/#/mainLogin">BACK</a>
-                <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" primary href={"#/Register2"} onClick={(e)=>this.handleNext(e)}>NEXT</div>
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/mainLogin">BACK</a>
+                <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleNext(e)}>NEXT</div>
               </div>
 
 {/*

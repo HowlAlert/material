@@ -13,19 +13,19 @@ import PageFullscreen from 'routes/fullscreen/'
 import PageLockScreen from 'routes/lock-screen/'
 import PageLogin from 'routes/login/'
 import PageRegister from 'routes/register/'
-import PageRegister5 from 'routes/register5/'
 import PagePrintcode from 'routes/printcode/'
 import PagePack from 'routes/pack/'
 import PageFeedback from 'routes/feedback/'
-import PageVerifyPhoneCode from 'routes/verifyPhoneCode/'
 import PageMainLogin from 'routes/mainLogin/'
 import PageMotionDetection from 'routes/motion-detection/'
-import PagePackcontact from 'routes/packcontact/'
-import PageHomeAddress from 'routes/HomeAddress/'
-import PageCancel from 'routes/cancel/'
-import PageSilent from 'routes/silent/'
+import AddOnePackMember from 'routes/AddOnePackMember/'
+import AddHomeAddress from 'routes/AddHomeAddress/'
+import AddCancelCode from 'routes/AddCancelCode/'
+import AddSilentCode from 'routes/AddSilentCode/'
 import PagePrivacy from 'routes/Privacy/'
 import PageTerms from 'routes/Terms/'
+import ValidatePhoneCode from 'routes/ValidatePhoneCode'
+import PageVerifyPhoneNumber from 'routes/VerifyPhoneNumber'
 import 'styles/bootstrap.scss';
 import 'styles/layout.scss';
 import 'styles/theme.scss';
@@ -78,20 +78,21 @@ className={classnames('app-main full-height', {
 <Route exact path="/404" component={Page404} />
 <Route exact path="/500" component={Page500} />
 <Route exact path="/login" component={PageLogin} />
-<Route exact path="/register5" component={PageRegister5} />
+<Route exact path="/register" component={PageRegister} />
 <Route exact path="/printcode" component={PagePrintcode} />
 <Route exact path="/pack" component={PagePack} />
 <Route exact path="/feedback" component={PageFeedback} />
-<Route exact path="/verifyPhoneCode" component={PageVerifyPhoneCode} />
 <Route exact path="/mainLogin" component={PageMainLogin} />
 <Route exact path="/motionDetection" component={PageMotionDetection} />
 <Route exact path="/forgot-password" component={PageForgotPassword} />
-<Route exact path="/packcontact" component={PagePackcontact} />
-<Route exact path="/HomeAddress" component={PageHomeAddress} />
-<Route exact path="/cancel" component={PageCancel} />
-<Route exact path="/silent" component={PageSilent} />
+<Route exact path="/AddOnePackMember" component={AddOnePackMember} />
+<Route exact path="/AddHomeAddress" component={AddHomeAddress} />
+<Route exact path="/AddCancelCode" component={AddCancelCode} />
+<Route exact path="/AddSilentCode" component={AddSilentCode} />
 <Route exact path="/Terms" component={PageTerms} />
 <Route exact path="/Privacy" component={PagePrivacy} />
+<Route exact path="/ValidatePhoneCode" component={ValidatePhoneCode} />
+<Route exact path="/VerifyPhoneNumber" component={PageVerifyPhoneNumber} />
 </div>
 </div>
 </MuiThemeProvider>
