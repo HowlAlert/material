@@ -29,7 +29,8 @@ class Register extends React.Component {
       Lname:'',
       Email:'',
       Password:'',
-      GetUser:''
+      GetUser:'',
+      text:''
     };
   }
 
@@ -171,20 +172,21 @@ this.setState({
     return (
       <div className="body-inner">
 
-        <div className="card bg-white">
-          <div className="card-content">
-            <section className="logo text-center">
+      <div className="card bg-white registerCard">
+        <div className="card-content regContent">
+          {/* <section className="logo text-center">
               <h1><a href="#/">{this.state.brand}</a></h1>
-            </section>
+            </section>*/}
+
+
 
             <form className="form-horizontal">
-            <ul className="nav" ref={(c) => { this.nav = c; }}>
-              <li className="nav-header"><span></span></li>
-              <li><FlatButton href="/mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
-              </li>
-              </ul>
-              <img src="assets/images/HOWL2.png" alt="HOWL" />
-              <p className="hero-title text-center">Create Account</p>
+
+
+            <div className="regLeft">
+             <p className="hero-title text-center registerHeader">Create Account</p>
+            </div>
+
               <fieldset>
                 <div className="form-group">
                   <TextField
@@ -192,7 +194,7 @@ this.setState({
                     type="text"
                     fullWidth
                     name="Fname"
-                     value={this.state.value}
+                     //value={this.state.value}
                      onChange={(e)=>this.handleFname(e)}
                   />
 
@@ -203,7 +205,7 @@ this.setState({
                     type="text"
                     fullWidth
                     name="Lname"
-                     value={this.state.value}
+                     //value={this.state.value}
                      onChange={(e)=>this.handleLname(e)}
                   />
                 </div>
@@ -213,7 +215,7 @@ this.setState({
                     type="text"
                     fullWidth
                     name="Email"
-                     value={this.state.value}
+                     //value={this.state.value}
                      onChange={(e)=>this.handleEmail(e)}
                   />
                 </div>
@@ -222,7 +224,7 @@ this.setState({
                   fullWidth
                   type="password"
                   name="Password"
-                  value={this.state.value}
+                  //value={this.state.value}
                   //hintText="At least 8 characters"
                   floatingLabelText="Password"
                   onChange={(e)=>this.handlePassword(e)}
@@ -232,9 +234,16 @@ this.setState({
               <div className="card-action no-border text-left">
 
               </div>
+
+              <div className="regButtons">
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/#/mainLogin">BACK</a>
+                <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" primary href={"#/Register2"} onClick={(e)=>this.handleNext(e)}>NEXT</div>
+              </div>
+
+{/*
               <div className="box-body text-center">
               <RaisedButton style={mWidthStyle} label="NEXT -->" primary href={"#/Register2"} onClick={(e)=>this.handleNext(e)}/><div className="divider" />
-            </div>
+            </div>*/}
 
             </form>
           </div>
