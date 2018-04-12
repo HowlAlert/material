@@ -104,6 +104,7 @@ const mWidthStyle = {
                <p className="hero-title text-center registerHeader">Add A Cancel Code</p>
                <p className='headText'>Enter a 4 digit code to cancel a howl alarm</p>
               </div>
+
               <fieldset>
                 <div className="form-group">
                   <TextField
