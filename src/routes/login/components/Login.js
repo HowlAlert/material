@@ -155,8 +155,6 @@ class Login extends React.Component {
           this.setState.noOfSuperValidation="False"
         }
 
-      //  const expires = new Date()
-        //expires.setDate(now.getDate() + 14)
         if(this.setState.noOfSuperValidation!="False"){
           console.log(this.state.GetUser);
           console.log("status"),
@@ -179,8 +177,7 @@ class Login extends React.Component {
           cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
           cookie.save('State', this.state.GetUserHomeAddress.State);
           cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
-          //console.log(PageRegister1)
-      //  console.log(App)
+
        this.setState({ redirectToReferrer: true })
      }}
         else{
@@ -250,8 +247,6 @@ console.log("here");
         <Redirect to="forgot-password" />
       )
     }
-
-
 
     const{redirectToHome}=this.state
        if(redirectToHome){

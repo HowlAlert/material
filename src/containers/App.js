@@ -16,7 +16,6 @@ import PageRegister from 'routes/register/'
 import PagePrintcode from 'routes/printcode/'
 import PageFeedback from 'routes/feedback/'
 import PageMainLogin from 'routes/mainLogin/'
-
 import AddOnePackMember from 'routes/AddOnePackMember/'
 import AddHomeAddress from 'routes/AddHomeAddress/'
 import AddCancelCode from 'routes/AddCancelCode/'

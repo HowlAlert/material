@@ -124,7 +124,7 @@ class MainLogin extends React.Component {
               this.setState.noOfSuperValidation="False"
             }
 
-            if(this.state.GetUserPack.length==0){
+            else if(this.state.GetUserPack.length==0){
               alert("Please enter atleast one Pack member"),
              this.setState({ redirectToGetUserPack: true }),
              this.setState.noOfSuperValidation="False"

@@ -15,6 +15,10 @@ import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from 'react-router-dom';
 
 
+const mWidthStyle = {
+  minWidth: '130px'
+};
+
 
 class Printcode extends React.Component {
   constructor() {
@@ -25,6 +29,8 @@ class Printcode extends React.Component {
       //brand: APPCONFIG.brand
     };
   }
+
+
   componentWillMount(){
   if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
     console.log(cookie.load('Id')),
@@ -103,16 +109,13 @@ handlePrintCode(event){
     return (
 
       <div className="body-inner">
-
-        <div className="card bg-white">
-          <div className="card-content">
+      <div className="card bg-white registerCard">
+        <div className="card-content regContent">
 
 
             <form className="form-horizontal">
             <ul className="nav" ref={(c) => { this.nav = c; }}>
-              <li className="nav-header"><span></span></li>
-              <li><FlatButton href="/mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
-              </li>
+              
               </ul>
               <img src="assets/images/HOWL2.png" alt="HOWL" />
             <p className="hero-title text-center">PRINT CODE</p>
@@ -132,13 +135,9 @@ handlePrintCode(event){
                 </div>
 
               </fieldset>
-              <div className="card-action no-border text-right">
-
-                <a  className="color-primary" onClick={(e)=>this.handlePrintCode(e)} >Submit</a>
-
-
-
-
+              <div className="regButtons">
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/mainLogin">CANCEL</a>
+                <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" href="/mainLogin">SUBMIT</div>
               </div>
             </form>
           </div>

@@ -70,14 +70,10 @@ class ForgotPassowrd extends React.Component {
       <div className="card bg-white registerCard">
         <div className="card-content regContent">
 
-            <form>
-            {/*
-            <ul className="nav" ref={(c) => { this.nav = c; }}>
-              <li className="nav-header"><span></span></li>
-              <li><FlatButton href="/mainLogin"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
-              </li>
-              </ul>*/}
-              <img src="assets/images/new_howl.jpg" alt="HOWL" />
+            <form className="form-horizontal">
+            <div className="mainLogo">
+            <img src="assets/images/new_howl.jpg" alt="HOWL" />
+            </div>
               <div className="regLeft">
                <p className="hero-title text-center registerHeader">Forgot Password</p>
               </div>
@@ -98,18 +94,11 @@ class ForgotPassowrd extends React.Component {
                 </div>
               </fieldset>
 
-              {/*
-              <div className="box-body text-center">
-              <RaisedButton style={mWidthStyle} label="SEND PASSWORD" primary onClick={(e)=>this.handleSendPwd(e)}/>
-            </div>*/}
 
             <div className="regButtons">
-
-              <div style={mWidthStyle}  label="SEND PASSWORD" className="howlRegNext2"  onClick={(e)=>this.handleSendPwd(e)}>SEND</div>
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/mainLogin">CANCEL</a>
+              <div style={mWidthStyle}  label="SEND PASSWORD" className="howlRegNext"  onClick={(e)=>this.handleSendPwd(e)}>SEND</div>
             </div>
-
-
-            <div className="divider" />
               </form>
           </div>
       </div>
