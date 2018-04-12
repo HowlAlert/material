@@ -17,8 +17,8 @@ import { createStore, combineReducers } from 'redux';
 import Register from '../../register/components/Register';
 const Hero = () => (
   <div className="text-center">
-  <img src="assets/images/HOWL.png" alt="HOWL" />
-  <h6 className="hero-title"><b>Welcome</b></h6><div className="divider" /><div className="divider" />
+  <img src="assets/images/new_howl.jpg" alt="HOWL" />
+  <div className="divider" /><div className="divider" />
   </div>
 );
 const mWidthStyle = {
@@ -378,8 +378,11 @@ class MainLogin extends React.Component {
               <ul className="nav" ref={(c) => { this.nav = c; }}>
                 <li className="nav-header" ><span></span></li>
                 </ul>
-                <img src="assets/images/HOWL.png" alt="HOWL" />
-                <h4 className="text-medium" className="text-center">Welcome</h4>
+
+                <div className="mainLogo">
+                <img src="assets/images/new_howl.jpg" alt="HOWL" />
+                </div>
+
                 <div className="text-center">
                 <FacebookLogin
 
@@ -392,28 +395,34 @@ class MainLogin extends React.Component {
 
 
                 /><div className="divider" />
+                <div className="googleButton">
                 <GoogleLogin
                 clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"
-                buttonText="CONTINUE WITH GOOGLE"
+                buttonText="LOGIN WITH GOOGLE"
                 onSuccess={(e)=>this.handleGoogleLogin(e)}
                 onFailure={(e)=>this.handleGoogleLogin(e)}
 
-                /><div className="divider" />
-                <p style={policy}>----------------  OR  ----------------</p>
+                />
+                </div>
+                <div className="divider" />
 
-                <RaisedButton style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}/><div className="divider" />
-              </div>
-              <div className="text-center">
-              <p style={policy}>Have an account?<span><a onClick={(e)=>this.handleLogin(e)} style={login}> Login</a></span></p>
-              </div>
 
-              <div className="text-center">
-              <p className="text-small" style={policy}><a onClick={(e)=>this.handleTerms(e)}><u>Terms of Service</u></a> and <a onClick={(e)=>this.handlePolicy(e)}><u>Privacy Policy</u></a></p>
-              </div>
+                                <p style={policy}>-  OR  -</p>
 
-              <div className="text-center">
-              <p className="text-small"><a onClick={(e)=>this.handlePrintcode(e)} style={printcode}><u>Print Code</u></a></p>
-            </div>
+                                <div className="howlBlue" style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}>CREATE AN ACCOUNT</div><div className="divider" />
+                              </div>
+                              <div className="text-center">
+                              <p style={policy}>Have an account?<span><a onClick={(e)=>this.handleLogin(e)} style={login}> Login</a></span></p>
+                              </div>
+
+                              <div className="text-center">
+                              <p className="text-small" style={policy}><a onClick={(e)=>this.handleTerms(e)}><u>Terms of Service</u></a> and <a onClick={(e)=>this.handlePolicy(e)}><u>Privacy Policy</u></a></p>
+                              </div>
+
+                              <div className="text-center">
+                              <p className="text-small"><a onClick={(e)=>this.handlePrintcode(e)} style={printcode}><u>Print Code</u></a></p>
+                            </div>
+
 
 
 </div></div></div>
