@@ -424,8 +424,8 @@ class MainLogin extends React.Component {
 
     return(
       <div classNa  me="body-inner">
-            <div className="card bg-white">
-              <div className="card-content">
+            <div className=" bg-white2">
+              <div className="">
               <ul className="nav" ref={(c) => { this.nav = c; }}>
                 <li className="nav-header" ><span></span></li>
                 </ul>
@@ -463,15 +463,15 @@ class MainLogin extends React.Component {
                                 <div className="howlBlue" style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}>CREATE AN ACCOUNT</div><div className="divider" />
                               </div>
                               <div className="text-center">
-                              <p style={policy}>Have an account?<span><a onClick={(e)=>this.handleLogin(e)} style={login}> Login</a></span></p>
+                              <p style={policy}>Have an account?<span><a className='loginBtn' onClick={(e)=>this.handleLogin(e)} style={login}> Login</a></span></p>
                               </div>
 
                               <div className="text-center">
-                              <p className="text-small" style={policy}><a onClick={(e)=>this.handleTerms(e)}><u>Terms of Service</u></a> and <a onClick={(e)=>this.handlePolicy(e)}><u>Privacy Policy</u></a></p>
+                              <p className="text-small" style={policy}><a className='loginBtn' onClick={(e)=>this.handleTerms(e)}><u>Terms of Service</u></a> and <a className='loginBtn' onClick={(e)=>this.handlePolicy(e)}><u>Privacy Policy</u></a></p>
                               </div>
 
                               <div className="text-center">
-                              <p className="text-small"><a onClick={(e)=>this.handlePrintcode(e)} style={printcode}><u>Print Code</u></a></p>
+                              <p className="text-small"><a className='loginBtn' onClick={(e)=>this.handlePrintcode(e)} style={printcode}><u>Print Code</u></a></p>
                             </div>
 
 
@@ -482,7 +482,7 @@ class MainLogin extends React.Component {
 }
 
 const Page = () => (
-  <div className="page-login">
+  <div className="page-login2">
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">

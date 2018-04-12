@@ -31,7 +31,8 @@ class AddOnePackMember extends React.Component {
       fname:'',
       lname:'',
       phonenumber:'',
-      email:''
+      email:'',
+      text:''
     };
     this.handleOnChange = this.handleOnChange.bind(this);
   }
@@ -155,20 +156,30 @@ console.log(country);
     return (
       <div className="body-inner">
 
-        <div className="card bg-white">
-          <div className="card-content">
+      <div className="card bg-white registerCard">
+        <div className="card-content regContent">
+
+        {/*
             <section className="logo text-center">
               <h1><a href="#/">{this.state.brand}</a></h1>
-            </section>
+            </section>*/}
 
             <form className="form-horizontal">
+
+            {/*
             <ul className="nav" ref={(c) => { this.nav = c; }}>
               <li className="nav-header"><span></span></li>
               <li><FlatButton href="#/app/register5"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
               </li>
-              </ul>
-              <center><img src="assets/images/HOWL2.png" alt="HOWL" /></center>
-              <p className="hero-title text-center">ADD PACK MEMBER</p>
+              </ul>*/}
+
+
+              <div className="regLeft">
+               <p className="hero-title text-center registerHeader">Add Pack Member</p>
+              </div>
+
+
+
               <fieldset>
                 <div className="form-group">
                   <TextField
@@ -176,7 +187,7 @@ console.log(country);
                     type="text"
                     fullWidth
                     name="fname"
-                     value={this.state.value}
+                     //value={this.state.value}
                      onChange={this.handleFirstname.bind(this)}
                   />
                   </div>
@@ -187,7 +198,7 @@ console.log(country);
                     type="text"
                     fullWidth
                     name="lname"
-                     value={this.state.value}
+                     //value={this.state.value}
                      onChange={this.handleLastname.bind(this)}
                   />
                   </div>
@@ -202,7 +213,7 @@ console.log(country);
                     type="text"
                     fullWidth
                     name="email"
-                     value={this.state.value}
+                     //value={this.state.value}
                      onChange={this.handleEmail.bind(this)}
                   />
                 </div>
@@ -213,8 +224,15 @@ console.log(country);
               <div className="card-action no-border text-left">
 
               </div>
+
+              {/*
               <div className="box-body text-center">
               <RaisedButton style={mWidthStyle} label="NEXT -->" onClick={(e)=>this.handleNext(e)}/><div className="divider" />
+            </div>*/}
+
+            <div className="regButtons">
+              <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="#/app/register5">BACK</a>
+              <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleNext(e)}>NEXT</div>
             </div>
 
             </form>

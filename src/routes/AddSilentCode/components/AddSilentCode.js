@@ -18,7 +18,8 @@ class AddSilentCode extends React.Component {
     this.state = {
       code:'',
       re_code:'',
-      ResultStatus:''
+      ResultStatus:'',
+      text:''
     };
 
   }
@@ -81,27 +82,37 @@ render() {
   return (
     <div className="body-inner">
 
-      <div className="card bg-white">
-        <div className="card-content">
+    <div className="card bg-white registerCard">
+      <div className="card-content regContent">
+
+{/*
           <section className="logo text-center">
             <h1><a href="#/">{this.state.brand}</a></h1>
-          </section>
+          </section>*/}
 
           <form className="form-horizontal">
+
+        {/*
           <ul className="nav" ref={(c) => { this.nav = c; }}>
             <li className="nav-header"><span></span></li>
             <li><FlatButton href="#/app/register4"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
             </li>
-            </ul>
-            <img src="assets/images/HOWL2.png" alt="HOWL" />
-            <p className="hero-title text-center">4 - DIGIT SILENT CODE</p>
+            </ul>*/}
+
+
+            <div className="regLeft">
+             <p className="hero-title text-center registerHeader">Add A Silent Code</p>
+             <p className='headText'>Enter a 4 digit code to silence a howl alarm and yet still alert authorities.</p>
+            </div>
+
             <fieldset>
               <div className="form-group">
                 <TextField
                 type="text"
+                floatingLabelText='XXXX'
                 fullWidth
                 name="Code"
-                 value={this.state.value}
+                 //value={this.state.value}
                  onChange={(e)=>this.handleCode(e)}
                 />
               </div>
@@ -114,8 +125,15 @@ render() {
             <div className="card-action no-border text-left">
 
             </div>
+
+            {/*
             <div className="box-body text-center">
             <RaisedButton style={mWidthStyle} label="NEXT -->" onClick={(e)=>this.handleVerifyCode(e)}/><div className="divider" />
+          </div>*/}
+
+          <div className="regButtons">
+            <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="#/app/register4">BACK</a>
+            <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleVerifyCode(e)}>NEXT</div>
           </div>
 
           </form>

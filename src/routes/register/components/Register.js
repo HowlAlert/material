@@ -235,7 +235,7 @@ this.setState({
               </div>
 
               <div className="regButtons">
-                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/mainLogin">BACK</a>
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/">BACK</a>
                 <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleNext(e)}>NEXT</div>
               </div>
 

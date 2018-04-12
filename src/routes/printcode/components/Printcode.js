@@ -25,7 +25,8 @@ class Printcode extends React.Component {
     super();
     this.state = {
       Code:'',
-      ResultStatus:''
+      ResultStatus:'',
+      text:''
       //brand: APPCONFIG.brand
     };
   }
@@ -115,13 +116,15 @@ handlePrintCode(event){
 
             <form className="form-horizontal">
             <ul className="nav" ref={(c) => { this.nav = c; }}>
-              
+
               </ul>
-              <img src="assets/images/HOWL2.png" alt="HOWL" />
-            <p className="hero-title text-center">PRINT CODE</p>
-            <div className="form-group text-center">
-              <p className="text-small">If you have one, enter the Print (Referral) Code provided by your HOWL Alpha below.</p>
-            </div>
+
+              <div className="regLeft">
+               <p className="hero-title text-center registerHeader">Print Code</p>
+               <p className='headText'>If you have one, enter the Print (Referral) Code provided by your HOWL Alpha below.</p>
+              </div>
+
+          
               <fieldset>
                 <div className="form-group">
                   <TextField
@@ -129,7 +132,7 @@ handlePrintCode(event){
                     type="text"
                     fullWidth
                     name="Email"
-                     value={this.state.value}
+                    // value={this.state.value}
                      onChange={(e)=>this.handleCode(e)}
                   />
                 </div>

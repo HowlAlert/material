@@ -26,11 +26,28 @@ min-width:450px;
 height:78px!important;
 line-height:10px!important;
 }
+.page-login2{
+  height:110%;
+  background-color:#fff;
+  display:block;
+}
 
 .mainLogo{
   margin-bottom:10px;
+  padding-top:20px;
+}
+.bg-white2{
+  height:100%;
+  background-color:#fff;
+}
+.loginBtn{
+  cursor:pointer;
+}
+.loginBtn:hover{
+  opacity:0.6;
 }
 .howlBlue{
+  cursor:pointer;
   border-radius: 37px !important;
     font-weight: 300 !important;
     letter-spacing: 2px !important;
@@ -42,7 +59,15 @@ line-height:10px!important;
     margin-top:20px;
     color:#fff;
     font-size:16px;
-    lilne-height:10px!important;
+
+    -webkit-transition: opacity 0.5s ease-in-out;
+   -moz-transition: opacity 0.5s ease-in-out;
+   transition: opacity 0.5s ease-in-out;
+    transition: background-color 0.5s ease;
+}
+.howlBlue:hover{
+    color:#fff;
+    background-color:#063e5b;
 }
 .howlBlue2{
   border-radius: 37px !important;
@@ -57,6 +82,7 @@ line-height:10px!important;
     color:#fff;
     font-size:16px;
 }
+
 .howlRegNext{
   border-radius: 37px !important;
     font-weight: 300 !important;
@@ -317,4 +343,23 @@ line-height: 17px;
 .forgotPassword{
   margin-top:10px;
   text-align:center;
+}
+
+.marg20B{
+  margin-bottom:20px;
+}
+.form-group{
+  font-size:14px;
+}
+.headText{
+  text-align:center;
+  font-size:14px;
+  line-height:20px;
+  color:#999!important;
+  margin-top:10px!important;
+  margin-bottom:10px!important;
+}
+.termsText p{
+  font-size:14px!important;
+  color:#646464!important;
 }

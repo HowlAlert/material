@@ -71,9 +71,7 @@ class ForgotPassowrd extends React.Component {
         <div className="card-content regContent">
 
             <form className="form-horizontal">
-            <div className="mainLogo">
-            <img src="assets/images/new_howl.jpg" alt="HOWL" />
-            </div>
+            
               <div className="regLeft">
                <p className="hero-title text-center registerHeader">Forgot Password</p>
               </div>

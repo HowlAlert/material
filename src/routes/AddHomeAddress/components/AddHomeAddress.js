@@ -168,20 +168,32 @@ console.error(this.state.Longitude);
     return (
       <div className="body-inner">
 
-        <div className="card bg-white">
-          <div className="card-content">
+      <div className="card bg-white registerCard">
+        <div className="card-content regContent">
+
+        {/*
             <section className="logo text-center">
               <h1><a href="#/">{this.state.brand}</a></h1>
-            </section>
+            </section>*/}
+
+            <div className="regLeft marg20B">
+             <p className="hero-title text-center registerHeader">Add Home Address</p>
+            </div>
 
             <form className="form-horizontal">
+
+            {/*
             <ul className="nav" ref={(c) => { this.nav = c; }}>
               <li className="nav-header"><span></span></li>
               <li><FlatButton href="packcontact"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
               </li>
-              </ul>
-              <center><img src="assets/images/HOWL2.png" alt="HOWL" /></center>
-              <p className="hero-title text-center">ADD HOME ADDRESS</p>
+              </ul>*/}
+
+
+
+
+
+
               <fieldset>
               <div className="form-group">
                ENTER ADDRESS
@@ -199,8 +211,15 @@ console.error(this.state.Longitude);
               <div className="card-action no-border text-left">
 
               </div>
+
+              {/*
               <div className="box-body text-center">
               <RaisedButton style={mWidthStyle} label="NEXT -->" onClick={this.handleFormSubmit}/><div className="divider" />
+            </div>*/}
+
+            <div className="regButtons">
+              <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="packcontact">BACK</a>
+              <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleFormSubmit(e)}>NEXT</div>
             </div>
 
             </form>

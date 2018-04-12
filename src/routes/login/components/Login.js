@@ -343,15 +343,15 @@ console.log("here");
 
 
               <div className="regButtons">
-                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/mainLogin">CANCEL</a>
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/">CANCEL</a>
                 <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleLogin(e)}>LOGIN</div>
               </div>
             </form>
 
 <div className="forgotPassword">
-          <a onClick={(e)=>this.handleForgotPassword(e)} style={forgotPwd}><u>Forgot password?</u></a>
+          <a className='loginBtn' onClick={(e)=>this.handleForgotPassword(e)} style={forgotPwd}><u>Forgot password?</u></a>
 
-          <p>Don't have an account? <a onClick={(e)=>this.handleCreateAccount(e)} style={register} >Register</a></p>
+          <p>Don't have an account? <a className='loginBtn' onClick={(e)=>this.handleCreateAccount(e)} style={register} >Register</a></p>
           </div></div>
 </div>
       </div>
