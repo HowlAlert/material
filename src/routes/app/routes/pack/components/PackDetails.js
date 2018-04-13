@@ -236,20 +236,21 @@ else {
 
   return (
 
-       <div >
-
-
-       <input type="text" value={this.state.search}
-           name="search"
+       <div className="searchSection" >
+       <div className="row">
+       <div className="col-lg-9">
+        <input className="searchInput"  type="text" value={this.state.search}
+           name="search..."
            onChange={this.updateSearch.bind(this)}
-           placeholder="Search Pack"
-           />
-           <RaisedButton  className="float-right" primary label="ADD NEW PACK MEMBER"  onClick={()=>this.handleAddPackMember()}/>
-           {/* <button className="float-right">
-             <a href="#/app/pack/routes/packcontact">ADD NEW PACK MEMBER</a></button> */}
+           placeholder="Search Pack..."
+           /></div>
+           <div className="col-lg-3">
+           <div  className="howlBlue" primary label="+ ADD NEW PACK MEMBER"  onClick={()=>this.handleAddPackMember()}>+ ADD NEW PACK MEMBER</div>
+           </div>
+           </div>
 
 
-      <div className="box-body padding-xl">
+      <div className="box-body padding-zero">
         {/* <div className="row">
             <div width="3">Howls At Pack <div> {this.state.data1.TotalMyPound}</div></div>
             <div className="col-md-2 float-right text-center">Howls At Me <div > {this.state.data1.TotalPackPound}</div> </div>
@@ -257,36 +258,44 @@ else {
 
         </div> */}
  <div className="row">
-              <div className="col-xl-12">
-                { filteredNames.map((dyanamicData,key)=>
+    <div className="col-xl-12">
+      <div className="row">
+      { filteredNames.map((dyanamicData,key)=>
 
-                     <div className="box box-default">
-                      <div className="box-body ">
+            <div className="col-lg-4">
+        <div className="box box-default box-padding">
+            <div className="box-body2 ">
 
-                     <span className="float-left" width="1">
+                     <span className="profileImage" width="1">
                         {(dyanamicData.ProfileImageURL === "" || dyanamicData.ProfileImageURL === null) ?
                                   <img src="assets/images/contact.png" alt="Image" height="60" width="60"/>
                               :   <img src={`${dyanamicData.ProfileImageURL}`} alt="Image" height="60" width="60" />
                         }
                     </span>
 
-                    <span className="float-left" width="3">
-                            {dyanamicData.FirstName} {" "} {dyanamicData.LastName}<br/>
-                            {"+"+dyanamicData.PhoneNumberCountryCode}{" "}  {dyanamicData.PhoneNumber}<br/>
-                            {dyanamicData.Email} <br />
-                              <RaisedButton primary label="Delete"  onClick={()=>this.handleDelete(dyanamicData.ID)}/>
+                    <span className="profileInfo" width="3">
+                          <p>  {dyanamicData.FirstName} {" "} {dyanamicData.LastName}</p>
+                            <p>{"+"+dyanamicData.PhoneNumberCountryCode}{" "}  {dyanamicData.PhoneNumber}</p>
+                          <p>  {dyanamicData.Email} </p>
 
                     </span>
 
-                        <span className="float-right">
+                    </div>
+                    <div className="row">
+                    <div className="col-lg-6 noPadRight">
+
+                    <div className="howlDeleteSm" primary label="Delete"  onClick={()=>this.handleDelete(dyanamicData.ID)}>DELETE</div>
+                    </div>
+                    <div className="col-lg-6 noPadLeft">
+                        <span className="">
 
                           {
                             dyanamicData.UserPoundID === ""    ?
-                                    <RaisedButton  primary label="Check-In"
-                                       onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)}/>
+                                    <div className="howlCheckin"  primary label="Check-In"
+                                       onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)}>CHECK IN</div>
 
-                                :   <img src='assets/images/Howl-Final-Red-small.png' alt="Image" height="60" width="60"
-                              onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)} />
+                                :   <div className="howlRedSm"
+                              onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)} >HOWL BACK</div>
                           }
 
                        {/* <img src={dyanamicData.url} alt="Image" height="60" width="60"
@@ -310,13 +319,17 @@ else {
 
 
                         </span>
+                        </div>
 
                       </div>
 
+
+                      </div>
                       </div>
 
                    )
                 }
+                </div>
               </div>
               {/* <div className="col-xl-12">
                 <div className="box box-default">
@@ -327,8 +340,8 @@ else {
               </div>
             </div>
           </div> */}
-         </div>
 
+         </div>
 
 
       </div>
@@ -403,6 +416,7 @@ class Howls_Me extends React.Component {
       })
 
   }
+
   render() {
     return (
 
@@ -477,10 +491,6 @@ class Howls_Me extends React.Component {
       </div>
       </div>
       </article>
-
-
-
-
 
            )
           }
@@ -558,7 +568,7 @@ class Howls_Pack extends React.Component {
   <div className="row">
 
 
-    <div className="col-xl-4">
+    <div className="col-xl-12">
       <div className="box box-default">
         <div className="box-body">
       <Pack />
@@ -567,7 +577,7 @@ class Howls_Pack extends React.Component {
   </div>
 
 
-<div className="col-xl-4">
+<div className="col-xl-6">
 
   <div className="box box-default">
     <div className="box-body">
@@ -660,7 +670,7 @@ class Howls_Pack extends React.Component {
 
 
 
-<div className="col-xl-4">
+<div className="col-xl-6">
   <div className="box box-default">
     <div className="box-body">
   <Howls_Me />
@@ -684,8 +694,13 @@ class Howls_Pack extends React.Component {
 }
 const Page = () => (
   <div className="container-fluid  chapter">
-    <h2 className="article-title-header">MANAGE PACK</h2>
-    <QueueAnim type="bottom" className="ui-animate">
+  <div className="row">
+    <div className="col-lg-12">
+    <h2 className="article-title-header mainArticle">MANAGE PACK</h2>
+    </div>
+  </div>
+
+      <QueueAnim type="bottom" className="ui-animate">
 
        <div key="1"><Howls_Pack /></div>
        {/* <div key="2"></div> */}
