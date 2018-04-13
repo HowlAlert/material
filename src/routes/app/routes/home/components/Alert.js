@@ -105,21 +105,31 @@ class Alerts extends React.Component {
             this.state.data2.map((dyanamicData1,key)=>
                  <div className="box box2 box-default">
                      <div className="box-body ">
+
+                        <div className="row">
+                          <div className="col-lg-9">
                             <span className="detectClass">{dyanamicData1.Text}</span>
-                            <span className="float-right">
-
-                              {
-                                dyanamicData1.GetImageDataResult === "" ?
-                                        <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="50" width="50"/>
-                                    :   <img className="alertImage" src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="50" width="50"/>
-                              }{" "}
-
+                            <span className="timeClass">
+                              {/* {dyanamicData1.DateCreated}{" "} */}
+                                 {moment(new Date(dyanamicData1.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
                             </span>
+                          </div>
+                          <div className="col-lg-3">
+                          <span className="float-right">
+
+                            {
+                              dyanamicData1.GetImageDataResult === "" ?
+                                      <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="50" width="50"/>
+                                  :   <img className="alertImage" src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="50" width="50"/>
+                            }{" "}
+
+                          </span>
+                          </div>
+                       </div>
+
+
                          <div>
-                             <span className="timeClass">
-                               {/* {dyanamicData1.DateCreated}{" "} */}
-                                  {moment(new Date(dyanamicData1.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
-                             </span>
+
                        </div>
                 </div>
               </div>

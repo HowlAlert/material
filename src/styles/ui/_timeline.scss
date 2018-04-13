@@ -170,7 +170,7 @@ $Theme_dark_TL_content_bg: rgba(255,255,255,.05);
         }
 
         h4 {
-          font-size: 18px;
+          font-size: 14px;
           line-height: $h4-font-size;
           line-height: $headings-line-height;
         }
@@ -209,4 +209,12 @@ $Theme_dark_TL_content_bg: rgba(255,255,255,.05);
       }
     }
   }
+}
+.tl-tile{
+  margin-top:-2px!important;
+}
+.tl-time{
+  font-size: 14px;
+line-height: 16px!important;
+margin-top: 14px!important;
 }

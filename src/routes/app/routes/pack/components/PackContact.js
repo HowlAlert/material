@@ -14,7 +14,8 @@ class Contact extends React.Component {
       fname:'',
       lname:'',
       phonenumber:'',
-      email:''
+      email:'',
+      text:''
     };
   }
 
@@ -166,11 +167,13 @@ class Contact extends React.Component {
 
 
     return (
-  <section className="container-fluid with-maxwidth-md chapter">
+  <section className="">
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1">
         <article className="article">
-        <center><h2 className="article-title">ADD NEW PACK MEMBER</h2></center>
+        <div className="regLeft">
+         <p className="hero-title text-center registerHeader">ADD NEW PACK MEMBER</p>
+        </div>
          <form >
                   <div>
                      <TextField  ref="fname" onChange={this.handleFirstname.bind(this)} value={this.state.fname} hintText="FIRST NAME" fullWidth  /><br/>
@@ -179,7 +182,9 @@ class Contact extends React.Component {
                      <TextField ref="email"  onChange={this.handleEmail.bind(this)} value={this.state.email} hintText="EMAIL ADDRESS"   fullWidth />
                </div>
                   <div className="divider" />
-                  <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="SAVE" />
+                  <div  className="howlBlue" onClick={(e)=>this.handleNext(e)} primary label="SAVE" >SAVE</div>
+
+
        </form>
         </article>
       </div>

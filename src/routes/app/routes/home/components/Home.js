@@ -273,15 +273,19 @@ const { redirectToReferrer} = this.state
 
           <div className="flLeft">
             <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="120"/>
+
               <Dialog
                 title="Confirm"
                 actions={actions}
                 modal={false}
                 open={this.state.open}
+                contentClassName='dialogStyle'
+                bodyClassName='dialogInner'
                 onRequestClose={this.handleClose}
                 >
                 <h5>You want to Alert your Pack Members? </h5>
                 </Dialog>
+
           </div>
 
           <a className="flLeft" href="#/app/Monitoring">

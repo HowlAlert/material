@@ -132,17 +132,21 @@
 .headerLogo{margin-left:2px!important;}
 
 .detectClass{
-  color: #888;
-font-size: 16px;
-line-height: 9px;
-margin-top: 5px;
-display: block;
-float: left;
+  color: #2e2e2e;
+    font-size: 14px;
+    line-height: 9px;
+    margin-top: 0px;
+    display: block;
+
+    line-height: 17px;
+    font-weight: 600;
 }
 .timeClass{
-  font-size: 20px;
-      line-height: 41px;
-      display: block
+  font-size: 15px;
+    line-height: 31px;
+    display: block;
+    letter-spacing: 0.5px;
+    color: #707070;
 }
 .alertImage{
   width: 92px;
@@ -184,3 +188,67 @@ float: left;
 
 .slimScrollDiv .nav{padding-top:10px;}
 .sidebar-header img{margin-left:3px!important;}
+
+.dialogStyle{
+    border-radius:0px;
+}
+.dialogStyle h3{
+  padding-top: 18px!important;
+  font-weight: 600!important;
+    letter-spacing: 1.3px!important;
+  color: #3287c5!important;
+}
+.dialogStyle h5{
+  margin-top:0px!important;
+}
+.dialogStyle > div{
+    border-radius:5px!important;
+}
+.dialogInner{
+
+}
+.dialogInner button{
+  border-radius:5px!important;
+  color: #3287c5!important;
+}
+.dialogInner button span{
+  color: #3287c5!important;
+}
+
+
+.mainArticle{
+  font-size: 21px;
+
+    color: #01275C!important;
+
+    letter-spacing: 1px!important;
+    font-weight: 600!important;
+    margin-bottom:27px!important;
+}
+.searchInput{
+  width: 100%;
+margin-bottom: 15px;
+padding-left: 11px;
+}
+.padding-zero{
+  padding:0px!important;
+}
+.profileImage img{
+  height:53px!important;
+}
+.profileInfo{
+padding:15px 0px 15px 0px;
+display:block;
+margin:10px 0px 10px 0px;
+}
+.profileInfo p{
+  text-align:center;
+  font-size:14px;
+  line-height:6px;
+}
+.box-padding{
+  padding:0px 15px 0px 15px;
+}
+.box-body2{
+  padding:20px 0px 0px 0px;
+}
