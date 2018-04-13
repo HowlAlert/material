@@ -76,7 +76,7 @@ render() {
     if(redirectToReferrer === true)
     {
       return (
-        <Redirect to="mainLogin" />
+        <Redirect to="app/home" />
       )
     }
   return (
