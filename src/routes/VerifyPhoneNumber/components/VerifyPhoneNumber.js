@@ -44,6 +44,10 @@ class VerifyPhoneNumber extends React.Component {
   }
 
   handlePhoneNo(phoneNumber){
+    if(this.state.phone === undefined){
+      alert("Please enter phone number")
+    }
+
 console.log(this.state.phone);
       var phone = this.state.phone;
       var phoneNumber=phone.replace(/\D/g,'')
@@ -53,7 +57,10 @@ console.log(this.state.phone);
      console.log(phoneNumber);
      console.log(number);
      console.log(country);
-     if(number.length!=10){
+
+
+
+   if(number.length!=10){
        alert("Please enter only 10 digit phone number")
      }
 
