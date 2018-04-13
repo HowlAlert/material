@@ -236,117 +236,113 @@ else {
 
   return (
 
-       <div className="searchSection" >
-       <div className="row">
-       <div className="col-lg-9">
-        <input className="searchInput"  type="text" value={this.state.search}
-           name="search..."
-           onChange={this.updateSearch.bind(this)}
-           placeholder="Search Pack..."
-           /></div>
-           <div className="col-lg-3">
-           <div  className="howlBlue" primary label="+ ADD NEW PACK MEMBER"  onClick={()=>this.handleAddPackMember()}>+ ADD NEW PACK MEMBER</div>
-           </div>
-           </div>
+    <div className="searchSection" >
+   <div className="row">
+   <div className="col-lg-9">
+    <input className="searchInput"  type="text" value={this.state.search}
+       name="search..."
+       onChange={this.updateSearch.bind(this)}
+       placeholder="Search Pack..."
+       /></div>
+       <div className="col-lg-3">
+       <div  className="howlBlue" primary label="+ ADD NEW PACK MEMBER"  onClick={()=>this.handleAddPackMember()}>+ ADD NEW PACK MEMBER</div>
+       </div>
+       </div>
 
 
-      <div className="box-body padding-zero">
-        {/* <div className="row">
-            <div width="3">Howls At Pack <div> {this.state.data1.TotalMyPound}</div></div>
-            <div className="col-md-2 float-right text-center">Howls At Me <div > {this.state.data1.TotalPackPound}</div> </div>
-            <div className="col-md-4">My Average Response Time <div> {v} </div></div>
+  <div className="box-body padding-zero">
+    {/* <div className="row">
+        <div width="3">Howls At Pack <div> {this.state.data1.TotalMyPound}</div></div>
+        <div className="col-md-2 float-right text-center">Howls At Me <div > {this.state.data1.TotalPackPound}</div> </div>
+        <div className="col-md-4">My Average Response Time <div> {v} </div></div>
+    </div> */}
+<div className="row">
+<div className="col-xl-12">
+  <div className="row">
+  { filteredNames.map((dyanamicData,key)=>
 
-        </div> */}
- <div className="row">
-    <div className="col-xl-12">
-      <div className="row">
-      { filteredNames.map((dyanamicData,key)=>
+        <div className="col-lg-4">
+    <div className="box box-default box-padding">
+        <div className="box-body2 ">
 
-            <div className="col-lg-4">
-        <div className="box box-default box-padding">
-            <div className="box-body2 ">
+                 <span className="profileImage" width="1">
+                    {(dyanamicData.ProfileImageURL === "" || dyanamicData.ProfileImageURL === null) ?
+                              <img src="assets/images/contact.png" alt="Image" height="60" width="60"/>
+                          :   <img src={`${dyanamicData.ProfileImageURL}`} alt="Image" height="60" width="60" />
+                    }
+                </span>
 
-                     <span className="profileImage" width="1">
-                        {(dyanamicData.ProfileImageURL === "" || dyanamicData.ProfileImageURL === null) ?
-                                  <img src="assets/images/contact.png" alt="Image" height="60" width="60"/>
-                              :   <img src={`${dyanamicData.ProfileImageURL}`} alt="Image" height="60" width="60" />
-                        }
-                    </span>
-
-                    <span className="profileInfo" width="3">
-                          <p>  {dyanamicData.FirstName} {" "} {dyanamicData.LastName}</p>
-                            <p>{"+"+dyanamicData.PhoneNumberCountryCode}{" "}  {dyanamicData.PhoneNumber}</p>
-                          <p>  {dyanamicData.Email} </p>
-
-                    </span>
-
-                    </div>
-                    <div className="row">
-                    <div className="col-lg-6 noPadRight">
-
-                    <div className="howlDeleteSm" primary label="Delete"  onClick={()=>this.handleDelete(dyanamicData.ID)}>DELETE</div>
-                    </div>
-                    <div className="col-lg-6 noPadLeft">
-                        <span className="">
-
-                          {
-                            dyanamicData.UserPoundID === ""    ?
-                                    <div className="howlCheckin"  primary label="Check-In"
-                                       onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)}>CHECK IN</div>
-
-                                :   <div className="howlRedSm"
-                              onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)} >HOWL BACK</div>
-                          }
-
-                       {/* <img src={dyanamicData.url} alt="Image" height="60" width="60"
-                          onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)}/> */}
-
-
-                          {/* {
-                          dyanamicData.UserPoundID === ""  ?
-                               this.setState({imgSrc:`${this.state.source1}`})
-                            :  this.setState({imgSrc:`${this.state.source2}`})
-                          }
+                <span className="profileInfo" width="3">
+                        <p>  {dyanamicData.FirstName} {" "} {dyanamicData.LastName}</p>
+                        <p>{"+"+dyanamicData.PhoneNumberCountryCode}{" "}  {dyanamicData.PhoneNumber}</p>
+                        <p>{dyanamicData.Email}  </p>
 
 
 
+                </span>
 
-                          {/* <RaisedButton primary label="Delete" onClick={(e)=>this.handleDelete(e,dyanamicData.ID)}/> */}
-                          {/* <button style={{backgroundColor: bgColor1}} onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.UserPoundID)}>HOWL</button>{" "} */}
-                          {/* <RaisedButton primary label="HOWL" onClick={()=>this.handleAlert(dyanamicData.ID)}/>{" "} */}
-
-
-
-
-                        </span>
-                        </div>
-
-                      </div>
-
-
-                      </div>
-                      </div>
-
-                   )
-                }
                 </div>
-              </div>
-              {/* <div className="col-xl-12">
-                <div className="box box-default">
-                  <div className="box-body">
-                  <h2 className="article-title-header">Howls At Pack</h2>
+                <div className="row">
+                <div className="col-lg-6 noPadRight">
 
-                  <Howls_Pack />
-              </div>
+                <div className="howlDeleteSm" primary label="Delete"  onClick={()=>this.handleDelete(dyanamicData.ID)}>DELETE</div>
+                </div>
+                <div className="col-lg-6 noPadLeft">
+                    <span className="">
+
+                      {
+                        dyanamicData.UserPoundID === ""    ?
+                                <div className="howlCheckin"  primary label="Check-In"
+                                   onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)}>CHECK IN</div>
+
+                            :   <div className="howlRedSm"
+                          onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)} >YOU HOWLED</div>
+                      }
+
+                   {/* <img src={dyanamicData.url} alt="Image" height="60" width="60"
+                      onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.FirstName,dyanamicData.UserPoundID,dyanamicData.url)}/> */}
+
+
+                      {/* {
+                      dyanamicData.UserPoundID === ""  ?
+                           this.setState({imgSrc:`${this.state.source1}`})
+                        :  this.setState({imgSrc:`${this.state.source2}`})
+                      }
+                      {/* <RaisedButton primary label="Delete" onClick={(e)=>this.handleDelete(e,dyanamicData.ID)}/> */}
+                      {/* <button style={{backgroundColor: bgColor1}} onClick={()=>this.handleAlert(dyanamicData.ID,dyanamicData.UserPoundID)}>HOWL</button>{" "} */}
+                      {/* <RaisedButton primary label="HOWL" onClick={()=>this.handleAlert(dyanamicData.ID)}/>{" "} */}
+
+
+
+
+                    </span>
+                    </div>
+
+                  </div>
+
+
+                  </div>
+                  </div>
+
+               )
+            }
             </div>
-          </div> */}
+          </div>
+          {/* <div className="col-xl-12">
+            <div className="box box-default">
+              <div className="box-body">
+              <h2 className="article-title-header">Howls At Pack</h2>
+              <Howls_Pack />
+          </div>
+        </div>
+      </div> */}
 
-         </div>
+     </div>
 
 
-      </div>
+  </div>
 
-   </div>
+</div>
 
     );
 }
@@ -381,6 +377,55 @@ class Howls_Me extends React.Component {
       };
 
   }
+
+  handleAlert(value1,value2,value3,value4,value5) {
+      var senderid = `${value1}`;
+      console.log(senderid);
+      var senderToken = `${value2}`;
+      console.log(senderToken)
+      var senderName = `${value3}`;
+      console.log(senderName);
+      var packid = `${value5}`;
+      console.log(packid)
+
+                 const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/PoundBack';
+
+                  fetch(BaseURL,
+                      {
+                          method: "POST",
+                          body: JSON.stringify({
+                            "UserID":cookie.load('Id'),
+                            "UserToken":cookie.load('UserToken')
+                           }),
+                          headers: new Headers({'content-type': 'application/json'}),
+                      })
+                   .then((Response)=> Response.json())
+                   .then((findresponse)=>{
+                   console.log(findresponse)
+
+                           this.setState({
+                                       status:findresponse.PoundBackResult.ResultStatus.Status,
+                                       message:findresponse.PoundBackResult.ResultStatus.StatusMessage,
+
+                                        })
+
+                     if(this.state.status === "1")
+                     {
+                         alert("You Howled back at "+ senderName);
+                          window.location.reload();
+
+                    }
+                     else {
+                        alert(this.state.message);
+                        // console.log(this.state.pound.UserPoundID)
+
+                     }
+
+        })
+
+  }
+
+
   componentDidMount(){
 
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetPackPoundList';
@@ -401,7 +446,7 @@ class Howls_Me extends React.Component {
            data:findresponse.GetPackPoundListResult.GetPackPounds,
            time:findresponse.GetPackPoundListResult.GetPackPounds["0"].DateCreated
         })
-        console.log(this.state.time);
+        console.log(this.state.data);
         // var ms = this.state.time;
         // console.log(ms)
         //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
@@ -416,7 +461,6 @@ class Howls_Me extends React.Component {
       })
 
   }
-
   render() {
     return (
 
@@ -456,9 +500,31 @@ class Howls_Me extends React.Component {
              </div>{" "}
 
             <div className="tl-icon btn-icon-round btn-icon btn-icon-thin ">
-                <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="40" width="40"/></div>
+
+
+              {
+                 dyanamicData.HasPoundBack === "False"
+                 ?
+
+              <div className="howlBackRedSm"
+                onClick={()=>this.handleAlert(dyanamicData.SenderUser.ID,dyanamicData.SenderUser.UserToken,dyanamicData.SenderUser.FirstName,dyanamicData.SenderUser.LastName,dyanamicData.ReceiverPack.ID)}
+                disabled={this.state.disabledHowl} >HOWL BACK</div>
+
+               :
+               <img src="assets/images/Howl-Final-Red-small.png" alt="Image" height="40" width="40"/>
+
+
+            }
+
+              {/* <RaisedButton  primary label="Howl-Back"
+                  onClick={()=>this.handleAlert(dyanamicData.SenderUser.ID,dyanamicData.SenderUser.UserToken,dyanamicData.SenderUser.FirstName,dyanamicData.SenderUser.LastName,dyanamicData.ReceiverPack.ID)}
+                  disabled={this.state.disabledHowl}
+               /> */}
+
+
+            </div>
             <div className="tl-content">
-              <h4 className="tl-tile text-primary">
+              <h4 className="tl-tile text-danger">
 
                  {`${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName} HOWLED at you `}
               </h4>
@@ -477,9 +543,9 @@ class Howls_Me extends React.Component {
 
            <div className="tl-time">  {moment.utc(moment(`${dyanamicData.DateCreated}`).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')}</div>{" "}
             <div className="tl-icon btn-icon-round btn-icon btn-icon-thin">
-                <img src="assets/images/Howl-Final-Red-small.png" alt="Image" height="40" width="40"/></div>
+                <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="40" width="40"/></div>
             <div className="tl-content ">
-              <h4 className="tl-tile text-danger">
+              <h4 className="tl-tile text-primary">
 
                 {`You HOWLED back at ${dyanamicData.SenderUser.FirstName} ${dyanamicData.SenderUser.LastName}`}
 
@@ -491,6 +557,10 @@ class Howls_Me extends React.Component {
       </div>
       </div>
       </article>
+
+
+
+
 
            )
           }
@@ -569,10 +639,20 @@ class Howls_Pack extends React.Component {
 
 
     <div className="col-xl-12">
-      <div className="box box-default">
-        <div className="box-body">
-      <Pack />
-    </div>
+     <div className="box box-default">
+       <div className="box-body">
+     <Pack />
+   </div>
+ </div>
+ </div>
+
+
+
+  <div className="col-xl-6">
+    <div className="box box-default">
+      <div className="box-body">
+    <Howls_Me />
+  </div>
   </div>
   </div>
 
@@ -610,9 +690,9 @@ class Howls_Pack extends React.Component {
                {  moment(new Date(dyanamicData.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}</div>{" "}
 
             <div className="tl-icon btn-icon-round btn-icon btn-icon-thin ">
-                <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="40" width="40"/></div>
+                <img src="assets/images/Howl-Final-Red-small.png" alt="Image" height="40" width="40"/></div>
             <div className="tl-content">
-              <h4 className="tl-tile text-primary">
+              <h4 className="tl-tile text-danger">
 
                  {`You HOWLED at ${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName}`}
               </h4>
@@ -630,10 +710,10 @@ class Howls_Pack extends React.Component {
                <div className="tl-entry">
 
            <div className="tl-time">  {moment.utc(moment(`${dyanamicData.DateCreated}`).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A')}</div>{" "}
-            <div className="tl-icon btn-icon-round btn-icon btn-icon-thin btn-warning">
-                <img src="assets/images/Howl-Final-Red-small.png" alt="Image" height="30" width="30"/></div>
+            <div className="tl-icon btn-icon-round btn-icon btn-icon-thin">
+                <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="40" width="40"/></div>
             <div className="tl-content ">
-              <h4 className="tl-tile text-danger">
+              <h4 className="tl-tile text-primary">
 
                 {`${dyanamicData.ReceiverPack.FirstName} ${dyanamicData.ReceiverPack.LastName} HOWLED back `}
 
@@ -670,13 +750,7 @@ class Howls_Pack extends React.Component {
 
 
 
-<div className="col-xl-6">
-  <div className="box box-default">
-    <div className="box-body">
-  <Howls_Me />
-</div>
-</div>
-</div>
+
 
 
 
@@ -694,13 +768,8 @@ class Howls_Pack extends React.Component {
 }
 const Page = () => (
   <div className="container-fluid  chapter">
-  <div className="row">
-    <div className="col-lg-12">
     <h2 className="article-title-header mainArticle">MANAGE PACK</h2>
-    </div>
-  </div>
-
-      <QueueAnim type="bottom" className="ui-animate">
+    <QueueAnim type="bottom" className="ui-animate">
 
        <div key="1"><Howls_Pack /></div>
        {/* <div key="2"></div> */}

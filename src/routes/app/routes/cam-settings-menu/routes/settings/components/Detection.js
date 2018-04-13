@@ -46,7 +46,10 @@ class Detection extends React.Component {
            var sensitivity = 7;
          }
 
-              var object = JSON.stringify([{"CameraID":cookie.load('camearaid'), "MotionDetectionStatus":status, "MotionDetectionSensitivity":sensitivity}]);
+              var object = JSON.stringify([{
+                "CameraID":cookie.load('camearaid'),
+              "MotionDetectionStatus":status,
+              "MotionDetectionSensitivity":sensitivity}]);
               console.log(object);
 
               const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateCameraMotionDetectionSetting';
@@ -89,17 +92,7 @@ class Detection extends React.Component {
 
        }
 
-// handleChange = (event, index, value) => this.setState({value});
 
-
-//  UpdateToggleStatus(event) {
-//
-//  event.preventDefault();
-//  // var state = cookie.load('togglestate');
-//  // console.log(state);
-//
-//
-// }
 
   componentDidMount(){
 
@@ -119,13 +112,14 @@ class Detection extends React.Component {
         console.log(findresponse)
         this.setState({
            data:findresponse.GetUserCameraResult.RoomCameraList,
-           // data2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].MotionDetectionStatus,   //for second camera
+
+           md2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].MotionDetectionStatus,   //for second camera
            data1:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].MotionDetectionStatus,
            data2:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].MotionDetectionSensitivity
 
 
                             })
-           // console.log(this.state.data2)  //for second camera
+           console.log(this.state.md2)  //for second camera
 
            var mds = this.state.data1;
            console.log(mds);
@@ -161,13 +155,7 @@ class Detection extends React.Component {
 
     var togglestate=this.state.Toggled;
     console.log(togglestate);
-    // this.setState({ ts:togglestate})
-    // cookie.save('togglestate',togglestate);
 
-
-
-    // var selected_value=this.state.value;
-    // console.log(selected_value)
 
 
   return (

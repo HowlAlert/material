@@ -19,12 +19,7 @@ class MotionDetection extends React.Component {
   return (
   <article className="article">
     <div className="container-fluid with-maxwidth">
-    <h2 className="article-title text-center no-margin-top">MOTION DETECTION</h2>
-     <center>
-        <span>
-          <i className="material-icons ibox-left">perm_camera_mic</i>
-       </span>
-     </center> <br />
+         <h2 className="article-title text-center no-margin-top mainArticle">CAMERA SETTINGS</h2>
 
     </div>
 

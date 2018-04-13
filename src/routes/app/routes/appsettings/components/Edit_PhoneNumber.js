@@ -48,6 +48,12 @@ this.handleOnChange = this.handleOnChange.bind(this);
 
   handlePhoneNo(phoneNumber){
 
+    if(this.state.phone === undefined)
+    {
+      alert("Please enter phone number")
+    }
+
+
     var phone = this.state.phone;
       var phoneNumber=phone.replace(/\D/g,'')
       var number=phoneNumber.substr(phoneNumber.length-10)
@@ -56,9 +62,12 @@ this.handleOnChange = this.handleOnChange.bind(this);
      console.log(phoneNumber);
      console.log(number);
      console.log(country);
-     if(number.length!=10){
-       alert("Please enter only 10 digit phone number")
-     }
+
+
+    if(number.length!=10){
+      alert("Please enter only 10 digit phone number")
+    }
+
      else if(country!= 1 && country!= 91){
        alert("HOWL is currently Only Available to users based in the U.S and INDIA")
      }

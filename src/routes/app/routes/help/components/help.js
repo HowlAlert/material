@@ -23,7 +23,7 @@ class Help extends React.Component{
     return (
 
       <article className="article ">
-        <h2 className="article-title  no-margin-top">Frequently Asked Questions</h2>
+        <h2 className="article-title  no-margin-top mainArticle">Frequently Asked Questions</h2>
 
 
     <div className="container-fluid with-maxwidth">

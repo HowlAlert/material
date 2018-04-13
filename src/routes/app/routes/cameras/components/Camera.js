@@ -64,7 +64,7 @@ render() {
       return (
         <div className="box box-default">
           <div className="box-body ">
-        <h2 className="article-title">INSTRUCTIONS</h2>
+        <h2 className="article-title mainArticle">INSTRUCTIONS</h2>
 
              <h5>Install your HOWL Beta Motion Sensor Camera via the HOWL Alert app on your smartphone.
              You are unable to install the camera through this website.</h5>
@@ -87,7 +87,7 @@ render() {
   return (
 <div>
     <div >
-   <div className="article-title">CAMERA</div>
+   <div className="article-title mainArticle">CAMERA</div>
              <RaisedButton  className="float-right" primary label="Buy Camera"  onClick={()=>this.handlePurchase()}/>
             <RaisedButton  className="float-right" primary label="Add Camera"  onClick={()=>this.handleAddDevice()}/>
             {/* <a href="#/app/camerasettings/add-devices"></a> */}
