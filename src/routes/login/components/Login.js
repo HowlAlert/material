@@ -72,17 +72,10 @@ class Login extends React.Component {
     console.log(this.state.Password.lenght);
   event.preventDefault();
   if(this.state.Email==''){
-
-      <Dialog
-        title="Confirm"
-        actions={actions}
-        modal={false}
-        
-        >
-        <h5>You want to Alert your Pack Members? </h5>
-        </Dialog>
-
-
+    return(
+      
+    )
+    alert("Please enter your email address");
   }
   let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if(re.test(this.state.Email)=='' && this.state.Email!=''){
