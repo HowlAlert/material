@@ -69,7 +69,6 @@ class Login extends React.Component {
 
 
   handleLogin(event){
-    console.log(this.state.Password.lenght);
   event.preventDefault();
   if(this.state.Email==''){
     alert("Please enter your email address");
