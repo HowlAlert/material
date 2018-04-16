@@ -31,7 +31,7 @@ class ValidatePhoneCode extends React.Component {
 
   componentWillMount(){
 
-  if(cookie.load('FirstName')!=undefined){
+  if(cookie.load('SilenceCode')!=undefined){
     this.setState({ redirectToHome: true })
   }
   }
@@ -83,7 +83,7 @@ console.log(cookie.load('UserToken'));
 
 
           console.log("status"),
-          
+
 
        this.setState({ redirectToReferrer: true })
         }

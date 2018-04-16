@@ -28,7 +28,7 @@ ResultStatus:''
 
   }
   componentWillMount(){
-  if(cookie.load('FirstName')!=undefined){
+  if(cookie.load('SilenceCode')!=undefined){
     this.setState({ redirectToHome: true })
   }
   }

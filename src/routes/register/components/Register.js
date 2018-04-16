@@ -35,7 +35,7 @@ class Register extends React.Component {
 
   componentWillMount(){
 
-  if(cookie.load('FirstName')!=undefined){
+  if(cookie.load('SilenceCode')!=undefined){
     this.setState({ redirectToHome: true })
   }
   }
@@ -75,12 +75,14 @@ class Register extends React.Component {
         })
         if(this.state.GetUser.ID!==null){
           console.log("status"),
-          cookie.save('Id', this.state.GetUser.ID, '/')
-          cookie.save('UserToken', this.state.GetUser.UserToken, '/')
-          console.log(this.state.GetUser.ID)
-          console.log(this.state.GetUser.UserToken)
-          console.log(findresponse)
-          console.log("status")
+          cookie.save('Id', this.state.GetUser.ID, '/'),
+          cookie.save('UserToken', this.state.GetUser.UserToken, '/'),
+          cookie.save('FirstName', this.state.Fname),
+          cookie.save('LastName', this.state.Lname),
+          console.log(this.state.GetUser.ID),
+          console.log(this.state.GetUser.UserToken),
+          console.log(findresponse),
+          console.log("status"),
           this.setState({ redirectToReferrer: true })
            }
            else if(this.state.GetUser.ID===null){

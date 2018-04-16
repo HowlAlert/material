@@ -24,6 +24,14 @@ class AddSilentCode extends React.Component {
 
   }
 
+  componentWillMount(){
+
+    if(cookie.load('SilenceCode')!=undefined){
+
+      this.setState({ redirectToHome: true })
+    }
+  }
+
   handleCode(event) {
      event.preventDefault();
       const target = event.target;
@@ -64,6 +72,7 @@ class AddSilentCode extends React.Component {
          if(this.state.ResultStatus.Status==1){
            console.log(this.state.ResultStatus.Status)
            alert("Succefully added Silent Code.")
+           cookie.save('SilenceCode',this.state.code)
            this.setState({ redirectToReferrer: true })
             }
            })
@@ -72,11 +81,19 @@ class AddSilentCode extends React.Component {
 
 
 render() {
+
+  const{redirectToHome}=this.state
+  if(redirectToHome){
+    return (
+      <Redirect to="app/home" />
+    )
+  }
+
   const { redirectToReferrer} = this.state
     if(redirectToReferrer === true)
     {
       return (
-        <Redirect to="mainLogin" />
+        <Redirect to="app/home" />
       )
     }
   return (

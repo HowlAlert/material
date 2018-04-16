@@ -1,4 +1,3 @@
-
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import TextField from 'material-ui/TextField';
