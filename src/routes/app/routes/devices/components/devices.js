@@ -163,8 +163,7 @@ const Page = () => (
 
   <section className="container-fluid chapter">
 
-<h2 className="article-title">
-  Devices </h2>
+<h2 className="article-title mainArticle">Devices </h2>
 
     <QueueAnim type="bottom" className="ui-animate">
       <Device />

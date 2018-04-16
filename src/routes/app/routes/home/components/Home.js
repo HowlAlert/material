@@ -338,9 +338,7 @@ const Dashboard = () => (
     </div>
 
     {/* <div className="col-xl-1">
-
       <div className="box box-default ">
-
     </div>
   </div> */}
     <div className="col-lg-6">

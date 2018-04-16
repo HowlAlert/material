@@ -604,10 +604,10 @@ render() {
 
   var today = moment(this.state.startDate).format('LL');
   console.log(today);
-
-  var img_Date = this.state.DateCreated +" "+ 'UTC' ;      //Convert UTC to Local Time
-  var date = new Date(img_Date);
-  var current = date.toString();
+  //
+  // var img_Date = this.state.DateCreated +" "+ 'UTC' ;
+  // var date = new Date(img_Date);
+  // var current = date.toString();
 
 
 const { redirectToReferrer} = this.state                    //To Zoom the Image
@@ -629,9 +629,9 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
         </span>
       <div>
         <center>Details :{" "}
+             {moment(new Date(this.state.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
+          {/* {moment(current).format('DD-MMM-YYYY hh:mm:ss A')} */}
 
-          {moment(current).format('DD-MMM-YYYY hh:mm:ss A')}
-           {/* {moment.utc(moment(this.state.DateCreated).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").utcOffset(offset).format('DD-MMM-YYYY h:mm A')} */}
         </center>
       </div>
       </div>
@@ -756,10 +756,10 @@ var lname = cookie.load('LastName');
 const ImageSection = () => (
   <section className="container-fluid ">
   <article className="article">
-       <h2 className="article-title">Camera History
+       <h2 className="article-title mainArticle">Camera History
          <span className="float-right">
 
-         <a href="#/app/camerasettings/settings">
+         <a href="#/app/camerasettings/settings" className="article-title mainArticle">
           <img className="nav-icon material-icons" src="assets/images/blueCog.png" alt="Image" height="40" width="40"/>
            settings
          </a>

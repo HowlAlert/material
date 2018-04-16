@@ -17,7 +17,8 @@ class Alerts extends React.Component {
         data1: [],
         counter: 2,
         disabledBack: true,
-        disabledMore: false
+        disabledNext: false
+
         // disabled1: false,
         // disabled2: true
       };
@@ -69,9 +70,11 @@ class Alerts extends React.Component {
 
 
   handleNext(value) {
-                              //Redirecting to next page of alerts
+
+
     var count = `${value}`;
     console.log(count);
+
 
     this.setState({
         counter: this.state.counter + 1,
@@ -137,7 +140,6 @@ class Alerts extends React.Component {
                           arr3.map((dyanamicData1,key)=>(dyanamicData1.GetImageDataResult !== "") ?
                           count:count++
                             )
-                          console.log(count)
 
                           console.log(arr3.length);
                           this.setState({  data1:arr3 , array_count:arr3.length , alert_count:count})
@@ -146,18 +148,19 @@ class Alerts extends React.Component {
                           var total = this.state.array_count;
                           console.log(total);
 
-                          if(total === 0 || total < 20 )
+                          if(total===0 || total < 20 )
                            {
+
                               alert("No more Alerts!");
 
                                  this.setState({
-                                      disabledMore: true,
-                                      disableBack:false
+                                     disabledNext: true
 
                                });
 
-                                 console.log(this.state.counter)
+
                            }
+
 
                           // if(total < 20)
                           //  {  alert("No more Alerts!");
@@ -191,26 +194,7 @@ console.log(this.state.counter);
     });
 
 
-    // var total = this.state.array_count;
-    // console.log(total);
-    // if(total == 20)
-    //  {
-    //        this.setState({
-    //               disabled: false
-    //          });
-    //  }
 
-
-    // if(this.state.counter <= 1)
-    //  {  alert("No more Alerts!");
-    //
-    //       this.setState({
-    //
-    //             disabled2: true,
-    //             disabled1: false,
-    //             counter: this.state.counter + 1,
-    //          });
-    //  }
 
      var that = this;
       var urls = [];
@@ -291,15 +275,13 @@ console.log(this.state.counter);
                              if(countBack === 1)
                               {
                                  // alert("No Images Recorded!");
-                                    console.log(this.state.disabledMore);
-                                      console.log(this.state.disableBack);
 
                                     this.setState({
-                                          disabledMore: false,
-                                        disabledBack: true
-
+                                          disabledNext: false,
+                                          disabledBack: true
 
                                      });
+
 
                                     // console.log(this.state.counter);
                               }
@@ -386,53 +368,47 @@ console.log(this.state.counter);
 
              if(total === 0)
               {
-                this.setState({
-                  disabledMore: true ,
-
-
-                })
+                this.setState({  disabledNext: true })
               }
-              else {
-                this.setState({ disabledMore: false })
 
-              }
 
               // console.log(this.state.data1.map((dyanamicData1,key)=>  dyanamicData1.HasRead ))
-            // this.state.data1.map((dyanamicData1) =>
-            //
-            //   (dyanamicData1.HasRead == "False")   ?
-            //
-            //              // difficult_tasks=dyanamicData1.ID
-            //
-            //              fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/MarkUserFeedAsRead',
-            //              {
-            //               method: "POST",
-            //               body: JSON.stringify({
-            //                 "UserID":cookie.load('Id'),
-            //                 "UserToken":cookie.load('UserToken'),
-            //                 "UserFeedID":dyanamicData1.ID
-            //               }),
-            //                headers: new Headers({'content-type': 'application/json'}),
-            //              })
-            //          .then((Response)=> Response.json())
-            //          .then((findresponse)=>{
-            //            console.log(findresponse);
-            //            this.setState({
-            //               data:findresponse.GetUserFeedResult.getUserFeeds.HasRead,
-            //               length:findresponse.GetUserFeedResult.getUserFeeds.length,
-            //               // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
-            //             })
-            //            console.log(this.state.data);
-            //              if(this.state.ResultStatus.Status !== "1"){
-            //                alert(this.state.ResultStatus.StatusMessage);
-            //              }
-            //
-            //            })
-            //
-            //           : null
-            //
-            // );
-            //   console.log(difficult_tasks);
+            this.state.data1.map((dyanamicData1) =>
+
+              (dyanamicData1.HasRead == "False")   ?                                              //To MarkUserFeedAsRead
+
+                         // difficult_tasks=dyanamicData1.ID
+
+                         fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/MarkUserFeedAsRead',
+                         {
+                          method: "POST",
+                          body: JSON.stringify({
+                            "UserID":cookie.load('Id'),
+                            "UserToken":cookie.load('UserToken'),
+                            "UserFeedID":dyanamicData1.ID,
+                            "IsAllRead": "false"
+                          }),
+                           headers: new Headers({'content-type': 'application/json'}),
+                         })
+                     .then((Response)=> Response.json())
+                     .then((findresponse)=>{
+                       console.log(findresponse);
+                       this.setState({
+                          data:findresponse.GetUserFeedResult.getUserFeeds.HasRead,
+                          length:findresponse.GetUserFeedResult.getUserFeeds.length,
+                          // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
+                        })
+                       console.log(this.state.data);
+                         if(this.state.ResultStatus.Status !== "1"){
+                           alert(this.state.ResultStatus.StatusMessage);
+                         }
+
+                       })
+
+                      : null
+
+            );
+
          })
 
 
@@ -519,10 +495,11 @@ console.log(this.state.counter);
 
             <div>
                  <RaisedButton primary label="Next ->" onClick={()=>this.handleNext(this.state.counter)}
-
-                   disabled={this.state.disabledNext}/>
+                   disabled={this.state.disabledNext}
+                 />
                    <span className="float-right">
-                           <RaisedButton primary label="<- back" onClick={()=>this.handleBack(this.state.counter)}   disabled={this.state.disabledBack}/>
+                           <RaisedButton primary label="<- Back" onClick={()=>this.handleBack(this.state.counter)}
+                             disabled={this.state.disabledBack}/>
                   </span>
              </div>
            </div>
@@ -590,7 +567,8 @@ console.log(this.state.counter);
 
                disabled={this.state.disabledNext}/>
                <span className="float-right">
-                       <RaisedButton primary label="<- back" onClick={()=>this.handleBack(this.state.counter)}   disabled={this.state.disabledBack}/>
+                       <RaisedButton primary label="<- Back" onClick={()=>this.handleBack(this.state.counter)}
+                         disabled={this.state.disabledBack}/>
               </span>
          </div>
 

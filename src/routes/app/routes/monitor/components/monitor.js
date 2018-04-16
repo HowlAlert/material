@@ -37,7 +37,7 @@ class Monitor extends React.Component {
     return (
 
   <article className="article ">
-    <h2 className="article-title  no-margin-top">UNLOCK EVERYTHING</h2>
+    <h2 className="article-title  no-margin-top mainArticle">UNLOCK EVERYTHING</h2>
     <div className="col-xl-6">
      Subscribe to HOWL monitoring for only $7.99/month ($95.88 annually) for our authenticated third-party. 24-hour monitoring service who will contact the corresponding authorities on your behalf when you send alerts (POLICE, AMBULANCE, FIRE).
        <center><div>*All alerts will notify Pack by default.</div></center><br/>
@@ -103,7 +103,6 @@ class Monitor extends React.Component {
 
 
 
-     <div>
        <ul>
 
          <li>
@@ -119,7 +118,7 @@ class Monitor extends React.Component {
            Any unused portion of the free trial period, if offered, will be forfeited when the user purchases a  subscription to that publication, where applicable
          </li>
        </ul>
-     </div>
+
      <div className="text-center no-margin-bottom">
        <h5><a href="#/app/Company-Rules/Terms">Terms of Service</a> and <a href="#/app/Company-Rules/privacy-police">Privacy Policy</a></h5>
      </div>

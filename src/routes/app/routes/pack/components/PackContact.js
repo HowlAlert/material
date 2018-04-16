@@ -4,6 +4,8 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+import ReactPhoneInput from 'react-phone-input';
+
 
 class Contact extends React.Component {
 
@@ -16,7 +18,15 @@ class Contact extends React.Component {
       email:'',
       text:''
     };
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
+
+  handleOnChange(number) {
+        this.setState({
+           phone: number
+        });
+        console.log(this.state.phone)
+     }
 
   handleFirstname(event) {
      this.setState({
@@ -40,12 +50,12 @@ class Contact extends React.Component {
 
           }
 
-         handlePhoneNumber(event) {
-            console.log(event.target.value);
-            this.setState({
-            phonenumber: event.target.value.substr(0,10)
-                    });
-           }
+         // handlePhoneNumber(event) {
+         //    console.log(event.target.value);
+         //    this.setState({
+         //    phonenumber: event.target.value.substr(0,10)
+         //            });
+         //   }
 
   // handleValidations(event) {
   //
@@ -72,16 +82,50 @@ class Contact extends React.Component {
 
    handleNext(event) {
 
+
+
      const re = /^[A-z]+$/;
            const pw_validation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-         if( this.state.phonenumber =='' && this.state.fname=='' )
+
+           if(this.state.phone === undefined)
+           {
+             alert("Please enter phone number")
+           }
+
+
+           var phone = this.state.phone;
+             var phoneNumber=phone.replace(/\D/g,'')
+             var number=phoneNumber.substr(phoneNumber.length-10)
+             var country=phoneNumber.slice(0, -10)
+           //   ereg_replace("[^0-9]", "", phone)
+            console.log(phoneNumber);
+            console.log(number);
+            console.log(country);
+
+
+           if(number.length!=10){
+             alert("Please enter only 10 digit phone number")
+           }
+
+            else if(country!= 1 && country!= 91){
+              alert("HOWL is currently Only Available to users based in the U.S and INDIA")
+            }
+            else if(number.length==0){
+              alert("Please enter 10 digit phone number")
+            }
+            else if(number.length!=10){
+              alert("Please enter only 10 digit phone number")
+            }
+
+
+        else if(number =='' && this.state.fname=='' )
          {
            alert("First Name & Phone Number cannot be empty !");
 
          }
 
-        else if( this.state.phonenumber =='' && this.state.fname!='' )
+        else if(number =='' && this.state.fname!='' )
         {
              alert("Phone Number cannot be empty !");
         }
@@ -103,7 +147,7 @@ class Contact extends React.Component {
 
       else
       {
-     var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":this.state.phonenumber,"UserPackID":"0", "PhoneNumberCountryCode": "1"}]);
+     var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":number,"UserPackID":"0", "PhoneNumberCountryCode": "1"}]);
      console.log(object);
 
 
@@ -135,13 +179,14 @@ class Contact extends React.Component {
                         if(this.state.status === "0")
                         {
                           alert(this.state.message);
-                          this.setState({ redirectToReferrer: true })
+
                         }
 
                         else {
 
-                            alert("Would you like to add another pack member?");
-                            this.setState({ redirectToReferrer: true })
+                            alert("Pack Memeber added !");
+                            window.location.reload();
+
                         }
 
            })
@@ -155,14 +200,6 @@ class Contact extends React.Component {
 
   render() {
 
-    const { redirectToReferrer} = this.state
-      if(redirectToReferrer === true)
-      {
-        return (
-           <Contact />
-         )
-      }
-
 
 
     return (
@@ -175,10 +212,11 @@ class Contact extends React.Component {
         </div>
          <form >
                   <div>
-                     <TextField  ref="fname" onChange={this.handleFirstname.bind(this)} value={this.state.fname} hintText="FIRST NAME" fullWidth  /><br/>
-                      <TextField ref="lname" onChange={this.handleLastname.bind(this)} value={this.state.lname} hintText="LAST NAME" fullWidth  /><br />
-                     <h4>+1  <TextField ref="phonenumber" onChange={this.handlePhoneNumber.bind(this)} value={this.state.phonenumber} hintText="MOBILE PHONE" /></h4>
+                     <TextField  ref="fname" onChange={this.handleFirstname.bind(this)} value={this.state.fname} hintText="FIRST NAME" fullWidth  />
+                      <TextField ref="lname" onChange={this.handleLastname.bind(this)} value={this.state.lname} hintText="LAST NAME" fullWidth  />
                      <TextField ref="email"  onChange={this.handleEmail.bind(this)} value={this.state.email} hintText="EMAIL ADDRESS"   fullWidth />
+                      PHONE NUMBER:
+                     <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange} />
                </div>
                   <div className="divider" />
                   <div  className="howlBlue" onClick={(e)=>this.handleNext(e)} primary label="SAVE" >SAVE</div>
@@ -199,8 +237,6 @@ const Page = () => {
     <section className="container-fluid with-maxwidth chapter">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1"><Contact /></div>
-
-
       </QueueAnim>
     </section>
   )

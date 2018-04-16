@@ -497,13 +497,6 @@ render() {
   var total = this.state.array_count;
   console.log(total);
 
-  var img_Date = this.state.DateCreated +" "+ 'UTC' ;      //Convert UTC to Local Time
-  console.log(img_Date)
-  var date = new Date(img_Date);
-  var current = date.toString();
-
-  console.log(current);
-
 
 const { redirectToReferrer} = this.state                    //To Zoom the Image
   if(this.state.redirectToReferrer === true)
@@ -524,7 +517,7 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
         </span>
       <div>
         <center>Details :{" "}
-            {moment(current).format('DD-MMM-YYYY hh:mm:ss A')}
+          {moment(new Date(this.state.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}    
         </center>
       </div>
       </div>
