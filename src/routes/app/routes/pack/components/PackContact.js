@@ -199,6 +199,10 @@ class Contact extends React.Component {
 
            handleExit()
            {
+              // console.log("exit");
+              // this.setState({ redirectToReferrer: true })
+              //
+              //  <Redirect to="Pack/PackDetails" />
              window.location.reload();
            }
 
