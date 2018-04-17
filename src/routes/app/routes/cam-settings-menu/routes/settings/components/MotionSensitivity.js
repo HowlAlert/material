@@ -2,53 +2,108 @@ import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
+import DropDownMenu from 'material-ui/DropDownMenu';
 import SelectField from 'material-ui/SelectField';
+import cookie from 'react-cookies';
+
+
 
 
 class MotionSensitivity extends React.Component {
   constructor() {
     super();
       this.state = {
-        value: 4,
+        sensitivity: '',
         data: [],
 
       };
+      this.handleChange = this.handleChange.bind(this);
+
   }
 
-  // componentDidMount(){
-  //
-  //   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
-  //
-  //       fetch(BaseURL,
-  //       {
-  //        method: "POST",
-  //        body: JSON.stringify({
-  //          "UserID":"118",
-  //          "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu"
-  //        }),
-  //         headers: new Headers({'content-type': 'application/json'}),
-  //       })
-  //   .then((Response)=> Response.json())
-  //   .then((findresponse)=>{
-  //       console.log(findresponse)
-  //       this.setState({
-  //          data:findresponse.GetUserCameraResult.RoomCameraList,
-  //          data1:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].MotionDetectionSensitivity
-  //                           })
-  //                           console.log(this.state.data1);
-  //                           // this.setState({value: this.state.data1});
-  //                        })
-  //
-  //
-  //
-  // }
+  handleChange(sensitivity) {
 
- handleChange = (event, index, value) => this.setState({value});
+      // this.setState({
+      //   sensitivity: value,
+      //
+      // });
+  console.log(this.state.sensitivity)
+}
+
+
+ componentDidMount(){
+
+   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
+
+       fetch(BaseURL,
+       {
+        method: "POST",
+        body: JSON.stringify({
+          "UserID":cookie.load('Id'),
+          "UserToken":cookie.load('UserToken'),
+        }),
+         headers: new Headers({'content-type': 'application/json'}),
+       })
+   .then((Response)=> Response.json())
+   .then((findresponse)=>{
+       console.log(findresponse)
+       this.setState({
+          data:findresponse.GetUserCameraResult.RoomCameraList,
+          CameraCount:findresponse.GetUserCameraResult.RoomCameraList.length,
+          camid1:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].CameraID,
+          ms1:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].MotionDetectionSensitivity
+
+
+                           })
+             if(this.state.CameraCount === 2)    //for second camera
+             {
+                 this.setState({
+                      camid2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].CameraID,
+                       ms2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].MotionDetectionSensitivity
+
+                     });
+             }
+          // console.log(this.state.md2)  //for second camera
+         console.log(this.state.CameraCount)
+         console.log(this.state.camid1)
+          console.log(this.state.ms1)
+         console.log(this.state.camid2)
+         console.log(this.state.ms2)
+
+
+             var currentcameraid = cookie.load('cameraid');
+             console.log(currentcameraid);
+
+           if(currentcameraid === this.state.camid1)
+           {
+
+               this.setState({   sensitivity:this.state.ms1 });
+               cookie.save('togglesensitivity',this.state.sensitivity);
+               console.log(cookie.load('togglesensitivity'));
+           }
+
+           else if(currentcameraid === this.state.camid2)
+            {
+              this.setState({   sensitivity:this.state.ms2 });
+              cookie.save('togglesensitivity',this.state.sensitivity);
+              console.log(cookie.load('togglesensitivity'));
+
+            }
+
+
+     })
+
+   }
+
+
+
+
+
 
   render() {
 
-    var selected_value=this.state.value;
-
+    // var sensitivity = cookie.load('togglesensitivity');
+    // console.log(sensitivity);
 
   return (
   <article className="article">
@@ -65,36 +120,12 @@ class MotionSensitivity extends React.Component {
           </span>
           <span className="float-right">
             <span>
-              <SelectField  value={this.state.value} onChange={this.handleChange}  >
-                  <MenuItem value={1} primaryText="High"  />
-                  <MenuItem value={4} primaryText="Normal" />
-                  <MenuItem value={7} primaryText="Low" />
+              <DropDownMenu sensitivity={this.state.sensitivity} onChange={this.handleChange()}>
+                <MenuItem sensitivity={1} primaryText="High"  />
+                <MenuItem sensitivity={4} primaryText="Normal" />
+                <MenuItem sensitivity={7} primaryText="Low" />
+              </DropDownMenu>
 
-            </SelectField>
-            {/* <p>{selected_value}</p>
-
-            {
-              this.state.data.map((dyanamicData,key) =>
-              <div>
-                 {
-                     (typeof(dyanamicData.Camera)=='object')?
-                   <div>
-                   {
-                     dyanamicData.Camera.map((dyanamicData1,key1) =>
-                          <div>
-                                  {dyanamicData1.MotionDetectionSensitivity}
-
-                          </div>
-
-                    )
-                  }
-                 </div>
-                 :
-                   null
-               }
-            </div>
-           )
-           } */}
             </span>
           </span>
         </div>

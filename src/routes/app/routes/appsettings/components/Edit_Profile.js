@@ -6,6 +6,7 @@ import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import Editable from 'react-x-editable';
 import './editable.css';
+import ReactPhoneInput from 'react-phone-input';
 
 import Edit_PhoneNumber from './Edit_PhoneNumber';
 
@@ -45,9 +46,23 @@ class EditProfile extends React.Component {
          console.log(value) ;
          return value;
        }
+
        handlePhoneNumber(event){
-              this.setState({ redirectToChangePhone: true });
+
+              this.setState({
+                redirectToChangePhone: true
+
+              });
             }
+       // handlePhoneNumber(event){
+       //        this.setState({
+       //        Phone: value,
+       //          disabled: false,
+       //          redirectToChangePhone: true
+       //        });
+       //        console.log(value) ;
+       //        return value;
+       //      }
   // handleSave(event) {
   //    event.preventDefault();
   //      if(this.state.Email==''){
@@ -175,7 +190,9 @@ class EditProfile extends React.Component {
                              validate={(value)=>this.handleEmail(value)}
                              /></p>
                          <p>PHONE NUMBER
-                       <TextField onClick={(e)=>this.handlePhoneNumber(e)} name="PhoneNumber" value={phonenumber} fullWidth /></p>
+                          <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onClick={(e)=>this.handlePhoneNumber(e)} onChange={this.handleOnChange} value={phonenumber}/></p>
+
+                       {/* <TextField onClick={(e)=>this.handlePhoneNumber(e)} name="PhoneNumber" value={phonenumber} fullWidth /></p> */}
                       <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e)} disabled={this.state.disabled}/>
                      </form>
       );

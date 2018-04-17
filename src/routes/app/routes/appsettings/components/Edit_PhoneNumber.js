@@ -214,13 +214,13 @@ class PhoneVerifyCode extends React.Component {
     }
 
     handleVerifyCode(event){
-      console.log("hi") ;
+
       console.log(this.state.Code);
       let re = /^[0-9]{4}$/;
     if(re.test(this.state.Code)=='' || this.state.Code.length!=4 || this.state.Code.length>4)
     {
       alert("The verification code you entered is invalid. Please try again.");
-      console.log("hi alert")
+      
     }
 
 
