@@ -122,10 +122,6 @@ class BasicHome extends React.Component{
 
 }
 render() {
-<<<<<<< HEAD
-=======
-  
->>>>>>> c7e12399f954bd2805e900b069a8f903bc0e3630
 
   const actions = [
     <FlatButton
