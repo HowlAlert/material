@@ -23,6 +23,14 @@ const mWidthStyle = {
     };
   }
 
+  componentWillMount(){
+
+    if(cookie.load('SilenceCode')!=undefined){
+
+      this.setState({ redirectToHome: true })
+    }
+  }
+
   handleCode(event) {
      event.preventDefault();
       const target = event.target;
@@ -77,7 +85,13 @@ const mWidthStyle = {
            <Redirect to="AddSilentCode" />
          )
        }
-
+       const{redirectToHome}=this.state
+       if(redirectToHome){
+         return (
+           <Redirect to="app/home" />
+         )
+       }
+       
     return (
       <div className="body-inner">
 

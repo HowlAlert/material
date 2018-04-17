@@ -54,7 +54,7 @@ class Login extends React.Component {
 
   componentWillMount(){
 
-  if(cookie.load('FirstName')!=undefined){
+  if(cookie.load('SilenceCode')!=undefined){
     this.setState({ redirectToHome: true })
   }
   }
@@ -117,7 +117,8 @@ class Login extends React.Component {
       if(this.state.ResultStatus.StatusMessage==="Success"){
         cookie.save('UserToken', this.state.GetUser.UserToken);
         cookie.save('Id', this.state.GetUser.ID);
-
+        cookie.save('FirstName', this.state.GetUser.FirstName);
+        cookie.save('LastName', this.state.GetUser.LastName);
 
         if(this.state.GetUser.MobilePhoneNumber==null){
           alert("Please verify your Phone Number"),
@@ -160,8 +161,7 @@ class Login extends React.Component {
           cookie.save('Email', this.state.GetUser.Email);
           cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
           //cookie.save('Id', this.state.GetUser.ID);
-          cookie.save('FirstName', this.state.GetUser.FirstName);
-          cookie.save('LastName', this.state.GetUser.LastName);
+
           //cookie.save('UserToken', this.state.GetUser.UserToken);
           //cookie.save('Status', this.state.ResultStatus.Status, '/')
           cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
