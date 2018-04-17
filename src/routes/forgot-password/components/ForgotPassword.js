@@ -21,6 +21,14 @@ class ForgotPassowrd extends React.Component {
     };
   }
 
+  componentWillMount(){
+  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+    console.log(cookie.load('Id')),
+    console.log(cookie.load('UserToken')),
+    this.setState({ redirectToHome: true })
+    }
+  }
+
   handleSendPwd(event){
     console.log(this.state.Email);
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ForgotPassword';
@@ -65,13 +73,21 @@ class ForgotPassowrd extends React.Component {
           )
         }
 
+        const{redirectToHome}=this.state
+
+        if(redirectToHome){
+          return (
+            <Redirect to="app/home" />
+          )
+        }
+        
     return (
       <div className="body-inner">
       <div className="card bg-white registerCard">
         <div className="card-content regContent">
 
             <form className="form-horizontal">
-            
+
               <div className="regLeft">
                <p className="hero-title text-center registerHeader">Forgot Password</p>
               </div>

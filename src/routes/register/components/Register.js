@@ -42,6 +42,9 @@ class Register extends React.Component {
 
 
     handleNext(event){
+      var password = this.state.Password;
+      var PasswordLength = password.length;
+
     event.preventDefault();
     if(this.state.Fname==''){
       alert("Please enter your first name");
@@ -58,6 +61,9 @@ class Register extends React.Component {
     }
     if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!='' && this.state.Fname!='' && this.state.Lname!=''){
       alert("Please enter a password");
+    }
+    if(PasswordLength<6 && this.state.Password!='' && this.state.Email!='' && re.test(this.state.Email)!=''){
+      alert("Password must be at least 6 characters");
     }
 
 
@@ -226,7 +232,7 @@ this.setState({
                   type="password"
                   name="Password"
                   //value={this.state.value}
-                  //hintText="At least 8 characters"
+                  hintText="Password must be at least 6 characters"
                   floatingLabelText="Password"
                   onChange={(e)=>this.handlePassword(e)}
                   //errorText="Your password is too short"
