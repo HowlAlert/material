@@ -460,7 +460,7 @@ class MainLogin extends React.Component {
 
                                 <p style={policy}>-  OR  -</p>
 
-                                <div className="howlBlue" style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}>CREATE AN ACCOUNT</div><div className="divider" />
+                                <div className="howlBlue3" style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}>CREATE AN ACCOUNT</div><div className="divider" />
                               </div>
                               <div className="text-center">
                               <p style={policy}>Have an account?<span><a className='loginBtn' onClick={(e)=>this.handleLogin(e)} style={login}> Login</a></span></p>
