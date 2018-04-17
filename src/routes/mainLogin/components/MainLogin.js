@@ -424,7 +424,9 @@ class MainLogin extends React.Component {
 
     return(
       <div classNa  me="body-inner">
-            <div className=" bg-white2">
+      <div className="card bg-white registerCard mainlogincard">
+        <div className="card-content regContent">
+            <div className=" bg-white">
               <div className="">
               <ul className="nav" ref={(c) => { this.nav = c; }}>
                 <li className="nav-header" ><span></span></li>
@@ -455,10 +457,10 @@ class MainLogin extends React.Component {
 
                 />
                 </div>
-                <div className="divider" />
 
 
-                                <p style={policy}>-  OR  -</p>
+
+                              <div className='orspace'>  <p style={policy}>-  OR  -</p></div>
 
                                 <div className="howlBlue3" style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}>CREATE AN ACCOUNT</div><div className="divider" />
                               </div>
@@ -475,8 +477,12 @@ class MainLogin extends React.Component {
                             </div>
 
 
+</div>
+</div>
 
-</div></div></div>
+</div>
+</div>
+</div>
     )
   }
 }
