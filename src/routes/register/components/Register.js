@@ -29,7 +29,8 @@ class Register extends React.Component {
       Email:'',
       Password:'',
       GetUser:'',
-      text:''
+      text:'',
+      resultStatus:''
     };
   }
 
@@ -78,7 +79,9 @@ class Register extends React.Component {
       then((findresponse)=>{
         this.setState({
         GetUser:findresponse.RegisterUserResult.GetUser,
+        resultStatus:findresponse.RegisterUserResult.ResultStatus,
         })
+
         if(this.state.GetUser.ID!==null){
           console.log("status"),
           cookie.save('Id', this.state.GetUser.ID, '/'),
@@ -89,11 +92,16 @@ class Register extends React.Component {
           console.log(this.state.GetUser.UserToken),
           console.log(findresponse),
           console.log("status"),
+
           this.setState({ redirectToReferrer: true })
            }
            else if(this.state.GetUser.ID===null){
               this.setState({ redirectToReferrer: false })
            }
+           if(this.state.resultStatus.StatusMessage == "This email already exists."){
+             alert(this.state.resultStatus.StatusMessage)
+           }
+
       })
 }
 
@@ -169,10 +177,6 @@ this.setState({
       console.log(redirectToReferrer)
           return (
             <Redirect to="VerifyPhoneNumber" />
-          )
-        }else if (redirectToReferrer==false){
-          return (
-            alert("user already registered")
           )
         }
 
