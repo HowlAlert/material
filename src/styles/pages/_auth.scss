@@ -11,30 +11,28 @@ $screen-sm: 768px;
 }
 
 .kep-login-facebook{
-  border-radius:37px!important;
-  font-weight: 300!important;
-letter-spacing: 2px!important;
-padding: 26px 30px 26px 30px!important;
-min-width:450px;
+  border-radius: 37px !important;
+    font-weight: 300 !important;
+    letter-spacing: 2px !important;
+    padding: 26px 30px 26px 30px !important;
+    min-width: 409px;
 }
 .googleButton button{
   border-radius:37px!important;
   font-weight: 300!important;
 letter-spacing: 2px!important;
 padding: 26px 30px 26px 30px!important;
-min-width:450px;
-height:78px!important;
+min-width:400px;
+height:69px!important;
 line-height:10px!important;
 }
 .page-login2{
-  height:110%;
-  background-color:#fff;
-  display:block;
+
 }
 
 .mainLogo{
-  margin-bottom:10px;
-  padding-top:20px;
+  margin-bottom:35px;
+
 }
 .bg-white2{
   height:100%;
@@ -99,11 +97,11 @@ text-align:center;
       border-radius: 37px !important;
       font-weight: 300 !important;
       letter-spacing: 2px !important;
-      padding: 24px 30px 26px 30px !important;
-      max-width: 447px;
+      padding: 20px 30px 26px 30px !important;
+      max-width: 400px;
       background-color: #0091cd;
       margin: 0 auto;
-      height: 81px;
+      height: 69px;
       margin-top: 0px;
       margin-bottom: 25px;
       color: #fff;
@@ -554,8 +552,8 @@ line-height: 17px;
 }
 
 .kep-login-facebook{
-  height:78px!important;
-  line-height:10px!important;
+  height: 69px !important;
+  line-height: 10px !important;
 }
 .forgotPassword{
   margin-top:10px;
@@ -579,4 +577,21 @@ line-height: 17px;
 .termsText p{
   font-size:14px!important;
   color:#646464!important;
+}
+
+
+.passimg img{
+  width: 180px;
+margin-bottom: 21px;
+}
+
+
+
+.mainlogincard{
+  margin-top:20px;
+}
+
+.orspace{
+  margin:10px 0px 10px 0px;
+  display:block;
 }
