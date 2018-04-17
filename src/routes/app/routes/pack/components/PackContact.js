@@ -197,6 +197,16 @@ class Contact extends React.Component {
 
            }
 
+           handleExit()
+           {
+              // console.log("exit");
+              // this.setState({ redirectToReferrer: true })
+              //
+              //  <Redirect to="Pack/PackDetails" />
+             window.location.reload();
+           }
+
+
 
   render() {
 
@@ -218,9 +228,16 @@ class Contact extends React.Component {
                       PHONE NUMBER:
                      <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange} />
                </div>
-                  <div className="divider" />
-                  <div  className="howlBlue" onClick={(e)=>this.handleNext(e)} primary label="SAVE" >SAVE</div>
+                <div className="divider" />
+                <div className="row">
+                  <div className="col-lg-6 noPadRight">
 
+                    <div className="howlDelete" primary label="Cancel" onClick={(e)=>this.handleExit(e)} >Cancel</div>
+                  </div>
+                  <div className="col-lg-6 noPadLeft">
+                     <div  className="howlBlue" onClick={(e)=>this.handleNext(e)} primary label="SAVE" >SAVE</div>
+                  </div>
+                </div>
 
        </form>
         </article>

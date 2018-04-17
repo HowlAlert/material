@@ -4,6 +4,7 @@ import Toggle from 'material-ui/Toggle';
 import Schedule from './Schedule';
 import Detection from './Detection';
 import MotionSensitivity from './MotionSensitivity';
+import cookie from 'react-cookies';
 
 const styles = {
   toggle: {
@@ -15,11 +16,12 @@ const styles = {
 class MotionDetection extends React.Component {
 
   render() {
-
+   var cameraName = cookie.load('cameraName');
   return (
   <article className="article">
     <div className="container-fluid with-maxwidth">
-         <h2 className="article-title text-center no-margin-top mainArticle">CAMERA SETTINGS</h2>
+         <h2 className="article-title text-center no-margin-top mainArticle">{cameraName} Settings</h2>
+         {/* <h2 className="article-title">Images Recorded in {cameraName} </h2> */}
 
     </div>
 

@@ -212,7 +212,6 @@ else {
 
 
 
-
   render() {
     // let bgColor1 = this.state.color_d1 ? "DodgerBlue" : "white";
     const ms = this.state.data2
@@ -230,6 +229,7 @@ else {
             {
               return (
                  <PackContact />
+                    // <Redirect to="./PackContact" />
                )
             }
 
