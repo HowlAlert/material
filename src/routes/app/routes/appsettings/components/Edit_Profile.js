@@ -11,96 +11,110 @@ import ReactPhoneInput from 'react-phone-input';
 import Edit_PhoneNumber from './Edit_PhoneNumber';
 
 
-
 class EditProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+
       Fname:'',
       Lname:'',
       Email:'',
-      disabled: true
+      phonenumber:'',
+      disabled: true,
+      Cancel_disabled: true
     };
+
   }
-  handleFname(value) {
+
+
+  handleFname= (e) => {
      this.setState({
-           Fname: value,
-           disabled: false
+           Fname: e.target.value,
+           disabled: false,
+           Cancel_disabled: false
          });
-         console.log(value) ;
-         return value;
-       }
-    handleLname(value) {
-      this.setState({
-              Lname: value,
-              disabled: false
-            });
-            console.log(value) ;
-            return value;
-          }
-    handleEmail(value) {
-      this.setState({
-           Email: value,
-           disabled: false
-         });
-         console.log(value) ;
-         return value;
+         console.log(this.state.Fname) ;
+
        }
 
-       handlePhoneNumber(event){
-
-              this.setState({
-                redirectToChangePhone: true
-
+  handleLname= (e) => {
+    this.setState({
+          Lname: e.target.value,
+          disabled: false,
+          Cancel_disabled: false
               });
+              console.log(this.state.Lname) ;
+
             }
-       // handlePhoneNumber(event){
-       //        this.setState({
-       //        Phone: value,
-       //          disabled: false,
-       //          redirectToChangePhone: true
-       //        });
-       //        console.log(value) ;
-       //        return value;
-       //      }
-  // handleSave(event) {
-  //    event.preventDefault();
-  //      if(this.state.Email==''){
-  //        alert("Please enter your email address");
-  //      }
-  //      let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  //      if(re.test(this.state.Email)=='' && this.state.Email!=''){
-  //        alert("Please enter a valid email");
-  //      }
-  //      if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!=''){
-  //        alert("Please enter a password");
-  //      }
-  //  }
+    // handleLname(value) {
+    //   this.setState({
+    //           Lname: value,
+    //           disabled: false
+    //         });
+    //         console.log(value) ;
+    //         return value;
+    //       }
+    handleEmail= (e) => {
+      this.setState({
+           Email: e.target.value,
+           disabled: false,
+           Cancel_disabled: false
+         });
+         console.log(this.state.Email) ;
+
+       }
+
+       handlePhoneNumber= (e) =>{
+
+            this.setState({
+              redirectToChangePhone: true
+
+            });
+          }
+
+      handleBack(event) {
+            window.location.reload();
+          }
+
      handleSave(event){
+
+
+
         var firstname = this.state.Fname;
         console.log(firstname);
         var lastname = this.state.Lname;
         console.log(lastname);
-        var email = this.state.Email;
+        var email = cookie.load('Email');
         console.log(email);
+
+        const re = /^[A-z]+$/;
+        const pw_validation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+
         if(firstname==="")
         {
-          firstname = cookie.load('FirstName');
-          console.log("No change in firstname");
+          alert("First Name cannot be empty !");
+
+
         }
-        if( lastname==="" )
+        else if(re.test(firstname)=='' && firstname !='')
+        {
+          alert("First Name should not contain numbers !");
+        }
+        else if( lastname==="" )
         {
           lastname = cookie.load('LastName');
-          console.log("No change in lastname");
+
         }
-        if(email==="")
+        else if(re.test(lastname)=='' && firstname !='' && re.test(firstname)!=''){
+             alert("Last Name should not contain numbers !");
+        }
+        else if(pw_validation.test(email)=='' && email!='')
         {
-          email = cookie.load('Email');
-        }
-        if(firstname==="" && lastname===""  && email==="")
-        {
-          alert("No updates done!")
-        }
+           alert("Please enter a valid email");
+         }
+
+       else{
          const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserProfile';
           fetch(URL,
                           {
@@ -126,74 +140,116 @@ class EditProfile extends React.Component {
                                             if(this.state.status === "0")
                                             {
                                               alert(this.state.message);
+
                                             }
                                             else {
                                                 alert("Successfully Updated Profile!")
                                                 cookie.save('FirstName', firstname);
                                                 cookie.save('LastName', lastname);
                                                 cookie.save('Email', email);
-                                              this.setState({ redirectToReferrer: true })
+                                                this.setState({
+                                                     disabled: true,
+                                                     Cancel_disabled:true
+                                                   });
+
                                             }
                                        })
+
+       }
+
+
+
+
+   }
+
+
+   componentDidMount() {
+      this.setState({Fname: cookie.load('FirstName')});
+      this.setState({Lname: cookie.load('LastName')});
+      this.setState({Email: cookie.load('Email')});
+      this.setState({phonenumber:cookie.load('MobilePhoneNumber')});
+
    }
   render() {
-    const { redirectToReferrer} = this.state        //once update is done back to settings page
-      if(redirectToReferrer === true)
-      {
-        return (
-              <EditProfile />
-         )
-      }
+
    const { redirectToChangePhone} = this.state        //redirect to Edit phone number page
     if (redirectToChangePhone) {
       console.log("redirectToChangePhone")
           return (
-            <Edit_PhoneNumber />
+            <form name="EditProfileForm">
+
+             <p>FIRST NAME
+              <input
+               value={this.state.Fname}
+               onChange={this.handleFname}
+              />
+              </p>
+
+                 <p>LAST NAME
+                   <input
+                    value={this.state.Lname}
+                    onChange={this.handleLname}
+                   />
+                 </p>
+                   <p>EMAIL ADDRESS
+                     <input
+                      value={this.state.Email}
+                      onChange={this.handleEmail}
+                     />
+                  </p>
+
+                <Edit_PhoneNumber />
+
+
+             </form>
+
+
           )
         }
-      var fname=cookie.load('FirstName');            //Loading Initial values before editting
-      // console.log(fname);
-      var lname = cookie.load('LastName')
-      // console.log(lname);
-      var email = cookie.load('Email')
-      // console.log(email);
-      var phonenumber = cookie.load('MobilePhoneNumber')
+
        // console.log(phonenumber);
     return (
                     <form name="EditProfileForm">
-                          {/* <Editable onChange={(e)=>this.handleFname(e)} name="Fname" value={fname} floatingLabelText="FIRST NAME" fullWidth />
-                          <Editable onChange={(e)=>this.handleLname(e)} name="Lname" value={lname} floatingLabelText="LAST NAME" fullWidth />
-                          <Editable onChange={(e)=>this.handleEmail(e)} name="Email" value={email} floatingLabelText="EMAIL ADDRESS"  name="Email"/>
-                          <Editable floatingLabelText="PHONE NUMBER" value={phonenumber} fullWidth /> */}
-                          <p>FIRST NAME
-                       <Editable
-                         name="Fname"
-                         dataType="text"
-                         mode="inline"
-                         value={fname}
-                         validate={(value)=>this.handleFname(value)}
-                         /></p>
-                         <p>LAST NAME
-                         <Editable
-                           name="Lname"
-                           dataType="text"
-                           mode="inline"
-                           value={lname}
-                           validate={(value)=>this.handleLname(value)}
-                           /></p>
-                           <p>EMAIL ADDRESS
-                           <Editable
-                             name="Email"
-                             dataType="text"
-                             mode="inline"
-                             value={email}
-                             validate={(value)=>this.handleEmail(value)}
-                             /></p>
-                         <p>PHONE NUMBER
-                          <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onClick={(e)=>this.handlePhoneNumber(e)} onChange={this.handleOnChange} value={phonenumber}/></p>
 
-                       {/* <TextField onClick={(e)=>this.handlePhoneNumber(e)} name="PhoneNumber" value={phonenumber} fullWidth /></p> */}
-                      <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e)} disabled={this.state.disabled}/>
+                     <p>FIRST NAME
+                      <input
+                       value={this.state.Fname}
+                       onChange={this.handleFname}
+                      />
+                      </p>
+
+                         <p>LAST NAME
+                           <input
+                            value={this.state.Lname}
+                            onChange={this.handleLname}
+                           />
+                         </p>
+                           <p>EMAIL ADDRESS
+                             <input
+                              value={this.state.Email}
+                              onChange={this.handleEmail}
+                             />
+                          </p>
+                         <p>PHONE NUMBER
+                           <input
+                            value={this.state.phonenumber}
+                            onChange={this.handlePhoneNumber}
+                           />
+                          {/* <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleEmail} />*/}
+                        </p>
+
+                        <div className="divider" />
+                        <div className="row">
+                          <div className="col-lg-6 noPadRight">
+                            <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
+
+                          </div>
+                          <div className="col-lg-6 noPadLeft">
+                            <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e)} disabled={this.state.disabled}/>
+
+                          </div>
+                        </div>
+
                      </form>
       );
      }
@@ -202,7 +258,7 @@ const Page = () => (
   <section className="container-fluid chapter">
     <h2 className="article-title-header">Edit Profile</h2>
     <QueueAnim type="bottom" className="ui-animate">
-      <div key="1"><EditProfile /></div>
+       <EditProfile />
     </QueueAnim>
   </section>
 );

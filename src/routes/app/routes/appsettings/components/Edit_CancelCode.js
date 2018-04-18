@@ -17,7 +17,8 @@ import cookie from 'react-cookies';
     this.state = {
       data:[],
       code:'',
-
+      Next_disabled:true,
+      Cancel_disabled:true
 
     };
 
@@ -34,13 +35,18 @@ import cookie from 'react-cookies';
       const name = target.name;
 
    this.setState({
-         code: target.value
+         code: target.value,
+         Next_disabled:false,
+         Cancel_disabled:false
        });
 
        console.log(target.value) ;
        return target.value;
    }
 
+   handleCancel(event) {
+    window.location.reload();
+   }
 
   handleNext(event) {
 
@@ -65,7 +71,7 @@ import cookie from 'react-cookies';
     else if(re.test(entered)!='' && entered!='' && entered != saved){
 
       alert("The cancel code you entered does not match your current cancel code. Please try again ");
-      window.location.reload();
+
        this.setState({ redirectToReferrer: false })
 
     }
@@ -99,8 +105,17 @@ import cookie from 'react-cookies';
                       <div className="form-group">
                         <TextField onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your old cancel code" fullWidth />
                       </div>
-                      <div className="card-action no-border text-right">
-                        <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="NEXT ->" />
+
+                      <div className="divider" />
+                      <div className="row">
+                        <div className="col-lg-6 noPadRight">
+                          <RaisedButton onClick={(e)=>this.handleCancel(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
+
+                        </div>
+                        <div className="col-lg-6 noPadLeft">
+                          <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="NEXT ->" disabled={this.state.Next_disabled} />
+
+                        </div>
                       </div>
 
                     </div>
@@ -120,6 +135,8 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
    this.state = {
      code:'',
      verifycode:'',
+     Next_disabled:true,
+     Cancel_disabled:true
 
    };
  }
@@ -131,7 +148,8 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
      const name = target.name;
 
   this.setState({
-        code: target.value
+        code: target.value,
+        Cancel_disabled:false
       });
       console.log(target.value) ;
       return target.value;
@@ -144,6 +162,7 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
       const name = target.name;
 
    this.setState({
+       Next_disabled:false,
        verifycode: target.value
        });
        console.log(target.value) ;
@@ -207,7 +226,11 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
           console.log(findresponse)
           alert("Code has been changed");
           cookie.save('CancellationCode',this.state.code)
-           this.setState({ redirectToReferrer: true })        //redirect to settings menu
+           this.setState({ redirectToReferrer: true ,
+                           Next_disabled:true,
+                           Cancel_disabled:true
+
+              })        //redirect to settings menu
          })
 
      }
@@ -247,30 +270,32 @@ handleCancel(event) {
      }
 
    return (
-       <div className="container-fluid with-maxwidth">
-         <div className="row">
-           <div className="col-xl-12">
-             <div className="box box-transparent">
-               <div className="box-body padding-lg-h">
-                 <form name="CancelformForm">
-                   <div className="form-group">
-                     <p className="no-margin">Speak your Cancellation Code to your smart hub (or type it into your app) to cancel your HOWL alert. *Be sure to make this a code you will remember.</p>
+
+         <div >
+
+                    Speak your Cancellation Code to your smart hub (or type it into your app) to cancel your HOWL alert. *Be sure to make this a code you will remember.
                      <div className="form-group">
                        <TextField onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your new cancel code" fullWidth />
                        <TextField onChange={(e)=>this.handleVerifyCode(e)} name="re-code" floatingLabelText="Verify your new cancel code" fullWidth />
                      </div>
-                     <div className="card-action no-border ">
-                       <RaisedButton  className="text-left" onClick={(e)=>this.handleNext(e)} primary label="Save" />
-                       <RaisedButton  className="text-rigth" onClick={(e)=>this.handleCancel(e)} primary label="Cancel" />
-                     </div>
 
-                   </div>
-                  </form>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
+
+                                           <div className="divider" />
+                                           <div className="row">
+                                             <div className="col-lg-6 noPadRight">
+                                               <RaisedButton onClick={(e)=>this.handleCancel(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
+
+                                             </div>
+                                             <div className="col-lg-6 noPadLeft">
+                                               <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="Save" disabled={this.state.Next_disabled} />
+
+                                             </div>
+                                           </div>
+
+          </div>
+
+
+
 
    );
  }

@@ -34,19 +34,25 @@ class EditPhoneNumber extends React.Component {
       country:'',
       number:'',
       message:'',
-      ResultStatus:''
+      ResultStatus:'',
+      Cancel_disabled: true,
+      phoneNumberdisabled:true,
     }
 this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   handleOnChange(number) {
         this.setState({
-           phone: number
+           phone: number,
+           phoneNumberdisabled:false,
+           Cancel_disabled: false,
         });
         console.log(this.state.phone)
      }
 
   handlePhoneNo(phoneNumber){
+
+
 
     if(this.state.phone === undefined)
     {
@@ -103,6 +109,7 @@ this.handleOnChange = this.handleOnChange.bind(this);
         }
         if(this.state.ResultStatus.Status==1 && number!='' && number.length==10){
           this.setState({ redirectToReferrer: true })
+          cookie.save('MobilePhoneNumber', number);
            }
            else{
               this.setState({ redirectToReferrer: false })
@@ -110,6 +117,9 @@ this.handleOnChange = this.handleOnChange.bind(this);
     })
   }
 }
+handleBack(event) {
+      window.location.reload();
+    }
 
   handleNumber(event) {
     this.setState({
@@ -143,47 +153,37 @@ this.handleOnChange = this.handleOnChange.bind(this);
     if (redirectToReferrer) {
 console.log(redirectToReferrer);
           return (
-              // <Redirect to="PhoneVerifyCode"/>
-                <PhoneVerifyCode />
+          <div>
+            CHANGE PHONE NUMBER
+            <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange}/>
+            <PhoneVerifyCode />
+          </div>
           )
         }
 
     return (
 
-      <div className="body-inner">
+      <div>
 
-        <div className="card bg-white">
-          <div className="card-content">
-            <section className="logo text-center">
-              <h1><a href="#/">{this.state.brand}</a></h1>
-            </section>
+        CHANGE PHONE NUMBER
+        <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange}/>
+        <div className="divider" />
+        <div className="row">
+          <div className="col-lg-6 noPadRight">
+            <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
 
+          </div>
+          <div className="col-lg-6 noPadLeft">
+            <RaisedButton primary label="NEXT -->" primary onClick={(e)=>this.handlePhoneNo(e)} disabled={this.state.phoneNumberdisabled}/>
 
-            <ul className="nav" ref={(c) => { this.nav = c; }}>
-              <li className="nav-header"><span></span></li>
-              {/* <li><FlatButton href="#/Register"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
-              </li> */}
-              </ul>
-              {/* <img src="assets/images/HOWL2.png" alt="HOWL" /> */}
-              <p className="hero-title text-center">Change your phone number</p>
-              <div className="phone-number" style={{display:'flex'}}>
-              <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange}/>
-              </div>
+          </div>
+        </div>
 
 
 
-
-<div className="box-body text-right">
-
-     <RaisedButton style={mWidthStyle} label="NEXT -->" primary onClick={(e)=>this.handlePhoneNo(e)}/><div className="divider" />
+     </div>
 
 
-</div>
-
-</div>
-</div>
-
-</div>
 
     );
   }
@@ -195,7 +195,9 @@ class PhoneVerifyCode extends React.Component {
     super();
     this.state = {
       Code:'',
-      ResultStatus:''
+      ResultStatus:'',
+      disabled: true,
+      Cancel_disabled: true,
     };
   }
 
@@ -206,26 +208,24 @@ class PhoneVerifyCode extends React.Component {
   const name = target.name;
 
   this.setState({
-        Code: target.value
+        Code: target.value,
+        disabled: false,
+        Cancel_disabled: false
       });
 
       console.log(target.value) ;
       return target.value;
     }
-
-    handleVerifyCode(event){
+  handleVerifyCode(event){
 
       console.log(this.state.Code);
       let re = /^[0-9]{4}$/;
     if(re.test(this.state.Code)=='' || this.state.Code.length!=4 || this.state.Code.length>4)
     {
       alert("The verification code you entered is invalid. Please try again.");
-      
+
     }
 
-
-console.log(cookie.load('Id')),
-console.log(cookie.load('UserToken'));
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
 
          fetch(BaseURL,{
@@ -242,9 +242,12 @@ console.log(cookie.load('UserToken'));
         });
         if(this.state.ResultStatus.Status==="1"){
 
-           this.setState({ redirectToReferrer: true })
+            alert("Updated Mobile Number!");
+            this.setState({
+                disabled: true
+            });
+           window.location.reload();
 
-            // alert("Updated Mobile Number!");
 
         }
         else{
@@ -264,36 +267,12 @@ console.log(cookie.load('UserToken'));
 
   render() {
 
-    const { redirectToReferrer} = this.state
-    if (redirectToReferrer === true) {
-      return (
-      <div>
-        <h4>Updated Mobile Number!</h4>
-        <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="<-- Back" />
-
-      </div>
-
-       )
-    }
-
 
     return (
-      <div className="body-inner">
+      <div>
 
-        <div className="card bg-white">
-          <div className="card-content">
-            <section className="logo text-center">
-              <h1><a href="#/">{this.state.brand}</a></h1>
-            </section>
 
-            <form className="form-horizontal">
-            <ul className="nav" ref={(c) => { this.nav = c; }}>
-              <li className="nav-header"><span></span></li>
-              {/* <li><FlatButton href="#/register4"><i className="nav-icon material-icons">keyboard_arrow_left</i><span className="nav-text"></span></FlatButton>
-              </li> */}
-              </ul>
-              {/* <img src="assets/images/HOWL2.png" alt="HOWL" /> */}
-              <p className="hero-title text-center">4 - DIGIT CODE</p>
+              4 - DIGIT CODE
               <fieldset>
                 <div className="form-group">
                   <TextField
@@ -304,25 +283,23 @@ console.log(cookie.load('UserToken'));
                    onChange={(e)=>this.handleCode(e)}
                   />
                 </div>
-
-
-
                 <div className="divider" />
+                <div className="row">
+                  <div className="col-lg-6 noPadRight">
+                    <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
 
-              </fieldset>
-              <div className="card-action no-border text-left">
+                  </div>
+                  <div className="col-lg-6 noPadLeft">
+                    <RaisedButton primary label="SAVE"  onClick={(e)=>this.handleVerifyCode(e)} disabled={this.state.disabled}/>
 
-              </div>
-              <div className="box-body text-center">
-              <RaisedButton style={mWidthStyle} label="NEXT -->" onClick={(e)=>this.handleVerifyCode(e)}/><div className="divider" />
-            </div>
-
-            </form>
-          </div>
-
+                  </div>
+                </div>
 
 
-        </div>
+
+          </fieldset>
+
+
 
       </div>
     );

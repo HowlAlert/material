@@ -6,7 +6,8 @@ import moment from 'moment';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import PackContact from './PackContact';
-// import Howls_Pack from '../../pack-menu/routes/howls_pack/components/Howls_Pack'
+
+
 
 
 class Pack extends React.Component {

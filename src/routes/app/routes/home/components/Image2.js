@@ -22,7 +22,7 @@ class ImageBox extends React.Component {
 
 
   }
-  handleImage(value1,value2) {
+  handleImage(value1,value2,value3,value4) {
 
 
 
@@ -32,6 +32,12 @@ class ImageBox extends React.Component {
            var CameraName = `${value2}`;
         cookie.save('cameraName',CameraName);
          console.log(cookie.load('cameraName'));
+         var Toggled = `${value3}`;
+       cookie.save('Detection',Toggled);
+        console.log(cookie.load('Detection'));
+          var sensitivity = `${value4}`;
+       cookie.save('Sensitivity',sensitivity);
+       console.log(cookie.load('Sensitivity'));
 
 
          // this.setState({ redirectToReferrer: true })
@@ -74,7 +80,9 @@ console.log(EndTime);
     this.setState({
          length:findresponse.GetUserCameraResult.RoomCameraList.length,
          CameraName:findresponse.GetUserCameraResult.RoomCameraList["1"].SortRoomName,
-         CameraId:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].CameraID
+         CameraId:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].CameraID,
+         md2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].MotionDetectionStatus,
+         ms2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].MotionDetectionSensitivity
 
     })
 
@@ -153,7 +161,7 @@ console.log(EndTime);
        <div className="ih-item ih-material">
 
 
-           <a href="#/app/camerasettings/camera-history" onClick={()=>this.handleImage(this.state.CameraId,this.state.CameraName)}>
+           <a href="#/app/camerasettings/camera-history" onClick={()=>this.handleImage(this.state.CameraId,this.state.CameraName,this.state.md2,this.state.ms2)}>
                       <div className="img">
                         <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
                       </div>

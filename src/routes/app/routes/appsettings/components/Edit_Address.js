@@ -20,6 +20,8 @@ class SearchAddress extends React.Component {
 
 
   handleFormSubmit = (event) => {
+
+
      event.preventDefault()
 
      geocodeByAddress(this.state.address)
@@ -150,35 +152,28 @@ class SearchAddress extends React.Component {
 
 
   return (
-   <div className="container-fluid with-maxwidth">
-     <div className="row">
-       <div className="col-xl-12">
-         <div className="box box-transparent">
-           <div className="box-body padding-lg-h">
-             <form onSubmit={this.handleFormSubmit}>
-               <div className="form-group">
 
+           <div >
+             <form >
 
-               </div>
                <TextField  onChange={(e)=>this.handleValue(e)} name="Address2" floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
-                <PlacesAutocomplete inputProps={inputProps} />
+                <PlacesAutocomplete inputProps={inputProps}  onKeyDown={(e)=>this.keyPress(e)} />
 
-                 <span className="float-right">
+                <div className="divider" />
+                <div className="row">
+                  <div className="col-lg-6 noPadRight">
+                    <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
 
-                    <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="Cancel" />
-                    <RaisedButton  primary type="submit">Submit</RaisedButton>
+                  </div>
+                  <div className="col-lg-6 noPadLeft">
+                        <RaisedButton  primary label="submit" onSubmit={this.handleFormSubmit}/>
+                  </div>
+                </div>
 
-                  </span>
               </form>
 
            </div>
-         </div>
-         <div >
 
-     </div>
-       </div>
-     </div>
-   </div>
   );
 }
 }
@@ -250,7 +245,6 @@ this.setState({
                        this.state.address2 === "undefined" ?
                               <div>
                                 <TextField   onClick={(e)=>this.handleNext(e)} floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
-
                               </div>
 
                            :    <TextField
@@ -284,6 +278,6 @@ const Page = () => (
 
 
     </section>
-  
+
 );
 module.exports = Page;

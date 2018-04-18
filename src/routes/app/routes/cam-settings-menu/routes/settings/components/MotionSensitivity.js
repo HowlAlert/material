@@ -2,7 +2,6 @@ import React from 'react';
 import QueueAnim from 'rc-queue-anim';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import DropDownMenu from 'material-ui/DropDownMenu';
 import SelectField from 'material-ui/SelectField';
 import cookie from 'react-cookies';
 
@@ -13,7 +12,7 @@ class MotionSensitivity extends React.Component {
   constructor() {
     super();
       this.state = {
-        sensitivity: '',
+        value: 4,
         data: [],
 
       };
@@ -21,84 +20,24 @@ class MotionSensitivity extends React.Component {
 
   }
 
-  handleChange(sensitivity) {
-
-      // this.setState({
-      //   sensitivity: value,
-      //
-      // });
-  console.log(this.state.sensitivity)
-}
+handleChange = (event, index, value) => this.setState({value});
 
 
- componentDidMount(){
-
-   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
-
-       fetch(BaseURL,
-       {
-        method: "POST",
-        body: JSON.stringify({
-          "UserID":cookie.load('Id'),
-          "UserToken":cookie.load('UserToken'),
-        }),
-         headers: new Headers({'content-type': 'application/json'}),
-       })
-   .then((Response)=> Response.json())
-   .then((findresponse)=>{
-       console.log(findresponse)
-       this.setState({
-          data:findresponse.GetUserCameraResult.RoomCameraList,
-          CameraCount:findresponse.GetUserCameraResult.RoomCameraList.length,
-          camid1:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].CameraID,
-          ms1:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].MotionDetectionSensitivity
-
-
-                           })
-             if(this.state.CameraCount === 2)    //for second camera
-             {
-                 this.setState({
-                      camid2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].CameraID,
-                       ms2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].MotionDetectionSensitivity
-
-                     });
-             }
-          // console.log(this.state.md2)  //for second camera
-         console.log(this.state.CameraCount)
-         console.log(this.state.camid1)
-          console.log(this.state.ms1)
-         console.log(this.state.camid2)
-         console.log(this.state.ms2)
-
-
-             var currentcameraid = cookie.load('cameraid');
-             console.log(currentcameraid);
-
-           if(currentcameraid === this.state.camid1)
-           {
-
-               this.setState({   sensitivity:this.state.ms1 });
-               cookie.save('togglesensitivity',this.state.sensitivity);
-               console.log(cookie.load('togglesensitivity'));
-           }
-
-           else if(currentcameraid === this.state.camid2)
-            {
-              this.setState({   sensitivity:this.state.ms2 });
-              cookie.save('togglesensitivity',this.state.sensitivity);
-              console.log(cookie.load('togglesensitivity'));
-
-            }
-
-
-     })
-
-   }
-
-
-
-
-
+ // componentDidMount(){
+ //
+ //
+ //   console.log(cookie.load('Sensitivity'));
+ //   console.log(cookie.load('cameraid'));
+ //
+ //           var savedSensitivity = cookie.load('Sensitivity');
+ //           console.log(savedSensitivity);
+ //
+ //             this.setState({
+ //               value: savedSensitivity,
+ //              });
+ //
+ //
+ //   }
 
   render() {
 
@@ -106,39 +45,35 @@ class MotionSensitivity extends React.Component {
     // console.log(sensitivity);
 
   return (
-  <article className="article">
-    <div className="container-fluid with-maxwidth">
+    <div className="row">
+      <div className="col-xl-12">
 
-
-    <div className="col-xl-12">
         <div className="box box-default">
-          <div className="box-body" >
-          <div className="icon-box ibox-plain ibox-center">
+          <div className="box-body">
+             <h4 className="article-title-header" >MOTION SENSITIVITY  </h4>
+             <p> Change the speed of Motion Detection in the room ! </p>
+             <span className="float-right ibox-icon">
 
-          <span className="float-left">
-            <span><h5> MOTION SENSITIVITY </h5> </span>
-          </span>
-          <span className="float-right">
-            <span>
-              <DropDownMenu sensitivity={this.state.sensitivity} onChange={this.handleChange()}>
-                <MenuItem sensitivity={1} primaryText="High"  />
-                <MenuItem sensitivity={4} primaryText="Normal" />
-                <MenuItem sensitivity={7} primaryText="Low" />
-              </DropDownMenu>
+                <SelectField  value={this.state.value} onChange={this.handleChange}  >
+                 <MenuItem value={1} primaryText="High"  />
+                 <MenuItem value={4} primaryText="Normal" />
+                 <MenuItem value={7} primaryText="Low" />
+               </SelectField>
 
-            </span>
-          </span>
+
+             </span>
+
+          </div>
         </div>
+
+
+
+
+
+      </div>
+
     </div>
-    </div>
-</div>
 
-
-
-
-    </div>
-
-    </article>
   );
  }
 }

@@ -71,35 +71,35 @@ class Schedule extends React.Component {
   render() {
 
   return (
-  <article className="article">
-    <div className="container-fluid with-maxwidth">
 
-    <div className="col-xl-12">
-      <div className="box box-default ">
-        <div className="box-body" >
-          <div className="icon-box ibox-plain ibox-center">
-            <div>
-             <span className="float-left">
-                    <span><h5> SCHEDULE</h5> </span>
-             </span>
-             <span className="float-right">
-                 <h5><a href="cam-settings-menu#/app/camerasettings/schedule">ADD</a></h5><br/>
-                  { this.renderUserMessage() }
-            </span>
-          </div>
+    <div className="row">
+      <div className="col-xl-12">
+
+        <div className="box box-default">
+          <div className="box-body">
+             <h4 className="article-title-header" >SCHEDULE</h4>
+             <p>Set the Schedule Alerts during Motion Detected in the room ! </p>
+
+
+               <h5><a href="cam-settings-menu#/app/camerasettings/schedule">ADD</a></h5><br/>
+                { this.renderUserMessage() }
+
+
 
           </div>
+        </div>
 
-       </div>
+
+
+
+
+      </div>
 
     </div>
 
-    </div>
-
-</div>
 
 
-    </article>
+
   );
  }
 }

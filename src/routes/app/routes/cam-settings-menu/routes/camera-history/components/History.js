@@ -761,7 +761,7 @@ const ImageSection = () => (
 
          <a href="#/app/camerasettings/settings" className="article-title mainArticle">
           <img className="nav-icon material-icons" src="assets/images/blueCog.png" alt="Image" height="40" width="40"/>
-           settings
+           Settings
          </a>
          </span>
 
