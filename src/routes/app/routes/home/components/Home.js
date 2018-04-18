@@ -231,10 +231,12 @@ const Dashboard = () => (
     </div>
 
     <div className="col-lg-6">
-      <div className="box box-default box-body homeMap">
-      <h2 className="article-title-header">Your Neighborhood </h2>
-      <Map />
-      </div>
+       <a  href="#/app/Map">
+           <div className="box box-default box-body homeMap">
+               <h2 className="article-title-header">Your Neighborhood </h2>
+            <Map />
+           </div>
+       </a>
     </div>
 
     <div className="col-lg-6">
