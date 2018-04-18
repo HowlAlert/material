@@ -51,14 +51,31 @@ class Login extends React.Component {
       noOfSuperValidation:0,
       text:''
     };
-  }
+    //input Highlighting code start
+          this.textInput = null;
 
+            this.setTextInputRef = element => {
+              this.textInput = element;
+            };
+
+            this.focusTextInput = () => {
+              // Focus the text input using the raw DOM API
+              if (this.textInput) this.textInput.focus();
+            };
+    //input Highlighting code end
+}
 
   componentWillMount(){
 
   if(cookie.load('SilenceCode')!=undefined){
     this.setState({ redirectToHome: true })
   }
+  }
+
+
+ componentDidMount() {
+    // autofocus the input on mount for input Highlighting
+    this.focusTextInput();
   }
 
   handleCreateAccount(event){
@@ -214,6 +231,7 @@ class Login extends React.Component {
 
     handlePassword(event) {
       event.preventDefault();
+
       const target = event.target;
     const value = target.type === target.value;
     const name = target.name;
@@ -472,6 +490,8 @@ class Login extends React.Component {
                      //value={this.state.value}
                      onChange={(e)=>this.handleEmail(e)}
                      onKeyDown={(e)=>this.keyPress(e)}
+                     ref={this.setTextInputRef} //for input Highlighting
+                      onClick={this.focusTextInput} //for input Highlighting
                   />
                 </div>
 
@@ -483,7 +503,7 @@ class Login extends React.Component {
                   floatingLabelText="Password"
                   onChange={(e)=>this.handlePassword(e)}
                   onKeyDown={(e)=>this.keyPress(e)}
-                  //errorText="Your password is too short"
+
                   />
               </fieldset>
 

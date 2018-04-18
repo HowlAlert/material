@@ -19,6 +19,7 @@
     "classnames": "~2.2.5",
     "core-js": "^2.5.1",
     "cors": "^2.8.4",
+    "create-react-ref": "^0.1.0",
     "echarts": "^3.7.1",
     "element-resize-event": "^2.0.9",
     "eslint-plugin-jsx": "0.0.2",

@@ -43,6 +43,8 @@ class VerifyPhoneNumber extends React.Component {
   }
   }
 
+  
+
   handlePhoneNo(phoneNumber){
     if(this.state.phone === undefined){
       alert("Please enter phone number")
@@ -170,7 +172,11 @@ console.log(this.state.phone);
               </div>
 
         <div className="phone-number" style={{display:'flex'}}>
-        <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange}/>
+        <ReactPhoneInput defaultCountry={'us'}
+            value={this.state.phone}
+            onChange={this.handleOnChange}
+
+         />
         </div>
 
 
