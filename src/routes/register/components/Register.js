@@ -29,7 +29,8 @@ class Register extends React.Component {
       Email:'',
       Password:'',
       GetUser:'',
-      text:''
+      text:'',
+      resultStatus:''
     };
   }
 
@@ -42,6 +43,9 @@ class Register extends React.Component {
 
 
     handleNext(event){
+      var password = this.state.Password;
+      var PasswordLength = password.length;
+
     event.preventDefault();
     if(this.state.Fname==''){
       alert("Please enter your first name");
@@ -59,6 +63,9 @@ class Register extends React.Component {
     if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!='' && this.state.Fname!='' && this.state.Lname!=''){
       alert("Please enter a password");
     }
+    if(PasswordLength<6 && this.state.Password!='' && this.state.Email!='' && re.test(this.state.Email)!=''){
+      alert("Password must be at least 6 characters");
+    }
 
 
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/RegisterUser';
@@ -72,7 +79,9 @@ class Register extends React.Component {
       then((findresponse)=>{
         this.setState({
         GetUser:findresponse.RegisterUserResult.GetUser,
+        resultStatus:findresponse.RegisterUserResult.ResultStatus,
         })
+
         if(this.state.GetUser.ID!==null){
           console.log("status"),
           cookie.save('Id', this.state.GetUser.ID, '/'),
@@ -83,11 +92,16 @@ class Register extends React.Component {
           console.log(this.state.GetUser.UserToken),
           console.log(findresponse),
           console.log("status"),
+
           this.setState({ redirectToReferrer: true })
            }
            else if(this.state.GetUser.ID===null){
               this.setState({ redirectToReferrer: false })
            }
+           if(this.state.resultStatus.StatusMessage == "This email already exists."){
+             alert(this.state.resultStatus.StatusMessage)
+           }
+
       })
 }
 
@@ -164,10 +178,6 @@ this.setState({
           return (
             <Redirect to="VerifyPhoneNumber" />
           )
-        }else if (redirectToReferrer==false){
-          return (
-            alert("user already registered")
-          )
         }
 
     return (
@@ -226,7 +236,7 @@ this.setState({
                   type="password"
                   name="Password"
                   //value={this.state.value}
-                  //hintText="At least 8 characters"
+                  hintText="Password must be at least 6 characters"
                   floatingLabelText="Password"
                   onChange={(e)=>this.handlePassword(e)}
                   //errorText="Your password is too short"

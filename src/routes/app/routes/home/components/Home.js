@@ -80,24 +80,6 @@ class BasicHome extends React.Component{
     this.setState({ firstName: cookie.load('FirstName')})
   }
 
-  // componentWillMount(){
-  // if(cookie.load('FirstName')==undefined && cookie.load('LastName')==undefined){
-  //   console.log(cookie.load('FirstName')),
-  //   console.log(cookie.load('LastName')),
-  //   this.setState({ redirectToMainLogin: true }),
-  //   this.setState({ redirectToLogin: true }),
-  //   this.setState({ redirectToRegister: true }),
-  //   this.setState({ redirectToRegister4: true }),
-  //   this.setState({ redirectToRegister5: true }),
-  //   this.setState({ redirectToForgotPwd: true }),
-  //   this.setState({ redirectToHomeAddress: true }),
-  //   this.setState({ redirectToPackContact: true }),
-  //   this.setState({ redirectToSilent: true }),
-  //   this.setState({ redirectToCancel: true }),
-  //   this.setState({ redirectToPrintCode: true })
-  // }
-  // }
-
 
   handleOpen = () => {
     this.setState({open: true});
@@ -140,7 +122,6 @@ class BasicHome extends React.Component{
 
 }
 render() {
-  
 
   const actions = [
     <FlatButton

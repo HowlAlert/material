@@ -5,13 +5,14 @@ import QueueAnim from 'rc-queue-anim';
 import RaisedButton from 'material-ui/RaisedButton';
 import Login from 'routes/login/';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
+import cookie from 'react-cookies';
 import FlatButton from 'material-ui/FlatButton';
 
 const mWidthStyle = {
   minWidth: '130px'
 };
 
-class ForgotPassowrd extends React.Component {
+class ForgotPassword extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -19,6 +20,14 @@ class ForgotPassowrd extends React.Component {
       ResultStatus:'',
       text:''
     };
+  }
+
+  componentWillMount(){
+  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+    console.log(cookie.load('Id')),
+    console.log(cookie.load('UserToken')),
+    this.setState({ redirectToHome: true })
+    }
   }
 
   handleSendPwd(event){
@@ -65,14 +74,23 @@ class ForgotPassowrd extends React.Component {
           )
         }
 
+        const{redirectToHome}=this.state
+
+        if(redirectToHome){
+          return (
+            <Redirect to="app/home" />
+          )
+        }
+
     return (
       <div className="body-inner">
       <div className="card bg-white registerCard">
         <div className="card-content regContent">
 
             <form className="form-horizontal">
-            
-              <div className="regLeft">
+
+              <div className="regLeft passimg">
+                <img src="assets/images/passreset.png" alt="HOWL" />
                <p className="hero-title text-center registerHeader">Forgot Password</p>
               </div>
             <div className="form-group text-center">
@@ -111,7 +129,7 @@ const Page = () => (
     <div className="main-body">
       <QueueAnim type="bottom" className="ui-animate">
         <div key="1">
-          <ForgotPassowrd />
+          <ForgotPassword />
         </div>
       </QueueAnim>
     </div>

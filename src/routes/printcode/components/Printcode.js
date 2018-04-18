@@ -37,7 +37,7 @@ class Printcode extends React.Component {
     console.log(cookie.load('Id')),
     console.log(cookie.load('UserToken')),
     this.setState({ redirectToHome: true })
-  }
+    }
   }
 
 
@@ -124,7 +124,7 @@ handlePrintCode(event){
                <p className='headText'>If you have one, enter the Print (Referral) Code provided by your HOWL Alpha below.</p>
               </div>
 
-          
+
               <fieldset>
                 <div className="form-group">
                   <TextField
