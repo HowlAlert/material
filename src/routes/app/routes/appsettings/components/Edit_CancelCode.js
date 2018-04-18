@@ -264,7 +264,7 @@ handleCancel(event) {
          <div>
             <h5 className="text-center">* Be sure to make this a code you will remember.</h5>
              <TextField  value ={this.state.code} floatingLabelText="Your New cancel code" fullWidth />
-             <RaisedButton onClick={(e)=>this.handleCancel(e)} primary label="<- Back" />
+             <RaisedButton onClick={(e)=>this.handleCancel(e)} primary label="OK" />
          </div>
         )
      }
