@@ -20,8 +20,6 @@ class SearchAddress extends React.Component {
 
 
   handleFormSubmit = (event) => {
-
-
      event.preventDefault()
 
      geocodeByAddress(this.state.address)
@@ -154,23 +152,24 @@ class SearchAddress extends React.Component {
   return (
 
            <div >
-             <form >
+
 
                <TextField  onChange={(e)=>this.handleValue(e)} name="Address2" floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
                 <PlacesAutocomplete inputProps={inputProps}  onKeyDown={(e)=>this.keyPress(e)} />
 
+
                 <div className="divider" />
                 <div className="row">
                   <div className="col-lg-6 noPadRight">
-                    <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
 
+                    <div className="howlDelete" primary label="Cancel" onClick={(e)=>this.handleBack(e)} disabled={this.state.Cancel_disabled} >Cancel</div>
                   </div>
                   <div className="col-lg-6 noPadLeft">
-                        <RaisedButton  primary label="submit" onSubmit={this.handleFormSubmit}/>
+                     <div  className="howlBlue" onClick={(e)=>this.handleFormSubmit(e)} primary label="SAVE" >SAVE</div>
                   </div>
                 </div>
 
-              </form>
+      
 
            </div>
 
@@ -245,6 +244,7 @@ this.setState({
                        this.state.address2 === "undefined" ?
                               <div>
                                 <TextField   onClick={(e)=>this.handleNext(e)} floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
+
                               </div>
 
                            :    <TextField

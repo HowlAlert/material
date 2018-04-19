@@ -10,6 +10,7 @@ class Print extends React.Component{
     super();
       this.state = {
         data: [],
+        Next_disabled:true,
       };
   }
 
@@ -21,7 +22,8 @@ class Print extends React.Component{
       const name = target.name;
 
    this.setState({
-         code: target.value
+         code: target.value,
+         Next_disabled:false,
        });
        console.log(target.value) ;
        return target.value;
@@ -78,14 +80,14 @@ render() {
                      <TextField onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your Print code " fullWidth />
 
                    <div className="card-action no-border text-left">
-                     <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="SAVE" />
+                     <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="SAVE" disabled={this.state.Next_disabled}/>
                    </div>
                  </div>
 
              </div>
            </div>
          </div>
-      
+
        );
    }
 }

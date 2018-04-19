@@ -15,7 +15,10 @@ class SilentCode extends React.Component {
     super(props);
     this.state = {
       code:'',
-      re_code:''
+      re_code:'',
+      Next_disabled:true,
+      Cancel_disabled:true
+
     };
 
   }
@@ -27,7 +30,9 @@ class SilentCode extends React.Component {
       const name = target.name;
 
    this.setState({
-         code: target.value
+         code: target.value,
+         Next_disabled:false,
+         Cancel_disabled:false
        });
        console.log(target.value) ;
        return target.value;
@@ -56,7 +61,7 @@ class SilentCode extends React.Component {
        else if(re.test(entered)!='' && entered!='' && entered != saved){
 
          alert("The Silent code you entered does not match your current cancel code. Please try again");
-         window.location.reload();
+
           this.setState({ redirectToReferrer: false })
 
        }
@@ -86,10 +91,18 @@ render() {
                    <h5 className="text-center">* Be sure to make this a code you will remember.</h5>
                      <TextField  onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your old silent code " fullWidth />
                    </div>
-                   <div className="card-action no-border text-right">
-                     <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="NEXT ->" />
-                   </div>
 
+                   <div className="divider" />
+                   <div className="row">
+                     <div className="col-lg-6 noPadRight">
+                       <RaisedButton onClick={(e)=>this.handleCancel(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
+
+                     </div>
+                     <div className="col-lg-6 noPadLeft">
+                       <RaisedButton onClick={(e)=>this.handleNext(e)} primary label="NEXT ->" disabled={this.state.Next_disabled} />
+
+                     </div>
+                   </div>
 
                  </div>
 
@@ -105,7 +118,9 @@ class VerifySilentCode extends React.Component {
     super(props);
     this.state = {
       code:'',
-      re_code:''
+      re_code:'',
+      Next_disabled:true,
+      Cancel_disabled:true
     };
 
   }
@@ -117,7 +132,9 @@ class VerifySilentCode extends React.Component {
       const name = target.name;
 
    this.setState({
-         code: target.value
+         code: target.value,
+         Next_disabled:false,
+         Cancel_disabled:false
        });
 
        console.log(target.value) ;
@@ -265,7 +282,7 @@ render() {
         <div>
            <h5 className="text-center">* Be sure to make this a code you will remember.</h5>
             <TextField  value ={this.state.code} floatingLabelText="Your New Silent code" fullWidth />
-            <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="<- Back" />
+            <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="OK" />
         </div>
 
        )
@@ -285,9 +302,20 @@ render() {
                      <TextField  onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your New silent code " fullWidth />
                      <TextField  onChange={(e)=>this.handleReCode(e)} name="re-code" floatingLabelText="Verify your New silent code " fullWidth />
                    </div>
-                     <div className="card-action no-border text-right">
-                       <RaisedButton onClick={(e)=>this.handleSave(e)} primary label="SAVE" />
-                     </div>
+
+                                      <div className="divider" />
+                                      <div className="row">
+                                        <div className="col-lg-6 noPadRight">
+                                          <RaisedButton onClick={(e)=>this.handleCancel(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
+
+                                        </div>
+                                        <div className="col-lg-6 noPadLeft">
+                                          <RaisedButton onClick={(e)=>this.handleSave(e)} primary label="SAVE" disabled={this.state.Next_disabled} />
+
+                                        </div>
+                                      </div>
+
+
                    </div>
 
 

@@ -121,67 +121,79 @@ handleBack(event) {
       window.location.reload();
     }
 
-  handleNumber(event) {
-    this.setState({
-      number:event.target.value
-    });
-    //this.handlePhoneNo('+'+this.state.country+' '+event.target.value);
 
-      return event.target.value;
-    }
-
-    handleCountry(event) {
-      this.setState({
-      country:event.value
-    });
-  // this.handlePhoneNo('+'+event.value+' '+this.state.Number);
-  return event.value;
-    }
-
-
-    getValidNumber(phoneNumber) {
-      const phoneUtil = PhoneNumberUtil.getInstance();
-      const parsedNumber = phoneUtil.parse(phoneNumber);
-      return phoneUtil.format(parsedNumber, PhoneNumberFormat.INTERNATIONAL)
-    }
 
 
 
   render() {
 
-    const { redirectToReferrer} = this.state
-    if (redirectToReferrer) {
-console.log(redirectToReferrer);
-          return (
-          <div>
-            CHANGE PHONE NUMBER
-            <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange}/>
-            <PhoneVerifyCode />
-          </div>
-          )
-        }
+//     const { redirectToReferrer} = this.state
+//     if (redirectToReferrer) {
+// console.log(redirectToReferrer);
+//           return (
+//           <div>
+//             CHANGE PHONE NUMBER
+//             <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange}/>
+//             <PhoneVerifyCode />
+//           </div>
+//           )
+    //    }
 
     return (
 
-      <div>
+      <form name="EditProfileForm">
 
-        CHANGE PHONE NUMBER
-        <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange}/>
-        <div className="divider" />
-        <div className="row">
-          <div className="col-lg-6 noPadRight">
-            <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
+       <p>FIRST NAME
+        <input
+         value={this.state.Fname}
+         onChange={this.handleFname}
+        />
+        </p>
 
-          </div>
-          <div className="col-lg-6 noPadLeft">
-            <RaisedButton primary label="NEXT -->" primary onClick={(e)=>this.handlePhoneNo(e)} disabled={this.state.phoneNumberdisabled}/>
+           <p>LAST NAME
+             <input
+              value={this.state.Lname}
+              onChange={this.handleLname}
+             />
+           </p>
+             <p>EMAIL ADDRESS
+               <input
+                value={this.state.Email}
+                onChange={this.handleEmail}
+               />
+            </p>
 
-          </div>
-        </div>
+             {/* <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleEmail} />*/}
+
+            CHANGE PHONE NUMBER
+               <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleOnChange}/>
+            4 - DIGIT CODE
+               <TextField
+               type="text"
+               fullWidth
+               name="Code"
+                value={this.state.value}
+                onChange={(e)=>this.handleCode(e)}
+               />
 
 
 
-     </div>
+
+           <div className="divider" />
+           <div className="row">
+             <div className="col-lg-6 noPadRight">
+               <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="Cancel"  disabled={this.state.Cancel_disabled}/>
+
+             </div>
+             <div className="col-lg-6 noPadLeft">
+               <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSave(e)} disabled={this.state.disabled}/>
+
+             </div>
+           </div>
+
+        </form>
+
+
 
 
 
