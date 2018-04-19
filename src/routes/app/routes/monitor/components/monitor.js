@@ -71,8 +71,11 @@ class Monitor extends React.Component {
                </ul>
              </div>
              <footer>
+               {/* <div className="col-lg-6 noPadRight">
+                  <div  className="howlBlue" onClick={()=>this.handlePurchase()} primary label="PURCHASE" >Add to cart</div>
+               </div> */}
                <RaisedButton primary label="Get it now" onClick={()=>this.handlePurchase()} />
-               {/* <a href="#/app/camerasettings/purchase" className="btn btn-howl">Get it now</a> */}
+               
              </footer>
            </section>
          </div>

@@ -239,6 +239,9 @@ class SidebarContent extends React.Component {
 
         </li>
         <li>
+          <FlatButton href="#/app/Alpha"><img className="nav-icon material-icons" src="assets/images/blueMonitor.png" alt="Image" height="20" width="20"/><span className="nav-text">Alpha</span></FlatButton>
+        </li>
+        <li>
           <a  onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></a>
         </li>
         <Dialog

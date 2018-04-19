@@ -25,7 +25,7 @@ class EditProfile extends React.Component {
   }
 
 
-  handleFname= (e) => {
+  handleFname= (e) => {                           //To handle change in the First Name field
      this.setState({
            Fname: e.target.value,
            disabled: false,
@@ -35,7 +35,7 @@ class EditProfile extends React.Component {
 
        }
 
-  handleLname= (e) => {
+  handleLname= (e) => {                             //To handle change in the Last Name field
     this.setState({
           Lname: e.target.value,
           disabled: false,
@@ -44,15 +44,8 @@ class EditProfile extends React.Component {
               console.log(this.state.Lname) ;
 
             }
-    // handleLname(value) {
-    //   this.setState({
-    //           Lname: value,
-    //           disabled: false
-    //         });
-    //         console.log(value) ;
-    //         return value;
-    //       }
-    handleEmail= (e) => {
+
+    handleEmail= (e) => {                         //To handle change in the Email Name field
       this.setState({
            Email: e.target.value,
            disabled: false,
@@ -65,7 +58,7 @@ class EditProfile extends React.Component {
 
 
 
-       handlePhoneNumber= (e) =>{
+       handlePhoneNumber= (e) =>{                       //Redirects to the change phone number component
 
             this.setState({
               redirectToChangePhone: true,
@@ -74,8 +67,34 @@ class EditProfile extends React.Component {
 
 
 
+      handleOnChange= (number) => {                    //To handle change in the Phone Number field
 
-      handlePhoneNo(phoneNumber){
+                        this.setState({
+                           phonenumber: number,
+                           Cancel_disabled: false
+
+                        });
+                        console.log(this.state.phonenumber)
+                 }
+
+    handleCode(event) {                                 //To handle change in the 4-digit phone verification field
+
+            event.preventDefault();
+                 const target = event.target;
+                 const value = target.type === target.value;
+                 const name = target.name;
+
+                 this.setState({
+                       Code: target.value,
+                       Cancel_disabled: false
+                     });
+
+                     console.log(target.value) ;
+                     return target.value;
+                   }
+
+
+      handlePhoneNo(phoneNumber){                          // validation of phone number on click of Next
 
             if(this.state.phonenumber === undefined)
             {
@@ -143,39 +162,15 @@ class EditProfile extends React.Component {
             })
           }
         }
-      handleBack(event) {
+
+      handleBack(event) {                 //To Reload the page
             window.location.reload();
           }
 
 
-      handleOnChange= (number) => {
-
-                this.setState({
-                   phonenumber: number,
-                   Cancel_disabled: false
-
-                });
-                console.log(this.state.phonenumber)
-         }
-
-    handleCode(event) {
-           event.preventDefault();
-           const target = event.target;
-         const value = target.type === target.value;
-         const name = target.name;
-
-         this.setState({
-               Code: target.value,
-               Cancel_disabled: false
-             });
-
-             console.log(target.value) ;
-             return target.value;
-           }
 
 
-
-     handleSave(event){
+     handleSave(event){                 //handle submit changes if any in FirstName,LastName,Email to the DB
 
 
 
@@ -276,7 +271,7 @@ class EditProfile extends React.Component {
 
    }
 
-   handleSaveProfile(event){
+   handleSaveProfile(event){          //handle submit changes in all the fields of the EditProfile
 
 
 
@@ -336,7 +331,7 @@ class EditProfile extends React.Component {
        {
          alert("HOWL is currently Only Available to users based in the U.S and INDIA")
        }
-       else if(re1.test(this.state.Code)==''|| this.state.Code.length!=4 || this.state.Code.length>4 && country!= 1 && country!= 91 && phone === undefined  && email!='' && re.test(lastname)!='' && firstname !='' && re.test(firstname)!='')
+       else if(re1.test(this.state.Code)==''|| this.state.Code.length!=4 || this.state.Code.length>4 )
        {
          alert("Enter the verification code sent to the mobile !");
 
@@ -385,12 +380,6 @@ class EditProfile extends React.Component {
 
                                             })
 
-
-
-                                       //
-                                       // })
-
-
                                        if(this.state.profilestatus == "1"  || this.state.CodeResultStatus == "1"  )
                                        {
                                          alert("Successfully Updated Profile!")
@@ -403,6 +392,10 @@ class EditProfile extends React.Component {
                                             });
                                             window.location.reload();
 
+                                     }
+
+                                     else{
+                                        alert(this.state.message);
                                      }
 
                            })
@@ -529,8 +522,7 @@ class EditProfile extends React.Component {
         }
 
 
-       // console.log(phonenumber);
-    return (                                                  //redirect to Edit profile entry page
+    return (                                                       //OnLoad Edit Profile Page
                     <form name="EditProfileForm">
 
                      <p>FIRST NAME
@@ -557,10 +549,6 @@ class EditProfile extends React.Component {
                             value={this.state.phonenumber}
                             onChange={this.handlePhoneNumber}
                            />
-
-
-                            {/* <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleOnChange}/> */}
-
 
                         </p>
 

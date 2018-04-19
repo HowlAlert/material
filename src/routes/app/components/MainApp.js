@@ -71,6 +71,11 @@ let AsyncCard = loadable({
   loading: LoadingComponent
 })
 
+let AsyncAlpha = loadable({
+  loader: () => import('../routes/alpha/'),
+  loading: LoadingComponent
+})
+
 // let AsyncCameraAddDevices = loadable({
 //   loader: () => import('../routes/cam-add-devices/'),
 //   loading: LoadingComponent
@@ -167,7 +172,7 @@ class MainApp extends React.Component {
                   <Route path={`${match.url}/Monitoring`} component={AsyncMonitor} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/Help & Support`} component={AsyncHelp} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/Settings`} component={AsyncSettings} onEnter={this.requireAuth}/>
-                  {/* <Route path={`${match.url}/settingsmenu`} component={AsyncSettingsMenu} onEnter={this.requireAuth}/> */}
+                  <Route path={`${match.url}/alpha`} component={AsyncAlpha} onEnter={this.requireAuth}/>
                   <Route path={`${match.url}/Company-Rules`} component={AsyncRules} onEnter={this.requireAuth}/>
                   {/* <Route path={`${match.url}/pglayout`} component={AsyncPageLayout} onEnter={this.requireAuth}/> */}
                   <Route path={`${match.url}/Map`} component={AsyncMap} onEnter={this.requireAuth}/>

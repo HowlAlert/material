@@ -83,26 +83,31 @@ return (
       <div className="box box-default">
         <div className="box-body">
 {/* <div className="box box-default "> */}
+                 <div className="card__title">
+                      <div className="article-title-header">Google Device</div>
+                  </div>
                    <div className="item-card card__horizontal " >
                      <div className="card__image">
+
                        <a href="javascript:;">
                          <img alt="product" src='assets/images/home.png'   width='250'
                            height='250'/>
                        </a>
                      </div>
                      <div className="card__body ">
-                       <div className="card__title">
-                         <div className="article-title-header">Google Device</div>
-                       </div>
+
                        <div className="card__price">
-                         <span className="type--strikethrough">$699.99</span>
-                         <span>$649.99</span>
+                         <span className="type--strikethrough">$99.99</span>
+                         <span>$49.99</span>
                        </div>
                        <div className="divider divider-solid divider-lg" />
 
-                        <RaisedButton  className="float-right" primary label="Buy Device" onClick={()=>this.handlePurchase()}/>
 
                      </div>
+                     <div className="col-lg-6 noPadRight">
+                        <div  className="howlBlue" onClick={()=>this.handlePurchase()} primary label="PURCHASE" >Add to cart</div>
+                     </div>
+
 
                    </div>
 
