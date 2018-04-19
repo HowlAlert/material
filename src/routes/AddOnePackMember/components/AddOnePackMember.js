@@ -231,7 +231,7 @@ console.log(country);
             </div>*/}
 
             <div className="regButtons">
-              <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="#/app/register5">BACK</a>
+              <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/">CANCEL</a>
               <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleNext(e)}>NEXT</div>
             </div>
 

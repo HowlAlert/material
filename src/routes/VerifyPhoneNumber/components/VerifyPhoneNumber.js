@@ -43,7 +43,7 @@ class VerifyPhoneNumber extends React.Component {
   }
   }
 
-  
+
 
   handlePhoneNo(phoneNumber){
     if(this.state.phone === undefined){
@@ -108,10 +108,6 @@ console.log(this.state.phone);
      }
      }
 
-     handleBack(event){
-       this.setState({ redirectToBack: true })
-     }
-
     handleOnChange(number) {
        this.setState({
           phone: number
@@ -128,13 +124,6 @@ console.log(this.state.phone);
 
 
   render() {
-    const { redirectToBack} = this.state
-    if (redirectToBack){
-      return (
-          <Redirect to="Register" />
-      )
-    }
-
     const{redirectToHome}=this.state
 
     if(redirectToHome){
@@ -181,7 +170,7 @@ console.log(this.state.phone);
 
 
         <div className="regButtons">
-          <div style={mWidthStyle} className="howlRegBack" label="NEXT -->" onClick={(e)=>this.handleBack(e)}>BACK</div>
+          <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/">CANCEL</a>
           <div style={mWidthStyle} className="howlRegNext" label="NEXT -->"  onClick={(e)=>this.handlePhoneNo(e)}>NEXT</div>
         </div>
         {/*

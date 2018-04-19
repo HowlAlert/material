@@ -67,7 +67,7 @@ console.error(this.state.Longitude);
        })
         .then((Response)=> Response.json())
          .then((findresponse)=>{
-            console.log(findresponse)
+
             this.setState({
             ResultStatus:findresponse.AddEditUserHomeAddressResult.ResultStatus
           });console.log(this.state.ResultStatus);
@@ -86,6 +86,7 @@ console.error(this.state.Longitude);
 
    handleValue(event) {
       event.preventDefault();
+      event.stopPropagation();
        const target = event.target;
        const value = target.type === target.value;
        const name = target.name;
@@ -218,7 +219,7 @@ console.error(this.state.Longitude);
             </div>*/}
 
             <div className="regButtons">
-              <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="packcontact">BACK</a>
+              <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/">CANCEL</a>
               <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleFormSubmit(e)}>NEXT</div>
             </div>
 

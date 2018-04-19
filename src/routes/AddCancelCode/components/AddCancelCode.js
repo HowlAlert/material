@@ -91,7 +91,7 @@ const mWidthStyle = {
            <Redirect to="app/home" />
          )
        }
-       
+
     return (
       <div className="body-inner">
 
@@ -146,7 +146,7 @@ const mWidthStyle = {
             </div>*/}
 
             <div className="regButtons">
-              <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="#/app/register4">BACK</a>
+              <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/">CANCEL</a>
               <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleVerifyCode(e)}>NEXT</div>
             </div>
 

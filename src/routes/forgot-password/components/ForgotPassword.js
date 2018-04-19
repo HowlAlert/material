@@ -112,7 +112,7 @@ class ForgotPassword extends React.Component {
 
 
             <div className="regButtons">
-                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/mainLogin">CANCEL</a>
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/">CANCEL</a>
               <div style={mWidthStyle}  label="SEND PASSWORD" className="howlRegNext"  onClick={(e)=>this.handleSendPwd(e)}>SEND</div>
             </div>
               </form>

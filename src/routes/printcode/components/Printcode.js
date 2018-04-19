@@ -139,7 +139,7 @@ handlePrintCode(event){
 
               </fieldset>
               <div className="regButtons">
-                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/mainLogin">CANCEL</a>
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/">CANCEL</a>
                 <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" href="/mainLogin">SUBMIT</div>
               </div>
             </form>

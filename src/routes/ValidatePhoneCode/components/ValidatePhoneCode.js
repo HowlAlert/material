@@ -36,10 +36,6 @@ class ValidatePhoneCode extends React.Component {
   }
   }
 
-  handleBack(event){
-    this.setState({ redirectToBack: true })
-  }
-
 
   handleCode(event) {
     event.preventDefault();
@@ -100,13 +96,6 @@ console.log(cookie.load('UserToken'));
 
   render() {
 
-    const { redirectToBack} = this.state
-    if (redirectToBack){
-      return (
-          <Redirect to="VerifyPhoneNumber" />
-      )
-    }
-
     const{redirectToHome}=this.state
     if(redirectToHome){
       return (
@@ -164,7 +153,7 @@ console.log(cookie.load('UserToken'));
 
               </div>
               <div className="regButtons">
-                <div style={mWidthStyle} className="howlRegBack" label="NEXT -->" onClick={(e)=>this.handleBack(e)}>BACK</div>
+                <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/">CANCEL</a>
                 <div style={mWidthStyle} className="howlRegNext" label="NEXT -->"  onClick={(e)=>this.handleVerifyCode(e)}>NEXT</div>
               </div>
               {/*
