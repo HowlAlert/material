@@ -18,6 +18,7 @@ class GoogleMap extends React.Component {
         activeMarker: {},
         selectedPlace: {},
 
+
     }
 
     this.onMapClicked = this.onMapClicked.bind(this);
@@ -28,8 +29,10 @@ class GoogleMap extends React.Component {
 onMapClicked (props) {
     if (this.state.showingInfoWindow) {
         this.setState({
+
             showingInfoWindow: false,
-            activeMarker: null
+            activeMarker: null,
+
         })
 
     }
@@ -49,6 +52,23 @@ handleMapMount(mapProps, map) {
     //log map bounds
     console.log(this.map.getBounds());
 }
+
+componentDidMount(){
+  // fetch('http://api.spotcrime.com/crimes.json?lat=40.740508&lon=-73.97834749999998&radius=0.01&callback=jsonp1&key=17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce',
+  // {
+  //      method: "GET",
+  //      headers: new Headers({'content-type': 'application/json'}),
+  // })
+  //   .then(function(response) {
+  //     return response.json();
+  //   })
+  //   .then(function(myJson) {
+  //     console.log(myJson);
+  //   });
+  //
+
+
+   }
 
 render() {
     const {google} = this.props;
@@ -70,6 +90,7 @@ render() {
     return (
 
         <Map className='google-map'
+
             google={google}
             onClick={this.onMapClicked}
             initialCenter={{
@@ -80,6 +101,8 @@ render() {
             }}
             zoom={this.state.zoom}
             onReady={this.handleMapMount}
+
+
 
            styles={[{"featureType":"all","elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},
              {"featureType":"all","elementType":"labels.icon","stylers":[{"visibility": "off"}]},
@@ -97,11 +120,9 @@ render() {
              {"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]},
              {"featureType":"transit.line","elementType":"geometry","stylers":[{ "color": "#e5e5e5"}]},
              {"featureType":"transit.station","elementType":"geometry","stylers":[{ "color":  "#eeeeee"}]},
-             {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
+           {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
-        style={{ width:"100%"}}
-
 
           >
 
