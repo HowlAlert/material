@@ -73,6 +73,33 @@ class AddOnePackMember extends React.Component {
           }
 
    handleNext(event) {
+     let email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+     let names = /^[A-z]+$/;
+     if(this.state.fname==''){
+       alert("Please enter your first name");
+       this.setState.noOfSuperValidation="False"
+     }
+     else if(names.test(this.state.fname)==''){
+       alert("Please enter only alphabets for First Name");
+       this.setState.noOfSuperValidation="False"
+     }
+     else if(this.state.lname==''){
+       alert("Please enter your last name");
+       this.setState.noOfSuperValidation="False"
+     }
+     else if(names.test(this.state.lname)==''){
+       alert("Please enter only alphabets for Last Name");
+       this.setState.noOfSuperValidation="False"
+     }
+     else if(this.state.email==''){
+       alert("Please enter your email address");
+       this.setState.noOfSuperValidation="False"
+     }
+
+     else if(email.test(this.state.email)==''){
+       alert("Please enter a valid email");
+       this.setState.noOfSuperValidation="False"
+     }
 
      var phone = this.state.phone;
      var phoneNumber=phone.replace(/\D/g,'')

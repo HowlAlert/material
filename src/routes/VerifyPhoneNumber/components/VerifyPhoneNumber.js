@@ -32,6 +32,7 @@ class VerifyPhoneNumber extends React.Component {
       ResultStatus:'',
       phone:''
     }
+
       this.handleOnChange = this.handleOnChange.bind(this);
 
   }
@@ -43,29 +44,26 @@ class VerifyPhoneNumber extends React.Component {
   }
   }
 
-
-
   handlePhoneNo(phoneNumber){
     if(this.state.phone === undefined){
       alert("Please enter phone number")
     }
 
 console.log(this.state.phone);
-      var phone = this.state.phone;
-      var phoneNumber=phone.replace(/\D/g,'')
-      var number=phoneNumber.substr(phoneNumber.length-10)
-      var country=phoneNumber.slice(0, -10)
-    //   ereg_replace(“[^0-9]”, “”, phone)
-     console.log(phoneNumber);
-     console.log(number);
-     console.log(country);
+var phone = this.state.phone;
+var phoneNumber=phone.replace(/\D/g,'')
+var number=phoneNumber.substr(phoneNumber.length-10)
+var country=phoneNumber.slice(0, -10)
+var country1=phoneNumber.match(/^[+]?\D?[(]$/)
+console.log(phoneNumber);
+console.log(number);
+console.log(country);
+console.log(country1);
 
 
-
-   if(number.length!=10){
-       alert("Please enter only 10 digit phone number")
-     }
-
+if(number.length!=10){
+alert("Please enter only 10 digit phone number")
+}
      else if(country!= 1 && country!= 91){
        alert("HOWL is currently Only Available to users based in the U.S and INDIA")
      }

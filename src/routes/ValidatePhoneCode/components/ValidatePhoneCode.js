@@ -26,6 +26,18 @@ class ValidatePhoneCode extends React.Component {
       ResultStatus:'',
       text:''
     };
+    //input Highlighting code start
+          this.textInput = null;
+
+            this.setTextInputRef = element => {
+              this.textInput = element;
+            };
+
+            this.focusTextInput = () => {
+              // Focus the text input using the raw DOM API
+              if (this.textInput) this.textInput.focus();
+            };
+    //input Highlighting code end
   }
 
 
@@ -36,6 +48,10 @@ class ValidatePhoneCode extends React.Component {
   }
   }
 
+   componentDidMount() {
+      // autofocus the input on mount for input Highlighting
+      this.focusTextInput();
+    }
 
   handleCode(event) {
     event.preventDefault();
@@ -55,14 +71,23 @@ class ValidatePhoneCode extends React.Component {
       console.log("hi") ;
       console.log(this.state.Code);
       let re = /^[0-9]{4}$/;
-    if(re.test(this.state.Code)=='' || this.state.Code.length!=4 || this.state.Code.length>4){
-      alert("The verification code you entered is invalid. Please try again.");
-      console.log("hi alert")
+    if(this.state.Code==''){
+      alert("Please enter your verification code.");
+      this.setState.noOfSuperValidation="False"
     }
+     else if(this.state.Code.length!=4) {
+       alert("Please enter 4 digit verification code.");
+       this.setState.noOfSuperValidation="False"
+     }
+     else if(re.test(this.state.Code)=='') {
+       alert("Please enter only digits for verification code.");
+       this.setState.noOfSuperValidation="False"
+     }
 
 
 console.log(cookie.load('Id')),
 console.log(cookie.load('UserToken'));
+if(this.setState.noOfSuperValidation!="False"){
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
 
          fetch(BaseURL,{
@@ -88,7 +113,7 @@ console.log(cookie.load('UserToken'));
         }
       })
 
-
+}
 
     }
 
@@ -141,6 +166,8 @@ console.log(cookie.load('UserToken'));
                   floatingLabelText='XXXX'
                    //value={this.state.value}
                    onChange={(e)=>this.handleCode(e)}
+                   ref={this.setTextInputRef} //for input Highlighting
+                    onClick={this.focusTextInput} //for input Highlighting
                   />
                 </div>
 

@@ -48,7 +48,6 @@ class Login extends React.Component {
       Password:'',
       GetUser:'',
       ResultStatus:'',
-      noOfSuperValidation:0,
       text:''
     };
     //input Highlighting code start
@@ -94,25 +93,26 @@ class Login extends React.Component {
 
 
   event.preventDefault();
+  let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if(this.state.Email==''){
     alert("Please enter your email address");
     this.setState.noOfSuperValidation="False"
   }
-  let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if(re.test(this.state.Email)=='' && this.state.Email!=''){
+
+  else if(re.test(this.state.Email)==''){
     alert("Please enter a valid email");
     this.setState.noOfSuperValidation="False"
   }
-  if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!=''){
+  else if(this.state.Password==''){
     alert("Please enter a password");
     this.setState.noOfSuperValidation="False"
   }
-  if(PasswordLength<6 && this.state.Password!='' && this.state.Email!='' && re.test(this.state.Email)!=''){
+  else if(PasswordLength<6){
     alert("Password must be at least 6 characters");
     this.setState.noOfSuperValidation="False"
   }
 
-  if(this.setState.noOfSuperValidation!="False"){
+ if(this.setState.noOfSuperValidation!="False"){
 
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
        fetch(BaseURL,{
