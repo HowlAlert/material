@@ -18,11 +18,7 @@ class GoogleMap extends React.Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
-<<<<<<< HEAD
-=======
 
-
->>>>>>> cfda5e52571b187e8fa19cdaa9b03f95b343e1ec
     }
     this.onMapClicked = this.onMapClicked.bind(this);
     this.onMarkerClicked = this.onMarkerClicked.bind(this);
@@ -139,12 +135,7 @@ render() {
 
             zoom={this.state.zoom}
             onReady={this.handleMapMount}
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> cfda5e52571b187e8fa19cdaa9b03f95b343e1ec
            styles={[{"featureType":"all","elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},
              {"featureType":"all","elementType":"labels.icon","stylers":[{"visibility": "off"}]},
              {"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},
