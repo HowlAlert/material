@@ -63,7 +63,7 @@ render() {
     return (
 
 
-
+     
         <Map
             google={google}
             onClick={this.onMapClicked}

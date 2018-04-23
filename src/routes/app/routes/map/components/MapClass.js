@@ -1,7 +1,6 @@
 
 import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper, Polygon} from 'google-maps-react';
-
 import cookie from 'react-cookies';
 
 
@@ -13,7 +12,7 @@ class GoogleMap extends React.Component {
   constructor() {
     super();
     this.state = {
-        zoom: 11,
+        zoom: 13,
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
@@ -53,22 +52,52 @@ handleMapMount(mapProps, map) {
     console.log(this.map.getBounds());
 }
 
-componentDidMount(){
-  // fetch('http://api.spotcrime.com/crimes.json?lat=40.740508&lon=-73.97834749999998&radius=0.01&callback=jsonp1&key=17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce',
-  // {
-  //      method: "GET",
-  //      headers: new Headers({'content-type': 'application/json'}),
-  // })
-  //   .then(function(response) {
-  //     return response.json();
-  //   })
-  //   .then(function(myJson) {
-  //     console.log(myJson);
-  //   });
+ componentDidMount(){
+  //  fetch('http://api.spotcrime.com/crimes.json',
+  //  {
+  //   lat:'40.740508',
+  //   lon:'-73.97834749999998',
+  //   radius:'0.01',
+  //   callback:'jsonp1',
+  //   key:'17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce',
   //
+  //   method: 'GET',
+  //   headers: {
+  //       "Content-Type": "text/plain",
+  //   }
+  // })
+  //    .then(function(response) {
+  //      return response.text();
+  //    })
+  //    .then(function(text) {
+  //      console.log('Request successful', text);
+  //    })
+  //    .catch(function(error) {
+  //      console.log('Request failed', error)
+  //    });
 
+const feedURL = 'http://api.spotcrime.com/crimes.json?lat=40.740508&lon=-73.97834749999998&radius=0.01&max_records=10&types=assault%252Cburglary&key=17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce';
+  fetch(feedURL,
+{
+method:'GET',
 
-   }
+dataType: 'json',
+
+})
+  .then(response => response.json())
+  .then(data => {
+      this.setState({
+          data: data
+      });
+
+      console.log(data)
+  })
+  .catch(resp => {
+      console.error(resp);
+  });
+
+}
+
 
 render() {
     const {google} = this.props;
@@ -82,8 +111,6 @@ render() {
     var lastname=lname.substr(0, 1);
      console.log(lastname);
 
-    var AlertDate=cookie.load('AlertDate');
-      console.log(AlertDate)
 
 
 

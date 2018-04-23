@@ -131,6 +131,13 @@ handleFormSubmit = (event) => {
 }
 
 
+
+
+
+
+
+
+
   render() {
 
 
@@ -196,11 +203,12 @@ handleFormSubmit = (event) => {
                   </div>
 
                 </div>
-                
+
               <div className="regButtons">
 
                 <div style={mWidthStyle} className="howlRegNext"  onClick={(e)=>this.handleFormSubmit(e)}>SUBMIT</div>
               </div>
+
           </form>
        </div>
      </div>
