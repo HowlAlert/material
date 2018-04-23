@@ -1,7 +1,6 @@
 
 import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper, Polygon} from 'google-maps-react';
-
 import cookie from 'react-cookies';
 
 
@@ -15,10 +14,15 @@ class GoogleMap extends React.Component {
   constructor() {
     super();
     this.state = {
-        zoom: 11,
+        zoom: 13,
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> cfda5e52571b187e8fa19cdaa9b03f95b343e1ec
     }
     this.onMapClicked = this.onMapClicked.bind(this);
     this.onMarkerClicked = this.onMarkerClicked.bind(this);
@@ -30,8 +34,10 @@ onMapClicked (props) {
 
     if (this.state.showingInfoWindow) {
         this.setState({
+
             showingInfoWindow: false,
-            activeMarker: null
+            activeMarker: null,
+
         })
 
     }
@@ -56,6 +62,53 @@ handleMapMount(mapProps, map) {
 
 }
 
+ componentDidMount(){
+  //  fetch('http://api.spotcrime.com/crimes.json',
+  //  {
+  //   lat:'40.740508',
+  //   lon:'-73.97834749999998',
+  //   radius:'0.01',
+  //   callback:'jsonp1',
+  //   key:'17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce',
+  //
+  //   method: 'GET',
+  //   headers: {
+  //       "Content-Type": "text/plain",
+  //   }
+  // })
+  //    .then(function(response) {
+  //      return response.text();
+  //    })
+  //    .then(function(text) {
+  //      console.log('Request successful', text);
+  //    })
+  //    .catch(function(error) {
+  //      console.log('Request failed', error)
+  //    });
+
+const feedURL = 'http://api.spotcrime.com/crimes.json?lat=40.740508&lon=-73.97834749999998&radius=0.01&max_records=10&types=assault%252Cburglary&key=17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce';
+  fetch(feedURL,
+{
+method:'GET',
+
+dataType: 'json',
+
+})
+  .then(response => response.json())
+  .then(data => {
+      this.setState({
+          data: data
+      });
+
+      console.log(data)
+  })
+  .catch(resp => {
+      console.error(resp);
+  });
+
+}
+
+
 render() {
     const {google} = this.props;
 
@@ -68,13 +121,12 @@ render() {
     var lastname=lname.substr(0, 1);
      console.log(lastname);
 
-    var AlertDate=cookie.load('AlertDate');
-      console.log(AlertDate)
 
 
     return (
 
         <Map className='google-map'
+
             google={google}
             onClick={this.onMapClicked}
 
@@ -87,6 +139,12 @@ render() {
 
             zoom={this.state.zoom}
             onReady={this.handleMapMount}
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> cfda5e52571b187e8fa19cdaa9b03f95b343e1ec
            styles={[{"featureType":"all","elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},
              {"featureType":"all","elementType":"labels.icon","stylers":[{"visibility": "off"}]},
              {"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},
@@ -103,11 +161,9 @@ render() {
              {"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]},
              {"featureType":"transit.line","elementType":"geometry","stylers":[{ "color": "#e5e5e5"}]},
              {"featureType":"transit.station","elementType":"geometry","stylers":[{ "color":  "#eeeeee"}]},
-             {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
+           {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
-        style={{ width:"100%"}}
-
 
           >
 

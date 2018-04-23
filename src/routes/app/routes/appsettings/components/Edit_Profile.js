@@ -96,72 +96,76 @@ class EditProfile extends React.Component {
 
       handlePhoneNo(phoneNumber){                          // validation of phone number on click of Next
 
-            if(this.state.phonenumber === undefined)
-            {
-              alert("Please enter phone number")
-            }
+        this.setState({
+          redirectToConfirmCode: true ,
+         })
+         //  var savedPno =  cookie.load('MobilePhoneNumber');
+         //  console.log(this.state.phonenumber)
+         //
+         //        var phone = this.state.phonenumber;
+         //         console.log(phone.length)
+         //        var phoneNumber=phone.replace(/\D/g,'')
+         //        console.log(phoneNumber);
+         //        var number=phoneNumber.substr(phoneNumber.length-10)
+         //         console.log(number);
+         //        var country=phoneNumber.slice(0, -10)
+         //        console.log(country);
+         //
+         //
+         //    if(this.state.phonenumber === undefined)
+         //    {
+         //      alert("Please enter phone number")
+         //    }
+         //
+         //    if(number.length!=10){
+         //      alert("Please enter only 10 digit phone number")
+         //    }
+         //
+         //     else if(country!= 1 && country!= 91){
+         //       alert("HOWL is currently Only Available to users based in the U.S and INDIA")
+         //     }
+         //
+         // else if(number.length==10 && country== 1 || country == 91 )
+         // {
+         //    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
+         //
+         //       fetch(BaseURL,{
+         //        method: "POST",
+         //        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':country,'MobilePhoneNumber':number}),
+         //      headers: new Headers({'content-type': 'application/json'})
+         //      }).
+         //    then((Response)=>Response.json()).
+         //    then((findresponse)=>{
+         //      this.setState({
+         //        ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
+         //      })
+         //
+         //        console.log("status");
+         //        console.log(this.state.ResultStatus.Status);
+         //
+         //        if(this.state.ResultStatus.Status==2 ){
+         //           alert("This phone number is already taken by another account.");
+         //         }
+         //        else if(this.state.ResultStatus.Status==0 ){
+         //          alert("Sorry we cannot send verification code to this number. Please make sure you input the correct Mobile Number.");
+         //        }
+         //        if(this.state.ResultStatus.Status==1){
+         //          this.setState({
+         //            redirectToConfirmCode: true ,
+         //           })
+         //          cookie.save('MobilePhoneNumber', number);
+         //          }
+         //        })
+         //    }
+         //  else
+         //  {
+         //
+         //      alert("Check and re-enter Mobile Number!")
+         //
+         //  }
 
-            console.log(this.state.phonenumber)
-            var phone = this.state.phonenumber;
-              var phoneNumber=phone.replace(/\D/g,'')
-              var number=phoneNumber.substr(phoneNumber.length-10)
-              var country=phoneNumber.slice(0, -10)
-            //   ereg_replace("[^0-9]", "", phone)
-             console.log(phoneNumber);
-             console.log(number);
-             console.log(country);
 
-
-            if(number.length!=10){
-              alert("Please enter only 10 digit phone number")
-            }
-
-             else if(country!= 1 && country!= 91){
-               alert("HOWL is currently Only Available to users based in the U.S and INDIA")
-             }
-             else if(number.length==0){
-               alert("Please enter 10 digit phone number")
-             }
-             else if(number.length!=10){
-               alert("Please enter only 10 digit phone number")
-             }
-             else{
-            const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
-
-               fetch(BaseURL,{
-                method: "POST",
-                body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':country,'MobilePhoneNumber':number}),
-              headers: new Headers({'content-type': 'application/json'})
-              }).
-            then((Response)=>Response.json()).
-            then((findresponse)=>{
-              this.setState({
-                ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
-              })
-
-                console.log("status");
-                //Status:this.state.ResultStatus.Status;
-                console.log(this.state.ResultStatus.Status);
-                console.log(number.length);
-                if(this.state.ResultStatus.Status==2 && number!=''  && number.length==10){
-                   alert("This phone number is already taken by another account.");
-                 }
-                if(this.state.ResultStatus.Status==0 && number!=''){
-                  alert("Sorry we cannot send verification code to this number. Please make sure you input the correct Mobile Number.");
-                }
-                if(this.state.ResultStatus.Status==1 && number!='' && number.length==10){
-                  this.setState({
-
-                    redirectToConfirmCode: true ,
-                   })
-
-
-                  cookie.save('MobilePhoneNumber', number);
-                   }
-
-            })
-          }
-        }
+    }
 
       handleBack(event) {                 //To Reload the page
             window.location.reload();
@@ -181,22 +185,22 @@ class EditProfile extends React.Component {
         var email = cookie.load('Email');
         console.log(email);
 
-
-        var phone = this.state.phonenumber;
-        var phoneNumber=phone.replace(/\D/g,'')
-        var number=phoneNumber.substr(phoneNumber.length-10)
-        var country=phoneNumber.slice(0, -10)
-      //   ereg_replace("[^0-9]", "", phone)
-       console.log(phoneNumber);
-       console.log(number);
-       console.log(country);
-
-       var verificationcode = this.state.Code;
-       console.log(verificationcode)
+      //
+      //   var phone = this.state.phonenumber;
+      //   var phoneNumber=phone.replace(/\D/g,'')
+      //   var number=phoneNumber.substr(phoneNumber.length-10)
+      //   var country=phoneNumber.slice(0, -10)
+      // //   ereg_replace("[^0-9]", "", phone)
+      //  console.log(phoneNumber);
+      //  console.log(number);
+      //  console.log(country);
+      //
+      //  var verificationcode = this.state.Code;
+      //  console.log(verificationcode)
 
         const re = /^[A-z]+$/;
         const pw_validation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        const re1 = /^[0-9]{4}$/;
+
 
 
         if(firstname==="")
@@ -284,13 +288,13 @@ class EditProfile extends React.Component {
 
 
       var phone = this.state.phonenumber;
+       console.log(phone)
       var phoneNumber=phone.replace(/\D/g,'')
+      console.log(phoneNumber);
       var number=phoneNumber.substr(phoneNumber.length-10)
+       console.log(number);
       var country=phoneNumber.slice(0, -10)
-    //   ereg_replace("[^0-9]", "", phone)
-     console.log(phoneNumber);
-     console.log(number);
-     console.log(country);
+      console.log(country);
 
      var verificationcode = this.state.Code;
      console.log(verificationcode)
@@ -338,6 +342,94 @@ class EditProfile extends React.Component {
        }
 
      else{
+
+
+       var savedPno =  cookie.load('MobilePhoneNumber');
+       console.log(this.state.phonenumber)
+
+             var phone = this.state.phonenumber;
+              console.log(phone.length)
+             var phoneNumber=phone.replace(/\D/g,'')
+             console.log(phoneNumber);
+             var number=phoneNumber.substr(phoneNumber.length-10)
+              console.log(number);
+             var country=phoneNumber.slice(0, -10)
+             console.log(country);
+
+
+         if(this.state.phonenumber === undefined)
+         {
+           alert("Please enter phone number")
+         }
+
+         if(number.length!=10){
+           alert("Please enter only 10 digit phone number")
+         }
+
+          else if(country!= 1 && country!= 91){
+            alert("HOWL is currently Only Available to users based in the U.S and INDIA")
+          }
+
+      else if(number.length==10 && country== 1 || country == 91 )
+      {
+         const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
+
+            fetch(BaseURL,{
+             method: "POST",
+             body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':country,'MobilePhoneNumber':number}),
+           headers: new Headers({'content-type': 'application/json'})
+           }).
+         then((Response)=>Response.json()).
+         then((findresponse)=>{
+           this.setState({
+             ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
+           })
+
+             console.log("status");
+             console.log(this.state.ResultStatus.Status);
+
+             if(this.state.ResultStatus.Status==2 ){
+                alert("This phone number is already taken by another account.");
+              }
+             else if(this.state.ResultStatus.Status==0 ){
+               alert("Sorry we cannot send verification code to this number. Please make sure you input the correct Mobile Number.");
+             }
+             if(this.state.ResultStatus.Status==1){
+               this.setState({
+                 redirectToConfirmCode: true ,
+                })
+               cookie.save('MobilePhoneNumber', number);
+               }
+             })
+         }
+       else
+       {
+
+           alert("Check and re-enter Mobile Number!")
+
+       }
+
+
+       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
+
+            fetch(BaseURL,{
+             method: "POST",
+             body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'), 'MobilePhoneConfirmationCode':this.state.Code}),
+            headers: new Headers({'content-type': 'application/json'})
+           }).
+         then((Response)=>Response.json()).
+         then((findresponse)=>{
+           console.log(findresponse)
+           this.setState({
+             CodeResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.Status ,
+             Codemessage:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.StatusMessage
+           });
+            console.log(this.state.CodeResultStatus);
+            console.log(this.state.Codemessage)
+           if(this.state.CodeResultStatus != 1)
+            {
+                    alert(this.state.Codemessage);
+            }
        const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserProfile';
         fetch(URL,
                         {
@@ -356,49 +448,41 @@ class EditProfile extends React.Component {
                             console.log(findresponse)
                         this.setState({
                            profilestatus:findresponse.UpdateUserProfileResult.ResultStatus.Status,
-                           message:findresponse.UpdateUserProfileResult.ResultStatus.StatusMessage
+                           profilemessage:findresponse.UpdateUserProfileResult.ResultStatus.StatusMessage
                                           })
                                           console.log(this.state.profilestatus);
-                                          console.log(this.state.message);
+                                          console.log(this.state.profilemessage);
+                                          console.log(this.state.CodeResultStatus);
+                                          console.log(this.state.Codemessage)
 
-
-                                            const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
-
-                                               fetch(BaseURL,{
-                                                method: "POST",
-                                                body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'), 'MobilePhoneConfirmationCode':this.state.Code}),
-                                               headers: new Headers({'content-type': 'application/json'})
-                                              }).
-                                            then((Response)=>Response.json()).
-                                            then((findresponse)=>{
-                                              console.log(findresponse)
-                                              this.setState({
-                                                CodeResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.Status ,
-                                                message:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.StatusMessage
+                                          if(this.state.profilestatus != "1"){
+                                             alert(this.state.profilemessage);
+                                          }
+                                          console.log(this.state.profilestatus);
+                                         if(this.state.profilestatus == "1" && this.state.CodeResultStatus == "1")
+                                         {
+                                           alert("Successfully Updated Profile!")
+                                           cookie.save('FirstName', firstname);
+                                           cookie.save('LastName', lastname);
+                                           cookie.save('Email', email);
+                                           this.setState({
+                                                disabled: true,
+                                                Cancel_disabled:true
                                               });
+                                              window.location.reload();
+
+                                          }
 
 
-                                            })
-
-                                       if(this.state.profilestatus == "1"  || this.state.CodeResultStatus == "1"  )
-                                       {
-                                         alert("Successfully Updated Profile!")
-                                         cookie.save('FirstName', firstname);
-                                         cookie.save('LastName', lastname);
-                                         cookie.save('Email', email);
-                                         this.setState({
-                                              disabled: true,
-                                              Cancel_disabled:true
-                                            });
-                                            window.location.reload();
-
-                                     }
-
-                                     else{
-                                        alert(this.state.message);
-                                     }
 
                            })
+
+
+
+
+
+
+         })
 
      }
 
@@ -408,7 +492,7 @@ class EditProfile extends React.Component {
       this.setState({Fname: cookie.load('FirstName')});
       this.setState({Lname: cookie.load('LastName')});
       this.setState({Email: cookie.load('Email')});
-      this.setState({phonenumber:cookie.load('MobilePhoneNumber')});
+      // this.setState({phonenumber:cookie.load('MobilePhoneNumber')});
 
    }
   render() {
@@ -420,40 +504,48 @@ class EditProfile extends React.Component {
                    return (
 
 
-                     <form name="EditProfileForm">
+                <form>
+                  <div className="row">
+                  <div className="col-lg-6 noPadRight">
 
-                      <p>FIRST NAME
-                       <input
-                        value={this.state.Fname}
-                        onChange={this.handleFname}
-                       />
-                       </p>
+                    FIRST NAME
+                    <input      value={this.state.Fname}   onChange={this.handleFname}  />
 
-                          <p>LAST NAME
-                            <input
-                             value={this.state.Lname}
-                             onChange={this.handleLname}
-                            />
-                          </p>
-                            <p>EMAIL ADDRESS
-                              <input
-                               value={this.state.Email}
-                               onChange={this.handleEmail}
-                              />
-                           </p>
+                 </div>
+                 <div className="col-lg-6 noPadLeft">
+                   LAST NAME
+                   <input      value={this.state.Lname}  onChange={this.handleLname} />
 
-                            {/* <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleEmail} />*/}
+                 </div>
+                </div>
 
-                           CHANGE PHONE NUMBER
-                              <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleOnChange}/>
-                           4 - DIGIT CODE
-                              <TextField
-                              type="text"
-                              fullWidth
-                              name="Code"
-                               value={this.state.value}
-                               onChange={(e)=>this.handleCode(e)}
-                              />
+
+                <div className="row">
+                  <div className="col-lg-6 noPadRight">
+
+                     EMAIL ADDRESS
+                     <input      value={this.state.Email}  onChange={this.handleEmail}/>
+
+                  </div>
+                  <div className="col-lg-6 noPadLeft">
+                    CHANGE PHONE NUMBER
+                    <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} />
+                  </div>
+                </div>
+
+
+                       <div className="row">
+                         <div className="col-lg-6 noPadRight">
+
+                            4 - DIGIT CODE
+
+                         </div>
+                         <div className="col-lg-6 noPadLeft">
+                              <input      value={this.state.value}  onChange={(e)=>this.handleCode(e)}/>
+
+                         </div>
+                       </div>
+
 
                             <div className="col-lg-6 noPadLeft">
                               <RaisedButton primary label="SAVE" onClick={(e)=>this.handleSaveProfile(e)} />
@@ -473,30 +565,37 @@ class EditProfile extends React.Component {
           return (
             <form name="EditProfileForm">
 
-             <p>FIRST NAME
-              <input
-               value={this.state.Fname}
-               onChange={this.handleFname}
-              />
-              </p>
 
-                 <p>LAST NAME
-                   <input
-                    value={this.state.Lname}
-                    onChange={this.handleLname}
-                   />
-                 </p>
-                   <p>EMAIL ADDRESS
-                     <input
-                      value={this.state.Email}
-                      onChange={this.handleEmail}
-                     />
-                  </p>
 
-                   {/* <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleEmail} />*/}
+                           <div className="row">
+                             <div className="col-lg-6 noPadRight">
 
-                           CHANGE PHONE NUMBER
-                           <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleOnChange}/>
+                               FIRST NAME
+                              <input      value={this.state.Fname}   onChange={this.handleFname}  />
+
+                             </div>
+                             <div className="col-lg-6 noPadLeft">
+                              LAST NAME
+                              <input      value={this.state.Lname}  onChange={this.handleLname} />
+
+                             </div>
+                           </div>
+
+
+                           <div className="row">
+                             <div className="col-lg-6 noPadRight">
+
+                                EMAIL ADDRESS
+                                <input      value={this.state.Email}  onChange={this.handleEmail}/>
+
+                             </div>
+                             <div className="col-lg-6 noPadLeft">
+                               CHANGE PHONE NUMBER
+                               <ReactPhoneInput defaultCountry={'us'}  onChange={this.handleOnChange}/>
+
+                             </div>
+                           </div>
+
                            <div className="divider" />
                            <div className="row">
                              <div className="col-lg-6 noPadRight">
@@ -525,32 +624,44 @@ class EditProfile extends React.Component {
     return (                                                       //OnLoad Edit Profile Page
                     <form name="EditProfileForm">
 
-                     <p>FIRST NAME
-                      <input
-                       value={this.state.Fname}
-                       onChange={this.handleFname}
-                      />
-                      </p>
 
-                         <p>LAST NAME
-                           <input
-                            value={this.state.Lname}
-                            onChange={this.handleLname}
-                           />
-                         </p>
-                           <p>EMAIL ADDRESS
-                             <input
-                              value={this.state.Email}
-                              onChange={this.handleEmail}
-                             />
-                          </p>
-                         <p>PHONE NUMBER
-                           <input
-                            value={this.state.phonenumber}
-                            onChange={this.handlePhoneNumber}
-                           />
 
-                        </p>
+
+                                                   <div className="row">
+                                                     <div className="col-lg-6 noPadRight">
+
+                                                       FIRST NAME
+                                                       <input      value={this.state.Fname}   onChange={this.handleFname}  />
+
+                                                     </div>
+                                                     <div className="col-lg-6 noPadLeft">
+                                                         LAST NAME
+                                                         <input      value={this.state.Lname}  onChange={this.handleLname} />
+
+                                                     </div>
+                                                   </div>
+
+
+
+
+                                                   <div className="row">
+                                                     <div className="col-lg-6 noPadRight">
+
+                                                        EMAIL ADDRESS
+                                                        <input      value={this.state.Email}  onChange={this.handleEmail}/>
+
+                                                     </div>
+                                                     <div className="col-lg-6 noPadLeft">
+                                                       CHANGE PHONE NUMBER
+                                                       <input
+                                                        value={cookie.load('MobilePhoneNumber')}
+                                                        onChange={this.handlePhoneNumber}
+                                                       />
+
+                                                     </div>
+                                                   </div>
+
+
 
                         <div className="divider" />
                         <div className="row">
