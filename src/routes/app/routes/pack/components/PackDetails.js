@@ -640,8 +640,9 @@ class Howls_Pack extends React.Component {
 
 
     <div className="col-xl-12">
-     <div className="box box-default">
+     <div className="box box-default dkShadow">
        <div className="box-body">
+       <h2 className="article-title-header">Pack Members</h2>
      <Pack />
    </div>
  </div>
@@ -650,7 +651,7 @@ class Howls_Pack extends React.Component {
 
 
   <div className="col-xl-6">
-    <div className="box box-default">
+    <div className="box box-default dkShadow">
       <div className="box-body">
     <Howls_Me />
   </div>
@@ -660,7 +661,7 @@ class Howls_Pack extends React.Component {
 
 <div className="col-xl-6">
 
-  <div className="box box-default">
+  <div className="box box-default dkShadow">
     <div className="box-body">
     <h2 className="article-title-header">Howls At Pack</h2>
   <div className="ui-timline-container ">
@@ -769,7 +770,8 @@ class Howls_Pack extends React.Component {
 }
 const Page = () => (
   <div className="container-fluid  chapter">
-    <h2 className="article-title-header mainArticle">MANAGE PACK</h2>
+
+    {/*<h2 className="article-title-header mainArticle">MANAGE PACK</h2>*/}
     <QueueAnim type="bottom" className="ui-animate">
 
        <div key="1"><Howls_Pack /></div>

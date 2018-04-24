@@ -38,9 +38,12 @@ class Monitor extends React.Component {
 
   <article className="article ">
 
-    <h2 className="article-title-header mainArticle">UNLOCK EVERYTHING</h2>
+  <div className="box box-default  dkShadow">
+    <div className="box-body ">
 
-    <div className="col-xl-6 leftAdjust">
+    <h2 className="article-title-header">Monitoring Services</h2>
+
+    <div className="col-xl-12 leftAdjust">
 
      <p>Subscribe to HOWL monitoring for only $7.99/month ($95.88 annually) for our authenticated
       third-party. 24-hour monitoring service who will contact the corresponding authorities on your
@@ -75,7 +78,7 @@ class Monitor extends React.Component {
                   <div  className="howlBlue" onClick={()=>this.handlePurchase()} primary label="PURCHASE" >Add to cart</div>
                </div> */}
                <RaisedButton primary label="Get it now" onClick={()=>this.handlePurchase()} />
-               
+
              </footer>
            </section>
          </div>
@@ -130,6 +133,8 @@ class Monitor extends React.Component {
      <div className="text-center no-margin-bottom">
        <h5><a href="#/app/Company-Rules/Terms">Terms of Service</a> and <a href="#/app/Company-Rules/privacy-police">Privacy Policy</a></h5>
      </div>
+
+     </div></div>
 
   </article>
 

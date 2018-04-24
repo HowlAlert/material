@@ -86,12 +86,12 @@ return (
                  <div className="card__title">
                       <div className="article-title-header">Google Device</div>
                   </div>
-                   <div className="item-card card__horizontal " >
-                     <div className="card__image">
+                   <div className="item-card  " >
+                     <div className="">
 
                        <a href="javascript:;">
-                         <img alt="product" src='assets/images/home.png'   width='250'
-                           height='250'/>
+                         <img alt="product" src='assets/images/home.png'
+                          />
                        </a>
                      </div>
                      <div className="card__body ">
@@ -104,8 +104,10 @@ return (
 
 
                      </div>
-                     <div className="col-lg-6 noPadRight">
-                        <div  className="howlBlue" onClick={()=>this.handlePurchase()} primary label="PURCHASE" >Add to cart</div>
+                     <div className="row justify-content-center margT10">
+                     <div className="col-lg-6 ">
+                        <div  className="howlBlue" onClick={()=>this.handlePurchase()} primary label="PURCHASE" >ADD TO CART</div>
+                     </div>
                      </div>
 
 
@@ -115,18 +117,18 @@ return (
 </div>
 </div>
 </div>
-<div className="col-xl-4">
+<div className="col-lg-6">
   <div className="box box-default">
     <div className="box-body">
             <div className="article-title-header">Google Device Instructions</div>
               <div className="box-body">
-                  <p>
-                    01.  Open the Google Home app.<br/>
-                    02.  In the top left corner of the Home screen. tap Menu<br/>
-                    03.  Verify that the Google Account that is listed is the google account that you used to setup Google Home. To switch the account,tap the triangle to the right of the account name.<br/>
-                    04.  Tap More settings and then Services.<br/>
-                    05. Scroll through the list of the services.When you see HOWL,tap the card
-                 </p>
+                  <ul>
+                    <li>01.  Open the Google Home app.</li>
+                  <li> 02.  In the top left corner of the Home screen. tap Menu</li>
+                    <li>03.  Verify that the Google Account that is listed is the google account that you used to setup Google Home. To switch the account,tap the triangle to the right of the account name.</li>
+                    <li>04.  Tap More settings and then Services.</li>
+                    <li>05. Scroll through the list of the services.When you see HOWL,tap the card</li>
+                 </ul>
             </div>
 </div>
 </div>

@@ -316,15 +316,36 @@ padding-top: 7px;
    transition: opacity 0.5s ease-in-out;
     transition: background-color 0.5s ease;
     line-height:17px;
+    cursor:pointer;
+}
+.howlncircle{
+  border-radius: 37px !important;
+    font-weight: 300 !important;
+    letter-spacing: 2px !important;
+    padding: 10px !important;
+    width: 47%;
+    background-color: #0091cd;
+    margin: 0 auto;
+    height: 37px;
+    text-align:center;
+    color:#fff;
+    font-size:16px;
+    float:left;
+    -webkit-transition: opacity 0.5s ease-in-out;
+   -moz-transition: opacity 0.5s ease-in-out;
+   transition: opacity 0.5s ease-in-out;
+    transition: background-color 0.5s ease;
+    line-height:17px;
+    cursor:pointer;
+    margin-left:5px;
 }
 .howlRegNext:hover{
-    color:#fff;
+    color:#9be2ff;
     background-color:#063e5b;
 }
-.howlRegBack:hover{
-    opacity:0.8;
-    text-decoration:none;
-    color:#fff;
+.howlncircle:hover{
+    color:#9be2ff;
+    background-color:#063e5b;
 }
 
 
@@ -381,6 +402,68 @@ float: left;
 transition: opacity 0.5s ease-in-out;
 margin-right: 20px;
 line-height: 17px;
+cursor:pointer;
+}
+.howlRegBack:hover{
+    opacity:0.8;
+    text-decoration:none;
+    color:#999;
+}
+
+
+.howlbackfull{
+  transition: background-color 0.5s ease;
+text-align: center;
+border-radius: 37px !important;
+font-weight: 300 !important;
+letter-spacing: 2px !important;
+padding: 26px 30px 26px 30px !important;
+width: 100%;
+background-color: #222;
+margin: 0 auto;
+height: 66px;
+color: #fff;
+font-size: 16px;
+float: left;
+-webkit-transition: opacity 0.5s ease-in-out;
+-moz-transition: opacity 0.5s ease-in-out;
+transition: opacity 0.5s ease-in-out;
+margin-right: 20px;
+line-height: 17px;
+cursor:pointer;
+}
+.howlbackfull:hover{
+    opacity:0.8;
+    text-decoration:none;
+    color:#999;
+}
+
+.howlbcircle{
+  transition: background-color 0.5s ease;
+    text-align: center;
+    border-radius: 37px !important;
+    font-weight: 300 !important;
+    letter-spacing: 2px !important;
+    padding: 10px;
+    width: 47%;
+    background-color: #222;
+    margin: 0 auto;
+    height: 37px;
+    color: #fff;
+    font-size: 16px;
+    float: left;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    margin-right: 20px;
+    line-height: 17px;
+    cursor: pointer;
+    margin-right:0px;
+}
+.howlbcircle:hover{
+  opacity:0.8;
+  text-decoration:none;
+  color:#999;
 }
 .howlImage{
   width:220px;
@@ -594,4 +677,8 @@ margin-bottom: 21px;
 .orspace{
   margin:10px 0px 10px 0px;
   display:block;
+}
+
+.margT10{
+  margin-top:12px;
 }
