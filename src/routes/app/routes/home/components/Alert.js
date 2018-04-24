@@ -107,14 +107,14 @@ class Alerts extends React.Component {
                          <div className="box-body ">
 
                             <div className="row">
-                              <div className="col-lg-9">
+                              <div className="col-lg-8">
                                 <span className="detectClass">{dyanamicData1.Text}</span>
                                 <span className="timeClass">
                                   {/* {dyanamicData1.DateCreated}{" "} */}
                                      {moment(new Date(dyanamicData1.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
                                 </span>
                               </div>
-                              <div className="col-lg-3">
+                              <div className="col-lg-4">
                               <span className="float-right">
 
                                 {
