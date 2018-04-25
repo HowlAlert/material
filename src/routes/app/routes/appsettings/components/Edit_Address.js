@@ -48,6 +48,7 @@ class SearchAddress extends React.Component {
 
 
             console.log(this.state.Latitude);
+            console.log(this.state.Longitude);
             console.log(this.state.street_no+" "+this.state.street_name)
 
 
@@ -169,7 +170,7 @@ class SearchAddress extends React.Component {
                   </div>
                 </div>
 
-      
+
 
            </div>
 
@@ -204,8 +205,6 @@ this.setState({
 
     }
 
-
-
       handleNext(event) {
            this.setState({ redirectToReferrer: true })
       }
@@ -238,6 +237,7 @@ this.setState({
                      onClick={(e)=>this.handleNext(e)}
                      fullWidth
                    />
+                  
 
                    <div className="form-group">
                      {

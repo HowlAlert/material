@@ -123,14 +123,47 @@ class EditProfile extends React.Component {
                alert("HOWL is currently Only Available to users based in the U.S and INDIA")
              }
 
-         else if(number.length==10 && country== 1 || country == 91 )
-         {
-           this.setState({
-             redirectToConfirmCode: true ,
-            })
+         // else if(number.length==10 && country== 1 || country == 91 )
+         // {
+         //   this.setState({
+         //     redirectToConfirmCode: true ,
+         //    })
+         //
+         // }
+         //
 
-         }
+              if(number.length==10 && country== 1 || country == 91 )
+               {
+                  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
 
+                     fetch(BaseURL,{
+                      method: "POST",
+                      body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':country,'MobilePhoneNumber':number}),
+                    headers: new Headers({'content-type': 'application/json'})
+                    }).
+                  then((Response)=>Response.json()).
+                  then((findresponse)=>{
+                    this.setState({
+                      ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
+                    })
+
+                      console.log("status");
+                      console.log(this.state.ResultStatus.Status);
+
+                      if(this.state.ResultStatus.Status==2 ){
+                         alert("This phone number is already taken by another account.");
+                       }
+                      else if(this.state.ResultStatus.Status==0 ){
+                        alert("Sorry we cannot send verification code to this number. Please make sure you input the correct Mobile Number.");
+                      }
+                      if(this.state.ResultStatus.Status==1){
+                        this.setState({
+                          redirectToConfirmCode: true ,
+                         })
+                        cookie.save('MobilePhoneNumber', number);
+                        }
+                      })
+                  }
 
     }
 
@@ -229,9 +262,9 @@ class EditProfile extends React.Component {
 
    }
 
-   handleSaveProfile(event)
+   handleSaveProfile(event)  //handle submit changes in all the fields of the EditProfile
 
-   {          //handle submit changes in all the fields of the EditProfile
+   {
 
 
 
@@ -300,119 +333,87 @@ class EditProfile extends React.Component {
        else
        {
 
-           alert("Check and re-enter Mobile Number!")
+           // alert("Check and re-enter Mobile Number!")
+
+           // if(country!= 1 && country!= 91 && phone != undefined  && email!='' && re.test(lastname)!='' && firstname !='' && re.test(firstname)!='')
+           // {
+                  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
+
+                       fetch(BaseURL,{
+                        method: "POST",
+                        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'), 'MobilePhoneConfirmationCode':this.state.Code}),
+                       headers: new Headers({'content-type': 'application/json'})
+                      }).
+                    then((Response)=>Response.json()).
+                    then((findresponse)=>{
+                      console.log(findresponse)
+                      this.setState({
+                        CodeResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.Status ,
+                        Codemessage:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.StatusMessage
+                      });
+                       console.log(this.state.CodeResultStatus);
+                       console.log(this.state.Codemessage)
+                      if(this.state.CodeResultStatus != 1)
+                       {
+                               alert(this.state.Codemessage);
+                       }
+                  const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserProfile';
+                   fetch(URL,
+                                   {
+                                    method: "POST",
+                                    body: JSON.stringify({
+                                        "UserID":cookie.load('Id'),
+                                        "UserToken":cookie.load('UserToken'),
+                                        "FirstName": firstname,
+                                        "LastName": lastname,
+                                        "Email": email
+                                    }),
+                                     headers: new Headers({'content-type': 'application/json'}),
+                                   })
+                               .then((Response)=> Response.json())
+                               .then((findresponse)=>{
+                                       console.log(findresponse)
+                                   this.setState({
+                                      profilestatus:findresponse.UpdateUserProfileResult.ResultStatus.Status,
+                                      profilemessage:findresponse.UpdateUserProfileResult.ResultStatus.StatusMessage
+                                                     })
+                                                     console.log(this.state.profilestatus);
+                                                     console.log(this.state.profilemessage);
+                                                     console.log(this.state.CodeResultStatus);
+                                                     console.log(this.state.Codemessage)
+
+                                                     if(this.state.profilestatus != "1"){
+                                                        alert(this.state.profilemessage);
+                                                     }
+                                                     console.log(this.state.profilestatus);
+                                                    if(this.state.profilestatus == "1" && this.state.CodeResultStatus == "1")
+                                                    {
+                                                      alert("Successfully Updated Profile!")
+                                                      cookie.save('FirstName', firstname);
+                                                      cookie.save('LastName', lastname);
+                                                      cookie.save('Email', email);
+                                                      this.setState({
+                                                           disabled: true,
+                                                           Cancel_disabled:true
+                                                         });
+                                                         window.location.reload();
+
+                                                     }
+
+
+
+                                      })
+
+
+
+                  })
+
 
        }
 
 
 
-     if(number.length==10 && country== 1 || country == 91 )
-      {
-         const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
 
-            fetch(BaseURL,{
-             method: "POST",
-             body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':country,'MobilePhoneNumber':number}),
-           headers: new Headers({'content-type': 'application/json'})
-           }).
-         then((Response)=>Response.json()).
-         then((findresponse)=>{
-           this.setState({
-             ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
-           })
-
-             console.log("status");
-             console.log(this.state.ResultStatus.Status);
-
-             if(this.state.ResultStatus.Status==2 ){
-                alert("This phone number is already taken by another account.");
-              }
-             else if(this.state.ResultStatus.Status==0 ){
-               alert("Sorry we cannot send verification code to this number. Please make sure you input the correct Mobile Number.");
-             }
-             if(this.state.ResultStatus.Status==1){
-               this.setState({
-                 redirectToConfirmCode: true ,
-                })
-               cookie.save('MobilePhoneNumber', number);
-               }
-             })
-         }
-
-
-if(country!= 1 && country!= 91 && phone != undefined  && email!='' && re.test(lastname)!='' && firstname !='' && re.test(firstname)!='')
-{
-       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
-
-            fetch(BaseURL,{
-             method: "POST",
-             body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'), 'MobilePhoneConfirmationCode':this.state.Code}),
-            headers: new Headers({'content-type': 'application/json'})
-           }).
-         then((Response)=>Response.json()).
-         then((findresponse)=>{
-           console.log(findresponse)
-           this.setState({
-             CodeResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.Status ,
-             Codemessage:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.StatusMessage
-           });
-            console.log(this.state.CodeResultStatus);
-            console.log(this.state.Codemessage)
-           if(this.state.CodeResultStatus != 1)
-            {
-                    alert(this.state.Codemessage);
-            }
-       const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserProfile';
-        fetch(URL,
-                        {
-                         method: "POST",
-                         body: JSON.stringify({
-                             "UserID":cookie.load('Id'),
-                             "UserToken":cookie.load('UserToken'),
-                             "FirstName": firstname,
-                             "LastName": lastname,
-                             "Email": email
-                         }),
-                          headers: new Headers({'content-type': 'application/json'}),
-                        })
-                    .then((Response)=> Response.json())
-                    .then((findresponse)=>{
-                            console.log(findresponse)
-                        this.setState({
-                           profilestatus:findresponse.UpdateUserProfileResult.ResultStatus.Status,
-                           profilemessage:findresponse.UpdateUserProfileResult.ResultStatus.StatusMessage
-                                          })
-                                          console.log(this.state.profilestatus);
-                                          console.log(this.state.profilemessage);
-                                          console.log(this.state.CodeResultStatus);
-                                          console.log(this.state.Codemessage)
-
-                                          if(this.state.profilestatus != "1"){
-                                             alert(this.state.profilemessage);
-                                          }
-                                          console.log(this.state.profilestatus);
-                                         if(this.state.profilestatus == "1" && this.state.CodeResultStatus == "1")
-                                         {
-                                           alert("Successfully Updated Profile!")
-                                           cookie.save('FirstName', firstname);
-                                           cookie.save('LastName', lastname);
-                                           cookie.save('Email', email);
-                                           this.setState({
-                                                disabled: true,
-                                                Cancel_disabled:true
-                                              });
-                                              window.location.reload();
-
-                                          }
-
-
-
-                           })
-
-
-
-       })
-          }
 
      }
 

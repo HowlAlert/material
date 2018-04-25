@@ -46,7 +46,32 @@ class Camera extends React.Component {
    });
  }
 
+ componentDidMount(){
 
+   const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
+
+       fetch(URL,
+       {
+        method: "POST",
+        body: JSON.stringify({
+          // "UserID":"481",
+          // "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOAwiCifNh8i3wV7Rr3kUbPZpjEyP4J7bo50kq/0md3yy1AEFMZo5xqfKZmcUdiTeZA=="
+
+          "UserID":cookie.load('Id'),
+          "UserToken":cookie.load('UserToken')
+
+        }),
+         headers: new Headers({'content-type': 'application/json'}),
+       })
+   .then((Response)=> Response.json())
+   .then((findresponse)=>{
+     this.setState({
+          length:findresponse.GetUserCameraResult.RoomCameraList.length,
+
+     })
+console.log(this.state.length)
+  });
+    }
 render() {
 
 
@@ -78,26 +103,55 @@ render() {
 
 
   var length = this.state.length;
-  if(length === 0)
-  {
-    var message= "Don't have a camera? "
-  }
 
+if(length === 1)
+{
+
+return (
+<div>
+
+
+
+<div className="box box-default dkShadow chapter">
+  <div className="box-body ">
+  <h2 className="article-title-header">Cameras</h2>
+        <div className="row">
+           <div className="col-lg-6">
+                  <Image />
+
+           </div>
+
+
+        </div>
+        <div className="row">
+
+
+          <div className="col-lg-3"><div  className="howlBlue" primary label="Buy Camera"  onClick={()=>this.handlePurchase()}>BUY CAMERA</div></div>
+
+          <div className="col-lg-3"><div  className="howlBlue" primary label="Add Camera"  onClick={()=>this.handleAddDevice()}>ADD CAMERA</div></div>
+          <div className="col-lg-5">
+
+
+          </div>
+        </div>
+        </div>
+        </div>
+</div>
+ );
+ }
+else if(length === 2)
+  {
 
   return (
 <div>
-    <div >
 
-
-
-    </div>
 
 
 
   <div className="box box-default dkShadow chapter">
     <div className="box-body ">
     <h2 className="article-title-header">Cameras</h2>
-    <h5>{message}</h5>
+
           <div className="row">
              <div className="col-lg-6">
                     <Image />
@@ -127,10 +181,45 @@ render() {
           </div>
           </div>
           </div>
-
-
 </div>
    );
+   }
+   else
+   {
+     var message= "Don't have a camera? "
+     return (
+   <div>
+
+
+
+     <div className="box box-default dkShadow chapter">
+       <div className="box-body ">
+       <h2 className="article-title-header">Cameras</h2>
+             <div className="row">
+                <div className="col-lg-6">
+                      <h5>{message}</h5>
+
+                </div>
+
+
+             </div>
+             <div className="row">
+
+
+               <div className="col-lg-3"><div  className="howlBlue" primary label="Buy Camera"  onClick={()=>this.handlePurchase()}>BUY CAMERA</div></div>
+
+               <div className="col-lg-3"><div  className="howlBlue" primary label="Add Camera"  onClick={()=>this.handleAddDevice()}>ADD CAMERA</div></div>
+               <div className="col-lg-5">
+
+
+               </div>
+             </div>
+             </div>
+             </div>
+   </div>
+   )
+ }
+
  }
 }
 

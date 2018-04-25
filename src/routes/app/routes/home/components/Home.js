@@ -11,6 +11,7 @@ import Map from './Map';
 import Alert from './Alert';
 import Image2 from './Image2';
 import Image from '../../cameras/components/Image';
+import Camera from '../../cameras/components/Camera';
 // import Alert from '../../Alerts/components/Alert'
 
 // const Main = () => (
@@ -252,6 +253,7 @@ const Dashboard = () => (
              <Image2 />
 
     </div>
+    {/* <Camera /> */}
   </div>
 );
 const Page = () => {
