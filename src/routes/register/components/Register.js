@@ -32,6 +32,18 @@ class Register extends React.Component {
       text:'',
       resultStatus:''
     };
+    //input Highlighting code start
+          this.textInput = null;
+
+            this.setTextInputRef = element => {
+              this.textInput = element;
+            };
+
+            this.focusTextInput = () => {
+              // Focus the text input using the raw DOM API
+              if (this.textInput) this.textInput.focus();
+            };
+    //input Highlighting code end
   }
 
   componentWillMount(){
@@ -41,33 +53,54 @@ class Register extends React.Component {
   }
   }
 
+  componentDidMount() {
+     // autofocus the input on mount for input Highlighting
+     this.focusTextInput();
+   }
+
 
     handleNext(event){
       var password = this.state.Password;
       var PasswordLength = password.length;
 
     event.preventDefault();
+    let email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let names = /^[A-z]+$/;
     if(this.state.Fname==''){
       alert("Please enter your first name");
+      this.setState.noOfSuperValidation="False"
     }
-    if(this.state.Lname==''  && this.state.Fname!=''){
+    else if(names.test(this.state.Fname)==''){
+      alert("Please enter only alphabets for First Name");
+      this.setState.noOfSuperValidation="False"
+    }
+    else if(this.state.Lname==''){
       alert("Please enter your last name");
+      this.setState.noOfSuperValidation="False"
     }
-    if(this.state.Email=='' && this.state.Fname!='' && this.state.Lname!=''){
+    else if(names.test(this.state.Lname)==''){
+      alert("Please enter only alphabets for Last Name");
+      this.setState.noOfSuperValidation="False"
+    }
+    else if(this.state.Email==''){
       alert("Please enter your email address");
+      this.setState.noOfSuperValidation="False"
     }
-    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(re.test(this.state.Email)=='' && this.state.Email!='' && this.state.Fname!='' && this.state.Lname!=''){
+
+    else if(email.test(this.state.Email)==''){
       alert("Please enter a valid email");
+      this.setState.noOfSuperValidation="False"
     }
-    if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!='' && this.state.Fname!='' && this.state.Lname!=''){
+    else if(this.state.Password==''){
       alert("Please enter a password");
+      this.setState.noOfSuperValidation="False"
     }
-    if(PasswordLength<6 && this.state.Password!='' && this.state.Email!='' && re.test(this.state.Email)!=''){
+    else if(PasswordLength<6){
       alert("Password must be at least 6 characters");
+      this.setState.noOfSuperValidation="False"
     }
 
-
+    if(this.setState.noOfSuperValidation!="False"){
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/RegisterUser';
 
          fetch(BaseURL,{
@@ -103,6 +136,7 @@ class Register extends React.Component {
            }
 
       })
+    }
 }
 
 handleEmail(event) {
@@ -207,6 +241,8 @@ this.setState({
                     name="Fname"
                      //value={this.state.value}
                      onChange={(e)=>this.handleFname(e)}
+                     ref={this.setTextInputRef} //for input Highlighting
+                      onClick={this.focusTextInput} //for input Highlighting
                   />
 
                 </div>

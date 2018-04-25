@@ -37,17 +37,21 @@ ResultStatus:''
      event.preventDefault()
 
 
+     if(this.state.street_no==undefined && this.state.street_name==undefined && this.state.Address1==undefined && this.state.Address2==undefined && this.state.city==undefined && this.state.state==undefined && this.state.zipcode==undefined && this.state.Latitude==undefined && this.state.Longitude==undefined){
+       alert("Please enter your Home Address");
+       this.setState.noOfSuperValidation="False"
+     }
 
-
+if(this.setState.noOfSuperValidation!="False"){
        const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditUserHomeAddress';
-console.error(this.state.street_no+" "+this.state.street_name);
-console.error(this.state.Address1);
-console.error(this.state.Address2);
-console.error(this.state.city);
-console.error(this.state.state);
-console.error(this.state.zipcode);
-console.error(this.state.Latitude);
-console.error(this.state.Longitude);
+      console.error(this.state.street_no+" "+this.state.street_name);
+      console.error(this.state.Address1);
+      console.error(this.state.Address2);
+      console.error(this.state.city);
+      console.error(this.state.state);
+      console.error(this.state.zipcode);
+      console.error(this.state.Latitude);
+      console.error(this.state.Longitude);
 
        fetch(BaseURL,
        {
@@ -81,7 +85,7 @@ console.error(this.state.Longitude);
                 alert(this.state.ResultStatus.StatusMessage)
 
                  }
-  })
+  })           }
    }
 
    handleValue(event) {

@@ -7,7 +7,6 @@ import cookie from 'react-cookies';
 const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
 
 
-
 class GoogleMap extends React.Component {
 
   constructor() {
@@ -18,15 +17,15 @@ class GoogleMap extends React.Component {
         activeMarker: {},
         selectedPlace: {},
 
-
     }
-
     this.onMapClicked = this.onMapClicked.bind(this);
     this.onMarkerClicked = this.onMarkerClicked.bind(this);
     this.handleMapMount = this.handleMapMount.bind(this);
 }
 
+
 onMapClicked (props) {
+
     if (this.state.showingInfoWindow) {
         this.setState({
 
@@ -37,7 +36,9 @@ onMapClicked (props) {
 
     }
       console.log("In onclick");
+
 }
+
 onMarkerClicked (props, marker, e) {
   this.setState({
         selectedPlace: props,
@@ -45,12 +46,14 @@ onMarkerClicked (props, marker, e) {
         showingInfoWindow: true
       });
       console.log("In Marker");
+
 }
 handleMapMount(mapProps, map) {
     this.map = map;
 
     //log map bounds
     console.log(this.map.getBounds());
+
 }
 
 
@@ -114,7 +117,6 @@ render() {
     console.log(type)
 
 
-
     return (
 
 
@@ -123,17 +125,16 @@ render() {
 
             google={google}
             onClick={this.onMapClicked}
+
             initialCenter={{
 
               lat: cookie.load('Latitude'),
               lng: cookie.load('Longitude')
 
             }}
+
             zoom={this.state.zoom}
             onReady={this.handleMapMount}
-
-
-             containerStyle={{position: 'static'}}
 
            styles={[{"featureType":"all","elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},
              {"featureType":"all","elementType":"labels.icon","stylers":[{"visibility": "off"}]},

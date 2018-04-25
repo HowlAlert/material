@@ -21,7 +21,18 @@ class AddSilentCode extends React.Component {
       ResultStatus:'',
       text:''
     };
+    //input Highlighting code start
+          this.textInput = null;
 
+            this.setTextInputRef = element => {
+              this.textInput = element;
+            };
+
+            this.focusTextInput = () => {
+              // Focus the text input using the raw DOM API
+              if (this.textInput) this.textInput.focus();
+            };
+    //input Highlighting code end
   }
 
   componentWillMount(){
@@ -31,6 +42,11 @@ class AddSilentCode extends React.Component {
       this.setState({ redirectToHome: true })
     }
   }
+
+  componentDidMount() {
+     // autofocus the input on mount for input Highlighting
+     this.focusTextInput();
+   }
 
   handleCode(event) {
      event.preventDefault();
@@ -46,10 +62,24 @@ class AddSilentCode extends React.Component {
      }
 
      handleVerifyCode(event){
-       if(cookie.load('CancellationCode')==this.state.code){
-         alert("Your silent code and cancel code can not be same")
+       let re = /^[0-9]{4}$/;
+     if(this.state.code==''){
+       alert("Please enter your Silent code.");
+       this.setState.noOfSuperValidation="False"
+     }
+      else if(this.state.code.length!=4) {
+        alert("Please enter 4 digit Silent code.");
+        this.setState.noOfSuperValidation="False"
+      }
+      else if(re.test(this.state.code)=='') {
+        alert("Please enter only digits for Silent code.");
+        this.setState.noOfSuperValidation="False"
+      }
+       else if(cookie.load('CancellationCode')==this.state.code){
+         alert("Your silent code and cancel code can not be same");
+         this.setState.noOfSuperValidation="False"
        }
-       else if(cookie.load('CancellationCode')!=this.state.code){
+       if(this.setState.noOfSuperValidation!="False"){
 
        const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetSilenceCode';
 
@@ -129,8 +159,10 @@ render() {
                 floatingLabelText='XXXX'
                 fullWidth
                 name="Code"
-                 //value={this.state.value}
+                 hintText="Silent Code must be 4 characters"
                  onChange={(e)=>this.handleCode(e)}
+                 ref={this.setTextInputRef} //for input Highlighting
+                  onClick={this.focusTextInput} //for input Highlighting
                 />
               </div>
 

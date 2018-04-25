@@ -454,8 +454,11 @@ console.log(this.state.counter);
       if(this.state.redirectToReferrer === true)
       {
         return (
+
       <div className="box box-default">
           <div className="box-body">
+
+
 
             {
               this.state.redirectToReferrer === true  ?
@@ -464,15 +467,20 @@ console.log(this.state.counter);
 
             }
 
-            <span className="float-right">
-                    <RaisedButton primary label="Exit" onClick={(e)=>this.handleExit(e)}/>
-
-            </span>
-          <div>
-            <center>Activity is detected in {this.state.name} on {" "}
+          <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <p className="margT10">Activity is detected in {this.state.name} on {" "}
               {moment(new Date(this.state.date +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
 
-            </center>
+            </p>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+          <div className="col-lg-3">
+
+                <div className="howlbackfull" primary label="Exit" onClick={(e)=>this.handleExit(e)}>BACK</div>
+
+          </div>
           </div>
           </div>
         </div>
@@ -485,20 +493,15 @@ console.log(this.state.counter);
 
 
 
-      <div className="box box-default">
-      <div className="box-body ">
-
-
-           <h4>No camera Recorded Alerts for this page</h4>
-
-
-
+      <div className="box box-default dkShadow">
+        <div className="box-body ">
+          <h4>No camera Recorded Alerts for this page</h4>
             <div>
-                 <RaisedButton primary label="Next ->" onClick={()=>this.handleNext(this.state.counter)}
+              <RaisedButton primary label="Next ->" onClick={()=>this.handleNext(this.state.counter)}
                    disabled={this.state.disabledNext}
                  />
                    <span className="float-right">
-                           <RaisedButton primary label="<- Back" onClick={()=>this.handleBack(this.state.counter)}
+                       <RaisedButton primary label="<- Back" onClick={()=>this.handleBack(this.state.counter)}
                              disabled={this.state.disabledBack}/>
                   </span>
              </div>
@@ -511,7 +514,20 @@ console.log(this.state.counter);
   return (
 
 
-    <div >
+
+
+    <div className="row" >
+
+    <div className="row alertButtons">
+      <div className="col-lg-3 howlbcircle" primary label="<- Back" onClick={()=>this.handleBack(this.state.counter)}
+      disabled={this.state.disabledBack}>&lt;</div>
+
+         <div className="howlncircle col-lg-3"
+            primary label="Next ->"
+            onClick={()=>this.handleNext(this.state.counter)}
+            disabled={this.state.disabledNext}>&gt;</div>
+
+     </div>
 
 
 
@@ -526,51 +542,34 @@ console.log(this.state.counter);
            null
 
          :
-           <Menu>
 
-                        <MenuItem onClick={()=>this.handleEnlarge(dyanamicData1.GetImageDataResult,dyanamicData1.getRoomCamera.CameraID,dyanamicData1.getRoomCamera.Name,dyanamicData1.DateCreated)}>
-                          <div className="box box-default  ">
-                              <div className="box-body ">
+            <div className="col-lg-6" onClick={()=>this.handleEnlarge(dyanamicData1.GetImageDataResult,dyanamicData1.getRoomCamera.CameraID,dyanamicData1.getRoomCamera.Name,dyanamicData1.DateCreated)}>
+              <div className="box box-default   ">
+                <div className="box-body alerts">
 
-                           {dyanamicData1.Text}
+
+
+                  <div className="row">
+                  <div className="col-lg-8">
+                  <h1>{dyanamicData1.Text}</h1>
                             {/* {dyanamicData1.HasRead} */}
-                            {moment(new Date(dyanamicData1.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}
-                          <span className="float-right">
-                            <img className="alertImage" src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="50" width="50"/>
-                          </span>
+                            <h2>{moment(new Date(dyanamicData1.DateCreated +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')}</h2>
+                  </div>
+                  <div className="col-lg-4">
+
+                    <img className="alertImage" src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="50" width="50"/>
+                    </div>
+                  </div>
                         </div>
                      </div>
-                         </MenuItem>
-
-                            {/* <span className="float-right">
-
-                                        {/* <img src="assets/images/Howl-Final-Light-Blue-small.png" alt="Image" height="75" width="75"/> */}
-{/*
-                              <img src={`data:image/jpg;base64,${dyanamicData1.GetImageDataResult}`} alt="Image" height="75" width="75"/>
+                         </div>
 
 
 
-                         <div>
-                             {dyanamicData1.DateCreated}{" "}
-                       </div> */}
 
-
-                {/* <span className="float-left">
-                   <div className="text-center"> <RaisedButton primary label="Delete" onClick={()=>this.handleDelete(dyanamicData1.ID)}/></div>
-                </span> */}
-
-</Menu>
              )}
 
-        <div>
-             <RaisedButton primary label="Next ->" onClick={()=>this.handleNext(this.state.counter)}
 
-               disabled={this.state.disabledNext}/>
-               <span className="float-right">
-                       <RaisedButton primary label="<- Back" onClick={()=>this.handleBack(this.state.counter)}
-                         disabled={this.state.disabledBack}/>
-              </span>
-         </div>
 
       </div>
 
@@ -586,7 +585,9 @@ const Page = () => {
 
       <QueueAnim type="bottom" className="ui-animate">
 
-        <div key="1"><Alerts /></div>
+        <div key="1" className="alertContainer">
+        <Alerts />
+        </div>
 
       </QueueAnim>
 

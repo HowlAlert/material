@@ -19,8 +19,19 @@ const mWidthStyle = {
       data:[],
       code:'',
       text:''
-
     };
+    //input Highlighting code start
+          this.textInput = null;
+
+            this.setTextInputRef = element => {
+              this.textInput = element;
+            };
+
+            this.focusTextInput = () => {
+              // Focus the text input using the raw DOM API
+              if (this.textInput) this.textInput.focus();
+            };
+    //input Highlighting code end
   }
 
   componentWillMount(){
@@ -30,6 +41,11 @@ const mWidthStyle = {
       this.setState({ redirectToHome: true })
     }
   }
+
+  componentDidMount() {
+     // autofocus the input on mount for input Highlighting
+     this.focusTextInput();
+   }
 
   handleCode(event) {
      event.preventDefault();
@@ -47,6 +63,21 @@ const mWidthStyle = {
 
   handleVerifyCode(event){
 
+    let re = /^[0-9]{4}$/;
+  if(this.state.code==''){
+    alert("Please enter your Cancel code.");
+    this.setState.noOfSuperValidation="False"
+  }
+   else if(this.state.code.length!=4) {
+     alert("Please enter 4 digit Cancel code.");
+     this.setState.noOfSuperValidation="False"
+   }
+   else if(re.test(this.state.code)=='') {
+     alert("Please enter only digits for Cancel code.");
+     this.setState.noOfSuperValidation="False"
+   }
+
+if(this.setState.noOfSuperValidation!="False"){
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetCancellationCode';
 
     fetch(BaseURL,
@@ -70,12 +101,9 @@ const mWidthStyle = {
         alert("Succefully added Cancel Code.")
         this.setState({ redirectToReferrer: true })
          }
-       //redirect to settings menu
         })
-
+      }
     }
-
-
 
   render() {
      const { redirectToReferrer} = this.state
@@ -126,8 +154,10 @@ const mWidthStyle = {
                   type="text"
                   fullWidth
                   name="Code"
-                   //value={this.state.value}
+                   hintText="Cancel Code must be 4 characters"
                    onChange={(e)=>this.handleCode(e)}
+                   ref={this.setTextInputRef} //for input Highlighting
+                    onClick={this.focusTextInput} //for input Highlighting
                   />
                 </div>
 

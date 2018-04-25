@@ -91,18 +91,16 @@ var lname = cookie.load('LastName');
                 if(dyanamicData.Type == 0 ){
                     return (
 
-                    <div className="box box-default col-xl-12 ">
+                    <div className="box box-default  dkShadow">
                       <div className="box-body ">
-                        <h5>  "Hello! { " "+fname+" "+lname}!"
+                      <h2 className="article-title-header">Devices</h2>
+                        <h5 className="marg20B">  "Hello! { " "+fname+" "+lname}!"
                         {/* <img src="assets/images/echo.png" alt="Image" height="30" width="30"/> */}
-                           You are connected to Amazon Echo .......Try this!
+                           You are already connected to Amazon Echo .......Try this!
                         </h5>
-                        <div className="box box-default  ">
-                          <div className="box-body ">
+
 
                           <GoogleDevices />
-                        </div>
-                      </div>
 
 
                       </div>
@@ -163,7 +161,7 @@ const Page = () => (
 
   <section className="container-fluid chapter">
 
-<h2 className="article-title mainArticle">Devices </h2>
+
 
     <QueueAnim type="bottom" className="ui-animate">
       <Device />

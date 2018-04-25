@@ -155,7 +155,7 @@ render() {
     <div className="row">
       <div className="col-xl-6">
 
-        <div className="box box-default">
+        <div className="box box-default dkShadow">
           <div className="box-body">
     <h2 className="article-title-header">Howls at Me</h2>
 
@@ -191,10 +191,9 @@ render() {
 
 
       <div className="col-xl-6">
-        <div className="box box-default">
+        <div className="box box-default dkShadow">
           <div className="box-body">
           <h2 className="article-title-header">Howls At Pack</h2>
-
           <Howls_At_Pack/>
       </div>
     </div>

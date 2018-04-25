@@ -32,6 +32,7 @@ class VerifyPhoneNumber extends React.Component {
       ResultStatus:'',
       phone:''
     }
+
       this.handleOnChange = this.handleOnChange.bind(this);
 
   }
@@ -43,44 +44,46 @@ class VerifyPhoneNumber extends React.Component {
   }
   }
 
-
-
   handlePhoneNo(phoneNumber){
-    if(this.state.phone === undefined){
+
+    console.log(this.state.phone.defaultCountry);
+    var phone = this.state.phone;
+    console.log(phone.length);
+    if(this.state.phone === ''){
       alert("Please enter phone number")
+      this.setState.phoneCkeck1="False"
     }
+    else if(phone.length<15){
+      alert("Please enter 10 digit phone number")
+      this.setState.phoneCkeck1="False"
+    }
+    var numberMatch=phone.match(/[(]+[0-9]+[)]+[0-9]+[-]+[0-9]*/gi)
+    var number=numberMatch[0].replace(/\D/g,'')
+    var countryMatch=phone.match(/[0-9]+[(]/gi)
+    var country=countryMatch[0].replace(/\D/g,'')
+    console.log(phone);
+    console.log("number");
+    console.log(number);
+    console.log("country");
+    console.log(country);
 
-console.log(this.state.phone);
-      var phone = this.state.phone;
-      var phoneNumber=phone.replace(/\D/g,'')
-      var number=phoneNumber.substr(phoneNumber.length-10)
-      var country=phoneNumber.slice(0, -10)
-    //   ereg_replace(“[^0-9]”, “”, phone)
-     console.log(phoneNumber);
-     console.log(number);
-     console.log(country);
-
-
-
-   if(number.length!=10){
-       alert("Please enter only 10 digit phone number")
-     }
-
-     else if(country!= 1 && country!= 91){
+console.log(number.length);
+ if(this.setState.phoneCkeck1!="False"){
+    if(country[0]!= 1 && country[0]!= 91){
        alert("HOWL is currently Only Available to users based in the U.S and INDIA")
+       this.setState.phoneCkeck2="False"
      }
-     else if(number.length==0){
-       alert("Please enter 10 digit phone number")
-     }
-     else if(number.length!=10){
+     else if(number.length>10){
        alert("Please enter only 10 digit phone number")
+       this.setState.phoneCkeck2="False"
      }
-     else{
+   }
+      if(this.setState.phoneCkeck2!="False"){
        const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
 
           fetch(BaseURL,{
            method: "POST",
-           body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':country,'MobilePhoneNumber':number}),
+           body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':country[0],'MobilePhoneNumber':number}),
          headers: new Headers({'content-type': 'application/json'})
          }).
        then((Response)=>Response.json()).
@@ -108,17 +111,14 @@ console.log(this.state.phone);
      }
      }
 
-    handleOnChange(number) {
+    handleOnChange(number,name) {
        this.setState({
-          phone: number
+          phone: number,
+          name:name
        });
        console.log(this.state.phone)
-    }
+       console.log(this.state.name)
 
-    getValidNumber(phoneNumber) {
-      const phoneUtil = PhoneNumberUtil.getInstance();
-      const parsedNumber = phoneUtil.parse(phoneNumber);
-      return phoneUtil.format(parsedNumber, PhoneNumberFormat.INTERNATIONAL)
     }
 
 
@@ -161,10 +161,12 @@ console.log(this.state.phone);
               </div>
 
         <div className="phone-number" style={{display:'flex'}}>
-        <ReactPhoneInput defaultCountry={'us'}
+        <ReactPhoneInput
+            defaultCountry={'us'}
+            preferredCountries={'us'}
             value={this.state.phone}
             onChange={this.handleOnChange}
-
+            country-name={this.state.country}
          />
         </div>
 

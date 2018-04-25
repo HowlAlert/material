@@ -14,8 +14,9 @@
       &.full-width{
         width: 100%;
       }
-    } 
+    }
   }
+  
 }
 
 // for fixed-header
@@ -67,7 +68,7 @@
     .app-content-wrapper {
       .app-content {
         padding-left: $l_sidebar_width;
-      } 
+      }
       .app-footer{
         left: $l_sidebar_width;
       }
