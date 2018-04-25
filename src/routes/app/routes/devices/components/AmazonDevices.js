@@ -45,7 +45,7 @@ render() {
 
 return (
   <div className="row">
-    <div className="col-xl-6">
+    <div className="col-lg-6">
       <div className="box box-default">
         <div className="box-body">
   {/* <div className="box box-default "> */}
@@ -53,27 +53,22 @@ return (
                   <div className="article-title-header">Amazon Device</div>
               </div>
                    <div className="item-card card__horizontal " >
-                     <div className="card__image">
+
 
                        <a href="javascript:;">
-                         <img alt="product" src='assets/images/echo.png'   width='250'
-                           height='250'/>
+                         <img alt="product" src='assets/images/echo.png'
+                           />
                        </a>
-                     </div>
+
                      <div className="card__body ">
 
-                       <div className="card__price">
-                         <span className="type--strikethrough">$99.99</span>
-                         <span>$49.99</span>
-                       </div>
-                       <div className="divider divider-solid divider-lg" />
+
+
 
 
 
                      </div>
-                     <div className="col-lg-6 noPadRight">
-                        <div  className="howlBlue" onClick={()=>this.handlePurchase()} primary label="PURCHASE" >Add to cart</div>
-                     </div>
+
 
                    </div>
 
@@ -81,7 +76,7 @@ return (
   </div>
   </div>
   </div>
-  <div className="col-xl-4">
+  <div className="col-lg-6">
   <div className="box box-default">
     <div className="box-body">
             <div className="article-title-header">Amazon Device Instructions</div>
