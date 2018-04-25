@@ -18,6 +18,9 @@ import PasswordField from 'material-ui-password-field';
 import ReactPhoneInput from 'react-phone-input';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
+
+
+
 const mWidthStyle = {
   minWidth: '130px'
 };
@@ -127,6 +130,21 @@ handleFormSubmit = (event) => {
        { method: 'POST', body: new FormData(form)})
        .then(response => console.log('Success!', response))
        .catch(error => console.error('Error!', error.message))
+
+  fetch('http://api.spotcrime.com/crimes/107908461.json?key=17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce'
+
+
+                     ).then(response => {
+                   if(response.ok){
+                       response.json().then(json => {
+                           this.setState({jsonData: JSON.parse(json)});
+                       });
+                   }
+                   else{
+                       this.setState({jsonData: ""});
+                   }
+               });
+
 
 }
 

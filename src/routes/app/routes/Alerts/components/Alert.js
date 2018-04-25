@@ -412,9 +412,9 @@ class Alerts extends React.Component {
 
     <div >
 
-        <div className="box box-default">
+        <div className="box box-default dkShadow">
           <div className="box-body">
-             <h2 className="article-title-header">Tiggered Alerts</h2>
+             <h2 className="article-title-header">Triggered Alerts</h2>
        <Menu>
           {
             this.state.data1.map((dyanamicData1,key)=>
@@ -482,8 +482,9 @@ class Alerts extends React.Component {
  const AlertDashboard = () => (
    <div className="row">
 
-     <div className="col-xl-6">
-       <div className="box box-default">
+
+     <div className="col-xl-12">
+       <div className="box box-default dkShadow">
          <div className="box-body">
          <h2 className="article-title-header">Camera Alerts</h2>
 
@@ -491,7 +492,7 @@ class Alerts extends React.Component {
      </div>
      </div>
      </div>
-     <div className="col-xl-6">
+     <div className="col-xl-12">
         <Alerts />
 
      </div>

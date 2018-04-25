@@ -87,32 +87,44 @@ render() {
   return (
 <div>
     <div >
-   <div className="article-title mainArticle">CAMERA</div>
-             <RaisedButton  className="float-right" primary label="Buy Camera"  onClick={()=>this.handlePurchase()}/>
-            <RaisedButton  className="float-right" primary label="Add Camera"  onClick={()=>this.handleAddDevice()}/>
-            {/* <a href="#/app/camerasettings/add-devices"></a> */}
-           {/* <a href="#/app/cameraDevices/buy-camera"> </a></RaisedButton> */}
+
+
 
     </div>
 
   <h5>{message}</h5>
 
-
+  <div className="box box-default dkShadow chapter">
+    <div className="box-body ">
+    <h2 className="article-title-header">Cameras</h2>
           <div className="row">
-             <div className="col-xl-6">
-
-               {/* <a href="#/app/camerasettings/motion-detection">Camera Settings</a> */}
+             <div className="col-lg-6">
                     <Image />
 
              </div>
 
-
-
-             <div className="col-xl-6">
+             <div className="col-lg-6">
 
                    <Image2 />
 
              </div>
+
+
+
+
+          </div>
+          <div className="row">
+
+
+            <div className="col-lg-3"><div  className="howlBlue" primary label="Buy Camera"  onClick={()=>this.handlePurchase()}>BUY CAMERA</div></div>
+        
+            <div className="col-lg-3"><div  className="howlBlue" primary label="Add Camera"  onClick={()=>this.handleAddDevice()}>ADD CAMERA</div></div>
+            <div className="col-lg-5">
+
+
+            </div>
+          </div>
+          </div>
           </div>
 
 

@@ -7,14 +7,12 @@ import cookie from 'react-cookies';
 const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
 
 
-
-
 class GoogleMap extends React.Component {
 
   constructor() {
     super();
     this.state = {
-        zoom: 13,
+        zoom: 15,
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
@@ -58,51 +56,48 @@ handleMapMount(mapProps, map) {
 
 }
 
- componentDidMount(){
-  //  fetch('http://api.spotcrime.com/crimes.json',
-  //  {
-  //   lat:'40.740508',
-  //   lon:'-73.97834749999998',
-  //   radius:'0.01',
-  //   callback:'jsonp1',
-  //   key:'17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce',
-  //
-  //   method: 'GET',
-  //   headers: {
-  //       "Content-Type": "text/plain",
-  //   }
-  // })
-  //    .then(function(response) {
-  //      return response.text();
-  //    })
-  //    .then(function(text) {
-  //      console.log('Request successful', text);
-  //    })
-  //    .catch(function(error) {
-  //      console.log('Request failed', error)
-  //    });
 
-const feedURL = 'http://api.spotcrime.com/crimes.json?lat=40.740508&lon=-73.97834749999998&radius=0.01&max_records=10&types=assault%252Cburglary&key=17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce';
-  fetch(feedURL,
+componentDidMount()
 {
-method:'GET',
 
-dataType: 'json',
+  this.setState({
 
-})
-  .then(response => response.json())
-  .then(data => {
-      this.setState({
-          data: data
-      });
+       points: [
+        {"cdid": 107986200, "type": "Robbery", "date": "04/23/18 09:56 PM", "address": "500 BLOCK OF WEST 56TH ST"},
+        {"cdid": 107969554, "type": "Assault", "date": "04/23/18 01:50 PM", "address": "300 BLOCK OF 5 AVE"},
+        {"cdid": 107944910, "type": "Other", "date": "04/21/18 06:14 PM", "address": "100 BLOCK OF UNITED NATIONS PZ"},
+        {"cdid": 107951903, "type": "Burglary", "date": "04/16/18 08:27 AM", "address": "00 BLOCK OF ELIZABETH ST"},
+        {"cdid": 107834468, "type": "Theft", "date": "04/15/18 10:00 PM", "address": "200 BLOCK OF E 15TH ST"},
+      ]
 
-      console.log(data)
-  })
-  .catch(resp => {
-      console.error(resp);
   });
+// const feedURL = 'http://api.spotcrime.com/crimes.json?key=17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce&format=json';
+//   fetch(feedURL,
+// {
+// method:'GET',
+// mode:'no-cors',
+// headers: new Headers({'Access-Control-Allow-Origin':'*',
+// 'Content-Type': 'multipart/form-data'
+// })
+//
+// })
+//
+//   .then(data => {
+//       this.setState({
+//           data: data
+//
+//       });
+//
+//       console.log(data)
+//   })
+//   .catch(resp => {
+//       console.error(resp);
+//   })
+//
+
 
 }
+
 
 
 render() {
@@ -118,8 +113,13 @@ render() {
      console.log(lastname);
 
 
+    var type = this.state.points["0"].type
+    console.log(type)
+
 
     return (
+
+
 
         <Map className='google-map'
 
@@ -157,6 +157,89 @@ render() {
            ]}
           containerStyle={{position: 'static'}}
           >
+            {this.state.points.map(d => {
+          if(d.type === "Robbery"){
+            return (
+              <Marker
+                  title={'Home Address Location '}
+                  name={this.state.points.address}
+                  onClick={this.onMarkerClicked}
+                  position={{lat: 40.7687448,  lng: -73.9902906 }}
+                 icon={{
+                          url: "assets/images//Arrest-Icon-Small.png",
+                          anchor: new google.maps.Point(32,32),
+                          scaledSize: new google.maps.Size(40,40)
+                     }}
+
+
+                />
+           )}
+        if(d.type === "Assault"){
+             return (
+               <Marker
+                    title={'Home Address Location '}
+                    name={this.state.points.address}
+                    onClick={this.onMarkerClicked}
+                    position={{lat: 40.7143206,  lng: -73.9802421 }}
+                   icon={{
+                            url: "assets/images//Assult-Icon-Small.png",
+                            anchor: new google.maps.Point(32,32),
+                            scaledSize: new google.maps.Size(40,40)
+                       }}
+
+
+                  />
+            )}
+         if(d.type === "Other"){
+              return (
+                <Marker
+                     title={'Home Address Location '}
+                     name={this.state.points.address}
+                     onClick={this.onMarkerClicked}
+                     position={{lat: 40.7530871,  lng: -73.9678144 }}
+                    icon={{
+                             url: "assets/images//Other-Icon-Small.png",
+                             anchor: new google.maps.Point(32,32),
+                             scaledSize: new google.maps.Size(40,40)
+                        }}
+
+
+                   />
+             )}
+         if(d.type === "Burglary"){
+               return (
+                 <Marker
+                      title={'Home Address Location '}
+                      name={this.state.points.address}
+                      onClick={this.onMarkerClicked}
+                      position={{lat: 40.7414098,  lng: -73.9833599 }}
+                     icon={{
+                              url: "assets/images//Burglary-Icon-Small.png",
+                              anchor: new google.maps.Point(32,32),
+                              scaledSize: new google.maps.Size(40,40)
+                         }}
+
+
+                    />
+              )}
+            if(d.type === "Theft"){
+                return (
+                  <Marker
+                       title={'Home Address Location '}
+                       name={this.state.points.address}
+                       onClick={this.onMarkerClicked}
+                       position={{lat: 40.7270939,  lng: -73.9526728 }}
+                      icon={{
+                               url: "assets/images//Theft-Icon-Small.png",
+                               anchor: new google.maps.Point(32,32),
+                               scaledSize: new google.maps.Size(40,40)
+                          }}
+
+
+                     />
+               )}
+
+        })}
 
 
               <Marker
@@ -167,7 +250,8 @@ render() {
                   icon={{
                            url: "assets/images//howl-map-marker-small.png",
                            anchor: new google.maps.Point(32,32),
-                           scaledSize: new google.maps.Size(64,64)
+                           scaledSize: new google.maps.Size(64,64),
+
                       }}
 
 

@@ -7,12 +7,12 @@ class Footer extends React.Component {
       <section className="app-footer">
         {/* <div className="container-fluid"> */}
           <span className="float-left">
-            <span><a className="brand" target="_blank" href={APPCONFIG.productLink}>{APPCONFIG.brand}</a> {APPCONFIG.year}</span>
+            {/* <span><a className="brand" target="_blank" href={APPCONFIG.productLink}>{APPCONFIG.brand}</a> {APPCONFIG.year}</span> */}
           </span>
           <span className="float-right">
-            <span>SAFETY IS FIRST <i className="material-icons">phone</i></span>
+            {/* <span>SAFETY IS FIRST <i className="material-icons">phone</i></span> */}
           </span>
-  
+
       </section>
     );
   }
