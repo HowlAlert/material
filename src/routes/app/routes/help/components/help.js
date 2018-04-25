@@ -22,15 +22,21 @@ class Help extends React.Component{
 
     return (
 
+
       <article className="article ">
-        <h2 className="article-title  no-margin-top mainArticle">Frequently Asked Questions</h2>
+
+      <div className="box box-default dkShadow">
+        <div className="box-body ">
+
+
+          <h2 className="article-title-header">Frequently Asked Questions</h2>
 
 
     <div className="container-fluid with-maxwidth">
       <div className="row">
 
         <div className="col-xl-12">
-          <div className="box box-transparent">
+          <div className="box box-transparent helpCards">
             <div className="box-body padding-lg-h">
               <Card>
                 <CardHeader title="Can I use HOWL for free?"
@@ -232,12 +238,14 @@ class Help extends React.Component{
 
             </div>
             <div>
-                <RaisedButton primary label="Submit" />
+                <div className="howlBlue" primary label="Submit" >SUBMIT</div>
             </div>
           </div>
         </div>
 
       </div>
+    </div>
+    </div>
     </div>
   </article>
   );
