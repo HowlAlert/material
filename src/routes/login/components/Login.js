@@ -112,7 +112,7 @@ class Login extends React.Component {
     this.setState.noOfSuperValidation="False"
   }
 
- if(this.setState.noOfSuperValidation!="False"){
+ if(this.state.noOfSuperValidation!="False"){
 
     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
        fetch(BaseURL,{

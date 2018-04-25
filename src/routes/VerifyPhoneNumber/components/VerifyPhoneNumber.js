@@ -26,15 +26,11 @@ class VerifyPhoneNumber extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // country:'',
-      // number:'',
       message:'',
       ResultStatus:'',
       phone:''
     }
-
       this.handleOnChange = this.handleOnChange.bind(this);
-
   }
 
   componentWillMount(){
@@ -46,10 +42,10 @@ class VerifyPhoneNumber extends React.Component {
 
   handlePhoneNo(phoneNumber){
 
-    console.log(this.state.phone.defaultCountry);
+
     var phone = this.state.phone;
     console.log(phone.length);
-    if(this.state.phone === ''){
+    if(this.state.phone === '' || this.state.phone == undefined){
       alert("Please enter phone number")
       this.setState.phoneCkeck1="False"
     }
@@ -111,14 +107,11 @@ console.log(number.length);
      }
      }
 
-    handleOnChange(number,name) {
+    handleOnChange(number) {
        this.setState({
-          phone: number,
-          name:name
+          phone: number
        });
        console.log(this.state.phone)
-       console.log(this.state.name)
-
     }
 
 
@@ -163,10 +156,9 @@ console.log(number.length);
         <div className="phone-number" style={{display:'flex'}}>
         <ReactPhoneInput
             defaultCountry={'us'}
-            preferredCountries={'us'}
+            preferredCountries={['us']}
             value={this.state.phone}
             onChange={this.handleOnChange}
-            country-name={this.state.country}
          />
         </div>
 

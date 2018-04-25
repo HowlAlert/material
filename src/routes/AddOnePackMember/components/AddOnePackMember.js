@@ -62,10 +62,10 @@ class AddOnePackMember extends React.Component {
                     email: event.target.value
                   });
                   console.log(event.target.value) ;
-
           }
 
           handleOnChange(number) {
+            console.log("handleOnChange")
              this.setState({
                 phone: number
              });
@@ -73,6 +73,8 @@ class AddOnePackMember extends React.Component {
           }
 
    handleNext(event) {
+
+
      let email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
      let names = /^[A-z]+$/;
      if(this.state.fname==''){
@@ -98,13 +100,55 @@ class AddOnePackMember extends React.Component {
 
      else if(email.test(this.state.email)==''){
        alert("Please enter a valid email");
-       this.setState.noOfSuperValidation="False"
+        this.setState.noOfSuperValidation="False"
      }
+     console.log(this.state.noOfSuperValidation);
+if(this.state.noOfSuperValidation!="False" || this.state.noOfSuperValidation != undefined){
+  var phone = this.state.phone;
+  console.log(this.state.phone);
+//  console.log(phone.length);
+  if(this.state.phone === '' || this.state.phone == undefined){
+    alert("Please enter phone number")
+    this.setState.phoneCkeck1="False"
+  }
+  else if(phone.length<15){
+    alert("Please enter 10 digit phone number")
+    this.setState.phoneCkeck1="False"
+  }
+  var numberMatch=phone.match(/[(]+[0-9]+[)]+[0-9]+[-]+[0-9]*/gi)
+  var number=numberMatch[0].replace(/\D/g,'')
+  var countryMatch=phone.match(/[0-9]+[(]/gi)
+  var country=countryMatch[0].replace(/\D/g,'')
+  console.log(phone);
+  console.log("number");
+  console.log(number);
+  console.log("country");
+  console.log(country);
 
-     var phone = this.state.phone;
-     var phoneNumber=phone.replace(/\D/g,'')
-     var number=phoneNumber.substr(phoneNumber.length-10)
-     var country=phoneNumber.slice(0, -10)
+console.log(number.length);
+if(this.state.phoneCkeck1!="False"){
+  if(country[0]!= 1 && country[0]!= 91){
+     alert("HOWL is currently Only Available to users based in the U.S and INDIA")
+     this.setState.phoneCkeck2="False"
+   }
+   else if(number.length>10){
+     alert("Please enter only 10 digit phone number")
+     this.setState.phoneCkeck2="False"
+   }
+ }
+}
+
+ console.log(number.length);
+  if(this.state.phoneCkeck2!="False"){
+     if(country[0]!= 1 && country[0]!= 91){
+        alert("HOWL is currently Only Available to users based in the U.S and INDIA")
+         this.setState.phoneCkeck2="False"
+      }
+      else if(number.length>10){
+        alert("Please enter only 10 digit phone number")
+         this.setState.phoneCkeck2="False"
+      }
+    }
 
      var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":number,"UserPackID":"0", "PhoneNumberCountryCode": country}]);
      console.log(object);
@@ -115,9 +159,10 @@ console.log(this.state.lname);
 console.log(cookie.load('Id'));
 console.log(cookie.load('UserToken'));
 console.log(country);
+if(this.state.phoneCkeck2!="False"){
            const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddUpdateUserPack';
 
-
+console.log("inside")
                fetch(BaseURL,
                {
                 method: "POST",
@@ -149,7 +194,7 @@ console.log(country);
                           this.setState({ redirectToReferrer: true })
                         }
 
-           })
+           })}
            }
 
 
@@ -231,7 +276,10 @@ console.log(country);
                   </div>
 
                   <div className="phone-number" style={{display:'flex'}}>
-                  <ReactPhoneInput defaultCountry={'us'} value={this.state.phone} onChange={this.handleOnChange}/>
+                  <ReactPhoneInput
+                  defaultCountry={'us'}
+                  value={this.state.phone}
+                  onChange={this.handleOnChange}/>
                   </div>
 
                     <div className="form-group">

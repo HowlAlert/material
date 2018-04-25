@@ -102,7 +102,6 @@ class Register extends React.Component {
 
     if(this.setState.noOfSuperValidation!="False"){
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/RegisterUser';
-
          fetch(BaseURL,{
           method: "POST",
           body: JSON.stringify({'FirstName':this.state.Fname,'LastName':this.state.Lname,'Email':this.state.Email,'Password':this.state.Password,'InviteCode':cookie.load('InviteCode')}),

@@ -42,7 +42,7 @@ ResultStatus:''
        this.setState.noOfSuperValidation="False"
      }
 
-if(this.setState.noOfSuperValidation!="False"){
+if(this.state.noOfSuperValidation!="False"){
        const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditUserHomeAddress';
       console.error(this.state.street_no+" "+this.state.street_name);
       console.error(this.state.Address1);

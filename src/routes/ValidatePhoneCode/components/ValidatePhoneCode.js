@@ -87,7 +87,7 @@ class ValidatePhoneCode extends React.Component {
 
 console.log(cookie.load('Id')),
 console.log(cookie.load('UserToken'));
-if(this.setState.noOfSuperValidation!="False"){
+if(this.state.noOfSuperValidation!="False"){
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
 
          fetch(BaseURL,{
