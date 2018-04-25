@@ -6,6 +6,7 @@ import cookie from 'react-cookies';
 const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
 
 
+
 class GoogleMap extends React.Component {
 
   constructor() {
@@ -63,7 +64,8 @@ render() {
     return (
 
 
-     
+
+
         <Map
             google={google}
             onClick={this.onMapClicked}
@@ -93,7 +95,8 @@ render() {
              {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
-           style={{ width:"630" , height:"330"}}
+           style={{ width:"630" , height:"330"  }}
+        
           >
               <Marker
                    title={'Home Address Location '}

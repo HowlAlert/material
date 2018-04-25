@@ -96,73 +96,40 @@ class EditProfile extends React.Component {
 
       handlePhoneNo(phoneNumber){                          // validation of phone number on click of Next
 
-        this.setState({
-          redirectToConfirmCode: true ,
-         })
-         //  var savedPno =  cookie.load('MobilePhoneNumber');
-         //  console.log(this.state.phonenumber)
-         //
-         //        var phone = this.state.phonenumber;
-         //         console.log(phone.length)
-         //        var phoneNumber=phone.replace(/\D/g,'')
-         //        console.log(phoneNumber);
-         //        var number=phoneNumber.substr(phoneNumber.length-10)
-         //         console.log(number);
-         //        var country=phoneNumber.slice(0, -10)
-         //        console.log(country);
-         //
-         //
-         //    if(this.state.phonenumber === undefined)
-         //    {
-         //      alert("Please enter phone number")
-         //    }
-         //
-         //    if(number.length!=10){
-         //      alert("Please enter only 10 digit phone number")
-         //    }
-         //
-         //     else if(country!= 1 && country!= 91){
-         //       alert("HOWL is currently Only Available to users based in the U.S and INDIA")
-         //     }
-         //
-         // else if(number.length==10 && country== 1 || country == 91 )
-         // {
-         //    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
-         //
-         //       fetch(BaseURL,{
-         //        method: "POST",
-         //        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':country,'MobilePhoneNumber':number}),
-         //      headers: new Headers({'content-type': 'application/json'})
-         //      }).
-         //    then((Response)=>Response.json()).
-         //    then((findresponse)=>{
-         //      this.setState({
-         //        ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
-         //      })
-         //
-         //        console.log("status");
-         //        console.log(this.state.ResultStatus.Status);
-         //
-         //        if(this.state.ResultStatus.Status==2 ){
-         //           alert("This phone number is already taken by another account.");
-         //         }
-         //        else if(this.state.ResultStatus.Status==0 ){
-         //          alert("Sorry we cannot send verification code to this number. Please make sure you input the correct Mobile Number.");
-         //        }
-         //        if(this.state.ResultStatus.Status==1){
-         //          this.setState({
-         //            redirectToConfirmCode: true ,
-         //           })
-         //          cookie.save('MobilePhoneNumber', number);
-         //          }
-         //        })
-         //    }
-         //  else
-         //  {
-         //
-         //      alert("Check and re-enter Mobile Number!")
-         //
-         //  }
+
+          var savedPno =  cookie.load('MobilePhoneNumber');
+          console.log(this.state.phonenumber)
+
+                var phone = this.state.phonenumber;
+                 console.log(phone.length)
+                var phoneNumber=phone.replace(/\D/g,'')
+                console.log(phoneNumber);
+                var number=phoneNumber.substr(phoneNumber.length-10)
+                 console.log(number);
+                var country=phoneNumber.slice(0, -10)
+                console.log(country);
+
+
+            if(this.state.phonenumber === undefined)
+            {
+              alert("Please enter phone number")
+            }
+
+            if(number.length!=10){
+              alert("Please enter only 10 digit phone number")
+            }
+
+             else if(country!= 1 && country!= 91){
+               alert("HOWL is currently Only Available to users based in the U.S and INDIA")
+             }
+
+         else if(number.length==10 && country== 1 || country == 91 )
+         {
+           this.setState({
+             redirectToConfirmCode: true ,
+            })
+
+         }
 
 
     }
@@ -184,19 +151,6 @@ class EditProfile extends React.Component {
         console.log(lastname);
         var email = cookie.load('Email');
         console.log(email);
-
-      //
-      //   var phone = this.state.phonenumber;
-      //   var phoneNumber=phone.replace(/\D/g,'')
-      //   var number=phoneNumber.substr(phoneNumber.length-10)
-      //   var country=phoneNumber.slice(0, -10)
-      // //   ereg_replace("[^0-9]", "", phone)
-      //  console.log(phoneNumber);
-      //  console.log(number);
-      //  console.log(country);
-      //
-      //  var verificationcode = this.state.Code;
-      //  console.log(verificationcode)
 
         const re = /^[A-z]+$/;
         const pw_validation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -275,7 +229,9 @@ class EditProfile extends React.Component {
 
    }
 
-   handleSaveProfile(event){          //handle submit changes in all the fields of the EditProfile
+   handleSaveProfile(event)
+
+   {          //handle submit changes in all the fields of the EditProfile
 
 
 
@@ -331,7 +287,7 @@ class EditProfile extends React.Component {
        {
          alert("Phone number cannot be empty !")
        }
-       else if(country!= 1 && country!= 91 && phone === undefined  && email!='' && re.test(lastname)!='' && firstname !='' && re.test(firstname)!='')
+       else if(country!= 1 && country!= 91 && phone != undefined  && email!='' && re.test(lastname)!='' && firstname !='' && re.test(firstname)!='')
        {
          alert("HOWL is currently Only Available to users based in the U.S and INDIA")
        }
@@ -341,36 +297,16 @@ class EditProfile extends React.Component {
 
        }
 
-     else{
+       else
+       {
+
+           alert("Check and re-enter Mobile Number!")
+
+       }
 
 
-       var savedPno =  cookie.load('MobilePhoneNumber');
-       console.log(this.state.phonenumber)
 
-             var phone = this.state.phonenumber;
-              console.log(phone.length)
-             var phoneNumber=phone.replace(/\D/g,'')
-             console.log(phoneNumber);
-             var number=phoneNumber.substr(phoneNumber.length-10)
-              console.log(number);
-             var country=phoneNumber.slice(0, -10)
-             console.log(country);
-
-
-         if(this.state.phonenumber === undefined)
-         {
-           alert("Please enter phone number")
-         }
-
-         if(number.length!=10){
-           alert("Please enter only 10 digit phone number")
-         }
-
-          else if(country!= 1 && country!= 91){
-            alert("HOWL is currently Only Available to users based in the U.S and INDIA")
-          }
-
-      else if(number.length==10 && country== 1 || country == 91 )
+     if(number.length==10 && country== 1 || country == 91 )
       {
          const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
 
@@ -402,14 +338,10 @@ class EditProfile extends React.Component {
                }
              })
          }
-       else
-       {
-
-           alert("Check and re-enter Mobile Number!")
-
-       }
 
 
+if(country!= 1 && country!= 91 && phone != undefined  && email!='' && re.test(lastname)!='' && firstname !='' && re.test(firstname)!='')
+{
        const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
 
             fetch(BaseURL,{
@@ -479,14 +411,12 @@ class EditProfile extends React.Component {
 
 
 
-
-
-
-         })
+       })
+          }
 
      }
 
-   }
+
    componentDidMount()
    {
       this.setState({Fname: cookie.load('FirstName')});
