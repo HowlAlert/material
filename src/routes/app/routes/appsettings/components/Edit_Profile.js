@@ -436,28 +436,31 @@ if(country!= 1 && country!= 91 && phone != undefined  && email!='' && re.test(la
 
                 <form>
                   <div className="row">
-                  <div className="col-lg-6 noPadRight">
+                  <div className="col-lg-6 ">
 
-                    FIRST NAME
-                    <input      value={this.state.Fname}   onChange={this.handleFname}  />
+                  <TextField  value={this.state.Fname} onChange={this.handleFname}  floatingLabelText="First Name" fullWidth />
+
+                    {/*<input      value={this.state.Fname}   onChange={this.handleFname}  />*/}
 
                  </div>
-                 <div className="col-lg-6 noPadLeft">
-                   LAST NAME
-                   <input      value={this.state.Lname}  onChange={this.handleLname} />
+                 <div className="col-lg-6 ">
+                 <TextField  value={this.state.Lname} onChange={this.handleLname}  floatingLabelText="Last Name" fullWidth />
+
+                   {/*<input      value={this.state.Lname}  onChange={this.handleLname} />*/}
 
                  </div>
                 </div>
 
 
                 <div className="row">
-                  <div className="col-lg-6 noPadRight">
+                  <div className="col-lg-6 ">
 
-                     EMAIL ADDRESS
+                  <TextField  value={this.state.Email} onChange={this.handleEmail}  floatingLabelText="Email" fullWidth />
+
                      <input      value={this.state.Email}  onChange={this.handleEmail}/>
 
                   </div>
-                  <div className="col-lg-6 noPadLeft">
+                  <div className="col-lg-6 ">
                     CHANGE PHONE NUMBER
                     <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} />
                   </div>
@@ -498,28 +501,27 @@ if(country!= 1 && country!= 91 && phone != undefined  && email!='' && re.test(la
 
 
                            <div className="row">
-                             <div className="col-lg-6 noPadRight">
+                             <div className="col-lg-6 ">
 
-                               FIRST NAME
-                              <input      value={this.state.Fname}   onChange={this.handleFname}  />
+                               <TextField  value={this.state.Fname} onChange={this.handleFname}  floatingLabelText="First Name" fullWidth />
+                            {/*  <input      value={this.state.Fname}   onChange={this.handleFname}  />*/}
 
                              </div>
-                             <div className="col-lg-6 noPadLeft">
-                              LAST NAME
-                              <input      value={this.state.Lname}  onChange={this.handleLname} />
-
+                             <div className="col-lg-6 ">
+                              <TextField  value={this.state.Lname} onChange={this.handleLname}  floatingLabelText="Last Name" fullWidth />
+                            {/*}  <input      value={this.state.Lname}  onChange={this.handleLname} />*/}
                              </div>
                            </div>
 
 
                            <div className="row">
-                             <div className="col-lg-6 noPadRight">
+                             <div className="col-lg-6 ">
 
-                                EMAIL ADDRESS
-                                <input      value={this.state.Email}  onChange={this.handleEmail}/>
+                              <TextField  value={this.state.Email} onChange={this.handleEmail}  floatingLabelText="Email" fullWidth />
+                                {/*<input      value={this.state.Email}  onChange={this.handleEmail}/>*/}
 
                              </div>
-                             <div className="col-lg-6 noPadLeft">
+                             <div className="col-lg-6 ">
                                CHANGE PHONE NUMBER
                                <ReactPhoneInput defaultCountry={'us'}  onChange={this.handleOnChange}/>
 
@@ -558,15 +560,17 @@ if(country!= 1 && country!= 91 && phone != undefined  && email!='' && re.test(la
 
 
                                                    <div className="row">
-                                                     <div className="col-lg-6 noPadRight">
+                                                     <div className="col-lg-6 ">
 
-                                                       FIRST NAME
-                                                       <input      value={this.state.Fname}   onChange={this.handleFname}  />
+                                                      < TextField  value={this.state.Fname} onChange={this.handleFname}  floatingLabelText="First Name" fullWidth />
+                                                       {/*<input      value={this.state.Fname}   onChange={this.handleFname}  />*/}
 
                                                      </div>
-                                                     <div className="col-lg-6 noPadLeft">
-                                                         LAST NAME
-                                                         <input      value={this.state.Lname}  onChange={this.handleLname} />
+                                                     <div className="col-lg-6 ">
+
+                                                      <TextField  value={this.state.Lname} onChange={this.handleLname}  floatingLabelText="Last Name" fullWidth />
+
+                                                        {/* <input      value={this.state.Lname}  onChange={this.handleLname} />*/}
 
                                                      </div>
                                                    </div>
@@ -575,18 +579,20 @@ if(country!= 1 && country!= 91 && phone != undefined  && email!='' && re.test(la
 
 
                                                    <div className="row">
-                                                     <div className="col-lg-6 noPadRight">
+                                                     <div className="col-lg-6 ">
 
-                                                        EMAIL ADDRESS
-                                                        <input      value={this.state.Email}  onChange={this.handleEmail}/>
+                                                     <TextField  value={this.state.Email} onChange={this.handleEmail}  floatingLabelText="Email" fullWidth />
+
+                                                      {/*  <input      value={this.state.Email}  onChange={this.handleEmail}/>*/}
 
                                                      </div>
-                                                     <div className="col-lg-6 noPadLeft">
-                                                       CHANGE PHONE NUMBER
+                                                     <div className="col-lg-6 ">
+                                                     <TextField  value={cookie.load('MobilePhoneNumber')} onChange={this.handlePhoneNumber}  floatingLabelText="Phone Number" fullWidth />
+                                                     {/*
                                                        <input
                                                         value={cookie.load('MobilePhoneNumber')}
                                                         onChange={this.handlePhoneNumber}
-                                                       />
+                                                       />*/}
 
                                                      </div>
                                                    </div>
