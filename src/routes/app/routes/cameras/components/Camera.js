@@ -92,11 +92,12 @@ render() {
 
     </div>
 
-  <h5>{message}</h5>
+
 
   <div className="box box-default dkShadow chapter">
     <div className="box-body ">
     <h2 className="article-title-header">Cameras</h2>
+    <h5>{message}</h5>
           <div className="row">
              <div className="col-lg-6">
                     <Image />
@@ -117,7 +118,7 @@ render() {
 
 
             <div className="col-lg-3"><div  className="howlBlue" primary label="Buy Camera"  onClick={()=>this.handlePurchase()}>BUY CAMERA</div></div>
-        
+
             <div className="col-lg-3"><div  className="howlBlue" primary label="Add Camera"  onClick={()=>this.handleAddDevice()}>ADD CAMERA</div></div>
             <div className="col-lg-5">
 
