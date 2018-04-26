@@ -74,7 +74,7 @@ console.log(number.length);
        this.setState.phoneCkeck2="False"
      }
    }
-      if(this.setState.phoneCkeck2!="False"){
+      if(this.state.phoneCkeck2!="False"){
        const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
 
           fetch(BaseURL,{

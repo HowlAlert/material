@@ -24,7 +24,8 @@ class ValidatePhoneCode extends React.Component {
     this.state = {
       Code:'',
       ResultStatus:'',
-      text:''
+      text:'',
+      StatusMessage:''
     };
     //input Highlighting code start
           this.textInput = null;
@@ -88,6 +89,7 @@ class ValidatePhoneCode extends React.Component {
 console.log(cookie.load('Id')),
 console.log(cookie.load('UserToken'));
 if(this.state.noOfSuperValidation!="False"){
+  console.log("inside")
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
 
          fetch(BaseURL,{
@@ -98,17 +100,15 @@ if(this.state.noOfSuperValidation!="False"){
       then((Response)=>Response.json()).
       then((findresponse)=>{
         this.setState({
-          ResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus,
-        });console.log(this.state.ResultStatus.Status)
+          ResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus
+        });console.log(this.state.ResultStatus.Status),
+        console.log(this.state.ResultStatus.StatusMessage);
         if(this.state.ResultStatus.Status==="1"){
-
-
           console.log("status"),
-
-
        this.setState({ redirectToReferrer: true })
         }
-        else{
+        else if(this.state.ResultStatus.StatusMessage=="The verification code you entered is invalid.  Please try again."){
+          alert(this.state.ResultStatus.StatusMessage);
            this.setState({ redirectToReferrer: false })
         }
       })

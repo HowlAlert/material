@@ -48,7 +48,6 @@ class AddOnePackMember extends React.Component {
          fname: event.target.value.substr(0,30)
        });
        console.log(event.target.value) ;
-
      }
   handleLastname(event) {
        this.setState({
@@ -153,16 +152,16 @@ if(this.state.phoneCkeck1!="False"){
      var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":number,"UserPackID":"0", "PhoneNumberCountryCode": country}]);
      console.log(object);
 
-console.log(this.state.email);
-console.log(this.state.fname);
-console.log(this.state.lname);
-console.log(cookie.load('Id'));
-console.log(cookie.load('UserToken'));
-console.log(country);
-if(this.state.phoneCkeck2!="False"){
-           const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddUpdateUserPack';
+      console.log(this.state.email);
+      console.log(this.state.fname);
+      console.log(this.state.lname);
+      console.log(cookie.load('Id'));
+      console.log(cookie.load('UserToken'));
+      console.log(country);
+      if(this.state.phoneCkeck2!="False"){
+                 const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddUpdateUserPack';
 
-console.log("inside")
+      console.log("inside")
                fetch(BaseURL,
                {
                 method: "POST",
@@ -170,7 +169,6 @@ console.log("inside")
                   "UserID":cookie.load('Id'),
                   "UserToken":cookie.load('UserToken'),
                   "PackMemberList":object
-
                 }),
                  headers: new Headers({'content-type': 'application/json'}),
                })
@@ -193,7 +191,6 @@ console.log("inside")
                           alert("Pack Member Successfully added")
                           this.setState({ redirectToReferrer: true })
                         }
-
            })}
            }
 
@@ -249,8 +246,6 @@ console.log("inside")
               <div className="regLeft">
                <p className="hero-title text-center registerHeader">Add Pack Member</p>
               </div>
-
-
 
               <fieldset>
                 <div className="form-group">

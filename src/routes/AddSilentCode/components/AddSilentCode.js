@@ -79,7 +79,7 @@ class AddSilentCode extends React.Component {
          alert("Your silent code and cancel code can not be same");
          this.setState.noOfSuperValidation="False"
        }
-       if(this.setState.noOfSuperValidation!="False"){
+       if(this.state.noOfSuperValidation!="False"){
 
        const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetSilenceCode';
 
