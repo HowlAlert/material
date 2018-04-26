@@ -10,6 +10,8 @@ import FlatButton from 'material-ui/FlatButton';
 // });
 const Privacy = () => (
 
+  <div className="box box-default dkShadow">
+    <div className="box-body ">
   <div className="body-inner">
     <div className="card bg-white registerCard">
       <div className="card-content regContent termsText">
@@ -128,6 +130,8 @@ const Privacy = () => (
 
       </div>
     </div>
+  </div>
+  </div>
   </div>
 
 );

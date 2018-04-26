@@ -75,12 +75,16 @@ var lname = cookie.load('LastName');
 
         {(this.state.length === 0 || this.state.length === undefined ) ?
          <div>
-           <h2> "Hello! { " "+fname+" "+lname} follow instructions to add devices !"</h2>
+         <div className="box box-default  dkShadow">
+           <div className="box-body ">
+           <h2 className="article-title-header">Devices</h2>
+           <h2 className="marg20B"> "Hello! { " "+fname+" "+lname} follow instructions to add devices !"</h2>
                <AmazonDevices />
                <GoogleDevices />
 
          </div>
-
+         </div>
+         </div>
 
       :<div>
         {/* <h5 className="text-center">{message}</h5> */}
@@ -122,6 +126,7 @@ var lname = cookie.load('LastName');
 
               <div className="box box-default col-xl-12 ">
                 <div className="box-body ">
+                <h2 className="article-title-header">Devices</h2>
                   <h5>  "Hello! { " "+fname+" "+lname}!"
                   {/* <img src="assets/images/home.png" alt="Image" height="30" width="30"/> */}
                    You are connected to Google Home .......Try this!
@@ -160,8 +165,6 @@ var lname = cookie.load('LastName');
 const Page = () => (
 
   <section className="container-fluid chapter">
-
-
 
     <QueueAnim type="bottom" className="ui-animate">
       <Device />

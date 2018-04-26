@@ -48,6 +48,7 @@ class SearchAddress extends React.Component {
 
 
             console.log(this.state.Latitude);
+            console.log(this.state.Longitude);
             console.log(this.state.street_no+" "+this.state.street_name)
 
 
@@ -169,7 +170,7 @@ class SearchAddress extends React.Component {
                   </div>
                 </div>
 
-      
+
 
            </div>
 
@@ -204,8 +205,6 @@ this.setState({
 
     }
 
-
-
       handleNext(event) {
            this.setState({ redirectToReferrer: true })
       }
@@ -239,6 +238,7 @@ this.setState({
                      fullWidth
                    />
 
+
                    <div className="form-group">
                      {
                        this.state.address2 === "undefined" ?
@@ -268,9 +268,9 @@ this.setState({
 const Page = () => (
 
 
-    <section className="container-fluid chapter">
+    <section className="">
 
-      <h2 className="article-title-header">CHANGE HOME ADDRESS</h2>
+      <h2 className="article-title-header">Change Home Address</h2>
 
       <QueueAnim type="bottom" className="ui-animate">
           <div key="1"><Address /></div>

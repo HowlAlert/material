@@ -19,8 +19,6 @@ import ReactPhoneInput from 'react-phone-input';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 
-
-
 const mWidthStyle = {
   minWidth: '130px'
 };
@@ -122,40 +120,6 @@ class Alpha extends React.Component {
           })
 }
 
-handleFormSubmit = (event) => {
-  const form = document.forms['submit-to-google-sheet']
-
-  event.preventDefault()
-     fetch('http://localhost:3000/cam-settings-menu#/app/Alpha',
-       { method: 'POST', body: new FormData(form)})
-       .then(response => console.log('Success!', response))
-       .catch(error => console.error('Error!', error.message))
-
-  fetch('http://api.spotcrime.com/crimes/107908461.json?key=17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce'
-
-
-                     ).then(response => {
-                   if(response.ok){
-                       response.json().then(json => {
-                           this.setState({jsonData: JSON.parse(json)});
-                       });
-                   }
-                   else{
-                       this.setState({jsonData: ""});
-                   }
-               });
-
-
-}
-
-
-
-
-
-
-
-
-
   render() {
 
 
@@ -172,7 +136,7 @@ handleFormSubmit = (event) => {
         <div className="card-content regContent">
 
 
-              <form name="submit-to-google-sheet">
+              <form >
 
 
                 <div className="regLeft">
@@ -224,8 +188,11 @@ handleFormSubmit = (event) => {
 
               <div className="regButtons">
 
-                <div style={mWidthStyle} className="howlRegNext"  onClick={(e)=>this.handleFormSubmit(e)}>SUBMIT</div>
+
+                <a href="mailto:support@howl.com">  <div style={mWidthStyle} className="howlRegNext"  >SUBMIT</div></a>
+
               </div>
+              
 
           </form>
        </div>

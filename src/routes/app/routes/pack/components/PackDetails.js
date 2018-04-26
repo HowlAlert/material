@@ -507,7 +507,7 @@ class Howls_Me extends React.Component {
                  dyanamicData.HasPoundBack === "False"
                  ?
 
-              <div className="howlBackRedSm"
+              <div className="howlRedSm"
                 onClick={()=>this.handleAlert(dyanamicData.SenderUser.ID,dyanamicData.SenderUser.UserToken,dyanamicData.SenderUser.FirstName,dyanamicData.SenderUser.LastName,dyanamicData.ReceiverPack.ID)}
                 disabled={this.state.disabledHowl} >HOWL BACK</div>
 

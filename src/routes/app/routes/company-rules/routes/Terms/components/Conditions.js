@@ -14,6 +14,9 @@ const Terms = () => (
 
         <article className="article">
 
+        <div className="box box-default dkShadow">
+          <div className="box-body ">
+
           <div className="regLeft">
            <h1 className="hero-title text-center registerHeader">Terms & Conditions</h1>
          </div>
@@ -131,9 +134,11 @@ const Terms = () => (
        <p>INFO@HOWLALERT.COM</p>
        <p>888.453.4427</p>
 
+</div>
+</div>
 
         </article>
-    
+
     </QueueAnim>
   </section>
 );

@@ -14,6 +14,9 @@ const Privacy = () => (
 
         <article className="article">
 
+        <div className="box box-default dkShadow">
+          <div className="box-body ">
+
           <div className="regLeft">
              <h1 className="hero-title text-center registerHeader">Howl Alert Privacy Policy</h1>
           </div>
@@ -121,7 +124,8 @@ const Privacy = () => (
         <p>USA</p>
         <p>INFO@HOWLALERT.COM</p>
         <p>888.453.4427</p>
-
+</div>
+</div>
 
     </article>
 

@@ -63,12 +63,17 @@ componentDidMount()
   this.setState({
 
        points: [
-        {"cdid": 107986200, "type": "Robbery", "date": "04/23/18 09:56 PM", "address": "500 BLOCK OF WEST 56TH ST"},
-        {"cdid": 107969554, "type": "Assault", "date": "04/23/18 01:50 PM", "address": "300 BLOCK OF 5 AVE"},
-        {"cdid": 107944910, "type": "Other", "date": "04/21/18 06:14 PM", "address": "100 BLOCK OF UNITED NATIONS PZ"},
-        {"cdid": 107951903, "type": "Burglary", "date": "04/16/18 08:27 AM", "address": "00 BLOCK OF ELIZABETH ST"},
-        {"cdid": 107834468, "type": "Theft", "date": "04/15/18 10:00 PM", "address": "200 BLOCK OF E 15TH ST"},
-      ]
+         {"cdid": 107986877, "type": "Arrest", "date": "04/24/18 12:26 AM", "address": "00 BLOCK OF LAWTON ST"},
+         {"cdid": 107969554, "type": "Assault", "date": "04/23/18 01:50 PM", "address": "300 BLOCK OF 5 AVE"},
+         {"cdid": 107951903, "type": "Burglary", "date": "04/16/18 08:27 AM", "address": "00 BLOCK OF ELIZABETH ST"},
+         {"cdid": 107944910, "type": "Other", "date": "04/21/18 06:14 PM", "address": "100 BLOCK OF UNITED NATIONS PZ"},
+         {"cdid": 107986200, "type": "Robbery", "date": "04/23/18 09:56 PM", "address": "500 BLOCK OF WEST 56TH ST"},
+         {"cdid": 107931936, "type": "Shooting", "date": "04/22/18 12:07 PM", "address": "HENDRIX ST AND SUTTER AVE"},
+         {"cdid": 107834468, "type": "Theft", "date": "04/15/18 10:00 PM", "address": "200 BLOCK OF E 15TH ST"},
+         {"cdid": 108020779, "type": "Vandalism", "date": "04/24/18 10:35 PM", "address": "100 BLOCK OF LINCOLN AVE"},
+         {"cdid": 108020779, "type": "Fire", "date": "04/24/18 10:35 PM", "address": "100 BLOCK OF LINCOLN AVE"},
+
+        ]
 
   });
 // const feedURL = 'http://api.spotcrime.com/crimes.json?key=17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce&format=json';
@@ -97,8 +102,53 @@ componentDidMount()
 
 
 }
-
-
+// getComponent(){
+// {  switch (this.state.points.map(d =>d.type))
+//   {
+//       case 'Arrest': <Marker
+//            title={'Home Address Location '}
+//            name={this.state.points.address}
+//            onClick={this.onMarkerClicked}
+//            position={{lat: 40.9102073,  lng: -73.7827056 }}
+//           icon={{
+//                    url: "assets/images//Arrest-Icon-Small.png",
+//                    anchor: new google.maps.Point(32,32),
+//                    scaledSize: new google.maps.Size(40,40)
+//               }}
+//
+//
+//          /> ; break;
+//       case 'Assault':<Marker
+//            title={'Home Address Location '}
+//            name={this.state.points.address}
+//            onClick={this.onMarkerClicked}
+//            position={{lat: 40.7143206,  lng: -73.9802421 }}
+//           icon={{
+//                    url: "assets/images//Assult-Icon-Small.png",
+//                    anchor: new google.maps.Point(32,32),
+//                    scaledSize: new google.maps.Size(40,40)
+//               }}
+//
+//
+//          />; break;
+//
+//       default:  <Marker
+//             title={'Home Address Location '}
+//             name={this.state.points.address}
+//             onClick={this.onMarkerClicked}
+//             position={{lat: 40.7530871,  lng: -73.9678144 }}
+//            icon={{
+//                     url: "assets/images//Other-Icon-Small.png",
+//                     anchor: new google.maps.Point(32,32),
+//                     scaledSize: new google.maps.Size(40,40)
+//                }}
+//
+//
+//           />;
+//
+//
+// }}
+// }
 
 render() {
     const {google} = this.props;
@@ -155,25 +205,35 @@ render() {
            {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
-          containerStyle={{position: 'static'}}
+
+
+           containerStyle={{position: 'static'}}
+
+
           >
+
+           {/* {this.getComponent()} */}
+
+
             {this.state.points.map(d => {
-          if(d.type === "Robbery"){
-            return (
-              <Marker
-                  title={'Home Address Location '}
-                  name={this.state.points.address}
-                  onClick={this.onMarkerClicked}
-                  position={{lat: 40.7687448,  lng: -73.9902906 }}
-                 icon={{
-                          url: "assets/images//Arrest-Icon-Small.png",
-                          anchor: new google.maps.Point(32,32),
-                          scaledSize: new google.maps.Size(40,40)
-                     }}
+
+           if(d.type === "Arrest"){
+               return (
+                 <Marker
+                      title={'Home Address Location '}
+                      name={this.state.points.address}
+                      onClick={this.onMarkerClicked}
+                      position={{lat: 40.9102073,  lng: -73.7827056 }}
+                     icon={{
+                              url: "assets/images//Arrest-Icon-Small.png",
+                              anchor: new google.maps.Point(32,32),
+                              scaledSize: new google.maps.Size(40,40)
+                         }}
 
 
-                />
-           )}
+                    />
+              )}
+
         if(d.type === "Assault"){
              return (
                <Marker
@@ -190,22 +250,7 @@ render() {
 
                   />
             )}
-         if(d.type === "Other"){
-              return (
-                <Marker
-                     title={'Home Address Location '}
-                     name={this.state.points.address}
-                     onClick={this.onMarkerClicked}
-                     position={{lat: 40.7530871,  lng: -73.9678144 }}
-                    icon={{
-                             url: "assets/images//Other-Icon-Small.png",
-                             anchor: new google.maps.Point(32,32),
-                             scaledSize: new google.maps.Size(40,40)
-                        }}
 
-
-                   />
-             )}
          if(d.type === "Burglary"){
                return (
                  <Marker
@@ -222,22 +267,103 @@ render() {
 
                     />
               )}
-            if(d.type === "Theft"){
-                return (
-                  <Marker
+              if(d.type === "Other"){
+                   return (
+                     <Marker
+                          title={'Home Address Location '}
+                          name={this.state.points.address}
+                          onClick={this.onMarkerClicked}
+                          position={{lat: 40.7530871,  lng: -73.9678144 }}
+                         icon={{
+                                  url: "assets/images//Other-Icon-Small.png",
+                                  anchor: new google.maps.Point(32,32),
+                                  scaledSize: new google.maps.Size(40,40)
+                             }}
+
+
+                        />
+                  )}
+
+               if(d.type === "Robbery"){
+                 return (
+                   <Marker
                        title={'Home Address Location '}
                        name={this.state.points.address}
                        onClick={this.onMarkerClicked}
-                       position={{lat: 40.7270939,  lng: -73.9526728 }}
+                       position={{lat: 40.7687448,  lng: -73.9902906 }}
                       icon={{
-                               url: "assets/images//Theft-Icon-Small.png",
+                               url: "assets/images//Robbery-Icon-Small.png",
                                anchor: new google.maps.Point(32,32),
                                scaledSize: new google.maps.Size(40,40)
                           }}
 
 
                      />
-               )}
+                )}
+                if(d.type === "Shooting"){
+                    return (
+                      <Marker
+                           title={'Home Address Location '}
+                           name={this.state.points.address}
+                           onClick={this.onMarkerClicked}
+                           position={{lat: 40.6703256,  lng: -73.8887778}}
+                          icon={{
+                                   url: "assets/images//Shooting-Icon-Small.png",
+                                   anchor: new google.maps.Point(32,32),
+                                   scaledSize: new google.maps.Size(40,40)
+                              }}
+
+
+                         />
+                   )}
+                if(d.type === "Theft"){
+                    return (
+                      <Marker
+                           title={'Home Address Location '}
+                           name={this.state.points.address}
+                           onClick={this.onMarkerClicked}
+                           position={{lat: 40.7270939,  lng: -73.9526728 }}
+                          icon={{
+                                   url: "assets/images//Theft-Icon-Small.png",
+                                   anchor: new google.maps.Point(32,32),
+                                   scaledSize: new google.maps.Size(40,40)
+                              }}
+
+
+                         />
+                   )}
+                   if(d.type === "Vandalism"){
+                       return (
+                         <Marker
+                              title={'Home Address Location '}
+                              name={this.state.points.address}
+                              onClick={this.onMarkerClicked}
+                              position={{lat:40.9020274,  lng: -73.7823738 }}
+                             icon={{
+                                      url: "assets/images//Vandalism-Icon-Small.png",
+                                      anchor: new google.maps.Point(32,32),
+                                      scaledSize: new google.maps.Size(40,40)
+                                 }}
+
+
+                            />
+                      )}
+                      if(d.type === "Fire"){
+                          return (
+                            <Marker
+                                 title={'Home Address Location '}
+                                 name={this.state.points.address}
+                                 onClick={this.onMarkerClicked}
+                                 position={{lat:40.7348362,  lng: -73.8735609 }}
+                                icon={{
+                                         url: "assets/images//Fire-Arson-Icon-Small.png",
+                                         anchor: new google.maps.Point(32,32),
+                                         scaledSize: new google.maps.Size(40,40)
+                                    }}
+
+
+                               />
+                         )}
 
         })}
 

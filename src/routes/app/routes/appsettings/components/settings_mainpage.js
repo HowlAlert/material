@@ -23,79 +23,96 @@ const BasicBoxes = () => (
     {/* <div className="container-fluid with-maxwidth"> */}
        {/* <h2 className="article-title">SETTINGS</h2> */}
     <div className="row">
-<div className="box box-default col-xl-6">
+  <div className="col-lg-12">
+<div className="box box-default  dkShadow">
   <div className="box-body ">
-
   <Edit_Profile />
 </div>
 </div>
-<div className="box box-default col-xl-6">
+</div>
+
+<div className="col-lg-12">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 
   <Edit_Address />
 </div>
 </div>
+</div>
 
-<div className="box box-default col-xl-4">
+<div className="col-lg-12">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 
   <Edit_CancelCode />
 
  </div>
 </div>
+</div>
 
-<div className="box box-default col-xl-4">
+<div className="col-lg-12">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 
   <Edit_SilentCode />
 </div>
 </div>
+</div>
 
-<div className="box box-default col-xl-4">
+<div className="col-lg-12">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 
   <Edit_PrintCode />
 </div>
 </div>
+</div>
 
-<div className="box box-default col-xl-6">
+
+<div className="col-lg-12">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 
   <Edit_Notifications />
  </div>
 </div>
+</div>
 
-
-<div className="box box-default col-xl-6">
+<div className="col-lg-12 ">
+<div className="box box-default dkShadow">
   <div className="box-body ">
-<h2 className="article-title-header">HOWL SUPPORT FORMS </h2>
+  <h2 className="article-title-header">Howl Support Forms </h2>
+  <div className="row">
 
+
+
+<div className="col-lg-3">
     <div className="box box-default"><a href="mailto:support@howl.com">
       <div className="box-body" >
 
         {/* <span className="float-left">  <i className="material-icons">help</i></span> */}
       <center>
         <i className="material-icons">help</i>
-          <h5> FEEDBACK FORM </h5>
+          <h5> Feedback Form </h5>
 
          </center>
 
     </div>
-    </a></div>
+    </a></div></div>
 
-
+<div className="col-lg-3">
     <div className="box box-default"><a href="mailto:support@howl.com">
       <div className="box-body" >
 
         {/* <span className="float-left">  <i className="material-icons">mail_outline</i></span> */}
       <center>
         <i className="material-icons">mail_outline</i>
-         <h5> CONTACT SUPPORT </h5> </center>
+         <h5> Contact Support </h5> </center>
 
     </div>
-    </a></div>
+    </a></div></div>
 
-
+<div className="col-lg-3">
     <div className="box box-default">  <a href="#/app/Company-Rules/Terms">
       <div className="box-body" >
 
@@ -105,9 +122,10 @@ const BasicBoxes = () => (
           <h5> Terms and  Conditions </h5> </center>
 
     </div>
-    </a></div>
+    </a></div></div>
 
 
+<div className="col-lg-3">
     <div className="box box-default">  <a href="#/app/Company-Rules/privacy-police">
       <div className="box-body" >
 
@@ -118,11 +136,16 @@ const BasicBoxes = () => (
        </center>
 
     </div>
-    </a></div>
+    </a>
+    </div></div>
 
 
 
  </div>
+</div>
+
+
+</div>
 </div>
 </div>
 
