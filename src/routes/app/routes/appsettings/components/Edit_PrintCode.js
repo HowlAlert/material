@@ -71,12 +71,12 @@ class Print extends React.Component{
 render() {
   return (
 
-         <div className="col-xl-12">
-           <div className="box box-transparent">
-             <div className="box-body padding-lg-h">
+         <div className="">
+           <div className="">
+             <div className="">
 
                  <div className="form-group">
-                   <h5>If you have one enter the Print(Refferal) code provided by your HOWL Alpha below.</h5>
+                   <p className="settingText">If you have one enter the Print(Refferal) code provided by your HOWL Alpha below.</p>
                      <TextField onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your Print code " fullWidth />
 
                    <div className="card-action no-border text-left">
@@ -93,9 +93,9 @@ render() {
 }
 
 const Page = () => (
-  <section className="container-fluid chapter">
+  <section className="">
 
-    <h2 className="article-title-header">PRINT CODE</h2>
+    <h2 className="article-title-header">Edit Print Code</h2>
 
     <QueueAnim type="bottom" className="ui-animate">
           <div key="1"><Print /></div>
