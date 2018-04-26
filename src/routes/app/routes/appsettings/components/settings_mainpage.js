@@ -126,7 +126,7 @@ const BasicBoxes = () => (
 
 
 <div className="col-lg-3">
-    <div className="box box-default">  <a href="#/app/Company-Rules/privacy-police">
+    <div className="box box-default">  <a href="#/app/Company-Rules/privacy-policy">
       <div className="box-body" >
 
         {/* <span className="float-left">  <i className="material-icons">person_outline</i></span> */}

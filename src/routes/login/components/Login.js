@@ -49,7 +49,8 @@ class Login extends React.Component {
       Password:'',
       GetUser:'',
       ResultStatus:'',
-      text:''
+      text:'',
+      NumberOfCameras:''
     };
     //input Highlighting code start
           this.textInput = null;
@@ -128,6 +129,7 @@ class Login extends React.Component {
         ResultStatus:findresponse.LoginResult.ResultStatus,
         GetUserHomeAddress:findresponse.LoginResult.GetUserHomeAddress,
         GetUserPack:findresponse.LoginResult.GetUserPack,
+        NumberOfCameras:findresponse.LoginResult.NumberOfCameras
       });
 
       console.log(findresponse);
@@ -197,7 +199,7 @@ class Login extends React.Component {
           cookie.save('Email', this.state.GetUser.Email);
           cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
           //cookie.save('Id', this.state.GetUser.ID);
-
+          cookie.save('NumberOfCameras', this.state.NumberOfCameras);
           //cookie.save('UserToken', this.state.GetUser.UserToken);
           //cookie.save('Status', this.state.ResultStatus.Status, '/')
           cookie.save('SilenceCode', this.state.GetUser.SilenceCode);

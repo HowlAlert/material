@@ -131,7 +131,7 @@ class Monitor extends React.Component {
        </ul>
 
      <div className="text-center no-margin-bottom">
-       <h5><a href="#/app/Company-Rules/Terms">Terms of Service</a> and <a href="#/app/Company-Rules/privacy-police">Privacy Policy</a></h5>
+       <h5><a href="#/app/Company-Rules/Terms">Terms of Service</a> and <a href="#/app/Company-Rules/privacy-policy">Privacy Policy</a></h5>
      </div>
 
      </div></div>

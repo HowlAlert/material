@@ -149,7 +149,8 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
 
   this.setState({
         code: target.value,
-        Cancel_disabled:false
+        Cancel_disabled:false,
+        Next_disabled:false
       });
       console.log(target.value) ;
       return target.value;

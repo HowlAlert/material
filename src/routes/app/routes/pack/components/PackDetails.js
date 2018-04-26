@@ -25,9 +25,16 @@ class Pack extends React.Component {
 
   }
 
-  handleDelete(value) {
+  handleDelete(value) {       //Delete Pack member
 
+  if(this.state.packmembercount === 1)
+  {
+    alert("You should have atleast one Pack Member! ")
+  }
+  if(this.state.packmembercount !== 1)
+  {
     alert("Are you sure you want to delete?")
+    console.log()
 
       var packid = `${value}`;
       console.log(packid)
@@ -68,6 +75,7 @@ class Pack extends React.Component {
                    }
 
       })
+    }
 
 
   }
@@ -180,11 +188,13 @@ else {
 
        this.setState({
           data:findresponse.GetUserPackResult.UserPackList,
+          packmembercount:findresponse.GetUserPackResult.UserPackList.length,
           data1:findresponse.GetUserPackResult,
           data2:findresponse.GetUserPackResult.AvgResTimeOfPoundBack,
           UserPoundID:findresponse.GetUserPackResult.UserPackList.map((dyanamicData1,key)=>dyanamicData1.UserPoundID=== "" ? this.state.source1 : this.state.source2),
 
         })
+
         var arrOfObj = this.state.data;
 
         var result = arrOfObj.map(function(el) {
