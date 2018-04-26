@@ -149,8 +149,7 @@ if(this.state.phoneCkeck1!="False"){
       }
     }
 
-     var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":number,"UserPackID":"0", "PhoneNumberCountryCode": country}]);
-     console.log(object);
+
 
       console.log(this.state.email);
       console.log(this.state.fname);
@@ -159,6 +158,8 @@ if(this.state.phoneCkeck1!="False"){
       console.log(cookie.load('UserToken'));
       console.log(country);
       if(this.state.phoneCkeck2!="False"){
+        var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":number,"UserPackID":"0", "PhoneNumberCountryCode": country}]);
+        console.log(object);
                  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddUpdateUserPack';
 
       console.log("inside")

@@ -22,27 +22,52 @@ class AddHomeAddress extends React.Component {
   constructor() {
     super();
     this.state = {
-
-ResultStatus:''
+      ResultStatus:''
     };
+    //input Highlighting code start
+          this.textInput = null;
 
+            this.setTextInputRef = element => {
+              this.textInput = element;
+            };
+
+            this.focusTextInput = () => {
+              // Focus the text input using the raw DOM API
+              if (this.textInput) this.textInput.focus();
+            };
+    //input Highlighting code end
   }
   componentWillMount(){
   if(cookie.load('SilenceCode')!=undefined){
     this.setState({ redirectToHome: true })
   }
   }
+   componentDidMount() {
+      // autofocus the input on mount for input Highlighting
+      this.focusTextInput();
+    }
 
   handleFormSubmit = (event) => {
      event.preventDefault()
 
-
-     if(this.state.street_no==undefined && this.state.street_name==undefined && this.state.Address1==undefined && this.state.Address2==undefined && this.state.city==undefined && this.state.state==undefined && this.state.zipcode==undefined && this.state.Latitude==undefined && this.state.Longitude==undefined){
+     console.error(this.state.street_no+" "+this.state.street_name);
+     console.error(this.state.Address1);
+     console.error(this.state.Address2);
+     console.error(this.state.city);
+     console.error(this.state.state);
+     console.error(this.state.zipcode);
+     console.error(this.state.Latitude);
+     console.error(this.state.Longitude);
+     if(this.state.Address1==undefined && this.state.Address2==undefined && this.state.city==undefined && this.state.state==undefined && this.state.zipcode==undefined && this.state.Latitude==undefined && this.state.Longitude==undefined){
+       this.setState({ noOfSuperValidation: false })
+       console.log(this.state.noOfSuperValidation);
        alert("Please enter your Home Address");
-       this.setState.noOfSuperValidation="False"
+     }else{
+        this.setState({ noOfSuperValidation: true })
      }
+     console.log(this.state.noOfSuperValidation);
 
-if(this.state.noOfSuperValidation!="False"){
+     if(this.state.noOfSuperValidation==true){
        const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditUserHomeAddress';
       console.error(this.state.street_no+" "+this.state.street_name);
       console.error(this.state.Address1);
@@ -80,7 +105,7 @@ if(this.state.noOfSuperValidation!="False"){
              alert("Succefully added Home Address.")
              this.setState({ redirectToReferrer: true })
               }
-              if(this.state.ResultStatus.StatusMessage=="User does not exist."){
+              else if(this.state.ResultStatus.StatusMessage=="User does not exist."){
 
                 alert(this.state.ResultStatus.StatusMessage)
 
@@ -144,7 +169,6 @@ if(this.state.noOfSuperValidation!="False"){
   }
 
 
-
   render() {
 
     const{redirectToHome}=this.state
@@ -195,14 +219,14 @@ if(this.state.noOfSuperValidation!="False"){
               </ul>*/}
 
 
-
-
-
-
               <fieldset>
               <div className="form-group">
                ENTER ADDRESS
-                     <PlacesAutocomplete inputProps={inputProps} />
+                     <PlacesAutocomplete
+                     inputProps={inputProps}
+                     ref={this.setTextInputRef} //for input Highlighting
+                      onClick={this.focusTextInput} //for input Highlighting
+                       />
 
 
               </div><br></br>

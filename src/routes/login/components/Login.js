@@ -19,6 +19,7 @@ import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom
 import { sessionReducer, sessionService } from 'redux-react-session';
 import { createStore, combineReducers } from 'redux';
 import PasswordField from 'material-ui-password-field';
+import ValidatePhoneCodeAfterEditProfile from '../../ValidatePhoneCode/components/ValidatePhoneCodeAfterEditProfile'
 
 import {
     Step,
@@ -148,12 +149,18 @@ class Login extends React.Component {
         cookie.save('FirstName', this.state.GetUser.FirstName);
         cookie.save('LastName', this.state.GetUser.LastName);
 
+
         if(this.state.GetUser.MobilePhoneNumber==null){
           alert("Please verify your Phone Number"),
           this.setState({ redirectToMobilePhoneNumber: true }),
           this.setState.noOfSuperValidation="False"
         }
-
+        else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
+          alert("Please confirm your Phone Number"),
+          this.setState({ redirectToMobilePhoneConfirmationCodeAfterEditProfile: true }),
+          this.setState.noOfSuperValidation="False"
+        }
+        
         else if(this.state.GetUser.HasConfirmedMobilePhone=="False"){
           alert("Please confirm your Phone Number"),
           this.setState({ redirectToMobilePhoneConfirmationCode: true }),
@@ -182,6 +189,7 @@ class Login extends React.Component {
           this.setState({ redirectToSilenceCode: true }),
           this.setState.noOfSuperValidation="False"
         }
+
 
         else if(this.setState.noOfSuperValidation!="False"){
           console.log(this.state.GetUser);
@@ -400,6 +408,13 @@ class Login extends React.Component {
     if(redirectToMobilePhoneConfirmationCode){
       return (
         <Redirect to="ValidatePhoneCode" />
+      )
+    }
+
+    const{ redirectToMobilePhoneConfirmationCodeAfterEditProfile}=this.state
+    if(redirectToMobilePhoneConfirmationCodeAfterEditProfile){
+      return (
+        <ValidatePhoneCodeAfterEditProfile />
       )
     }
 
