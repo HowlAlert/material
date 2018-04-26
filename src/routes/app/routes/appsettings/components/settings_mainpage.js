@@ -23,20 +23,20 @@ const BasicBoxes = () => (
     {/* <div className="container-fluid with-maxwidth"> */}
        {/* <h2 className="article-title">SETTINGS</h2> */}
     <div className="row">
-<div className="box box-default col-xl-6">
+<div className="box box-default col-lg-12">
   <div className="box-body ">
 
   <Edit_Profile />
 </div>
 </div>
-<div className="box box-default col-xl-6">
+<div className="box box-default col-lg-12">
   <div className="box-body ">
 
   <Edit_Address />
 </div>
 </div>
 
-<div className="box box-default col-xl-4">
+<div className="box box-default col-lg-12">
   <div className="box-body ">
 
   <Edit_CancelCode />
@@ -44,21 +44,21 @@ const BasicBoxes = () => (
  </div>
 </div>
 
-<div className="box box-default col-xl-4">
+<div className="box box-default col-lg-12">
   <div className="box-body ">
 
   <Edit_SilentCode />
 </div>
 </div>
 
-<div className="box box-default col-xl-4">
+<div className="box box-default col-lg-12">
   <div className="box-body ">
 
   <Edit_PrintCode />
 </div>
 </div>
 
-<div className="box box-default col-xl-6">
+<div className="box box-default col-lg-12">
   <div className="box-body ">
 
   <Edit_Notifications />
@@ -66,7 +66,7 @@ const BasicBoxes = () => (
 </div>
 
 
-<div className="box box-default col-xl-6">
+<div className="box box-default col-lg-12">
   <div className="box-body ">
 <h2 className="article-title-header">HOWL SUPPORT FORMS </h2>
 
