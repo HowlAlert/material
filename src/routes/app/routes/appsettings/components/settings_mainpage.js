@@ -32,7 +32,7 @@ const BasicBoxes = () => (
 </div>
 
 <div className="col-lg-12">
-<div className="box box-default ">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 
   <Edit_Address />
@@ -41,7 +41,7 @@ const BasicBoxes = () => (
 </div>
 
 <div className="col-lg-12">
-<div className="box box-default ">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 
   <Edit_CancelCode />
@@ -51,7 +51,7 @@ const BasicBoxes = () => (
 </div>
 
 <div className="col-lg-12">
-<div className="box box-default ">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 
   <Edit_SilentCode />
@@ -60,7 +60,7 @@ const BasicBoxes = () => (
 </div>
 
 <div className="col-lg-12">
-<div className="box box-default ">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 
   <Edit_PrintCode />
@@ -70,7 +70,7 @@ const BasicBoxes = () => (
 
 
 <div className="col-lg-12">
-<div className="box box-default">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 
   <Edit_Notifications />
@@ -78,8 +78,8 @@ const BasicBoxes = () => (
 </div>
 </div>
 
-<div className="col-lg-12">
-<div className="box box-default ">
+<div className="col-lg-12 ">
+<div className="box box-default dkShadow">
   <div className="box-body ">
 <h2 className="article-title-header">Howl Support Forms </h2>
 
