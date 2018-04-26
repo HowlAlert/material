@@ -85,10 +85,10 @@ render() {
 
 
 
-           <div className="box box-transparent">
-             <div className="box-body padding-lg-h">
-                   <h4>Speak your Silent Alert "Fake Cancellation" Code to your smart hub (or type it into your app) if a perpetrator/threat causes you to cancel your HOWL alert. The alarm will silent,however your alert will proceed. </h4>
-                   <h5 className="text-center">* Be sure to make this a code you will remember.</h5>
+           <div className="">
+             <div className="">
+                   <p className="settingText">Speak your Silent Alert "Fake Cancellation" Code to your smart hub (or type it into your app) if a perpetrator/threat causes you to cancel your HOWL alert. The alarm will silent,however your alert will proceed. </p>
+                   <p className="settingText">* Be sure to make this a code you will remember.</p>
                      <TextField  onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your old silent code " fullWidth />
                    </div>
 
@@ -291,13 +291,13 @@ render() {
 
   return (
       <article className="article">
-         <h2 className="article-title text-center">CHANGE SILENT CODE</h2>
-         <div className="container-fluid with-maxwidth">
+         <h2 className="article-title text-center">Change Silent Code</h2>
+         <div className="">
            <div className="row">
 
            <div className="box box-transparent">
              <div className="box-body padding-lg-h">
-                   <p>Speak your Silent Alert "Fake Cancellation" Code to your smart hub (or type it into your app) if a perpetrator/threat causes you to cancel your HOWL alert. The alarm will silent,however your alert will proceed. </p><h5 className="text-center">* Be sure to make this a code you will remember.</h5>
+                   <p className="settingText">Speak your Silent Alert "Fake Cancellation" Code to your smart hub (or type it into your app) if a perpetrator/threat causes you to cancel your HOWL alert. The alarm will silent,however your alert will proceed. </p><h5 className="text-center">* Be sure to make this a code you will remember.</h5>
                    <div className="form-group">
                      <TextField  onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your New silent code " fullWidth />
                      <TextField  onChange={(e)=>this.handleReCode(e)} name="re-code" floatingLabelText="Verify your New silent code " fullWidth />
@@ -332,9 +332,9 @@ render() {
 }
 
 const Page = () => (
-  <section className="container-fluid chapter">
+  <section className="">
 
-    <h2 className="article-title-header">CHANGE SILENT CODE</h2>
+    <h2 className="article-title-header">Change Silent Code</h2>
 
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1"><SilentCode /></div>

@@ -98,10 +98,10 @@ import cookie from 'react-cookies';
     return (
 
 
-           <div className="box box-transparent">
-             <div className="box-body padding-lg-h">
-                      <p className="no-margin">Speak your Cancellation Code to your smart hub (or type it into your app) to cancel your HOWL alert.</p>
-                      <h5 className="text-center">* Be sure to make this a code you will remember.</h5>
+           <div className="">
+             <div className=" ">
+                      <p className="settingText">Speak your Cancellation Code to your smart hub (or type it into your app) to cancel your HOWL alert.</p>
+                      <p className="settingText">* Be sure to make this a code you will remember.</p>
                       <div className="form-group">
                         <TextField onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your old cancel code" fullWidth />
                       </div>
@@ -273,7 +273,7 @@ handleCancel(event) {
 
          <div >
 
-                    Speak your Cancellation Code to your smart hub (or type it into your app) to cancel your HOWL alert. *Be sure to make this a code you will remember.
+                    <p className="settingText">Speak your Cancellation Code to your smart hub (or type it into your app) to cancel your HOWL alert. *Be sure to make this a code you will remember.</p>
                      <div className="form-group">
                        <TextField onChange={(e)=>this.handleCode(e)} name="code" floatingLabelText="Enter your new cancel code" fullWidth />
                        <TextField onChange={(e)=>this.handleVerifyCode(e)} name="re-code" floatingLabelText="Verify your new cancel code" fullWidth />
@@ -306,9 +306,9 @@ handleCancel(event) {
 
 const Page = () => (
 
-  <section className="container-fluid chapter">
+  <section className="">
 
-    <h2 className="article-title-header">CHANGE CANCEL CODE</h2>
+    <h2 className="article-title-header">Change Cancel Code</h2>
 
     <QueueAnim type="bottom" className="ui-animate">
       <div key="1"><Cancel /></div>

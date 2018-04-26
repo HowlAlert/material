@@ -237,7 +237,7 @@ this.setState({
                      onClick={(e)=>this.handleNext(e)}
                      fullWidth
                    />
-                  
+
 
                    <div className="form-group">
                      {
@@ -268,9 +268,9 @@ this.setState({
 const Page = () => (
 
 
-    <section className="container-fluid chapter">
+    <section className="">
 
-      <h2 className="article-title-header">CHANGE HOME ADDRESS</h2>
+      <h2 className="article-title-header">Change Home Address</h2>
 
       <QueueAnim type="bottom" className="ui-animate">
           <div key="1"><Address /></div>

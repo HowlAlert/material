@@ -185,7 +185,7 @@ handleSmsToggle()
 
                   <div className="box box-default">
                      <div className="box-body">
-                    
+
                          <h4 className="article-title-header" >Text Message Notifications</h4>
                        <p>Would you like to receive camera alerts via text message?</p>
 
@@ -218,8 +218,8 @@ handleSmsToggle()
 
 
 
-       <section className="container-fluid chapter">
-         <h2 className="article-title-header">NOTIFICATIONS</h2>
+       <section className="">
+         <h2 className="article-title-header">Notifications</h2>
          <QueueAnim type="bottom" className="ui-animate">
            <Notify />
          </QueueAnim>

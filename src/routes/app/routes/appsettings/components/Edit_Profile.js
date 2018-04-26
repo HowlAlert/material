@@ -617,7 +617,7 @@ class EditProfile extends React.Component {
      }
    }
 const Page = () => (
-  <section className="container-fluid chapter">
+  <section className="">
     <h2 className="article-title-header">Edit Profile</h2>
     <QueueAnim type="bottom" className="ui-animate">
        <EditProfile />

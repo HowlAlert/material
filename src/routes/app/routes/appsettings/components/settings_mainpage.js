@@ -81,8 +81,12 @@ const BasicBoxes = () => (
 <div className="col-lg-12 ">
 <div className="box box-default dkShadow">
   <div className="box-body ">
-<h2 className="article-title-header">Howl Support Forms </h2>
+  <h2 className="article-title-header">Howl Support Forms </h2>
+  <div className="row">
 
+
+
+<div className="col-lg-3">
     <div className="box box-default"><a href="mailto:support@howl.com">
       <div className="box-body" >
 
@@ -94,9 +98,9 @@ const BasicBoxes = () => (
          </center>
 
     </div>
-    </a></div>
+    </a></div></div>
 
-
+<div className="col-lg-3">
     <div className="box box-default"><a href="mailto:support@howl.com">
       <div className="box-body" >
 
@@ -106,9 +110,9 @@ const BasicBoxes = () => (
          <h5> Contact Support </h5> </center>
 
     </div>
-    </a></div>
+    </a></div></div>
 
-
+<div className="col-lg-3">
     <div className="box box-default">  <a href="#/app/Company-Rules/Terms">
       <div className="box-body" >
 
@@ -118,9 +122,10 @@ const BasicBoxes = () => (
           <h5> Terms and  Conditions </h5> </center>
 
     </div>
-    </a></div>
+    </a></div></div>
 
 
+<div className="col-lg-3">
     <div className="box box-default">  <a href="#/app/Company-Rules/privacy-police">
       <div className="box-body" >
 
@@ -131,11 +136,15 @@ const BasicBoxes = () => (
        </center>
 
     </div>
-    </a></div>
+    </a>
+    </div></div>
 
 
 
  </div>
+</div>
+
+
 </div>
 </div>
 </div>
