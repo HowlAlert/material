@@ -458,7 +458,7 @@ class EditProfile extends React.Component {
 
                   <TextField  value={this.state.Email} onChange={this.handleEmail}  floatingLabelText="Email" fullWidth />
 
-                     <input      value={this.state.Email}  onChange={this.handleEmail}/>
+                     {/* <input      value={this.state.Email}  onChange={this.handleEmail}/> */}
 
                   </div>
                   <div className="col-lg-6 ">
@@ -469,13 +469,10 @@ class EditProfile extends React.Component {
 
 
                        <div className="row">
-                         <div className="col-lg-6 noPadRight">
+                      
+                         <div className="col-lg-6 ">
+                             <TextField  value={this.state.value} onChange={(e)=>this.handleCode(e)}  floatingLabelText="Mobile Verification code" fullWidth />
 
-                            4 - DIGIT CODE
-
-                         </div>
-                         <div className="col-lg-6 noPadLeft">
-                              <input      value={this.state.value}  onChange={(e)=>this.handleCode(e)}/>
 
                          </div>
                        </div>
@@ -524,7 +521,7 @@ class EditProfile extends React.Component {
                              </div>
                              <div className="col-lg-6 ">
                                CHANGE PHONE NUMBER
-                               <ReactPhoneInput defaultCountry={'us'}  onChange={this.handleOnChange}/>
+                               <ReactPhoneInput defaultCountry={'us'}  onChange={this.handleOnChange} />
 
                              </div>
                            </div>

@@ -50,7 +50,8 @@ class MainLogin extends React.Component {
       GetUser:'',
       ResultStatus:'',
       GetUserPack:'',
-      GetUserHomeAddress:''
+      GetUserHomeAddress:'',
+      NumberOfCameras:''
     };
   }
 
@@ -86,6 +87,7 @@ class MainLogin extends React.Component {
           ResultStatus:findresponse.LoginWithGoogleResult.ResultStatus,
           GetUserPack:findresponse.LoginWithGoogleResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithGoogleResult.GetUserHomeAddress,
+          NumberOfCameras:findresponse.LoginResult.NumberOfCameras
         });console.log(findresponse);
         // if(this.state.ResultStatus.Status==="1"){
 
@@ -158,6 +160,7 @@ class MainLogin extends React.Component {
             cookie.save('FirstName', response.w3.ofa);
             cookie.save('LastName', response.w3.wea);
             cookie.save('UserToken', this.state.GetUser.UserToken);
+            cookie.save('NumberOfCameras', this.state.NumberOfCameras);
             //cookie.save('Status', this.state.ResultStatus.Status, '/')
             cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
             cookie.save('CancellationCode', this.state.GetUser.CancellationCode);

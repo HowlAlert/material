@@ -240,20 +240,22 @@ const Dashboard = () => (
        </a>
     </div>
 
-    <div className="col-lg-6">
+    {/* <div className="col-lg-6">
       <Image />
-    </div>
+    </div> */}
 
     {/* <div className="col-xl-1">
       <div className="box box-default ">
     </div>
   </div> */}
-    <div className="col-lg-6">
+    {/* <div className="col-lg-6">
 
              <Image2 />
 
+    </div> */}
+    <div className="col-lg-12">
+      <Camera />
     </div>
-    {/* <Camera /> */}
   </div>
 );
 const Page = () => {

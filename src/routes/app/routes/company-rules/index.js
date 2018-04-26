@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import Conditions from './routes/Terms/'
-import Privacy from './routes/privacy-police/'
+import Privacy from './routes/privacy-policy/'
 
 
 const PageLayout = ({ match }) => (

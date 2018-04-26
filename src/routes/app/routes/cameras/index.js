@@ -1,2 +1,2 @@
-import Camera from './components/Camera';
-export default Camera;
+import CameraButtons from './components/CameraButtons';
+export default CameraButtons;
