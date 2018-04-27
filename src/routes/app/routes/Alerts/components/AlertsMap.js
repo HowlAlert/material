@@ -75,6 +75,9 @@ render() {
 
     return (
 
+      <div className="box box-default dkShadow overHidden">
+        <div className="box-body height400">
+           <h2 className="article-title-header">Triggered Alerts</h2>
 
 
         <Map
@@ -135,13 +138,26 @@ render() {
                   </InfoWindow>
 
                   {/* <RaisedButton  primary label="Alert Location" /> */}
-                  <span className="float-right">
 
-                    <RaisedButton onClick={(e)=>this.handleBack(e)} primary label="Exit" />
 
-                   </span>
+                  <div className="row">
+                <div className="col-lg-4">
+                </div>
+
+                  <div className="col-lg-4">
+                    <div className="howlbackfull margin380" onClick={(e)=>this.handleBack(e)} primary label="Exit" >Close</div>
+
+                    </div>
+
+                  <div className="col-lg-4">
+                  </div>
+                  </div>
+
 
         </Map>
+
+        </div>
+        </div>
 
 
 
