@@ -6,8 +6,6 @@ import moment from 'moment';
 
 const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
 
-
-
 class GoogleMap extends React.Component {
 
   constructor() {
@@ -54,7 +52,7 @@ handleMapMount(mapProps, map) {
     this.map = map;
 
     //log map bounds
-    console.log(this.map.getBounds());
+    // console.log(this.map.getBounds());
 }
 
 render() {
@@ -68,10 +66,10 @@ render() {
     // var lname = cookie.load('LastName');
     // var lastname=lname.substr(0, 1);
     //  console.log(lastname);
-    var AlertDate=cookie.load('AlertDate');
-      console.log(AlertDate)
-      var AlertAddress=cookie.load('AlertAddress');
-        console.log(AlertAddress)
+    // var AlertDate=cookie.load('AlertDate');
+    //   console.log(AlertDate)
+    //   var AlertAddress=cookie.load('AlertAddress');
+    //     console.log(AlertAddress)
 
     return (
 
@@ -114,9 +112,7 @@ render() {
 
             <Marker
                  title={'Alert Details'}
-                 name={"Alert Details:"+ AlertAddress +" " +"on " +
-                  moment(new Date(AlertDate +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')
-                  }
+                
                  onClick={this.onMarkerClicked}
                 position={{lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')}}
                 icon={{
