@@ -34,10 +34,10 @@ class Howls_At_Pack extends React.Component {                    //Class to get 
         console.log(findresponse)
         this.setState({
            data:findresponse.GetMyPoundListResult.GetMyPounds,
-           time:findresponse.GetMyPoundListResult.GetMyPounds["0"].DateCreated
+
 
         })
-        console.log(this.state.time);
+        
 
 
 
