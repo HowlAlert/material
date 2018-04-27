@@ -54,7 +54,7 @@ handleMapMount(mapProps, map) {
     this.map = map;
 
     //log map bounds
-    console.log(this.map.getBounds());
+    // console.log(this.map.getBounds());
 }
 
 render() {

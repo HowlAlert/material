@@ -498,9 +498,9 @@ class Alerts extends React.Component {
      </div>
 
 
-     <div className="col-xl-12">
+     {/* <div className="col-xl-12">
       <Howls_Messages />
-     </div>
+     </div> */}
 
 
 
