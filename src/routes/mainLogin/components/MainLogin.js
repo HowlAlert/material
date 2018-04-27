@@ -430,7 +430,7 @@ class MainLogin extends React.Component {
 
     return(
       <div classNa  me="body-inner">
-      <div className="card bg-white registerCard mainlogincard">
+      <div className="card bg-white registerCard mainlogincard dkShadow">
         <div className="card-content regContent">
             <div className=" bg-white">
               <div className="">

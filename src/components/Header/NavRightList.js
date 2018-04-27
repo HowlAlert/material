@@ -160,7 +160,7 @@ const { redirectToReferrer} = this.state
                   if (redirectToAlert ) {
                     console.log(redirectToAlert)
                         return (
-                          // <Redirect to="../../routes/app/Alerts/components/Alert"/>
+
                          <Redirect to="../../app/Alerts"/>
 
                         )
@@ -169,44 +169,35 @@ var count = this.state.data;
 
     return (
 
-      <div className="list-unstyled float-right">
+      <div className="">
 
+        <div className="topRightNav row">
 
+        <div className="col-lg-3">
 
-
-        {/* <div style={{position : 'relative'}}> */}
-
-
-
-        {/* </div> */}
-
-
-        <div className="topRightNav">
-          {/* <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="1">account_box</div>
-         <div className="space space-md" />
-         <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="♥">account_box</div> */}
-          <IconButton>
-          <MenuItem style={{fontSize: '13px', lineHeight: '21px'}} innerDivStyle={listItemStyle}
-          leftIcon={
-             count !== "0" ?
-
+          <MenuItem
+              leftIcon={
+              count !== "0" ?
               <i className="material-icons mdl-badge mdl-badge--overlap" data-badge={this.state.data} onClick={(e)=>this.handleNotify(e)} >notifications_none</i>
-            :<i className="material-icons">notifications_none</i>
-
+             :<i className="material-icons">notifications_none</i>
           }
 
           />
-          </IconButton>}
+
+          </div>
+
+        }
+
+          <div className="col-lg-6">
 
           <IconMenu
             iconButtonElement={
-              <IconButton>
-              <MenuItem style={{fontSize: '13px', lineHeight: '21px'}} innerDivStyle={listItemStyle}
+              <MenuItem style={{}} innerDivStyle={listItemStyle}
               primaryText={cookie.load('FirstName') +" "+ cookie.load('LastName')}
               onClick={this.handleChange}
               leftIcon={<img src="assets/images/image.png" alt="" className="rounded-circle img30_30" />}
               />
-              </IconButton>}
+              }
             onChange={this.handleChange}
             anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
@@ -229,12 +220,12 @@ var count = this.state.data;
               style={{fontSize: '13px', lineHeight: '48px'}}
               leftIcon={<i className="material-icons">forward</i>}
               onClick={this.handleOpen}
-
                         />
 
 
 
           </IconMenu>
+          </div>
           <Dialog
                       title="Confirm"
                       actions={actions}
