@@ -412,7 +412,7 @@ class Alerts extends React.Component {
 
     <div >
 
-        <div className="box box-default dkShadow">
+        <div className="box box-default dkShadow overHidden">
           <div className="box-body">
              <h2 className="article-title-header">Triggered Alerts</h2>
        <Menu>
@@ -483,7 +483,7 @@ class Alerts extends React.Component {
    <div className="row">
 
 
-     <div className="col-xl-12">
+     <div className="col-lg-12">
        <div className="box box-default dkShadow">
          <div className="box-body">
          <h2 className="article-title-header">Camera Alerts</h2>
@@ -492,13 +492,13 @@ class Alerts extends React.Component {
      </div>
      </div>
      </div>
-     <div className="col-xl-12">
+     <div className="col-lg-12">
         <Alerts />
 
      </div>
 
 
-     <div className="col-xl-12">
+     <div className="col-lg-12">
       <Howls_Messages />
      </div>
 
