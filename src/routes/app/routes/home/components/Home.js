@@ -174,7 +174,7 @@ const { redirectToReferrer} = this.state
       </div>
 
       <div className="">
-        <div className="box box-default box-body ">
+        <div className="box box-default box-body dkShadow ">
 
           <div className="flLeft">
             <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="120"/>
@@ -226,14 +226,14 @@ const Dashboard = () => (
     </div>
 
     <div className="col-lg-6">
-      <div className="box box-default box-body homeAlert">
+      <div className="box box-default box-body homeAlert dkShadow">
         <Alert />
       </div>
     </div>
 
      <div className="col-lg-6">
 <a  href="#/app/Map">
-           <div className="box box-default box-body homeMap">
+           <div className="box box-default box-body homeMap dkShadow">
                <h2 className="article-title-header">Your Neighborhood </h2>
               <Map />
            </div>
