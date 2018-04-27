@@ -74,7 +74,7 @@ componentDidMount(){
 
       })
 
-    
+
 
 })
 }
@@ -120,6 +120,7 @@ handleLogout(event){
         cookie.remove('Longitude'),
         cookie.remove('State'),
         cookie.remove('Zip'),
+        cookie.remove('HasConfirmedMobilePhone'),
         console.log("removed"),
 
      this.setState({ redirectToReferrer: true })

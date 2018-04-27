@@ -33,7 +33,7 @@ class Printcode extends React.Component {
 
 
   componentWillMount(){
-  if(cookie.load('Id')!=undefined && cookie.load('UserToken')!=undefined){
+  if(cookie.load('Detection')!=undefined){
     console.log(cookie.load('Id')),
     console.log(cookie.load('UserToken')),
     this.setState({ redirectToHome: true })

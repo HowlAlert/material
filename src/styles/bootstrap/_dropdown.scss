@@ -61,6 +61,26 @@
   @include box-shadow($dropdown-box-shadow);
 }
 
+.flag-dropdown {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+  background-color: #eaeaea;
+  border: 1px solid #cacaca;
+  border-radius: 3px 0 0 3px;
+z-index: $zindex-dropdown;
+  &.open-dropdown {
+    background: #fff;
+    border-bottom: 0;
+    border-radius: 3px 0 0 0;
+    .selected-flag {
+      background: #fff;
+      border-radius: 3px 0 0 0;
+}
+}
+}
+
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
   @include nav-divider($dropdown-divider-bg);
@@ -86,6 +106,7 @@
     text-decoration: none;
     background-color: $dropdown-link-hover-bg;
   }
+
 
   &.active,
   &:active {

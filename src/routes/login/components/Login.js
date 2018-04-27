@@ -66,12 +66,13 @@ class Login extends React.Component {
     //input Highlighting code end
 }
 
-  componentWillMount(){
+componentWillMount(){
+console.log(cookie.load('Detection'))
+  if(cookie.load('Detection')!=undefined){
 
-  if(cookie.load('SilenceCode')!=undefined){
     this.setState({ redirectToHome: true })
   }
-  }
+}
 
 
  componentDidMount() {
@@ -159,10 +160,22 @@ class Login extends React.Component {
         }
         else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
           alert("Please confirm your Phone Number"),
+          cookie.save('Email', this.state.GetUser.Email);
+          cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+          cookie.save('SilenceCode', this.state.GetUser.SilenceCode)
+          cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+          cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+          cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+          cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+          cookie.save('City', this.state.GetUserHomeAddress.City);
+          cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+          cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+          cookie.save('State', this.state.GetUserHomeAddress.State);
+          cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
           this.setState({ redirectToMobilePhoneConfirmationCodeAfterEditProfile: true }),
           this.setState.noOfSuperValidation="False"
         }
-        
+
         else if(this.state.GetUser.HasConfirmedMobilePhone=="False"){
           alert("Please confirm your Phone Number"),
           this.setState({ redirectToMobilePhoneConfirmationCode: true }),
@@ -190,6 +203,18 @@ class Login extends React.Component {
           alert("Please enter your Silent Code"),
           this.setState({ redirectToSilenceCode: true }),
           this.setState.noOfSuperValidation="False"
+          cookie.save('Email', this.state.GetUser.Email);
+          cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+          cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+          cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+          cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+          cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+          cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+          cookie.save('City', this.state.GetUserHomeAddress.City);
+          cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+          cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+          cookie.save('State', this.state.GetUserHomeAddress.State);
+          cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
         }
 
 
@@ -198,12 +223,8 @@ class Login extends React.Component {
           console.log("status"),
           cookie.save('Email', this.state.GetUser.Email);
           cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
-          //cookie.save('Id', this.state.GetUser.ID);
-          cookie.save('NumberOfCameras', this.state.NumberOfCameras);
-          //cookie.save('UserToken', this.state.GetUser.UserToken);
-          //cookie.save('Status', this.state.ResultStatus.Status, '/')
-          cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
           cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+          cookie.save('SilenceCode', this.state.GetUser.SilenceCode)
           cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
           cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
           //return ( <Redirect to="#/Register1"/> );
@@ -214,7 +235,6 @@ class Login extends React.Component {
           cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
           cookie.save('State', this.state.GetUserHomeAddress.State);
           cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
-
        this.setState({ redirectToReferrer: true })
      }}
         else{
@@ -327,6 +347,12 @@ class Login extends React.Component {
                    this.setState({ redirectToMobilePhoneNumber: true }),
                    this.setState.noOfSuperValidation="False"
                  }
+                 else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
+                   alert("Please confirm your Phone Number"),
+
+                   this.setState({ redirectToMobilePhoneConfirmationCodeAfterEditProfile: true }),
+                   this.setState.noOfSuperValidation="False"
+                 }
 
                  else if(this.state.GetUser.HasConfirmedMobilePhone=="False"){
                    alert("Please confirm your Phone Number"),
@@ -355,6 +381,18 @@ class Login extends React.Component {
                    alert("Please enter your Silent Code"),
                    this.setState({ redirectToSilenceCode: true }),
                    this.setState.noOfSuperValidation="False"
+                   cookie.save('Email', this.state.GetUser.Email);
+                   cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+                   cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+                   cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+                   cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+                   cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+                   cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+                   cookie.save('City', this.state.GetUserHomeAddress.City);
+                   cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+                   cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+                   cookie.save('State', this.state.GetUserHomeAddress.State);
+                   cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
                  }
 
                  else if(this.setState.noOfSuperValidation!="False"){
@@ -362,12 +400,8 @@ class Login extends React.Component {
                    console.log("status"),
                    cookie.save('Email', this.state.GetUser.Email);
                    cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
-                   //cookie.save('Id', this.state.GetUser.ID);
-
-                   //cookie.save('UserToken', this.state.GetUser.UserToken);
-                   //cookie.save('Status', this.state.ResultStatus.Status, '/')
-                   cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
                    cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+                   cookie.save('SilenceCode', this.state.GetUser.SilenceCode)
                    cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
                    cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
                    //return ( <Redirect to="#/Register1"/> );
@@ -378,7 +412,6 @@ class Login extends React.Component {
                    cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
                    cookie.save('State', this.state.GetUserHomeAddress.State);
                    cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
-
                 this.setState({ redirectToReferrer: true })
               }}
                  else{

@@ -36,7 +36,7 @@ const mWidthStyle = {
 
   componentWillMount(){
 
-    if(cookie.load('SilenceCode')!=undefined){
+    if(cookie.load('Detection')!=undefined){
 
       this.setState({ redirectToHome: true })
     }

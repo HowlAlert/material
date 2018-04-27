@@ -43,12 +43,12 @@ class ValidatePhoneCodeAfterEditProfile extends React.Component {
 
 
   componentWillMount(){
+  console.log(cookie.load('Detection'))
+    if(cookie.load('Detection')!=undefined){
 
-  if(cookie.load('SilenceCode')!=undefined){
-    this.setState({ redirectToHome: true })
+      this.setState({ redirectToHome: true })
+    }
   }
-  }
-
    componentDidMount() {
       // autofocus the input on mount for input Highlighting
       this.focusTextInput();
@@ -131,8 +131,7 @@ if(this.state.noOfSuperValidation!="False"){
     const { redirectToReferrer} = this.state
     if (redirectToReferrer) {
       alert("Login Successfull")
-      cookie.load("ID")
-      cookie.load('UserToken')
+
           return (
             <Redirect to="app/home" />
           )
@@ -183,7 +182,6 @@ if(this.state.noOfSuperValidation!="False"){
 
               </div>
               <div className="regButtons">
-
                 <div style={mWidthStyle} className="howlRegNext" label="NEXT -->"  onClick={(e)=>this.handleVerifyCode(e)}>Submit</div>
               </div>
               {/*

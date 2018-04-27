@@ -24,32 +24,16 @@ class AddHomeAddress extends React.Component {
     this.state = {
       ResultStatus:''
     };
-    //input Highlighting code start
-          this.textInput = null;
 
-            this.setTextInputRef = element => {
-              this.textInput = element;
-            };
-
-            this.focusTextInput = () => {
-              // Focus the text input using the raw DOM API
-              if (this.textInput) this.textInput.focus();
-            };
-    //input Highlighting code end
   }
   componentWillMount(){
-  if(cookie.load('SilenceCode')!=undefined){
+  if(cookie.load('Detection')!=undefined){
     this.setState({ redirectToHome: true })
   }
   }
-   componentDidMount() {
-      // autofocus the input on mount for input Highlighting
-      this.focusTextInput();
-    }
 
   handleFormSubmit = (event) => {
      event.preventDefault()
-
      console.error(this.state.street_no+" "+this.state.street_name);
      console.error(this.state.Address1);
      console.error(this.state.Address2);
@@ -58,7 +42,7 @@ class AddHomeAddress extends React.Component {
      console.error(this.state.zipcode);
      console.error(this.state.Latitude);
      console.error(this.state.Longitude);
-     if(this.state.Address1==undefined && this.state.Address2==undefined && this.state.city==undefined && this.state.state==undefined && this.state.zipcode==undefined && this.state.Latitude==undefined && this.state.Longitude==undefined){
+     if(this.state.Address1==undefined && this.state.city==undefined && this.state.state==undefined && this.state.zipcode==undefined && this.state.Latitude==undefined && this.state.Longitude==undefined){
        this.setState({ noOfSuperValidation: false })
        console.log(this.state.noOfSuperValidation);
        alert("Please enter your Home Address");
@@ -67,7 +51,8 @@ class AddHomeAddress extends React.Component {
      }
      console.log(this.state.noOfSuperValidation);
 
-     if(this.state.noOfSuperValidation==true){
+     if(this.state.noOfSuperValidation!=false){
+       console.log("in")
        const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditUserHomeAddress';
       console.error(this.state.street_no+" "+this.state.street_name);
       console.error(this.state.Address1);
@@ -103,6 +88,13 @@ class AddHomeAddress extends React.Component {
            if(this.state.ResultStatus.Status==1){
              console.log(this.state.ResultStatus.Status)
              alert("Succefully added Home Address.")
+             cookie.save('Address1', this.state.Address1);
+             cookie.save('Address2', this.state.Address2);
+             cookie.save('City', this.state.city);
+             cookie.save('Latitude', this.state.Latitude);
+             cookie.save('Longitude', this.state.Longitude);
+             cookie.save('State', this.state.state);
+             cookie.save('Zip', this.state.zipcode);
              this.setState({ redirectToReferrer: true })
               }
               else if(this.state.ResultStatus.StatusMessage=="User does not exist."){
@@ -130,6 +122,7 @@ class AddHomeAddress extends React.Component {
   console.log(address)
       geocodeByAddress(this.state.address)
         .then(results =>{
+          console.log(results)
           this.setState({
                 address_com:results[0],
 
@@ -157,15 +150,15 @@ class AddHomeAddress extends React.Component {
         .catch(error => {
           console.error('Error', error)
         })
-
-        console.error(this.state.street_no+" "+this.state.street_name);
-        console.error(this.state.Address1);
-        console.error(this.state.Address2);
-        console.error(this.state.city);
-        console.error(this.state.state);
-        console.error(this.state.zipcode);
-        console.error(this.state.Latitude);
-        console.error(this.state.Longitude);
+        console.log(this.state.address_com)
+        console.log(this.state.street_no+" "+this.state.street_name);
+        console.log(this.state.Address1);
+        console.log(this.state.Address2);
+        console.log(this.state.city);
+        console.log(this.state.state);
+        console.log(this.state.zipcode);
+        console.log(this.state.Latitude);
+        console.log(this.state.Longitude);
   }
 
 
@@ -224,8 +217,6 @@ class AddHomeAddress extends React.Component {
                ENTER ADDRESS
                      <PlacesAutocomplete
                      inputProps={inputProps}
-                     ref={this.setTextInputRef} //for input Highlighting
-                      onClick={this.focusTextInput} //for input Highlighting
                        />
 
 

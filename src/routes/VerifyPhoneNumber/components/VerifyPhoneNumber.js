@@ -35,7 +35,7 @@ class VerifyPhoneNumber extends React.Component {
 
   componentWillMount(){
 
-  if(cookie.load('SilenceCode')!=undefined){
+  if(cookie.load('Detection')!=undefined){
     this.setState({ redirectToHome: true })
   }
   }
@@ -98,6 +98,8 @@ console.log(number.length);
              alert("Sorry we cannot send verification code to this number. Please make sure you input the correct Mobile Number.");
            }
            if(this.state.ResultStatus.Status==1 && number!=''  && number.length==10){
+             alert("Validate Phone Number");
+             cookie.save('MobilePhoneNumber', number);
              this.setState({ redirectToReferrer: true })
               }
               else{

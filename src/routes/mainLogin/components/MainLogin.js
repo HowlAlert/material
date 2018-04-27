@@ -57,7 +57,7 @@ class MainLogin extends React.Component {
 
   componentWillMount(){
 
-    if(cookie.load('SilenceCode')!=undefined){
+    if(cookie.load('Detection')=="True"){
 
       this.setState({ redirectToHome: true })
     }
@@ -89,12 +89,6 @@ class MainLogin extends React.Component {
           GetUserHomeAddress:findresponse.LoginWithGoogleResult.GetUserHomeAddress,
           NumberOfCameras:findresponse.LoginResult.NumberOfCameras
         });console.log(findresponse);
-        // if(this.state.ResultStatus.Status==="1"){
-
-          // cookie.save('Id', this.state.GetUser.ID);
-          //
-          // cookie.save('UserToken', this.state.GetUser.UserToken);
-
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
             alert(this.state.ResultStatus.StatusMessage)
@@ -147,33 +141,36 @@ class MainLogin extends React.Component {
               alert("Please enter your Silent Code"),
               this.setState({ redirectToSilenceCode: true }),
               this.setState.noOfSuperValidation="False"
+              cookie.save('Email', this.state.GetUser.Email);
+              cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+              cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+              cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+              cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+              cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+              cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+              cookie.save('City', this.state.GetUserHomeAddress.City);
+              cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+              cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+              cookie.save('State', this.state.GetUserHomeAddress.State);
+              cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
             }
-
-          //  const expires = new Date()
-            //expires.setDate(now.getDate() + 14)
             console.log(this.state.GetUser);
             console.log("status");
             if(this.setState.noOfSuperValidation!="False"){
-            cookie.save('Email', this.state.GetUser.Email);
-            cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
-            cookie.save('Id', this.state.GetUser.ID);
-            cookie.save('FirstName', response.w3.ofa);
-            cookie.save('LastName', response.w3.wea);
-            cookie.save('UserToken', this.state.GetUser.UserToken);
-            cookie.save('NumberOfCameras', this.state.NumberOfCameras);
-            //cookie.save('Status', this.state.ResultStatus.Status, '/')
-            cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
-            cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
-            cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
-            cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
-            //return ( <Redirect to="#/Register1"/> );
-            cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
-            cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
-            cookie.save('City', this.state.GetUserHomeAddress.City);
-            cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
-            cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
-            cookie.save('State', this.state.GetUserHomeAddress.State);
-            cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
+              cookie.save('Email', this.state.GetUser.Email);
+              cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+              cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+              cookie.save('SilenceCode', this.state.GetUser.SilenceCode)
+              cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+              cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+              //return ( <Redirect to="#/Register1"/> );
+              cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+              cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+              cookie.save('City', this.state.GetUserHomeAddress.City);
+              cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+              cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+              cookie.save('State', this.state.GetUserHomeAddress.State);
+              cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
        this.setState({ redirectToReferrer: true })
      }}
         else{
@@ -258,21 +255,27 @@ class MainLogin extends React.Component {
               alert("Please enter your Silent Code"),
               this.setState({ redirectToSilenceCode: true }),
               this.setState.noOfSuperValidation="False"
+              cookie.save('Email', this.state.GetUser.Email);
+              cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+              cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+              cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+              cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+              cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+              cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+              cookie.save('City', this.state.GetUserHomeAddress.City);
+              cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+              cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+              cookie.save('State', this.state.GetUserHomeAddress.State);
+              cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
             }
 
             if(this.setState.noOfSuperValidation!="False"){
-                  cookie.save('Email', this.state.GetUser.Email);
+                  ccookie.save('Email', this.state.GetUser.Email);
                   cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
-                  cookie.save('Id', this.state.GetUser.ID);
-                  cookie.save('FirstName', response.first_name);
-                  cookie.save('LastName', response.last_name);
-                  cookie.save('UserToken', this.state.GetUser.UserToken);
-                  //cookie.save('Status', this.state.ResultStatus.Status, '/')
-                  cookie.save('SilenceCode', this.state.GetUser.SilenceCode);
                   cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
+                  cookie.save('SilenceCode', this.state.GetUser.SilenceCode)
                   cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
                   cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
-                  //return ( <Redirect to="#/Register1"/> );
                   cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
                   cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
                   cookie.save('City', this.state.GetUserHomeAddress.City);

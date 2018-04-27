@@ -47,10 +47,11 @@ class Register extends React.Component {
   }
 
   componentWillMount(){
+  console.log(cookie.load('Detection'))
+    if(cookie.load('Detection')!=undefined){
 
-  if(cookie.load('SilenceCode')!=undefined){
-    this.setState({ redirectToHome: true })
-  }
+      this.setState({ redirectToHome: true })
+    }
   }
 
   componentDidMount() {
@@ -100,7 +101,7 @@ class Register extends React.Component {
       this.setState.noOfSuperValidation="False"
     }
 
-    if(this.setState.noOfSuperValidation!="False"){
+    if(this.state.noOfSuperValidation!="False"){
       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/RegisterUser';
          fetch(BaseURL,{
           method: "POST",
@@ -120,6 +121,7 @@ class Register extends React.Component {
           cookie.save('UserToken', this.state.GetUser.UserToken, '/'),
           cookie.save('FirstName', this.state.Fname),
           cookie.save('LastName', this.state.Lname),
+          cookie.save('Email', this.state.Email),
           console.log(this.state.GetUser.ID),
           console.log(this.state.GetUser.UserToken),
           console.log(findresponse),

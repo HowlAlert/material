@@ -37,7 +37,7 @@ class AddSilentCode extends React.Component {
 
   componentWillMount(){
 
-    if(cookie.load('SilenceCode')!=undefined){
+    if(cookie.load('Detection')!=undefined){
 
       this.setState({ redirectToHome: true })
     }

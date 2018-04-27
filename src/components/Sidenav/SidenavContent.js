@@ -154,6 +154,7 @@ class SidebarContent extends React.Component {
         cookie.remove('Longitude'),
         cookie.remove('State'),
         cookie.remove('Zip'),
+        cookie.remove('HasConfirmedMobilePhone'),
         console.log("removed"),
 
      this.setState({ redirectToReferrer: true })
