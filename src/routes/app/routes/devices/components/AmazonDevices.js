@@ -60,15 +60,7 @@ return (
                            />
                        </a>
 
-                     <div className="card__body ">
-
-
-
-
-
-
-                     </div>
-
+                  
 
                    </div>
 
@@ -81,13 +73,13 @@ return (
     <div className="box-body">
             <div className="article-title-header">Amazon Device Instructions</div>
               <div className="box-body">
-                <p className="card__desc">
-                  01.  Install the Alexa App. <br/>
-                  02.  From the left navigation panel; select skills.<br/>
-                  03.  Use the search bar and enter HOWL.<br/>
-                  04.  Link your HOWL account
+                <ul>
+                  <li> Install the Alexa App. </li>
+                  <li> From the left navigation panel; select skills.</li>
+                  <li>Use the search bar and enter HOWL.</li>
+                  <li> Link your HOWL account</li>
+               </ul>
 
-                </p>
             </div>
   </div>
   </div>

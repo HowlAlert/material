@@ -455,7 +455,7 @@ class Howls_Me extends React.Component {
         console.log(findresponse)
         this.setState({
            data:findresponse.GetPackPoundListResult.GetPackPounds,
-           time:findresponse.GetPackPoundListResult.GetPackPounds["0"].DateCreated
+
         })
         console.log(this.state.data);
         // var ms = this.state.time;
@@ -624,10 +624,10 @@ class Howls_Pack extends React.Component {
         console.log(findresponse)
         this.setState({
            data:findresponse.GetMyPoundListResult.GetMyPounds,
-           time:findresponse.GetMyPoundListResult.GetMyPounds["0"].DateCreated
+          
 
         })
-        console.log(this.state.time);
+        // console.log(this.state.time);
         // var ms = this.state.time;
         // console.log(ms)
         //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');

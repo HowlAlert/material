@@ -5,8 +5,6 @@ import QueueAnim from 'rc-queue-anim';
 import AmazonDevices from './AmazonDevices';
 import GoogleDevices from './GoogleDevices';
 import cookie from 'react-cookies';
-import './paagedesign.css';
-
 
 
 class Device extends React.Component {
@@ -51,18 +49,35 @@ class Device extends React.Component {
 
     }
 
+    handleAddDevice(){
+
+      this.setState({ redirectToReferrer: true })
+    }
+
+
+
 render() {
 
-// console.log(this.state.length)
-//   // var mes = this.state.data.length
-//   if(this.state.length === 0 || this.state.length === undefined )
-//   {
-//     var message="NO DEVICES AVAILABLE";
-//
-//   }
-//   else {
-//     var message="CONNECTED DEVICES"
-//   }
+const { redirectToReferrer} = this.state
+      if(redirectToReferrer === true)
+      {
+        return (
+          <div>
+          <div className="box box-default  dkShadow">
+            <div className="box-body ">
+
+
+
+            <AmazonDevices />
+            <GoogleDevices />
+
+          </div>
+          </div>
+          </div>
+
+
+         )
+      }
 
 var fname=cookie.load('FirstName');
  console.log(fname);
@@ -77,10 +92,17 @@ var lname = cookie.load('LastName');
          <div>
          <div className="box box-default  dkShadow">
            <div className="box-body ">
-           <h2 className="article-title-header">Devices</h2>
-           <h2 className="marg20B"> "Hello! { " "+fname+" "+lname} follow instructions to add devices !"</h2>
-               <AmazonDevices />
-               <GoogleDevices />
+           <div className="row">
+           <div className="col-lg-9">
+
+                      <h2 className="article-title-header">NO DEVICE CONNECTED</h2>
+             </div>
+               <div className="col-lg-3">
+               <div  className="howlBlue" primary label="+ ADD NEW PACK MEMBER"  onClick={()=>this.handleAddDevice()}>+ ADD DEVICE</div>
+               </div>
+               </div>
+
+
 
          </div>
          </div>
@@ -97,15 +119,14 @@ var lname = cookie.load('LastName');
 
                     <div className="box box-default  dkShadow">
                       <div className="box-body ">
-                      <h2 className="article-title-header">Devices</h2>
-                        <h5 className="marg20B">  "Hello! { " "+fname+" "+lname}!"
-                        {/* <img src="assets/images/echo.png" alt="Image" height="30" width="30"/> */}
-                           You are already connected to Amazon Echo .......Try this!
-                        </h5>
-
-
-                          <GoogleDevices />
-
+                        <div className="row">
+                        <div className="col-lg-9">
+                                <h2 className="article-title-header">CONNECTED TO AMAZON ECHO</h2>
+                        </div>
+                        <div className="col-lg-3">
+                            <div  className="howlBlue" primary label="+ ADD NEW PACK MEMBER"  onClick={()=>this.handleAddDevice()}>+ ADD DEVICE</div>
+                        </div>
+                            </div>
 
                       </div>
                        </div>
@@ -126,17 +147,16 @@ var lname = cookie.load('LastName');
 
               <div className="box box-default col-xl-12 ">
                 <div className="box-body ">
-                <h2 className="article-title-header">Devices</h2>
-                  <h5>  "Hello! { " "+fname+" "+lname}!"
-                  {/* <img src="assets/images/home.png" alt="Image" height="30" width="30"/> */}
-                   You are connected to Google Home .......Try this!
-                  </h5>
-                  <div className="box box-default  ">
-                    <div className="box-body ">
 
-                    <AmazonDevices />
-                  </div>
+
+                <div className="row">
+                <div className="col-lg-9">
+                        <h2 className="article-title-header">CONNECTED TO GOOGLE HOME</h2>
                 </div>
+                <div className="col-lg-3">
+                    <div  className="howlBlue" primary label="+ ADD NEW PACK MEMBER"  onClick={()=>this.handleAddDevice()}>+ ADD DEVICE</div>
+                </div>
+                    </div>
 
 
                 </div>

@@ -35,7 +35,7 @@ onMapClicked (props) {
         })
 
     }
-      console.log("In onclick");
+      // console.log("In onclick");
 
 }
 
@@ -52,7 +52,7 @@ handleMapMount(mapProps, map) {
     this.map = map;
 
     //log map bounds
-    console.log(this.map.getBounds());
+    // console.log(this.map.getBounds());
 
 }
 
@@ -60,95 +60,35 @@ handleMapMount(mapProps, map) {
 componentDidMount()
 {
 
-  this.setState({
 
-       points: [
-         {"cdid": 107986877, "type": "Arrest", "date": "04/24/18 12:26 AM", "address": "00 BLOCK OF LAWTON ST"},
-         {"cdid": 107969554, "type": "Assault", "date": "04/23/18 01:50 PM", "address": "300 BLOCK OF 5 AVE"},
-         {"cdid": 107951903, "type": "Burglary", "date": "04/16/18 08:27 AM", "address": "00 BLOCK OF ELIZABETH ST"},
-         {"cdid": 107944910, "type": "Other", "date": "04/21/18 06:14 PM", "address": "100 BLOCK OF UNITED NATIONS PZ"},
-         {"cdid": 107986200, "type": "Robbery", "date": "04/23/18 09:56 PM", "address": "500 BLOCK OF WEST 56TH ST"},
-         {"cdid": 107931936, "type": "Shooting", "date": "04/22/18 12:07 PM", "address": "HENDRIX ST AND SUTTER AVE"},
-         {"cdid": 107834468, "type": "Theft", "date": "04/15/18 10:00 PM", "address": "200 BLOCK OF E 15TH ST"},
-         {"cdid": 108020779, "type": "Vandalism", "date": "04/24/18 10:35 PM", "address": "100 BLOCK OF LINCOLN AVE"},
-         {"cdid": 108020779, "type": "Fire", "date": "04/24/18 10:35 PM", "address": "100 BLOCK OF LINCOLN AVE"},
+  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF_SANDBOX/Service1.svc/GetSpotCrimes';
 
-        ]
 
-  });
-// const feedURL = 'http://api.spotcrime.com/crimes.json?key=17e9771d2c12fbe024563b0a77ee9f9976c3bea0eb30337a27dcb6c2e4ce&format=json';
-//   fetch(feedURL,
-// {
-// method:'GET',
-// mode:'no-cors',
-// headers: new Headers({'Access-Control-Allow-Origin':'*',
-// 'Content-Type': 'multipart/form-data'
-// })
-//
-// })
-//
-//   .then(data => {
-//       this.setState({
-//           data: data
-//
-//       });
-//
-//       console.log(data)
-//   })
-//   .catch(resp => {
-//       console.error(resp);
-//   })
-//
+      fetch(BaseURL,
+      {
+       method: "POST",
+       body: JSON.stringify({
+         "UserID":cookie.load('Id'),
+         "UserToken":cookie.load('UserToken'),
+         "Radius":"0.01",
+         "Lat":cookie.load('Latitude'),
+         "Long":cookie.load('Longitude')
+       }),
+        headers: new Headers({'content-type': 'application/json'}),
+      })
+  .then((Response)=> Response.json())
+  .then((findresponse)=>{
+    console.log(findresponse);
+    this.setState({
+             GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
+
+               })
+        console.log(this.state.GetSpotCrimesResult);
+  })
 
 
 }
-// getComponent(){
-// {  switch (this.state.points.map(d =>d.type))
-//   {
-//       case 'Arrest': <Marker
-//            title={'Home Address Location '}
-//            name={this.state.points.address}
-//            onClick={this.onMarkerClicked}
-//            position={{lat: 40.9102073,  lng: -73.7827056 }}
-//           icon={{
-//                    url: "assets/images//Arrest-Icon-Small.png",
-//                    anchor: new google.maps.Point(32,32),
-//                    scaledSize: new google.maps.Size(40,40)
-//               }}
-//
-//
-//          /> ; break;
-//       case 'Assault':<Marker
-//            title={'Home Address Location '}
-//            name={this.state.points.address}
-//            onClick={this.onMarkerClicked}
-//            position={{lat: 40.7143206,  lng: -73.9802421 }}
-//           icon={{
-//                    url: "assets/images//Assult-Icon-Small.png",
-//                    anchor: new google.maps.Point(32,32),
-//                    scaledSize: new google.maps.Size(40,40)
-//               }}
-//
-//
-//          />; break;
-//
-//       default:  <Marker
-//             title={'Home Address Location '}
-//             name={this.state.points.address}
-//             onClick={this.onMarkerClicked}
-//             position={{lat: 40.7530871,  lng: -73.9678144 }}
-//            icon={{
-//                     url: "assets/images//Other-Icon-Small.png",
-//                     anchor: new google.maps.Point(32,32),
-//                     scaledSize: new google.maps.Size(40,40)
-//                }}
-//
-//
-//           />;
-//
-//
-// }}
-// }
+
 
 render() {
     const {google} = this.props;
@@ -162,16 +102,16 @@ render() {
     var lastname=lname.substr(0, 1);
      console.log(lastname);
 
-
-    var type = this.state.points["0"].type
-    console.log(type)
+    //
+    // var type = this.state.points["0"].type
+    // console.log(type)
 
 
     return (
 
 
 
-        <Map className='google-map'
+        <Map
 
             google={google}
             onClick={this.onMapClicked}
@@ -215,15 +155,21 @@ render() {
            {/* {this.getComponent()} */}
 
 
-            {this.state.points.map(d => {
+            {this.state.GetSpotCrimesResult.map(d => {
 
            if(d.type === "Arrest"){
                return (
                  <Marker
                       title={'Home Address Location '}
-                      name={this.state.points.address}
+                      name={
+                        <div>
+                          {d.type}
+                          <div>{d.address}</div>
+                           <div>{d.date}</div>
+                        </div>
+                      }
                       onClick={this.onMarkerClicked}
-                      position={{lat: 40.9102073,  lng: -73.7827056 }}
+                      position={{lat: d.lat,  lng: d.lon }}
                      icon={{
                               url: "assets/images//Arrest-Icon-Small.png",
                               anchor: new google.maps.Point(32,32),
@@ -238,9 +184,15 @@ render() {
              return (
                <Marker
                     title={'Home Address Location '}
-                    name={this.state.points.address}
+                    name={
+                      <div>
+                        {d.type}
+                        <div>{d.address}</div>
+                         <div>{d.date}</div>
+                      </div>
+                    }
                     onClick={this.onMarkerClicked}
-                    position={{lat: 40.7143206,  lng: -73.9802421 }}
+                    position={{lat: d.lat,  lng: d.lon }}
                    icon={{
                             url: "assets/images//Assult-Icon-Small.png",
                             anchor: new google.maps.Point(32,32),
@@ -255,9 +207,15 @@ render() {
                return (
                  <Marker
                       title={'Home Address Location '}
-                      name={this.state.points.address}
+                      name={
+                        <div>
+                          {d.type}
+                          <div>{d.address}</div>
+                           <div>{d.date}</div>
+                        </div>
+                        }
                       onClick={this.onMarkerClicked}
-                      position={{lat: 40.7414098,  lng: -73.9833599 }}
+                        position={{lat: d.lat,  lng: d.lon }}
                      icon={{
                               url: "assets/images//Burglary-Icon-Small.png",
                               anchor: new google.maps.Point(32,32),
@@ -271,9 +229,16 @@ render() {
                    return (
                      <Marker
                           title={'Home Address Location '}
-                          name={this.state.points.address}
+                          name={
+                            <div>
+                              {d.type}
+                              <div>{d.address}</div>
+                               <div>{d.date}</div>
+                            </div>
+
+                             }
                           onClick={this.onMarkerClicked}
-                          position={{lat: 40.7530871,  lng: -73.9678144 }}
+                          position={{lat: d.lat,  lng: d.lon }}
                          icon={{
                                   url: "assets/images//Other-Icon-Small.png",
                                   anchor: new google.maps.Point(32,32),
@@ -288,9 +253,15 @@ render() {
                  return (
                    <Marker
                        title={'Home Address Location '}
-                       name={this.state.points.address}
+                       name={
+                         <div>
+                           {d.type}
+                           <div>{d.address}</div>
+                            <div>{d.date}</div>
+                         </div>
+                        }
                        onClick={this.onMarkerClicked}
-                       position={{lat: 40.7687448,  lng: -73.9902906 }}
+                         position={{lat: d.lat,  lng: d.lon }}
                       icon={{
                                url: "assets/images//Robbery-Icon-Small.png",
                                anchor: new google.maps.Point(32,32),
@@ -304,9 +275,15 @@ render() {
                     return (
                       <Marker
                            title={'Home Address Location '}
-                           name={this.state.points.address}
+                           name={
+                             <div>
+                               {d.type}
+                               <div>{d.address}</div>
+                                <div>{d.date}</div>
+                             </div>
+                           }
                            onClick={this.onMarkerClicked}
-                           position={{lat: 40.6703256,  lng: -73.8887778}}
+                             position={{lat: d.lat,  lng: d.lon }}
                           icon={{
                                    url: "assets/images//Shooting-Icon-Small.png",
                                    anchor: new google.maps.Point(32,32),
@@ -320,9 +297,16 @@ render() {
                     return (
                       <Marker
                            title={'Home Address Location '}
-                           name={this.state.points.address}
+                          name={
+                                <div>
+                                  {d.type}
+                                  <div>{d.address}</div>
+                                   <div>{d.date}</div>
+                                </div>
+
+                                 }
                            onClick={this.onMarkerClicked}
-                           position={{lat: 40.7270939,  lng: -73.9526728 }}
+                             position={{lat: d.lat,  lng: d.lon }}
                           icon={{
                                    url: "assets/images//Theft-Icon-Small.png",
                                    anchor: new google.maps.Point(32,32),
@@ -336,9 +320,15 @@ render() {
                        return (
                          <Marker
                               title={'Home Address Location '}
-                              name={this.state.points.address}
+                              name={
+                                 <div>
+                                    {d.type}
+                                    <div>{d.address}</div>
+                                     <div>{d.date}</div>
+                                  </div>
+                                 }
                               onClick={this.onMarkerClicked}
-                              position={{lat:40.9020274,  lng: -73.7823738 }}
+                                position={{lat: d.lat,  lng: d.lon }}
                              icon={{
                                       url: "assets/images//Vandalism-Icon-Small.png",
                                       anchor: new google.maps.Point(32,32),
@@ -352,9 +342,17 @@ render() {
                           return (
                             <Marker
                                  title={'Home Address Location '}
-                                 name={this.state.points.address}
+                                 name={
+                                   <div>
+                                     {d.type}
+                                     <div>{d.address}</div>
+                                      <div>{d.date}</div>
+                                   </div>
+
+
+                                     }
                                  onClick={this.onMarkerClicked}
-                                 position={{lat:40.7348362,  lng: -73.8735609 }}
+                                   position={{lat: d.lat,  lng: d.lon }}
                                 icon={{
                                          url: "assets/images//Fire-Arson-Icon-Small.png",
                                          anchor: new google.maps.Point(32,32),

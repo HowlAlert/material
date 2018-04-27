@@ -143,7 +143,7 @@ render() {
 
 
 var geo911 = this.state.geonumber;
-console.log(geo911)
+// console.log(geo911)
 
 const { redirectToReferrer} = this.state
   if(redirectToReferrer === true)
@@ -231,14 +231,14 @@ const Dashboard = () => (
       </div>
     </div>
 
-    <div className="col-lg-6">
-       <a  href="#/app/Map">
+     <div className="col-lg-6">
+<a  href="#/app/Map">
            <div className="box box-default box-body homeMap">
                <h2 className="article-title-header">Your Neighborhood </h2>
-            <Map />
+              <Map />
            </div>
-       </a>
-    </div>
+</a>
+ </div>
 
     {/* <div className="col-lg-6">
       <Image />
