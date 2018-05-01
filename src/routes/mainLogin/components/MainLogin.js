@@ -193,8 +193,9 @@ class MainLogin extends React.Component {
       console.log(response.email);
 
 
-      const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LoginWithFacebook';
-      // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithFacebook';
+
+    //  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithFacebook';
+const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LoginWithFacebook';
 
 
          fetch(BaseURL,{
