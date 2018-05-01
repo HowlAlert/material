@@ -108,7 +108,7 @@ render() {
                    onClick={this.onMarkerClicked}
                   position={{lat: cookie.load('Latitude'),  lng: cookie.load('Longitude')}}
                   icon={{
-                           url: "assets/images//howl-map-marker-small.png",
+                           url: "assets/images/howl-map-marker-small.png",
                            anchor: new google.maps.Point(32,32),
                            scaledSize: new google.maps.Size(64,64)
                       }}

@@ -167,7 +167,7 @@ render() {
                       onClick={this.onMarkerClicked}
                       position={{lat: d.lat,  lng: d.lon }}
                      icon={{
-                              url: "assets/images//Arrest-Icon-Small.png",
+                              url: "assets/images/Arrest-Icon-Small.png",
                               anchor: new google.maps.Point(32,32),
                               scaledSize: new google.maps.Size(40,40)
                          }}
@@ -190,7 +190,7 @@ render() {
                     onClick={this.onMarkerClicked}
                     position={{lat: d.lat,  lng: d.lon }}
                    icon={{
-                            url: "assets/images//Assult-Icon-Small.png",
+                            url: "assets/images/Assult-Icon-Small.png",
                             anchor: new google.maps.Point(32,32),
                             scaledSize: new google.maps.Size(40,40)
                        }}
@@ -213,7 +213,7 @@ render() {
                       onClick={this.onMarkerClicked}
                         position={{lat: d.lat,  lng: d.lon }}
                      icon={{
-                              url: "assets/images//Burglary-Icon-Small.png",
+                              url: "assets/images/Burglary-Icon-Small.png",
                               anchor: new google.maps.Point(32,32),
                               scaledSize: new google.maps.Size(40,40)
                          }}
@@ -236,7 +236,7 @@ render() {
                           onClick={this.onMarkerClicked}
                           position={{lat: d.lat,  lng: d.lon }}
                          icon={{
-                                  url: "assets/images//Other-Icon-Small.png",
+                                  url: "assets/images/Other-Icon-Small.png",
                                   anchor: new google.maps.Point(32,32),
                                   scaledSize: new google.maps.Size(40,40)
                              }}
@@ -259,7 +259,7 @@ render() {
                        onClick={this.onMarkerClicked}
                          position={{lat: d.lat,  lng: d.lon }}
                       icon={{
-                               url: "assets/images//Robbery-Icon-Small.png",
+                               url: "assets/images/Robbery-Icon-Small.png",
                                anchor: new google.maps.Point(32,32),
                                scaledSize: new google.maps.Size(40,40)
                           }}
@@ -281,7 +281,7 @@ render() {
                            onClick={this.onMarkerClicked}
                              position={{lat: d.lat,  lng: d.lon }}
                           icon={{
-                                   url: "assets/images//Shooting-Icon-Small.png",
+                                   url: "assets/images/Shooting-Icon-Small.png",
                                    anchor: new google.maps.Point(32,32),
                                    scaledSize: new google.maps.Size(40,40)
                               }}
@@ -304,7 +304,7 @@ render() {
                            onClick={this.onMarkerClicked}
                              position={{lat: d.lat,  lng: d.lon }}
                           icon={{
-                                   url: "assets/images//Theft-Icon-Small.png",
+                                   url: "assets/images/Theft-Icon-Small.png",
                                    anchor: new google.maps.Point(32,32),
                                    scaledSize: new google.maps.Size(40,40)
                               }}
@@ -326,7 +326,7 @@ render() {
                               onClick={this.onMarkerClicked}
                                 position={{lat: d.lat,  lng: d.lon }}
                              icon={{
-                                      url: "assets/images//Vandalism-Icon-Small.png",
+                                      url: "assets/images/Vandalism-Icon-Small.png",
                                       anchor: new google.maps.Point(32,32),
                                       scaledSize: new google.maps.Size(40,40)
                                  }}
@@ -350,7 +350,7 @@ render() {
                                  onClick={this.onMarkerClicked}
                                    position={{lat: d.lat,  lng: d.lon }}
                                 icon={{
-                                         url: "assets/images//Fire-Arson-Icon-Small.png",
+                                         url: "assets/images/Fire-Arson-Icon-Small.png",
                                          anchor: new google.maps.Point(32,32),
                                          scaledSize: new google.maps.Size(40,40)
                                     }}
@@ -368,7 +368,7 @@ render() {
                    onClick={this.onMarkerClicked}
                    position={{lat: cookie.load('Latitude'),  lng: cookie.load('Longitude')}}
                   icon={{
-                           url: "assets/images//howl-map-marker-small.png",
+                           url: "assets/images/howl-map-marker-small.png",
                            anchor: new google.maps.Point(32,32),
                            scaledSize: new google.maps.Size(64,64),
 
@@ -384,7 +384,7 @@ render() {
                       onClick={this.onMarkerClicked}
                      position={{lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')}}
                      icon={{
-                              url: "assets/images//howl-map-marker-small.png",
+                              url: "assets/images/howl-map-marker-small.png",
                               anchor: new google.maps.Point(32,32),
                               scaledSize: new google.maps.Size(64,64)
                          }}
