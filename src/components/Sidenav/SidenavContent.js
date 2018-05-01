@@ -200,7 +200,7 @@ class SidebarContent extends React.Component {
     return (
       <ul className="nav" ref={(c) => { this.nav = c; }}>
         <li>
-          <FlatButton href="#/app/home"><img className="nav-icon material-icons" src="assets/images/rsz_bluehome.png" alt="Image" height="20" width="20"/><span className="nav-text">HOME</span></FlatButton>
+          <FlatButton href="#/app/home"><img className="nav-icon material-icons" src="assets/images/rsz_bluehome.png" alt="Image" height="20" width="20"/><span className="nav-text">Home</span></FlatButton>
         </li>
         <li>
           <FlatButton href="#/app/Alerts">
