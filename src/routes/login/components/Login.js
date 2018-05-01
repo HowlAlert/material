@@ -50,7 +50,8 @@ class Login extends React.Component {
       GetUser:'',
       ResultStatus:'',
       text:'',
-      NumberOfCameras:''
+      NumberOfCameras:'',
+      GetAccount:''
     };
     //input Highlighting code start
           this.textInput = null;
@@ -131,10 +132,12 @@ componentWillMount(){
         ResultStatus:findresponse.LoginResult.ResultStatus,
         GetUserHomeAddress:findresponse.LoginResult.GetUserHomeAddress,
         GetUserPack:findresponse.LoginResult.GetUserPack,
-        NumberOfCameras:findresponse.LoginResult.NumberOfCameras
+        NumberOfCameras:findresponse.LoginResult.NumberOfCameras,
+        GetAccount:findresponse.LoginResult.GetAccount,
       });
 
       console.log(findresponse);
+      console.log(this.state.GetAccount);
       if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
         alert(this.state.ResultStatus.StatusMessage)
       }
@@ -160,7 +163,16 @@ componentWillMount(){
           this.setState.noOfSuperValidation="False"
         }
         else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
-          alert("Please confirm your Phone Number"),
+          alert("Please confirm your Phone Number");
+          if(this.state.GetAccount.length==0){
+            // console.log(this.state.GetAccount)
+              cookie.save('GetAccount_GMT','empty');
+          }else if(this.state.GetAccount.length!=0){
+            cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+            cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+            console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+              console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+          }
           cookie.save('Email', this.state.GetUser.Email);
           cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
           cookie.save('SilenceCode', this.state.GetUser.SilenceCode)
@@ -204,6 +216,15 @@ componentWillMount(){
           alert("Please enter your Silent Code"),
           this.setState({ redirectToSilenceCode: true }),
           this.setState.noOfSuperValidation="False"
+          if(this.state.GetAccount.length==0){
+            // console.log(this.state.GetAccount)
+              cookie.save('GetAccount_GMT','empty');
+          }else if(this.state.GetAccount.length!=0){
+            cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+            cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+            console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+              console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+          }
           cookie.save('Email', this.state.GetUser.Email);
           cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
           cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
@@ -220,7 +241,17 @@ componentWillMount(){
 
 
         else if(this.state.noOfSuperValidation!="False"){
-          console.log(this.state.GetUser);
+          console.log(this.state.GetAccount.length)
+          if(this.state.GetAccount.length==0){
+            // console.log(this.state.GetAccount)
+              cookie.save('GetAccount_GMT','empty');
+          }else if(this.state.GetAccount.length!=0){
+            cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+            cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+            console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+              console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+          }
+
           console.log("status"),
           cookie.save('Email', this.state.GetUser.Email);
           cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -285,6 +316,7 @@ componentWillMount(){
          console.log("Enter Pressed");
 
 
+
              var password = this.state.Password;
              var PasswordLength = password.length;
 
@@ -311,10 +343,9 @@ componentWillMount(){
 
           if(this.state.noOfSuperValidation!="False"){
 
-             //const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
-
              const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/Login';
              // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
+
 
                 fetch(BaseURL,{
                  method: "POST",
@@ -328,10 +359,12 @@ componentWillMount(){
                  ResultStatus:findresponse.LoginResult.ResultStatus,
                  GetUserHomeAddress:findresponse.LoginResult.GetUserHomeAddress,
                  GetUserPack:findresponse.LoginResult.GetUserPack,
-                 NumberOfCameras:findresponse.LoginResult.NumberOfCameras
+                 NumberOfCameras:findresponse.LoginResult.NumberOfCameras,
+                 GetAccount:findresponse.LoginResult.GetAccount,
                });
 
                console.log(findresponse);
+               console.log(this.state.GetAccount);
                if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
                  alert(this.state.ResultStatus.StatusMessage)
                }
@@ -357,7 +390,16 @@ componentWillMount(){
                    this.setState.noOfSuperValidation="False"
                  }
                  else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
-                   alert("Please confirm your Phone Number"),
+                   alert("Please confirm your Phone Number");
+                   if(this.state.GetAccount.length==0){
+                     // console.log(this.state.GetAccount)
+                       cookie.save('GetAccount_GMT','empty');
+                   }else if(this.state.GetAccount.length!=0){
+                     cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+                     cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+                     console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                       console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                   }
                    cookie.save('Email', this.state.GetUser.Email);
                    cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
                    cookie.save('SilenceCode', this.state.GetUser.SilenceCode)
@@ -401,6 +443,15 @@ componentWillMount(){
                    alert("Please enter your Silent Code"),
                    this.setState({ redirectToSilenceCode: true }),
                    this.setState.noOfSuperValidation="False"
+                   if(this.state.GetAccount.length==0){
+                     // console.log(this.state.GetAccount)
+                       cookie.save('GetAccount_GMT','empty');
+                   }else if(this.state.GetAccount.length!=0){
+                     cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+                     cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+                     console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                       console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                   }
                    cookie.save('Email', this.state.GetUser.Email);
                    cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
                    cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
@@ -417,7 +468,16 @@ componentWillMount(){
 
 
                  else if(this.state.noOfSuperValidation!="False"){
-                   console.log(this.state.GetUser);
+                   console.log(this.state.GetAccount.length)
+                   if(this.state.GetAccount.length==0){
+                     // console.log(this.state.GetAccount)
+                       cookie.save('GetAccount_GMT','empty');
+                   }else if(this.state.GetAccount.length!=0){
+                     cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+                     cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+                     console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                       console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                   }
                    console.log("status"),
                    cookie.save('Email', this.state.GetUser.Email);
                    cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -439,7 +499,8 @@ componentWillMount(){
                     this.setState({ redirectToReferrer: false })
                  }
                });
-           }}
+           }
+         }
    }
 
 

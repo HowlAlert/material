@@ -51,7 +51,8 @@ class MainLogin extends React.Component {
       ResultStatus:'',
       GetUserPack:'',
       GetUserHomeAddress:'',
-      NumberOfCameras:''
+      NumberOfCameras:'',
+      GetAccount:''
     };
   }
 
@@ -90,7 +91,8 @@ class MainLogin extends React.Component {
           ResultStatus:findresponse.LoginWithGoogleResult.ResultStatus,
           GetUserPack:findresponse.LoginWithGoogleResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithGoogleResult.GetUserHomeAddress,
-          NumberOfCameras:findresponse.LoginWithGoogleResult.NumberOfCameras
+          NumberOfCameras:findresponse.LoginWithGoogleResult.NumberOfCameras,
+          GetAccount:findresponse.LoginWithGoogleResult.GetAccount,
         });console.log(findresponse);
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
@@ -115,6 +117,33 @@ class MainLogin extends React.Component {
             if(this.state.GetUser.MobilePhoneNumber==null){
               alert("Please verify your Phone Number"),
               this.setState({ redirectToMobilePhoneNumber: true }),
+              this.setState.noOfSuperValidation="False"
+            }
+
+            else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
+              alert("Please confirm your Phone Number");
+              if(this.state.GetAccount.length==0){
+                // console.log(this.state.GetAccount)
+                  cookie.save('GetAccount_GMT','empty');
+              }else if(this.state.GetAccount.length!=0){
+                cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+                cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+                console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                  console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+              }
+              cookie.save('Email', this.state.GetUser.Email);
+              cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+              cookie.save('SilenceCode', this.state.GetUser.SilenceCode)
+              cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+              cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+              cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+              cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+              cookie.save('City', this.state.GetUserHomeAddress.City);
+              cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+              cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+              cookie.save('State', this.state.GetUserHomeAddress.State);
+              cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
+              this.setState({ redirectToMobilePhoneConfirmationCodeAfterEditProfile: true }),
               this.setState.noOfSuperValidation="False"
             }
 
@@ -145,6 +174,15 @@ class MainLogin extends React.Component {
               alert("Please enter your Silent Code"),
               this.setState({ redirectToSilenceCode: true }),
               this.setState.noOfSuperValidation="False"
+              if(this.state.GetAccount.length==0){
+                // console.log(this.state.GetAccount)
+                  cookie.save('GetAccount_GMT','empty');
+              }else if(this.state.GetAccount.length!=0){
+                cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+                cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+                console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                  console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+              }
               cookie.save('Email', this.state.GetUser.Email);
               cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
               cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
@@ -158,9 +196,17 @@ class MainLogin extends React.Component {
               cookie.save('State', this.state.GetUserHomeAddress.State);
               cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
             }
-            console.log(this.state.GetUser);
-            console.log("status");
-            if(this.setState.noOfSuperValidation!="False"){
+            
+            else if(this.state.noOfSuperValidation!="False"){
+            if(this.state.GetAccount.length==0){
+              // console.log(this.state.GetAccount)
+                cookie.save('GetAccount_GMT','empty');
+            }else if(this.state.GetAccount.length!=0){
+              cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+              cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+              console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+            }
               cookie.save('Email', this.state.GetUser.Email);
               cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
               cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
@@ -211,6 +257,7 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
           GetUserPack:findresponse.LoginWithFacebookResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithFacebookResult.GetUserHomeAddress,
           NumberOfCameras:findresponse.LoginWithFacebookResult.NumberOfCameras,
+          GetAccount:findresponse.LoginWithFacebookResult.GetAccount,
         })
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
@@ -236,7 +283,35 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
               alert("Please verify your Phone Number"),
               this.setState({ redirectToMobilePhoneNumber: true }),
               this.setState.noOfSuperValidation="False"
-            }
+                }
+
+                else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
+                  alert("Please confirm your Phone Number");
+                  if(this.state.GetAccount.length==0){
+                    // console.log(this.state.GetAccount)
+                      cookie.save('GetAccount_GMT','empty');
+                  }else if(this.state.GetAccount.length!=0){
+                    cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+                    cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+                    console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                      console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                  }
+                  cookie.save('Email', this.state.GetUser.Email);
+                  cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+                  cookie.save('SilenceCode', this.state.GetUser.SilenceCode)
+                  cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+                  cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+                  cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+                  cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+                  cookie.save('City', this.state.GetUserHomeAddress.City);
+                  cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+                  cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+                  cookie.save('State', this.state.GetUserHomeAddress.State);
+                  cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
+                  this.setState({ redirectToMobilePhoneConfirmationCodeAfterEditProfile: true }),
+                  this.setState.noOfSuperValidation="False"
+                }
+
 
             else if(this.state.GetUser.HasConfirmedMobilePhone=="False"){
               alert("Please confirm your Phone Number"),
@@ -265,6 +340,15 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
               alert("Please enter your Silent Code"),
               this.setState({ redirectToSilenceCode: true }),
               this.setState.noOfSuperValidation="False"
+              if(this.state.GetAccount.length==0){
+                // console.log(this.state.GetAccount)
+                  cookie.save('GetAccount_GMT','empty');
+              }else if(this.state.GetAccount.length!=0){
+                cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+                cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+                console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                  console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+              }
               cookie.save('Email', this.state.GetUser.Email);
               cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
               cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
@@ -279,8 +363,17 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
               cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
             }
 
-            if(this.setState.noOfSuperValidation!="False"){
+            if(this.state.noOfSuperValidation!="False"){
                   ccookie.save('Email', this.state.GetUser.Email);
+                  if(this.state.GetAccount.length==0){
+                    // console.log(this.state.GetAccount)
+                      cookie.save('GetAccount_GMT','empty');
+                  }else if(this.state.GetAccount.length!=0){
+                    cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
+                    cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
+                    console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                      console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                  }
                   cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
                   cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
                   cookie.save('SilenceCode', this.state.GetUser.SilenceCode)

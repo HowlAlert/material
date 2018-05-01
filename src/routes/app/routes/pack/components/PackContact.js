@@ -4,8 +4,8 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import cookie from 'react-cookies';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import ReactPhoneInput from 'react-phone-input';
-
+//import ReactPhoneInput from 'react-phone-input';
+import ReactPhoneInput from './react-phone-input';
 
 class Contact extends React.Component {
 

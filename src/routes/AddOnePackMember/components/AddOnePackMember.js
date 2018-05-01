@@ -102,17 +102,17 @@ class AddOnePackMember extends React.Component {
         this.setState.noOfSuperValidation="False"
      }
      console.log(this.state.noOfSuperValidation);
-if(this.state.noOfSuperValidation!="False" || this.state.noOfSuperValidation != undefined){
+
   var phone = this.state.phone;
   console.log(this.state.phone);
 //  console.log(phone.length);
   if(this.state.phone === '' || this.state.phone == undefined){
     alert("Please enter phone number")
-    this.setState.phoneCkeck1="False"
+    this.setState.noOfSuperValidation="False"
   }
   else if(phone.length<15){
     alert("Please enter 10 digit phone number")
-    this.setState.phoneCkeck1="False"
+    this.setState.noOfSuperValidation="False"
   }
   var numberMatch=phone.match(/[(]+[0-9]+[)]+[0-9]+[-]+[0-9]*/gi)
   var number=numberMatch[0].replace(/\D/g,'')
@@ -125,7 +125,7 @@ if(this.state.noOfSuperValidation!="False" || this.state.noOfSuperValidation != 
   console.log(country);
 
 console.log(number.length);
-if(this.state.phoneCkeck1!="False"){
+if( this.state.noOfSuperValidation!="False"){
   if(country[0]!= 1 && country[0]!= 91){
      alert("HOWL is currently Only Available to users based in the U.S and INDIA")
      this.setState.phoneCkeck2="False"
@@ -135,7 +135,7 @@ if(this.state.phoneCkeck1!="False"){
      this.setState.phoneCkeck2="False"
    }
  }
-}
+
 
  console.log(number.length);
   if(this.state.phoneCkeck2!="False"){
