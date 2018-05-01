@@ -313,12 +313,9 @@ componentWillMount(){
 
              //const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
 
-<<<<<<< HEAD
              const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/Login';
              // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
-=======
-            const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/Login';
->>>>>>> 0c72ca0d12ebddc5ef1984c2b7260447199d77e1
+
                 fetch(BaseURL,{
                  method: "POST",
                  body: JSON.stringify({'Email':this.state.Email,'Password':this.state.Password}),

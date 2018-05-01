@@ -103,11 +103,6 @@ render() {
     var lastname=lname.substr(0, 1);
      console.log(lastname);
 
-
-    var type = this.state.points["0"].type
-    console.log(type)
-
-
     return (
 
 

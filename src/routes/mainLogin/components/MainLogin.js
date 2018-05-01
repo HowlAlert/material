@@ -192,14 +192,11 @@ class MainLogin extends React.Component {
       console.log(response.id);
       console.log(response.email);
 
-<<<<<<< HEAD
+
       const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LoginWithFacebook';
       // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithFacebook';
 
-=======
-    //  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithFacebook';
-const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LoginWithFacebook';
->>>>>>> 0c72ca0d12ebddc5ef1984c2b7260447199d77e1
+
          fetch(BaseURL,{
           method: "POST",
           body: JSON.stringify({'FirstName':response.first_name,'LastName':response.last_name,'Email':response.email,'FacebookID':response.id,'DeviceToken':'','InviteCode':'','TimeZone':''}),

@@ -55,11 +55,11 @@ render() {
     if (!this.props.loaded) {
         return <div>Loading...</div>
     }
-    // var fname=cookie.load('FirstName');
-    //  console.log(fname);
-    // var lname = cookie.load('LastName');
-    // var lastname=lname.substr(0, 1);
-    //  console.log(lastname);
+    var fname=cookie.load('FirstName');
+     console.log(fname);
+    var lname = cookie.load('LastName');
+    var lastname=lname.substr(0, 1);
+     console.log(lastname);
 
     return (
 
