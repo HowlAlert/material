@@ -59,51 +59,13 @@ class Monitor extends React.Component {
 
 
          {/* <button><a href="#/app/camerasettings/purchase">MONTHLY PLAN - $7.99/MO </a></button> */}
-         <div className="col-md-3 col-xsm-6">
-           <section className="pricing-table pricing-table-success">
-             <header><h2>MONTHLY</h2></header>
-             <p className="pricing-price"><span className="pricing-sign">$</span>7.99<span className="pricing-sub">/mo</span></p>
-             <div className="pricing-plan-details">
-               <p className="pricing-lead">Including</p>
-               <ul>
-                 <li>24/7 Support</li>
-                 <li>authenticated third-party</li>
-                 <li>100GB Disk Space</li>
-                 <li>10 Database</li>
-                 <li>10 Email Address</li>
-               </ul>
-             </div>
-             <footer>
-               {/* <div className="col-lg-6 noPadRight">
-                  <div  className="howlBlue" onClick={()=>this.handlePurchase()} primary label="PURCHASE" >Add to cart</div>
-               </div> */}
-               <RaisedButton primary label="Get it now" onClick={()=>this.handlePurchase()} />
-
-             </footer>
-           </section>
-         </div>
+         
 
 
 
 
       {/* <button><a href="#/app/camerasettings/purchase">YEARLY PLAN - $95.88/YR </a></button> */}
-      <div className="col-md-3 col-xsm-6">
-        <section className="pricing-table pricing-table-danger">
-          <header> <h2>YEARLY</h2> </header>
-          <p className="pricing-price"><span className="pricing-sign">$</span>95.88<span className="pricing-sub">/mo</span></p>
-          <div className="pricing-plan-details">
-            <p className="pricing-lead">Including</p>
-            <ul>
-              <li>24/7 Support</li>
-              <li>Unlimited Website</li>
-              <li>Unlimited Disk Space</li>
-              <li>Unlimited Database</li>
-              <li>100 Email Address</li>
-            </ul>
-          </div>
-          <footer><RaisedButton primary label="Get it now"  onClick={()=>this.handlePurchase()}/></footer>
-        </section>
-      </div>
+
   </div>
 
          {/* <RaisedButton primary label="YEARLY PLAN - $95.88/YR" ><a href="#/app/camerasettings/purchase"> </a></RaisedButton> */}
