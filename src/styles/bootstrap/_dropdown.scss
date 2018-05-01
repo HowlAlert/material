@@ -61,24 +61,11 @@
   @include box-shadow($dropdown-box-shadow);
 }
 
-.flag-dropdown {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  padding: 0;
-  background-color: #eaeaea;
-  border: 1px solid #cacaca;
-  border-radius: 3px 0 0 3px;
-z-index: $zindex-dropdown;
-  &.open-dropdown {
-    background: #fff;
-    border-bottom: 0;
-    border-radius: 3px 0 0 0;
-    .selected-flag {
-      background: #fff;
-      border-radius: 3px 0 0 0;
-}
-}
+
+
+
+  .flag-dropdown:hover .flag-dropdown-content {
+    display: none;
 }
 
 // Dividers (basically an `<hr>`) within the dropdown
@@ -133,6 +120,11 @@ z-index: $zindex-dropdown;
     outline: 0;
   }
 }
+
+// window.onclick{
+//         remove:show;
+//     }
+
 
 .dropdown-menu.show {
   display: block;

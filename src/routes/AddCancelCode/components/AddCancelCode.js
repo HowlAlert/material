@@ -36,7 +36,7 @@ const mWidthStyle = {
 
   componentWillMount(){
 
-    if(cookie.load('Detection')!=undefined){
+    if(cookie.load('Loggedin')!=undefined){
 
       this.setState({ redirectToHome: true })
     }
@@ -78,8 +78,10 @@ const mWidthStyle = {
    }
 
 if(this.state.noOfSuperValidation!="False"){
+
     const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/SetCancellationCode';
     // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetCancellationCode';
+
 
     fetch(BaseURL,
     {

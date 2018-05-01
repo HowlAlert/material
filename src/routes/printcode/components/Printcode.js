@@ -33,9 +33,7 @@ class Printcode extends React.Component {
 
 
   componentWillMount(){
-  if(cookie.load('Detection')!=undefined){
-    console.log(cookie.load('Id')),
-    console.log(cookie.load('UserToken')),
+  if(cookie.load('Loggedin')!=undefined){
     this.setState({ redirectToHome: true })
     }
   }
@@ -50,8 +48,10 @@ class Printcode extends React.Component {
 
 handlePrintCode(event){
 
+
   const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/VerifyInviteCode';
   // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/VerifyInviteCode';
+
 
      fetch(BaseURL,{
       method: "POST",

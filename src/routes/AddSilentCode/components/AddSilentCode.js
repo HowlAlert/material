@@ -37,7 +37,7 @@ class AddSilentCode extends React.Component {
 
   componentWillMount(){
 
-    if(cookie.load('Detection')!=undefined){
+    if(cookie.load('Loggedin')!=undefined){
 
       this.setState({ redirectToHome: true })
     }
@@ -83,6 +83,7 @@ class AddSilentCode extends React.Component {
 
        const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/SetSilenceCode';
        // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetSilenceCode';
+
 
        fetch(BaseURL,
        {

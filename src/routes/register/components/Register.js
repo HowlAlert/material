@@ -47,8 +47,7 @@ class Register extends React.Component {
   }
 
   componentWillMount(){
-  console.log(cookie.load('Detection'))
-    if(cookie.load('Detection')!=undefined){
+    if(cookie.load('Loggedin')!=undefined){
 
       this.setState({ redirectToHome: true })
     }
@@ -104,6 +103,7 @@ class Register extends React.Component {
     if(this.state.noOfSuperValidation!="False"){
       const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/RegisterUser';
       // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/RegisterUser';
+
          fetch(BaseURL,{
           method: "POST",
           body: JSON.stringify({'FirstName':this.state.Fname,'LastName':this.state.Lname,'Email':this.state.Email,'Password':this.state.Password,'InviteCode':cookie.load('InviteCode')}),
