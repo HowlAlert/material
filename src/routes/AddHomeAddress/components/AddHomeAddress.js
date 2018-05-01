@@ -46,12 +46,13 @@ class AddHomeAddress extends React.Component {
        this.setState({ noOfSuperValidation: false })
        console.log(this.state.noOfSuperValidation);
        alert("Please enter your Home Address");
-     }else{
-        this.setState({ noOfSuperValidation: true })
      }
-     console.log(this.state.noOfSuperValidation);
+     // else{
+     //    this.setState({ noOfSuperValidation: true })
+     // }
+     // console.log(this.state.noOfSuperValidation);
 
-     if(this.state.noOfSuperValidation!=false){
+     else if(this.state.Address1!=undefined && this.state.city!=undefined && this.state.state!=undefined && this.state.zipcode!=undefined && this.state.Latitude!=undefined && this.state.Longitude!=undefined){
        console.log("in")
 
        const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/AddEditUserHomeAddress';
