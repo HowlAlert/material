@@ -65,7 +65,7 @@ render() {
 
 
       <div className="box box-default dkShadow overHidden">
-        <div className="box-body heightmap">
+        <div className="box-body height400">
           <h2 className="article-title-header">Your Neighborhood </h2>
 
 
