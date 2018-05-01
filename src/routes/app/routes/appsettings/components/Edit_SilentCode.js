@@ -196,7 +196,8 @@ class VerifySilentCode extends React.Component {
     else if(re.test(entered)!='' && entered!='' && entered !== silentcode && code_length == 4 &&  entered !== savedcancelcode && entered === verify)
     {
 
-      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetSilenceCode';
+      const BaseURL =  'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/SetSilenceCode';
+      // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetSilenceCode';
 
           fetch(BaseURL,
           {
@@ -227,44 +228,6 @@ class VerifySilentCode extends React.Component {
         alert("Silent code did not match.Try Again ");
 
      }
-
-
-
-
-
-   //  if(entered === savedcancelcode){
-   //     alert("Your Silent Code and Cancel Code can not be same ! ");
-   //
-   //  }
-   //  else if(entered === silentcode)
-   //  {
-   //    alert("Your new cancel code should be different than current cancel code")
-   //  }
-   //  else if(entered === verify)
-   //  {
-   //   const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetSilenceCode';
-   //
-   //       fetch(BaseURL,
-   //       {
-   //        method: "POST",
-   //        body: JSON.stringify({
-   //          "UserID":cookie.load('Id'),
-   //          "UserToken":cookie.load('UserToken'),
-   //          "SilenceCode":this.state.code
-   //        }),
-   //         headers: new Headers({'content-type': 'application/json'}),
-   //       })
-   //   .then((Response)=> Response.json())
-   //   .then((findresponse)=>{
-   //       console.log(findresponse)
-   //        alert("Silent Code has been changed");
-   //           cookie.save('SilenceCode',this.state.code)
-   //         this.setState({ redirectToReferrer: true })   //redirect to settings menu
-   //     })
-   // }
-   // else {
-   //   alert("silent code did not match.Try Again ");
-   //  }
 
 
 }

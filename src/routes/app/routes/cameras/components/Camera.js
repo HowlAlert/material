@@ -106,7 +106,8 @@ class Camera extends React.Component {
 
  componentDidMount(){
 
-   const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
+   const URL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCamera'
+   // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
 
        fetch(URL,
        {

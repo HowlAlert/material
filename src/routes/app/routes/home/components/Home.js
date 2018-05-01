@@ -94,7 +94,9 @@ class BasicHome extends React.Component{
   handleTrigger(event){
       this.setState({open: false});
 
-      const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/TriggerEmergencyAlert';
+      // const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/TriggerEmergencyAlert';
+      const URL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/TriggerEmergencyAlert';
+
        fetch(URL,
                        {
                         method: "POST",
@@ -226,18 +228,15 @@ const Dashboard = () => (
     </div>
 
     <div className="col-lg-6">
-      <div className="box box-default box-body homeAlert dkShadow">
+      {/* <div className="box box-default box-body homeAlert dkShadow"> */}
         <Alert />
-      </div>
+
     </div>
 
      <div className="col-lg-6">
-<a  href="#/app/Map">
-           <div className="box box-default box-body homeMap dkShadow">
-               <h2 className="article-title-header">Your Neighborhood </h2>
+      <a  href="#/app/Map">
               <Map />
-           </div>
-</a>
+       </a>
  </div>
 
     {/* <div className="col-lg-6">

@@ -122,7 +122,8 @@ class SidebarContent extends React.Component {
     console.log(sessionService.deleteSession(event));
     console.log(cookie.load('Id'));
     console.log(cookie.load('UserToken'));
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LogoutUser';
+    const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LogoutUser';
+    // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LogoutUser';
 
        fetch(BaseURL,{
         method: "POST",

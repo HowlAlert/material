@@ -23,9 +23,9 @@ class GoogleMap extends React.Component {
     this.handleMapMount = this.handleMapMount.bind(this);
 }
 
-handleBack(event) {
-  window.location.reload();
-}
+// handleBack(event) {
+//   window.location.reload();
+// }
 
 
 
@@ -39,7 +39,9 @@ onMapClicked (props) {
 
     }
       console.log("In onclick");
+        window.location.reload();
 }
+
 onMarkerClicked (props, marker, e) {
   this.setState({
         selectedPlace: props,
@@ -47,6 +49,8 @@ onMarkerClicked (props, marker, e) {
         showingInfoWindow: true
       });
       console.log("In Marker");
+
+
 }
 handleMapMount(mapProps, map) {
     this.map = map;
@@ -54,6 +58,7 @@ handleMapMount(mapProps, map) {
     //log map bounds
     // console.log(this.map.getBounds());
 }
+
 
 render() {
     const {google} = this.props;
@@ -70,6 +75,9 @@ render() {
     //   console.log(AlertDate)
     //   var AlertAddress=cookie.load('AlertAddress');
     //     console.log(AlertAddress)
+
+
+
 
     return (
 
@@ -107,12 +115,15 @@ render() {
              {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
-           style={{ width:"630" , height:"330"}}
+           style={{ width:"91%" , height:"81%"}}
+            // style={{ width:"630" , height:"330"}}
           >
 
             <Marker
                  title={'Alert Details'}
-                
+                 // name={"Alert on " +
+                 //  moment(new Date(AlertDate +" "+ 'UTC').toString()).format('DD-MMM-YYYY hh:mm:ss A')
+                 //  }
                  onClick={this.onMarkerClicked}
                 position={{lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')}}
                 icon={{
@@ -136,23 +147,22 @@ render() {
                   {/* <RaisedButton  primary label="Alert Location" /> */}
 
 
-                  <div className="row">
-                <div className="col-lg-4">
-                </div>
-
-                  <div className="col-lg-4">
-                    <div className="howlbackfull margin380" onClick={(e)=>this.handleBack(e)} primary label="Exit" >Close</div>
-
-                    </div>
-
-                  <div className="col-lg-4">
-                  </div>
-                  </div>
 
 
         </Map>
+        <div className="row">
+      <div className="col-lg-4">
+      </div>
 
+        <div className="col-lg-4">
+          <div className="howlbackfull margin380" onClick={this.onMapClicked } primary label="Exit" >Close</div>
+
+          </div>
+
+        <div className="col-lg-4">
         </div>
+        </div>
+      </div>
         </div>
 
 

@@ -64,7 +64,9 @@ class History extends React.Component {
                var a1 =[];
                // console.log(this.state.counter);
 
-               const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+               const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages';
+
+               // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
 
                    fetch(BaseURL,
                    {
@@ -89,7 +91,9 @@ class History extends React.Component {
                   })
                   Promise.all(
                        findresponse.GetUserCameraImagesResult.CameraImages.map(
-                            element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                            element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+
+                              // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                                   {
 
                                                        method: "POST",
@@ -177,7 +181,9 @@ class History extends React.Component {
                // console.log(this.state.counter);
 
 
-               const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+               const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages';
+
+               // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
 
                    fetch(BaseURL,
                    {
@@ -205,7 +211,9 @@ class History extends React.Component {
                   })
                   Promise.all(
                        findresponse.GetUserCameraImagesResult.CameraImages.map(
-                            element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                            element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+
+                              // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                                   {
 
                                                        method: "POST",
@@ -290,7 +298,9 @@ console.log(EndTime);
            // console.log(this.state.counter);
 
 
-           const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+           const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages';
+
+           // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
 
                fetch(BaseURL,
                {
@@ -318,7 +328,9 @@ console.log(EndTime);
               })
               Promise.all(
                    findresponse.GetUserCameraImagesResult.CameraImages.map(
-                        element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                        element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+
+                          // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                               {
 
                                                    method: "POST",
@@ -400,94 +412,6 @@ var EndTime = today + " " + et
 console.log(EndTime);
 
 
-           //
-           // var that = this;
-           //  var urls = [];
-           //  var a1 =[];
-           //  // console.log(this.state.counter);
-           //
-           //
-           //  const BaseURL1 = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
-           //
-           //      fetch(BaseURL1,
-           //      {
-           //       method: "POST",
-           //       body: JSON.stringify({
-           //         "UserID":cookie.load('Id'),
-           //         "UserToken":cookie.load('UserToken'),
-           //         "CameraID": cookie.load('cameraid'),
-           //         "StartTime":"12/11/2017 00:00:00",
-   	       //        "EndTime": EndTime,
-           //         "PageNumber": 1
-           //       }),
-           //        headers: new Headers({'content-type': 'application/json'}),
-           //      })
-           //  .then((Response)=> Response.json())
-           //  .then((findresponse)=>{
-           //    console.log(findresponse);
-           //    this.setState({
-           //       data:findresponse.GetUserCameraImagesResult.CameraImages,
-           //       length:findresponse.GetUserCameraImagesResult.CameraImages.length,
-           //       // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
-           //     })
-           //     Promise.all(
-           //          findresponse.GetUserCameraImagesResult.CameraImages.map(
-           //               element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
-           //                                     {
-           //
-           //                                          method: "POST",
-           //                                          body: JSON.stringify({
-           //                                            "url":element.ImageURL
-           //                                          }),
-           //
-           //                                         headers: new Headers({'content-type':'application/json'}),
-           //
-           //                                   })
-           //                 .then(res => res.json())
-           //             )
-           //           ).then(datas => {
-           //
-           //             this.state.data.forEach((element, i) => {
-           //               urls[i] = element
-           //
-           //             })
-           //           console.log(urls);
-           //           let arr3 = [];                                  // to combine the results of the two arrays
-           //                   urls.forEach((itm, i) => {
-           //                            arr3.push(Object.assign({}, itm, datas[i]));
-           //                        });
-           //
-           //                        console.log(arr3.length);
-           //                        this.setState({  data1:arr3 ,
-           //                          array_count:arr3.length ,
-           //
-           //                        })
-           //
-           //            console.log(this.state.data1);
-           //            var total = this.state.array_count;
-           //            console.log(total);
-           //
-           //            if(total === 0)
-           //             {
-           //
-           //               this.setState({
-           //                 disabledMore: true ,
-           //                 redirectToAlert:true
-           //
-           //               })
-           //             }
-           //             else {
-           //               this.setState({ disabledMore: false })
-           //
-           //             }
-           //
-           //       } )
-           //   })
-           //
-           //
-           //
-
-
 
 
 
@@ -499,7 +423,9 @@ console.log(EndTime);
            // console.log(this.state.counter);
 
 
-           const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+                      // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+           const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages';
+
 
                fetch(BaseURL,
                {
@@ -524,7 +450,9 @@ console.log(EndTime);
               })
               Promise.all(
                    findresponse.GetUserCameraImagesResult.CameraImages.map(
-                        element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                        element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+
+                          // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                               {
 
                                                    method: "POST",

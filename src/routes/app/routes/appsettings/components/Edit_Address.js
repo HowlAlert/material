@@ -52,7 +52,8 @@ class SearchAddress extends React.Component {
             console.log(this.state.street_no+" "+this.state.street_name)
 
 
-          const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditUserHomeAddress';
+          const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/AddEditUserHomeAddress';
+          // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditUserHomeAddress';
 
           fetch(BaseURL,
           {

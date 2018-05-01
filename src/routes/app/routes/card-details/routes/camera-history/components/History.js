@@ -64,7 +64,8 @@ class History extends React.Component {
                var a1 =[];
                // console.log(this.state.counter);
 
-               const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+               const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages';
+                // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
 
                    fetch(BaseURL,
                    {
@@ -89,7 +90,9 @@ class History extends React.Component {
                   })
                   Promise.all(
                        findresponse.GetUserCameraImagesResult.CameraImages.map(
-                            element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                            element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+
+                              // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                                   {
 
                                                        method: "POST",
@@ -177,7 +180,8 @@ class History extends React.Component {
                // console.log(this.state.counter);
 
 
-               const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+               const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages',
+               // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
 
                    fetch(BaseURL,
                    {
@@ -205,7 +209,8 @@ class History extends React.Component {
                   })
                   Promise.all(
                        findresponse.GetUserCameraImagesResult.CameraImages.map(
-                            element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                            element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+                              // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                                   {
 
                                                        method: "POST",
@@ -290,7 +295,8 @@ console.log(EndTime);
            // console.log(this.state.counter);
 
 
-           const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+           const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages',
+           // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
 
                fetch(BaseURL,
                {
@@ -318,7 +324,8 @@ console.log(EndTime);
               })
               Promise.all(
                    findresponse.GetUserCameraImagesResult.CameraImages.map(
-                        element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                        element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+                          // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                               {
 
                                                    method: "POST",
@@ -499,7 +506,8 @@ console.log(EndTime);
            // console.log(this.state.counter);
 
 
-           const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
+           const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages';
+           // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
 
                fetch(BaseURL,
                {
@@ -524,7 +532,8 @@ console.log(EndTime);
               })
               Promise.all(
                    findresponse.GetUserCameraImagesResult.CameraImages.map(
-                        element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                        element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+                          // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                               {
 
                                                    method: "POST",

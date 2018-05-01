@@ -81,7 +81,8 @@ class AddSilentCode extends React.Component {
        }
        if(this.state.noOfSuperValidation!="False"){
 
-       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetSilenceCode';
+       const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/SetSilenceCode';
+       // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetSilenceCode';
 
        fetch(BaseURL,
        {

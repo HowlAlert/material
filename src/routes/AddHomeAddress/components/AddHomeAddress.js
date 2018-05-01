@@ -53,7 +53,8 @@ class AddHomeAddress extends React.Component {
 
      if(this.state.noOfSuperValidation!=false){
        console.log("in")
-       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditUserHomeAddress';
+       const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/AddEditUserHomeAddress';
+       // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditUserHomeAddress';
       console.error(this.state.street_no+" "+this.state.street_name);
       console.error(this.state.Address1);
       console.error(this.state.Address2);

@@ -67,13 +67,16 @@ class Schedule extends React.Component {
 
   if(dayValidation && validation && startTimeValidation && endTimeValidation){
 console.log("handled");
-const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetRoomCameraSchedule';
+const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetRoomCameraSchedule'
+ // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetRoomCameraSchedule';
 
 fetch(BaseURL,{
  method: "POST",
  body: JSON.stringify({
-    'UserID':'49',
-    'UserToken':'Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==',
+   "UserID":cookie.load('Id'),
+   "UserToken":cookie.load('UserToken'),
+    // 'UserID':'49',
+    // 'UserToken':'Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSODNF5lNSmJktLD5Rdp3S9P1OEtVADBKLnyRBmebfCFt+ZjA5NifJ7QRFJsaYVEpfKQ==',
     'RoomCameraID' :'104'
 }),
 headers: new Headers({'content-type': 'application/json'})
@@ -175,7 +178,8 @@ console.log(this.state.color_d1);
 
 })}
 
-const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditCameraSetting';
+const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/AddEditCameraSetting';
+ // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditCameraSetting';
 var object = [{"StartTime":"06:00",
             "EndTime":"07:00",
             "SpansMultipleDays":"False"}];
@@ -202,8 +206,11 @@ var object2 = [{"UserID":"118",
 fetch(BaseURL,{
  method: "POST",
  body: JSON.stringify({
-   "UserID":"118",
-   "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu",
+   // "UserID":"118",
+   // "UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu",
+
+   "UserID":cookie.load('Id'),
+   "UserToken":cookie.load('UserToken'),
    "RoomCameraID":"115",
    "SchedulingArray":JSON.stringify(object1)
 }),

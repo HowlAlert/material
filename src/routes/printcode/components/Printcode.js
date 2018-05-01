@@ -50,7 +50,8 @@ class Printcode extends React.Component {
 
 handlePrintCode(event){
 
-  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/VerifyInviteCode';
+  const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/VerifyInviteCode';
+  // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/VerifyInviteCode';
 
      fetch(BaseURL,{
       method: "POST",

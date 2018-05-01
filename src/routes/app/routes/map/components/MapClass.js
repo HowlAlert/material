@@ -4,7 +4,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper, Polygon} from 'google-maps-re
 import cookie from 'react-cookies';
 
 
-const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
+// const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
 
 
 class GoogleMap extends React.Component {
@@ -61,7 +61,8 @@ componentDidMount()
 {
 
 
-  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF_SANDBOX/Service1.svc/GetSpotCrimes';
+  const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetSpotCrimes';
+   // 'http://sandbox.howlalarm.com/HOWL_WCF_SANDBOX/Service1.svc/GetSpotCrimes';
 
 
       fetch(BaseURL,
@@ -102,9 +103,9 @@ render() {
     var lastname=lname.substr(0, 1);
      console.log(lastname);
 
-    //
-    // var type = this.state.points["0"].type
-    // console.log(type)
+
+    var type = this.state.points["0"].type
+    console.log(type)
 
 
     return (
@@ -414,5 +415,5 @@ render() {
 }
 
 export default GoogleApiWrapper({
-apiKey: (GOOGLE_MAPS_JS_API_KEY)
+// apiKey: (GOOGLE_MAPS_JS_API_KEY)
 })(GoogleMap);

@@ -30,7 +30,8 @@ class Alerts extends React.Component {
 
       var alertid = `${value}`;
       console.log(alertid)
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/DeleteUserFeed';
+    const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/DeleteUserFeed';
+    // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/DeleteUserFeed';
 
         fetch(BaseURL,
         {
@@ -89,7 +90,8 @@ class Alerts extends React.Component {
        // console.log(this.state.counter);
 
 
-       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
+       const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserFeed';
+       // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
 
            fetch(BaseURL,
            {
@@ -111,7 +113,9 @@ class Alerts extends React.Component {
           })
           Promise.all(
                   findresponse.GetUserFeedResult.getUserFeeds.map(
-                    element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                    element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+
+                      // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                           {
 
                                                method: "POST",
@@ -190,7 +194,8 @@ console.log(this.state.counter);
       // console.log(this.state.counter);
 
 
-      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
+      const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserFeed';
+      // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
 
           fetch(BaseURL,
           {
@@ -212,7 +217,8 @@ console.log(this.state.counter);
          })
          Promise.all(
                  findresponse.GetUserFeedResult.getUserFeeds.map(
-                   element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                   element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+                     // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                          {
 
                                               method: "POST",
@@ -290,7 +296,8 @@ console.log(this.state.counter);
     // console.log(this.state.counter);
 
 
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
+    const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserFeed';
+    // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
 
         fetch(BaseURL,
         {
@@ -313,7 +320,8 @@ console.log(this.state.counter);
        })
        Promise.all(
                findresponse.GetUserFeedResult.getUserFeeds.map(
-                 element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                 element => fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+                   // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                        {
 
                                             method: "POST",
@@ -367,7 +375,9 @@ console.log(this.state.counter);
 
                          // difficult_tasks=dyanamicData1.ID
 
-                         fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/MarkUserFeedAsRead',
+
+                         fetch( 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/MarkUserFeedAsRead',
+                           // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/MarkUserFeedAsRead',
                          {
                           method: "POST",
                           body: JSON.stringify({

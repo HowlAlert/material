@@ -32,7 +32,8 @@ class ForgotPassword extends React.Component {
 
   handleSendPwd(event){
     console.log(this.state.Email);
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ForgotPassword';
+    const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/ForgotPassword';
+    // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ForgotPassword';
 
        fetch(BaseURL,{
         method: "POST",

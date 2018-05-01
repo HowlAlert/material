@@ -134,7 +134,8 @@ class EditProfile extends React.Component {
 
               if(number.length==10 && country== 1 || country == 91 )
                {
-                  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
+                  const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/ConfirmYourPhoneNumber';
+                  // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
 
                      fetch(BaseURL,{
                       method: "POST",
@@ -214,7 +215,8 @@ class EditProfile extends React.Component {
          }
 
        else{
-         const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserProfile';
+         const URL =  'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/UpdateUserProfile';
+         // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserProfile';
           fetch(URL,
                           {
                            method: "POST",
@@ -337,7 +339,9 @@ class EditProfile extends React.Component {
 
            // if(country!= 1 && country!= 91 && phone != undefined  && email!='' && re.test(lastname)!='' && firstname !='' && re.test(firstname)!='')
            // {
-                  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
+                  const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/ValidateMobilePhoneConfirmationCode';
+
+                  // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
 
                        fetch(BaseURL,{
                         method: "POST",
@@ -357,7 +361,8 @@ class EditProfile extends React.Component {
                        {
                                alert(this.state.Codemessage);
                        }
-                  const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserProfile';
+                  const URL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/UpdateUserProfile';
+                  // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserProfile';
                    fetch(URL,
                                    {
                                     method: "POST",
@@ -469,7 +474,7 @@ class EditProfile extends React.Component {
 
 
                        <div className="row">
-                      
+
                          <div className="col-lg-6 ">
                              <TextField  value={this.state.value} onChange={(e)=>this.handleCode(e)}  floatingLabelText="Mobile Verification code" fullWidth />
 

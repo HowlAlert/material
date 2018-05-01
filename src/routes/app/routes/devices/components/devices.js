@@ -21,7 +21,7 @@ class Device extends React.Component {
 
     componentDidMount() {
 
-      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserDeviceDetail';
+      const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserDeviceDetail';
 
           fetch(BaseURL,
           {
@@ -79,9 +79,7 @@ const { redirectToReferrer} = this.state
          )
       }
 
-var fname=cookie.load('FirstName');
- console.log(fname);
-var lname = cookie.load('LastName');
+
 
 
    return (

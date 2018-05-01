@@ -27,9 +27,8 @@ class Alerts extends React.Component {
     var a1 =[];
     // console.log(this.state.counter);
 
-
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
-
+    // const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
+  const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserFeed';
         fetch(BaseURL,
         {
          method: "POST",
@@ -50,7 +49,10 @@ class Alerts extends React.Component {
        })
        Promise.all(
                findresponse.GetUserFeedResult.getUserFeeds.map(
-                 element => fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+                 element => fetch(
+                   'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+
+                   // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                                        {
 
                                             method: "POST",
@@ -94,11 +96,12 @@ class Alerts extends React.Component {
   return (
 
 
-    <div >
+    <div className="box box-default dkShadow overHidden">
+      <div className="box-body heightmap">
 
 
           <h2 className="article-title-header ">News & Alerts </h2>
-         <div className=" box-default">
+         <div className=" box-default ">
 
 
          {
@@ -139,7 +142,7 @@ class Alerts extends React.Component {
        </div>
         <a href="#/app/Alerts" className="blueButton">See All Alerts </a>
     </div>
-
+</div>
     );
   }
  }

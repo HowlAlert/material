@@ -117,7 +117,8 @@ console.log(cookie.load('Detection'))
 
  if(this.state.noOfSuperValidation!="False"){
 
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
+    const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/Login';
+    // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
        fetch(BaseURL,{
         method: "POST",
         body: JSON.stringify({'Email':this.state.Email,'Password':this.state.Password}),
@@ -308,7 +309,8 @@ console.log(cookie.load('Detection'))
 
            if(this.setState.noOfSuperValidation!="False"){
 
-             const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
+             const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/Login';
+             // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
                 fetch(BaseURL,{
                  method: "POST",
                  body: JSON.stringify({'Email':this.state.Email,'Password':this.state.Password}),

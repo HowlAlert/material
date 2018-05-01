@@ -210,7 +210,8 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
    else if(re.test(entered)!='' && entered!='' && entered !== silentcode && code_length == 4 &&  entered !== savedcancelcode && entered === verify)
    {
 
-     const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetCancellationCode';
+     const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/SetCancellationCode';
+     // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/SetCancellationCode';
 
      fetch(BaseURL,
      {

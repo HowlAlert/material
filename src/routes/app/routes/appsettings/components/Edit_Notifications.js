@@ -37,8 +37,9 @@ handlePushToggle()
             console.log(togglestate2);
 
 
+// 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserSettings';
+            const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/UpdateUserSettings';
 
-            const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserSettings';
 
                 fetch(BaseURL,
                 {
@@ -79,8 +80,9 @@ handleSmsToggle()
             console.log(togglestate1);
 
 
+// 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserSettings';
+            const BaseURL =  'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/UpdateUserSettings';
 
-            const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserSettings';
 
                 fetch(BaseURL,
                 {

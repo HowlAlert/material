@@ -32,7 +32,9 @@ class Print extends React.Component{
 
   componentDidMount(){
 
-    const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
+    const URL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/Login';
+
+    // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
      fetch(URL,
               {
                       method: "POST",

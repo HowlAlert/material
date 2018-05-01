@@ -67,7 +67,8 @@ class Schedule extends React.Component {
 
   if(dayValidation && validation && startTimeValidation && endTimeValidation){
 console.log("handled");
-const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetRoomCameraSchedule';
+const BaseURL =  'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetRoomCameraSchedule';
+ // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetRoomCameraSchedule';
 
 fetch(BaseURL,{
  method: "POST",
@@ -175,7 +176,8 @@ console.log(this.state.color_d1);
 
 })}
 
-const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditCameraSetting';
+const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/AddEditCameraSetting';
+// 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddEditCameraSetting';
 var object = [{"StartTime":"06:00",
             "EndTime":"07:00",
             "SpansMultipleDays":"False"}];

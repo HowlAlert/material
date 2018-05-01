@@ -160,7 +160,8 @@ if(this.state.phoneCkeck1!="False"){
       if(this.state.phoneCkeck2!="False"){
         var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":number,"UserPackID":"0", "PhoneNumberCountryCode": country}]);
         console.log(object);
-                 const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddUpdateUserPack';
+                 const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/AddUpdateUserPack';
+                 // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddUpdateUserPack';
 
       console.log("inside")
                fetch(BaseURL,

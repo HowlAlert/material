@@ -52,7 +52,8 @@ handleDetectionToggle()
           }]);
            console.log(object);
 
-           const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateCameraMotionDetectionSetting';
+           const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/UpdateCameraMotionDetectionSetting'
+            // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateCameraMotionDetectionSetting';
 
                fetch(BaseURL,
                {

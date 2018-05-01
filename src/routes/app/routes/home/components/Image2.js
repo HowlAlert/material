@@ -22,7 +22,7 @@ class ImageBox extends React.Component {
 
 
   }
-  handleImage(value1,value2,value3,value4) {
+  handleImage(value1,value2,value3,value4,value5) {
 
 
 
@@ -39,7 +39,9 @@ class ImageBox extends React.Component {
        cookie.save('Sensitivity',sensitivity);
        console.log(cookie.load('Sensitivity'));
 
-
+       var roomid = `${value5}`;
+      cookie.save('RoomId',roomid);
+      console.log(cookie.load('RoomId'));
          // this.setState({ redirectToReferrer: true })
     }
 
@@ -64,7 +66,9 @@ console.log(StartTime);
 var EndTime = today + " " + et
 console.log(EndTime);
 
-  const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
+  const URL =
+     'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCamera';
+    // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
 
       fetch(URL,
       {
@@ -80,15 +84,17 @@ console.log(EndTime);
     this.setState({
          length:findresponse.GetUserCameraResult.RoomCameraList.length,
          CameraName:findresponse.GetUserCameraResult.RoomCameraList["1"].SortRoomName,
+         CameraRoomID2:findresponse.GetUserCameraResult.RoomCameraList["0"].RoomID,
          CameraId:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].CameraID,
          md2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].MotionDetectionStatus,
          ms2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].MotionDetectionSensitivity
 
     })
 
+      fetch(
+         'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages',
 
-
-      fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages',
+        // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages',
       {
        method: "POST",
        body: JSON.stringify({
@@ -112,7 +118,9 @@ console.log(EndTime);
        // console.log(arr4.length);
        // console.log(this.state.data2);
     this.state.data2.map((dyanamicData,key)=>
-       fetch('http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
+       fetch(
+          'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
+         // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetImageData',
                     {
 
                          method: "POST",
@@ -161,7 +169,7 @@ console.log(EndTime);
        <div className="ih-item ih-material">
 
 
-           <a href="#/app/camerasettings/camera-history" onClick={()=>this.handleImage(this.state.CameraId,this.state.CameraName,this.state.md2,this.state.ms2)}>
+           <a href="#/app/camerasettings/camera-history" onClick={()=>this.handleImage(this.state.CameraId,this.state.CameraName,this.state.md2,this.state.ms2,this.state.CameraRoomID2)}>
                       <div className="img">
                         <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
                       </div>

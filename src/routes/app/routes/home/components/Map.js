@@ -46,7 +46,7 @@ handleMapMount(mapProps, map) {
     this.map = map;
 
     //log map bounds
-    console.log(this.map.getBounds());
+    // console.log(this.map.getBounds());
 }
 
 render() {
@@ -55,15 +55,18 @@ render() {
     if (!this.props.loaded) {
         return <div>Loading...</div>
     }
-    var fname=cookie.load('FirstName');
-     console.log(fname);
-    var lname = cookie.load('LastName');
-    var lastname=lname.substr(0, 1);
-     console.log(lastname);
+    // var fname=cookie.load('FirstName');
+    //  console.log(fname);
+    // var lname = cookie.load('LastName');
+    // var lastname=lname.substr(0, 1);
+    //  console.log(lastname);
 
     return (
 
 
+      <div className="box box-default dkShadow overHidden">
+        <div className="box-body heightmap">
+          <h2 className="article-title-header">Your Neighborhood </h2>
 
 
         <Map
@@ -95,8 +98,8 @@ render() {
              {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
              {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
            ]}
-           // style={{ width:"630" , height:"330"  }}
-           // containerStyle={{ width:"100%" , height:"100%"}}
+           style={{ width:"91%" , height:"85%"  }}
+
 
           >
               <Marker
@@ -121,8 +124,8 @@ render() {
                         </div>
                   </InfoWindow>
         </Map>
-
-
+      </div>
+   </div>
 
         );
     }

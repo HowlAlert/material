@@ -16,7 +16,8 @@ class Schedule extends React.Component {
 
   componentDidMount(){
 
-        const URL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetRoomCameraSchedule';
+        const URL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetRoomCameraSchedule';
+        // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetRoomCameraSchedule';
          fetch(URL,
                          {
                           method: "POST",

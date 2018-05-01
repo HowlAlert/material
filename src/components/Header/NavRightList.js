@@ -54,7 +54,8 @@ handleNotify(event) {
 
 componentDidMount(){
 
-  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetTotalUnreadUserFeedCount';
+  const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetTotalUnreadUserFeedCount';
+  // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetTotalUnreadUserFeedCount';
 
       fetch(BaseURL,
       {
@@ -88,7 +89,8 @@ handleLogout(event){
     console.log(sessionService.deleteSession(event));
     console.log(cookie.load('Id'));
     console.log(cookie.load('UserToken'));
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LogoutUser';
+    const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LogoutUser';
+    // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LogoutUser';
 
        fetch(BaseURL,{
         method: "POST",
