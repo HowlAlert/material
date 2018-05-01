@@ -353,14 +353,14 @@ console.log(this.state.counter);
             arr3.map((dyanamicData1,key)=>(dyanamicData1.GetImageDataResult !== "") ?
             count:count++
               )
-            console.log(count)
+            // console.log(count)
 
              this.setState({  data1:arr3 , array_count:arr3.length , alert_count:count })
              console.log(arr3)
 
              // console.log(arr4);
              var total = this.state.array_count;
-             console.log(total);
+             // console.log(total);
 
              if(total === 0)
               {
@@ -392,13 +392,13 @@ console.log(this.state.counter);
                      .then((findresponse)=>{
                        console.log(findresponse);
                        this.setState({
-                          data:findresponse.GetUserFeedResult.getUserFeeds.HasRead,
-                          length:findresponse.GetUserFeedResult.getUserFeeds.length,
+                          data:findresponse.MarkUserFeedAsReadResult.resultStatus.Status,
+
                           // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
                         })
                        console.log(this.state.data);
-                         if(this.state.ResultStatus.Status !== "1"){
-                           alert(this.state.ResultStatus.StatusMessage);
+                         if(this.state.data !== "1"){
+                           alert(this.state.resultStatus.StatusMessage);
                          }
 
                        })

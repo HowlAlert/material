@@ -16,11 +16,14 @@ class GoogleMap extends React.Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
+        latitude: '',
+        longitude: '',
 
     }
     this.onMapClicked = this.onMapClicked.bind(this);
     this.onMarkerClicked = this.onMarkerClicked.bind(this);
     this.handleMapMount = this.handleMapMount.bind(this);
+
 }
 
 
@@ -36,6 +39,20 @@ onMapClicked (props) {
 
     }
       // console.log("In onclick");
+      const location = window.navigator && window.navigator.geolocation
+
+      if (location) {
+        location.getCurrentPosition((position) => {
+          this.setState({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          })
+        }, (error) => {
+          this.setState({ latitude: 'err-latitude', longitude: 'err-longitude' })
+        })
+      }
+  console.log(this.state.latitude);
+  console.log(this.state.longitude);
 
 }
 
@@ -102,6 +119,8 @@ render() {
     var lname = cookie.load('LastName');
     var lastname=lname.substr(0, 1);
      console.log(lastname);
+
+
 
     return (
 
@@ -401,9 +420,10 @@ render() {
                   </InfoWindow>
 
 
-
+              
 
         </Map>
+
 
         );
     }
