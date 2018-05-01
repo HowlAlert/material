@@ -23,9 +23,9 @@ class CameraButtons extends React.Component
       };
   }
 
-  handlePurchase() {
-       this.setState({ redirectToReferrer: true })
-  }
+  // handlePurchase() {
+  //      this.setState({ redirectToReferrer: true })
+  // }
   handleAddDevice() {
        this.setState({ redirectToAddDevice: true })
   }
@@ -37,13 +37,13 @@ class CameraButtons extends React.Component
     });
   }
   render() {
-    const { redirectToReferrer} = this.state
-          if(redirectToReferrer === true)
-          {
-            return (
-               <Redirect to="Card-Details/Connect" />
-             )
-          }
+    // const { redirectToReferrer} = this.state
+    //       if(redirectToReferrer === true)
+    //       {
+    //         return (
+    //            <Redirect to="Card-Details/Connect" />
+    //          )
+    //       }
 
     const { redirectToAddDevice} = this.state
       if(redirectToAddDevice === true)
@@ -72,7 +72,10 @@ class CameraButtons extends React.Component
 
 
                <div className="col-lg-3 noPadRight">
-                 <div  className="howlBlue" primary label="Buy Camera"  onClick={()=>this.handlePurchase()}>BUY CAMERA</div>
+                 <a href='https://howl.com/product/howl-beta-cam/' >
+                 {/* <div  className="howlBlue" primary label="Buy Camera"  onClick={()=>this.handlePurchase()}>BUY CAMERA</div> */}
+                 <div  className="howlBlue" primary label="Buy Camera">BUY CAMERA</div>
+                 </a>
                </div>
 
                <div className="col-lg-3 noPadLeft">
