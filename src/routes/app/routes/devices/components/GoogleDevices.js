@@ -67,11 +67,11 @@ return (
             <div className="article-title-header">Google Device Instructions</div>
               <div className="box-body">
                   <ul>
-                    <li>01.  Open the Google Home app.</li>
-                  <li> 02.  In the top left corner of the Home screen. tap Menu</li>
-                    <li>03.  Verify that the Google Account that is listed is the google account that you used to setup Google Home. To switch the account,tap the triangle to the right of the account name.</li>
-                    <li>04.  Tap More settings and then Services.</li>
-                    <li>05. Scroll through the list of the services.When you see HOWL,tap the card</li>
+                    <li>Open the Google Home app.</li>
+                  <li> In the top left corner of the Home screen. tap Menu</li>
+                    <li>Verify that the Google Account that is listed is the google account that you used to setup Google Home. To switch the account,tap the triangle to the right of the account name.</li>
+                    <li>Tap More settings and then Services.</li>
+                    <li> Scroll through the list of the services.When you see HOWL,tap the card</li>
                  </ul>
             </div>
 </div>

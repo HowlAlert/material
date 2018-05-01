@@ -6,6 +6,7 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 import TiggerAlerts from './TiggerAlerts';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 // import Howls_Me from '../../pack-menu/routes/howls_me/components/Howls_Me';
 import Howls_Messages from './Howl_Messages';
 import Map from './AlertsMap';
@@ -273,52 +274,16 @@ class Alerts extends React.Component {
    var date = `${value3}`;
    console.log(date);
 
+   // cookie.save('AlertLatitude',latitude)
+   // console.log(cookie.load('AlertLatitude'))
+   //
+   //  cookie.save('AlertLongitude',longitude)
+   //  console.log(cookie.load('AlertLongitude'))
+   //
+   //  cookie.save('AlertDate',date)
+   //  console.log(cookie.load('AlertDate'))
 
 
-   cookie.save('AlertLatitude',latitude)
-   console.log(cookie.load('AlertLatitude'))
-
-    cookie.save('AlertLongitude',longitude)
-    console.log(cookie.load('AlertLongitude'))
-
-    cookie.save('AlertDate',date)
-    console.log(cookie.load('AlertDate'))
-
-
-
-    var geocoder;
-        geocoder = new google.maps.Geocoder();
-        var latlng = new google.maps.LatLng(latitude, longitude);
-
-        geocoder.geocode(
-            {'latLng': latlng},
-            function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (results[0]) {
-                        var add= results[0].formatted_address ;
-                        var  value=add.split(",");
-
-                         var count=value.length;
-
-                         var country=value[count-1];
-                         var state=value[count-2];
-                         var city=value[count-3];
-                         var address = city + state +country ;
-                         console.log(address)
-
-                         cookie.save('AlertAddress',address)
-                         console.log(cookie.load('AlertAddress'))
-
-                    }
-                    else  {
-                      console.log( "address not found");
-                    }
-                }
-                else {
-                  console.log("Geocoder failed due to: " + status);
-                }
-            }
-        );
 
     this.setState({ redirectToReferrer: true })
 

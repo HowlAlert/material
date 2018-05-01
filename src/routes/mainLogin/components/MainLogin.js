@@ -434,7 +434,7 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
 
     return(
       <div classNa  me="body-inner">
-      <div className="card bg-white registerCard mainlogincard">
+      <div className="card bg-white registerCard mainlogincard dkShadow">
         <div className="card-content regContent">
             <div className=" bg-white">
               <div className="">

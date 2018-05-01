@@ -162,18 +162,6 @@ class Alerts extends React.Component {
                            }
 
 
-                          // if(total < 20)
-                          //  {  alert("No more Alerts!");
-                          //
-                          //        this.setState({
-                          //               counter: this.state.counter - 2,
-                          //               disabled1: true,
-                          //               disabled2:false
-                          //          });
-                          //  }
-
-
-
             })
                  })
 
