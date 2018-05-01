@@ -57,7 +57,7 @@ class MainLogin extends React.Component {
 
   componentWillMount(){
 
-    if(cookie.load('Detection')=="True"){
+    if(cookie.load('Loggedin')!=undefined){
 
       this.setState({ redirectToHome: true })
     }
@@ -74,7 +74,8 @@ class MainLogin extends React.Component {
       console.log(response.googleId);
       console.log(response.profileObj.email);
 
-      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithGoogle';
+    //  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithGoogle';
+    const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LoginWithGoogle';
       fetch(BaseURL,{
        method: "POST",
        body: JSON.stringify({'FirstName':response.w3.ofa,'LastName':response.w3.wea,'Email':response.profileObj.email,'GoogleID':response.googleId,'DeviceToken':'','InviteCode':'','TimeZone':''}),
@@ -87,7 +88,7 @@ class MainLogin extends React.Component {
           ResultStatus:findresponse.LoginWithGoogleResult.ResultStatus,
           GetUserPack:findresponse.LoginWithGoogleResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithGoogleResult.GetUserHomeAddress,
-          NumberOfCameras:findresponse.LoginResult.NumberOfCameras
+          NumberOfCameras:findresponse.LoginWithGoogleResult.NumberOfCameras
         });console.log(findresponse);
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
@@ -103,7 +104,8 @@ class MainLogin extends React.Component {
           }
 
           if(this.state.ResultStatus.StatusMessage==="Success"){
-
+            cookie.save('FirstName', response.w3.ofa);
+            cookie.save('LastName', response.w3.wea);
             cookie.save('UserToken', this.state.GetUser.UserToken);
             cookie.save('Id', this.state.GetUser.ID);
 
@@ -188,8 +190,8 @@ class MainLogin extends React.Component {
       console.log(response.id);
       console.log(response.email);
 
-      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithFacebook';
-
+    //  const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithFacebook';
+const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LoginWithFacebook';
          fetch(BaseURL,{
           method: "POST",
           body: JSON.stringify({'FirstName':response.first_name,'LastName':response.last_name,'Email':response.email,'FacebookID':response.id,'DeviceToken':'','InviteCode':'','TimeZone':''}),
@@ -202,6 +204,7 @@ class MainLogin extends React.Component {
           ResultStatus:findresponse.LoginWithFacebookResult.ResultStatus,
           GetUserPack:findresponse.LoginWithFacebookResult.GetUserPack,
           GetUserHomeAddress:findresponse.LoginWithFacebookResult.GetUserHomeAddress,
+          NumberOfCameras:findresponse.LoginWithFacebookResult.NumberOfCameras,
         })
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
@@ -217,7 +220,8 @@ class MainLogin extends React.Component {
           }
 
           if(this.state.ResultStatus.StatusMessage==="Success"){
-
+            cookie.save('FirstName', response.first_name);
+            cookie.save('LastName', response.last_name);
             cookie.save('UserToken', this.state.GetUser.UserToken);
             cookie.save('Id', this.state.GetUser.ID);
 

@@ -34,8 +34,7 @@ class VerifyPhoneNumber extends React.Component {
   }
 
   componentWillMount(){
-
-  if(cookie.load('Detection')!=undefined){
+  if(cookie.load('Loggedin')!=undefined){
     this.setState({ redirectToHome: true })
   }
   }
@@ -75,7 +74,8 @@ console.log(number.length);
      }
    }
       if(this.state.phoneCkeck2!="False"){
-       const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
+       //const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
+       const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/ConfirmYourPhoneNumber';
 
           fetch(BaseURL,{
            method: "POST",

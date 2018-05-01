@@ -103,6 +103,7 @@ handleLogout(event){
       }),console.log(this.state.ResultStatus.Status)
       if(this.state.ResultStatus.Status==="1"){
         console.log("success"),
+        cookie.remove('Loggedin'),
         cookie.remove('Id'),
         cookie.remove('UserToken'),
         cookie.remove('FirstName'),

@@ -67,9 +67,7 @@ class Login extends React.Component {
 }
 
 componentWillMount(){
-console.log(cookie.load('Detection'))
-  if(cookie.load('Detection')!=undefined){
-
+  if(cookie.load('Loggedin')!=undefined){
     this.setState({ redirectToHome: true })
   }
 }
@@ -117,7 +115,8 @@ console.log(cookie.load('Detection'))
 
  if(this.state.noOfSuperValidation!="False"){
 
-    const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
+    //const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
+    const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/Login';
        fetch(BaseURL,{
         method: "POST",
         body: JSON.stringify({'Email':this.state.Email,'Password':this.state.Password}),
@@ -218,7 +217,7 @@ console.log(cookie.load('Detection'))
         }
 
 
-        else if(this.setState.noOfSuperValidation!="False"){
+        else if(this.state.noOfSuperValidation!="False"){
           console.log(this.state.GetUser);
           console.log("status"),
           cookie.save('Email', this.state.GetUser.Email);
@@ -283,32 +282,36 @@ console.log(cookie.load('Detection'))
       if(e.keyCode == 13){
          console.log("Enter Pressed");
 
+
              var password = this.state.Password;
              var PasswordLength = password.length;
 
 
            event.preventDefault();
+           let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
            if(this.state.Email==''){
              alert("Please enter your email address");
              this.setState.noOfSuperValidation="False"
            }
-           let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-           if(re.test(this.state.Email)=='' && this.state.Email!=''){
+
+           else if(re.test(this.state.Email)==''){
              alert("Please enter a valid email");
              this.setState.noOfSuperValidation="False"
            }
-           if(this.state.Password=='' && this.state.Email!='' && re.test(this.state.Email)!=''){
+           else if(this.state.Password==''){
              alert("Please enter a password");
              this.setState.noOfSuperValidation="False"
            }
-           if(PasswordLength<6 && this.state.Password!='' && this.state.Email!='' && re.test(this.state.Email)!=''){
+           else if(PasswordLength<6){
              alert("Password must be at least 6 characters");
              this.setState.noOfSuperValidation="False"
            }
 
-           if(this.setState.noOfSuperValidation!="False"){
+          if(this.state.noOfSuperValidation!="False"){
 
-             const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
+             //const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/Login';
+
+            const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/Login';
                 fetch(BaseURL,{
                  method: "POST",
                  body: JSON.stringify({'Email':this.state.Email,'Password':this.state.Password}),
@@ -321,6 +324,7 @@ console.log(cookie.load('Detection'))
                  ResultStatus:findresponse.LoginResult.ResultStatus,
                  GetUserHomeAddress:findresponse.LoginResult.GetUserHomeAddress,
                  GetUserPack:findresponse.LoginResult.GetUserPack,
+                 NumberOfCameras:findresponse.LoginResult.NumberOfCameras
                });
 
                console.log(findresponse);
@@ -336,11 +340,12 @@ console.log(cookie.load('Detection'))
                  alert(this.state.ResultStatus.StatusMessage)
                }
 
-               if(this.state.ResultStatus.StatusMessage==="Success"){
+                  if(this.state.ResultStatus.StatusMessage==="Success"){
                  cookie.save('UserToken', this.state.GetUser.UserToken);
                  cookie.save('Id', this.state.GetUser.ID);
                  cookie.save('FirstName', this.state.GetUser.FirstName);
                  cookie.save('LastName', this.state.GetUser.LastName);
+
 
                  if(this.state.GetUser.MobilePhoneNumber==null){
                    alert("Please verify your Phone Number"),
@@ -349,7 +354,18 @@ console.log(cookie.load('Detection'))
                  }
                  else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
                    alert("Please confirm your Phone Number"),
-
+                   cookie.save('Email', this.state.GetUser.Email);
+                   cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
+                   cookie.save('SilenceCode', this.state.GetUser.SilenceCode)
+                   cookie.save('ShouldReceiveCameraAlertPush', this.state.GetUser.ShouldReceiveCameraAlertPush);
+                   cookie.save('ShouldReceiveCameraAlertSMS', this.state.GetUser.ShouldReceiveCameraAlertSMS);
+                   cookie.save('Address1', this.state.GetUserHomeAddress.Address1);
+                   cookie.save('Address2', this.state.GetUserHomeAddress.Address2);
+                   cookie.save('City', this.state.GetUserHomeAddress.City);
+                   cookie.save('Latitude', this.state.GetUserHomeAddress.Latitude);
+                   cookie.save('Longitude', this.state.GetUserHomeAddress.Longitude);
+                   cookie.save('State', this.state.GetUserHomeAddress.State);
+                   cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
                    this.setState({ redirectToMobilePhoneConfirmationCodeAfterEditProfile: true }),
                    this.setState.noOfSuperValidation="False"
                  }
@@ -395,7 +411,8 @@ console.log(cookie.load('Detection'))
                    cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
                  }
 
-                 else if(this.setState.noOfSuperValidation!="False"){
+
+                 else if(this.state.noOfSuperValidation!="False"){
                    console.log(this.state.GetUser);
                    console.log("status"),
                    cookie.save('Email', this.state.GetUser.Email);
@@ -418,8 +435,7 @@ console.log(cookie.load('Detection'))
                     this.setState({ redirectToReferrer: false })
                  }
                });
-           }
-         }
+           }}
    }
 
 

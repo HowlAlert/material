@@ -43,8 +43,7 @@ class ValidatePhoneCodeAfterEditProfile extends React.Component {
 
 
   componentWillMount(){
-  console.log(cookie.load('Detection'))
-    if(cookie.load('Detection')!=undefined){
+    if(cookie.load('Loggedin')!=undefined){
 
       this.setState({ redirectToHome: true })
     }
@@ -90,8 +89,8 @@ console.log(cookie.load('Id')),
 console.log(cookie.load('UserToken'));
 if(this.state.noOfSuperValidation!="False"){
   console.log("inside")
-      const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
-
+      //const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
+const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/ValidateMobilePhoneConfirmationCode';
          fetch(BaseURL,{
           method: "POST",
           body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'), 'MobilePhoneConfirmationCode':this.state.Code}),

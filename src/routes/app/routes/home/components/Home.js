@@ -78,7 +78,9 @@ class BasicHome extends React.Component{
 
 
   componentWillMount() {
-    this.setState({ firstName: cookie.load('FirstName')})
+    this.setState({ firstName: cookie.load('FirstName')});
+    cookie.save('Loggedin', 'Loggedin')
+    console.log(cookie.load('Loggedin'))
   }
 
 
