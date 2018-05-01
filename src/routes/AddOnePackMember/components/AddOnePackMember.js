@@ -73,6 +73,8 @@ class AddOnePackMember extends React.Component {
 
    handleNext(event) {
 
+       var phone = this.state.phone;
+       console.log(this.state.phone);
 
      let email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
      let names = /^[A-z]+$/;
@@ -101,12 +103,7 @@ class AddOnePackMember extends React.Component {
        alert("Please enter a valid email");
         this.setState.noOfSuperValidation="False"
      }
-     console.log(this.state.noOfSuperValidation);
-
-  var phone = this.state.phone;
-  console.log(this.state.phone);
-//  console.log(phone.length);
-  if(this.state.phone === '' || this.state.phone == undefined){
+  else if(this.state.phone === '' || this.state.phone == undefined){
     alert("Please enter phone number")
     this.setState.noOfSuperValidation="False"
   }
