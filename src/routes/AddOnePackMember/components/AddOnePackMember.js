@@ -16,8 +16,8 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import cookie from 'react-cookies';
-import ReactPhoneInput from 'react-phone-input';
-
+//import ReactPhoneInput from 'react-phone-input';
+import ReactPhoneInput from './react-phone-input';
 const mWidthStyle = {
   minWidth: '130px'
 };
@@ -275,6 +275,7 @@ if(this.state.phoneCkeck1!="False"){
 
                   <div className="phone-number" style={{display:'flex'}}>
                   <ReactPhoneInput
+                  preferredCountries={['us']}
                   defaultCountry={'us'}
                   value={this.state.phone}
                   onChange={this.handleOnChange}/>

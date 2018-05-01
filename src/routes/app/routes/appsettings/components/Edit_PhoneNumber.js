@@ -19,8 +19,8 @@ import 'react-select/dist/react-select.min.css';
 import cookie from 'react-cookies';
 // import PageRegister5 from 'routes/register5/';
 import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
-import ReactPhoneInput from 'react-phone-input';
-
+//import ReactPhoneInput from 'react-phone-input';
+import ReactPhoneInput from './react-phone-input';
 
 
 
@@ -166,7 +166,7 @@ handleBack(event) {
              {/* <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleEmail} />*/}
 
             CHANGE PHONE NUMBER
-               <ReactPhoneInput defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleOnChange}/>
+               <ReactPhoneInput preferredCountries={['us']} defaultCountry={'us'} value={this.state.phonenumber} onChange={this.handleOnChange}/>
             4 - DIGIT CODE
                <TextField
                type="text"

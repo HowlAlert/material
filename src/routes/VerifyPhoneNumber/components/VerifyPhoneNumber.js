@@ -17,8 +17,7 @@ import {FormControl} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-select/dist/react-select.min.css';
 import cookie from 'react-cookies';
-import ReactPhoneInput from 'react-phone-input';
-
+import ReactPhoneInput from './react-phone-input';
 const mWidthStyle = {
   minWidth: '130px'
 };
