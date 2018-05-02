@@ -32,7 +32,7 @@ class Howls_At_Pack extends React.Component {                    //Class to get 
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-        console.log(findresponse)
+        // console.log(findresponse)
         this.setState({
            data:findresponse.GetMyPoundListResult.GetMyPounds,
 
@@ -126,7 +126,7 @@ class Howls_At_Me extends React.Component {       //Class to get the Howls you r
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-        console.log(findresponse)
+        // console.log(findresponse)
         this.setState({
            data:findresponse.GetPackPoundListResult.GetPackPounds,
            time:findresponse.GetPackPoundListResult.GetPackPounds["0"].DateCreated

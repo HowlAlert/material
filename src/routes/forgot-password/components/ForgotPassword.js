@@ -29,7 +29,7 @@ class ForgotPassword extends React.Component {
   }
 
   handleSendPwd(event){
-    console.log(this.state.Email);
+      //console.log(this.state.Email);
 
     const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/ForgotPassword';
     // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ForgotPassword';
@@ -47,7 +47,7 @@ class ForgotPassword extends React.Component {
       })
       if(this.state.ResultStatus.Status==="1"){
         alert("Password reset instructions have been emailed to "+this.state.Email)
-        console.log("status"),
+          //console.log("status"),
      this.setState({ redirectToReferrer: true })
       }
       else{

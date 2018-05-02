@@ -25,7 +25,7 @@ class Print extends React.Component{
          code: target.value,
          Next_disabled:false,
        });
-       console.log(target.value) ;
+       // console.log(target.value) ;
        return target.value;
    }
 
@@ -54,11 +54,11 @@ class Print extends React.Component{
                          })
                          if(this.state.ResultStatus.Status==="1")
                          {
-                          console.log("status");
+                           //console.log("status");
                           cookie.save('printcode', this.state.GetUser.ReferralCode);
 
                         }
-                         console.log(cookie.load('printcode'));
+                          //console.log(cookie.load('printcode'));
 
                 })
 

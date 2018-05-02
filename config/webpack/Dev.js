@@ -65,7 +65,7 @@ class WebpackDevConfig extends WebpackBaseConfig {
       }
     ])
 
-    // console.log(this.config.module.rules);
+    console.log(this.config.module.rules);
   }
 }
 

@@ -67,7 +67,7 @@ class CheckoutForm extends React.Component {
 
       {name: 'Jenny Rosen'}).then(({token}) =>
       {
-      console.log('Received Stripe token:', token);
+     //  console.log('Received Stripe token:', token);
     });
 
 

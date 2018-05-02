@@ -29,7 +29,7 @@ class Alerts extends React.Component {
     alert("Are you sure you want to delete?")
 
       var alertid = `${value}`;
-      console.log(alertid)
+      // console.log(alertid)
     const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/DeleteUserFeed';
     // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/DeleteUserFeed';
 
@@ -45,7 +45,7 @@ class Alerts extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-        console.log(findresponse)
+        // console.log(findresponse)
 
         this.setState({
                  status:findresponse.DeleteUserFeedResult.resultStatus.Status,
@@ -74,7 +74,7 @@ class Alerts extends React.Component {
 
 
     var count = `${value}`;
-    console.log(count);
+    // console.log(count);
 
 
     this.setState({
@@ -105,7 +105,7 @@ class Alerts extends React.Component {
            })
        .then((Response)=> Response.json())
        .then((findresponse)=>{
-         console.log(findresponse);
+         // console.log(findresponse);
          this.setState({
             data:findresponse.GetUserFeedResult.getUserFeeds,
             length:findresponse.GetUserFeedResult.getUserFeeds.length,
@@ -134,8 +134,8 @@ class Alerts extends React.Component {
                     urls[i] = element
 
                   })
-                console.log(urls);
-                console.log(datas);
+                // console.log(urls);
+                // console.log(datas);
              let arr3 = [];                                  // to combine the results of the two arrays
                      urls.forEach((itm, i) => {
                               arr3.push(Object.assign({}, itm, datas[i]));
@@ -145,12 +145,12 @@ class Alerts extends React.Component {
                           count:count++
                             )
 
-                          console.log(arr3.length);
+                          // console.log(arr3.length);
                           this.setState({  data1:arr3 , array_count:arr3.length , alert_count:count})
 
 
                           var total = this.state.array_count;
-                          console.log(total);
+                          // console.log(total);
 
                           if(total===0 || total < 20 )
                            {
@@ -179,7 +179,7 @@ class Alerts extends React.Component {
    // var count = `${value}`;
    // console.log(count);
 
-console.log(this.state.counter);
+// console.log(this.state.counter);
     this.setState({
         counter: this.state.counter - 1,
 
@@ -209,7 +209,7 @@ console.log(this.state.counter);
           })
       .then((Response)=> Response.json())
       .then((findresponse)=>{
-        console.log(findresponse);
+        // console.log(findresponse);
         this.setState({
            data:findresponse.GetUserFeedResult.getUserFeeds,
            length:findresponse.GetUserFeedResult.getUserFeeds.length,
@@ -244,13 +244,13 @@ console.log(this.state.counter);
                              arr3.push(Object.assign({}, itm, datas[i]));
                          });
 
-                         console.log(arr3.length);
+                         // console.log(arr3.length);
 
                          var count = 0;                                //Count for number of Computer Tiggered Alerts
                          arr3.map((dyanamicData1,key)=>(dyanamicData1.GetImageDataResult !== "") ?
                          count:count++
                            )
-                         console.log(count)
+                         // console.log(count)
 
                          this.setState({  data1:arr3 ,
                            array_count:arr3.length ,
@@ -259,12 +259,12 @@ console.log(this.state.counter);
 
                              })
 
-                             console.log(this.state.data1);
+                             // console.log(this.state.data1);
                              // var total = this.state.array_count;
                              // console.log(total);
 
                              var countBack = this.state.counter-1;
-                             console.log(countBack);
+                             // console.log(countBack);
 
                              if(countBack === 1)
                               {
@@ -311,7 +311,7 @@ console.log(this.state.counter);
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-      console.log(findresponse);
+      // console.log(findresponse);
       // console.log(findresponse.GetUserFeedResult.getUserFeeds.map((dyanamicData1,key)=>  dyanamicData1.HasRead ))
       this.setState({
          data:findresponse.GetUserFeedResult.getUserFeeds,
@@ -347,7 +347,7 @@ console.log(this.state.counter);
                            arr3.push(Object.assign({}, itm, datas[i]));
                        });
 
-             console.log(arr3.length);
+             // console.log(arr3.length);
             // let arr4 = [];
             var count = 0;                                //Count for number of Computer Tiggered Alerts
             arr3.map((dyanamicData1,key)=>(dyanamicData1.GetImageDataResult !== "") ?
@@ -356,7 +356,7 @@ console.log(this.state.counter);
             // console.log(count)
 
              this.setState({  data1:arr3 , array_count:arr3.length , alert_count:count })
-             console.log(arr3)
+             // console.log(arr3)
 
              // console.log(arr4);
              var total = this.state.array_count;
@@ -390,16 +390,20 @@ console.log(this.state.counter);
                          })
                      .then((Response)=> Response.json())
                      .then((findresponse)=>{
-                       console.log(findresponse);
+                       // console.log(findresponse);
                        this.setState({
                           data:findresponse.MarkUserFeedAsReadResult.resultStatus.Status,
 
                           // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
                         })
-                       console.log(this.state.data);
+                       // console.log(this.state.data);
                          if(this.state.data !== "1"){
                            alert(this.state.resultStatus.StatusMessage);
                          }
+                        else
+                        {
+                           window.location.reload();
+                        }
 
                        })
 

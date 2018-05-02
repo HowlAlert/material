@@ -16,8 +16,8 @@ class GoogleMap extends React.Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
-        latitude: '',
-        longitude: '',
+        lat1: '',
+        log1: '',
 
     }
     this.onMapClicked = this.onMapClicked.bind(this);
@@ -44,15 +44,15 @@ onMapClicked (props) {
       if (location) {
         location.getCurrentPosition((position) => {
           this.setState({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
+            lat1: position.coords.latitude,
+            lon1: position.coords.longitude,
           })
         }, (error) => {
-          this.setState({ latitude: 'err-latitude', longitude: 'err-longitude' })
+          this.setState({ lat1: 'err-latitude', log1: 'err-longitude' })
         })
       }
-  console.log(this.state.latitude);
-  console.log(this.state.longitude);
+   // console.log(this.state.lat1);
+   // console.log(this.state.log1);
 
 }
 
@@ -62,7 +62,7 @@ onMarkerClicked (props, marker, e) {
         activeMarker: marker,
         showingInfoWindow: true
       });
-      console.log("In Marker");
+     //  console.log("In Marker");
 
 }
 handleMapMount(mapProps, map) {
@@ -88,21 +88,31 @@ componentDidMount()
        body: JSON.stringify({
          "UserID":cookie.load('Id'),
          "UserToken":cookie.load('UserToken'),
-         "Radius":"0.01",
+         "Radius":"0.02",
          "Lat":cookie.load('Latitude'),
          "Long":cookie.load('Longitude')
+
        }),
         headers: new Headers({'content-type': 'application/json'}),
       })
   .then((Response)=> Response.json())
   .then((findresponse)=>{
-    console.log(findresponse);
+      //console.log(findresponse);
     this.setState({
              GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
 
                })
-        console.log(this.state.GetSpotCrimesResult);
+        // console.log(this.state.GetSpotCrimesResult);
+        // console.log(cookie.load('Latitude'));
+        // console.log(cookie.load('Longitude'));
+        // console.log(  cookie.load('AlertLatitude'));
+        // console.log(cookie.load('AlertLongitude'));
+  
   })
+
+
+
+
 
 
 }
@@ -115,10 +125,10 @@ render() {
         return <div>Loading...</div>
     }
     var fname=cookie.load('FirstName');
-     console.log(fname);
+   //   console.log(fname);
     var lname = cookie.load('LastName');
     var lastname=lname.substr(0, 1);
-     console.log(lastname);
+   //   console.log(lastname);
 
 
 
@@ -420,7 +430,7 @@ render() {
                   </InfoWindow>
 
 
-              
+
 
         </Map>
 

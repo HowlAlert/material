@@ -32,21 +32,27 @@ class BasicHome extends React.Component{
   componentWillMount() {
     this.setState({ firstName: cookie.load('FirstName')});
     cookie.save('Loggedin', 'Loggedin')
-    console.log(cookie.load('Loggedin'))
+    //console.log(cookie.load('Loggedin'))
   }
 
   handleOpen = (value1) => {
     this.setState({open: true});
     var alert_type = `${value1}`;
     cookie.save('Alert_Type',alert_type);
-    console.log(cookie.load('Alert_Type'));
+      //console.log(cookie.load('Alert_Type'));
   };
 
   handleClose = () => {
     this.setState({open: false});
   };
 
+  handleExit()
+  {
+    this.setState({
+        redirectToReferrer:false ,
 
+    });
+  }
   handleTrigger(event){
       this.setState({open: false});
 
@@ -68,15 +74,37 @@ class BasicHome extends React.Component{
                        })
                    .then((Response)=> Response.json())
                    .then((findresponse)=>{
-                       console.log(findresponse)
+                         //console.log(findresponse)
                        this.setState({
                           data:findresponse.TriggerEmergencyAlertResult.getUserAlert,
-                          geonumber:findresponse.TriggerEmergencyAlertResult.getUserAlert.geo911
-                          // data:findresponse.TriggerEmergencyAlertResult.resultStatus  //for result
+                          // geonumber:findresponse.TriggerEmergencyAlertResult.getUserAlert.geo911
+                          status:findresponse.TriggerEmergencyAlertResult.resultStatus.Status //for result
 
                         });
-                                        })
-                     this.setState({ redirectToReferrer: true })
+                      if(this.state.status === "1")
+                       {
+                         var alert_type = cookie.load('Alert_Type') ;
+                         switch(alert_type) {
+                                case '1':
+                                      return alert("Alerted your Pack Members ! ");
+                                case '2':
+                                      return alert("Alerted Fire Service !");
+                                case '3':
+                                      return alert("Alerted Ambulance Service !");
+                                case '4':
+                                      return alert("Alerted Police Service !");
+
+                               default:
+                                      return alert("Alerted your Pack Members!");
+                                }
+                       }
+                       else {
+                         alert(this.state.status.StatusMessage);
+                       }
+
+
+                    })
+                     // this.setState({ redirectToReferrer: true })
 
 
 }
@@ -105,27 +133,40 @@ console.log(subscribed)
 // console.log(status);           //to print result of the Service1
 
 
-var geo911 = this.state.geonumber;
+// var geo911 = this.state.geonumber;
 // console.log(geo911)
 
-const { redirectToReferrer} = this.state
-  if(redirectToReferrer === true)
-  {
-    return (
-       // <AlertPack />
-        <div className="icon-box bg-danger ibox-plain ibox-center">
-         <div>
-           <h5> Alerting Pack Members!</h5>
-           <div>
-             <h5>Contact No: {geo911}</h5>
-           </div>
-          <button><a href="#/app/Alerts">ok</a></button>
-         </div>
-
-       </div>
-
-     )
-  }
+// const { redirectToReferrer} = this.state
+//   if(redirectToReferrer === true)
+//   {
+//     return (
+//        // <AlertPack />
+//         <div className="icon-box bg-danger ibox-plain ibox-center">
+//          <div>
+//            <div className="col-lg-12 welcomeText">
+//              <h1>{this.state.firstName}, Alerted your Pack Members!</h1>
+//            </div>
+//          </div>
+//
+//          <div className="row">
+//        <div className="col-lg-4">
+//        </div>
+//
+//          <div className="col-lg-4">
+//            <div className="howlbackfull" onClick={(e)=>this.handleExit(e)} primary label="Exit" >ok</div>
+//
+//            </div>
+//
+//          <div className="col-lg-4">
+//          </div>
+//          </div>
+//        </div>
+//
+//
+//
+//
+//      )
+//   }
 
 
   return (

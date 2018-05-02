@@ -41,7 +41,7 @@ class Alerts extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-      console.log(findresponse);
+        //console.log(findresponse);
       this.setState({
          data:findresponse.GetUserFeedResult.getUserFeeds,
          length:findresponse.GetUserFeedResult.getUserFeeds.length,
@@ -84,8 +84,8 @@ class Alerts extends React.Component {
             arr4=  arr3.slice(0, 3);
             // console.log(arr4);
               this.setState({  data2:arr4 , array_count:arr4.length })
-              console.log(arr4.length);
-              console.log(this.state.data2);
+                //console.log(arr4.length);
+                //console.log(this.state.data2);
          })
               })
 

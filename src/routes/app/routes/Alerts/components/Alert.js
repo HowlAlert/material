@@ -43,10 +43,10 @@ class Alerts extends React.Component {
    // console.log(date);
 
    cookie.save('AlertLatitude',latitude)
-   console.log(cookie.load('AlertLatitude'))
+   // console.log(cookie.load('AlertLatitude'))
 
     cookie.save('AlertLongitude',longitude)
-    console.log(cookie.load('AlertLongitude'))
+    // console.log(cookie.load('AlertLongitude'))
 
     // cookie.save('AlertDate',date)
     // console.log(cookie.load('AlertDate'))
@@ -81,7 +81,7 @@ class Alerts extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-      console.log(findresponse);
+      // console.log(findresponse);
       this.setState({
          data:findresponse.GetUserFeedResult.getUserFeeds,
          length:findresponse.GetUserFeedResult.getUserFeeds.length,

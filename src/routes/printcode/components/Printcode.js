@@ -64,7 +64,7 @@ handlePrintCode(event){
       ResultStatus:findresponse.VerifyInviteCodeResult.ResultStatus,
     })
     if(this.state.ResultStatus.Status==="1"){
-      console.log("status"),
+        //console.log("status"),
       cookie.save('InviteCode', this.state.Code);
    this.setState({ redirectToReferrer: true })
     }
@@ -85,7 +85,7 @@ handlePrintCode(event){
         Code: target.value
       });
 
-      console.log(target.value) ;
+        //console.log(target.value) ;
       return target.value;
     }
 

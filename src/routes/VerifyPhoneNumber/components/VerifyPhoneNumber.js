@@ -42,7 +42,7 @@ class VerifyPhoneNumber extends React.Component {
 
 
     var phone = this.state.phone;
-    console.log(phone.length);
+    //console.log(phone.length);
     if(this.state.phone === '' || this.state.phone == undefined){
       alert("Please enter phone number")
       this.setState.phoneCkeck1="False"
@@ -55,13 +55,13 @@ class VerifyPhoneNumber extends React.Component {
     var number=numberMatch[0].replace(/\D/g,'')
     var countryMatch=phone.match(/[0-9]+[(]/gi)
     var country=countryMatch[0].replace(/\D/g,'')
-    console.log(phone);
-    console.log("number");
-    console.log(number);
-    console.log("country");
-    console.log(country);
+    //console.log(phone);
+    //console.log("number");
+    //console.log(number);
+    //console.log("country");
+    //console.log(country);
 
-console.log(number.length);
+//console.log(number.length);
  if(this.setState.phoneCkeck1!="False"){
     if(country[0]!= 1 && country[0]!= 91){
        alert("HOWL is currently Only Available to users based in the U.S and INDIA")
@@ -88,9 +88,9 @@ console.log(number.length);
          this.setState({
            ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
          })
-           console.log(findresponse);
+           ////console.log(findresponse);
            //Status:this.state.ResultStatus.Status;
-           console.log(this.state.ResultStatus.Status);
+           //console.log(this.state.ResultStatus.Status);
 
            if(this.state.ResultStatus.Status==2 && number!='' && number.length==10){
               alert("This phone number is already taken by another account.");
@@ -114,7 +114,7 @@ console.log(number.length);
        this.setState({
           phone: number
        });
-       console.log(this.state.phone)
+       //console.log(this.state.phone)
     }
 
 

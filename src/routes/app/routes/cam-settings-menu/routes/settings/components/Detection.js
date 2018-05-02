@@ -32,7 +32,7 @@ handleDetectionToggle()
      this.setState({  Detection: !this.state.Detection  });
 
      var s = !this.state.Detection
-      console.log(s)
+     //  console.log(s)
       if(s === true)
       {
             var status = 1;
@@ -50,7 +50,7 @@ handleDetectionToggle()
              "MotionDetectionStatus":status,
              "MotionDetectionSensitivity":sensitivity
           }]);
-           console.log(object);
+           // console.log(object);
 
            const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/UpdateCameraMotionDetectionSetting'
             // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateCameraMotionDetectionSetting';
@@ -67,20 +67,20 @@ handleDetectionToggle()
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
-               console.log(findresponse)
+             //   console.log(findresponse)
 
                this.setState({
                   status:findresponse.UpdateCameraMotionDetectionSettingResult.ResultStatus.Status,
                   message:findresponse.UpdateCameraMotionDetectionSettingResult.ResultStatus.StatusMessage
                 })
-                  console.log(this.state.status);
-                  console.log(this.state.message);
+               //    console.log(this.state.status);
+               //    console.log(this.state.message);
 
                   if(this.state.status === "1")
                   {
                     alert("Done Updation!");
 
-                    console.log(status)
+                 //    console.log(status)
                     if(status === "1")
                     {
                       Toggled: true
@@ -110,12 +110,12 @@ handleDetectionToggle()
  componentDidMount()
 
      {
-       console.log(cookie.load('Detection'));
-       console.log(cookie.load('Sensitivity'));
-       console.log(cookie.load('cameraid'));
+        //console.log(cookie.load('Detection'));
+     //   console.log(cookie.load('Sensitivity'));
+     //   console.log(cookie.load('cameraid'));
 
                var savedDetection = cookie.load('Detection');
-               console.log(savedDetection);
+             //   console.log(savedDetection);
 
 
                if(savedDetection === "1")
@@ -135,7 +135,7 @@ handleDetectionToggle()
    }
      render() {
 
-       console.log(this.state.Detection);
+       // console.log(this.state.Detection);
 
 
 

@@ -34,7 +34,7 @@ handlePushToggle()
      this.setState({  Push: !this.state.Push  });
 
             var togglestate2=cookie.load('ShouldReceiveCameraAlertSMS');
-            console.log(togglestate2);
+            // console.log(togglestate2);
 
 
 // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserSettings';
@@ -55,7 +55,7 @@ handlePushToggle()
             .then((Response)=> Response.json())
             .then((findresponse)=>{
                        this.setState({ result:findresponse.UpdateUserSettingsResult.ResultStatus.Status  });
-                       console.log(this.state.result);
+                       // console.log(this.state.result);
                        if(this.state.result === "1")
                            {
 
@@ -77,7 +77,7 @@ handleSmsToggle()
      this.setState({  Sms: !this.state.Sms  });
 
             var togglestate1=cookie.load('ShouldReceiveCameraAlertPush');
-            console.log(togglestate1);
+            // console.log(togglestate1);
 
 
 // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateUserSettings';
@@ -98,7 +98,7 @@ handleSmsToggle()
             .then((Response)=> Response.json())
             .then((findresponse)=>{
                        this.setState({ result:findresponse.UpdateUserSettingsResult.ResultStatus.Status  });
-                       console.log(this.state.result);
+                       // console.log(this.state.result);
                        if(this.state.result === "1")
                            {
                                 cookie.save('ShouldReceiveCameraAlertSMS',this.state.Sms)
@@ -119,8 +119,8 @@ handleSmsToggle()
        var togglestate2=cookie.load('ShouldReceiveCameraAlertSMS');
        var togglestate1=cookie.load('ShouldReceiveCameraAlertPush')
 
-       console.log(togglestate1)
-       console.log(togglestate2);
+       // console.log(togglestate1)
+        //console.log(togglestate2);
 
        if(togglestate1 === "True" || togglestate1 === "true" )
        {
@@ -154,8 +154,8 @@ handleSmsToggle()
    }
      render() {
 
-       console.log(this.state.Push);
-       console.log(this.state.Sms);
+        //console.log(this.state.Push);
+       // console.log(this.state.Sms);
 
 
      return (

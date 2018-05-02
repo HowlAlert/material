@@ -27,20 +27,20 @@ class ImageBox extends React.Component {
 
         var cameraid = `${value1}`;
         cookie.save('cameraid',cameraid);
-         console.log(cookie.load('cameraid'));
+          //console.log(cookie.load('cameraid'));
            var CameraName = `${value2}`;
         cookie.save('cameraName',CameraName);
-         console.log(cookie.load('cameraName'));
+         // console.log(cookie.load('cameraName'));
            var Toggled = `${value3}`;
          cookie.save('Detection',Toggled);
-          console.log(cookie.load('Detection'));
+         //  console.log(cookie.load('Detection'));
             var sensitivity = `${value4}`;
          cookie.save('Sensitivity',sensitivity);
-         console.log(cookie.load('Sensitivity'));
+         // console.log(cookie.load('Sensitivity'));
 
           var roomid = `${value5}`;
          cookie.save('RoomId',roomid);
-         console.log(cookie.load('RoomId'));
+         // console.log(cookie.load('RoomId'));
 
          this.setState({ redirectToReferrer: true })
     }
@@ -48,7 +48,7 @@ class ImageBox extends React.Component {
 componentDidMount(){
 
   var today = moment(this.state.startDate).format('MM/DD/YYYY');
-  console.log(today);
+   //console.log(today);
 
 var starthours = "00";
 var startminutes = "00";
@@ -60,9 +60,9 @@ var endsecond = "00";
 var st= starthours + ':' + startminutes + ':' + startsecond;
 var et= endhours + ':' + endminutes + ':' + endsecond;
 var StartTime = today + " " + st
-console.log(StartTime);
+ //console.log(StartTime);
 var EndTime = today + " " + et
-console.log(EndTime);
+ //console.log(EndTime);
 
   const URL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCamera'
   // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
@@ -104,8 +104,8 @@ console.log(EndTime);
       })
   .then((Response)=> Response.json())
   .then((findresponse)=>{
-      console.log(findresponse)
-      console.log(findresponse.GetUserCameraImagesResult.CameraImages)
+       //console.log(findresponse)
+     //  console.log(findresponse.GetUserCameraImagesResult.CameraImages)
 
      let arr4=[];
      arr4=  findresponse.GetUserCameraImagesResult.CameraImages.slice(0, 1);          //To get the top most image of the camera recordings
@@ -130,7 +130,7 @@ console.log(EndTime);
                .then((Response)=> Response.json())
 
                .then((findresponse1)=>{
-                   console.log(findresponse1)
+               //     console.log(findresponse1)
                    this.setState({
                       data:findresponse1
                    })

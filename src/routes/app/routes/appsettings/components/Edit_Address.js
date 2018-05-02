@@ -46,10 +46,10 @@ class SearchAddress extends React.Component {
               Longitude:latLng.lng
           })
 
-
-            console.log(this.state.Latitude);
-            console.log(this.state.Longitude);
-            console.log(this.state.street_no+" "+this.state.street_name)
+            //
+            // console.log(this.state.Latitude);
+            // console.log(this.state.Longitude);
+            // console.log(this.state.street_no+" "+this.state.street_name)
 
 
           const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/AddEditUserHomeAddress';
@@ -73,7 +73,7 @@ class SearchAddress extends React.Component {
           })
            .then((Response)=> Response.json())
             .then((findresponse)=>{
-               console.log(findresponse)
+               // console.log(findresponse)
 
               })
            alert("Address Got updated");
@@ -81,24 +81,24 @@ class SearchAddress extends React.Component {
 
 
          cookie.save('Address1',this.state.street_no+" "+this.state.street_name)
-         console.log(cookie.load('Address1'));
+         // console.log(cookie.load('Address1'));
 
         cookie.save('AptNo',this.state.Address2)
 
          cookie.save('City',this.state.city)
-         console.log(cookie.load('City'));
+         // console.log(cookie.load('City'));
 
          cookie.save('State',this.state.state)
-         console.log(cookie.load('State'));
+         // console.log(cookie.load('State'));
 
          cookie.save('Zip',this.state.zipcode)
-         console.log(cookie.load('Zip'));
+         // console.log(cookie.load('Zip'));
 
          cookie.save('Latitude',this.state.Latitude)
-         console.log(cookie.load('Latitude'))
+         // console.log(cookie.load('Latitude'))
 
           cookie.save('Longitude',this.state.Longitude)
-          console.log(cookie.load('Longitude'))
+          // console.log(cookie.load('Longitude'))
 
         })
        .catch(error => {
@@ -108,8 +108,8 @@ class SearchAddress extends React.Component {
        })
 
 
-       cookie.save('new_address',this.state.address),
-       console.log(cookie.load('new_address'));
+       cookie.save('new_address',this.state.address);
+       // console.log(cookie.load('new_address'));
 
    }
 
@@ -123,7 +123,7 @@ class SearchAddress extends React.Component {
     this.setState({
           Address2: target.value
         });
-        console.log(target.value) ;
+        // console.log(target.value) ;
         return target.value;
     }
 
