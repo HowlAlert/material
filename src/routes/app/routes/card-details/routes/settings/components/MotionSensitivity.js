@@ -30,12 +30,12 @@ class MotionSensitivity extends React.Component {
   //       })
   //   .then((Response)=> Response.json())
   //   .then((findresponse)=>{
-  //       console.log(findresponse)
+  //        console.log(findresponse)
   //       this.setState({
   //          data:findresponse.GetUserCameraResult.RoomCameraList,
   //          data1:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].MotionDetectionSensitivity
   //                           })
-  //                           console.log(this.state.data1);
+  //                            console.log(this.state.data1);
   //                           // this.setState({value: this.state.data1});
   //                        })
   //

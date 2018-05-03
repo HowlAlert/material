@@ -38,7 +38,7 @@ class Device extends React.Component {
           })
       .then((Response)=> Response.json())
       .then((findresponse)=>{
-          console.log(findresponse)
+           console.log(findresponse)
           this.setState({
              data:findresponse.GetUserDeviceDetailResult.UserDeviceList,
              length:findresponse.GetUserDeviceDetailResult.UserDeviceList.length

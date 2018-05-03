@@ -40,7 +40,7 @@ class History extends React.Component {
       });
 
       var today = moment(date).format('MM/DD/YYYY');
-      console.log(today);
+       console.log(today);
 
 
     var starthours = "00";
@@ -53,16 +53,16 @@ class History extends React.Component {
     var st= starthours + ':' + startminutes + ':' + startsecond;
     var et= endhours + ':' + endminutes + ':' + endsecond;
     var StartTime = today + " " + st
-    console.log(StartTime);
+     console.log(StartTime);
     var EndTime = today + " " + et
-    console.log(EndTime);
+     console.log(EndTime);
 
 
 
               var that = this;
                var urls = [];
                var a1 =[];
-               // console.log(this.state.counter);
+               //  console.log(this.state.counter);
 
                const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages';
                 // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
@@ -82,7 +82,7 @@ class History extends React.Component {
                    })
                .then((Response)=> Response.json())
                .then((findresponse)=>{
-                 console.log(findresponse);
+                  console.log(findresponse);
                  this.setState({
                     data:findresponse.GetUserCameraImagesResult.CameraImages,
                     length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -111,21 +111,21 @@ class History extends React.Component {
                             urls[i] = element
 
                           })
-                        console.log(urls);
+                         console.log(urls);
                         let arr3 = [];                                  // to combine the results of the two arrays
                                 urls.forEach((itm, i) => {
                                          arr3.push(Object.assign({}, itm, datas[i]));
                                      });
 
-                                     console.log(arr3.length);
+                                      console.log(arr3.length);
                                      this.setState({  data1:arr3 ,
                                        array_count:arr3.length ,
 
                                      })
 
-                         console.log(this.state.data1);
+                          console.log(this.state.data1);
                          var total = this.state.array_count;
-                         console.log(total);
+                          console.log(total);
 
                          if(total === 0)
                           {
@@ -151,8 +151,8 @@ class History extends React.Component {
     handleNext(date,value){
 
       var today = moment(date).format('MM/DD/YYYY');
-      console.log(today);
-      console.log(this.state.counter)
+       console.log(today);
+       console.log(this.state.counter)
       this.setState({
           counter: this.state.counter + 1,
           disabledBack: false,
@@ -168,16 +168,16 @@ class History extends React.Component {
     var st= starthours + ':' + startminutes + ':' + startsecond;
     var et= endhours + ':' + endminutes + ':' + endsecond;
     var StartTime = today + " " + st
-    console.log(StartTime);
+     console.log(StartTime);
     var EndTime = today + " " + et
-    console.log(EndTime);
+     console.log(EndTime);
 
 
 
               var that = this;
                var urls = [];
                var a1 =[];
-               // console.log(this.state.counter);
+               //  console.log(this.state.counter);
 
 
                const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages',
@@ -201,7 +201,7 @@ class History extends React.Component {
                    })
                .then((Response)=> Response.json())
                .then((findresponse)=>{
-                 console.log(findresponse);
+                  console.log(findresponse);
                  this.setState({
                     data:findresponse.GetUserCameraImagesResult.CameraImages,
                     length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -229,21 +229,21 @@ class History extends React.Component {
                             urls[i] = element
 
                           })
-                        console.log(urls);
+                         console.log(urls);
                         let arr3 = [];                                  // to combine the results of the two arrays
                                 urls.forEach((itm, i) => {
                                          arr3.push(Object.assign({}, itm, datas[i]));
                                      });
 
-                                     console.log(arr3.length);
+                                      console.log(arr3.length);
                                      this.setState({  data1:arr3 ,
                                        array_count:arr3.length ,
 
                                      })
 
-                         console.log(this.state.data1);
+                          console.log(this.state.data1);
                          var total = this.state.array_count;
-                         console.log(total);
+                          console.log(total);
 
                          if(total === 0 || total < 20)
                           {
@@ -255,7 +255,7 @@ class History extends React.Component {
 
                               });
 
-                                console.log(this.state.counter)
+                                 console.log(this.state.counter)
                           }
 
                     } )
@@ -267,8 +267,8 @@ class History extends React.Component {
 handleBack(date,value){
 
   var today = moment(date).format('MM/DD/YYYY');
-  console.log(today);
-console.log(this.state.counter);
+   console.log(today);
+ console.log(this.state.counter);
   this.setState({
     counter: this.state.counter - 1
   });
@@ -283,16 +283,16 @@ var endsecond = "00";
 var st= starthours + ':' + startminutes + ':' + startsecond;
 var et= endhours + ':' + endminutes + ':' + endsecond;
 var StartTime = today + " " + st
-console.log(StartTime);
+ console.log(StartTime);
 var EndTime = today + " " + et
-console.log(EndTime);
+ console.log(EndTime);
 
 
 
           var that = this;
            var urls = [];
            var a1 =[];
-           // console.log(this.state.counter);
+           //  console.log(this.state.counter);
 
 
            const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages',
@@ -316,7 +316,7 @@ console.log(EndTime);
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
-             console.log(findresponse);
+              console.log(findresponse);
              this.setState({
                 data:findresponse.GetUserCameraImagesResult.CameraImages,
                 length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -344,13 +344,13 @@ console.log(EndTime);
                         urls[i] = element
 
                       })
-                    console.log(urls);
+                     console.log(urls);
                     let arr3 = [];                                  // to combine the results of the two arrays
                             urls.forEach((itm, i) => {
                                      arr3.push(Object.assign({}, itm, datas[i]));
                                  });
 
-                                 console.log(arr3.length);
+                                  console.log(arr3.length);
                                  this.setState({
                                     data1:arr3 ,
                                     array_count:arr3.length ,
@@ -358,18 +358,18 @@ console.log(EndTime);
 
                                  })
 
-                     console.log(this.state.data1);
+                      console.log(this.state.data1);
                      // var total = this.state.array_count;
-                     // console.log(total);
+                     //  console.log(total);
 
                      var count = this.state.counter-1;
-                     console.log(count);
+                      console.log(count);
 
                      if(count === 1)
                       {
                          // alert("No Images Recorded!");
-                            console.log(this.state.disabledMore);
-                              console.log(this.state.disableBack);
+                             console.log(this.state.disabledMore);
+                               console.log(this.state.disableBack);
 
                             this.setState({
                                   disabledMore: false,
@@ -378,7 +378,7 @@ console.log(EndTime);
 
                              });
 
-                            // console.log(this.state.counter);
+                            //  console.log(this.state.counter);
                       }
 
 
@@ -390,7 +390,7 @@ componentDidMount(){
 
 
   var today = moment(this.state.startDate).format('MM/DD/YYYY');
-  console.log(today);
+   console.log(today);
 
 var starthours = "00";
 var startminutes = "00";
@@ -402,16 +402,16 @@ var endsecond = "00";
 var st= starthours + ':' + startminutes + ':' + startsecond;
 var et= endhours + ':' + endminutes + ':' + endsecond;
 var StartTime = today + " " + st
-console.log(StartTime);
+ console.log(StartTime);
 var EndTime = today + " " + et
-console.log(EndTime);
+ console.log(EndTime);
 
 
            //
            // var that = this;
            //  var urls = [];
            //  var a1 =[];
-           //  // console.log(this.state.counter);
+           //  //  console.log(this.state.counter);
            //
            //
            //  const BaseURL1 = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages';
@@ -431,7 +431,7 @@ console.log(EndTime);
            //      })
            //  .then((Response)=> Response.json())
            //  .then((findresponse)=>{
-           //    console.log(findresponse);
+           //     console.log(findresponse);
            //    this.setState({
            //       data:findresponse.GetUserCameraImagesResult.CameraImages,
            //       length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -458,21 +458,21 @@ console.log(EndTime);
            //               urls[i] = element
            //
            //             })
-           //           console.log(urls);
+           //            console.log(urls);
            //           let arr3 = [];                                  // to combine the results of the two arrays
            //                   urls.forEach((itm, i) => {
            //                            arr3.push(Object.assign({}, itm, datas[i]));
            //                        });
            //
-           //                        console.log(arr3.length);
+           //                         console.log(arr3.length);
            //                        this.setState({  data1:arr3 ,
            //                          array_count:arr3.length ,
            //
            //                        })
            //
-           //            console.log(this.state.data1);
+           //             console.log(this.state.data1);
            //            var total = this.state.array_count;
-           //            console.log(total);
+           //             console.log(total);
            //
            //            if(total === 0)
            //             {
@@ -503,7 +503,7 @@ console.log(EndTime);
           var that = this;
            var urls = [];
            var a1 =[];
-           // console.log(this.state.counter);
+           //  console.log(this.state.counter);
 
 
            const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages';
@@ -524,7 +524,7 @@ console.log(EndTime);
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
-             console.log(findresponse);
+              console.log(findresponse);
              this.setState({
                 data:findresponse.GetUserCameraImagesResult.CameraImages,
                 length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -552,21 +552,21 @@ console.log(EndTime);
                         urls[i] = element
 
                       })
-                    console.log(urls);
+                     console.log(urls);
                     let arr3 = [];                                  // to combine the results of the two arrays
                             urls.forEach((itm, i) => {
                                      arr3.push(Object.assign({}, itm, datas[i]));
                                  });
 
-                                 console.log(arr3.length);
+                                  console.log(arr3.length);
                                  this.setState({  data1:arr3 ,
                                    array_count:arr3.length ,
 
                                  })
 
-                     console.log(this.state.data1);
+                      console.log(this.state.data1);
                      var total = this.state.array_count;
-                     console.log(total);
+                      console.log(total);
 
                      if(total === 0)
                       {
@@ -590,7 +590,7 @@ console.log(EndTime);
       handleEnlarge(value1,value2) {
 
 
-            // console.log(imgid);
+            //  console.log(imgid);
             this.setState({
               redirectToReferrer: true ,
               imgid: `${value1}`,
@@ -612,7 +612,7 @@ handleExit()
 render() {
 
   var today = moment(this.state.startDate).format('LL');
-  console.log(today);
+   console.log(today);
 
   var img_Date = this.state.DateCreated +" "+ 'UTC' ;      //Convert UTC to Local Time
   var date = new Date(img_Date);
@@ -651,9 +651,9 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
   }
 var cameraName = cookie.load('cameraName');
 
-console.log(cameraName);
+ console.log(cameraName);
 var fname=cookie.load('FirstName');
- console.log(fname);
+  console.log(fname);
 var lname = cookie.load('LastName');
 
       return (

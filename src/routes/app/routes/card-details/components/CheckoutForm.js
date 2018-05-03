@@ -21,8 +21,8 @@ import CardSection from './CardSection';
 //     });
 //
 //     paymentRequest.on('token', ({complete, token, ...data}) => {
-//       console.log('Received Stripe token: ', token);
-//       console.log('Received customer information: ', data);
+//        console.log('Received Stripe token: ', token);
+//        console.log('Received customer information: ', data);
 //       complete('success');
 //     });
 //
@@ -67,7 +67,7 @@ class CheckoutForm extends React.Component {
 
       {name: 'Jenny Rosen'}).then(({token}) =>
       {
-      console.log('Received Stripe token:', token);
+       console.log('Received Stripe token:', token);
     });
 
 

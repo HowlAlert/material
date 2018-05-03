@@ -34,7 +34,7 @@ class SilentCode extends React.Component {
          Next_disabled:false,
          Cancel_disabled:false
        });
-       console.log(target.value) ;
+        console.log(target.value) ;
        return target.value;
      }
 
@@ -44,10 +44,10 @@ class SilentCode extends React.Component {
 
 
        var entered = this.state.code;
-       console.log(entered);
+        console.log(entered);
 
        var saved = cookie.load('SilenceCode');
-       console.log(saved);
+        console.log(saved);
 
        if(entered ==''){
          alert("Please enter your old Silent code!");
@@ -137,7 +137,7 @@ class VerifySilentCode extends React.Component {
          Cancel_disabled:false
        });
 
-       console.log(target.value) ;
+        console.log(target.value) ;
        return target.value;
      }
 
@@ -151,7 +151,7 @@ class VerifySilentCode extends React.Component {
       this.setState({
               re_code: target.value
               });
-          console.log(target.value) ;
+           console.log(target.value) ;
           return target.value;
       }
 
@@ -160,15 +160,15 @@ class VerifySilentCode extends React.Component {
   handleSave(event) {
     var entered = this.state.code;
     var code_length = entered.length;
-    console.log(entered);
+     console.log(entered);
 
     var verify = this.state.re_code;
-    console.log(verify);
+     console.log(verify);
 
     var savedcancelcode = cookie.load('CancellationCode');
 
     var silentcode =   cookie.load('SilenceCode');
-    console.log(silentcode);
+     console.log(silentcode);
 
 
     if(entered ==''){
@@ -211,7 +211,7 @@ class VerifySilentCode extends React.Component {
           })
       .then((Response)=> Response.json())
       .then((findresponse)=>{
-          console.log(findresponse)
+           console.log(findresponse)
            alert("Silent Code has been changed");
               cookie.save('SilenceCode',this.state.code)
             this.setState({ redirectToReferrer: true })   //redirect to settings menu

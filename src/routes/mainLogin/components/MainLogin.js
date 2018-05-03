@@ -67,13 +67,13 @@ class MainLogin extends React.Component {
 
 
   handleGoogleLogin(response) {
-    console.log(response);
+     console.log(response);
     //first name
-      console.log(response.w3.ofa);
+       console.log(response.w3.ofa);
       //last name
-      console.log(response.w3.wea);
-      console.log(response.googleId);
-      console.log(response.profileObj.email);
+       console.log(response.w3.wea);
+       console.log(response.googleId);
+       console.log(response.profileObj.email);
 
       const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LoginWithGoogle';
       // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LoginWithGoogle';
@@ -93,7 +93,7 @@ class MainLogin extends React.Component {
           GetUserHomeAddress:findresponse.LoginWithGoogleResult.GetUserHomeAddress,
           NumberOfCameras:findresponse.LoginWithGoogleResult.NumberOfCameras,
           GetAccount:findresponse.LoginWithGoogleResult.GetAccount,
-        });console.log(findresponse);
+        }); console.log(findresponse);
 
           if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
             alert(this.state.ResultStatus.StatusMessage)
@@ -123,13 +123,13 @@ class MainLogin extends React.Component {
             else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
               alert("Please confirm your Phone Number");
               if(this.state.GetAccount.length==0){
-                // console.log(this.state.GetAccount)
+                //  console.log(this.state.GetAccount)
                   cookie.save('GetAccount_GMT','empty');
               }else if(this.state.GetAccount.length!=0){
                 cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
                 cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-                console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-                  console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                 console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                   console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
               }
               cookie.save('Email', this.state.GetUser.Email);
               cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -175,13 +175,13 @@ class MainLogin extends React.Component {
               this.setState({ redirectToSilenceCode: true }),
               this.setState.noOfSuperValidation="False"
               if(this.state.GetAccount.length==0){
-                // console.log(this.state.GetAccount)
+                //  console.log(this.state.GetAccount)
                   cookie.save('GetAccount_GMT','empty');
               }else if(this.state.GetAccount.length!=0){
                 cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
                 cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-                console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-                  console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                 console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                   console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
               }
               cookie.save('Email', this.state.GetUser.Email);
               cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -196,16 +196,16 @@ class MainLogin extends React.Component {
               cookie.save('State', this.state.GetUserHomeAddress.State);
               cookie.save('Zip', this.state.GetUserHomeAddress.Zip);
             }
-            
+
             else if(this.state.noOfSuperValidation!="False"){
             if(this.state.GetAccount.length==0){
-              // console.log(this.state.GetAccount)
+              //  console.log(this.state.GetAccount)
                 cookie.save('GetAccount_GMT','empty');
             }else if(this.state.GetAccount.length!=0){
               cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
               cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-              console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-                console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+               console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                 console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
             }
               cookie.save('Email', this.state.GetUser.Email);
               cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -232,11 +232,11 @@ class MainLogin extends React.Component {
 
 
     handleFacebookLogin (response) {
-      console.log(response);
-      console.log(response.first_name);
-      console.log(response.last_name);
-      console.log(response.id);
-      console.log(response.email);
+       console.log(response);
+       console.log(response.first_name);
+       console.log(response.last_name);
+       console.log(response.id);
+       console.log(response.email);
 
 
 
@@ -288,13 +288,13 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
                 else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
                   alert("Please confirm your Phone Number");
                   if(this.state.GetAccount.length==0){
-                    // console.log(this.state.GetAccount)
+                    //  console.log(this.state.GetAccount)
                       cookie.save('GetAccount_GMT','empty');
                   }else if(this.state.GetAccount.length!=0){
                     cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
                     cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-                    console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-                      console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                     console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                       console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
                   }
                   cookie.save('Email', this.state.GetUser.Email);
                   cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -341,13 +341,13 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
               this.setState({ redirectToSilenceCode: true }),
               this.setState.noOfSuperValidation="False"
               if(this.state.GetAccount.length==0){
-                // console.log(this.state.GetAccount)
+                //  console.log(this.state.GetAccount)
                   cookie.save('GetAccount_GMT','empty');
               }else if(this.state.GetAccount.length!=0){
                 cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
                 cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-                console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-                  console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                 console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                   console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
               }
               cookie.save('Email', this.state.GetUser.Email);
               cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -366,13 +366,13 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
             if(this.state.noOfSuperValidation!="False"){
                   ccookie.save('Email', this.state.GetUser.Email);
                   if(this.state.GetAccount.length==0){
-                    // console.log(this.state.GetAccount)
+                    //  console.log(this.state.GetAccount)
                       cookie.save('GetAccount_GMT','empty');
                   }else if(this.state.GetAccount.length!=0){
                     cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
                     cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-                    console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-                      console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                     console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                       console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
                   }
                   cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
                   cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
@@ -443,11 +443,9 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
 
     if (redirectToReferrer) {
       const options = { redirectToReferrer: true, redirectPath: '/', driver: 'COOKIES' };
-      sessionService.initSessionService(store, options)
-        .then(() => console.log('Redux React Session is ready and a session was refreshed from your storage'))
-        .catch(() => console.log('Redux React Session is ready and there is no session in your storage'));
+      sessionService.initSessionService(store, options);
 
-      console.log(redirectToReferrer)
+       console.log(redirectToReferrer)
           return (
             <Redirect to="app/home" />
           )

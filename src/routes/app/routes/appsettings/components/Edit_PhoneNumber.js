@@ -47,7 +47,7 @@ this.handleOnChange = this.handleOnChange.bind(this);
            phoneNumberdisabled:false,
            Cancel_disabled: false,
         });
-        console.log(this.state.phone)
+         console.log(this.state.phone)
      }
 
   handlePhoneNo(phoneNumber){
@@ -65,9 +65,9 @@ this.handleOnChange = this.handleOnChange.bind(this);
       var number=phoneNumber.substr(phoneNumber.length-10)
       var country=phoneNumber.slice(0, -10)
     //   ereg_replace("[^0-9]", "", phone)
-     console.log(phoneNumber);
-     console.log(number);
-     console.log(country);
+      console.log(phoneNumber);
+      console.log(number);
+      console.log(country);
 
 
     if(number.length!=10){
@@ -97,10 +97,10 @@ this.handleOnChange = this.handleOnChange.bind(this);
         ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
       })
 
-        console.log("status");
+         console.log("status");
         //Status:this.state.ResultStatus.Status;
-        console.log(this.state.ResultStatus.Status);
-        console.log(number.length);
+         console.log(this.state.ResultStatus.Status);
+         console.log(number.length);
         if(this.state.ResultStatus.Status==2 && number!=''  && number.length==10){
            alert("This phone number is already taken by another account.");
          }
@@ -129,7 +129,7 @@ handleBack(event) {
 
 //     const { redirectToReferrer} = this.state
 //     if (redirectToReferrer) {
-// console.log(redirectToReferrer);
+//  console.log(redirectToReferrer);
 //           return (
 //           <div>
 //             CHANGE PHONE NUMBER
@@ -225,12 +225,12 @@ class PhoneVerifyCode extends React.Component {
         Cancel_disabled: false
       });
 
-      console.log(target.value) ;
+       console.log(target.value) ;
       return target.value;
     }
   handleVerifyCode(event){
 
-      console.log(this.state.Code);
+       console.log(this.state.Code);
       let re = /^[0-9]{4}$/;
     if(re.test(this.state.Code)=='' || this.state.Code.length!=4 || this.state.Code.length>4)
     {
@@ -247,7 +247,7 @@ class PhoneVerifyCode extends React.Component {
         }).
       then((Response)=>Response.json()).
       then((findresponse)=>{
-        console.log(findresponse)
+         console.log(findresponse)
         this.setState({
           ResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus,
           message:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.StatusMessage

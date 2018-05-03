@@ -35,7 +35,7 @@ onMapClicked (props) {
         })
 
     }
-      // console.log("In onclick");
+      //  console.log("In onclick");
 
 }
 
@@ -45,14 +45,14 @@ onMarkerClicked (props, marker, e) {
         activeMarker: marker,
         showingInfoWindow: true
       });
-      console.log("In Marker");
+       console.log("In Marker");
 
 }
 handleMapMount(mapProps, map) {
     this.map = map;
 
     //log map bounds
-    // console.log(this.map.getBounds());
+    //  console.log(this.map.getBounds());
 
 }
 
@@ -79,12 +79,12 @@ componentDidMount()
       })
   .then((Response)=> Response.json())
   .then((findresponse)=>{
-    console.log(findresponse);
+     console.log(findresponse);
     this.setState({
              GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
 
                })
-        console.log(this.state.GetSpotCrimesResult);
+         console.log(this.state.GetSpotCrimesResult);
   })
 
 
@@ -98,10 +98,10 @@ render() {
         return <div>Loading...</div>
     }
     var fname=cookie.load('FirstName');
-     console.log(fname);
+      console.log(fname);
     var lname = cookie.load('LastName');
     var lastname=lname.substr(0, 1);
-     console.log(lastname);
+      console.log(lastname);
 
     return (
 

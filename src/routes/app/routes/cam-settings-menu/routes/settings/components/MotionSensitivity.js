@@ -26,11 +26,11 @@ handleChange = (event, index, value) => this.setState({value});
  // componentDidMount(){
  //
  //
- //   console.log(cookie.load('Sensitivity'));
- //   console.log(cookie.load('cameraid'));
+ //    console.log(cookie.load('Sensitivity'));
+ //    console.log(cookie.load('cameraid'));
  //
  //           var savedSensitivity = cookie.load('Sensitivity');
- //           console.log(savedSensitivity);
+ //            console.log(savedSensitivity);
  //
  //             this.setState({
  //               value: savedSensitivity,
@@ -42,7 +42,7 @@ handleChange = (event, index, value) => this.setState({value});
   render() {
 
     // var sensitivity = cookie.load('togglesensitivity');
-    // console.log(sensitivity);
+    //  console.log(sensitivity);
 
   return (
     <div className="row">

@@ -5,7 +5,7 @@ import TextField from 'material-ui/TextField';
 // const isOnline = require('is-online');
 //
 // isOnline().then(online => {
-// console.log(online);
+//  console.log(online);
 // //=> true
 // });
 const Privacy = () => (

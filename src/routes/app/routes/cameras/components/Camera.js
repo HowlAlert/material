@@ -128,7 +128,7 @@ class Camera extends React.Component {
           length:findresponse.GetUserCameraResult.RoomCameraList.length,
 
      })
-console.log(this.state.length)
+ console.log(this.state.length)
   });
     }
 render() {

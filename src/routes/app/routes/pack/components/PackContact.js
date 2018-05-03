@@ -25,33 +25,33 @@ class Contact extends React.Component {
         this.setState({
            phone: number
         });
-        console.log(this.state.phone)
+         console.log(this.state.phone)
      }
 
   handleFirstname(event) {
      this.setState({
          fname: event.target.value.substr(0,30)
        });
-       console.log(event.target.value) ;
+        console.log(event.target.value) ;
 
      }
   handleLastname(event) {
        this.setState({
          lname: event.target.value.substr(0,30)
        });
-       console.log(event.target.value);
+        console.log(event.target.value);
      }
 
   handleEmail(event) {
               this.setState({
                     email: event.target.value
                   });
-                  console.log(event.target.value) ;
+                   console.log(event.target.value) ;
 
           }
 
          // handlePhoneNumber(event) {
-         //    console.log(event.target.value);
+         //     console.log(event.target.value);
          //    this.setState({
          //    phonenumber: event.target.value.substr(0,10)
          //            });
@@ -99,9 +99,9 @@ class Contact extends React.Component {
              var number=phoneNumber.substr(phoneNumber.length-10)
              var country=phoneNumber.slice(0, -10)
            //   ereg_replace("[^0-9]", "", phone)
-            console.log(phoneNumber);
-            console.log(number);
-            console.log(country);
+             console.log(phoneNumber);
+             console.log(number);
+             console.log(country);
 
 
            if(number.length!=10){
@@ -148,7 +148,7 @@ class Contact extends React.Component {
       else
       {
      var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":number,"UserPackID":"0", "PhoneNumberCountryCode": "1"}]);
-     console.log(object);
+      console.log(object);
 
 
            const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/AddUpdateUserPack';
@@ -168,15 +168,15 @@ class Contact extends React.Component {
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
-             console.log(findresponse);
+              console.log(findresponse);
 
              this.setState({
                       status:findresponse.AddUpdateUserPackResult.ResultStatus.Status,
                       message:findresponse.AddUpdateUserPackResult.ResultStatus.StatusMessage
                         })
 
-                        // console.log(this.state.status);
-                        // console.log(this.state.message);
+                        //  console.log(this.state.status);
+                        //  console.log(this.state.message);
                         if(this.state.status === "0")
                         {
                           alert(this.state.message);
@@ -200,7 +200,7 @@ class Contact extends React.Component {
 
            handleExit()
            {
-              // console.log("exit");
+              //  console.log("exit");
               // this.setState({ redirectToReferrer: true })
               //
               //  <Redirect to="Pack/PackDetails" />

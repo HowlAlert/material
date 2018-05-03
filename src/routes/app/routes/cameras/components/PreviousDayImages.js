@@ -38,7 +38,7 @@ class History extends React.Component {
 handleEnlarge(value1,value2) {
 
 
-      // console.log(imgid);
+      //  console.log(imgid);
       this.setState({
         redirectToReferrer: true ,
         imgid: `${value1}`,
@@ -60,7 +60,7 @@ componentDidMount(){
 
 
   var today = moment(this.state.startDate).format('MM/DD/YYYY');
-  console.log(today);
+   console.log(today);
 
 var starthours = "00";
 var startminutes = "00";
@@ -72,14 +72,14 @@ var endsecond = "00";
 var st= starthours + ':' + startminutes + ':' + startsecond;
 var et= endhours + ':' + endminutes + ':' + endsecond;
 var StartTime = today + " " + st
-console.log(StartTime);
+ console.log(StartTime);
 var EndTime = today + " " + et
-console.log(EndTime);
+ console.log(EndTime);
 
           var that = this;
            var urls = [];
            var a1 =[];
-           // console.log(this.state.counter);
+           //  console.log(this.state.counter);
 
 
            const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages';
@@ -101,7 +101,7 @@ console.log(EndTime);
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
-             console.log(findresponse);
+              console.log(findresponse);
              this.setState({
                 data:findresponse.GetUserCameraImagesResult.CameraImages,
                 length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -130,21 +130,21 @@ console.log(EndTime);
                         urls[i] = element
 
                       })
-                    console.log(urls);
+                     console.log(urls);
                     let arr3 = [];                                  // to combine the results of the two arrays
                             urls.forEach((itm, i) => {
                                      arr3.push(Object.assign({}, itm, datas[i]));
                                  });
 
-                                 console.log(arr3.length);
+                                  console.log(arr3.length);
                                  this.setState({  data1:arr3 ,
                                    array_count:arr3.length ,
 
                                  })
 
-                     console.log(this.state.data1);
+                      console.log(this.state.data1);
                      var total = this.state.array_count;
-                     console.log(total);
+                      console.log(total);
 
                      if(total === 0)
                       {
@@ -171,10 +171,10 @@ render() {
 
 
   var today = moment(this.state.startDate).format('MM/DD/YYYY');
-  console.log(today);
+   console.log(today);
 
   var total = this.state.array_count;
-  console.log(total);
+   console.log(total);
 
 
 const { redirectToReferrer} = this.state                    //To Zoom the Image

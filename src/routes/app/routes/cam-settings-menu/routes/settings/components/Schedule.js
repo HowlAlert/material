@@ -31,7 +31,7 @@ class Schedule extends React.Component {
                          })
                      .then((Response)=> Response.json())
                      .then((findresponse)=>{
-                         console.log(findresponse)
+                          console.log(findresponse)
                          this.setState({
                             data:findresponse.GetRoomCameraScheduleResult.getGroupCameraSetting
                                              })
@@ -42,7 +42,7 @@ class Schedule extends React.Component {
   renderUserMessage(){
     var message= "Set times during which motion sensor will be active in order to limit unnecessary alerts and image capture."
     var len = this.state.data.length;
-    console.log(len);
+     console.log(len);
      if (this.state.data.length === 0) {
        return (
          <span>

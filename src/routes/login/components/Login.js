@@ -136,8 +136,8 @@ componentWillMount(){
         GetAccount:findresponse.LoginResult.GetAccount,
       });
 
-      console.log(findresponse);
-      console.log(this.state.GetAccount);
+       console.log(findresponse);
+       console.log(this.state.GetAccount);
       if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
         alert(this.state.ResultStatus.StatusMessage)
       }
@@ -165,13 +165,13 @@ componentWillMount(){
         else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
           alert("Please confirm your Phone Number");
           if(this.state.GetAccount.length==0){
-            // console.log(this.state.GetAccount)
+            //  console.log(this.state.GetAccount)
               cookie.save('GetAccount_GMT','empty');
           }else if(this.state.GetAccount.length!=0){
             cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
             cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-            console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-              console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+             console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+               console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
           }
           cookie.save('Email', this.state.GetUser.Email);
           cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -217,13 +217,13 @@ componentWillMount(){
           this.setState({ redirectToSilenceCode: true }),
           this.setState.noOfSuperValidation="False"
           if(this.state.GetAccount.length==0){
-            // console.log(this.state.GetAccount)
+            //  console.log(this.state.GetAccount)
               cookie.save('GetAccount_GMT','empty');
           }else if(this.state.GetAccount.length!=0){
             cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
             cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-            console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-              console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+             console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+               console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
           }
           cookie.save('Email', this.state.GetUser.Email);
           cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -241,18 +241,18 @@ componentWillMount(){
 
 
         else if(this.state.noOfSuperValidation!="False"){
-          console.log(this.state.GetAccount.length)
+           console.log(this.state.GetAccount.length)
           if(this.state.GetAccount.length==0){
-            // console.log(this.state.GetAccount)
+            //  console.log(this.state.GetAccount)
               cookie.save('GetAccount_GMT','empty');
           }else if(this.state.GetAccount.length!=0){
             cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
             cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-            console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-              console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+             console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+               console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
           }
 
-          console.log("status"),
+           console.log("status"),
           cookie.save('Email', this.state.GetUser.Email);
           cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
           cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
@@ -287,7 +287,7 @@ componentWillMount(){
         Email: target.value
       });
 
-      console.log(target.value) ;
+       console.log(target.value) ;
       return target.value;
     }
 
@@ -304,7 +304,7 @@ componentWillMount(){
           PasswordType: target.type
         });
 
-    console.log("here");
+     console.log("here");
          return target.value;
       }
 
@@ -313,7 +313,7 @@ componentWillMount(){
 
     keyPress(e){
       if(e.keyCode == 13){
-         console.log("Enter Pressed");
+          console.log("Enter Pressed");
 
 
 
@@ -363,8 +363,8 @@ componentWillMount(){
                  GetAccount:findresponse.LoginResult.GetAccount,
                });
 
-               console.log(findresponse);
-               console.log(this.state.GetAccount);
+                console.log(findresponse);
+                console.log(this.state.GetAccount);
                if(this.state.ResultStatus.StatusMessage==="No user registered with this email."){
                  alert(this.state.ResultStatus.StatusMessage)
                }
@@ -392,13 +392,13 @@ componentWillMount(){
                  else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
                    alert("Please confirm your Phone Number");
                    if(this.state.GetAccount.length==0){
-                     // console.log(this.state.GetAccount)
+                     //  console.log(this.state.GetAccount)
                        cookie.save('GetAccount_GMT','empty');
                    }else if(this.state.GetAccount.length!=0){
                      cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
                      cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-                     console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-                       console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                      console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                        console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
                    }
                    cookie.save('Email', this.state.GetUser.Email);
                    cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -444,13 +444,13 @@ componentWillMount(){
                    this.setState({ redirectToSilenceCode: true }),
                    this.setState.noOfSuperValidation="False"
                    if(this.state.GetAccount.length==0){
-                     // console.log(this.state.GetAccount)
+                     //  console.log(this.state.GetAccount)
                        cookie.save('GetAccount_GMT','empty');
                    }else if(this.state.GetAccount.length!=0){
                      cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
                      cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-                     console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-                       console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                      console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                        console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
                    }
                    cookie.save('Email', this.state.GetUser.Email);
                    cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
@@ -468,17 +468,17 @@ componentWillMount(){
 
 
                  else if(this.state.noOfSuperValidation!="False"){
-                   console.log(this.state.GetAccount.length)
+                    console.log(this.state.GetAccount.length)
                    if(this.state.GetAccount.length==0){
-                     // console.log(this.state.GetAccount)
+                     //  console.log(this.state.GetAccount)
                        cookie.save('GetAccount_GMT','empty');
                    }else if(this.state.GetAccount.length!=0){
                      cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
                      cookie.save('GetAccount_PST', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst);
-                     console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
-                       console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
+                      console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date)
+                        console.log(JSON.parse(this.state.GetAccount["0"].Receipt).expires_date_pst)
                    }
-                   console.log("status"),
+                    console.log("status"),
                    cookie.save('Email', this.state.GetUser.Email);
                    cookie.save('MobilePhoneNumber', this.state.GetUser.MobilePhoneNumber);
                    cookie.save('CancellationCode', this.state.GetUser.CancellationCode);
@@ -561,11 +561,9 @@ componentWillMount(){
 
     if (redirectToReferrer) {
       const options = { refreshOnCheckAuth: true, redirectPath: '../../app/home', driver: 'COOKIES' };
-      sessionService.initSessionService(options)
-        .then(() => console.log('Redux React Session is ready and a session was refreshed from your storage'))
-        .catch(() => console.log('Redux React Session is ready and there is no session in your storage'));
+      sessionService.initSessionService(options);
 
-      console.log(redirectToReferrer)
+       console.log(redirectToReferrer)
           return (
             <Redirect to="../../app/home" />
           )

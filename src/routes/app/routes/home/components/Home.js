@@ -80,7 +80,7 @@ class BasicHome extends React.Component{
   componentWillMount() {
     this.setState({ firstName: cookie.load('FirstName')});
     cookie.save('Loggedin', 'Loggedin')
-    console.log(cookie.load('Loggedin'))
+     console.log(cookie.load('Loggedin'))
   }
 
 
@@ -114,7 +114,7 @@ class BasicHome extends React.Component{
                        })
                    .then((Response)=> Response.json())
                    .then((findresponse)=>{
-                       console.log(findresponse)
+                        console.log(findresponse)
                        this.setState({
                           data:findresponse.TriggerEmergencyAlertResult.getUserAlert,
                           geonumber:findresponse.TriggerEmergencyAlertResult.getUserAlert.geo911
@@ -143,11 +143,11 @@ render() {
     />,
   ];
 // var status = this.state.data.StatusMessage;
-// console.log(status);           //to print result of the Service1
+//  console.log(status);           //to print result of the Service1
 
 
 var geo911 = this.state.geonumber;
-// console.log(geo911)
+//  console.log(geo911)
 
 const { redirectToReferrer} = this.state
   if(redirectToReferrer === true)

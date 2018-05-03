@@ -34,10 +34,10 @@ class Pack extends React.Component {
   if(this.state.packmembercount !== 1)
   {
     alert("Are you sure you want to delete?")
-    console.log()
+     console.log()
 
       var packid = `${value}`;
-      console.log(packid)
+       console.log(packid)
     const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/DeleteFromUserPack';
     // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/DeleteFromUserPack';
 
@@ -53,15 +53,15 @@ class Pack extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-        console.log(findresponse)
+         console.log(findresponse)
 
         this.setState({
                  status:findresponse.DeleteFromUserPackResult.ResultStatus.Status,
                  message:findresponse.DeleteFromUserPackResult.ResultStatus.StatusMessage
                    })
 
-                   // console.log(this.state.status);
-                   // console.log(this.state.message);
+                   //  console.log(this.state.status);
+                   //  console.log(this.state.message);
                    if(this.state.status === "0")
                    {
                      alert(this.state.message);
@@ -88,13 +88,13 @@ handleAddPackMember(){
 
 handleAlert(value1,value2,value3,value4) {
     var packid = `${value1}`;
-    console.log(packid);
+     console.log(packid);
     var name = `${value2}`;
-    console.log(name)
+     console.log(name)
     var poundid = `${value3}`;
-    console.log(poundid)
+     console.log(poundid)
     var ImageUrl = `${value4}`;
-    console.log(ImageUrl);
+     console.log(ImageUrl);
       // window.location.reload();
     if(poundid === "")
         {
@@ -111,7 +111,7 @@ handleAlert(value1,value2,value3,value4) {
                     })
                  .then((Response)=> Response.json())
                  .then((findresponse)=>{
-                 console.log(findresponse)
+                  console.log(findresponse)
 
                          this.setState({
                                      status:findresponse.PoundMyPackMemberResult.ResultStatus.Status,
@@ -122,14 +122,14 @@ handleAlert(value1,value2,value3,value4) {
                    if(this.state.status === "1")
                    {
                        alert("You Howled at "+name);
-                       console.log(packid);
+                        console.log(packid);
                        window.location.reload();
 
 
                   }
                    else {
                       alert(this.state.message);
-                      // console.log(this.state.pound.UserPoundID)
+                      //  console.log(this.state.pound.UserPoundID)
 
                    }
 
@@ -147,7 +147,7 @@ else {
   })
  .then((Response)=> Response.json())
  .then((findresponse)=>{
-      console.log(findresponse)
+       console.log(findresponse)
       this.setState({
                   status:findresponse.UndoMyPoundResult.ResultStatus.Status,
                   message:findresponse.UndoMyPoundResult.ResultStatus.StatusMessage,
@@ -189,7 +189,7 @@ else {
        })
    .then((Response)=> Response.json())
    .then((findresponse)=>{
-       console.log(findresponse)
+        console.log(findresponse)
 
        this.setState({
           data:findresponse.GetUserPackResult.UserPackList,
@@ -212,8 +212,8 @@ else {
         result:result
       })
 
-        // console.log(arrOfObj);
-        console.log(this.state.result);
+        //  console.log(arrOfObj);
+         console.log(this.state.result);
 
      })
 
@@ -396,13 +396,13 @@ class Howls_Me extends React.Component {
 
   handleAlert(value1,value2,value3,value4,value5) {
       var senderid = `${value1}`;
-      console.log(senderid);
+       console.log(senderid);
       var senderToken = `${value2}`;
-      console.log(senderToken)
+       console.log(senderToken)
       var senderName = `${value3}`;
-      console.log(senderName);
+       console.log(senderName);
       var packid = `${value5}`;
-      console.log(packid)
+       console.log(packid)
 
                  const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/PoundBack'
 
@@ -419,7 +419,7 @@ class Howls_Me extends React.Component {
                       })
                    .then((Response)=> Response.json())
                    .then((findresponse)=>{
-                   console.log(findresponse)
+                    console.log(findresponse)
 
                            this.setState({
                                        status:findresponse.PoundBackResult.ResultStatus.Status,
@@ -435,7 +435,7 @@ class Howls_Me extends React.Component {
                     }
                      else {
                         alert(this.state.message);
-                        // console.log(this.state.pound.UserPoundID)
+                        //  console.log(this.state.pound.UserPoundID)
 
                      }
 
@@ -460,20 +460,20 @@ class Howls_Me extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-        console.log(findresponse)
+         console.log(findresponse)
         this.setState({
            data:findresponse.GetPackPoundListResult.GetPackPounds,
 
         })
-        console.log(this.state.data);
+         console.log(this.state.data);
         // var ms = this.state.time;
-        // console.log(ms)
+        //  console.log(ms)
         //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
 
             // var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
-            //     console.log(gmtDateTime);
+            //      console.log(gmtDateTime);
             // var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
-            // console.log(local)
+            //  console.log(local)
             //
 
 
@@ -631,21 +631,21 @@ class Howls_Pack extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-        console.log(findresponse)
+         console.log(findresponse)
         this.setState({
            data:findresponse.GetMyPoundListResult.GetMyPounds,
 
 
         })
-        // console.log(this.state.time);
+        //  console.log(this.state.time);
         // var ms = this.state.time;
-        // console.log(ms)
+        //  console.log(ms)
         //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
 
             // var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
-            //     console.log(gmtDateTime);
+            //      console.log(gmtDateTime);
             // var local = moment.utc(moment(this.state.time).format('YYYY-MM-DD HH:MM:SS'), "YYYY-MM-DD HH:MM:SS").local().format('DD-MMM-YYYY h:mm A');
-            // console.log(local)
+            //  console.log(local)
 
 
 

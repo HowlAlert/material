@@ -34,7 +34,7 @@ class Detection extends React.Component {
         this.setState({Toggled: !this.state.Toggled});
 
         var s = !this.state.Toggled
-        console.log(s);
+         console.log(s);
          if(s === true)
          {
                var status = 1;
@@ -47,7 +47,7 @@ class Detection extends React.Component {
          }
 
               var object = JSON.stringify([{"CameraID":cookie.load('camearaid'), "MotionDetectionStatus":status, "MotionDetectionSensitivity":sensitivity}]);
-              console.log(object);
+               console.log(object);
 
               const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/UpdateCameraMotionDetectionSetting';
               // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateCameraMotionDetectionSetting';
@@ -64,14 +64,14 @@ class Detection extends React.Component {
                   })
               .then((Response)=> Response.json())
               .then((findresponse)=>{
-                  console.log(findresponse)
+                   console.log(findresponse)
 
                   this.setState({
                      status:findresponse.UpdateCameraMotionDetectionSettingResult.ResultStatus.Status,
                      message:findresponse.UpdateCameraMotionDetectionSettingResult.ResultStatus.StatusMessage
                    })
-                     console.log(this.state.status);
-                     console.log(this.state.message);
+                      console.log(this.state.status);
+                      console.log(this.state.message);
                      if(this.state.status === "1")
                      {
                        alert("Done Updation!");
@@ -97,7 +97,7 @@ class Detection extends React.Component {
 //
 //  event.preventDefault();
 //  // var state = cookie.load('togglestate');
-//  // console.log(state);
+//  //  console.log(state);
 //
 //
 // }
@@ -118,7 +118,7 @@ class Detection extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-        console.log(findresponse)
+         console.log(findresponse)
         this.setState({
            data:findresponse.GetUserCameraResult.RoomCameraList,
            // data2:findresponse.GetUserCameraResult.RoomCameraList["1"].Camera["0"].MotionDetectionStatus,   //for second camera
@@ -127,13 +127,13 @@ class Detection extends React.Component {
 
 
                             })
-           // console.log(this.state.data2)  //for second camera
+           //  console.log(this.state.data2)  //for second camera
 
            var mds = this.state.data1;
-           console.log(mds);
+            console.log(mds);
            var sensitivity = this.state.data2;
            cookie.save('togglesensitivity',sensitivity);
-           console.log(cookie.load('togglesensitivity'));
+            console.log(cookie.load('togglesensitivity'));
 
            if(mds === "1")
            {
@@ -142,7 +142,7 @@ class Detection extends React.Component {
                Toggled: true,value:4
 
              });
-             console.log(true)
+              console.log(true)
 
            }
            else {
@@ -150,7 +150,7 @@ class Detection extends React.Component {
              this.setState({Toggled: false,value:7
 
              });
-             console.log(false)
+              console.log(false)
            }
 
         })
@@ -162,14 +162,14 @@ class Detection extends React.Component {
   render() {
 
     var togglestate=this.state.Toggled;
-    console.log(togglestate);
+     console.log(togglestate);
     // this.setState({ ts:togglestate})
     // cookie.save('togglestate',togglestate);
 
 
 
     // var selected_value=this.state.value;
-    // console.log(selected_value)
+    //  console.log(selected_value)
 
 
   return (
