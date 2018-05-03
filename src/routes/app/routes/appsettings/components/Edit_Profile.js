@@ -31,7 +31,11 @@ class EditProfile extends React.Component {
            disabled: false,
            Cancel_disabled: false
          });
+<<<<<<< HEAD
           console.log(this.state.Fname) ;
+=======
+         // console.log(this.state.Fname) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
        }
 
@@ -41,7 +45,11 @@ class EditProfile extends React.Component {
           disabled: false,
           Cancel_disabled: false
               });
+<<<<<<< HEAD
                console.log(this.state.Lname) ;
+=======
+               //console.log(this.state.Lname) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
             }
 
@@ -51,7 +59,11 @@ class EditProfile extends React.Component {
            disabled: false,
            Cancel_disabled: false
          });
+<<<<<<< HEAD
           console.log(this.state.Email) ;
+=======
+          //console.log(this.state.Email) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
        }
 
@@ -74,7 +86,11 @@ class EditProfile extends React.Component {
                            Cancel_disabled: false
 
                         });
+<<<<<<< HEAD
                          console.log(this.state.phonenumber)
+=======
+                       //  console.log(this.state.phonenumber)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                  }
 
     handleCode(event) {                                 //To handle change in the 4-digit phone verification field
@@ -89,7 +105,11 @@ class EditProfile extends React.Component {
                        Cancel_disabled: false
                      });
 
+<<<<<<< HEAD
                       console.log(target.value) ;
+=======
+                      //console.log(target.value) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                      return target.value;
                    }
 
@@ -98,6 +118,7 @@ class EditProfile extends React.Component {
 
 
           var savedPno =  cookie.load('MobilePhoneNumber');
+<<<<<<< HEAD
            console.log(this.state.phonenumber)
 
                 var phone = this.state.phonenumber;
@@ -108,6 +129,18 @@ class EditProfile extends React.Component {
                   console.log(number);
                 var country=phoneNumber.slice(0, -10)
                  console.log(country);
+=======
+           //console.log(this.state.phonenumber)
+
+                var phone = this.state.phonenumber;
+                  //console.log(phone.length)
+                var phoneNumber=phone.replace(/\D/g,'')
+                 //console.log(phoneNumber);
+                var number=phoneNumber.substr(phoneNumber.length-10)
+                 // console.log(number);
+                var country=phoneNumber.slice(0, -10)
+                 //console.log(country);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
             if(this.state.phonenumber === undefined)
@@ -148,8 +181,13 @@ class EditProfile extends React.Component {
                       ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
                     })
 
+<<<<<<< HEAD
                        console.log("status");
                        console.log(this.state.ResultStatus.Status);
+=======
+                     //  console.log("status");
+                     //  console.log(this.state.ResultStatus.Status);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                       if(this.state.ResultStatus.Status==2 ){
                          alert("This phone number is already taken by another account.");
@@ -180,11 +218,19 @@ class EditProfile extends React.Component {
 
 
         var firstname = this.state.Fname;
+<<<<<<< HEAD
          console.log(firstname);
         var lastname = this.state.Lname;
          console.log(lastname);
         var email = cookie.load('Email');
          console.log(email);
+=======
+       //  console.log(firstname);
+        var lastname = this.state.Lname;
+       //  console.log(lastname);
+        var email = cookie.load('Email');
+       //  console.log(email);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
         const re = /^[A-z]+$/;
         const pw_validation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -231,13 +277,22 @@ class EditProfile extends React.Component {
                           })
                       .then((Response)=> Response.json())
                       .then((findresponse)=>{
+<<<<<<< HEAD
                                console.log(findresponse)
+=======
+                             //  console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                           this.setState({
                              profilestatus:findresponse.UpdateUserProfileResult.ResultStatus.Status,
                              message:findresponse.UpdateUserProfileResult.ResultStatus.StatusMessage
                                             })
+<<<<<<< HEAD
                                              console.log(this.state.profilestatus);
                                              console.log(this.state.message);
+=======
+                                           //  console.log(this.state.profilestatus);
+                                           //  console.log(this.state.message);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                                          if(this.state.profilestatus == "1")
                                          {
@@ -271,6 +326,7 @@ class EditProfile extends React.Component {
 
 
       var firstname = this.state.Fname;
+<<<<<<< HEAD
        console.log(firstname);
       var lastname = this.state.Lname;
        console.log(lastname);
@@ -289,6 +345,26 @@ class EditProfile extends React.Component {
 
      var verificationcode = this.state.Code;
       console.log(verificationcode)
+=======
+     //  console.log(firstname);
+      var lastname = this.state.Lname;
+     //  console.log(lastname);
+      var email = cookie.load('Email');
+     //  console.log(email);
+
+
+      var phone = this.state.phonenumber;
+       // console.log(phone)
+      var phoneNumber=phone.replace(/\D/g,'')
+     //  console.log(phoneNumber);
+      var number=phoneNumber.substr(phoneNumber.length-10)
+     //   console.log(number);
+      var country=phoneNumber.slice(0, -10)
+     //  console.log(country);
+
+     var verificationcode = this.state.Code;
+     // console.log(verificationcode)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
       const re = /^[A-z]+$/;
       const pw_validation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -350,13 +426,22 @@ class EditProfile extends React.Component {
                       }).
                     then((Response)=>Response.json()).
                     then((findresponse)=>{
+<<<<<<< HEAD
                        console.log(findresponse)
+=======
+                       //console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                       this.setState({
                         CodeResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.Status ,
                         Codemessage:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus.StatusMessage
                       });
+<<<<<<< HEAD
                         console.log(this.state.CodeResultStatus);
                         console.log(this.state.Codemessage)
+=======
+                        //console.log(this.state.CodeResultStatus);
+                        //console.log(this.state.Codemessage)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                       if(this.state.CodeResultStatus != 1)
                        {
                                alert(this.state.Codemessage);
@@ -377,20 +462,35 @@ class EditProfile extends React.Component {
                                    })
                                .then((Response)=> Response.json())
                                .then((findresponse)=>{
+<<<<<<< HEAD
                                         console.log(findresponse)
+=======
+                                       // console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                                    this.setState({
                                       profilestatus:findresponse.UpdateUserProfileResult.ResultStatus.Status,
                                       profilemessage:findresponse.UpdateUserProfileResult.ResultStatus.StatusMessage
                                                      })
+<<<<<<< HEAD
                                                       console.log(this.state.profilestatus);
                                                       console.log(this.state.profilemessage);
                                                       console.log(this.state.CodeResultStatus);
                                                       console.log(this.state.Codemessage)
+=======
+                                                     // console.log(this.state.profilestatus);
+                                                     // console.log(this.state.profilemessage);
+                                                   //   console.log(this.state.CodeResultStatus);
+                                                     // console.log(this.state.Codemessage)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                                                      if(this.state.profilestatus != "1"){
                                                         alert(this.state.profilemessage);
                                                      }
+<<<<<<< HEAD
                                                       console.log(this.state.profilestatus);
+=======
+                                                      //console.log(this.state.profilestatus);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                                                     if(this.state.profilestatus == "1" && this.state.CodeResultStatus == "1")
                                                     {
                                                       alert("Successfully Updated Profile!")
@@ -436,7 +536,11 @@ class EditProfile extends React.Component {
 
             const {  redirectToConfirmCode} = this.state        //redirect to Phone Verification code Page
              if ( redirectToConfirmCode) {
+<<<<<<< HEAD
                 console.log("redirectToConfirmCode")
+=======
+                //console.log("redirectToConfirmCode")
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                    return (
 
 
@@ -497,7 +601,11 @@ class EditProfile extends React.Component {
 
    const {  redirectToChangePhone} = this.state        //redirect to Edit phone number page
     if ( redirectToChangePhone) {
+<<<<<<< HEAD
        console.log("redirectToChangePhone")
+=======
+       //console.log("redirectToChangePhone")
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
           return (
             <form name="EditProfileForm">
 

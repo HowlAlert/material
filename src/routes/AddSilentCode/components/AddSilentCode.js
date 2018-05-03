@@ -57,7 +57,7 @@ class AddSilentCode extends React.Component {
    this.setState({
          code: target.value
        });
-       console.log(target.value) ;
+         //console.log(target.value) ;
        return target.value;
      }
 
@@ -100,9 +100,10 @@ class AddSilentCode extends React.Component {
            this.setState({
 
            ResultStatus:findresponse.SetSilenceCodeResult.ResultStatus
-         });console.log(findresponse)
+         })
+           //console.log(findresponse)
          if(this.state.ResultStatus.Status==1){
-           console.log(this.state.ResultStatus.Status)
+             //console.log(this.state.ResultStatus.Status)
            alert("Succefully added Silent Code.")
            cookie.save('SilenceCode',this.state.code)
            this.setState({ redirectToReferrer: true })

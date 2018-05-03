@@ -40,7 +40,11 @@ class History extends React.Component {
       });
 
       var today = moment(date).format('MM/DD/YYYY');
+<<<<<<< HEAD
        console.log(today);
+=======
+       //console.log(today);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
     var starthours = "00";
@@ -53,9 +57,15 @@ class History extends React.Component {
     var st= starthours + ':' + startminutes + ':' + startsecond;
     var et= endhours + ':' + endminutes + ':' + endsecond;
     var StartTime = today + " " + st
+<<<<<<< HEAD
      console.log(StartTime);
     var EndTime = today + " " + et
      console.log(EndTime);
+=======
+     //console.log(StartTime);
+    var EndTime = today + " " + et
+   //  console.log(EndTime);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
 
@@ -82,7 +92,11 @@ class History extends React.Component {
                    })
                .then((Response)=> Response.json())
                .then((findresponse)=>{
+<<<<<<< HEAD
                   console.log(findresponse);
+=======
+                 // console.log(findresponse);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                  this.setState({
                     data:findresponse.GetUserCameraImagesResult.CameraImages,
                     length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -111,7 +125,11 @@ class History extends React.Component {
                             urls[i] = element
 
                           })
+<<<<<<< HEAD
                          console.log(urls);
+=======
+                       //  console.log(urls);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                         let arr3 = [];                                  // to combine the results of the two arrays
                                 urls.forEach((itm, i) => {
                                          arr3.push(Object.assign({}, itm, datas[i]));
@@ -123,9 +141,15 @@ class History extends React.Component {
 
                                      })
 
+<<<<<<< HEAD
                           console.log(this.state.data1);
                          var total = this.state.array_count;
                           console.log(total);
+=======
+                       //   console.log(this.state.data1);
+                         var total = this.state.array_count;
+                         // console.log(total);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                          if(total === 0)
                           {
@@ -151,8 +175,13 @@ class History extends React.Component {
     handleNext(date,value){
 
       var today = moment(date).format('MM/DD/YYYY');
+<<<<<<< HEAD
        console.log(today);
        console.log(this.state.counter)
+=======
+     //  console.log(today);
+       //console.log(this.state.counter)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       this.setState({
           counter: this.state.counter + 1,
           disabledBack: false,
@@ -168,9 +197,15 @@ class History extends React.Component {
     var st= starthours + ':' + startminutes + ':' + startsecond;
     var et= endhours + ':' + endminutes + ':' + endsecond;
     var StartTime = today + " " + st
+<<<<<<< HEAD
      console.log(StartTime);
     var EndTime = today + " " + et
      console.log(EndTime);
+=======
+   //  console.log(StartTime);
+    var EndTime = today + " " + et
+ //    console.log(EndTime);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
 
@@ -201,7 +236,11 @@ class History extends React.Component {
                    })
                .then((Response)=> Response.json())
                .then((findresponse)=>{
+<<<<<<< HEAD
                   console.log(findresponse);
+=======
+               //   console.log(findresponse);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                  this.setState({
                     data:findresponse.GetUserCameraImagesResult.CameraImages,
                     length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -229,21 +268,35 @@ class History extends React.Component {
                             urls[i] = element
 
                           })
+<<<<<<< HEAD
                          console.log(urls);
+=======
+                       //  console.log(urls);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                         let arr3 = [];                                  // to combine the results of the two arrays
                                 urls.forEach((itm, i) => {
                                          arr3.push(Object.assign({}, itm, datas[i]));
                                      });
 
+<<<<<<< HEAD
                                       console.log(arr3.length);
+=======
+                                   //   console.log(arr3.length);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                                      this.setState({  data1:arr3 ,
                                        array_count:arr3.length ,
 
                                      })
 
+<<<<<<< HEAD
                           console.log(this.state.data1);
                          var total = this.state.array_count;
                           console.log(total);
+=======
+                       //   console.log(this.state.data1);
+                         var total = this.state.array_count;
+                       //   console.log(total);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                          if(total === 0 || total < 20)
                           {
@@ -255,7 +308,11 @@ class History extends React.Component {
 
                               });
 
+<<<<<<< HEAD
                                  console.log(this.state.counter)
+=======
+                               //  console.log(this.state.counter)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                           }
 
                     } )
@@ -267,8 +324,13 @@ class History extends React.Component {
 handleBack(date,value){
 
   var today = moment(date).format('MM/DD/YYYY');
+<<<<<<< HEAD
    console.log(today);
  console.log(this.state.counter);
+=======
+ //  console.log(today);
+ //   console.log(this.state.counter);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
   this.setState({
     counter: this.state.counter - 1
   });
@@ -283,9 +345,15 @@ var endsecond = "00";
 var st= starthours + ':' + startminutes + ':' + startsecond;
 var et= endhours + ':' + endminutes + ':' + endsecond;
 var StartTime = today + " " + st
+<<<<<<< HEAD
  console.log(StartTime);
 var EndTime = today + " " + et
  console.log(EndTime);
+=======
+ //console.log(StartTime);
+var EndTime = today + " " + et
+ //console.log(EndTime);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
 
@@ -316,7 +384,11 @@ var EndTime = today + " " + et
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
+<<<<<<< HEAD
               console.log(findresponse);
+=======
+           //   console.log(findresponse);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
              this.setState({
                 data:findresponse.GetUserCameraImagesResult.CameraImages,
                 length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -344,13 +416,21 @@ var EndTime = today + " " + et
                         urls[i] = element
 
                       })
+<<<<<<< HEAD
                      console.log(urls);
+=======
+                   //  console.log(urls);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                     let arr3 = [];                                  // to combine the results of the two arrays
                             urls.forEach((itm, i) => {
                                      arr3.push(Object.assign({}, itm, datas[i]));
                                  });
 
+<<<<<<< HEAD
                                   console.log(arr3.length);
+=======
+                                 // console.log(arr3.length);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                                  this.setState({
                                     data1:arr3 ,
                                     array_count:arr3.length ,
@@ -358,18 +438,31 @@ var EndTime = today + " " + et
 
                                  })
 
+<<<<<<< HEAD
                       console.log(this.state.data1);
+=======
+                   //   console.log(this.state.data1);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                      // var total = this.state.array_count;
                      //  console.log(total);
 
                      var count = this.state.counter-1;
+<<<<<<< HEAD
                       console.log(count);
+=======
+                     // console.log(count);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                      if(count === 1)
                       {
                          // alert("No Images Recorded!");
+<<<<<<< HEAD
                              console.log(this.state.disabledMore);
                                console.log(this.state.disableBack);
+=======
+                           //  console.log(this.state.disabledMore);
+                             //  console.log(this.state.disableBack);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                             this.setState({
                                   disabledMore: false,
@@ -390,7 +483,11 @@ componentDidMount(){
 
 
   var today = moment(this.state.startDate).format('MM/DD/YYYY');
+<<<<<<< HEAD
    console.log(today);
+=======
+ //  console.log(today);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 var starthours = "00";
 var startminutes = "00";
@@ -402,9 +499,15 @@ var endsecond = "00";
 var st= starthours + ':' + startminutes + ':' + startsecond;
 var et= endhours + ':' + endminutes + ':' + endsecond;
 var StartTime = today + " " + st
+<<<<<<< HEAD
  console.log(StartTime);
 var EndTime = today + " " + et
  console.log(EndTime);
+=======
+ //console.log(StartTime);
+var EndTime = today + " " + et
+ //console.log(EndTime);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
            //
@@ -524,7 +627,11 @@ var EndTime = today + " " + et
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
+<<<<<<< HEAD
               console.log(findresponse);
+=======
+             // console.log(findresponse);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
              this.setState({
                 data:findresponse.GetUserCameraImagesResult.CameraImages,
                 length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -552,7 +659,11 @@ var EndTime = today + " " + et
                         urls[i] = element
 
                       })
+<<<<<<< HEAD
                      console.log(urls);
+=======
+                   //  console.log(urls);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                     let arr3 = [];                                  // to combine the results of the two arrays
                             urls.forEach((itm, i) => {
                                      arr3.push(Object.assign({}, itm, datas[i]));
@@ -564,9 +675,15 @@ var EndTime = today + " " + et
 
                                  })
 
+<<<<<<< HEAD
                       console.log(this.state.data1);
                      var total = this.state.array_count;
                       console.log(total);
+=======
+                   //   console.log(this.state.data1);
+                     var total = this.state.array_count;
+                   //   console.log(total);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                      if(total === 0)
                       {
@@ -612,7 +729,11 @@ handleExit()
 render() {
 
   var today = moment(this.state.startDate).format('LL');
+<<<<<<< HEAD
    console.log(today);
+=======
+   //console.log(today);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
   var img_Date = this.state.DateCreated +" "+ 'UTC' ;      //Convert UTC to Local Time
   var date = new Date(img_Date);
@@ -651,9 +772,15 @@ const { redirectToReferrer} = this.state                    //To Zoom the Image
   }
 var cameraName = cookie.load('cameraName');
 
+<<<<<<< HEAD
  console.log(cameraName);
 var fname=cookie.load('FirstName');
   console.log(fname);
+=======
+ //console.log(cameraName);
+var fname=cookie.load('FirstName');
+ // console.log(fname);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 var lname = cookie.load('LastName');
 
       return (

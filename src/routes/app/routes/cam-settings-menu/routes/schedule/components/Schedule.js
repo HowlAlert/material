@@ -46,27 +46,43 @@ class Schedule extends React.Component {
             if(this.state.StartTime==undefined){
             alert("Choose Start Time first")
             startTimeValidation=false;
+<<<<<<< HEAD
              console.log(validation)
+=======
+             //console.log(validation)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
             }
             if(startTimeValidation){
               if(this.state.EndTime==undefined){
                 alert("Please select End Time")
                 endTimeValidation=false;
+<<<<<<< HEAD
                  console.log(validation)
+=======
+                 //console.log(validation)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
               }
             }
             if(startTimeValidation && endTimeValidation){
               if(this.state.StartTime>=this.state.EndTime){
                 alert("Choose Start Time before End Time")
                 validation=false;
+<<<<<<< HEAD
                  console.log(validation)
+=======
+               //  console.log(validation)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
               }
             }
           }
 
 
   if(dayValidation && validation && startTimeValidation && endTimeValidation){
+<<<<<<< HEAD
  console.log("handled");
+=======
+ //console.log("handled");
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetRoomCameraSchedule'
  // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetRoomCameraSchedule';
 
@@ -86,20 +102,34 @@ then((findresponse)=>{
 this.setState({
  GetRoomCameraSchedule:findresponse.GetRoomCameraScheduleResult.GetRoomCameraSchedule,
 })
+<<<<<<< HEAD
  console.log(this.state.GetRoomCameraSchedule)
+=======
+ //console.log(this.state.GetRoomCameraSchedule)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
  this.setState({
    Day:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.Day),
    addedStartTime:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.StartTime),
    addedEndTime:this.state.GetRoomCameraSchedule.map((dyanamicData,key)=>dyanamicData.EndTime),
 })
+<<<<<<< HEAD
   console.log(this.state.Day);
   console.log(this.state.addedStartTime);
   console.log(this.state.addedEndTime);
+=======
+ // console.log(this.state.Day);
+ // console.log(this.state.addedStartTime);
+  //console.log(this.state.addedEndTime);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
 if(allValidation){
   if(this.state.WEEKDAYS[0]==this.state.Monday){
+<<<<<<< HEAD
  console.log(this.state.color_d1);
+=======
+ //console.log(this.state.color_d1);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
     if(this.state.Day.includes("1") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d1==true){
         alert("This time is already added in your schedule");
         allValidation=false;
@@ -110,7 +140,11 @@ if(allValidation){
 
   if(allValidation){
     if(this.state.WEEKDAYS[1]==this.state.Tuesday){
+<<<<<<< HEAD
        console.log(this.state.color_d2);
+=======
+     //  console.log(this.state.color_d2);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
     if(this.state.Day.includes("2") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d2==true){
           alert("This time is already added in your schedule");
           allValidation=false;
@@ -121,7 +155,11 @@ if(allValidation){
 
   if(allValidation){
     if(this.state.WEEKDAYS[2]==this.state.Wednesday){
+<<<<<<< HEAD
        console.log(this.state.color_d3);
+=======
+     //  console.log(this.state.color_d3);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       if(this.state.Day.includes("3") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d3==true){
           alert("This time is already added in your schedule");
           allValidation=false;
@@ -132,8 +170,13 @@ if(allValidation){
 
   if(allValidation){
     if(this.state.WEEKDAYS[3]==this.state.Thursday){
+<<<<<<< HEAD
        console.log(this.state.color_d4);
         console.log(this.state.Day.includes("4"));
+=======
+     //  console.log(this.state.color_d4);
+       // console.log(this.state.Day.includes("4"));
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       if(this.state.Day.includes("4") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d4==true){
           alert("This time is already added in your schedule");
           allValidation=false;
@@ -144,8 +187,13 @@ if(allValidation){
 
    if(allValidation){
      if(this.state.WEEKDAYS[4]==this.state.Friday){
+<<<<<<< HEAD
         console.log(this.state.color_d5);
         console.log(this.state.Day.includes("5"));
+=======
+       // console.log(this.state.color_d5);
+       // console.log(this.state.Day.includes("5"));
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
        if(this.state.Day.includes("5") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d5==true){
            alert("This time is already added in your schedule");
            allValidation=false;
@@ -156,8 +204,13 @@ if(allValidation){
 
   if(allValidation){
     if(this.state.WEEKDAYS[5]==this.state.Saturday){
+<<<<<<< HEAD
        console.log(this.state.Day.includes("6"));
          console.log(this.state.color_d6);
+=======
+     //  console.log(this.state.Day.includes("6"));
+     //    console.log(this.state.color_d6);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       if(this.state.Day.includes("6") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d6==true){
           alert("This time is already added in your schedule");
           allValidation=false;
@@ -168,7 +221,11 @@ if(allValidation){
 
  if(allValidation){
    if(this.state.WEEKDAYS[6]==this.state.Sunday){
+<<<<<<< HEAD
       console.log(this.state.color_d7);
+=======
+     // console.log(this.state.color_d7);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
      if(this.state.Day.includes("7") && this.state.addedStartTime<=this.state.StartTime && this.state.addedEndTime>=this.state.EndTime && this.state.color_d7==true){
          alert("This time is already added in your schedule");
          allValidation=false;
@@ -183,15 +240,24 @@ const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/A
 var object = [{"StartTime":"06:00",
             "EndTime":"07:00",
             "SpansMultipleDays":"False"}];
+<<<<<<< HEAD
              console.log(JSON.stringify([object]));
+=======
+         //    console.log(JSON.stringify([object]));
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
 var object1 = [{"Span":"06:00 - 07:00",
     "cameraSettingSchedule":JSON.stringify(object).replace("\"", ""),
     "IDs":"",
     "Days":"5,6"}];
+<<<<<<< HEAD
            console.log(JSON.stringify([object1]));
    console.log(JSON.stringify(object1));
+=======
+         //  console.log(JSON.stringify([object1]));
+ //  console.log(JSON.stringify(object1));
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 var jsonString = {"UserID":"118","UserToken":"Dbr/k5trWmO3XRTk3AWfX90E9jwpoh59w/EaiU9df/OkFa6bxluaKsQmBtKDNDHbBpplmFe2Zo06m6TOpxxDc3iaHQaFLsi1zXjBFsfQRVTewDXwdZZ5mxNdEp4HEdrIQY6VRqDvBzltACUdl2CB+gr1grGpDN+UmOnCUh9wD+BcROYXx5SmyTNtFYi+oKU7gjPLI9dWeoLk/n3QJcNSOMbyj6Rd6AJ7rL/rHD/j/TqPCcFR/UM4i0I0zfWrSegeLHB3EjO//ziEk9gyXySjSVK/GPmT7Qvu","RoomCameraID":"115","SchedulingArray":"[{\"Span\":\"06:00 - 07:00\",\"cameraSettingSchedule\":\"[{\\\"StartTime\\\":\\\"06:00\\\",\\\"EndTime\\\":\\\"07:00\\\",\\\"SpansMultipleDays\\\":\\\"False\\\"}]\",\"IDs\":\"\",\"Days\":\"5,6\"}]"};
 
 var object2 = [{"UserID":"118",
@@ -199,7 +265,11 @@ var object2 = [{"UserID":"118",
 "RoomCameraID":"115",
 "SchedulingArray":JSON.stringify(object1)
 }];
+<<<<<<< HEAD
            console.log(JSON.stringify(object2));
+=======
+         //  console.log(JSON.stringify(object2));
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
 
@@ -221,7 +291,11 @@ then((findresponse)=>{
 this.setState({
 data:findresponse
 })
+<<<<<<< HEAD
  console.log(this.state.data);
+=======
+ //console.log(this.state.data);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 })
 
 }
@@ -233,7 +307,11 @@ data:findresponse
         Monday: this.state.WEEKDAYS[0]
       });
 
+<<<<<<< HEAD
        console.log(this.state.WEEKDAYS[0]) ;
+=======
+     //  console.log(this.state.WEEKDAYS[0]) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       return this.state.WEEKDAYS[0];
   }
   changeTuesday(){
@@ -243,7 +321,11 @@ data:findresponse
         Tuesday: this.state.WEEKDAYS[1]
       });
 
+<<<<<<< HEAD
        console.log(this.state.WEEKDAYS[1]) ;
+=======
+     //  console.log(this.state.WEEKDAYS[1]) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       return this.state.WEEKDAYS[1];
   }
   changeWednesday(){
@@ -253,7 +335,11 @@ data:findresponse
         Wednesday: this.state.WEEKDAYS[2]
       });
 
+<<<<<<< HEAD
        console.log(this.state.WEEKDAYS[2]) ;
+=======
+     //  console.log(this.state.WEEKDAYS[2]) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       return this.state.WEEKDAYS[2]
     }
   changeThursday(){
@@ -263,7 +349,11 @@ data:findresponse
         Thursday: this.state.WEEKDAYS[3]
       });
 
+<<<<<<< HEAD
        console.log(this.state.WEEKDAYS[3]) ;
+=======
+     //  console.log(this.state.WEEKDAYS[3]) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       return this.state.WEEKDAYS[3];
     }
   changeFriday(){
@@ -273,7 +363,11 @@ data:findresponse
         Friday: this.state.WEEKDAYS[4]
       });
 
+<<<<<<< HEAD
        console.log(this.state.WEEKDAYS[4]) ;
+=======
+     //  console.log(this.state.WEEKDAYS[4]) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       return this.state.WEEKDAYS[4];
     }
   changeSaturday(){
@@ -283,7 +377,11 @@ data:findresponse
         Saturday: this.state.WEEKDAYS[5]
       });
 
+<<<<<<< HEAD
        console.log(this.state.WEEKDAYS[5]) ;
+=======
+     //  console.log(this.state.WEEKDAYS[5]) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       return this.state.WEEKDAYS[5];
     }
   changeSunday(){
@@ -293,7 +391,11 @@ data:findresponse
         Sunday: this.state.WEEKDAYS[6]
       });
 
+<<<<<<< HEAD
        console.log(this.state.WEEKDAYS[6]) ;
+=======
+     //  console.log(this.state.WEEKDAYS[6]) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       return this.state.WEEKDAYS[6];
   }
 
@@ -303,7 +405,11 @@ data:findresponse
         StartTime: moment(time).format("HH:mm")
       });
 
+<<<<<<< HEAD
        console.log(moment(time).format("HH:mm")) ;
+=======
+     //  console.log(moment(time).format("HH:mm")) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
     }
 
     handleEndTime(event, time) {
@@ -312,7 +418,11 @@ data:findresponse
           EndTime: moment(time).format("HH:mm")
         });
 
+<<<<<<< HEAD
          console.log(moment(time).format("HH:mm")) ;
+=======
+     //    console.log(moment(time).format("HH:mm")) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       //  return target.value;
       }
 

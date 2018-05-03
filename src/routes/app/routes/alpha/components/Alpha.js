@@ -45,7 +45,11 @@ class Alpha extends React.Component {
            Fname: e.target.value,
 
          });
+<<<<<<< HEAD
           console.log(this.state.Fname) ;
+=======
+         // console.log(this.state.Fname) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
        }
 
@@ -54,7 +58,11 @@ class Alpha extends React.Component {
           Lname: e.target.value,
 
               });
+<<<<<<< HEAD
                console.log(this.state.Lname) ;
+=======
+              // console.log(this.state.Lname) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
             }
 
@@ -63,7 +71,11 @@ class Alpha extends React.Component {
            Email: e.target.value,
 
          });
+<<<<<<< HEAD
           console.log(this.state.Email) ;
+=======
+         // console.log(this.state.Email) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
        }
 
@@ -76,7 +88,11 @@ class Alpha extends React.Component {
 
 
                         });
+<<<<<<< HEAD
                          console.log(this.state.phonenumber)
+=======
+                        // console.log(this.state.phonenumber)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                  }
 
 
@@ -113,9 +129,15 @@ class Alpha extends React.Component {
           })
 
 
+<<<<<<< HEAD
              console.log(this.state.Latitude);
              console.log(this.state.street_no+" "+this.state.street_name)
              console.log(this.state.city)
+=======
+            // console.log(this.state.Latitude);
+            // console.log(this.state.street_no+" "+this.state.street_name)
+            // console.log(this.state.city)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
           })
 }
@@ -192,7 +214,7 @@ class Alpha extends React.Component {
                 <a href="mailto:support@howl.com">  <div style={mWidthStyle} className="howlRegNext"  >SUBMIT</div></a>
 
               </div>
-              
+
 
           </form>
        </div>

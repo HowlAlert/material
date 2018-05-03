@@ -32,7 +32,11 @@ onMapClicked (props) {
         })
 
     }
+<<<<<<< HEAD
        console.log("In onclick");
+=======
+        //console.log("In onclick");
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 }
 onMarkerClicked (props, marker, e) {
   this.setState({
@@ -40,7 +44,11 @@ onMarkerClicked (props, marker, e) {
         activeMarker: marker,
         showingInfoWindow: true
       });
+<<<<<<< HEAD
        console.log("In Marker");
+=======
+        //console.log("In Marker");
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 }
 handleMapMount(mapProps, map) {
     this.map = map;
@@ -56,10 +64,17 @@ render() {
         return <div>Loading...</div>
     }
     var fname=cookie.load('FirstName');
+<<<<<<< HEAD
       console.log(fname);
     var lname = cookie.load('LastName');
     var lastname=lname.substr(0, 1);
       console.log(lastname);
+=======
+       //console.log(fname);
+    var lname = cookie.load('LastName');
+    var lastname=lname.substr(0, 1);
+       //console.log(lastname);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
     return (
 

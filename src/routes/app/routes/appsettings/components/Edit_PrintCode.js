@@ -25,7 +25,11 @@ class Print extends React.Component{
          code: target.value,
          Next_disabled:false,
        });
+<<<<<<< HEAD
         console.log(target.value) ;
+=======
+       // console.log(target.value) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
        return target.value;
    }
 
@@ -54,11 +58,19 @@ class Print extends React.Component{
                          })
                          if(this.state.ResultStatus.Status==="1")
                          {
+<<<<<<< HEAD
                            console.log("status");
                           cookie.save('printcode', this.state.GetUser.ReferralCode);
 
                         }
                           console.log(cookie.load('printcode'));
+=======
+                           //console.log("status");
+                          cookie.save('printcode', this.state.GetUser.ReferralCode);
+
+                        }
+                          //console.log(cookie.load('printcode'));
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                 })
 

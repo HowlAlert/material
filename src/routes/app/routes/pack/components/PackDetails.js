@@ -34,10 +34,17 @@ class Pack extends React.Component {
   if(this.state.packmembercount !== 1)
   {
     alert("Are you sure you want to delete?")
+<<<<<<< HEAD
      console.log()
 
       var packid = `${value}`;
        console.log(packid)
+=======
+
+
+      var packid = `${value}`;
+     //  console.log(packid)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
     const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/DeleteFromUserPack';
     // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/DeleteFromUserPack';
 
@@ -53,7 +60,11 @@ class Pack extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
+<<<<<<< HEAD
          console.log(findresponse)
+=======
+       //  console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
         this.setState({
                  status:findresponse.DeleteFromUserPackResult.ResultStatus.Status,
@@ -88,6 +99,7 @@ handleAddPackMember(){
 
 handleAlert(value1,value2,value3,value4) {
     var packid = `${value1}`;
+<<<<<<< HEAD
      console.log(packid);
     var name = `${value2}`;
      console.log(name)
@@ -95,6 +107,15 @@ handleAlert(value1,value2,value3,value4) {
      console.log(poundid)
     var ImageUrl = `${value4}`;
      console.log(ImageUrl);
+=======
+   //  console.log(packid);
+    var name = `${value2}`;
+   //  console.log(name)
+    var poundid = `${value3}`;
+   //  console.log(poundid)
+    var ImageUrl = `${value4}`;
+   //  console.log(ImageUrl);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       // window.location.reload();
     if(poundid === "")
         {
@@ -111,7 +132,11 @@ handleAlert(value1,value2,value3,value4) {
                     })
                  .then((Response)=> Response.json())
                  .then((findresponse)=>{
+<<<<<<< HEAD
                   console.log(findresponse)
+=======
+               //   console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                          this.setState({
                                      status:findresponse.PoundMyPackMemberResult.ResultStatus.Status,
@@ -122,7 +147,11 @@ handleAlert(value1,value2,value3,value4) {
                    if(this.state.status === "1")
                    {
                        alert("You Howled at "+name);
+<<<<<<< HEAD
                         console.log(packid);
+=======
+                       // console.log(packid);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                        window.location.reload();
 
 
@@ -147,7 +176,11 @@ else {
   })
  .then((Response)=> Response.json())
  .then((findresponse)=>{
+<<<<<<< HEAD
        console.log(findresponse)
+=======
+     //  console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       this.setState({
                   status:findresponse.UndoMyPoundResult.ResultStatus.Status,
                   message:findresponse.UndoMyPoundResult.ResultStatus.StatusMessage,
@@ -189,7 +222,11 @@ else {
        })
    .then((Response)=> Response.json())
    .then((findresponse)=>{
+<<<<<<< HEAD
         console.log(findresponse)
+=======
+     //   console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
        this.setState({
           data:findresponse.GetUserPackResult.UserPackList,
@@ -212,8 +249,13 @@ else {
         result:result
       })
 
+<<<<<<< HEAD
         //  console.log(arrOfObj);
          console.log(this.state.result);
+=======
+        // console.log(arrOfObj);
+       //  console.log(this.state.result);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
      })
 
@@ -396,6 +438,7 @@ class Howls_Me extends React.Component {
 
   handleAlert(value1,value2,value3,value4,value5) {
       var senderid = `${value1}`;
+<<<<<<< HEAD
        console.log(senderid);
       var senderToken = `${value2}`;
        console.log(senderToken)
@@ -403,6 +446,15 @@ class Howls_Me extends React.Component {
        console.log(senderName);
       var packid = `${value5}`;
        console.log(packid)
+=======
+     //  console.log(senderid);
+      var senderToken = `${value2}`;
+   //    console.log(senderToken)
+      var senderName = `${value3}`;
+     //  console.log(senderName);
+      var packid = `${value5}`;
+     //  console.log(packid)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                  const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/PoundBack'
 
@@ -419,7 +471,11 @@ class Howls_Me extends React.Component {
                       })
                    .then((Response)=> Response.json())
                    .then((findresponse)=>{
+<<<<<<< HEAD
                     console.log(findresponse)
+=======
+                 //   console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                            this.setState({
                                        status:findresponse.PoundBackResult.ResultStatus.Status,
@@ -460,12 +516,20 @@ class Howls_Me extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
+<<<<<<< HEAD
          console.log(findresponse)
+=======
+       //  console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
         this.setState({
            data:findresponse.GetPackPoundListResult.GetPackPounds,
 
         })
+<<<<<<< HEAD
          console.log(this.state.data);
+=======
+       //  console.log(this.state.data);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
         // var ms = this.state.time;
         //  console.log(ms)
         //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
@@ -631,7 +695,11 @@ class Howls_Pack extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
+<<<<<<< HEAD
          console.log(findresponse)
+=======
+       //  console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
         this.setState({
            data:findresponse.GetMyPoundListResult.GetMyPounds,
 

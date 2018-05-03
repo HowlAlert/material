@@ -117,16 +117,16 @@ class Register extends React.Component {
         })
 
         if(this.state.GetUser.ID!==null){
-          console.log("status"),
+            //console.log("status"),
           cookie.save('Id', this.state.GetUser.ID, '/'),
           cookie.save('UserToken', this.state.GetUser.UserToken, '/'),
           cookie.save('FirstName', this.state.Fname),
           cookie.save('LastName', this.state.Lname),
           cookie.save('Email', this.state.Email),
-          console.log(this.state.GetUser.ID),
-          console.log(this.state.GetUser.UserToken),
-          console.log(findresponse),
-          console.log("status"),
+            //console.log(this.state.GetUser.ID),
+            //console.log(this.state.GetUser.UserToken),
+            //console.log(findresponse),
+            //console.log("status"),
 
           this.setState({ redirectToReferrer: true })
            }
@@ -151,7 +151,7 @@ this.setState({
       Email: target.value
     });
 
-    console.log(target.value) ;
+      //console.log(target.value) ;
     return target.value;
   }
 
@@ -161,13 +161,13 @@ this.setState({
   const value = target.type === target.value;
   const name = target.name;
 
-  console.log(this.state.ShowPassword)
+    //console.log(this.state.ShowPassword)
 
   this.setState({
 
         Password: target.value
       });
-  console.log("here");
+    //console.log("here");
        return target.value;
     }
 
@@ -180,7 +180,7 @@ this.setState({
     this.setState({
           Fname: target.value
         });
-    console.log("here");
+      //console.log("here");
          return target.value;
       }
 
@@ -193,7 +193,7 @@ this.setState({
       this.setState({
             Lname: target.value
           });
-      console.log("here");
+        //console.log("here");
            return target.value;
         }
 
@@ -210,7 +210,7 @@ this.setState({
     const { redirectToReferrer} = this.state
     if (redirectToReferrer==true) {
 
-      console.log(redirectToReferrer)
+        //console.log(redirectToReferrer)
           return (
             <Redirect to="VerifyPhoneNumber" />
           )

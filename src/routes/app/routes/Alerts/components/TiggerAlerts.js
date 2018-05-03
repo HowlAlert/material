@@ -29,7 +29,11 @@ class Alerts extends React.Component {
     alert("Are you sure you want to delete?")
 
       var alertid = `${value}`;
+<<<<<<< HEAD
        console.log(alertid)
+=======
+      // console.log(alertid)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
     const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/DeleteUserFeed';
     // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/DeleteUserFeed';
 
@@ -45,7 +49,11 @@ class Alerts extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
+<<<<<<< HEAD
          console.log(findresponse)
+=======
+        // console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
         this.setState({
                  status:findresponse.DeleteUserFeedResult.resultStatus.Status,
@@ -74,7 +82,11 @@ class Alerts extends React.Component {
 
 
     var count = `${value}`;
+<<<<<<< HEAD
      console.log(count);
+=======
+    // console.log(count);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
     this.setState({
@@ -105,7 +117,11 @@ class Alerts extends React.Component {
            })
        .then((Response)=> Response.json())
        .then((findresponse)=>{
+<<<<<<< HEAD
           console.log(findresponse);
+=======
+         // console.log(findresponse);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
          this.setState({
             data:findresponse.GetUserFeedResult.getUserFeeds,
             length:findresponse.GetUserFeedResult.getUserFeeds.length,
@@ -134,8 +150,13 @@ class Alerts extends React.Component {
                     urls[i] = element
 
                   })
+<<<<<<< HEAD
                  console.log(urls);
                  console.log(datas);
+=======
+                // console.log(urls);
+                // console.log(datas);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
              let arr3 = [];                                  // to combine the results of the two arrays
                      urls.forEach((itm, i) => {
                               arr3.push(Object.assign({}, itm, datas[i]));
@@ -145,12 +166,20 @@ class Alerts extends React.Component {
                           count:count++
                             )
 
+<<<<<<< HEAD
                            console.log(arr3.length);
+=======
+                          // console.log(arr3.length);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                           this.setState({  data1:arr3 , array_count:arr3.length , alert_count:count})
 
 
                           var total = this.state.array_count;
+<<<<<<< HEAD
                            console.log(total);
+=======
+                          // console.log(total);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                           if(total===0 || total < 20 )
                            {
@@ -179,7 +208,11 @@ class Alerts extends React.Component {
    // var count = `${value}`;
    //  console.log(count);
 
+<<<<<<< HEAD
  console.log(this.state.counter);
+=======
+// console.log(this.state.counter);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
     this.setState({
         counter: this.state.counter - 1,
 
@@ -209,7 +242,11 @@ class Alerts extends React.Component {
           })
       .then((Response)=> Response.json())
       .then((findresponse)=>{
+<<<<<<< HEAD
          console.log(findresponse);
+=======
+        // console.log(findresponse);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
         this.setState({
            data:findresponse.GetUserFeedResult.getUserFeeds,
            length:findresponse.GetUserFeedResult.getUserFeeds.length,
@@ -244,13 +281,21 @@ class Alerts extends React.Component {
                              arr3.push(Object.assign({}, itm, datas[i]));
                          });
 
+<<<<<<< HEAD
                           console.log(arr3.length);
+=======
+                         // console.log(arr3.length);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                          var count = 0;                                //Count for number of Computer Tiggered Alerts
                          arr3.map((dyanamicData1,key)=>(dyanamicData1.GetImageDataResult !== "") ?
                          count:count++
                            )
+<<<<<<< HEAD
                           console.log(count)
+=======
+                         // console.log(count)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                          this.setState({  data1:arr3 ,
                            array_count:arr3.length ,
@@ -259,12 +304,20 @@ class Alerts extends React.Component {
 
                              })
 
+<<<<<<< HEAD
                               console.log(this.state.data1);
+=======
+                             // console.log(this.state.data1);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                              // var total = this.state.array_count;
                              //  console.log(total);
 
                              var countBack = this.state.counter-1;
+<<<<<<< HEAD
                               console.log(countBack);
+=======
+                             // console.log(countBack);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
                              if(countBack === 1)
                               {
@@ -311,8 +364,13 @@ class Alerts extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
+<<<<<<< HEAD
        console.log(findresponse);
       //  console.log(findresponse.GetUserFeedResult.getUserFeeds.map((dyanamicData1,key)=>  dyanamicData1.HasRead ))
+=======
+      // console.log(findresponse);
+      // console.log(findresponse.GetUserFeedResult.getUserFeeds.map((dyanamicData1,key)=>  dyanamicData1.HasRead ))
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       this.setState({
          data:findresponse.GetUserFeedResult.getUserFeeds,
          length:findresponse.GetUserFeedResult.getUserFeeds.length,
@@ -347,20 +405,35 @@ class Alerts extends React.Component {
                            arr3.push(Object.assign({}, itm, datas[i]));
                        });
 
+<<<<<<< HEAD
               console.log(arr3.length);
+=======
+             // console.log(arr3.length);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
             // let arr4 = [];
             var count = 0;                                //Count for number of Computer Tiggered Alerts
             arr3.map((dyanamicData1,key)=>(dyanamicData1.GetImageDataResult !== "") ?
             count:count++
               )
+<<<<<<< HEAD
              console.log(count)
 
              this.setState({  data1:arr3 , array_count:arr3.length , alert_count:count })
               console.log(arr3)
+=======
+            // console.log(count)
+
+             this.setState({  data1:arr3 , array_count:arr3.length , alert_count:count })
+             // console.log(arr3)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
              //  console.log(arr4);
              var total = this.state.array_count;
+<<<<<<< HEAD
               console.log(total);
+=======
+             // console.log(total);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
              if(total === 0)
               {
@@ -390,16 +463,30 @@ class Alerts extends React.Component {
                          })
                      .then((Response)=> Response.json())
                      .then((findresponse)=>{
+<<<<<<< HEAD
                         console.log(findresponse);
+=======
+                       // console.log(findresponse);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                        this.setState({
-                          data:findresponse.GetUserFeedResult.getUserFeeds.HasRead,
-                          length:findresponse.GetUserFeedResult.getUserFeeds.length,
+                          data:findresponse.MarkUserFeedAsReadResult.resultStatus.Status,
+
                           // a:findresponse.GetUserFeedResult.getUserFeeds.map((number) => number.ImageURL),
                         })
+<<<<<<< HEAD
                         console.log(this.state.data);
                          if(this.state.ResultStatus.Status !== "1"){
                            alert(this.state.ResultStatus.StatusMessage);
+=======
+                       // console.log(this.state.data);
+                         if(this.state.data !== "1"){
+                           alert(this.state.resultStatus.StatusMessage);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
                          }
+                        else
+                        {
+                           window.location.reload();
+                        }
 
                        })
 

@@ -12,55 +12,6 @@ import Alert from './Alert';
 import Image2 from './Image2';
 import Image from '../../cameras/components/Image';
 import Camera from '../../cameras/components/Camera';
-// import Alert from '../../Alerts/components/Alert'
-
-// const Main = () => (
-//
-//         <div className="box-body">
-//
-//
-//             <div className="box box-default"><a href="#/app/Cameras">
-//              <div className="box-body ">
-//                <span className="float-left">CAMERA  </span>
-//              <span className="float-right">
-//                  <img  className="nav-icon material-icons" src="assets/images/camera.jpg" width="50%" />
-//              </span>
-//                </div>
-//             </a></div>
-//
-//             <div className="box box-default"><a href="#/app/Devices">
-//              <div className="box-body ">
-//               <span className="float-left">    DEVICES </span>
-//              <span className="float-right">
-//                  <img  className="nav-icon material-icons" src="assets/images/device.jpg" width="50%" />
-//              </span>
-//                </div>
-//             </a></div>
-//
-//             <div className="box box-default "><a href="#/app/Pack">
-//              <div className="box-body ">
-//               <span className="float-left">    MY PACK </span>
-//              <span className="float-right">
-//                  <img  className="nav-icon material-icons" src="assets/images/pack.jpg" width="50%" />
-//              </span>
-//                </div>
-//         </a></div>
-//
-//
-//
-//         <div className="box box-default"><a href="#/app/Monitoring">
-//          <div className="box-body ">
-//           <span className="float-left">  MONITORING  </span>
-//          <span className="float-right">
-//              <img  className="nav-icon material-icons" src="assets/images/monitor.jpg" width="50%" />
-//          </span>
-//            </div>
-//         </a></div>
-//
-//       </div>
-//
-// );
-
 import Customizer from 'components/Customizer';
 import {Redirect} from 'react-router-dom';
 
@@ -72,7 +23,8 @@ class BasicHome extends React.Component{
       this.state = {
         data: '',
         open: false,
-        firstName:''
+        firstName:'',
+        EmergancyType:''
       }
   }
 
@@ -80,19 +32,27 @@ class BasicHome extends React.Component{
   componentWillMount() {
     this.setState({ firstName: cookie.load('FirstName')});
     cookie.save('Loggedin', 'Loggedin')
-     console.log(cookie.load('Loggedin'))
+    //console.log(cookie.load('Loggedin'))
   }
 
-
-  handleOpen = () => {
+  handleOpen = (value1) => {
     this.setState({open: true});
+    var alert_type = `${value1}`;
+    cookie.save('Alert_Type',alert_type);
+      //console.log(cookie.load('Alert_Type'));
   };
 
   handleClose = () => {
     this.setState({open: false});
   };
 
+  handleExit()
+  {
+    this.setState({
+        redirectToReferrer:false ,
 
+    });
+  }
   handleTrigger(event){
       this.setState({open: false});
 
@@ -107,22 +67,44 @@ class BasicHome extends React.Component{
                           "UserToken":cookie.load('UserToken'),
                           "Latitude": cookie.load('Latitude'),
                           "Longitude": cookie.load('Longitude'),
-                          "EmergancyType":"1"
+                          "EmergancyType":cookie.load('Alert_Type')
 
                         }),
                          headers: new Headers({'content-type': 'application/json'}),
                        })
                    .then((Response)=> Response.json())
                    .then((findresponse)=>{
-                        console.log(findresponse)
+                         //console.log(findresponse)
                        this.setState({
                           data:findresponse.TriggerEmergencyAlertResult.getUserAlert,
-                          geonumber:findresponse.TriggerEmergencyAlertResult.getUserAlert.geo911
-                          // data:findresponse.TriggerEmergencyAlertResult.resultStatus  //for result
+                          // geonumber:findresponse.TriggerEmergencyAlertResult.getUserAlert.geo911
+                          status:findresponse.TriggerEmergencyAlertResult.resultStatus.Status //for result
 
                         });
-                                        })
-                     this.setState({ redirectToReferrer: true })
+                      if(this.state.status === "1")
+                       {
+                         var alert_type = cookie.load('Alert_Type') ;
+                         switch(alert_type) {
+                                case '1':
+                                      return alert("Alerted your Pack Members ! ");
+                                case '2':
+                                      return alert("Alerted Fire Service !");
+                                case '3':
+                                      return alert("Alerted Ambulance Service !");
+                                case '4':
+                                      return alert("Alerted Police Service !");
+
+                               default:
+                                      return alert("Alerted your Pack Members!");
+                                }
+                       }
+                       else {
+                         alert(this.state.status.StatusMessage);
+                       }
+
+
+                    })
+                     // this.setState({ redirectToReferrer: true })
 
 
 }
@@ -142,31 +124,49 @@ render() {
       onClick={this.handleClose}
     />,
   ];
+
+
+var subscribed =   cookie.load('GetAccount_GMT');                 //to check the user subscribed or not
+console.log(subscribed)
+
 // var status = this.state.data.StatusMessage;
 //  console.log(status);           //to print result of the Service1
 
 
-var geo911 = this.state.geonumber;
-//  console.log(geo911)
+// var geo911 = this.state.geonumber;
+// console.log(geo911)
 
-const { redirectToReferrer} = this.state
-  if(redirectToReferrer === true)
-  {
-    return (
-       // <AlertPack />
-        <div className="icon-box bg-danger ibox-plain ibox-center">
-         <div>
-           <h5> Alerting Pack Members!</h5>
-           <div>
-             <h5>Contact No: {geo911}</h5>
-           </div>
-          <button><a href="#/app/Alerts">ok</a></button>
-         </div>
-
-       </div>
-
-     )
-  }
+// const { redirectToReferrer} = this.state
+//   if(redirectToReferrer === true)
+//   {
+//     return (
+//        // <AlertPack />
+//         <div className="icon-box bg-danger ibox-plain ibox-center">
+//          <div>
+//            <div className="col-lg-12 welcomeText">
+//              <h1>{this.state.firstName}, Alerted your Pack Members!</h1>
+//            </div>
+//          </div>
+//
+//          <div className="row">
+//        <div className="col-lg-4">
+//        </div>
+//
+//          <div className="col-lg-4">
+//            <div className="howlbackfull" onClick={(e)=>this.handleExit(e)} primary label="Exit" >ok</div>
+//
+//            </div>
+//
+//          <div className="col-lg-4">
+//          </div>
+//          </div>
+//        </div>
+//
+//
+//
+//
+//      )
+//   }
 
 
   return (
@@ -181,7 +181,7 @@ const { redirectToReferrer} = this.state
         <div className="box box-default box-body dkShadow ">
 
           <div className="flLeft">
-            <img src="assets/images/alert-pack-button.png" onClick={this.handleOpen} width="120"/>
+            <img src="assets/images/alert-pack-button.png" onClick={()=>this.handleOpen("1")} width="120"/>
 
               <Dialog
                 title="Confirm"
@@ -196,7 +196,9 @@ const { redirectToReferrer} = this.state
                 </Dialog>
 
           </div>
-
+       {(subscribed === "empty")
+        ?
+        <div>
           <a className="flLeft" href="#/app/Monitoring">
              <img src="assets/images/fire-button-unsubscribed.png" width="120 "/>
           </a>
@@ -209,7 +211,68 @@ const { redirectToReferrer} = this.state
          <a className="flLeft" href="#/app/Monitoring">
              <img src="assets/images/police-button-unsubscribed.png"  width="120"/>
         </a>
+        </div>
+        :
+        <div>
 
+
+        <div className="flLeft">
+          <img src="assets/images/fire-button.png" onClick={()=>this.handleOpen("2")} width="120"/>
+
+            <Dialog
+              title="Confirm"
+              actions={actions}
+              modal={false}
+              open={this.state.open}
+              contentClassName='dialogStyle'
+              bodyClassName='dialogInner'
+              onRequestClose={this.handleClose}
+              >
+              <h5>You want to Alert Monitoring System? </h5>
+              </Dialog>
+
+      </div>
+      <div className="flLeft">
+        <img src="assets/images/ambulance-button.png" onClick={()=>this.handleOpen("3")} width="120"/>
+
+          <Dialog
+            title="Confirm"
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            contentClassName='dialogStyle'
+            bodyClassName='dialogInner'
+            onRequestClose={this.handleClose}
+            >
+            <h5>You want to Alert Monitoring System? </h5>
+            </Dialog>
+
+    </div>
+        {/* <a className="flLeft" href="#/app/Monitoring">
+            <img src="assets/images/ambulance-button.png"  width="120"/>
+        </a> */}
+
+        <div className="flLeft">
+          <img src="assets/images/police-button.png" onClick={()=>this.handleOpen("4")} width="120"/>
+
+            <Dialog
+              title="Confirm"
+              actions={actions}
+              modal={false}
+              open={this.state.open}
+              contentClassName='dialogStyle'
+              bodyClassName='dialogInner'
+              onRequestClose={this.handleClose}
+              >
+              <h5>You want to Alert Monitoring System? </h5>
+              </Dialog>
+
+      </div>
+       {/* <a className="flLeft" href="#/app/Monitoring">
+           <img src="assets/images/police-button.png"  width="120"/>
+      </a> */}
+  </div>
+    }
 </div>
 </div>
 
@@ -241,19 +304,6 @@ const Dashboard = () => (
        </a>
  </div>
 
-    {/* <div className="col-lg-6">
-      <Image />
-    </div> */}
-
-    {/* <div className="col-xl-1">
-      <div className="box box-default ">
-    </div>
-  </div> */}
-    {/* <div className="col-lg-6">
-
-             <Image2 />
-
-    </div> */}
     <div className="col-lg-12">
       <Camera />
     </div>

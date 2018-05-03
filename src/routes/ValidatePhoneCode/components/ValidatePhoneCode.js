@@ -64,13 +64,13 @@ class ValidatePhoneCode extends React.Component {
         Code: target.value
       });
 
-      console.log(target.value) ;
+      //console.log(target.value) ;
       return target.value;
     }
 
     handleVerifyCode(event){
-      console.log("hi") ;
-      console.log(this.state.Code);
+      //console.log("hi") ;
+      //console.log(this.state.Code);
       let re = /^[0-9]{4}$/;
     if(this.state.Code==''){
       alert("Please enter your verification code.");
@@ -86,10 +86,10 @@ class ValidatePhoneCode extends React.Component {
      }
 
 
-console.log(cookie.load('Id')),
-console.log(cookie.load('UserToken'));
+//console.log(cookie.load('Id')),
+//console.log(cookie.load('UserToken'));
 if(this.state.noOfSuperValidation!="False"){
-  console.log("inside")
+  //console.log("inside")
 
       const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/ValidateMobilePhoneConfirmationCode';
       // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ValidateMobilePhoneConfirmationCode';
@@ -103,10 +103,11 @@ if(this.state.noOfSuperValidation!="False"){
       then((findresponse)=>{
         this.setState({
           ResultStatus:findresponse.ValidateMobilePhoneConfirmationCodeResult.ResultStatus
-        });console.log(this.state.ResultStatus.Status),
-        console.log(this.state.ResultStatus.StatusMessage);
+        })
+        //console.log(this.state.ResultStatus.Status),
+        //console.log(this.state.ResultStatus.StatusMessage);
         if(this.state.ResultStatus.Status==="1"){
-          console.log("status"),
+          //console.log("status"),
        this.setState({ redirectToReferrer: true })
         }
         else if(this.state.ResultStatus.StatusMessage=="The verification code you entered is invalid.  Please try again."){

@@ -114,14 +114,14 @@ class SidebarContent extends React.Component {
 
 
   handleLogout(event){
-    console.log("logout")
+  //  console.log("logout")
   this.setState({open: false});
   //alert("Are you sure you want to logout?");
 
   sessionService.deleteSession(event);
-    console.log(sessionService.deleteSession(event));
-    console.log(cookie.load('Id'));
-    console.log(cookie.load('UserToken'));
+    //console.log(sessionService.deleteSession(event));
+    //console.log(cookie.load('Id'));
+    //console.log(cookie.load('UserToken'));
     const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LogoutUser';
     // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LogoutUser';
 
@@ -135,7 +135,8 @@ class SidebarContent extends React.Component {
       this.setState({
         ResultStatus:findresponse.LogoutUserResult.ResultStatus,
         Status: this.state.ResultStatus.Status
-      }),console.log(this.state.ResultStatus.Status)
+      })
+      //console.log(this.state.ResultStatus.Status)
       if(this.state.ResultStatus.Status==="1"){
         console.log("success"),
         cookie.remove('Id'),
@@ -155,12 +156,12 @@ class SidebarContent extends React.Component {
         cookie.remove('Longitude'),
         cookie.remove('State'),
         cookie.remove('Zip'),
-        console.log("removed"),
+      //  console.log("removed"),
 
      this.setState({ redirectToReferrer: true })
       }
       else{
-        console.log('fail');
+        //console.log('fail');
          this.setState({ redirectToReferrer: false })
       }
     })
@@ -186,8 +187,8 @@ class SidebarContent extends React.Component {
 
     const { redirectToReferrer} = this.state
        if (redirectToReferrer==true) {
-         console.log(redirectToReferrer),
-         console.log("redirectToReferrer")
+        // console.log(redirectToReferrer),
+         //console.log("redirectToReferrer")
              return (
                <Redirect to="../mainLogin"/>
              )

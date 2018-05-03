@@ -40,7 +40,11 @@ import cookie from 'react-cookies';
          Cancel_disabled:false
        });
 
+<<<<<<< HEAD
         console.log(target.value) ;
+=======
+       // console.log(target.value) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
        return target.value;
    }
 
@@ -51,12 +55,21 @@ import cookie from 'react-cookies';
   handleNext(event) {
 
     var entered = this.state.code;
+<<<<<<< HEAD
      console.log(entered );
     var saved = cookie.load('CancellationCode');
      console.log(saved);
 
     var silentcode =   cookie.load('SilenceCode');
      console.log(silentcode);
+=======
+    // console.log(entered );
+    var saved = cookie.load('CancellationCode');
+    // console.log(saved);
+
+    var silentcode =   cookie.load('SilenceCode');
+    // console.log(silentcode);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
     if(entered ==''){
@@ -152,7 +165,11 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
         Cancel_disabled:false,
         Next_disabled:false
       });
+<<<<<<< HEAD
        console.log(target.value) ;
+=======
+      // console.log(target.value) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
       return target.value;
   }
 
@@ -166,7 +183,11 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
        Next_disabled:false,
        verifycode: target.value
        });
+<<<<<<< HEAD
         console.log(target.value) ;
+=======
+       // console.log(target.value) ;
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
        return target.value;
    }
 
@@ -175,6 +196,7 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
 
    var entered = this.state.code;
    var code_length = entered.length;
+<<<<<<< HEAD
     console.log(entered.length );
 
    var verify = this.state.verifycode;
@@ -183,6 +205,16 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
    var savedcancelcode = cookie.load('CancellationCode');
    var silentcode =   cookie.load('SilenceCode');
     console.log(silentcode);
+=======
+   // console.log(entered.length );
+
+   var verify = this.state.verifycode;
+   // console.log(verify);
+
+   var savedcancelcode = cookie.load('CancellationCode');
+   var silentcode =   cookie.load('SilenceCode');
+   // console.log(silentcode);
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
    if(entered ==''){
@@ -225,7 +257,11 @@ class VerifyCancelCode extends React.Component {           //Class to VerifyCanc
      })
       .then((Response)=> Response.json())
        .then((findresponse)=>{
+<<<<<<< HEAD
            console.log(findresponse)
+=======
+          // console.log(findresponse)
+>>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
           alert("Code has been changed");
           cookie.save('CancellationCode',this.state.code)
            this.setState({ redirectToReferrer: true ,

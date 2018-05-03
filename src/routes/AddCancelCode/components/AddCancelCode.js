@@ -56,7 +56,7 @@ const mWidthStyle = {
    this.setState({
          code: target.value
        });
-       console.log(target.value) ;
+      // console.log(target.value) ;
        return target.value;
    }
 
@@ -100,7 +100,7 @@ if(this.state.noOfSuperValidation!="False"){
       });
       if(this.state.ResultStatus.Status==1){
         cookie.save('CancellationCode', this.state.code);
-        console.log(this.state.ResultStatus.Status)
+      //  console.log(this.state.ResultStatus.Status)
         alert("Succefully added Cancel Code.")
         this.setState({ redirectToReferrer: true })
          }

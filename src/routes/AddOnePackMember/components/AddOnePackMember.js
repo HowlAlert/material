@@ -47,34 +47,34 @@ class AddOnePackMember extends React.Component {
      this.setState({
          fname: event.target.value.substr(0,30)
        });
-       console.log(event.target.value) ;
+         //console.log(event.target.value) ;
      }
   handleLastname(event) {
        this.setState({
          lname: event.target.value.substr(0,30)
        });
-       console.log(event.target.value);
+         //console.log(event.target.value);
      }
 
   handleEmail(event) {
               this.setState({
                     email: event.target.value
                   });
-                  console.log(event.target.value) ;
+                    //console.log(event.target.value) ;
           }
 
           handleOnChange(number) {
-            console.log("handleOnChange")
+              //console.log("handleOnChange")
              this.setState({
                 phone: number
              });
-             console.log(this.state.phone)
+               //console.log(this.state.phone)
           }
 
    handleNext(event) {
 
        var phone = this.state.phone;
-       console.log(this.state.phone);
+         //console.log(this.state.phone);
 
      let email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
      let names = /^[A-z]+$/;
@@ -115,13 +115,13 @@ class AddOnePackMember extends React.Component {
   var number=numberMatch[0].replace(/\D/g,'')
   var countryMatch=phone.match(/[0-9]+[(]/gi)
   var country=countryMatch[0].replace(/\D/g,'')
-  console.log(phone);
-  console.log("number");
-  console.log(number);
-  console.log("country");
-  console.log(country);
+    //console.log(phone);
+  //console.log("number");
+    //console.log(number);
+    //console.log("country");
+    //console.log(country);
 
-console.log(number.length);
+  //console.log(number.length);
 if( this.state.noOfSuperValidation!="False"){
   if(country[0]!= 1 && country[0]!= 91){
      alert("HOWL is currently Only Available to users based in the U.S and INDIA")
@@ -134,7 +134,7 @@ if( this.state.noOfSuperValidation!="False"){
  }
 
 
- console.log(number.length);
+   //console.log(number.length);
   if(this.state.phoneCkeck2!="False"){
      if(country[0]!= 1 && country[0]!= 91){
         alert("HOWL is currently Only Available to users based in the U.S and INDIA")
@@ -148,20 +148,20 @@ if( this.state.noOfSuperValidation!="False"){
 
 
 
-      console.log(this.state.email);
-      console.log(this.state.fname);
-      console.log(this.state.lname);
-      console.log(cookie.load('Id'));
-      console.log(cookie.load('UserToken'));
-      console.log(country);
+        //console.log(this.state.email);
+        //console.log(this.state.fname);
+        //console.log(this.state.lname);
+        //console.log(cookie.load('Id'));
+        //console.log(cookie.load('UserToken'));
+        //console.log(country);
       if(this.state.phoneCkeck2!="False"){
         var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":number,"UserPackID":"0", "PhoneNumberCountryCode": country}]);
-        console.log(object);
+          //console.log(object);
 
                  const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/AddUpdateUserPack';
                  // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/AddUpdateUserPack';
 
-      console.log("inside")
+        //console.log("inside")
                fetch(BaseURL,
                {
                 method: "POST",
@@ -174,7 +174,7 @@ if( this.state.noOfSuperValidation!="False"){
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
-             console.log(findresponse);
+               //console.log(findresponse);
 
              this.setState({
                       status:findresponse.AddUpdateUserPackResult.ResultStatus.Status,
@@ -183,7 +183,7 @@ if( this.state.noOfSuperValidation!="False"){
 
                         if(this.state.message == "Invalid Parameters")
                         {
-                          console.log(this.state.status)
+                            //console.log(this.state.status)
                           alert(this.state.message)
                         }
                         if(this.state.status == "1")
