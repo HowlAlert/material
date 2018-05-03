@@ -34,11 +34,9 @@ class SilentCode extends React.Component {
          Next_disabled:false,
          Cancel_disabled:false
        });
-<<<<<<< HEAD
-        console.log(target.value) ;
-=======
+
        // console.log(target.value) ;
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
        return target.value;
      }
 
@@ -48,17 +46,12 @@ class SilentCode extends React.Component {
 
 
        var entered = this.state.code;
-<<<<<<< HEAD
-        console.log(entered);
 
-       var saved = cookie.load('SilenceCode');
-        console.log(saved);
-=======
         //console.log(entered);
 
        var saved = cookie.load('SilenceCode');
         //console.log(saved);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
        if(entered ==''){
          alert("Please enter your old Silent code!");
@@ -148,11 +141,9 @@ class VerifySilentCode extends React.Component {
          Cancel_disabled:false
        });
 
-<<<<<<< HEAD
-        console.log(target.value) ;
-=======
+
         //console.log(target.value) ;
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
        return target.value;
      }
 
@@ -166,11 +157,9 @@ class VerifySilentCode extends React.Component {
       this.setState({
               re_code: target.value
               });
-<<<<<<< HEAD
-           console.log(target.value) ;
-=======
+
          //  console.log(target.value) ;
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
           return target.value;
       }
 
@@ -179,26 +168,19 @@ class VerifySilentCode extends React.Component {
   handleSave(event) {
     var entered = this.state.code;
     var code_length = entered.length;
-<<<<<<< HEAD
-     console.log(entered);
 
-    var verify = this.state.re_code;
-     console.log(verify);
-=======
    //  console.log(entered);
 
     var verify = this.state.re_code;
    //  console.log(verify);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
     var savedcancelcode = cookie.load('CancellationCode');
 
     var silentcode =   cookie.load('SilenceCode');
-<<<<<<< HEAD
-     console.log(silentcode);
-=======
+
    //  console.log(silentcode);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
 
     if(entered ==''){
@@ -241,11 +223,9 @@ class VerifySilentCode extends React.Component {
           })
       .then((Response)=> Response.json())
       .then((findresponse)=>{
-<<<<<<< HEAD
-           console.log(findresponse)
-=======
+
            //console.log(findresponse)
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
            alert("Silent Code has been changed");
               cookie.save('SilenceCode',this.state.code)
             this.setState({ redirectToReferrer: true })   //redirect to settings menu

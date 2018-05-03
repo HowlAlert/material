@@ -32,11 +32,9 @@ handleDetectionToggle()
      this.setState({  Detection: !this.state.Detection  });
 
      var s = !this.state.Detection
-<<<<<<< HEAD
-       console.log(s)
-=======
+
      //  console.log(s)
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
       if(s === true)
       {
             var status = 1;
@@ -54,11 +52,9 @@ handleDetectionToggle()
              "MotionDetectionStatus":status,
              "MotionDetectionSensitivity":sensitivity
           }]);
-<<<<<<< HEAD
-            console.log(object);
-=======
+
            // console.log(object);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
            const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/UpdateCameraMotionDetectionSetting'
             // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/UpdateCameraMotionDetectionSetting';
@@ -75,33 +71,26 @@ handleDetectionToggle()
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
-<<<<<<< HEAD
-                console.log(findresponse)
-=======
+
              //   console.log(findresponse)
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
                this.setState({
                   status:findresponse.UpdateCameraMotionDetectionSettingResult.ResultStatus.Status,
                   message:findresponse.UpdateCameraMotionDetectionSettingResult.ResultStatus.StatusMessage
                 })
-<<<<<<< HEAD
-                   console.log(this.state.status);
-                   console.log(this.state.message);
-=======
+
                //    console.log(this.state.status);
                //    console.log(this.state.message);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
                   if(this.state.status === "1")
                   {
                     alert("Done Updation!");
 
-<<<<<<< HEAD
-                     console.log(status)
-=======
+
                  //    console.log(status)
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
                     if(status === "1")
                     {
                       Toggled: true
@@ -131,21 +120,14 @@ handleDetectionToggle()
  componentDidMount()
 
      {
-<<<<<<< HEAD
-        console.log(cookie.load('Detection'));
-        console.log(cookie.load('Sensitivity'));
-        console.log(cookie.load('cameraid'));
 
-               var savedDetection = cookie.load('Detection');
-                console.log(savedDetection);
-=======
         //console.log(cookie.load('Detection'));
      //   console.log(cookie.load('Sensitivity'));
      //   console.log(cookie.load('cameraid'));
 
                var savedDetection = cookie.load('Detection');
              //   console.log(savedDetection);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
 
                if(savedDetection === "1")
@@ -165,11 +147,8 @@ handleDetectionToggle()
    }
      render() {
 
-<<<<<<< HEAD
-        console.log(this.state.Detection);
-=======
+
        // console.log(this.state.Detection);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
 
 
 

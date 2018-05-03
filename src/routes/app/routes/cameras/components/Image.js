@@ -27,22 +27,7 @@ class ImageBox extends React.Component {
 
         var cameraid = `${value1}`;
         cookie.save('cameraid',cameraid);
-<<<<<<< HEAD
-          console.log(cookie.load('cameraid'));
-           var CameraName = `${value2}`;
-        cookie.save('cameraName',CameraName);
-          console.log(cookie.load('cameraName'));
-           var Toggled = `${value3}`;
-         cookie.save('Detection',Toggled);
-           console.log(cookie.load('Detection'));
-            var sensitivity = `${value4}`;
-         cookie.save('Sensitivity',sensitivity);
-          console.log(cookie.load('Sensitivity'));
 
-          var roomid = `${value5}`;
-         cookie.save('RoomId',roomid);
-          console.log(cookie.load('RoomId'));
-=======
           //console.log(cookie.load('cameraid'));
            var CameraName = `${value2}`;
         cookie.save('cameraName',CameraName);
@@ -57,7 +42,7 @@ class ImageBox extends React.Component {
           var roomid = `${value5}`;
          cookie.save('RoomId',roomid);
          // console.log(cookie.load('RoomId'));
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
          this.setState({ redirectToReferrer: true })
     }
@@ -65,11 +50,9 @@ class ImageBox extends React.Component {
 componentDidMount(){
 
   var today = moment(this.state.startDate).format('MM/DD/YYYY');
-<<<<<<< HEAD
-   console.log(today);
-=======
+
    //console.log(today);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
 var starthours = "00";
 var startminutes = "00";
@@ -81,15 +64,11 @@ var endsecond = "00";
 var st= starthours + ':' + startminutes + ':' + startsecond;
 var et= endhours + ':' + endminutes + ':' + endsecond;
 var StartTime = today + " " + st
-<<<<<<< HEAD
- console.log(StartTime);
-var EndTime = today + " " + et
- console.log(EndTime);
-=======
+
  //console.log(StartTime);
 var EndTime = today + " " + et
  //console.log(EndTime);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
   const URL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCamera'
   // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
@@ -131,13 +110,10 @@ var EndTime = today + " " + et
       })
   .then((Response)=> Response.json())
   .then((findresponse)=>{
-<<<<<<< HEAD
-       console.log(findresponse)
-       console.log(findresponse.GetUserCameraImagesResult.CameraImages)
-=======
+
        //console.log(findresponse)
      //  console.log(findresponse.GetUserCameraImagesResult.CameraImages)
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
      let arr4=[];
      arr4=  findresponse.GetUserCameraImagesResult.CameraImages.slice(0, 1);          //To get the top most image of the camera recordings
@@ -162,11 +138,9 @@ var EndTime = today + " " + et
                .then((Response)=> Response.json())
 
                .then((findresponse1)=>{
-<<<<<<< HEAD
-                    console.log(findresponse1)
-=======
+
                //     console.log(findresponse1)
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
                    this.setState({
                       data:findresponse1
                    })

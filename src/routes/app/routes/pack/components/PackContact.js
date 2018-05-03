@@ -32,33 +32,27 @@ class Contact extends React.Component {
      this.setState({
          fname: event.target.value.substr(0,30)
        });
-<<<<<<< HEAD
-        console.log(event.target.value) ;
-=======
+
        // console.log(event.target.value) ;
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
      }
   handleLastname(event) {
        this.setState({
          lname: event.target.value.substr(0,30)
        });
-<<<<<<< HEAD
-        console.log(event.target.value);
-=======
+
        // console.log(event.target.value);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
      }
 
   handleEmail(event) {
               this.setState({
                     email: event.target.value
                   });
-<<<<<<< HEAD
-                   console.log(event.target.value) ;
-=======
+
                  //  console.log(event.target.value) ;
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
           }
 
@@ -111,15 +105,11 @@ class Contact extends React.Component {
              var number=phoneNumber.substr(phoneNumber.length-10)
              var country=phoneNumber.slice(0, -10)
            //   ereg_replace("[^0-9]", "", phone)
-<<<<<<< HEAD
-             console.log(phoneNumber);
-             console.log(number);
-             console.log(country);
-=======
+
            //  console.log(phoneNumber);
            //  console.log(number);
            //  console.log(country);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
 
            if(number.length!=10){
@@ -166,11 +156,9 @@ class Contact extends React.Component {
       else
       {
      var object = JSON.stringify([{"Email":this.state.email, "FirstName":this.state.fname, "LastName":this.state.lname,"PhoneNumber":number,"UserPackID":"0", "PhoneNumberCountryCode": "1"}]);
-<<<<<<< HEAD
-      console.log(object);
-=======
+
      // console.log(object);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
 
            const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/AddUpdateUserPack';
@@ -190,11 +178,9 @@ class Contact extends React.Component {
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
-<<<<<<< HEAD
-              console.log(findresponse);
-=======
+
              // console.log(findresponse);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
              this.setState({
                       status:findresponse.AddUpdateUserPackResult.ResultStatus.Status,

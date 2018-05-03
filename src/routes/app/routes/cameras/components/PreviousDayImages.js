@@ -60,11 +60,9 @@ componentDidMount(){
 
 
   var today = moment(this.state.startDate).format('MM/DD/YYYY');
-<<<<<<< HEAD
-   console.log(today);
-=======
+
    //console.log(today);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
 var starthours = "00";
 var startminutes = "00";
@@ -76,15 +74,11 @@ var endsecond = "00";
 var st= starthours + ':' + startminutes + ':' + startsecond;
 var et= endhours + ':' + endminutes + ':' + endsecond;
 var StartTime = today + " " + st
-<<<<<<< HEAD
- console.log(StartTime);
-var EndTime = today + " " + et
- console.log(EndTime);
-=======
+
  //console.log(StartTime);
 var EndTime = today + " " + et
  //console.log(EndTime);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
           var that = this;
            var urls = [];
@@ -111,11 +105,9 @@ var EndTime = today + " " + et
                })
            .then((Response)=> Response.json())
            .then((findresponse)=>{
-<<<<<<< HEAD
-              console.log(findresponse);
-=======
+
              // console.log(findresponse);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
              this.setState({
                 data:findresponse.GetUserCameraImagesResult.CameraImages,
                 length:findresponse.GetUserCameraImagesResult.CameraImages.length,
@@ -144,11 +136,9 @@ var EndTime = today + " " + et
                         urls[i] = element
 
                       })
-<<<<<<< HEAD
-                     console.log(urls);
-=======
+
                      //console.log(urls);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
                     let arr3 = [];                                  // to combine the results of the two arrays
                             urls.forEach((itm, i) => {
                                      arr3.push(Object.assign({}, itm, datas[i]));
@@ -160,15 +150,11 @@ var EndTime = today + " " + et
 
                                  })
 
-<<<<<<< HEAD
-                      console.log(this.state.data1);
-                     var total = this.state.array_count;
-                      console.log(total);
-=======
+
                    //   console.log(this.state.data1);
                      var total = this.state.array_count;
                      // console.log(total);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
                      if(total === 0)
                       {
@@ -195,17 +181,12 @@ render() {
 
 
   var today = moment(this.state.startDate).format('MM/DD/YYYY');
-<<<<<<< HEAD
-   console.log(today);
 
-  var total = this.state.array_count;
-   console.log(total);
-=======
    //console.log(today);
 
   var total = this.state.array_count;
    //console.log(total);
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
 
 const { redirectToReferrer} = this.state                    //To Zoom the Image

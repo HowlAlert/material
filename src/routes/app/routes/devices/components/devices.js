@@ -38,11 +38,9 @@ class Device extends React.Component {
           })
       .then((Response)=> Response.json())
       .then((findresponse)=>{
-<<<<<<< HEAD
-           console.log(findresponse)
-=======
+
           //  console.log(findresponse)
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
           this.setState({
              data:findresponse.GetUserDeviceDetailResult.UserDeviceList,
              length:findresponse.GetUserDeviceDetailResult.UserDeviceList.length

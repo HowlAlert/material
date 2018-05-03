@@ -38,11 +38,9 @@ onMapClicked (props) {
         })
 
     }
-<<<<<<< HEAD
-       console.log("In onclick");
-=======
+
       // console.log("In onclick");
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
         window.location.reload();
 }
 
@@ -52,11 +50,9 @@ onMarkerClicked (props, marker, e) {
         activeMarker: marker,
         showingInfoWindow: true
       });
-<<<<<<< HEAD
-       console.log("In Marker");
-=======
+
       // console.log("In Marker");
->>>>>>> a02cd271ac18fb85f437f94b3b64d915ce37ff4f
+
 
 
 }
