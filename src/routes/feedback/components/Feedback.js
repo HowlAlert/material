@@ -45,7 +45,7 @@
 //         To: target.value
 //       });
 //
-//       console.log(target.value) ;
+//        console.log(target.value) ;
 //       return target.value;
 //   }
 //
@@ -59,7 +59,7 @@
 //         CcBcc: target.value
 //       });
 //
-//       console.log(target.value) ;
+//        console.log(target.value) ;
 //       return target.value;
 //   }
 //
@@ -73,7 +73,7 @@
 //       Subject: target.value
 //     });
 //
-//     console.log(target.value) ;
+//      console.log(target.value) ;
 //     return target.value;
 // }
 //
@@ -87,20 +87,20 @@
 //       Message: target.value
 //     });
 //
-//     console.log(target.value) ;
+//      console.log(target.value) ;
 //     return target.value;
 // }
 //
 // handleSend(event){
-//   console.log(this.state.To);
-//   console.log("Mailto:pbharde@gmail.com");
-//   console.log(this.state.Subject);
-//   console.log(this.state.Message);
+//    console.log(this.state.To);
+//    console.log("Mailto:pbharde@gmail.com");
+//    console.log(this.state.Subject);
+//    console.log(this.state.Message);
 //   <Route path=(${mailto:this.state.To}?{subject:this.state.Subject}&{body:this.state.Message}) />
 //   //  Mailto:this.state.To?Subject=this.state.Subject&Message=this.state.Message;
 //   //var path = $("${mailto:pbharde@gmail.com}${this.state.Subject}${this.state.Message}", this).attr("href");
 // //window.location.href="${mailto:pbharde@gmail.com}${this.state.Subject}${this.state.Message}"
-// console.log(path);
+//  console.log(path);
 // }
 //
 //

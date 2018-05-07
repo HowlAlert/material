@@ -103,7 +103,7 @@ handleMapMount(props, map) {
     this.map = map;
 
     //log map bounds
-    // console.log(this.map.getBounds());
+    //  console.log(this.map.getBounds());
 
 }
 
@@ -179,9 +179,14 @@ componentDidMount()
              GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
 
                })
-        //  console.log(this.state.GetSpotCrimesResult);
+
+
+        // console.log(this.state.GetSpotCrimesResult);
         // console.log(cookie.load('Latitude'));
         // console.log(cookie.load('Longitude'));
+        // console.log(  cookie.load('AlertLatitude'));
+        // console.log(cookie.load('AlertLongitude'));
+
 
 
   })

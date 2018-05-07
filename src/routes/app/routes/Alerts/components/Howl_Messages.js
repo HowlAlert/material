@@ -32,7 +32,9 @@ class Howls_At_Pack extends React.Component {                    //Class to get 
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
+
         // console.log(findresponse)
+
         this.setState({
            data:findresponse.GetMyPoundListResult.GetMyPounds,
 
@@ -48,17 +50,17 @@ class Howls_At_Pack extends React.Component {                    //Class to get 
   }
   render() {
     // var mes = this.state.data[0].HowlType;
-    // console.log(mes)
+    //  console.log(mes)
     //
     //
     // if(mes === 1)
     // {
     //   var message="You Howled at"
-    //   console.log(message)
+    //    console.log(message)
     // }
     // if(mes === 2){
     //   var message="Howled back"
-    //   console.log(message)
+    //    console.log(message)
     // }
 
 
@@ -126,21 +128,23 @@ class Howls_At_Me extends React.Component {       //Class to get the Howls you r
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
+
         // console.log(findresponse)
+
         this.setState({
            data:findresponse.GetPackPoundListResult.GetPackPounds,
            time:findresponse.GetPackPoundListResult.GetPackPounds["0"].DateCreated
         })
 
-         // console.log(this.state.time);
+         //  console.log(this.state.time);
          // var ms = this.state.time;
-         // console.log(ms)
+         //  console.log(ms)
          //     var v = moment(ms).format('YYYY-MM-DD HH:MM:SS');
          //
          //     var gmtDateTime = moment.utc(v, "YYYY-MM-DD HH:MM:SS");
-         //         console.log(gmtDateTime);
+         //          console.log(gmtDateTime);
          //     var local = gmtDateTime.local().format('YYYY-MMM-DD h:mm A');
-         //     console.log(local)
+         //      console.log(local)
 
 
       })
@@ -150,7 +154,7 @@ render() {
 
 //   var gmtDateTime = moment.utc("2015-10-24 20:00", "YYYY-MM-DD HH")
 // var local = gmtDateTime.local().format('YYYY-MMM-DD h:mm A');
-// console.log(local)
+//  console.log(local)
 
 
   return (

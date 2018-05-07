@@ -34,22 +34,24 @@ class Alerts extends React.Component {
  handleMap(value1,value2,value3) {                 //Redirecting to Map page
 
    var latitude = `${value1}`;
-   // console.log(latitude);
+   //  console.log(latitude);
 
    var longitude = `${value2}`;
-   // console.log(longitude);
+   //  console.log(longitude);
 
    var date = `${value3}`;
-   // console.log(date);
+   //  console.log(date);
 
    cookie.save('AlertLatitude',latitude)
+
    // console.log(cookie.load('AlertLatitude'))
 
     cookie.save('AlertLongitude',longitude)
     // console.log(cookie.load('AlertLongitude'))
 
+
     // cookie.save('AlertDate',date)
-    // console.log(cookie.load('AlertDate'))
+    //  console.log(cookie.load('AlertDate'))
 
 
     this.setState({ redirectToReferrer: true })
@@ -63,7 +65,7 @@ class Alerts extends React.Component {
    var that = this;
     var urls = [];
     var a1 =[];
-    // console.log(this.state.counter);
+    //  console.log(this.state.counter);
 
 
     const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserFeed';
@@ -81,7 +83,9 @@ class Alerts extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
+
       // console.log(findresponse);
+
       this.setState({
          data:findresponse.GetUserFeedResult.getUserFeeds,
          length:findresponse.GetUserFeedResult.getUserFeeds.length,

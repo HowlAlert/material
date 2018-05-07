@@ -124,7 +124,7 @@ class MainLogin extends React.Component {
             else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
               alert("Please confirm your Phone Number");
               if(this.state.GetAccount.length==0){
-                // console.log(this.state.GetAccount)
+                //  console.log(this.state.GetAccount)
                   cookie.save('GetAccount_GMT','empty');
               }else if(this.state.GetAccount.length!=0){
                 cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
@@ -176,7 +176,7 @@ class MainLogin extends React.Component {
               this.setState({ redirectToSilenceCode: true }),
               this.setState.noOfSuperValidation="False"
               if(this.state.GetAccount.length==0){
-                // console.log(this.state.GetAccount)
+                //  console.log(this.state.GetAccount)
                   cookie.save('GetAccount_GMT','empty');
               }else if(this.state.GetAccount.length!=0){
                 cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
@@ -200,7 +200,7 @@ class MainLogin extends React.Component {
 
             else if(this.state.noOfSuperValidation!="False"){
             if(this.state.GetAccount.length==0){
-              // console.log(this.state.GetAccount)
+              //  console.log(this.state.GetAccount)
                 cookie.save('GetAccount_GMT','empty');
             }else if(this.state.GetAccount.length!=0){
               cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
@@ -289,7 +289,7 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
                 else if(this.state.GetUser.HasConfirmedMobilePhone=="False" && this.state.GetUserPack.length!=0 && this.state.GetUserHomeAddress.Address1!=null && this.state.GetUser.CancellationCode!=null && this.state.GetUser.SilenceCode!=null){
                   alert("Please confirm your Phone Number");
                   if(this.state.GetAccount.length==0){
-                    // console.log(this.state.GetAccount)
+                    //  console.log(this.state.GetAccount)
                       cookie.save('GetAccount_GMT','empty');
                   }else if(this.state.GetAccount.length!=0){
                     cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
@@ -342,7 +342,7 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
               this.setState({ redirectToSilenceCode: true }),
               this.setState.noOfSuperValidation="False"
               if(this.state.GetAccount.length==0){
-                // console.log(this.state.GetAccount)
+                //  console.log(this.state.GetAccount)
                   cookie.save('GetAccount_GMT','empty');
               }else if(this.state.GetAccount.length!=0){
                 cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);
@@ -367,7 +367,7 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
             if(this.state.noOfSuperValidation!="False"){
                   ccookie.save('Email', this.state.GetUser.Email);
                   if(this.state.GetAccount.length==0){
-                    // console.log(this.state.GetAccount)
+                    //  console.log(this.state.GetAccount)
                       cookie.save('GetAccount_GMT','empty');
                   }else if(this.state.GetAccount.length!=0){
                     cookie.save('GetAccount_GMT', JSON.parse(this.state.GetAccount["0"].Receipt).expires_date);

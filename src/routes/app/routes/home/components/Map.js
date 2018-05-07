@@ -32,7 +32,9 @@ onMapClicked (props) {
         })
 
     }
+
         //console.log("In onclick");
+
 }
 onMarkerClicked (props, marker, e) {
   this.setState({
@@ -40,13 +42,15 @@ onMarkerClicked (props, marker, e) {
         activeMarker: marker,
         showingInfoWindow: true
       });
+
         //console.log("In Marker");
+
 }
 handleMapMount(mapProps, map) {
     this.map = map;
 
     //log map bounds
-    // console.log(this.map.getBounds());
+    //  console.log(this.map.getBounds());
 }
 
 render() {
@@ -56,10 +60,12 @@ render() {
         return <div>Loading...</div>
     }
     var fname=cookie.load('FirstName');
+
        //console.log(fname);
     var lname = cookie.load('LastName');
     var lastname=lname.substr(0, 1);
        //console.log(lastname);
+
 
     return (
 

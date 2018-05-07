@@ -428,11 +428,11 @@ class ReactPhoneInput extends React.Component {
     }
   }
 
-  handleClickOutside(evt) {
+  handleClickOutside() {
     alert("handleClickOutside")
     if(this.state.showDropDown) {
       this.setState({
-        showDropDown: false
+        showDropDown: Hide
       });
 
     }

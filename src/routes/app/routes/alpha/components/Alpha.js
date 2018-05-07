@@ -45,7 +45,9 @@ class Alpha extends React.Component {
            Fname: e.target.value,
 
          });
+
          // console.log(this.state.Fname) ;
+
 
        }
 
@@ -54,7 +56,9 @@ class Alpha extends React.Component {
           Lname: e.target.value,
 
               });
+
               // console.log(this.state.Lname) ;
+
 
             }
 
@@ -63,7 +67,9 @@ class Alpha extends React.Component {
            Email: e.target.value,
 
          });
+
          // console.log(this.state.Email) ;
+
 
        }
 
@@ -76,7 +82,9 @@ class Alpha extends React.Component {
 
 
                         });
+
                         // console.log(this.state.phonenumber)
+
                  }
 
 
@@ -113,9 +121,11 @@ class Alpha extends React.Component {
           })
 
 
+
             // console.log(this.state.Latitude);
             // console.log(this.state.street_no+" "+this.state.street_name)
             // console.log(this.state.city)
+
 
           })
 }

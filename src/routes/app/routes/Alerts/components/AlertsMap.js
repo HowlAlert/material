@@ -38,7 +38,9 @@ onMapClicked (props) {
         })
 
     }
+
       // console.log("In onclick");
+
         window.location.reload();
 }
 
@@ -48,7 +50,9 @@ onMarkerClicked (props, marker, e) {
         activeMarker: marker,
         showingInfoWindow: true
       });
+
       // console.log("In Marker");
+
 
 
 }
@@ -56,7 +60,7 @@ handleMapMount(mapProps, map) {
     this.map = map;
 
     //log map bounds
-    // console.log(this.map.getBounds());
+    //  console.log(this.map.getBounds());
 }
 
 
@@ -67,14 +71,14 @@ render() {
         return <div>Loading...</div>
     }
     // var fname=cookie.load('FirstName');
-    //  console.log(fname);
+    //   console.log(fname);
     // var lname = cookie.load('LastName');
     // var lastname=lname.substr(0, 1);
-    //  console.log(lastname);
+    //   console.log(lastname);
     // var AlertDate=cookie.load('AlertDate');
-    //   console.log(AlertDate)
+    //    console.log(AlertDate)
     //   var AlertAddress=cookie.load('AlertAddress');
-    //     console.log(AlertAddress)
+    //      console.log(AlertAddress)
 
 
 

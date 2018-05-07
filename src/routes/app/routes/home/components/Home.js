@@ -130,7 +130,7 @@ var subscribed =   cookie.load('GetAccount_GMT');                 //to check the
 console.log(subscribed)
 
 // var status = this.state.data.StatusMessage;
-// console.log(status);           //to print result of the Service1
+//  console.log(status);           //to print result of the Service1
 
 
 // var geo911 = this.state.geonumber;

@@ -27,6 +27,7 @@ class ImageBox extends React.Component {
 
         var cameraid = `${value1}`;
         cookie.save('cameraid',cameraid);
+
           //console.log(cookie.load('cameraid'));
            var CameraName = `${value2}`;
         cookie.save('cameraName',CameraName);
@@ -42,13 +43,16 @@ class ImageBox extends React.Component {
          cookie.save('RoomId',roomid);
          // console.log(cookie.load('RoomId'));
 
+
          this.setState({ redirectToReferrer: true })
     }
 
 componentDidMount(){
 
   var today = moment(this.state.startDate).format('MM/DD/YYYY');
+
    //console.log(today);
+
 
 var starthours = "00";
 var startminutes = "00";
@@ -60,9 +64,11 @@ var endsecond = "00";
 var st= starthours + ':' + startminutes + ':' + startsecond;
 var et= endhours + ':' + endminutes + ':' + endsecond;
 var StartTime = today + " " + st
+
  //console.log(StartTime);
 var EndTime = today + " " + et
  //console.log(EndTime);
+
 
   const URL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCamera'
   // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCamera';
@@ -87,7 +93,7 @@ var EndTime = today + " " + et
          ms1:findresponse.GetUserCameraResult.RoomCameraList["0"].Camera["0"].MotionDetectionSensitivity
     })
 
- // console.log(this.state.CameraRoomID);
+ //  console.log(this.state.CameraRoomID);
 
       fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserCameraImages',
         // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserCameraImages',
@@ -104,15 +110,17 @@ var EndTime = today + " " + et
       })
   .then((Response)=> Response.json())
   .then((findresponse)=>{
+
        //console.log(findresponse)
      //  console.log(findresponse.GetUserCameraImagesResult.CameraImages)
 
+
      let arr4=[];
      arr4=  findresponse.GetUserCameraImagesResult.CameraImages.slice(0, 1);          //To get the top most image of the camera recordings
-     // console.log(arr4);
+     //  console.log(arr4);
        this.setState({  data2:arr4 , array_count:arr4.length })
-       // console.log(arr4.length);
-       // console.log(this.state.data2);
+       //  console.log(arr4.length);
+       //  console.log(this.state.data2);
     this.state.data2.map((dyanamicData,key)=>
        fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetImageData',
 
@@ -130,7 +138,9 @@ var EndTime = today + " " + et
                .then((Response)=> Response.json())
 
                .then((findresponse1)=>{
+
                //     console.log(findresponse1)
+
                    this.setState({
                       data:findresponse1
                    })

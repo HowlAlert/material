@@ -25,7 +25,7 @@ class Alerts extends React.Component {
    var that = this;
     var urls = [];
     var a1 =[];
-    // console.log(this.state.counter);
+    //  console.log(this.state.counter);
 
     // const BaseURL = 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetUserFeed';
   const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetUserFeed';
@@ -41,7 +41,9 @@ class Alerts extends React.Component {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
+
         //console.log(findresponse);
+
       this.setState({
          data:findresponse.GetUserFeedResult.getUserFeeds,
          length:findresponse.GetUserFeedResult.getUserFeeds.length,
@@ -71,21 +73,23 @@ class Alerts extends React.Component {
                  urls[i] = element
 
                })
-             //console.log(urls);
-             //console.log(datas);
+             // console.log(urls);
+             // console.log(datas);
           let arr3 = [];                                  // to combine the results of the two arrays
                   urls.forEach((itm, i) => {
                            arr3.push(Object.assign({}, itm, datas[i]));
                        });
 
-             // console.log(arr3.length);
+             //  console.log(arr3.length);
              // this.setState({  data1:arr3 , array_count:arr3.length })
             let arr4=[];
             arr4=  arr3.slice(0, 3);
-            // console.log(arr4);
+            //  console.log(arr4);
               this.setState({  data2:arr4 , array_count:arr4.length })
+
                 //console.log(arr4.length);
                 //console.log(this.state.data2);
+
          })
               })
 
