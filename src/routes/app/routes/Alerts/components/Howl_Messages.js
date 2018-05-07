@@ -133,7 +133,7 @@ class Howls_At_Me extends React.Component {       //Class to get the Howls you r
 
         this.setState({
            data:findresponse.GetPackPoundListResult.GetPackPounds,
-           time:findresponse.GetPackPoundListResult.GetPackPounds["0"].DateCreated
+           // time:findresponse.GetPackPoundListResult.GetPackPounds["0"].DateCreated
         })
 
          //  console.log(this.state.time);

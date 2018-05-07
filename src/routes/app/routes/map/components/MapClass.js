@@ -133,7 +133,7 @@ centerMoved(props, map, e) {
         })
     .then((Response)=> Response.json())
     .then((findresponse)=>{
-        console.log(findresponse);
+        // console.log(findresponse);
       this.setState({
                GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
 
@@ -222,14 +222,13 @@ render() {
             google={this.props.google}
             // onClick={this.onMapClicked}
             onClick={(e)=>this.onMapClicked()}
-
             initialCenter={{
 
               lat: cookie.load('Latitude'),
               lng: cookie.load('Longitude')
 
             }}
-              onDragend={(e)=>this.centerMoved()}
+              // onDragend={(e)=>this.centerMoved()}
             onDragend={this.centerMoved}
             zoom={this.state.zoom}
             onReady={this.handleMapMount}
