@@ -17,18 +17,21 @@ class GoogleMap extends React.Component {
         activeMarker: {},
         selectedPlace: {},
         GetSpotCrimesResult:'',
-        lat1: '',
-        lon1: ''
+        address: ' ',
+        mapTypeId: 'roadmap'
 
     }
     this.onMapClicked = this.onMapClicked.bind(this);
     this.onMarkerClicked = this.onMarkerClicked.bind(this);
     this.handleMapMount = this.handleMapMount.bind(this);
     this.centerMoved = this.centerMoved.bind(this);
+    // this.onChange = (address) => this.setState({ address })
 
 }
 
-
+handleChange = (address) => {
+   this.setState({ address })
+ }
 
 onMapClicked (e) {
 
@@ -89,6 +92,46 @@ onMapClicked (e) {
    // }
 }
 
+ // handleSelect = (address) => {
+ //    geocodeByAddress(this.state.address)
+ //      .then(results => getLatLng(results[0]))
+ //      .then(latLng =>{
+ //        this.setState({
+ //            Latitude:latLng.lat,
+ //            Longitude:latLng.lng
+ //        })
+ //        console.log(this.state.Latitude);
+ //        console.log(this.state.Longitude);
+ //        fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetSpotCrimes',
+ //        {
+ //         method: "POST",
+ //         body: JSON.stringify({
+ //           "UserID":cookie.load('Id'),
+ //           "UserToken":cookie.load('UserToken'),
+ //           "Radius":"0.02",
+ //           "Lat":this.state.Latitude,
+ //           "Long":this.state.Longitude
+ //
+ //
+ //         }),
+ //          headers: new Headers({'content-type': 'application/json'}),
+ //        })
+ //    .then((Response)=> Response.json())
+ //    .then((findresponse)=>{
+ //        // console.log(findresponse);
+ //      this.setState({
+ //               GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
+ //
+ //                 })
+ //           console.log(this.state.GetSpotCrimesResult);
+ //
+ //    })
+ //      })
+ //      .catch(error => console.error('Error', error))
+ //
+ //
+ //  }
+
 onMarkerClicked (props, marker, e) {
   this.setState({
         selectedPlace: props,
@@ -103,7 +146,7 @@ handleMapMount(props, map) {
     this.map = map;
 
     //log map bounds
-    //  console.log(this.map.getBounds());
+     console.log(props);
 
 }
 
@@ -211,6 +254,12 @@ render() {
     var lastname=lname.substr(0, 1);
    //   console.log(lastname);
 
+   const inputProps = {
+   value: this.state.address,
+   // onChange: this.onChange,
+   onChange:this.handleChange,
+   onSelect:this.handleSelect
+    }
 
 
     return (
@@ -221,6 +270,7 @@ render() {
 
             google={this.props.google}
             // onClick={this.onMapClicked}
+
             onClick={(e)=>this.onMapClicked()}
             initialCenter={{
 
@@ -735,8 +785,9 @@ render() {
                   </InfoWindow>
 
 
-
-
+            {/* <div className="col-lg-6 ">
+              <PlacesAutocomplete inputProps={inputProps}  />
+            </div> */}
         </Map>
 
 

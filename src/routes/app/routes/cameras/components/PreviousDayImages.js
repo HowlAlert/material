@@ -144,7 +144,7 @@ var EndTime = today + " " + et
                                      arr3.push(Object.assign({}, itm, datas[i]));
                                  });
 
-                                  console.log(arr3.length);
+                                  // console.log(arr3.length);
                                  this.setState({  data1:arr3 ,
                                    array_count:arr3.length ,
 

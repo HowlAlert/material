@@ -87,7 +87,7 @@ class History extends React.Component {
                    })
                .then((Response)=> Response.json())
                .then((findresponse)=>{
-                  console.log(findresponse);
+                  // console.log(findresponse);
                  this.setState({
                     data:findresponse.GetUserCameraImagesResult.CameraImages,
                     length:findresponse.GetUserCameraImagesResult.CameraImages.length,

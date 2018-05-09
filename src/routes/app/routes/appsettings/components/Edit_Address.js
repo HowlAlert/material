@@ -157,7 +157,7 @@ class SearchAddress extends React.Component {
 
 
                <TextField  onChange={(e)=>this.handleValue(e)} name="Address2" floatingLabelText="APT/SUITE/FLOOR(If Applicable)" fullWidth />
-                <PlacesAutocomplete inputProps={inputProps}  onKeyDown={(e)=>this.keyPress(e)} />
+                <PlacesAutocomplete inputProps={inputProps}  />
 
 
                 <div className="divider" />

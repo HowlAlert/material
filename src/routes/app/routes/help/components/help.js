@@ -8,15 +8,21 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import SelectField from 'material-ui/SelectField';
 
+
+
 class Help extends React.Component{
+
 
   constructor(props) {
        super(props);
        this.state = {
          value: 1,
+         childVisible: false,
+         childVisible1: false
+
        }
      }
- handleChange = (event, index, value) => this.setState({value});
+
   render() {
 
 
@@ -38,6 +44,7 @@ class Help extends React.Component{
         <div className="col-xl-12">
           <div className="box box-transparent helpCards">
             <div className="box-body padding-lg-h">
+
               <Card>
                 <CardHeader title="Can I use HOWL for free?"
                   actAsExpander
@@ -52,6 +59,7 @@ class Help extends React.Component{
 
                 </CardText>
 
+
               </Card>
 
               <Card>
@@ -59,11 +67,12 @@ class Help extends React.Component{
                   actAsExpander
                   showExpandableButton
                 />
-                <CardText expandable>
+                 <CardText expandable>
                    <p>
                        Every type: Crime, Health, Fire, you name it. Whenever you’re in trouble, HOWL can help.
                    </p>
                 </CardText>
+
               </Card>
 
               <Card>
@@ -204,7 +213,7 @@ class Help extends React.Component{
 
                 </CardText>
               </Card>
-    
+
               <h4 >Do you have any question?</h4>
               <form name="contactForm">
                 <div className="form-group">
@@ -253,8 +262,6 @@ class Help extends React.Component{
 }
 const Page = () => (
   <section className="container-fluid chapter">
-
-
 
     <QueueAnim type="bottom" className="ui-animate">
 

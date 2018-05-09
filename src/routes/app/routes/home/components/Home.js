@@ -6,6 +6,8 @@ import cookie from 'react-cookies';
 import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
+import moment from 'moment';
+
 
 import Map from './Map';
 import Alert from './Alert';
@@ -127,8 +129,9 @@ render() {
 
 
 var subscribed =   cookie.load('GetAccount_GMT');                 //to check the user subscribed or not
-console.log(subscribed)
-
+// console.log(subscribed)
+var today = moment(this.state.startDate).format('YYYY-MM-DD HH:MM:SS');   //to get date
+// console.log(today)
 // var status = this.state.data.StatusMessage;
 //  console.log(status);           //to print result of the Service1
 
@@ -196,7 +199,9 @@ console.log(subscribed)
                 </Dialog>
 
           </div>
-       {(subscribed === "empty")
+       {
+         (subscribed === "empty" || subscribed === today)       //If not subscribed or subscribed expired
+
         ?
         <div>
           <a className="flLeft" href="#/app/Monitoring">
