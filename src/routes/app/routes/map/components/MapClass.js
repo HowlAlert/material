@@ -18,15 +18,17 @@ class GoogleMap extends React.Component {
         selectedPlace: {},
         GetSpotCrimesResult:'',
         address: ' ',
-        mapTypeId: 'roadmap'
+        mapTypeId: 'roadmap',
+        L1:'',
+        L2:''
 
     }
     this.onMapClicked = this.onMapClicked.bind(this);
     this.onMarkerClicked = this.onMarkerClicked.bind(this);
     this.handleMapMount = this.handleMapMount.bind(this);
     this.centerMoved = this.centerMoved.bind(this);
-    // this.onChange = (address) => this.setState({ address })
-
+    this.handleEnter = this.handleEnter.bind(this);
+    // this.handleSelect = this.handleSelect.bind(this);
 }
 
 handleChange = (address) => {
@@ -45,93 +47,98 @@ onMapClicked (e) {
         })
 
     }
-   //    console.log("In onclick");
-   //    const location = window.navigator && window.navigator.geolocation
-   //
-   //    if (location) {
-   //
-   //      location.getCurrentPosition((position) => {
-   //        this.setState({
-   //          lat1: position.coords.latitude,
-   //          lon1: position.coords.longitude,
-   //        })
-   //        console.log(this.state.lat1);
-   //        console.log(this.state.lon1);
-   //
-   //        fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetSpotCrimes',
-   //        {
-   //         method: "POST",
-   //         body: JSON.stringify({
-   //           "UserID":cookie.load('Id'),
-   //           "UserToken":cookie.load('UserToken'),
-   //           "Radius":"0.02",
-   //           // "Lat":this.state.lat1,
-   //           // "Long":this.state.lon1
-   //           "Lat":this.state.lat1,
-   //           "Long":this.state.lon1
-   //
-   //         }),
-   //          headers: new Headers({'content-type': 'application/json'}),
-   //        })
-   //        .then((Response)=> Response.json())
-   //        .then((findresponse)=>{
-   //        //console.log(findresponse);
-   //        this.setState({
-   //               GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
-   //
-   //                 })
-   //           console.log(this.state.GetSpotCrimesResult);
-   //
-   //
-   //
-   //     }, (error) => {
-   //          this.setState({ lat1: 'err-latitude', log1: 'err-longitude' })
-   //       })
-   //     })
-   //
-   // }
+
 }
 
- // handleSelect = (address) => {
- //    geocodeByAddress(this.state.address)
- //      .then(results => getLatLng(results[0]))
- //      .then(latLng =>{
- //        this.setState({
- //            Latitude:latLng.lat,
- //            Longitude:latLng.lng
- //        })
- //        console.log(this.state.Latitude);
- //        console.log(this.state.Longitude);
- //        fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetSpotCrimes',
- //        {
- //         method: "POST",
- //         body: JSON.stringify({
- //           "UserID":cookie.load('Id'),
- //           "UserToken":cookie.load('UserToken'),
- //           "Radius":"0.02",
- //           "Lat":this.state.Latitude,
- //           "Long":this.state.Longitude
- //
- //
- //         }),
- //          headers: new Headers({'content-type': 'application/json'}),
- //        })
- //    .then((Response)=> Response.json())
- //    .then((findresponse)=>{
- //        // console.log(findresponse);
- //      this.setState({
- //               GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
- //
- //                 })
- //           console.log(this.state.GetSpotCrimesResult);
- //
- //    })
- //      })
- //      .catch(error => console.error('Error', error))
- //
- //
- //  }
+  // handleSelect(address){
+  //
+  //   geocodeByAddress(address)
+  //     .then(results => getLatLng(results[0]))
+  //     .then(latLng =>{
+  //       this.setState({
+  //           L1:latLng.lat,
+  //           L2:latLng.lng,
+  //           zoom:5
+  //       })
+  //       console.log(this.state.L1);
+  //       console.log(this.state.L2);
+  //       cookie.save('Home_lat', this.state.L1);
+  //       cookie.save('Home_lon', this.state.L2);
+  //
+  //
+  //       fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetSpotCrimes',
+  //       {
+  //        method: "POST",
+  //        body: JSON.stringify({
+  //          "UserID":cookie.load('Id'),
+  //          "UserToken":cookie.load('UserToken'),
+  //          "Radius":"0.02",
+  //          "Lat":cookie.load('Home_lat'),
+  //          "Long":cookie.load('Home_lon')
+  //
+  //
+  //        }),
+  //         headers: new Headers({'content-type': 'application/json'}),
+  //       })
+  //   .then((Response)=> Response.json())
+  //   .then((findresponse)=>{
+  //       // console.log(findresponse);
+  //     this.setState({
+  //              GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
+  //
+  //                })
+  //          console.log(this.state.GetSpotCrimesResult);
+  //
+  //   })
+  //     })
+  //     .catch(error => console.error('Error', error))
+  //
+  // }
+  handleEnter(address){
+       geocodeByAddress(address)
+         .then(results => getLatLng(results[0]))
+         .then(latLng =>{
+           this.setState({
+               L1:latLng.lat,
+               L2:latLng.lng,
+               zoom:5
+           })
+           // console.log(this.state.L1);
+           // console.log(this.state.L2);
+           cookie.save('Home_lat', this.state.L1);
+           cookie.save('Home_lon', this.state.L2);
 
+
+           fetch('https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetSpotCrimes',
+           {
+            method: "POST",
+            body: JSON.stringify({
+              "UserID":cookie.load('Id'),
+              "UserToken":cookie.load('UserToken'),
+              "Radius":"0.02",
+              "Lat":cookie.load('Home_lat'),
+              "Long":cookie.load('Home_lon')
+
+
+            }),
+             headers: new Headers({'content-type': 'application/json'}),
+           })
+       .then((Response)=> Response.json())
+       .then((findresponse)=>{
+           // console.log(findresponse);
+         this.setState({
+                  GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
+
+                    })
+              // console.log(this.state.GetSpotCrimesResult);
+
+       })
+         })
+         .catch(error => console.error('Error', error))
+
+
+
+}
 onMarkerClicked (props, marker, e) {
   this.setState({
         selectedPlace: props,
@@ -146,7 +153,7 @@ handleMapMount(props, map) {
     this.map = map;
 
     //log map bounds
-     console.log(props);
+     // console.log(props);
 
 }
 
@@ -208,8 +215,8 @@ componentDidMount()
          "UserID":cookie.load('Id'),
          "UserToken":cookie.load('UserToken'),
          "Radius":"0.02",
-         "Lat":cookie.load('Latitude'),
-         "Long":cookie.load('Longitude')
+         "Lat":cookie.load('Home_lat'),
+         "Long":cookie.load('Home_lon')
 
 
        }),
@@ -229,7 +236,15 @@ componentDidMount()
         // console.log(cookie.load('Longitude'));
         // console.log(  cookie.load('AlertLatitude'));
         // console.log(cookie.load('AlertLongitude'));
+        var Home_lat=cookie.load('Latitude');
+         console.log(Home_lat);
+        var Home_lon = cookie.load('Longitude');
+         console.log(Home_lon);
 
+         cookie.save('Home_lat', Home_lat);
+         console.log(cookie.load('Home_lat'));
+         cookie.save('Home_lon', Home_lon);
+          console.log(cookie.load('Home_lon'));
 
 
   })
@@ -254,11 +269,14 @@ render() {
     var lastname=lname.substr(0, 1);
    //   console.log(lastname);
 
+
    const inputProps = {
    value: this.state.address,
    // onChange: this.onChange,
    onChange:this.handleChange,
-   onSelect:this.handleSelect
+   placeholder: 'Search Places...',
+   autoFocus: true,
+
     }
 
 
@@ -274,14 +292,14 @@ render() {
             onClick={(e)=>this.onMapClicked()}
             initialCenter={{
 
-              lat: cookie.load('Latitude'),
-              lng: cookie.load('Longitude')
+              lat: cookie.load('Home_lat'),
+              lng: cookie.load('Home_lon')
 
             }}
               // onDragend={(e)=>this.centerMoved()}
             onDragend={this.centerMoved}
             zoom={this.state.zoom}
-            onReady={this.handleMapMount}
+            onReady={this.handleEnter}
 
            styles={[{"featureType":"all","elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},
              {"featureType":"all","elementType":"labels.icon","stylers":[{"visibility": "off"}]},
@@ -750,7 +768,7 @@ render() {
                    title={'Home Address Location '}
                    name={fname+" "+lastname}
                    onClick={this.onMarkerClicked}
-                   position={{lat: cookie.load('Latitude'),  lng: cookie.load('Longitude')}}
+                   position={{lat:cookie.load('Home_lat') ,  lng:cookie.load('Home_lon') }}
                   icon={{
                            url: "assets/images/howl-map-marker-small.png",
                            anchor: new google.maps.Point(32,32),
@@ -762,11 +780,12 @@ render() {
                  />
 
 
-                 <Marker
+                 {/* <Marker
                       ttitle={'Home Address Location '}
                       name={fname+" "+lastname}
                       onClick={this.onMarkerClicked}
-                     position={{lat: cookie.load('AlertLatitude'),  lng: cookie.load('AlertLongitude')}}
+                      onEnterKeyDown={this.handleEnter}
+                     position={{lat: cookie.load('Latitude'),  lng: cookie.load('Longitude')}}
                      icon={{
                               url: "assets/images/howl-map-marker-small.png",
                               anchor: new google.maps.Point(32,32),
@@ -774,7 +793,7 @@ render() {
                          }}
 
 
-                    />
+                    /> */}
 
                   <InfoWindow
                          marker={this.state.activeMarker}
@@ -785,9 +804,14 @@ render() {
                   </InfoWindow>
 
 
-            {/* <div className="col-lg-6 ">
-              <PlacesAutocomplete inputProps={inputProps}  />
-            </div> */}
+            <div className="col-lg-6 ">
+              <PlacesAutocomplete inputProps={inputProps} onEnterKeyDown={this.handleEnter} />
+              {/* <PlacesAutocomplete
+  inputProps={inputProps}
+   onSelect={this.handleSelect}
+/> */}
+
+            </div>
         </Map>
 
 
