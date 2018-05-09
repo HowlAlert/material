@@ -18,6 +18,14 @@ import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom
 const mWidthStyle = {
   minWidth: '130px'
 };
+const  printcode= {
+    color: '#3287c5'
+};
+const customContentStyle = {
+  width: '23.5%',
+  maxWidth: 'none',
+};
+
 class ValidatePhoneCode extends React.Component {
   constructor() {
     super();
@@ -213,17 +221,8 @@ if(this.state.noOfSuperValidation!="False"){
             <ul className="nav" ref={(c) => { this.nav = c; }}>
               </ul>
 */}
-<div className="regRight">
-<a onClick={this.handleOpen} ><span className="nav-text" >Help</span></a>
-<Dialog
-            id="Dialog"
-            actions={actions}
-            modal={false}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-          </Dialog>
-</div>
+
+
 <div className="regLeft">
 
  <p className="hero-title text-center registerHeader">Enter Your Verification Code</p>
@@ -260,9 +259,21 @@ if(this.state.noOfSuperValidation!="False"){
             </div>*/}
 
             </form>
+            
           </div>
 
-
+          <div className="text-center">
+          <p className="text-small"><a className='loginBtn' onClick={this.handleOpen} style={printcode}><u>Help</u></a></p>
+          <Dialog
+                      id="Dialog"
+                      actions={actions}
+                      modal={false}
+                      open={this.state.open}
+                      onRequestClose={this.handleClose}
+                      contentStyle={customContentStyle}
+                    >
+                    </Dialog>
+            </div>
 
         </div>
 

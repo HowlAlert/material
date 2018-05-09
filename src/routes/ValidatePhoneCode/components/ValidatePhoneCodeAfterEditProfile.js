@@ -223,8 +223,8 @@ if(this.state.noOfSuperValidation!="False"){
 
               </div>
               <div className="regButtons">
+              <div style={mWidthStyle} className="howlRegBack" label="NEXT -->"  onClick={(e)=>this.HandleSendCode(e)}>Send the Code Again</div>
                 <div style={mWidthStyle} className="howlRegNext" label="NEXT -->"  onClick={(e)=>this.handleVerifyCode(e)}>Submit</div>
-                <div style={mWidthStyle} className="howlRegBack" label="NEXT -->"  onClick={(e)=>this.HandleSendCode(e)}>Send the Code Again</div>
               </div>
               {/*
               <div className="box-body text-center">

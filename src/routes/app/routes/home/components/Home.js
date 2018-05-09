@@ -26,18 +26,24 @@ class BasicHome extends React.Component{
         data: '',
         open: false,
         firstName:'',
-        EmergancyType:''
+        EmergancyType:'',
       }
+
   }
 
 
   componentWillMount() {
     this.setState({ firstName: cookie.load('FirstName')});
-    cookie.save('Loggedin', 'Loggedin')
-    //console.log(cookie.load('Loggedin'))
+    if(cookie.load('FirstName')==undefined){
+      this.setState({ redirectToMainLogin: true })
+    }else{
+      cookie.save('Loggedin', 'Loggedin')
+    }
   }
 
+
   handleOpen = (value1) => {
+
     this.setState({open: true});
     var alert_type = `${value1}`;
     cookie.save('Alert_Type',alert_type);
@@ -112,6 +118,7 @@ class BasicHome extends React.Component{
 }
 render() {
 
+
   const actions = [
     <FlatButton
       label="Yes"
@@ -127,6 +134,13 @@ render() {
     />,
   ];
 
+
+  const{redirectToMainLogin}=this.state
+  if(redirectToMainLogin){
+    return (
+      <Redirect to="../mainLogin"/>
+    )
+  }
 
 var subscribed =   cookie.load('GetAccount_GMT');                 //to check the user subscribed or not
 // console.log(subscribed)
@@ -315,6 +329,7 @@ const Dashboard = () => (
   </div>
 );
 const Page = () => {
+
   return (
     <div className="container-fluid no-breadcrumbs page-dashboard chapter">
       <QueueAnim type="bottom" className="ui-animate">

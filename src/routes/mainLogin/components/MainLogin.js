@@ -57,9 +57,7 @@ class MainLogin extends React.Component {
   }
 
   componentWillMount(){
-
     if(cookie.load('Loggedin')!=undefined){
-
       this.setState({ redirectToHome: true })
     }
   }
@@ -417,13 +415,6 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
         }
 
   render (){
-
-    const{redirectToMainLogin}=this.state
-    if(redirectToMainLogin){
-      return (
-        <Redirect to={'/mainLogin'}/>
-      )
-    }
 
     const{redirectToHome}=this.state
     if(redirectToHome){
