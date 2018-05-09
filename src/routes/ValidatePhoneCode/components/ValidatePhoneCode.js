@@ -54,6 +54,17 @@ class ValidatePhoneCode extends React.Component {
       this.focusTextInput();
     }
 
+    state = {
+    open: true,
+    };
+    handleOpen = () => {
+      this.setState({open: true});
+    };
+
+    handleClose = () => {
+      this.setState({open: false});
+    };
+
   handleCode(event) {
     event.preventDefault();
     const target = event.target;
@@ -117,12 +128,51 @@ if(this.state.noOfSuperValidation!="False"){
       })
 
 }
-
     }
 
+    HandleChangeNumber(event){
+      this.setState({open: false});
+      alert("HandleChangeNumber")
+      this.setState({ redirectToChangeNumber: true })
+    }
 
+    HandleSendCode(event){
+      this.setState({open: false});
+      const BaseURL ='https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/ConfirmYourPhoneNumber';
+       // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/ConfirmYourPhoneNumber';
+
+         fetch(BaseURL,{
+          method: "POST",
+          body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken'),'MobilePhoneCountryCode':1,'MobilePhoneNumber':cookie.load('MobilePhoneNumber')}),
+        headers: new Headers({'content-type': 'application/json'})
+        }).
+      then((Response)=>Response.json()).
+      then((findresponse)=>{
+        this.setState({
+          ResultStatus:findresponse.ConfirmYourPhoneNumberResult.ResultStatus,
+        })
+        if(this.state.ResultStatus.Status==1){
+          alert("The verification code has been resent on your phone number successfully")
+        }
+
+      })
+    }
 
   render() {
+    const { match, location } = this.props;
+    const actions = [
+         <FlatButton
+           label="Change My Number"
+           primary
+           onClick={(e)=>this.HandleChangeNumber(e)}
+         />,
+         <FlatButton
+           label="Send the Code Again"
+           primary
+           keyboardFocused
+           onClick={(e)=>this.HandleSendCode(e)}
+         />,
+       ];
 
     const{redirectToHome}=this.state
     if(redirectToHome){
@@ -138,7 +188,14 @@ if(this.state.noOfSuperValidation!="False"){
           )
         }
 
+        const { redirectToChangeNumber} = this.state
+        if (redirectToChangeNumber==true) {
 
+            //console.log(redirectToReferrer)
+              return (
+                <Redirect to="VerifyPhoneNumber" />
+              )
+            }
 
     return (
       <div className="body-inner">
@@ -156,8 +213,19 @@ if(this.state.noOfSuperValidation!="False"){
             <ul className="nav" ref={(c) => { this.nav = c; }}>
               </ul>
 */}
-
+<div className="regRight">
+<a onClick={this.handleOpen} ><span className="nav-text" >Help</span></a>
+<Dialog
+            id="Dialog"
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+          >
+          </Dialog>
+</div>
 <div className="regLeft">
+
  <p className="hero-title text-center registerHeader">Enter Your Verification Code</p>
 </div>
               <fieldset>
