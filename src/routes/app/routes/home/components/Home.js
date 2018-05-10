@@ -312,16 +312,17 @@ const Dashboard = () => (
     </div>
 
     <div className="col-lg-6">
+     <a  href="#/app/Map">
+             <Map />
+      </a>
+   </div>
+
+    <div className="col-lg-6">
       {/* <div className="box box-default box-body homeAlert dkShadow"> */}
         <Alert />
 
     </div>
 
-     <div className="col-lg-6">
-      <a  href="#/app/Map">
-              <Map />
-       </a>
- </div>
 
     <div className="col-lg-12">
       <Camera />
