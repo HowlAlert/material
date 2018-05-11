@@ -65,11 +65,12 @@ handlePrintCode(event){
     })
     if(this.state.ResultStatus.Status==="1"){
         //console.log("status"),
+        alert("Your invite code or referral code has been validated. Click “OK” to create your account.")
       cookie.save('InviteCode', this.state.Code);
    this.setState({ redirectToReferrer: true })
     }
-    else{
-       this.setState({ redirectToReferrer: false })
+    else if(this.state.ResultStatus.Status==="1"){
+      alert("Invalid invite code or referral code.")
     }
   })
   }

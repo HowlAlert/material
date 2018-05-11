@@ -44,6 +44,9 @@ class Register extends React.Component {
               if (this.textInput) this.textInput.focus();
             };
     //input Highlighting code end
+
+
+      this.renderDialog = this.renderDialog.bind(this);
   }
 
   componentWillMount(){
@@ -58,6 +61,16 @@ class Register extends React.Component {
      this.focusTextInput();
    }
 
+   // state = {
+   // open: true,
+   // };
+   // handleOpen = () => {
+   //   this.setState({open: true});
+   // };
+   //
+   // handleClose = () => {
+   //   this.setState({open: false});
+   // };
 
     handleNext(event){
       var password = this.state.Password;
@@ -135,6 +148,7 @@ class Register extends React.Component {
            }
            if(this.state.resultStatus.StatusMessage == "This email already exists."){
              alert(this.state.resultStatus.StatusMessage)
+               //this.setState({ redirectToDialog: true })
            }
 
       })
@@ -197,7 +211,46 @@ this.setState({
            return target.value;
         }
 
+        // renderDialog(){
+        //   return(
+        //     <Dialog
+        //                 id="Dialog"
+        //                 actions={actions}
+        //                 modal={false}
+        //                 open={this.state.open}
+        //                 onRequestClose={this.handleClose}
+        //               >
+        //                 This email already exists.
+        //               </Dialog>
+        //   )
+        // }
+
   render() {
+
+    const { match, location } = this.props;
+    const actions = [
+         <FlatButton
+           label="LOGIN"
+           primary
+           onClick={(e)=>this.handleLogout(e)}
+         />,
+         <FlatButton
+           label="OK"
+           primary
+           keyboardFocused
+           onClick={this.handleClose}
+         />,
+       ];
+
+    const{redirectToDialog}=this.state
+
+    if(redirectToDialog){
+
+         return(
+           renderDialog()
+         )
+
+    }
 
     const{redirectToHome}=this.state
 
@@ -224,8 +277,6 @@ this.setState({
           {/* <section className="logo text-center">
               <h1><a href="#/">{this.state.brand}</a></h1>
             </section>*/}
-
-
 
             <form className="form-horizontal">
 
@@ -287,12 +338,14 @@ this.setState({
               <div className="regButtons">
                 <a style={mWidthStyle} className="howlRegBack" label="NEXT -->" href="/">BACK</a>
                 <div style={mWidthStyle} className="howlRegNext" label="NEXT -->" onClick={(e)=>this.handleNext(e)}>NEXT</div>
+
               </div>
 
 {/*
               <div className="box-body text-center">
               <RaisedButton style={mWidthStyle} label="NEXT -->" primary href={"#/Register2"} onClick={(e)=>this.handleNext(e)}/><div className="divider" />
             </div>*/}
+
 
             </form>
           </div>

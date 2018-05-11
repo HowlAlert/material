@@ -50,9 +50,11 @@ class ForgotPassword extends React.Component {
           //console.log("status"),
      this.setState({ redirectToReferrer: true })
       }
-      else{
-        alert("That e-mail addreds isn't associated with an ccount. Please re-enter or Sign Up below.")
-         this.setState({ redirectToReferrer: false })
+      else if(this.state.ResultStatus.StatusMessage=="That e-mail address is associated with either Google account or Facebook account."){
+        alert(this.state.ResultStatus.StatusMessage)
+      }
+      else if(this.state.ResultStatus.StatusMessage=="That e-mail address isn’t associated with an account.Please re-enter or Sign Up below."){
+        alert(this.state.ResultStatus.StatusMessage)
       }
     })
   }
