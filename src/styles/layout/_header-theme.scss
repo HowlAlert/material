@@ -6,7 +6,7 @@
 
   .app-header-inner {
     height: $l_header_height;
-    box-shadow: $header_box_shadow;
+  // box-shadow: $header_box_shadow;
   }
   @media only screen and (min-width: $l_screen_md_min) {
     text-align: inherit;
@@ -61,7 +61,7 @@
 .top-nav-center {
   display: inline-block;
   float: center;
-  
+
 }
 
 .top-nav-right {

@@ -190,12 +190,11 @@ var today = moment(this.state.startDate).format('YYYY-MM-DD HH:MM:SS');   //to g
 
     <div className="">
 
-      <div className="col-lg-12 welcomeText">
-        <h1>Welcome back, {this.state.firstName}</h1>
-      </div>
+
 
       <div className="">
         <div className="box box-default box-body dkShadow ">
+          <h2 className="article-title-header ">Quick Alerts </h2>
 
           <div className="flLeft">
             <img src="assets/images/alert-pack-button.png" onClick={()=>this.handleOpen("1")} width="120"/>

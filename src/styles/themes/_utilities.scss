@@ -3,7 +3,7 @@
   background-color: $background;
   color: $color;
   &:hover {
-    background-color: $background;
+    //background-color: $background;
     color: $color;
   }
   a {
@@ -26,7 +26,10 @@
 .bg-color-white { @include bg-style(#fff, $body-color); }
 
 .bg-color-gray { @include bg-style($gray-light, #fff); }
-.bg-color-dark { @include bg-style($dark, #fff); }
+.bg-color-dark {
+  //@include bg-style($dark, #fff);
+  background-color:#fff;
+ }
 .bg-color-primary { @include bg-style(theme-color("primary"), #fff); }
 .bg-color-success { @include bg-style(theme-color("success"), #fff); }
 .bg-color-info { @include bg-style(theme-color("info"), #fff); }
@@ -42,4 +45,3 @@
   .bg-color-info { @include bg-style(theme-color("info"), #fff); }
   .bg-color-danger { @include bg-style(theme-color("danger"), #fff); }
 }
-

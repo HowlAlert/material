@@ -22,7 +22,7 @@
 
   .box {
     position: relative;
-    border-radius: $border-radius-lg;
+    border-radius: 0px;
 
 
     .box-top,
@@ -303,9 +303,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dkShadow{
-  -webkit-box-shadow: 7px 9px 14px -5px rgba(22,57,110,1);
+/*  -webkit-box-shadow: 7px 9px 14px -5px rgba(22,57,110,1);
   -moz-box-shadow: 7px 9px 14px -5px rgba(22,57,110,1);
-  box-shadow: 7px 9px 14px -5px rgba(22,57,110,1);
+  box-shadow: 7px 9px 14px -5px rgba(22,57,110,1);*/
 }
 
 
@@ -320,7 +320,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .height400{
-  height:540px;
+  min-height:540px;
 }
 
 

@@ -202,30 +202,28 @@ class SidebarContent extends React.Component {
     return (
       <ul className="nav" ref={(c) => { this.nav = c; }}>
         <li>
-          <FlatButton href="#/app/home"><img className="nav-icon material-icons" src="assets/images/rsz_bluehome.png" alt="Image" height="20" width="20"/><span className="nav-text">Home</span></FlatButton>
-        </li>
-        <li>
-
-          <FlatButton href="#/app/Map"><img className="nav-icon material-icons" src="assets/images/MapGlobe-2.png" alt="Image" height="20" width="20"/><span className="nav-text">Map</span></FlatButton>
+          <FlatButton href="#/app/home"><i className="nav-icon material-icons">home</i><span className="nav-text">Home</span></FlatButton>
         </li>
         <li>
           <FlatButton href="#/app/Alerts">
-          <img className="nav-icon material-icons" src="assets/images/blueAlert.png" alt="Image" height="20" width="20"/>
+          <i className="nav-icon material-icons">forward</i>
           <span className="nav-text">Alerts</span>
-          </FlatButton>
 
 
+        </FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/Cameras"><img className="nav-icon material-icons" src="assets/images/sidenavCamera.png" alt="Image" height="20" width="20"/><span className="nav-text">Cameras</span></FlatButton>
+          <FlatButton href="#/app/Cameras"><i className="nav-icon material-icons">camera_alt</i><span className="nav-text">Cameras</span></FlatButton>
         </li>
-
+        <li>
+          <FlatButton href="#/app/Devices"><i className="nav-icon material-icons">devices</i><span className="nav-text">Devices</span></FlatButton>
+        </li>
         {/* <li>
           <FlatButton href="#/app/pack"><img className="nav-icon material-icons" src="assets/images/bluePack.png" alt="Image" height="20" width="20"/><span className="nav-text">Pack</span></FlatButton>
 
         </li> */}
         <li>
-          <FlatButton href="#/app/Pack"><img className="nav-icon material-icons" src="assets/images/bluePack.png" alt="Image" height="20" width="20"/><span className="nav-text">Pack</span></FlatButton>
+          <FlatButton href="#/app/Pack"><i className="nav-icon material-icons">people</i><span className="nav-text">Pack</span></FlatButton>
           {/* <ul>
             <li><FlatButton className="prepend-icon" href="#/app/Pack"><span>Pack</span></FlatButton></li>
             {/* <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_pack"><span>Howls at Pack</span></FlatButton></li> */}
@@ -233,20 +231,20 @@ class SidebarContent extends React.Component {
           </ul> */}
         </li>
         <li>
-          <FlatButton href="#/app/Monitoring"><img className="nav-icon material-icons" src="assets/images/blueMonitor.png" alt="Image" height="20" width="20"/><span className="nav-text">Monitoring</span></FlatButton>
+          <FlatButton href="#/app/Monitoring"><i className="nav-icon material-icons">network_wifi</i><span className="nav-text">Monitoring</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/Devices"><img className="nav-icon material-icons" src="assets/images/blueNetwork.png" alt="Image" height="20" width="20"/><span className="nav-text">Devices</span></FlatButton>
+          <FlatButton href="#/app/Map"><i className="nav-icon material-icons">map</i><span className="nav-text">Map</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/Help & Support"><img className="nav-icon material-icons" src="assets/images/blueQuestion.png" alt="Image" height="20" width="20"/><span className="nav-text">Help & Support</span></FlatButton>
+          <FlatButton href="#/app/Help & Support"><i className="nav-icon material-icons">help</i><span className="nav-text">Help & Support</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/Settings"><img className="nav-icon material-icons" src="assets/images/blueCog.png" alt="Image" height="20" width="20"/><span className="nav-text">Settings</span></FlatButton>
+          <FlatButton href="#/app/Settings"><i className="nav-icon material-icons">settings</i><span className="nav-text">Settings</span></FlatButton>
 
         </li>
         <li>
-          <FlatButton href="#/app/Alpha"><img className="nav-icon material-icons" src="assets/images/blueMonitor.png" alt="Image" height="20" width="20"/><span className="nav-text">Alpha</span></FlatButton>
+          <FlatButton href="#/app/Alpha"><i className="nav-icon material-icons">contacts</i><span className="nav-text">Alpha</span></FlatButton>
         </li>
         <li>
           <a  onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></a>
