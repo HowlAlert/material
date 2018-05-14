@@ -110,7 +110,7 @@ class Alerts extends React.Component {
 
          {
                 this.state.data2.map((dyanamicData1,key)=>
-                     <div className="box box2 box-default">
+                     <div className="box noshadd box-default">
                          <div className="box-body ">
 
                             <div className="row">

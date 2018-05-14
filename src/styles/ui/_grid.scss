@@ -20,7 +20,8 @@
     max-width: map-get($container-max-widths, md);
   }
   &.no-breadcrumbs {
-    padding-top: 2em;
+    //padding-top: 2em;
+    padding-top:0px;
     padding-bottom: 1em;
   }
 }

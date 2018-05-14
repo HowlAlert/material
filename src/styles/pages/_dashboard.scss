@@ -23,7 +23,9 @@
   .box {
     position: relative;
     border-radius: 0px;
-
+    -webkit-box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.63);
+  -moz-box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.63);
+  box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.63);
 
     .box-top,
     .box-bottom {
@@ -130,6 +132,12 @@
 
 .article-title-header{
 
+}
+
+.noshadd{
+  -webkit-box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.0)!important;
+  -moz-box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.0)!important;
+  box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.0)!important;
 }
 .headerLogo{margin-left:2px!important;}
 
@@ -326,4 +334,36 @@ body::-webkit-scrollbar-thumb {
 
 .margin380{
   margin-top:380px;
+}
+
+.userName div{
+  color:#fff!important;
+  font-size: 14px;
+    letter-spacing: 0.6px;
+    text-align: left;
+    float: left;
+    padding: 0px!important;
+    line-height: 27px;
+    height: 28px;
+    margin: 0px;
+    width:214px;
+}
+.userName i{
+  top:-10px!important;
+}
+.userName h3{
+  font-size: 12px;
+color: #ffffff;
+opacity: 0.6;
+letter-spacing: 0.6px;
+margin: 0px;
+padding: 0px;
+line-height: 13px;
+}
+
+.userStuff{
+  padding:23px 0px 0px 17px;
+}
+.userImage{
+  margin-bottom:18px;
 }

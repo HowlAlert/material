@@ -176,24 +176,50 @@ var count = this.state.data;
 
       <div className="">
 
-        <div className="topRightNav row">
+        <div className=" userStuff row">
 
-        <div className="col-lg-3">
+        <div className="col-lg-12 userImage">
 
-          <MenuItem
-              leftIcon={
-              count !== "0" ?
-              <i className="material-icons mdl-badge mdl-badge--overlap" data-badge={this.state.data} onClick={(e)=>this.handleNotify(e)} >notifications_none</i>
-             :<i className="material-icons">notifications_none</i>
-          }
-
-          />
+          <img src="assets/images/profile_image.png" alt="Image" height="40" width="40"/>
 
           </div>
 
-        }
 
-          
+
+          <div className="col-lg-12 userName">
+
+          <h3>Welcome Back,</h3>
+
+          <IconMenu
+            iconButtonElement={
+              <MenuItem style={{}} innerDivStyle={listItemStyle}
+              primaryText={cookie.load('FirstName') +" "+ cookie.load('LastName')}
+              onClick={this.handleChange}
+              rightIcon={<i className="nav-icon material-icons">arrow_drop_down</i>}
+              />
+              }
+            onChange={this.handleChange}
+            anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
+            targetOrigin={{horizontal: 'right', vertical: 'top'}}
+            menuStyle={{minWidth: '150px'}}
+                    >
+
+
+
+
+            <MenuItem
+            //value="/login"
+              primaryText="Logout"
+              innerDivStyle={listItemStyle}
+              style={{fontSize: '13px', lineHeight: '48px'}}
+              leftIcon={<i className="material-icons">forward</i>}
+              onClick={this.handleOpen}
+                        />
+
+
+
+          </IconMenu>
+          </div>
           <Dialog
                       title="Confirm"
                       actions={actions}
