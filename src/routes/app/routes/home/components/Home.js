@@ -196,7 +196,10 @@ var today = moment(this.state.startDate).format('YYYY-MM-DD HH:MM:SS');   //to g
         <div className="box box-default box-body dkShadow ">
           <h2 className="article-title-header ">Quick Alerts </h2>
 
-          <div className="flLeft">
+          <div className="row">
+
+          <div className="col-lg-3">
+          <div className="packB">
             <img src="assets/images/alert-pack-button.png" onClick={()=>this.handleOpen("1")} width="120"/>
 
               <Dialog
@@ -210,8 +213,8 @@ var today = moment(this.state.startDate).format('YYYY-MM-DD HH:MM:SS');   //to g
                 >
                 <h5>You want to Alert your Pack Members? </h5>
                 </Dialog>
-
-          </div>
+                </div>
+              </div>
        {
          (subscribed === "empty" || subscribed === today)       //If not subscribed or subscribed expired
 
@@ -231,10 +234,11 @@ var today = moment(this.state.startDate).format('YYYY-MM-DD HH:MM:SS');   //to g
         </a>
         </div>
         :
-        <div>
+        <div className="col-lg-9">
 
-
-        <div className="flLeft">
+        <div className="row">
+        <div className=" col-lg-4 ">
+        <div className="fireB">
           <img src="assets/images/fire-button.png" onClick={()=>this.handleOpen("2")} width="120"/>
 
             <Dialog
@@ -248,9 +252,12 @@ var today = moment(this.state.startDate).format('YYYY-MM-DD HH:MM:SS');   //to g
               >
               <h5>You want to Alert Monitoring System? </h5>
               </Dialog>
+              </div>
 
-      </div>
-      <div className="flLeft">
+        </div>
+
+      <div className="col-lg-4">
+        <div className="ambulanceB">
         <img src="assets/images/ambulance-button.png" onClick={()=>this.handleOpen("3")} width="120"/>
 
           <Dialog
@@ -264,13 +271,12 @@ var today = moment(this.state.startDate).format('YYYY-MM-DD HH:MM:SS');   //to g
             >
             <h5>You want to Alert Monitoring System? </h5>
             </Dialog>
-
+            </div>
     </div>
-        {/* <a className="flLeft" href="#/app/Monitoring">
-            <img src="assets/images/ambulance-button.png"  width="120"/>
-        </a> */}
 
-        <div className="flLeft">
+
+        <div className="col-lg-4 ">
+        <div className="policeB">
           <img src="assets/images/police-button.png" onClick={()=>this.handleOpen("4")} width="120"/>
 
             <Dialog
@@ -284,13 +290,15 @@ var today = moment(this.state.startDate).format('YYYY-MM-DD HH:MM:SS');   //to g
               >
               <h5>You want to Alert Monitoring System? </h5>
               </Dialog>
-
+              </div>
       </div>
-       {/* <a className="flLeft" href="#/app/Monitoring">
-           <img src="assets/images/police-button.png"  width="120"/>
-      </a> */}
+      </div>
+
+
   </div>
+
     }
+</div>
 </div>
 </div>
 
@@ -324,7 +332,10 @@ const Dashboard = () => (
 
 
     <div className="col-lg-12">
+    <div className="box box-default box-body dkShadow ">
+      <h2 className="article-title-header ">Latest Images </h2>
       <Camera />
+      </div>
     </div>
   </div>
 );

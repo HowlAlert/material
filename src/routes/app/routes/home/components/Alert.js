@@ -110,8 +110,8 @@ class Alerts extends React.Component {
 
          {
                 this.state.data2.map((dyanamicData1,key)=>
-                     <div className="box noshadd box-default">
-                         <div className="box-body ">
+                     <div className=" noshadd borderBott">
+                         <div className="box-body2 ">
 
                             <div className="row">
                               <div className="col-lg-8">
@@ -144,7 +144,7 @@ class Alerts extends React.Component {
                  )}
 
        </div>
-        <a href="#/app/Alerts" className="blueButton">See All Alerts </a>
+        <a href="#/app/Alerts" className="blueButton2">See All Alerts </a>
     </div>
 </div>
     );

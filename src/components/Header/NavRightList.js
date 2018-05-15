@@ -191,9 +191,16 @@ var count = this.state.data;
 
           </div>
 
-        }
 
-          
+          <div className="col-lg-9">
+            <img src="assets/images/new-howl-logo-small-grey.png" alt="Image" height="60" width="150"/>
+          </div>
+
+
+
+
+
+
           <Dialog
                       title="Confirm"
                       actions={actions}

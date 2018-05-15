@@ -161,7 +161,7 @@
 .alertImage{
   width: 92px;
     height: 86px;
-    border-radius: 6px;
+    border-radius: 0px;
 }
 
 .blueButton{
@@ -173,6 +173,28 @@
     /* text-transform: uppercase; */
     font-weight: 100;
     letter-spacing: 0.5px;
+}
+
+
+.blueButton2{
+  background-color: #3287c5;
+    padding: 11px 22px;
+    color: #fff;
+    border-radius: 49px;
+    font-size: 12px;
+    /* text-transform: uppercase; */
+    font-weight: 300;
+    letter-spacing: 0.6px;
+    display:block;
+    width:200px;
+    margin:0 auto;
+    margin-top:20px;
+    text-align:center;
+}
+.blueButton2:hover{
+  color: #6fd0ff;
+  background-color:#0d3548;
+  text-decoration:none;
 }
 
 .welcomeText{padding-left:0px!important;}
@@ -366,4 +388,46 @@ line-height: 13px;
 }
 .userImage{
   margin-bottom:18px;
+}
+.packB{
+  background-color:#E9493F;
+  padding:10px;
+  border-radius:3px;
+    cursor:pointer;
+}
+.fireB{
+  background-color:#912C26;
+  padding:10px;
+  border-radius:3px;
+    cursor:pointer;
+}
+.policeB{
+  background-color:#20638A;
+  padding:10px;
+  border-radius:3px;
+    cursor:pointer;
+}
+.ambulanceB{
+  padding:10px;
+  background-color:#48A4D4;
+  border-radius:3px;
+  cursor:pointer;
+}
+.packB:hover{
+  opacity:0.6;;
+}
+.fireB:hover{
+  opacity:0.6;
+}
+.policeB:hover{
+  opacity:0.6;
+}
+.ambulanceB:hover{
+    opacity:0.6;
+}
+.borderBott{
+  border-bottom:1px solid #e7e7e7;
+}
+.box-body2{
+  padding:20px 0px 20px 0px;
 }
