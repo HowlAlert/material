@@ -192,9 +192,7 @@ var EndTime = today + " " + et
                         </div>
                       </div>
                     </a>
-               {/* <a href="#/app/camerasettings/camera-history" >
-                   <img src={`data:image/jpg;base64,${this.state.data.GetImageDataResult}`} alt="Image"  width="100%"  height="100%" />
-                </a> */}
+            
           </div>
           </div>
 
