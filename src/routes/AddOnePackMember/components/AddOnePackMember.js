@@ -94,15 +94,16 @@ class AddOnePackMember extends React.Component {
        alert("Please enter only alphabets for Last Name");
        this.setState.noOfSuperValidation="False"
      }
-     else if(this.state.email==''){
-       alert("Please enter your email address");
-       this.setState.noOfSuperValidation="False"
-     }
+     // else if(this.state.email==''){
+     //   alert("Please enter your email address");
+     //   this.setState.noOfSuperValidation="False"
+     // }
 
      else if(email.test(this.state.email)==''){
        alert("Please enter a valid email");
         this.setState.noOfSuperValidation="False"
      }
+     
   else if(this.state.phone === '' || this.state.phone == undefined){
     alert("Please enter phone number")
     this.setState.noOfSuperValidation="False"
