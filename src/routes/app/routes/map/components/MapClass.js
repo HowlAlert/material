@@ -319,101 +319,32 @@ render() {
                       {this.state.GetSpotCrimesResult.map(d => {
 
 
-                     if(d.type === "Arrest"){
-                         return (
-                           <Marker
-                                title={'Home Address Location '}
-                                name={
-                                  <div>
-                                    {d.type}
-                                    <div>{d.address}</div>
-                                     <div>{d.date}</div>
-                                  </div>
-                                }
-                                onClick={this.onMarkerClicked}
-                                position={{lat: d.lat,  lng: d.lon }}
-                               icon={{
-                                        url: "assets/images/Arrest-Icon-Small.png",
-                                        anchor: new google.maps.Point(32,32),
-                                        scaledSize: new google.maps.Size(40,40)
-                                   }}
+                        if(d.type === "Arrest"){
+                            return (
+                              <Marker
+                                   title={'Home Address Location '}
+                                   name={
+                                     <div>
+                                       {d.type}
+                                       <div>{d.address}</div>
+                                        <div>{d.date}</div>
+                                     </div>
+                                   }
+                                   onClick={this.onMarkerClicked}
+                                   position={{lat: d.lat,  lng: d.lon }}
+                                  icon={{
+                                           url: "assets/images/Arrest-Icon-2.svg",
+                                           anchor: new google.maps.Point(32,32),
+                                           scaledSize: new google.maps.Size(40,40)
+                                      }}
 
 
-                              />
-                        )}
+                                 />
+                           )}
 
-                  if(d.type === "Assault"){
-                       return (
-                         <Marker
-                              title={'Home Address Location '}
-                              name={
-                                <div>
-                                  {d.type}
-                                  <div>{d.address}</div>
-                                   <div>{d.date}</div>
-                                </div>
-                              }
-                              onClick={this.onMarkerClicked}
-                              position={{lat: d.lat,  lng: d.lon }}
-                             icon={{
-                                      url: "assets/images/Assult-Icon-Small.png",
-                                      anchor: new google.maps.Point(32,32),
-                                      scaledSize: new google.maps.Size(40,40)
-                                 }}
-
-
-                            />
-                      )}
-
-                   if(d.type === "Burglary"){
-                         return (
-                           <Marker
-                                title={'Home Address Location '}
-                                name={
-                                  <div>
-                                    {d.type}
-                                    <div>{d.address}</div>
-                                     <div>{d.date}</div>
-                                  </div>
-                                  }
-                                onClick={this.onMarkerClicked}
-                                  position={{lat: d.lat,  lng: d.lon }}
-                               icon={{
-                                        url: "assets/images/Burglary-Icon-Small.png",
-                                        anchor: new google.maps.Point(32,32),
-                                        scaledSize: new google.maps.Size(40,40)
-                                   }}
-
-
-                              />
-                        )}
-                        if(d.type === "Other"){
-                             return (
-                               <Marker
-                                    title={'Home Address Location '}
-                                    name={
-                                      <div>
-                                        {d.type}
-                                        <div>{d.address}</div>
-                                         <div>{d.date}</div>
-                                      </div>
-
-                                       }
-                                    onClick={this.onMarkerClicked}
-                                    position={{lat: d.lat,  lng: d.lon }}
-                                   icon={{
-                                            url: "assets/images/Other-Icon-Small.png",
-                                            anchor: new google.maps.Point(32,32),
-                                            scaledSize: new google.maps.Size(40,40)
-                                       }}
-
-
-                                  />
-                            )}
-
-                         if(d.type === "Robbery"){
-                           return (
-                             <Marker
+                     if(d.type === "Assault"){
+                          return (
+                            <Marker
                                  title={'Home Address Location '}
                                  name={
                                    <div>
@@ -421,78 +352,102 @@ render() {
                                      <div>{d.address}</div>
                                       <div>{d.date}</div>
                                    </div>
-                                  }
+                                 }
                                  onClick={this.onMarkerClicked}
-                                   position={{lat: d.lat,  lng: d.lon }}
+                                 position={{lat: d.lat,  lng: d.lon }}
                                 icon={{
-                                         url: "assets/images/Robbery-Icon-Small.png",
+                                         url: "assets/images/Assult-Icon-2.svg",
                                          anchor: new google.maps.Point(32,32),
                                          scaledSize: new google.maps.Size(40,40)
                                     }}
 
 
                                />
-                          )}
-                          if(d.type === "Shooting"){
-                              return (
-                                <Marker
-                                     title={'Home Address Location '}
-                                     name={
-                                       <div>
-                                         {d.type}
-                                         <div>{d.address}</div>
-                                          <div>{d.date}</div>
-                                       </div>
+                         )}
+
+                      if(d.type === "Burglary"){
+                            return (
+                              <Marker
+                                   title={'Home Address Location '}
+                                   name={
+                                     <div>
+                                       {d.type}
+                                       <div>{d.address}</div>
+                                        <div>{d.date}</div>
+                                     </div>
                                      }
-                                     onClick={this.onMarkerClicked}
+                                   onClick={this.onMarkerClicked}
+                                     position={{lat: d.lat,  lng: d.lon }}
+                                  icon={{
+                                           url: "assets/images/Burglary-Icon-2.svg",
+                                           anchor: new google.maps.Point(32,32),
+                                           scaledSize: new google.maps.Size(40,40)
+                                      }}
+
+
+                                 />
+                           )}
+                           if(d.type === "Other"){
+                                return (
+                                  <Marker
+                                       title={'Home Address Location '}
+                                       name={
+                                         <div>
+                                           {d.type}
+                                           <div>{d.address}</div>
+                                            <div>{d.date}</div>
+                                         </div>
+
+                                          }
+                                       onClick={this.onMarkerClicked}
                                        position={{lat: d.lat,  lng: d.lon }}
-                                    icon={{
-                                             url: "assets/images/Shooting-Icon-Small.png",
-                                             anchor: new google.maps.Point(32,32),
-                                             scaledSize: new google.maps.Size(40,40)
-                                        }}
+                                      icon={{
+                                               url: "assets/images/Other-Icon-2.svg",
+                                               anchor: new google.maps.Point(32,32),
+                                               scaledSize: new google.maps.Size(40,40)
+                                          }}
 
 
-                                   />
-                             )}
-                          if(d.type === "Theft"){
+                                     />
+                               )}
+
+                            if(d.type === "Robbery"){
                               return (
                                 <Marker
-                                     title={'Home Address Location '}
+                                    title={'Home Address Location '}
                                     name={
+                                      <div>
+                                        {d.type}
+                                        <div>{d.address}</div>
+                                         <div>{d.date}</div>
+                                      </div>
+                                     }
+                                    onClick={this.onMarkerClicked}
+                                      position={{lat: d.lat,  lng: d.lon }}
+                                   icon={{
+                                            url: "assets/images/Robbery-Icon-2.svg",
+                                            anchor: new google.maps.Point(32,32),
+                                            scaledSize: new google.maps.Size(40,40)
+                                       }}
+
+
+                                  />
+                             )}
+                             if(d.type === "Shooting"){
+                                 return (
+                                   <Marker
+                                        title={'Home Address Location '}
+                                        name={
                                           <div>
                                             {d.type}
                                             <div>{d.address}</div>
                                              <div>{d.date}</div>
                                           </div>
-
-                                           }
-                                     onClick={this.onMarkerClicked}
-                                       position={{lat: d.lat,  lng: d.lon }}
-                                    icon={{
-                                             url: "assets/images/Theft-Icon-Small.png",
-                                             anchor: new google.maps.Point(32,32),
-                                             scaledSize: new google.maps.Size(40,40)
-                                        }}
-
-
-                                   />
-                             )}
-                             if(d.type === "Vandalism"){
-                                 return (
-                                   <Marker
-                                        title={'Home Address Location '}
-                                        name={
-                                           <div>
-                                              {d.type}
-                                              <div>{d.address}</div>
-                                               <div>{d.date}</div>
-                                            </div>
-                                           }
+                                        }
                                         onClick={this.onMarkerClicked}
                                           position={{lat: d.lat,  lng: d.lon }}
                                        icon={{
-                                                url: "assets/images/Vandalism-Icon-Small.png",
+                                                url: "assets/images/Shooting-Icon-2.svg",
                                                 anchor: new google.maps.Point(32,32),
                                                 scaledSize: new google.maps.Size(40,40)
                                            }}
@@ -500,23 +455,44 @@ render() {
 
                                       />
                                 )}
-                                if(d.type === "Fire"){
-                                    return (
-                                      <Marker
-                                           title={'Home Address Location '}
-                                           name={
+                             if(d.type === "Theft"){
+                                 return (
+                                   <Marker
+                                        title={'Home Address Location '}
+                                       name={
                                              <div>
                                                {d.type}
                                                <div>{d.address}</div>
                                                 <div>{d.date}</div>
                                              </div>
 
+                                              }
+                                        onClick={this.onMarkerClicked}
+                                          position={{lat: d.lat,  lng: d.lon }}
+                                       icon={{
+                                                url: "assets/images/Theft-Icon-2.svg",
+                                                anchor: new google.maps.Point(32,32),
+                                                scaledSize: new google.maps.Size(40,40)
+                                           }}
 
-                                               }
+
+                                      />
+                                )}
+                                if(d.type === "Vandalism"){
+                                    return (
+                                      <Marker
+                                           title={'Home Address Location '}
+                                           name={
+                                              <div>
+                                                 {d.type}
+                                                 <div>{d.address}</div>
+                                                  <div>{d.date}</div>
+                                               </div>
+                                              }
                                            onClick={this.onMarkerClicked}
                                              position={{lat: d.lat,  lng: d.lon }}
                                           icon={{
-                                                   url: "assets/images/Fire-Arson-Icon-Small.png",
+                                                   url: "assets/images/Vandalism-Icon-2.svg",
                                                    anchor: new google.maps.Point(32,32),
                                                    scaledSize: new google.maps.Size(40,40)
                                               }}
@@ -524,6 +500,30 @@ render() {
 
                                          />
                                    )}
+                                   if(d.type === "Fire"){
+                                       return (
+                                         <Marker
+                                              title={'Home Address Location '}
+                                              name={
+                                                <div>
+                                                  {d.type}
+                                                  <div>{d.address}</div>
+                                                   <div>{d.date}</div>
+                                                </div>
+
+
+                                                  }
+                                              onClick={this.onMarkerClicked}
+                                                position={{lat: d.lat,  lng: d.lon }}
+                                             icon={{
+                                                      url: "assets/images/Fire-Arson-Icon-2.svg",
+                                                      anchor: new google.maps.Point(32,32),
+                                                      scaledSize: new google.maps.Size(40,40)
+                                                 }}
+
+
+                                            />
+                                      )}
 
                   })}
 
@@ -1024,7 +1024,7 @@ render() {
                       onClick={this.onMarkerClicked}
                       position={{lat: d.lat,  lng: d.lon }}
                      icon={{
-                              url: "assets/images/Arrest-Icon-Small.png",
+                              url: "assets/images/Arrest-Icon-2.svg",
                               anchor: new google.maps.Point(32,32),
                               scaledSize: new google.maps.Size(40,40)
                          }}
@@ -1047,7 +1047,7 @@ render() {
                     onClick={this.onMarkerClicked}
                     position={{lat: d.lat,  lng: d.lon }}
                    icon={{
-                            url: "assets/images/Assult-Icon-Small.png",
+                            url: "assets/images/Assult-Icon-2.svg",
                             anchor: new google.maps.Point(32,32),
                             scaledSize: new google.maps.Size(40,40)
                        }}
@@ -1070,7 +1070,7 @@ render() {
                       onClick={this.onMarkerClicked}
                         position={{lat: d.lat,  lng: d.lon }}
                      icon={{
-                              url: "assets/images/Burglary-Icon-Small.png",
+                              url: "assets/images/Burglary-Icon-2.svg",
                               anchor: new google.maps.Point(32,32),
                               scaledSize: new google.maps.Size(40,40)
                          }}
@@ -1093,7 +1093,7 @@ render() {
                           onClick={this.onMarkerClicked}
                           position={{lat: d.lat,  lng: d.lon }}
                          icon={{
-                                  url: "assets/images/Other-Icon-Small.png",
+                                  url: "assets/images/Other-Icon-2.svg",
                                   anchor: new google.maps.Point(32,32),
                                   scaledSize: new google.maps.Size(40,40)
                              }}
@@ -1116,7 +1116,7 @@ render() {
                        onClick={this.onMarkerClicked}
                          position={{lat: d.lat,  lng: d.lon }}
                       icon={{
-                               url: "assets/images/Robbery-Icon-Small.png",
+                               url: "assets/images/Robbery-Icon-2.svg",
                                anchor: new google.maps.Point(32,32),
                                scaledSize: new google.maps.Size(40,40)
                           }}
@@ -1138,7 +1138,7 @@ render() {
                            onClick={this.onMarkerClicked}
                              position={{lat: d.lat,  lng: d.lon }}
                           icon={{
-                                   url: "assets/images/Shooting-Icon-Small.png",
+                                   url: "assets/images/Shooting-Icon-2.svg",
                                    anchor: new google.maps.Point(32,32),
                                    scaledSize: new google.maps.Size(40,40)
                               }}
@@ -1161,7 +1161,7 @@ render() {
                            onClick={this.onMarkerClicked}
                              position={{lat: d.lat,  lng: d.lon }}
                           icon={{
-                                   url: "assets/images/Theft-Icon-Small.png",
+                                   url: "assets/images/Theft-Icon-2.svg",
                                    anchor: new google.maps.Point(32,32),
                                    scaledSize: new google.maps.Size(40,40)
                               }}
@@ -1183,7 +1183,7 @@ render() {
                               onClick={this.onMarkerClicked}
                                 position={{lat: d.lat,  lng: d.lon }}
                              icon={{
-                                      url: "assets/images/Vandalism-Icon-Small.png",
+                                      url: "assets/images/Vandalism-Icon-2.svg",
                                       anchor: new google.maps.Point(32,32),
                                       scaledSize: new google.maps.Size(40,40)
                                  }}
@@ -1207,7 +1207,7 @@ render() {
                                  onClick={this.onMarkerClicked}
                                    position={{lat: d.lat,  lng: d.lon }}
                                 icon={{
-                                         url: "assets/images/Fire-Arson-Icon-Small.png",
+                                         url: "assets/images/Fire-Arson-Icon-2.svg",
                                          anchor: new google.maps.Point(32,32),
                                          scaledSize: new google.maps.Size(40,40)
                                     }}
