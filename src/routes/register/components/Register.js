@@ -46,7 +46,7 @@ class Register extends React.Component {
     //input Highlighting code end
 
 
-      this.renderDialog = this.renderDialog.bind(this);
+    //  this.renderDialog = this.renderDialog.bind(this);
   }
 
   componentWillMount(){
@@ -242,15 +242,15 @@ this.setState({
          />,
        ];
 
-    const{redirectToDialog}=this.state
-
-    if(redirectToDialog){
-
-         return(
-           renderDialog()
-         )
-
-    }
+    // const{redirectToDialog}=this.state
+    //
+    // if(redirectToDialog){
+    //
+    //      return(
+    //        renderDialog()
+    //      )
+    //
+    // }
 
     const{redirectToHome}=this.state
 
