@@ -190,7 +190,7 @@ class MainApp extends React.Component {
 
               </div>
             </div>
-              <Footer />
+              {/* <Footer /> */}
 
           </div>
         </section>

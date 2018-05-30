@@ -1,3 +1,3 @@
-import Home from './components/Home';
+import Home_Map from './components/Home_Map';
 
-export default Home;
+export default Home_Map;

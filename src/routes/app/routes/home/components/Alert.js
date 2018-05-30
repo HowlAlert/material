@@ -83,7 +83,7 @@ class Alerts extends React.Component {
              //  console.log(arr3.length);
              // this.setState({  data1:arr3 , array_count:arr3.length })
             let arr4=[];
-            arr4=  arr3.slice(0, 3);
+            arr4=  arr3.slice(0, 2);          //To get the top two alerts from the alert array
             //  console.log(arr4);
               this.setState({  data2:arr4 , array_count:arr4.length })
 
@@ -101,8 +101,8 @@ class Alerts extends React.Component {
 
 
     <div className="box box-default dkShadow overHidden">
-      <div className="box-body height400">
-
+      {/* <div className="box-body height400"> */}
+        <div className="box-body">
 
           <h2 className="article-title-header ">News & Alerts </h2>
          <div className=" box-default ">
