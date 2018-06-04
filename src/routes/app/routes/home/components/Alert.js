@@ -101,8 +101,8 @@ class Alerts extends React.Component {
 
 
     <div className="box box-default dkShadow overHidden">
-      {/* <div className="box-body height400"> */}
-        <div className="box-body">
+      <div className="box-body height400">
+        {/* <div className="box-body"> */}
 
           <h2 className="article-title-header ">News & Alerts </h2>
          <div className=" box-default ">

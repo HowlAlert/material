@@ -327,7 +327,7 @@ const Dashboard = () => (
     <div className="col-lg-6">
       {/* <div className="box box-default box-body homeAlert dkShadow"> */}
         <Alert />
-
+      {/* </div> */}
     </div>
 
 

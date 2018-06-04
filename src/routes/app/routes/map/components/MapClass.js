@@ -3,7 +3,7 @@ import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper, Polygon} from 'google-maps-react';
 import cookie from 'react-cookies';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import Icon_Details from './Icon_Details';
+import Icon_Details from '../../home/components/Icon_Details';
 // import AlertBox from './AlertBox';
 
 import RaisedButton from 'material-ui/RaisedButton';
