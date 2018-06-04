@@ -314,9 +314,9 @@ const Dashboard = () => (
 
 
   <div className="row">
-    <div className="col-lg-12">
+    {/* <div className="col-lg-12">
       <BasicHome />
-    </div>
+    </div> */}
 
     <div className="col-lg-6">
      <a  href="#/app/Map">

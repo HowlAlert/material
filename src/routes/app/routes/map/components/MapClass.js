@@ -3,6 +3,12 @@ import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper, Polygon} from 'google-maps-react';
 import cookie from 'react-cookies';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import Icon_Details from './Icon_Details';
+// import AlertBox from './AlertBox';
+
+import RaisedButton from 'material-ui/RaisedButton';
+
+
 
  const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
 
@@ -21,7 +27,8 @@ class GoogleMap extends React.Component {
         mapTypeId: 'roadmap',
         latitude:'',
         longitude:'',
-        mapTypeControl: true
+        isVisible: true,
+        // redirectToAlertBox: false,
 
 
     }
@@ -206,6 +213,11 @@ centerMoved(props, map, e) {
 
 
 }
+
+handleTiggertAlert(e){
+ this.setState({ redirectToAlertBox: true })
+}
+
 componentDidMount()
 {
 
@@ -233,7 +245,8 @@ componentDidMount()
       //console.log(findresponse);
     this.setState({
              GetSpotCrimesResult:JSON.parse(findresponse.GetSpotCrimesResult).crimes,
-             address:cookie.load('Address1')+ ','+ ' '+cookie.load('City')+','+ ' '+cookie.load('State')+','+ ' '+cookie.load('Zip')
+             // address:cookie.load('Address1')+ ','+ ' '+cookie.load('City')+','+ ' '+cookie.load('State')+','+ ' '+cookie.load('Zip')
+             address:""
                })
 
 
@@ -280,12 +293,19 @@ render() {
     var lastname=lname.substr(0, 1);
    //   console.log(lastname);
 
+// const {redirectToAlertBox} = this.state
+//    if(redirectToAlertBox === true)
+//      {
+//        return (
+//           <AlertBox />
+//         )
+//       }
 
    const inputProps = {
    value: this.state.address,
    // onChange: this.onChange,
    onChange:this.handleChange,
-   placeholder: 'Search Places...',
+   placeholder: 'Search address or information',
    // autoFocus: true,
 
     }
@@ -311,7 +331,7 @@ render() {
                       zoom={this.state.zoom}
                       onReady={this.handleEnter}
                       containerStyle={{position: 'static'}}
-
+                      style={{left: '250',top: '80'}}
 
                     >
 
@@ -537,8 +557,8 @@ render() {
                              position={{lat:cookie.load('Latitude') ,  lng:cookie.load('Longitude') }}
                             icon={{
                                      url: "assets/images/howl-map-marker-small.png",
-                                     anchor: new google.maps.Point(32,32),
-                                     scaledSize: new google.maps.Size(64,64),
+                                     anchor: new google.maps.Point(64,64),
+                                     scaledSize: new google.maps.Size(128,128),
 
                                 }}
 
@@ -546,14 +566,13 @@ render() {
                            />
 
                            <Marker
-                                title={'Home Address Location '}
-                                name={fname+" "+lastname}
-                                onClick={this.onMarkerClicked}
+                                title={'New Address Location '}
+                                // onClick={this.onMarkerClicked}
                                 position={{lat:this.state.latitude ,  lng:this.state.longitude }}
                                icon={{
                                         url: "assets/images/howl-map-marker-small.png",
-                                        anchor: new google.maps.Point(32,32),
-                                        scaledSize: new google.maps.Size(64,64),
+                                        anchor: new google.maps.Point(64,64),
+                                        scaledSize: new google.maps.Size(128,128),
 
                                    }}
 
@@ -576,17 +595,19 @@ render() {
           />
                         {/* <PlacesAutocomplete inputProps={inputProps} onEnterKeyDown={this.handleEnter}  /> */}
                       </div>
+                      <div className="IconBox">
+                        {/* <div className="box box-default box-body homeAlert dkShadow"> */}
+                          <Icon_Details/>
+
+                      </div>
                   </Map>
 
          )
       }
-      // const style = {
-      //   width: '100vw',
-      //   height: '100vh'
-      // }
+
     return (                     //Default Map load with home address
 
-      <div >
+
         <Map
 
             google={this.props.google}
@@ -608,425 +629,14 @@ render() {
             onDragend={this.centerMoved}
             zoom={this.state.zoom}
             onReady={this.handleEnter}
-            // mapTypeControl= {this.state.mapTypeControl}
-            // mapTypeId= {maps.MapTypeId.SATELLITE}
-            // mapTypeControlOptions = {{
-            //   style: maps.MapTypeControlStyle.HORIZONTAL_BAR,
-            //   position: maps.ControlPosition.BOTTOM_CENTER,
-            //   mapTypeIds: [
-            //       maps.MapTypeId.ROADMAP,
-            //       maps.MapTypeId.SATELLITE,
-            //       maps.MapTypeId.HYBRID
-            //   ]
-            //               }}
-
-
-
-           //
-           // styles={[{"featureType":"all","elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},
-           //   {"featureType":"all","elementType":"labels.icon","stylers":[{"visibility": "off"}]},
-           //   {"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},
-           //   {"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color": "#f5f5f5"}]},
-           //   {"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color": "#bdbdbd"}]},
-           //   {"featureType":"poi","elementType":"geometry","stylers":[{"color": "#eeeeee"}]},
-           //   {"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},
-           //   {"featureType":"poi.park","elementType":"geometry","stylers":[{"color": "#e5e5e5"}]},
-           //   {"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]},
-           //   {"featureType":"road","elementType":"geometry","stylers":[{"color": "#ffffff"}]},
-           //   {"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color": "#757575"}]},
-           //   {"featureType":"road.highway","elementType":"geometry","stylers":[{"color": "#dadada"}]},
-           //   {"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color": "#616161"}]},
-           //   {"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]},
-           //   {"featureType":"transit.line","elementType":"geometry","stylers":[{ "color": "#e5e5e5"}]},
-           //   {"featureType":"transit.station","elementType":"geometry","stylers":[{ "color":  "#eeeeee"}]},
-           // {"featureType":"water","elementType":"geometry","stylers":[{"color": "#c9c9c9"}]},
-           //   {"featureType":"water","elementType":"labels.text.fill","stylers":[{"color": "#9e9e9e"}]}
-           // ]}
-
-//            styles={[
-//     {
-//         "featureType": "administrative",
-//         "elementType": "labels.text.fill",
-//         "stylers": [
-//             {
-//                 "color": "#5d7e9e"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "landscape",
-//         "elementType": "all",
-//         "stylers": [
-//             {
-//                 "color": "#f2f2f2"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "landscape",
-//         "elementType": "geometry.fill",
-//         "stylers": [
-//             {
-//                 "color": "#ffffff"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "poi",
-//         "elementType": "all",
-//         "stylers": [
-//             {
-//                 "visibility": "off"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "poi.park",
-//         "elementType": "geometry.fill",
-//         "stylers": [
-//             {
-//                 "color": "#e6f3d6"
-//             },
-//             {
-//                 "visibility": "on"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "road",
-//         "elementType": "all",
-//         "stylers": [
-//             {
-//                 "saturation": -100
-//             },
-//             {
-//                 "lightness": 45
-//             },
-//             {
-//                 "visibility": "simplified"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "road.highway",
-//         "elementType": "all",
-//         "stylers": [
-//             {
-//                 "visibility": "simplified"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "road.highway",
-//         "elementType": "geometry.fill",
-//         "stylers": [
-//             {
-//                 "visibility": "simplified"
-//             },
-//             {
-//                 "color": "#f4a8a8"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "road.highway",
-//         "elementType": "labels.text",
-//         "stylers": [
-//             {
-//                 "color": "#4e4e4e"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "road.arterial",
-//         "elementType": "geometry.fill",
-//         "stylers": [
-//             {
-//                 "color": "#f4f4f4"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "road.arterial",
-//         "elementType": "labels.text.fill",
-//         "stylers": [
-//             {
-//                 "color": "#787878"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "road.arterial",
-//         "elementType": "labels.icon",
-//         "stylers": [
-//             {
-//                 "visibility": "off"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "transit",
-//         "elementType": "all",
-//         "stylers": [
-//             {
-//                 "visibility": "off"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "water",
-//         "elementType": "all",
-//         "stylers": [
-//             {
-//                 "color": "#eaf6f8"
-//             },
-//             {
-//                 "visibility": "on"
-//             }
-//         ]
-//     },
-//     {
-//         "featureType": "water",
-//         "elementType": "geometry.fill",
-//         "stylers": [
-//             {
-//                 "color": "#eaf6f8"
-//             }
-//         ]
-//     }
-// ]}
-
             containerStyle={{position: 'static'}}
-            style={{left: '250',top: '80'}}
-          >
+            style={{left: '250',top: '60'}}
 
-           {/* {this.getComponent()} */}
+
+          >
 
 
             {this.state.GetSpotCrimesResult.map(d => {
-              // var alert_type = d.type ;
-              // switch(alert_type) {
-              //        case 'Arrest':
-              //              return
-              //              <Marker
-              //                   title={'Home Address Location '}
-              //                   // name={
-              //                   //   <div>
-              //                   //     {d.type}
-              //                   //     <div>{d.address}</div>
-              //                   //      <div>{d.date}</div>
-              //                   //   </div>
-              //                   // }
-              //                   onClick={this.onMarkerClicked}
-              //                   position={{lat: d.lat,  lng: d.lon }}
-              //                  icon={{
-              //                           url: "assets/images/Arrest-Icon-Small.png",
-              //                           anchor: new google.maps.Point(32,32),
-              //                           scaledSize: new google.maps.Size(40,40)
-              //                      }}
-              //
-              //
-              //                 />
-              //        case 'Assault':
-              //         return
-              //        <Marker
-              //             title={'Home Address Location '}
-              //             // name={
-              //             //   <div>
-              //             //     {d.type}
-              //             //     <div>{d.address}</div>
-              //             //      <div>{d.date}</div>
-              //             //   </div>
-              //             // }
-              //             onClick={this.onMarkerClicked}
-              //             position={{lat: d.lat,  lng: d.lon }}
-              //            icon={{
-              //                     url: "assets/images/Assult-Icon-Small.png",
-              //                     anchor: new google.maps.Point(32,32),
-              //                     scaledSize: new google.maps.Size(40,40)
-              //                }}
-              //
-              //
-              //           />
-              //        case 'Burglary':
-              //         return
-              //        <Marker
-              //             title={'Home Address Location '}
-              //             name={
-              //               <div>
-              //                 {d.type}
-              //                 <div>{d.address}</div>
-              //                  <div>{d.date}</div>
-              //               </div>
-              //               }
-              //             onClick={this.onMarkerClicked}
-              //               position={{lat: d.lat,  lng: d.lon }}
-              //            icon={{
-              //                     url: "assets/images/Burglary-Icon-Small.png",
-              //                     anchor: new google.maps.Point(32,32),
-              //                     scaledSize: new google.maps.Size(40,40)
-              //                }}
-              //
-              //
-              //           />
-              //        case 'Other':
-              //         return
-              //        <Marker
-              //             title={'Home Address Location '}
-              //             name={
-              //               <div>
-              //                 {d.type}
-              //                 <div>{d.address}</div>
-              //                  <div>{d.date}</div>
-              //               </div>
-              //
-              //                }
-              //             onClick={this.onMarkerClicked}
-              //             position={{lat: d.lat,  lng: d.lon }}
-              //            icon={{
-              //                     url: "assets/images/Other-Icon-Small.png",
-              //                     anchor: new google.maps.Point(32,32),
-              //                     scaledSize: new google.maps.Size(40,40)
-              //                }}
-              //
-              //
-              //           />
-              //        case 'Robbery':
-              //         return
-              //        <Marker
-              //             title={'Home Address Location '}
-              //             name={
-              //               <div>
-              //                 {d.type}
-              //                 <div>{d.address}</div>
-              //                  <div>{d.date}</div>
-              //               </div>
-              //
-              //                }
-              //             onClick={this.onMarkerClicked}
-              //             position={{lat: d.lat,  lng: d.lon }}
-              //            icon={{
-              //                     url: "assets/images/Robbery-Icon-Small.png",
-              //                     anchor: new google.maps.Point(32,32),
-              //                     scaledSize: new google.maps.Size(40,40)
-              //                }}
-              //
-              //
-              //           />
-              //        case 'Shooting':
-              //             return
-              //
-              //             <Marker
-              //                  title={'Home Address Location '}
-              //                  name={
-              //                    <div>
-              //                      {d.type}
-              //                      <div>{d.address}</div>
-              //                       <div>{d.date}</div>
-              //                    </div>
-              //
-              //                     }
-              //                  onClick={this.onMarkerClicked}
-              //                  position={{lat: d.lat,  lng: d.lon }}
-              //                 icon={{
-              //                          url: "assets/images/Shooting-Icon-Small.png",
-              //                          anchor: new google.maps.Point(32,32),
-              //                          scaledSize: new google.maps.Size(40,40)
-              //                     }}
-              //
-              //
-              //                />
-              //       case 'Theft':
-              //             return
-              //             <Marker
-              //                  title={'Home Address Location '}
-              //                  name={
-              //                    <div>
-              //                      {d.type}
-              //                      <div>{d.address}</div>
-              //                       <div>{d.date}</div>
-              //                    </div>
-              //
-              //                     }
-              //                  onClick={this.onMarkerClicked}
-              //                  position={{lat: d.lat,  lng: d.lon }}
-              //                 icon={{
-              //                          url: "assets/images/Theft-Icon-Small.png",
-              //                          anchor: new google.maps.Point(32,32),
-              //                          scaledSize: new google.maps.Size(40,40)
-              //                     }}
-              //
-              //
-              //                />
-              //       case 'Vandalism':
-              //             return
-              //             <Marker
-              //                  title={'Home Address Location '}
-              //                  name={
-              //                    <div>
-              //                      {d.type}
-              //                      <div>{d.address}</div>
-              //                       <div>{d.date}</div>
-              //                    </div>
-              //
-              //                     }
-              //                  onClick={this.onMarkerClicked}
-              //                  position={{lat: d.lat,  lng: d.lon }}
-              //                 icon={{
-              //                          url: "assets/images/Vandalism-Icon-Small.png",
-              //                          anchor: new google.maps.Point(32,32),
-              //                          scaledSize: new google.maps.Size(40,40)
-              //                     }}
-              //
-              //
-              //                />
-              //       case 'Fire':
-              //             return
-              //             <Marker
-              //                  title={'Home Address Location '}
-              //                  name={
-              //                    <div>
-              //                      {d.type}
-              //                      <div>{d.address}</div>
-              //                       <div>{d.date}</div>
-              //                    </div>
-              //
-              //                     }
-              //                  onClick={this.onMarkerClicked}
-              //                  position={{lat: d.lat,  lng: d.lon }}
-              //                 icon={{
-              //                          url: "assets/images/Fire-Arson-Icon-Small.png",
-              //                          anchor: new google.maps.Point(32,32),
-              //                          scaledSize: new google.maps.Size(40,40)
-              //                     }}
-              //
-              //
-              //                />
-              //
-              //       default:
-              //       return
-              //       <Marker
-              //            title={'Home Address Location '}
-              //            name={
-              //              <div>
-              //                {d.type}
-              //                <div>{d.address}</div>
-              //                 <div>{d.date}</div>
-              //              </div>
-              //
-              //               }
-              //            onClick={this.onMarkerClicked}
-              //            position={{lat: d.lat,  lng: d.lon }}
-              //           icon={{
-              //                    url: "assets/images/Fire-Arson-Icon-Small.png",
-              //                    anchor: new google.maps.Point(32,32),
-              //                    scaledSize: new google.maps.Size(40,40)
-              //               }}
-              //
-              //
-              //          />
-              //
-              //        }
 
            if(d.type === "Arrest"){
                return (
@@ -1290,17 +900,32 @@ render() {
                   </InfoWindow>
 
 
-            <div className="col-lg-6 ">
+            <div className="col-lg-6 AddressSearchbar ">
               {/* <PlacesAutocomplete inputProps={inputProps} onEnterKeyDown={this.handleEnter}  /> */}
-              {/* <PlacesAutocomplete
+              <PlacesAutocomplete
   inputProps={inputProps}
    onSelect={this.handleSelect}
-/> */}
+/>
 
             </div>
 
+            <div className="IconBox">
+              {/* <div className="box box-default box-body homeAlert dkShadow"> */}
+                <Icon_Details/>
+
+            </div>
+            {/* <div className="col-lg-3 AlertBox"> */}
+              {/* <div className="box box-default box-body homeAlert dkShadow"> */}
+                   {/* <RaisedButton primary label="Tigger Alerts" onClick={(e)=>this.handleTiggertAlert(e)}/> */}
+                   {/* <AlertBox /> */}
+
+            {/* </div> */}
+
+
+
+
         </Map>
-</div>
+
 
         );
     }

@@ -83,7 +83,7 @@ class Alerts extends React.Component {
              //  console.log(arr3.length);
              // this.setState({  data1:arr3 , array_count:arr3.length })
             let arr4=[];
-            arr4=  arr3.slice(0, 2);          //To get the top two alerts from the alert array
+            arr4=  arr3.slice(0, 3);          //To get the top two alerts from the alert array
             //  console.log(arr4);
               this.setState({  data2:arr4 , array_count:arr4.length })
 

@@ -30,6 +30,7 @@ class GoogleMap extends React.Component {
         longitude:'',
         isVisible: true,
         // redirectToAlertBox: false,
+        
 
     }
     this.onMapClicked = this.onMapClicked.bind(this);
