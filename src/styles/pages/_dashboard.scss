@@ -208,11 +208,17 @@
 .home-box{
   padding-top:0px!important;
 }
+.noPadLeft{
+  padding-left:0px!important;
+}
+.noPadRight{
+  padding-right:0px!important;
+}
 .topRightNav{
   margin-right: 0px;
-    position: absolute;
-    right: 0px;
-    top: 5px;
+  position: absolute;
+  right: -65px;
+  top: 6px;
 }
 .alertRight{
   margin-right: 30px;
@@ -425,7 +431,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .userName div{
-  color:#fff!important;
+
   font-size: 14px;
     letter-spacing: 0.6px;
     text-align: left;
@@ -450,7 +456,10 @@ line-height: 13px;
 }
 
 .userStuff{
-  padding:23px 0px 0px 17px;
+  padding:12px 0px 0px 17px;
+}
+.userStuff2{
+  padding:8px 0px 0px 17px;
 }
 .userImage{
   margin-bottom:18px;
