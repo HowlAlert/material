@@ -180,7 +180,7 @@ var count = this.state.data;
 
         <div className="col-lg-12 userImage">
 
-          <img src="assets/images/new_howl.png" alt="Image" height="40" width="155"/>
+          <img src="assets/images/new_howl.png" alt="Image" height="40" width="145"/>
 
           </div>
 

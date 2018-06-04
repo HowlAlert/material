@@ -28,7 +28,7 @@
 .bg-color-gray { @include bg-style($gray-light, #f5f3f4); }
 .bg-color-dark {
   //@include bg-style($dark, #fff);
-  background-color:#f5f3f4;
+  background-color:#4692f0;
  }
 .bg-color-primary { @include bg-style(theme-color("primary"), #fff); }
 .bg-color-success { @include bg-style(theme-color("success"), #fff); }

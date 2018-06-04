@@ -152,7 +152,7 @@ padding: 0 0px;
     a {
       //color: $sidebar_text_color !important;;
 
-      color:#999!important;
+      color:#bad9ff!important;
       font-size: 14px!important;
     letter-spacing: 0.5px!important;
     font-weight:100!important;
@@ -170,7 +170,7 @@ padding: 0 0px;
         //  background-color: $nav_link_hover_bg !important;
         //  color: $nav_link_hover_color !important;
 
-        color:#48A4D4!important;
+        color:#fff!important;
         }
       }
       &.active {
@@ -179,7 +179,7 @@ padding: 0 0px;
         > a:focus {
         //  background-color: $nav_link_active_bg !important;
         //  color: $nav_link_active_color !important;
-        color:#48A4D4!important;
+        color:#fff!important;
         }
       }
       &.open {
@@ -188,7 +188,7 @@ padding: 0 0px;
         > a:focus {
         //  background-color: $nav_link_open_bg !important;
         //  color: $nav_link_active_color !important;
-        color:#48A4D4!important
+        color:#fff!important
         }
         > .icon-has-ul {}
       }
