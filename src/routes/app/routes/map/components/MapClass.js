@@ -20,7 +20,9 @@ class GoogleMap extends React.Component {
         address: ' ',
         mapTypeId: 'roadmap',
         latitude:'',
-        longitude:''
+        longitude:'',
+        mapTypeControl: true
+
 
     }
     this.onMapClicked = this.onMapClicked.bind(this);
@@ -578,10 +580,13 @@ render() {
 
          )
       }
-
+      // const style = {
+      //   width: '100vw',
+      //   height: '100vh'
+      // }
     return (                     //Default Map load with home address
 
-
+      <div >
         <Map
 
             google={this.props.google}
@@ -603,6 +608,20 @@ render() {
             onDragend={this.centerMoved}
             zoom={this.state.zoom}
             onReady={this.handleEnter}
+            // mapTypeControl= {this.state.mapTypeControl}
+            // mapTypeId= {maps.MapTypeId.SATELLITE}
+            // mapTypeControlOptions = {{
+            //   style: maps.MapTypeControlStyle.HORIZONTAL_BAR,
+            //   position: maps.ControlPosition.BOTTOM_CENTER,
+            //   mapTypeIds: [
+            //       maps.MapTypeId.ROADMAP,
+            //       maps.MapTypeId.SATELLITE,
+            //       maps.MapTypeId.HYBRID
+            //   ]
+            //               }}
+
+
+
            //
            // styles={[{"featureType":"all","elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},
            //   {"featureType":"all","elementType":"labels.icon","stylers":[{"visibility": "off"}]},
@@ -777,9 +796,8 @@ render() {
 //     }
 // ]}
 
-           containerStyle={{position: 'static'}}
-
-
+            containerStyle={{position: 'static'}}
+            style={{left: '250',top: '80'}}
           >
 
            {/* {this.getComponent()} */}
@@ -1274,15 +1292,15 @@ render() {
 
             <div className="col-lg-6 ">
               {/* <PlacesAutocomplete inputProps={inputProps} onEnterKeyDown={this.handleEnter}  /> */}
-              <PlacesAutocomplete
+              {/* <PlacesAutocomplete
   inputProps={inputProps}
    onSelect={this.handleSelect}
-/>
+/> */}
 
             </div>
-          
-        </Map>
 
+        </Map>
+</div>
 
         );
     }

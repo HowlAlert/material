@@ -4,7 +4,7 @@ import loadable from 'react-loadable';
 import Header from 'components/Header';
 import Sidenav from 'components/Sidenav';
 import Footer from 'components/Footer';
-// import Customizer from 'components/Customizer';
+import Customizer from 'components/Customizer';
 
 
 // import Dashboard from '../routes/home/'
@@ -195,7 +195,7 @@ class MainApp extends React.Component {
           </div>
         </section>
 
-
+          <Customizer />
      </div>
     );
   }

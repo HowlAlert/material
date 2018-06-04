@@ -6,9 +6,9 @@ import * as types from '../constants/ActionTypes';
 export function toggleCollapsedNav(isNavCollapsed) {
   return { type: types.TOGGLE_COLLAPSED_NAV, isNavCollapsed };
 }
-// export function toggleNavBehind(isNavBehind) {
-//   return { type: types.TOGGLE_NAV_BEHIND, isNavBehind };
-// }
+export function toggleNavBehind(isNavBehind) {
+  return { type: types.TOGGLE_NAV_BEHIND, isNavBehind };
+}
 export function toggleFixedHeader(isFixedHeader) {
   return { type: types.TOGGLE_FIXED_HEADER, isFixedHeader };
 }

@@ -1,12 +1,13 @@
 import 'jquery-slimscroll/jquery.slimscroll.min';
 import React from 'react';
 import APPCONFIG from 'constants/Config';
-import EditProfile from './EditProfile';
+// import EditProfile from './EditProfile';
 // import NotifyMessage  from './NotifyMessage ';
-import ChangeHomeAddress from './ChangeHomeAddress';
-import ChangeCancelCode from './ChangeCancelCode';
-import ChangeSilentCode from './ChangeSilentCode';
-import PrintCode from './PrintCode';
+// import ChangeHomeAddress from './ChangeHomeAddress';
+// import ChangeCancelCode from './ChangeCancelCode';
+// import ChangeSilentCode from './ChangeSilentCode';
+// import PrintCode from './PrintCode';
+ import AlertBox from './AlertBox';
 
 class Customizer extends React.Component {
 
@@ -38,24 +39,24 @@ class Customizer extends React.Component {
           <span className="material-icons">close</span>
         </a>
         <a className="customizer-toggle" href="javascript:;" onClick={this.toggleCustomizer}>
-          <span className="material-icons">settings</span>
+          <span className="material-icons">warning</span>
         </a>
 
         <div className="quickview-inner" ref={(c) => { this.quickview = c; }}>
 
-          <p className="customizer-header">SETTINGS</p>
-          <p className="small no-margin">Customize and preview in real time.</p>
+          <h2 className="article-title-header ">Quick Alerts </h2>
 
-          <div className="divider divider-lg divider-solid" />
-          <EditProfile />
+
+          {/* <div className="divider divider-lg divider-solid" />
+          <EditProfile /> */}
 
           {/* <div className="divider divider-lg divider-solid" />
           <NotifyMessage /> */}
 
           <div className="divider divider-lg divider-solid" />
-          <ChangeHomeAddress />
+          <AlertBox />
 
-          <div className="divider divider-lg divider-solid" />
+          {/* <div className="divider divider-lg divider-solid" />
           <ChangeCancelCode />
 
 
@@ -63,7 +64,7 @@ class Customizer extends React.Component {
           <ChangeSilentCode />
 
           <div className="divider divider-lg divider-solid" />
-          <PrintCode />
+          <PrintCode /> */}
 
 
         </div>

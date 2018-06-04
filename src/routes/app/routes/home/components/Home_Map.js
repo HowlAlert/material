@@ -5,8 +5,9 @@ import cookie from 'react-cookies';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import Alert from './Alert';
 import Icon_Details from './Icon_Details';
+// import AlertBox from './AlertBox';
 
-
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 
@@ -26,7 +27,9 @@ class GoogleMap extends React.Component {
         address: ' ',
         mapTypeId: 'roadmap',
         latitude:'',
-        longitude:''
+        longitude:'',
+        isVisible: true,
+        // redirectToAlertBox: false,
 
     }
     this.onMapClicked = this.onMapClicked.bind(this);
@@ -210,6 +213,11 @@ centerMoved(props, map, e) {
 
 
 }
+
+handleTiggertAlert(e){
+ this.setState({ redirectToAlertBox: true })
+}
+
 componentDidMount()
 {
 
@@ -285,6 +293,13 @@ render() {
     var lastname=lname.substr(0, 1);
    //   console.log(lastname);
 
+// const {redirectToAlertBox} = this.state
+//    if(redirectToAlertBox === true)
+//      {
+//        return (
+//           <AlertBox />
+//         )
+//       }
 
    const inputProps = {
    value: this.state.address,
@@ -316,7 +331,7 @@ render() {
                       zoom={this.state.zoom}
                       onReady={this.handleEnter}
                       containerStyle={{position: 'static'}}
-
+                      style={{left: '250',top: '80'}}
 
                     >
 
@@ -615,6 +630,7 @@ render() {
             zoom={this.state.zoom}
             onReady={this.handleEnter}
             containerStyle={{position: 'static'}}
+            style={{left: '250',top: '60'}}
 
 
           >
@@ -884,7 +900,7 @@ render() {
                   </InfoWindow>
 
 
-            <div className="col-lg-6 ">
+            <div className="col-lg-6 AddressSearchbar ">
               {/* <PlacesAutocomplete inputProps={inputProps} onEnterKeyDown={this.handleEnter}  /> */}
               <PlacesAutocomplete
   inputProps={inputProps}
@@ -902,6 +918,16 @@ render() {
                 <Icon_Details/>
 
             </div>
+            {/* <div className="col-lg-3 AlertBox"> */}
+              {/* <div className="box box-default box-body homeAlert dkShadow"> */}
+                   {/* <RaisedButton primary label="Tigger Alerts" onClick={(e)=>this.handleTiggertAlert(e)}/> */}
+                   {/* <AlertBox /> */}
+
+            {/* </div> */}
+
+
+
+
         </Map>
 
 
