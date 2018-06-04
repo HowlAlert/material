@@ -178,7 +178,7 @@ var count = this.state.data;
 
         <div className="topRightNav row">
 
-        <div className="col-lg-3">
+        <div className="col-lg-2">
 
           <MenuItem
               leftIcon={
@@ -192,8 +192,67 @@ var count = this.state.data;
           </div>
 
 
-          <div className="col-lg-9">
-            <img src="assets/images/new-howl-logo-small-grey.png" alt="Image" height="60" width="150"/>
+          <div className="col-lg-10">
+
+                <div className="">
+
+                  <div className=" userStuff2 row">
+
+
+                  <div className="col-lg-2">
+                    <img src="assets/images/user_default.png" alt="Image" height="30" width="30"/>
+                    </div>
+
+
+                    <div className="col-lg-10 userName noPadLeft">
+
+
+
+                    <IconMenu
+                      iconButtonElement={
+                        <MenuItem style={{}} innerDivStyle={listItemStyle}
+                        primaryText={cookie.load('FirstName') +" "+ cookie.load('LastName')}
+                        onClick={this.handleChange}
+                        rightIcon={<i className="nav-icon material-icons">arrow_drop_down</i>}
+                        />
+                        }
+                      onChange={this.handleChange}
+                      anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
+                      targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                      menuStyle={{minWidth: '150px'}}
+                              >
+
+
+
+
+                      <MenuItem
+                      //value="/login"
+                        primaryText="Logout"
+                        innerDivStyle={listItemStyle}
+                        style={{fontSize: '13px', lineHeight: '48px'}}
+                        leftIcon={<i className="material-icons">forward</i>}
+                        onClick={this.handleOpen}
+                                  />
+
+
+
+                    </IconMenu>
+                    </div>
+                    <Dialog
+                                title="Confirm"
+                                actions={actions}
+                                modal={false}
+                                open={this.state.open}
+                                onRequestClose={this.handleClose}
+                              >
+                                Are you sure you want to logout?
+                              </Dialog>
+
+
+                  </div>
+
+
+                </div>
           </div>
 
 

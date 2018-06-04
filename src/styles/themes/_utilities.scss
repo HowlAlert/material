@@ -22,13 +22,13 @@
 .bg-color-body { @include bg-style($body-bg, $body-color); }
 .bg-color-page { @include bg-style($page-bg, $body-color); }
 
-.bg-color-light { @include bg-style($page-bg, $body-color); }
+.bg-color-light { @include bg-style(#fff, $body-color); }
 .bg-color-white { @include bg-style(#fff, $body-color); }
 
-.bg-color-gray { @include bg-style($gray-light, #fff); }
+.bg-color-gray { @include bg-style($gray-light, #f5f3f4); }
 .bg-color-dark {
   //@include bg-style($dark, #fff);
-  background-color:#fff;
+  background-color:#f5f3f4;
  }
 .bg-color-primary { @include bg-style(theme-color("primary"), #fff); }
 .bg-color-success { @include bg-style(theme-color("success"), #fff); }
