@@ -187,13 +187,13 @@ class AlertBox extends React.Component {
 
 
       <div className="">
-        {/* <div className="box box-default box-body dkShadow Alertheight"> */}
 
 
-          <div >
+
+          <div className="row" >
 
           {/* <div className="col-lg-6 AlertImages" > */}
-          <div >
+          <div className="col-lg-12">
             <img src="assets/images/alert-pack-button.png" onClick={()=>this.handleOpen("1")} width="120"/>
 
               <Dialog
@@ -233,11 +233,11 @@ class AlertBox extends React.Component {
 
 
         :
-        <div className="col-lg-9">
+        <div className="col-lg-12">
 
         <div className="row">
-        <div className=" col-lg-4 ">
-        <div className="fireB">
+        <div className=" col-lg-12 ">
+        <div className="">
           <img src="assets/images/fire-button.png" onClick={()=>this.handleOpen("2")} width="120"/>
 
             <Dialog
@@ -255,8 +255,8 @@ class AlertBox extends React.Component {
 
         </div>
 
-      <div className="col-lg-4">
-        <div className="ambulanceB">
+      <div className="col-lg-12">
+        <div className="">
         <img src="assets/images/ambulance-button.png" onClick={()=>this.handleOpen("3")} width="120"/>
 
           <Dialog
@@ -274,8 +274,8 @@ class AlertBox extends React.Component {
     </div>
 
 
-        <div className="col-lg-6">
-        <div className="policeB">
+        <div className="col-lg-12">
+        <div className="">
           <img src="assets/images/police-button.png" onClick={()=>this.handleOpen("4")} width="120"/>
 
             <Dialog
