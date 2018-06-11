@@ -227,10 +227,29 @@
     top: 50px;
 }
 .AddressSearchbar{
-    margin-right: 30px;
-    left: 200px;
+    margin-right: 0px;
+    left: -7px;
+    top:10px;
 
 }
+.autoCompleter{
+    margin-right: 0px;
+    left: -7px;
+    top:10px;
+
+}
+.autoCompleter input{
+  padding:0px 0px 0px 10px!important;
+  font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.AddressSearchbar input{
+  padding:0px 0px 0px 10px!important;
+  font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
 .IconBoxHeight{
    min-height:80px;
 
@@ -283,7 +302,8 @@
 
      font-size: 12px;
      font-weight: 100;
-     line-height: 35px;
+     line-height: 30px;
+     padding-top:18px!important;
 }
 
 .badgeCustom{
@@ -505,4 +525,15 @@ line-height: 13px;
 }
 .box-body2{
   padding:20px 0px 20px 0px;
+}
+
+.IconBox2{
+  position: absolute;
+bottom: 2px;
+height: 100px;
+left: 257px;
+}
+.botIcons{
+  padding:0px 20px;
+  height:92px;
 }

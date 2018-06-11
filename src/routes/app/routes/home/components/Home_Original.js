@@ -10,6 +10,7 @@ import moment from 'moment';
 
 
 import Map from './Map';
+import CrimeMap from './CrimeMap';
 import Alert from './Alert';
 import Image2 from './Image2';
 import Image from '../../cameras/components/Image';

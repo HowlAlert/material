@@ -3,7 +3,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import cookie from 'react-cookies';
 
 
-const GOOGLE_MAPS_JS_API_KEY='AIzaSyAATCBLAB6FKMqK0HZMpt75zPQZVM9H4U4';
+const GOOGLE_MAPS_JS_API_KEY='AIzaSyCzPigC9J3fZ8YGcXr63mHh8tmssr5Kn9I';
 
 
 
