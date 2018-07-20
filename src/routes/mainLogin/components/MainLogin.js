@@ -231,11 +231,11 @@ class MainLogin extends React.Component {
 
 
     handleFacebookLogin (response) {
-        //console.log(response);
-        //console.log(response.first_name);
-        //console.log(response.last_name);
-        //console.log(response.id);
-        //console.log(response.email);
+        // console.log(response);
+        // console.log(response.first_name);
+        // console.log(response.last_name);
+        // console.log(response.id);
+        // console.log(response.email);
 
 
 
@@ -533,15 +533,57 @@ const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/
                 <li className="nav-header" ><span></span></li>
                 </ul>
 
-                                <div className="howlBlue3" style={{verticalAlign: 'middle'}} label="Add Conacts" primary onClick={(e)=>this.handleCreateAccount(e)}>Add Contacts</div><div className="divider" />
+                <div className="mainLogo">
+                <img src="assets/images/new_howl.jpg" alt="HOWL" />
+                </div>
+
+                <div className="text-center">
+                <FacebookLogin
+
+                appId="1614436405260654"
+                autoLoad={false}
+                fields="first_name,last_name,email,id"
+                onClick={(e)=>this.handleFacebookLogin(e)}
+                callback={(e)=>this.handleFacebookLogin(e)}
+
+
+
+                /><div className="divider" />
+                <div className="googleButton">
+                <GoogleLogin
+                clientId="621859786392-868jmoqbehrbar9lk36i8rsbjo9762u3.apps.googleusercontent.com"
+                buttonText="LOGIN WITH GOOGLE"
+                onSuccess={(e)=>this.handleGoogleLogin(e)}
+                onFailure={(e)=>this.handleGoogleLogin(e)}
+
+                />
+                </div>
+
+
+
+                              <div className='orspace'>  <p style={policy}>-  OR  -</p></div>
+
+                                <div className="howlBlue3" style={{verticalAlign: 'middle'}} label="Create Account" primary onClick={(e)=>this.handleCreateAccount(e)}>CREATE AN ACCOUNT</div><div className="divider" />
+                              </div>
+                              <div className="text-center">
+                              <p style={policy}>Have an account?<span><a className='loginBtn' onClick={(e)=>this.handleLogin(e)} style={login}> Login</a></span></p>
                               </div>
 
-</div>
-</div>
+                              <div className="text-center">
+                              <p className="text-small" style={policy}><a className='loginBtn' onClick={(e)=>this.handleTerms(e)}><u>Terms of Service</u></a> and <a className='loginBtn' onClick={(e)=>this.handlePolicy(e)}><u>Privacy Policy</u></a></p>
+                              </div>
+
+                              <div className="text-center">
+                              <p className="text-small"><a className='loginBtn' onClick={(e)=>this.handlePrintcode(e)} style={printcode}><u>Print Code</u></a></p>
+                            </div>
+
 
 </div>
 </div>
 
+</div>
+</div>
+</div>
     )
   }
 }
