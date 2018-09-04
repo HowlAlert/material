@@ -1,7 +1,7 @@
 // Demo Only
 
-$customizer_bg:      #fafafa;
-
+$customizer_bg:      #ffffff;
+$customizer_icon:    #000;
 #quickview-customizer {
   width: 410px;
   right: -410px;
@@ -53,10 +53,10 @@ $customizer_bg:      #fafafa;
 
   a.customizer-toggle,
   a.customizer-close {
-    color: $body-color;
+    color: $customizer_icon;
     &:hover,
     &:focus {
-      color: $body-color;
+      color: $customizer_icon;
     }
   }
 
@@ -146,6 +146,3 @@ $customizer_bg:      #fafafa;
     }
   }
 }
-
-
-

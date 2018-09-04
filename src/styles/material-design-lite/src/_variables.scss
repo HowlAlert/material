@@ -10,8 +10,8 @@
 
 
 // ==========  TYPOGRAPHY  ========== //
-$preferred_font: $font-family-sans-serif;
-$performance_font: $font-family-sans-serif;
+$preferred_font: Poppins;
+$performance_font: Poppins;
 
 // ==========  COLORS  ========== //
 
@@ -52,9 +52,9 @@ $card-subtitle-color: unquote("rgba(#{$color-black}, 0.54)") !default;
 // Card dimensions //
 $card-width: 330px !default;
 $card-height: 200px !default;
-$card-font-size: 16px !default;
-$card-title-font-size: 24px !default;
-$card-subtitle-font-size: 14px !default;
+$card-font-size: 13px !default;
+$card-title-font-size: 13px !default;
+$card-subtitle-font-size: 13px !default;
 $card-horizontal-padding: 16px !default;
 $card-vertical-padding: 16px !default;
 
@@ -67,10 +67,10 @@ $card-title-transform-origin-y: 56px !default;
 $card-title-text-transform-origin-x: 149px !default;
 $card-title-text-transform-origin-y: 48px !default;
 
-$card-supporting-text-font-size: 14px !default;
+$card-supporting-text-font-size: 13px !default;
 $card-supporting-text-line-height: 18px !default;
 
-$card-actions-font-size: 16px !default;
+$card-actions-font-size: 13px !default;
 
 $card-title-text-font-weight: 300 !default;
 $card-z-index: 1 !default;
@@ -81,12 +81,12 @@ $card-background-image-url: '' !default;
 
 
 // BADGE //
-$badge-font-size: 12px !default;
+$badge-font-size: 10px !default;
 $badge-color: #333 !default;
 $badge-color-inverse: theme-color("info") !default;
-$badge-background: theme-color("info") !default;
+$badge-background: #ff0000;
 $badge-background-inverse: #999 !default;
-$badge-size : 22px !default;
+$badge-size : 15px !default;
 $badge-padding: 2px !default;
 $badge-overlap: 12px !default;
 
@@ -109,7 +109,7 @@ $animation-curve-default: $animation-curve-fast-out-slow-in !default;
 // DATA TABLE //
 
 $data-table-font-size: 13px !default;
-$data-table-header-font-size: 12px !default;
+$data-table-header-font-size: 13px !default;
 $data-table-header-sort-icon-size: 16px !default;
 
 $data-table-header-color: rgba(#000, 0.54) !default;

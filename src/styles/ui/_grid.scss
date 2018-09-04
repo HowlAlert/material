@@ -1,6 +1,8 @@
 .container-fluid {
   padding-left: 30px;
   padding-right: 30px;
+  padding-top: 30px;
+  padding-bottom: 15px;
   &.padding-lg-h {
     padding-left: $grid-gutter-width;
     padding-right: $grid-gutter-width;
@@ -18,7 +20,8 @@
     max-width: map-get($container-max-widths, md);
   }
   &.no-breadcrumbs {
-    padding-top: 2em;
+    //padding-top: 2em;
+    padding-top:10px;
     padding-bottom: 1em;
   }
 }

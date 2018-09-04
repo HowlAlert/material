@@ -3,7 +3,11 @@
   margin-bottom: 1.5rem;
   border: 0;
   border-radius: $border-radius;
-  box-shadow: 0 0 2px rgba(0,0,0,.15);
+  //box-shadow: 0 0 2px rgba(0,0,0,.22);
+
+  -webkit-box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.63);
+  -moz-box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.63);
+  box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.63);
 
   &.box-transparent {
     box-shadow: none;
@@ -12,6 +16,16 @@
   .box-dark {
     background-color: rgba(0,0,0,.03);
   }
+}
+
+.noshad{
+  -webkit-box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.0)!important;
+  -moz-box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.0)!important;
+  box-shadow: 36px 38px 23px -41px rgba(0,0,0,0.0)!important;
+}
+
+.box2{
+  margin-bottom:1rem;
 }
 
 // put color in .box-default, so .bg-xxx can overrides box color easily
@@ -79,5 +93,3 @@
     background-color: $theme_dark_box_bg;
   }
 }
-
-

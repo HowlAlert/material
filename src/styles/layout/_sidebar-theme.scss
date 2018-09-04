@@ -6,29 +6,17 @@
   // .st0 { fill: #fff; }
   .st1 { opacity: .9; }
 }
-.bg-color-dark,
-.bg-color-primary,
-.bg-color-info,
-.bg-color-danger,
-.bg-color-success {
-  > .logo-img {
-    .st0 { fill: #fff; }
-  }
-}
-.bg-color-warning,
-.bg-color-light {
-  > .logo-img {
-    .st0 { fill: $body-color; }
-  }
-}
+
 
 // overall
 .app-sidebar{
-  box-shadow: 1px 0 2px rgba(0,0,0,.15);
+  //box-shadow: 0px 0 0px rgba(0,0,0,.15);
   .sidebar-header{
-    line-height: $l_header_height;
-    padding: 0 18px; // 16px + 2
-    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    background-color: #fff;
+height: 61px;
+line-height: 37px;
+padding: 0 0px;
+    //box-shadow: 0 1px 1px rgba(0,0,0,.1);
 
     // Ideally, don't use material-icons:dashboard, hard to position, affect sibling text
     .logo-icon {
@@ -56,8 +44,9 @@
     left: 0;
     right: 0;
     height: $sidebar_footer_height;
-    border-top: 1px solid rgba(0,0,0,.1);
-    background-color: $sidebar_bg_color;
+    //border-top: 1px solid rgba(0,0,0,.1);
+    //background-color: $sidebar_bg_color;
+    background-color:#fff;
   }
 }
 
@@ -88,7 +77,7 @@
     margin-top: 5px;
   }
 
-  // first level li 
+  // first level li
   > li {
     > a {
       line-height: 24px;
@@ -132,7 +121,7 @@
     }
   }
 
-  // sub2 ul 
+  // sub2 ul
   ul ul {
     li {
       > a {
@@ -141,7 +130,7 @@
     }
   }
 
-  // sub3 ul 
+  // sub3 ul
   ul ul ul {
     li {
       > a {
@@ -161,7 +150,12 @@
     // General
     color: $sidebar_text_color !important;
     a {
-      color: $sidebar_text_color !important;;
+      //color: $sidebar_text_color !important;;
+
+      color:#bad9ff!important;
+      font-size: 14px!important;
+    letter-spacing: 0.5px!important;
+    font-weight:100!important;
     }
     .nav-header {
       color: $text-muted;
@@ -173,24 +167,28 @@
       > a {
         &:hover,
         &:focus {
-          background-color: $nav_link_hover_bg !important;
-          color: $nav_link_hover_color !important;
+        //  background-color: $nav_link_hover_bg !important;
+        //  color: $nav_link_hover_color !important;
+
+        color:#fff!important;
         }
       }
       &.active {
         > a,
         > a:hover,
         > a:focus {
-          background-color: $nav_link_active_bg !important;
-          color: $nav_link_active_color !important;
+        //  background-color: $nav_link_active_bg !important;
+        //  color: $nav_link_active_color !important;
+        color:#fff!important;
         }
       }
       &.open {
         > a,
         > a:hover,
         > a:focus {
-          background-color: $nav_link_open_bg !important;
-          color: $nav_link_active_color !important;
+        //  background-color: $nav_link_open_bg !important;
+        //  color: $nav_link_active_color !important;
+        color:#fff!important
         }
         > .icon-has-ul {}
       }
@@ -224,7 +222,7 @@
             color: $nav_sub_link_active_color;
           }
         }
-      } 
+      }
     }
 
     ul ul ul {
@@ -232,6 +230,3 @@
     }
   }
 }
-
-
-

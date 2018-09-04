@@ -6,6 +6,9 @@
 
   .app-sidebar {
     left: auto;
+    -webkit-box-shadow: 9px 10px 53px -21px rgba(0,0,0,0.42);
+-moz-box-shadow: 9px 10px 53px -21px rgba(0,0,0,0.42);
+box-shadow: 9px 10px 53px -21px rgba(0,0,0,0.42);
   }
 
   .app-header {

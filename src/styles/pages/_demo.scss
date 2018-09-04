@@ -74,10 +74,10 @@
 }
 
 
-// 
+//
 .color-palette {
   color: rgba(255,255,255,0.87);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   padding-bottom: 60px;
 
@@ -87,16 +87,16 @@
   }
 
   .dark {
-    color: rgba(0,0,0,0.87);
+    color: rgba(0,0,0,0);
   }
 
   .color-group {
     padding-bottom: 40px;
   }
 
-  .color-group:first-child, 
-  .color-group:nth-of-type(3n+1), 
-  .color-group:last-child:first-child, 
+  .color-group:first-child,
+  .color-group:nth-of-type(3n+1),
+  .color-group:last-child:first-child,
   .color-group:last-child:nth-of-type(3n+1) {
     clear: left;
     margin-left: 0;

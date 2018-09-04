@@ -78,7 +78,7 @@
       display: block;
       margin: 0 auto;
       padding: 12px;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1;
       width: 100%;
       max-width: 200px;
@@ -113,38 +113,27 @@
   }
   &.pricing-table-success {
     header {
-      background-color: darken(theme-color("success"), 5%);
+      background-color: darken(theme-color("howl"), 5%);
     }
     .pricing-price {
-      background-color: theme-color("success");
+      background-color: theme-color("howl");
     }
     &:after {
-      border-top: 6px solid theme-color("success");
-      border-left: 6px solid theme-color("success");
+      border-top: 6px solid theme-color("howl");
+      border-left: 6px solid theme-color("howl");
     }
   }
-  &.pricing-table-warning {
-    header {
-      background-color: darken(theme-color("warning"), 5%);
-    }
-    .pricing-price {
-      background-color: theme-color("warning");
-    }
-    &:after {
-      border-top: 6px solid theme-color("warning");
-      border-left: 6px solid theme-color("warning");
-    }
-  }
+
   &.pricing-table-danger {
     header {
-      background-color: darken(theme-color("danger"), 5%);
+      background-color: darken(theme-color("howldark"), 5%);
     }
     .pricing-price {
-      background-color: theme-color("danger");
+      background-color: theme-color("howldark");
     }
     &:after {
-      border-top: 6px solid theme-color("danger");
-      border-left: 6px solid theme-color("danger");
+      border-top: 6px solid theme-color("howldark");
+      border-left: 6px solid theme-color("howldark");
     }
   }
 

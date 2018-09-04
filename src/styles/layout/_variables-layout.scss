@@ -56,9 +56,9 @@ $sidebar_footer_height:     44px;
 
 // = Default dark background sidebar =
 $sidebar_bg_color:                    $dark;
-$sidebar_text_color:                  #a1a1a1;
+$sidebar_text_color:                  #3287c5;
 $nav_link_hover_bg:                   transparent;
-$nav_link_hover_color:                #fafafa;
+$nav_link_hover_color:                #ffffff;
 
 // the reason .active bg is different from .open bg is becasue there's no border between li
 // if one li is .active, and sibiling is .open, then they have same bg, which is confusing
@@ -75,6 +75,3 @@ $nav_sub3_bg:                         rgba(0,0,0,.1);
 // in real project, simply change '$l_sidebar_width' to any value u want
 $l_sidebar_width_sm:               220px;
 $l_sidebar_width_lg:               280px;
-
-
-

@@ -2,10 +2,26 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
 import 'jquery-slimscroll/jquery.slimscroll.min';
+import Dialog from 'material-ui/Dialog';
+import { session,sessionReducer, sessionService } from 'redux-react-session';
+import cookie from 'react-cookies';
+import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from 'react-router-dom';
 
+
+const  href= {
+    href: 'href'
+};
 
 class SidebarContent extends React.Component {
+  constructor(props) {
 
+    super(props);
+    this.state = {
+
+      ResultStatus:'',
+      redirectToReferrer:false,
+  };
+  }
   componentDidMount() {
     const { history } = this.props;
     const nav = this.nav;
@@ -25,7 +41,7 @@ class SidebarContent extends React.Component {
     // AccordionNav
     const slideTime = 250;
     const $lists = $nav.find('ul').parent('li');
-    $lists.append('<i class="material-icons icon-has-ul">arrow_drop_down</i>');
+//    $lists.append('<i class="material-icons icon-has-ul">arrow_drop_down</i>');
     const $As = $lists.children('a');
 
     // Disable A link that has ul
@@ -86,129 +102,166 @@ class SidebarContent extends React.Component {
       highlightActive(location.pathname);
     });
   }
+  state = {
+  open: true,
+  };
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
+
+
+  handleLogout(event){
+    // console.log("logout")
+  this.setState({open: false});
+  //alert("Are you sure you want to logout?");
+
+  sessionService.deleteSession(event);
+    //console.log(sessionService.deleteSession(event));
+    //console.log(cookie.load('Id'));
+    //console.log(cookie.load('UserToken'));
+    const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LogoutUser';
+    // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LogoutUser';
+
+       fetch(BaseURL,{
+        method: "POST",
+        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken')}),
+      headers: new Headers({'content-type': 'application/json'})
+      }).
+    then((Response)=>Response.json()).
+    then((findresponse)=>{
+      this.setState({
+        ResultStatus:findresponse.LogoutUserResult.ResultStatus,
+        Status: this.state.ResultStatus.Status
+      })
+      //console.log(this.state.ResultStatus.Status)
+      if(this.state.ResultStatus.Status==="1"){
+      //  console.log("success"),
+      //  cookie.remove('Loggedout'),
+        cookie.remove('Loggedin'),
+        cookie.remove('Id'),
+        cookie.remove('UserToken'),
+        cookie.remove('FirstName'),
+        cookie.remove('LastName'),
+        cookie.remove('Email'),
+        cookie.remove('MobilePhoneNumber'),
+        cookie.remove('SilenceCode'),
+        cookie.remove('CancellationCode'),
+        cookie.remove('ShouldReceiveCameraAlertPush'),
+        cookie.remove('ShouldReceiveCameraAlertSMS'),
+        cookie.remove('Address1'),
+        cookie.remove('Address2'),
+        cookie.remove('City'),
+        cookie.remove('Latitude'),
+        cookie.remove('Longitude'),
+        cookie.remove('State'),
+        cookie.remove('Zip'),
+        cookie.remove('HasConfirmedMobilePhone'),
+        //console.log("removed"),
+
+     this.setState({ redirectToReferrer: true })
+      }
+      else{
+        //console.log('fail');
+         this.setState({ redirectToReferrer: false })
+      }
+    })
+  }
+
 
 
   render() {
+    const { match, location } = this.props;
+    const actions = [
+         <FlatButton
+           label="Yes"
+           primary
+           onClick={(e)=>this.handleLogout(e)}
+         />,
+         <FlatButton
+           label="No"
+           primary
+           keyboardFocused
+           onClick={this.handleClose}
+         />,
+       ];
+
+    const { redirectToReferrer} = this.state
+       if (redirectToReferrer==true) {
+         //console.log(redirectToReferrer),
+        // console.log("redirectToReferrer")
+             return (
+               <Redirect to="../mainLogin"/>
+             )
+           }
+
+
 
     return (
       <ul className="nav" ref={(c) => { this.nav = c; }}>
-        <li className="nav-header"><span>Navigation</span></li>
-        <li><FlatButton href="#/app/dashboard"><i className="nav-icon material-icons">dashboard</i><span className="nav-text">Dashboard</span></FlatButton></li>
         <li>
-          <FlatButton href="#/app/ui"><i className="nav-icon material-icons">folder_open</i><span className="nav-text">UI Kit</span></FlatButton>
-          <ul>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/buttons"><span>Buttons</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/cards"><span>Cards</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/boxes"><span>Boxes</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/icons"><span>Icons</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/icon-boxes"><span>Icon Boxes</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/lists"><span>Lists</span><span className="badge badge-pill badge-success">9</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/pricing-tables"><span>Pricing Tables</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/timeline"><span>Timeline</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/feature-callouts"><span>Feature Callouts</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/components"><span>Components</span><span className="badge badge-pill badge-danger">11</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/menus"><span>Menus</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/hover"><span>Hover</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/sashes"><span>Sashes</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/testimonials"><span>Testimonials</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/call-to-actions"><span>Call to Actions</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/typography"><span>Typography</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/grids"><span>Grids</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ui/colors"><span>Colors</span></FlatButton></li>
-          </ul>
+          <FlatButton href="#/app/home"><i className="nav-icon material-icons">home</i><span className="nav-text">Home</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/form"><i className="nav-icon material-icons">mode_edit</i><span className="nav-text">Forms</span></FlatButton>
-          <ul>
-            <li><FlatButton className="prepend-icon" href="#/app/form/components"><span>Form Components</span><span className="badge badge-pill badge-info">12</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/form/steppers"><span>Steppers</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/form/layouts"><span>Form Layouts</span></FlatButton></li>
-          </ul>
+          <FlatButton href="#/app/Alerts">
+          <i className="nav-icon material-icons">forward</i>
+          <span className="nav-text">Alerts</span>
+
+
+        </FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/table"><i className="nav-icon material-icons">list</i><span className="nav-text">Tables</span></FlatButton>
-          <ul>
-            <li><FlatButton className="prepend-icon" href="#/app/table/static"><span>Static Tables</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/table/responsive"><span>Responsive Tables</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/table/data"><span>Data Tables</span></FlatButton></li>
-          </ul>
+          <FlatButton href="#/app/Cameras"><i className="nav-icon material-icons">camera_alt</i><span className="nav-text">Cameras</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/chart"><i className="nav-icon material-icons">pie_chart_outlined</i><span className="nav-text">Charts</span></FlatButton>
-          <ul>
-            <li><FlatButton className="prepend-icon" href="#/app/chart/line"><span>Line & Area</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/chart/bar"><span>Bar</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/chart/pie"><span>Pie</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/chart/scatter"><span>Scatter</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/chart/radar"><span>Radar</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/chart/funnel"><span>Funnel</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/chart/more"><span>More</span></FlatButton></li>
-          </ul>
+          <FlatButton href="#/app/Devices"><i className="nav-icon material-icons">devices</i><span className="nav-text">Devices</span></FlatButton>
+        </li>
+        {/* <li>
+          <FlatButton href="#/app/pack"><img className="nav-icon material-icons" src="assets/images/bluePack.png" alt="Image" height="20" width="20"/><span className="nav-text">Pack</span></FlatButton>
+
+        </li> */}
+        <li>
+          <FlatButton href="#/app/Pack"><i className="nav-icon material-icons">people</i><span className="nav-text">Pack</span></FlatButton>
+          {/* <ul>
+            <li><FlatButton className="prepend-icon" href="#/app/Pack"><span>Pack</span></FlatButton></li>
+            {/* <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_pack"><span>Howls at Pack</span></FlatButton></li> */}
+             {/* <li><FlatButton className="prepend-icon" href="#/app/PackMenu/howls_me"><span>Howl Updates</span></FlatButton></li>
+          </ul> */}
         </li>
         <li>
-          <FlatButton href="#/app/page"><i className="nav-icon material-icons">content_copy</i><span className="nav-text">Pages</span></FlatButton>
-          <ul>
-            <li><FlatButton className="prepend-icon" href="#/app/page/about"><span>About</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/page/services"><span>Services</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/page/careers"><span>Careers</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/page/contact"><span>Contact</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/page/faqs"><span>FAQs</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/page/blog"><span>Blog</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/page/terms"><span>Terms of Services</span></FlatButton></li>
-          </ul>
+          <FlatButton href="#/app/Monitoring"><i className="nav-icon material-icons">network_wifi</i><span className="nav-text">Monitoring</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/ecommerce"><i className="nav-icon material-icons">shopping_cart</i><span className="nav-text">eCommerce</span></FlatButton>
-          <ul>
-            <li><FlatButton className="prepend-icon" href="#/app/ecommerce/products"><span>Products</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ecommerce/horizontal-products"><span>Products (Honrizonal)</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/ecommerce/invoice"><span>Invoice</span></FlatButton></li>
-          </ul>
-        </li>
-        <li className="nav-divider" />
-        <li><FlatButton href="#/app/extra"><i className="nav-icon material-icons">more_horiz</i><span className="nav-text">Extra Pages</span></FlatButton>
-          <ul>
-            <li><FlatButton className="prepend-icon" href="#/login"><span>Login</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/sign-up"><span>Sign Up</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/forgot-password"><span>Forgot Password</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/confirm-email"><span>Confirm Email</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/lock-screen"><span>Lock Screen</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/404"><span>404 Error</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/500"><span>500 Error</span></FlatButton></li>
-          </ul>
+          <FlatButton href="#/app/Map"><i className="nav-icon material-icons">map</i><span className="nav-text">Map</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/pglayout"><i className="nav-icon material-icons">desktop_windows</i><span className="nav-text">Page Layouts</span></FlatButton>
-          <ul>
-            <li><FlatButton className="prepend-icon" href="#/app/pglayout/full-width"><span>Full Width</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/app/pglayout/centered"><span>Centered</span></FlatButton></li>
-            <li><FlatButton className="prepend-icon" href="#/fullscreen"><span>Fullscreen</span></FlatButton></li>
-          </ul>
+          <FlatButton href="#/app/Help & Support"><i className="nav-icon material-icons">help</i><span className="nav-text">Help & Support</span></FlatButton>
         </li>
         <li>
-          <FlatButton href="#/app/menu"><i className="nav-icon material-icons">sort</i><span className="nav-text">Menu Levels</span></FlatButton>
-          <ul>
-            <li><FlatButton className="prepend-icon" href="javascript:;"><span>Level 1</span></FlatButton></li>
-            <li>
-              <FlatButton className="prepend-icon" href="javascript:;"><span>Level 1</span></FlatButton>
-              <ul>
-                <li><FlatButton href="javascript:;"><span>Level 2</span></FlatButton></li>
-                <li>
-                  <FlatButton href="javascript:;"><span>Level 2</span></FlatButton>
-                  <ul>
-                    <li><FlatButton href="javascript:;"><span>Level 3</span></FlatButton></li>
-                    <li><FlatButton href="javascript:;"><span>Level 3</span></FlatButton></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <FlatButton href="#/app/Settings"><i className="nav-icon material-icons">settings</i><span className="nav-text">Settings</span></FlatButton>
+
         </li>
-        <li className="nav-divider" />
-        <li className="nav-header"><span>Material Design</span></li>
-        <li className="li-small"><FlatButton href="#/app/form/components"><i className="nav-icon nav-dot material-icons color-success">fiber_manual_record</i><span className="nav-text">Form Components</span></FlatButton></li>
-        <li className="li-small"><FlatButton href="#/app/ui/components"><i className="nav-icon nav-dot material-icons color-info">fiber_manual_record</i><span className="nav-text">UI Components</span></FlatButton></li>
+        <li>
+          <FlatButton href="#/app/Alpha"><i className="nav-icon material-icons">contacts</i><span className="nav-text">Alpha</span></FlatButton>
+        </li>
+        <li>
+          <a  onClick={this.handleOpen} ><i className="nav-icon material-icons">forward</i><span className="nav-text" >Logout</span></a>
+        </li>
+        <Dialog
+                    id="Dialog"
+                    title="Confirm"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                  >
+                    Are you sure you want to logout?
+                  </Dialog>
       </ul>
+
     );
   }
 }

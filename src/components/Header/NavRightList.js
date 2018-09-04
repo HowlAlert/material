@@ -3,6 +3,13 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton/IconButton';
 import { withRouter } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
+import { session,sessionReducer, sessionService } from 'redux-react-session';
+import cookie from 'react-cookies';
+import { Route, Switch, Redirect, Router, BrowserRouter, browserHistory } from 'react-router-dom';
+import FlatButton from 'material-ui/FlatButton';
+import Badge from 'material-ui/Badge';
 
 const ImgIconButtonStyle = {
   width: '60px',
@@ -15,45 +22,259 @@ const listItemStyle = {
 
 class NavRightList extends React.Component {
 
+  state = {
+  open: false,
+  };
   handleChange = (event, value) => {
     this.props.history.push(value);
   }
 
+
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
+    constructor(props) {
+
+      super(props);
+      this.state = {
+        ResultStatus:'',
+        data: [],
+  };
+}
+
+handleNotify(event) {
+  this.setState({ redirectToAlert: true })
+
+  // console.log("Notifications");
+}
+
+componentDidMount(){
+
+  const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/GetTotalUnreadUserFeedCount';
+  // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/GetTotalUnreadUserFeedCount';
+
+      fetch(BaseURL,
+      {
+       method: "POST",
+       body: JSON.stringify({
+         "UserID":cookie.load('Id'),
+         "UserToken":cookie.load('UserToken')
+       }),
+        headers: new Headers({'content-type': 'application/json'}),
+      })
+  .then((Response)=> Response.json())
+  .then((findresponse)=>{
+  // console.log(findresponse);
+      this.setState({
+         data:findresponse.GetTotalUnreadUserFeedCountResult.TotalUnreadUserFeedCount,
+         ResultStatus:findresponse.GetTotalUnreadUserFeedCountResult.resultStatus,
+
+      })
+
+
+
+})
+}
+
+
+handleLogout(event){
+      this.setState({open: false});
+  //alert("Are you sure you want to logout?");
+
+  sessionService.deleteSession(event);
+    // console.log(sessionService.deleteSession(event));
+    // console.log(cookie.load('Id'));
+    // console.log(cookie.load('UserToken'));
+    const BaseURL = 'https://service.howlalarm.com/HOWL_WCF_Production/Service1.svc/LogoutUser';
+    // 'http://sandbox.howlalarm.com/HOWL_WCF/Service1.svc/LogoutUser';
+
+       fetch(BaseURL,{
+        method: "POST",
+        body: JSON.stringify({'UserID':cookie.load('Id'),'UserToken':cookie.load('UserToken')}),
+      headers: new Headers({'content-type': 'application/json'})
+      }).
+    then((Response)=>Response.json()).
+    then((findresponse)=>{
+      this.setState({
+        ResultStatus:findresponse.LogoutUserResult.ResultStatus,
+        Status: this.state.ResultStatus.Status
+      })
+      // console.log(this.state.ResultStatus.Status)
+      if(this.state.ResultStatus.Status==="1"){
+        // console.log("success"),
+        //cookie.remove('Loggedout'),
+        cookie.remove('Loggedin'),
+        cookie.remove('Id'),
+        cookie.remove('UserToken'),
+        cookie.remove('FirstName'),
+        cookie.remove('LastName'),
+        cookie.remove('Email'),
+        cookie.remove('MobilePhoneNumber'),
+        cookie.remove('SilenceCode'),
+        cookie.remove('CancellationCode'),
+        cookie.remove('ShouldReceiveCameraAlertPush'),
+        cookie.remove('ShouldReceiveCameraAlertSMS'),
+        cookie.remove('Address1'),
+        cookie.remove('Address2'),
+        cookie.remove('City'),
+        cookie.remove('Latitude'),
+        cookie.remove('Longitude'),
+        cookie.remove('State'),
+        cookie.remove('Zip'),
+        cookie.remove('HasConfirmedMobilePhone'),
+        // console.log("removed"),
+
+     this.setState({ redirectToReferrer: true })
+      }
+      else{
+         this.setState({ redirectToReferrer: false })
+      }
+    })
+  }
+
+
   render() {
+    const { match, location } = this.props;
+    const actions = [
+         <FlatButton
+           label="Yes"
+           primary
+           onClick={(e)=>this.handleLogout(e)}
+         />,
+         <FlatButton
+           label="No"
+           primary
+           keyboardFocused
+           onClick={this.handleClose}
+         />,
+       ];
+
+const { redirectToReferrer} = this.state
+       if (redirectToReferrer) {
+         // console.log(redirectToReferrer)
+             return (
+               <Redirect to="../mainLogin"/>
+             )
+           }
+
+ const { redirectToAlert } = this.state
+                  if (redirectToAlert ) {
+                    // console.log(redirectToAlert)
+                        return (
+
+                         <Redirect to="../../app/Alerts"/>
+
+                        )
+                      }
+var count = this.state.data;
+
     return (
-      <ul className="list-unstyled float-right">
-        <li style={{marginRight: '10px'}}>
-          <IconMenu
-            iconButtonElement={<IconButton style={ImgIconButtonStyle}><img src="assets/images/g1.jpg" alt="" className="rounded-circle img30_30" /></IconButton>}
-            onChange={this.handleChange}
-            anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
-            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-            menuStyle={{minWidth: '150px'}}
+
+      <div className="">
+
+        <div className="topRightNav row">
+
+        <div className="col-lg-2">
+
+          <MenuItem
+              leftIcon={
+              count !== "0" ?
+              <i className="material-icons mdl-badge mdl-badge--overlap" data-badge={this.state.data} onClick={(e)=>this.handleNotify(e)} >notifications_none</i>
+             :<i className="material-icons">notifications_none</i>
+          }
+
+          />
+
+          </div>
+
+
+          <div className="col-lg-10">
+
+                <div className="">
+
+                  <div className=" userStuff2 row">
+
+
+                  <div className="col-lg-2">
+                    <img src="assets/images/user_default.png" alt="Image" height="30" width="30"/>
+                    </div>
+
+
+                    <div className="col-lg-10 userName noPadLeft">
+
+
+
+                    <IconMenu
+                      iconButtonElement={
+                        <MenuItem style={{}} innerDivStyle={listItemStyle}
+                        primaryText={cookie.load('FirstName') +" "+ cookie.load('LastName')}
+                        onClick={this.handleChange}
+                        rightIcon={<i className="nav-icon material-icons">arrow_drop_down</i>}
+                        />
+                        }
+                      onChange={this.handleChange}
+                      anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
+                      targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                      menuStyle={{minWidth: '150px'}}
+                              >
+
+
+
+
+                      <MenuItem
+                      //value="/login"
+                        primaryText="Logout"
+                        innerDivStyle={listItemStyle}
+                        style={{fontSize: '13px', lineHeight: '48px'}}
+                        leftIcon={<i className="material-icons">forward</i>}
+                        onClick={this.handleOpen}
+                                  />
+
+
+
+                    </IconMenu>
+                    </div>
+                    <Dialog
+                                title="Confirm"
+                                actions={actions}
+                                modal={false}
+                                open={this.state.open}
+                                onRequestClose={this.handleClose}
+                              >
+                                Are you sure you want to logout?
+                              </Dialog>
+
+
+                  </div>
+
+
+                </div>
+          </div>
+
+
+
+
+
+
+          <Dialog
+                      title="Confirm"
+                      actions={actions}
+                      modal={false}
+                      open={this.state.open}
+                      onRequestClose={this.handleClose}
                     >
-            <MenuItem
-              value="/app/dashboard"
-              primaryText="Dashboard"
-              style={{fontSize: '14px', lineHeight: '48px'}}
-              innerDivStyle={listItemStyle}
-              leftIcon={<i className="material-icons">home</i>}
-                        />
-            <MenuItem
-              value="/app/page/about"
-              primaryText="About"
-              innerDivStyle={listItemStyle}
-              style={{fontSize: '14px', lineHeight: '48px'}}
-              leftIcon={<i className="material-icons">person_outline</i>}
-                        />
-            <MenuItem
-              value="/login"
-              primaryText="Log Out"
-              innerDivStyle={listItemStyle}
-              style={{fontSize: '14px', lineHeight: '48px'}}
-              leftIcon={<i className="material-icons">forward</i>}
-                        />
-          </IconMenu>
-        </li>
-      </ul>
+                      Are you sure you want to logout?
+                    </Dialog>
+
+
+        </div>
+
+
+      </div>
     );
   }
 }

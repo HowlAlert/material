@@ -44,9 +44,9 @@ class Header extends React.Component {
             <h2><Link to="/">{APPCONFIG.brand}</Link></h2>
           </div>
 
-          <div className="top-nav-left d-none d-lg-inline-block d-xl-inline-block">
+          {/* <div className="top-nav-left d-none d-lg-inline-block d-xl-inline-block">
             <NavLeftList />
-          </div>
+          </div> */}
 
           <div className="top-nav-right">
             <NavRightList />
@@ -66,4 +66,3 @@ const mapStateToProps = state => ({
 module.exports = connect(
   mapStateToProps
 )(Header);
-

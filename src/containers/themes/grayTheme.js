@@ -1,7 +1,7 @@
 import {
   cyan700,
   grey600,
-  green600, green200, green400,
+  green600, green200, green400,Howlblue,
   fullWhite,
 } from 'material-ui/styles/colors';
 import {fade} from 'material-ui/utils/colorManipulator';
@@ -13,10 +13,10 @@ import spacing from 'material-ui/styles/spacing';
 export default {
   spacing,
   fontFamily: 'Roboto, sans-serif',
-  borderRadius: 2,
+  borderRadius: 30,
   palette: {
-    primary1Color: cyan700,
-    primary2Color: cyan700,
+    primary1Color: Howlblue,
+    primary2Color: Howlblue,
     primary3Color: grey600,
     accent1Color: green600,
     accent2Color: green400,

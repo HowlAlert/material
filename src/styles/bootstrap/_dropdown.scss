@@ -61,6 +61,13 @@
   @include box-shadow($dropdown-box-shadow);
 }
 
+
+
+
+  .flag-dropdown:hover .flag-dropdown-content {
+    display: none;
+}
+
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
   @include nav-divider($dropdown-divider-bg);
@@ -87,6 +94,7 @@
     background-color: $dropdown-link-hover-bg;
   }
 
+
   &.active,
   &:active {
     color: $dropdown-link-active-color;
@@ -112,6 +120,11 @@
     outline: 0;
   }
 }
+
+// window.onclick{
+//         remove:show;
+//     }
+
 
 .dropdown-menu.show {
   display: block;

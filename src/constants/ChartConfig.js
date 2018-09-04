@@ -2,6 +2,8 @@ const CHARTCONFIG = {
   color: {
     primary: 'rgba(33,150,243,.85)',  // #2196F3
     success: 'rgba(102,187,106,.85)', // #66BB6A
+    howl: '#3287c5',
+    howldark:'#01275C',
     info: 'rgba(0,188,212,.85)',   // #00BCD4
     infoAlt: 'rgba(126,87,194,.85)',  // #7E57C2
     warning: 'rgba(255,202,40,.85)',  // #FFCA28
